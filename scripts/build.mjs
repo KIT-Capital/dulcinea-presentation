@@ -98,6 +98,8 @@ async function build() {
     financial = financial.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
     criteria = criteria.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
     await copyAsset('brand/dulcinea-one/svg/dulcinea-one-black-gold.svg', 'gate-assets/logo.svg');
+    // The exact image URL in the public Open Graph metadata must exist in the deployment.
+    await copyAsset('assets/images/stock/AdobeStock_891890158-web.jpg');
   }
   const destination = web ? siteRoot : root;
   const output = path.join(destination, 'index.html');

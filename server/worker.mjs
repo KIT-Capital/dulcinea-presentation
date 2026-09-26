@@ -4,7 +4,12 @@ const encoder = new TextEncoder();
 const SESSION_SECONDS = 8 * 60 * 60;
 const MAX_FORM_BYTES = 4096;
 const CONTACT_EMAIL = 'kit@kitcapital.com';
-const PUBLIC_ASSETS = new Set(['/gate-assets/logo.svg']);
+// Only the brand mark and the two promotional media URLs can be fetched before sign-in.
+const PUBLIC_ASSETS = new Set([
+  '/gate-assets/logo.svg',
+  '/assets/images/stock/AdobeStock_891890158-web.jpg',
+  '/assets/video/stock/AdobeStock_693150796.mp4',
+]);
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
   "img-src 'self' data:",
@@ -201,7 +206,11 @@ export default {
         return request.headers.get('Accept')?.includes('application/json')
           ? json({ next: '/login' }, 200, { 'Set-Cookie': cookie }) : redirect('/login', cookie);
       }
-      if (!await authenticated(request, env, url)) return redirect(`/login?next=${encodeURIComponent(url.pathname + url.search)}`, null, 302);
+      if (!await authenticated(request, env, url)) {
+        // A share crawler must be able to read the card metadata at the shared URL.
+        if (url.pathname === '/' && request.method === 'GET') return loginPage();
+        return redirect(`/login?next=${encodeURIComponent(url.pathname + url.search)}`, null, 302);
+      }
       if (!readRequest) return text('Method not allowed.', 405, { Allow: 'GET, HEAD' });
       return protect(await env.ASSETS.fetch(request));
     } catch {

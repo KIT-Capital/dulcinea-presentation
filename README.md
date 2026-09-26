@@ -12,7 +12,9 @@ The current team portraits of Dov, Ricardo and Adriana use the later photographs
 
 ## Open the presentation
 
-The hosted deployment targets **https://invest.dulcineainvestments.org** on Cloudflare Workers. It uses a name/email form and shared password, matching the requested Tamarindo access pattern. This is a password gate, not OAuth. Every presentation page, financial statement, image, video and download passes through the Worker before the asset is served. The login logo and robots policy are the only public assets. Sessions expire after eight hours; names and emails are not retained or sent anywhere. Access requests go to **kit@kitcapital.com**. The final presentation chapter offers Dov Tuzman by email or WhatsApp.
+The hosted deployment targets **https://invest.dulcineainvestments.org** on Cloudflare Workers. It uses a name/email form and shared password, matching the requested Tamarindo access pattern. This is a password gate, not OAuth. Presentation pages, financial statements, property media and downloads require sign-in. The exact login logo, Open Graph panorama and aerial clip URLs are public so link previews can fetch them; the robots policy is public as well. Sessions expire after eight hours; names and emails are not retained or sent anywhere. Access requests go to **kit@kitcapital.com**. The final presentation chapter offers Dov Tuzman by email or WhatsApp.
+
+The root URL serves the login form with a Dulcinea One title, description, panoramic Medellín share image and optional aerial-video metadata to visitors without a session. Open Graph video support varies by platform, so the image remains the primary preview. Both the login form and signed-in presentation carry the same social metadata.
 
 The main offer states the $7M fund raise, $2.1M source-reported commitments and $4.9M remaining ask. Investors acquire fund membership units; detailed terms remain in the expandable offer section.
 

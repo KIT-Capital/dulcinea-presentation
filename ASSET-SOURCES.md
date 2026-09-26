@@ -107,6 +107,8 @@ The user confirmed use of these four plan groups after the unit-label and area d
 
 ## Supplied Adobe Stock footage
 
+The Open Graph share card uses the unchanged user-supplied panoramic city photograph `assets/images/stock/AdobeStock_891890158-web.jpg` as its image and the existing optimized aerial clip `assets/video/stock/AdobeStock_693150796.mp4` as optional video. Those two exact files are public for link-preview crawlers; investor pages and all other property and source media remain behind the password gate. Social platforms may display only the still image.
+
 The user initially supplied four MOV files from the Dulcinea stock-video folder. Those originals remain unchanged in their supplied location; the large MOV files are not copied into this repository. Optimized individual versions and posters are retained under `assets/video/stock/`.
 
 | Original filename | Original duration | Original resolution | Observed subject |

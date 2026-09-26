@@ -55,7 +55,7 @@ function signedCookie(env, payload) {
 
 test('every private route, image, video, plan and financial statement is gated before assets are read', async () => {
   const { env, assetRequests } = fixture();
-  for (const path of ['/', '/index.html', '/financial-statements.html', '/investment-criteria.html', '/assets/video/medellin-after-dark.mp4',
+  for (const path of ['/index.html', '/financial-statements.html', '/investment-criteria.html', '/assets/video/medellin-after-dark.mp4',
     '/assets/images/team/dov-supplied.jpg', '/source-packages/PLANOS.pdf', '/downloads/deck.html', '/gate-assets/not-public.svg']) {
     for (const method of ['GET', 'HEAD']) {
       const response = await worker.fetch(request(path, { method }), env);
@@ -68,15 +68,31 @@ test('every private route, image, video, plan and financial statement is gated b
   assert.equal(assetRequests.length, 0);
 });
 
-test('only the exact gate logo and robots are public, even before secrets exist', async () => {
+test('the shared root shows Open Graph metadata without granting access to the presentation', async () => {
+  const { env, assetRequests } = fixture();
+  const response = await worker.fetch(request('/'), env);
+  const html = await response.text();
+  assert.equal(response.status, 200);
+  assert.match(html, /<meta property="og:title" content="Dulcinea One \| Investor presentation">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/invest\.dulcineainvestments\.org\/assets\/images\/stock\/AdobeStock_891890158-web\.jpg">/);
+  assert.match(html, /<meta property="og:video" content="https:\/\/invest\.dulcineainvestments\.org\/assets\/video\/stock\/AdobeStock_693150796\.mp4">/);
+  assert.match(html, /<form action="\/login"/);
+  assert.equal(assetRequests.length, 0);
+  assert.equal((await worker.fetch(request('/', { method: 'HEAD' }), env)).status, 302);
+});
+
+test('only the gate logo, exact social media URLs and robots are public, even before secrets exist', async () => {
   const { env, assetRequests } = fixture({ INVESTOR_PASSWORD: undefined, SESSION_SECRET: undefined });
-  assert.equal((await worker.fetch(request('/gate-assets/logo.svg'), env)).status, 200);
+  for (const path of ['/gate-assets/logo.svg', '/assets/images/stock/AdobeStock_891890158-web.jpg',
+    '/assets/video/stock/AdobeStock_693150796.mp4']) {
+    assert.equal((await worker.fetch(request(path), env)).status, 200, path);
+  }
   const robots = await worker.fetch(request('/robots.txt'), env);
   assert.match(await robots.text(), /Disallow: \/$/m);
-  assert.equal(assetRequests.length, 1);
+  assert.equal(assetRequests.length, 3);
   assert.equal((await worker.fetch(request('/favicon.ico'), env)).status, 503);
   assert.equal((await worker.fetch(request('/gate-assets/logo.svg', { method: 'POST' }), env)).status, 503);
-  assert.equal(assetRequests.length, 1);
+  assert.equal(assetRequests.length, 3);
 });
 
 test('correct login grants an eight-hour secure signed session without storing visitor identity', async () => {
@@ -164,7 +180,8 @@ test('changing either secret invalidates previously issued sessions', async () =
   for (const changed of [{ ...env, INVESTOR_PASSWORD: 'a-different-test-only-password' },
     { ...env, SESSION_SECRET: 'a-different-test-only-session-secret-32-chars' }]) {
     const response = await worker.fetch(request('/', { headers: { Cookie: cookie } }), changed);
-    assert.equal(response.status, 302);
+    assert.equal(response.status, 200);
+    assert.match(await response.text(), /<form action="\/login"/);
   }
   assert.equal(assetRequests.length, 0);
 });
