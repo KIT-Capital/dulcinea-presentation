@@ -1,0 +1,61 @@
+{
+  "brand": "Dulcinea",
+  "accent_revision": "burnished-copper",
+  "color_space": "sRGB",
+  "colors": [
+    {
+      "name": "teal",
+      "hex": "#103D40",
+      "rgb": [
+        16,
+        61,
+        64
+      ]
+    },
+    {
+      "name": "copper",
+      "hex": "#B9684F",
+      "rgb": [
+        185,
+        104,
+        79
+      ]
+    },
+    {
+      "name": "lagoon",
+      "hex": "#2D8C88",
+      "rgb": [
+        45,
+        140,
+        136
+      ]
+    },
+    {
+      "name": "mist",
+      "hex": "#CFE8E3",
+      "rgb": [
+        207,
+        232,
+        227
+      ]
+    },
+    {
+      "name": "ivory",
+      "hex": "#F6F4EE",
+      "rgb": [
+        246,
+        244,
+        238
+      ]
+    },
+    {
+      "name": "graphite",
+      "hex": "#273238",
+      "rgb": [
+        39,
+        50,
+        56
+      ]
+    }
+  ]
+}

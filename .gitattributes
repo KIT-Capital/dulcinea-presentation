@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+# Preserve the supplied brand package exactly, including original line endings.
+brand/** -text -whitespace
+source-packages/** -text
+assets/images/** -text
+
+*.pdf binary
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary
+*.zip binary

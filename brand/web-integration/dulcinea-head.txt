@@ -1,0 +1,24 @@
+<!-- Replace example.com, the canonical page URL and the copy before publishing. -->
+<!-- These paths assume the package folders are hosted under /brand/. -->
+<link rel="icon" href="/brand/favicon/favicon.ico" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" href="/brand/favicon/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/brand/favicon/apple-touch-icon.png" sizes="180x180">
+<link rel="mask-icon" href="/brand/favicon/safari-pinned-tab.svg" color="#103D40">
+<link rel="manifest" href="/brand/favicon/dulcinea.webmanifest">
+<meta name="theme-color" content="#103D40">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dulcinea">
+<meta property="og:title" content="Dulcinea | Residential investment in Medellín">
+<meta property="og:description" content="A residential investment platform. Acquire, renovate and sell homes in Medellín, Colombia.">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:image" content="https://example.com/brand/opengraph/dulcinea-og-light-1200x630.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dulcinea. Residential investment in Medellín. Acquire. Renovate. Sell.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dulcinea | Residential investment in Medellín">
+<meta name="twitter:description" content="A residential investment platform. Acquire, renovate and sell homes in Medellín, Colombia.">
+<meta name="twitter:image" content="https://example.com/brand/opengraph/dulcinea-og-light-1200x630.png">
+<meta name="twitter:image:alt" content="Dulcinea. Residential investment in Medellín. Acquire. Renovate. Sell.">
