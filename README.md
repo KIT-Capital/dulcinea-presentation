@@ -4,7 +4,7 @@ Dulcinea is a real estate investment firm with a unique platform focused on Mede
 
 The presentation uses the supplied Dulcinea branding and exact five-color Pantone palette, with lighter backgrounds and Coconut Shell reserved for accents. Wide property films alternate with split layouts to give the homes and people more space. Five user-requested AI lifestyle illustrations show fictional adults in settings based on the supplied property images. Each is labeled, and the original property imagery remains available in the viewer. PNG masters, optimized web images, and generation provenance are retained.
 
-Silent videos use the user's supplied Adobe Stock footage: city and town aerials alternate with all five property films in the 30-second opening, chefs preparing food bring the hospitality story to life, and the countryside portrait appears in the closing contact chapter. All six distinct supplied stock clips are used. Five nine-second property loops animate the AI lifestyle stills with gentle camera motion; the people remain still. The 17.5-second after-dark sequence moves from night-road stock footage to the supplied Medellín neon animation, then into camera moves across supplied DJ and crowd photographs. The original 13-second photographic sequence is also retained. These photographic animations are not filmed human movement. The visual direction draws on [Radisson Resort Maldives](https://radissonresortmaldives.com/); no assets from that website are reused.
+Silent videos use the user's supplied Adobe Stock footage: city and town aerials alternate with all five property films in the expanded opening, chefs preparing food bring the hospitality story to life, and the countryside portrait appears in the closing contact chapter. All eight distinct supplied stock clips are used. The Why Medellín chapter combines the city aerial with the later street-walking clip in a 12-second loop. The re-supplied green Medellín neon clip was verified as the same file already included in After dark. Five nine-second property loops animate the AI lifestyle stills with gentle camera motion; the people remain still. The 23-second after-dark sequence moves from night-road footage to the supplied Medellín neon animation, then into gentle camera moves across the evening and DJ/crowd photographs. The original 13-second photographic sequence is also retained. These photographic animations are not filmed human movement. The visual direction draws on [Radisson Resort Maldives](https://radissonresortmaldives.com/); no assets from that website are reused.
 
 The opening also carries the supplied KIT Capital logo discreetly in its lower-right corner.
 
@@ -68,7 +68,7 @@ The optimized stock clips and edited loops are already included. To regenerate t
 python scripts/render-stock-videos.py
 ```
 
-The 30-second introduction combines city and town footage with all five animated property films, using half-second circular dissolves. Its dedicated renderer is `scripts/render-introduction.py`; the stock renderer calls it automatically.
+The introduction opens on the latest green city aerial and combines the retained city and town footage, all five animated property films, and the latest city panorama photograph, using half-second circular dissolves. Its dedicated renderer is `scripts/render-introduction.py`; the stock renderer calls it automatically.
 
 To re-import the initial four original MOV files, add `--source-dir "/path/to/Stock Video"`. Originals remain untouched and are not copied into the repository. The two later stock clips are retained in optimized form with encoding options in `assets/video/stock/additional-provenance.json`. To rebuild the nightlife animation from its retained stock photographs, run:
 
@@ -103,7 +103,7 @@ FFmpeg can be on `PATH`, supplied with `--ffmpeg /path/to/ffmpeg`, or provided b
 - `src/`: editable presentation template, CSS, navigation/media controls, and retained internal source material.
 - `scripts/build.mjs`: dependency-free Node.js builder.
 - `scripts/render-stock-videos.py`: optional optimizer and editor for the supplied stock footage.
-- `scripts/render-introduction.py`: optional renderer for the 12-second city and town introduction.
+- `scripts/render-introduction.py`: renderer for the city, property-film and photographic opening montage.
 - `scripts/render-nightlife.py`: optional renderer for camera motion across the supplied nightlife photographs.
 - `scripts/render-after-dark.py`: optional editor combining night-road footage, Medellín neon and the retained nightlife animation.
 - `scripts/render-property-videos.py`: optional renderer for the five nine-second property camera loops.
@@ -127,3 +127,7 @@ FFmpeg can be on `PATH`, supplied with `--ffmpeg /path/to/ffmpeg`, or provided b
 ## Content status
 
 Financial figures are source projections; acquisition statuses and other business claims reflect the supplied materials and documented user corrections. This repository does not independently verify those claims or guarantee returns. See `CONTENT-SOURCES.md` and the presentation's source notes for the treatment of differences between the deck and model. Membership documents govern the investment terms. Lifestyle and market imagery is illustrative unless identified as a source property image.
+
+The later street-walking source can be imported with `python scripts/import-latest-stock.py --source-dir "/path/to/Stock Video"`. Build the city-and-street sequence with `python scripts/render-location.py`. The original MOV files stay outside the repository; optimized MP4s and source hashes are retained.
+
+Import the later aerial with `python scripts/import-feature-stock.py "/path/to/Stock Video/AdobeStock_695926335.mov"`. `scripts/render-latest-photos.py` creates the two subtle photographic loops used by the opening and After dark sequences. Source files stay unchanged. See each script’s `--help` for source arguments.

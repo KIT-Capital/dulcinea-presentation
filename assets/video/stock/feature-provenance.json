@@ -1,0 +1,60 @@
+{
+  "asset_id": "AdobeStock_695926335",
+  "source": {
+    "file": "AdobeStock_695926335.mov",
+    "sha256": "46ceb6360d5bba12f1ccae0e9c7b53fe02dc28c1580aef649a06830f0a9be5d9",
+    "bytes": 176444396,
+    "duration_seconds": 28.43,
+    "width": 2048,
+    "height": 1080,
+    "fps": 29.97,
+    "audio_tracks": 0,
+    "video_description": "h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(progressive), 2048x1080 [SAR 1:1 DAR 256:135], 49651 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)"
+  },
+  "subject": "Daylight aerial camera movement across a green high-rise city district and mountain slopes.",
+  "disclosure": "User-supplied illustrative stock footage. Geographic identity is not independently established by the import process.",
+  "render_script": "scripts/import-feature-stock.py",
+  "settings": {
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "fit": "cover",
+    "preset": "slow",
+    "crf": 21,
+    "maxrate_kbps": 4500,
+    "bufsize_kbps": 9000,
+    "codec": "H.264 High / yuv420p",
+    "silent": true,
+    "fast_start": true,
+    "full_source_duration": true,
+    "poster_time_seconds": 1.0
+  },
+  "outputs": [
+    {
+      "file": "assets/video/stock/AdobeStock_695926335.mp4",
+      "bytes": 16350907,
+      "sha256": "858021ca7450532ea4d73b27f7a0d7bd9797209c3c7874836487cf13a992929e",
+      "duration_seconds": 28.42,
+      "width": 1280,
+      "height": 720,
+      "fps": 24.0,
+      "audio_tracks": 0,
+      "video_description": "h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 4600 kb/s, 24 fps, 24 tbr, 12288 tbn (default)"
+    },
+    {
+      "file": "assets/video/stock/AdobeStock_695926335-poster.jpg",
+      "bytes": 334024,
+      "sha256": "6d05df96d872807c4ee8ef7a2be6cba60015500608f7a656242b80ab3b6b5c22"
+    }
+  ],
+  "validation": {
+    "full_stream_decode": "pass",
+    "decoded_frames": 682,
+    "source_hash_unchanged": true,
+    "under_20_MB": true,
+    "fast_start_box_order": "pass",
+    "visual_review": "Encoded poster at 1 second and frame at 6 seconds inspected against original contact sheet. Full-bleed 16:9 center crop preserves the city and mountain composition; no black bars or visible damage."
+  },
+  "tool": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+  "source_handling": "Original MOV retained outside the repository, unchanged. No credentials or personal absolute source paths recorded."
+}

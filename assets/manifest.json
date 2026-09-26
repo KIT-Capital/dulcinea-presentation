@@ -213,5 +213,20 @@
     "marker": "{{COUNTRYSIDE_POSTER}}",
     "path": "assets/video/stock/AdobeStock_539938219-poster.jpg",
     "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{LOCATION_VIDEO}}",
+    "path": "assets/video/medellin-location.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{LOCATION_VIDEO_POSTER}}",
+    "path": "assets/video/medellin-location-poster.jpg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{INTRO_VIDEO_POSTER}}",
+    "path": "assets/video/dulcinea-introduction-poster.jpg",
+    "mime": "image/jpeg"
   }
 ]

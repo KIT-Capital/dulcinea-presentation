@@ -1,0 +1,154 @@
+{
+  "render_script": "scripts/render-latest-photos.py",
+  "method": "Camera-only motion rendered locally from two user-supplied stock photographs. Original JPEGs are copied unchanged; web JPEGs preserve the complete composition.",
+  "disclosure": "Animated photographs, not filmed scenes. People, buildings and clouds remain still; no AI rendering, optical-flow interpolation or object synthesis.",
+  "rights": "Photographs supplied by the user; original ownership and licensing remain with their respective owners.",
+  "videos": [
+    {
+      "slug": "evening",
+      "source": "assets/images/stock/AdobeStock_259715040.jpeg",
+      "source_sha256": "9e4a8c20858292791812815e258bc96a18e110d90c38b1ca362bdb59624d609f",
+      "source_bytes": 5432166,
+      "source_dimensions": [
+        7541,
+        5298
+      ],
+      "source_exif_orientation": 1,
+      "source_unchanged": true,
+      "copy_matches_supplied_original": true,
+      "web_image": "assets/images/stock/AdobeStock_259715040-web.jpg",
+      "web_sha256": "4e3bc5deb43a5787cdf4b2cde05c369eaf47aa31e3da22037eafbb6224151e25",
+      "web_bytes": 232729,
+      "web_dimensions": [
+        2000,
+        1405
+      ],
+      "web_treatment": "Aspect-preserving resize only; JPEG quality 90, no cropping or retouching.",
+      "video": "assets/video/stock-photo-evening.mp4",
+      "video_sha256": "e148e6233ac2c940aadd30a8d24e68b275b2ed9a3b9e209bdf31ee59e65f3dda",
+      "video_bytes": 297386,
+      "poster": "assets/video/stock-photo-evening-poster.jpg",
+      "poster_sha256": "be61eb005fedffe8a9fcfec9f72657f8bc81b116c5d832dc752b8e48ac45591b",
+      "framing": "Supplied evening photograph of legs and shoes; the lower framing preserves the visible shoes and seated/standing arrangement.",
+      "camera_filter": "scale=3840:2160:force_original_aspect_ratio=increase:flags=lanczos,crop=3840:2160:x='(iw-ow)*0.5':y='(ih-oh)*0.58',zoompan=z='1.006+0.020*(0.5-0.5*cos(2*PI*(on)/143))':x='(iw-iw/zoom)*(0.47+0.04*(0.5-0.5*cos(2*PI*(on)/143)))':y='(ih-ih/zoom)*0.59':d=144:s=1280x720:fps=24,scale=in_range=full:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p",
+      "camera": {
+        "base_frame": [
+          3840,
+          2160
+        ],
+        "base_crop_fraction": [
+          0.5,
+          0.58
+        ],
+        "zoom_min": 1.006,
+        "zoom_max": 1.026,
+        "path": "Cosine round trip; identical uncompressed first and last camera frames."
+      },
+      "encoding": {
+        "codec": "H.264 High / yuv420p",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "fps": 24,
+        "duration_seconds": 6.0,
+        "frames": 144,
+        "audio_tracks": 0,
+        "crf": 22,
+        "maxrate": "3M",
+        "bufsize": "6M",
+        "color": "Rec.709 limited range",
+        "fast_start": true
+      },
+      "validation": {
+        "full_stream_decode": "pass",
+        "decoded_frames": 144,
+        "duration_seconds": 6.0,
+        "under_4_MB": true,
+        "loop_endpoints_identical_before_encoding": true,
+        "endpoint_frame_md5": "f3bc3d2c0dea01ebf51669b334c10bdd",
+        "source_hash_unchanged": true,
+        "review_frame_indices": [
+          0,
+          72,
+          143
+        ],
+        "visual_review": "Start, midpoint and final decoded frames visually inspected. All visible shoes and the seated/standing leg arrangement remain in frame. No warped anatomy, black bars, blank frames or synthesized human movement."
+      }
+    },
+    {
+      "slug": "city",
+      "source": "assets/images/stock/AdobeStock_891890158.jpeg",
+      "source_sha256": "6bc80cc4ba3b1f1e098a02fa79daa811929864efbd82de9dde554e4397369ea4",
+      "source_bytes": 12068923,
+      "source_dimensions": [
+        7600,
+        3800
+      ],
+      "source_exif_orientation": 1,
+      "source_unchanged": true,
+      "copy_matches_supplied_original": true,
+      "web_image": "assets/images/stock/AdobeStock_891890158-web.jpg",
+      "web_sha256": "37e0778493c066ef529e704aad1129e6e4f568b4066bf4f1909f6c2235bce91a",
+      "web_bytes": 1109079,
+      "web_dimensions": [
+        2000,
+        1000
+      ],
+      "web_treatment": "Aspect-preserving resize only; JPEG quality 90, no cropping or retouching.",
+      "video": "assets/video/stock-photo-city.mp4",
+      "video_sha256": "9d103291db71e708be80a4b2440c84ea72a89da555552e208b76dc872133db19",
+      "video_bytes": 2492422,
+      "poster": "assets/video/stock-photo-city-poster.jpg",
+      "poster_sha256": "16474d4e56f6365dae2b9b3699a8f3cf21e906564fb48e7cb475cbb3b66d1764",
+      "framing": "Supplied wide city photograph; centered framing preserves the valley, mountains and main towers.",
+      "camera_filter": "scale=3840:2160:force_original_aspect_ratio=increase:flags=lanczos,crop=3840:2160:x='(iw-ow)*0.5':y='(ih-oh)*0.5',zoompan=z='1.006+0.020*(0.5-0.5*cos(2*PI*(on)/143))':x='(iw-iw/zoom)*(0.48+0.06*(0.5-0.5*cos(2*PI*(on)/143)))':y='(ih-ih/zoom)*0.48':d=144:s=1280x720:fps=24,scale=in_range=full:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p",
+      "camera": {
+        "base_frame": [
+          3840,
+          2160
+        ],
+        "base_crop_fraction": [
+          0.5,
+          0.5
+        ],
+        "zoom_min": 1.006,
+        "zoom_max": 1.026,
+        "path": "Cosine round trip; identical uncompressed first and last camera frames."
+      },
+      "encoding": {
+        "codec": "H.264 High / yuv420p",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "fps": 24,
+        "duration_seconds": 6.0,
+        "frames": 144,
+        "audio_tracks": 0,
+        "crf": 22,
+        "maxrate": "3M",
+        "bufsize": "6M",
+        "color": "Rec.709 limited range",
+        "fast_start": true
+      },
+      "validation": {
+        "full_stream_decode": "pass",
+        "decoded_frames": 144,
+        "duration_seconds": 6.0,
+        "under_4_MB": true,
+        "loop_endpoints_identical_before_encoding": true,
+        "endpoint_frame_md5": "b986aa3b022fec0a9c09ca18e3e3cb81",
+        "source_hash_unchanged": true,
+        "review_frame_indices": [
+          0,
+          72,
+          143
+        ],
+        "visual_review": "Start, midpoint and final decoded frames visually inspected. The mountain skyline, central valley and primary towers remain visible. No architectural warp, black bars, blank frames or synthesized object movement."
+      }
+    }
+  ],
+  "contact_sheet": "contact-sheet.jpg",
+  "ffmpeg": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers"
+}

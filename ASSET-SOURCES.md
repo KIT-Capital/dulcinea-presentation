@@ -126,7 +126,7 @@ The user later supplied three more MOV files. Two are unique; the third is an ex
 | `AdobeStock_807462744.mov` | 10.00 seconds | Glowing green MEDELLIN neon word animation on black |
 | `AdobeStock_539938219 (1).mov` | 5.76 seconds | SHA-256-identical to the earlier pasture portrait clip; its existing optimized asset is reused |
 
-The two unique files have optimized MP4 versions and posters in the same stock folder; both appear in the after-dark sequence. Together with the city, town, pasture and chef clips, all six distinct supplied stock videos are used. The two later unique clips contain no close-up people. Road location is not inferred from the imagery. Source hashes, duplicate evidence, output metadata, and exact encoding options are recorded in `assets/video/stock/additional-provenance.json`.
+The two unique files have optimized MP4 versions and posters in the same stock folder; both appear in the after-dark sequence. Together with the city, town, pasture and chef clips, these six supplied stock videos are used. The two subsequent unique imports are documented below. The two later unique clips contain no close-up people. Road location is not inferred from the imagery. Source hashes, duplicate evidence, output metadata, and exact encoding options are recorded in `assets/video/stock/additional-provenance.json`.
 
 ## Edited stock background loops
 
@@ -134,12 +134,12 @@ The introduction combines footage from the supplied Adobe Stock clips with the f
 
 | File | Duration | Sequence |
 | --- | --- | --- |
-| `assets/video/dulcinea-introduction.mp4` | 30 seconds | City, Fontanar, San Lucas, town, Aires, Monte Sereno, Montana |
+| `assets/video/dulcinea-introduction.mp4` | 41 seconds | New aerial, retained city, Fontanar, San Lucas, city panorama, town, Aires, Monte Sereno, Montana |
 | `assets/video/hospitality-people.mp4` | 14 seconds | Chefs preparing food |
 
 The introduction uses half-second circular dissolves; the hospitality loop uses a one-second circular dissolve. Both preserve their source playback speeds, including the gentle camera movement in the property films. Matching `-poster.jpg` files provide still fallbacks. Individual optimized city and town clips are also available for location sections. MP4 files referenced by the presentation are embedded directly into `index.html` for offline playback.
 
-`scripts/render-stock-videos.py` reproduces the optimization and edits using FFmpeg; it calls `scripts/render-introduction.py` for the seven-scene introduction. `assets/video/stock/provenance.json` records original and optimized file hashes and metadata; `assets/video/provenance.json` records the edited loops, their sources, encoding, and validation. Rendering tools are optional and are not required to run the Node.js HTML builder. The older `scripts/render-videos.py` remains as a superseded workflow for still-image animation.
+`scripts/render-stock-videos.py` reproduces the optimization and edits using FFmpeg; it calls `scripts/render-introduction.py` for the expanded introduction. `assets/video/stock/provenance.json` records original and optimized file hashes and metadata; `assets/video/provenance.json` records the edited loops, their sources, encoding, and validation. Rendering tools are optional and are not required to run the Node.js HTML builder. The older `scripts/render-videos.py` remains as a superseded workflow for still-image animation.
 
 ## Property illustration camera loops
 
@@ -168,7 +168,7 @@ Two additional user-supplied photographs are preserved without modification unde
 
 The video is H.264, 1280 × 720, 24 fps, Rec.709 limited range, with fast-start metadata. `assets/video/medellin-nightlife-poster.jpg` provides the still fallback. `assets/video/medellin-nightlife-provenance.json` records source and output hashes, framing, encoding, and validation. Rebuild it with `python scripts/render-nightlife.py` using the retained originals; optional `--source-dir` imports them from the supplied photo folder without changing those originals.
 
-The current after-dark chapter uses `assets/video/medellin-after-dark.mp4`, a 17.5-second edit. It uses the first three seconds of the supplied `AdobeStock_727024520` night-road footage, the 4.0–6.5-second excerpt of `AdobeStock_807462744` Medellín neon animation, then the full retained 13-second photographic animation. Half-second dissolves begin at output times 2.5 and 4.5 seconds. No new human motion is synthesized. It is silent H.264 at 1280 × 720 and 24 fps, with fast-start metadata. `scripts/render-after-dark.py` reproduces the edit; `assets/video/after-dark-provenance.json` records source hashes, timing, encoding and validation. The original footage and photographic animation remain unchanged.
+The current after-dark chapter uses `assets/video/medellin-after-dark.mp4`, a 23-second edit. It uses the first three seconds of the supplied `AdobeStock_727024520` night-road footage, the 4.0–6.5-second excerpt of `AdobeStock_807462744` Medellín neon animation, the six-second evening-photo camera move, then the full retained 13-second photographic nightlife animation. Half-second dissolves begin at output times 2.5, 4.5 and 10 seconds. No new human motion is synthesized. It is silent H.264 at 1280 × 720 and 24 fps, with fast-start metadata. `scripts/render-after-dark.py` reproduces the edit; `assets/video/after-dark-provenance.json` records source hashes, timing, encoding and validation. The original footage and photographic animation remain unchanged.
 
 ## Visual inspiration
 
@@ -187,3 +187,17 @@ The former is an illustrative image created with the built-in image generation t
 ## Photo effects
 
 CSS adds slow, reversible camera drift to editorial and gallery photos, a soft staggered portrait reveal, and opacity-only entry for plans. The original image files remain unchanged. The shared motion control pauses photos and videos; off-screen, hidden-page and dialog states suspend animation. Reduced-motion settings keep photo effects still. Visible stock-footage captions were removed at the user’s request; original media provenance remains in this document and the video metadata.
+
+## Re-supplied city videos
+
+The user re-supplied `AdobeStock_787505338.mov` and `AdobeStock_807462744.mov`. The latter is the green Medellín neon animation already included in the hosted After dark sequence; the live sequence was verified against its local SHA-256. The newly imported 787505338 clip shows an adult woman walking along a tree-lined city sidewalk, with cars and a bus behind her. No exact filming location is inferred.
+
+`assets/video/medellin-location.mp4` combines the existing city aerial with the new walking clip for Why Medellín. The walking clip is not part of the opening sequence. The original MOV files remain untouched outside the repository. The import and rendered-sequence source hashes, encoding and decode checks are recorded in `assets/video/stock/latest-provenance.json` and `assets/video/location-provenance.json`.
+
+## Latest aerial and photographs
+
+`AdobeStock_695926335.mov` shows a daytime aerial of a green high-rise city district and mountains. Its optimized full-bleed MP4 opens the presentation; the original is preserved outside the repository. Import details and validation are in `assets/video/stock/feature-provenance.json`.
+
+`AdobeStock_891890158.jpeg` is the wide green city panorama used as a moving photograph within the opening sequence. `AdobeStock_259715040.jpeg` is the evening photograph used between the neon sign and the DJ/crowd scenes in After dark. Both original JPEG files are copied unchanged into `assets/images/stock/`. The six-second loops use restrained cyclic camera motion; no person or object movement is synthesized. Import hashes, crops, encoding and decode checks are in `assets/video/latest-photos-provenance.json`.
+
+The later re-supplied `AdobeStock_727024520.mov` was also checked against the existing original SHA-256 and is an exact match. Its existing night-road segment remains in After dark; no duplicate import was needed.

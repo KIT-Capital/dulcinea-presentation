@@ -1,0 +1,94 @@
+{
+  "file": "assets/video/medellin-location.mp4",
+  "bytes": 5210151,
+  "sha256": "5d60f435075c70a2b973d7a3081aa196bd7803050d83069cdf24793131e8f808",
+  "duration_seconds": 12.0,
+  "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 3470 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+  "audio_tracks": 0,
+  "poster": "assets/video/medellin-location-poster.jpg",
+  "poster_sha256": "762a7c7703211ec532d5b7d5dc04d732e0dd2a8ca63d3ac9e87b9a5ef636a3b7",
+  "method": "Two actual supplied stock clips at their original speed, framing and color, joined with restrained circular dissolves. No generated imagery or synthetic human movement.",
+  "sources": [
+    {
+      "id": "693150796",
+      "subject": "Aerial movement past city towers and green streets",
+      "path": "assets/video/stock/AdobeStock_693150796.mp4",
+      "source_start_seconds": 0,
+      "source_duration_seconds": 6.5,
+      "sha256": "b9b7e410f4a4c3fd19865f7dbb584c7b4d30455b8bbf9d71bce9c071e3349db2"
+    },
+    {
+      "id": "787505338",
+      "subject": "Woman walking on a tree-lined city sidewalk beside traffic",
+      "path": "assets/video/stock/AdobeStock_787505338.mp4",
+      "source_start_seconds": 0,
+      "source_duration_seconds": 6.5,
+      "sha256": "1b21e20b1187bc79d3e5e6e2aaf1ded7002f01d8f25cf3ae36b521df711785de"
+    }
+  ],
+  "source_provenance": [
+    "assets/video/stock/provenance.json",
+    "assets/video/stock/latest-provenance.json"
+  ],
+  "timeline": [
+    {
+      "start_seconds": 0,
+      "end_seconds": 5.5,
+      "content": "City aerial"
+    },
+    {
+      "start_seconds": 5.5,
+      "end_seconds": 6,
+      "content": "City-to-sidewalk dissolve"
+    },
+    {
+      "start_seconds": 6,
+      "end_seconds": 11.5,
+      "content": "City sidewalk lifestyle"
+    },
+    {
+      "start_seconds": 11.5,
+      "end_seconds": 12,
+      "content": "Sidewalk-to-city dissolve, returning to the opening camera position"
+    }
+  ],
+  "crossfade_seconds": 0.5,
+  "location_note": "ENVIGADO is visible on a bus in the sidewalk source; exact shooting locations are not independently verified. Stock people are illustrative, not Dulcinea team members.",
+  "render_script": "scripts/render-location.py",
+  "encoding_options": [
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "slow",
+    "-crf",
+    "22",
+    "-maxrate",
+    "7M",
+    "-bufsize",
+    "14M",
+    "-profile:v",
+    "high",
+    "-level",
+    "3.1",
+    "-pix_fmt",
+    "yuv420p",
+    "-color_range",
+    "tv",
+    "-colorspace",
+    "bt709",
+    "-color_primaries",
+    "bt709",
+    "-color_trc",
+    "bt709",
+    "-r",
+    "24",
+    "-g",
+    "48",
+    "-movflags",
+    "+faststart",
+    "-threads",
+    "4"
+  ],
+  "validation": "Complete output decoded successfully; verified silent H.264 1280x720 at 24 fps, 12 seconds, faststart and below 10 MB."
+}

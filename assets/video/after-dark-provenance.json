@@ -1,8 +1,8 @@
 {
   "file": "assets/video/medellin-after-dark.mp4",
   "render_script": "scripts/render-after-dark.py",
-  "method": "First 3 seconds of night-road stock, then the Medellin neon stock from 4.0 to 6.5 seconds, followed by the complete existing 13-second animated-photograph nightlife sequence. Two 0.5-second dissolves begin at output times 2.5 and 4.5 seconds.",
-  "disclosure": "Road and neon segments are illustrative stock video. Nightlife uses existing camera moves across supplied photographs, not filmed human movement. No new interpolation or generated human movement.",
+  "method": "Night road for 3 seconds, neon from source 4.0 to 6.5 seconds, a six-second camera move over the supplied evening photograph, then the complete 13-second photographic nightlife film. Half-second dissolves begin at output 2.5, 4.5 and 10 seconds.",
+  "disclosure": "Road and neon segments are illustrative stock video. Evening and nightlife segments use camera moves across supplied photographs, not filmed human movement. No new interpolation or generated human movement.",
   "sources": [
     {
       "file": "assets/video/stock/AdobeStock_727024520.mp4",
@@ -24,11 +24,18 @@
       "source_seconds": 13.0,
       "used_seconds": 13,
       "start_seconds": 0
+    },
+    {
+      "file": "assets/video/stock-photo-evening.mp4",
+      "sha256": "e148e6233ac2c940aadd30a8d24e68b275b2ed9a3b9e209bdf31ee59e65f3dda",
+      "source_seconds": 6.0,
+      "used_seconds": 6,
+      "start_seconds": 0
     }
   ],
   "settings": {
-    "duration_seconds": 17.5,
-    "frames": 420,
+    "duration_seconds": 23.0,
+    "frames": 552,
     "width": 1280,
     "height": 720,
     "fps": 24,
@@ -42,18 +49,19 @@
     "crossfade_seconds": 0.5,
     "crossfade_offsets_seconds": [
       2.5,
-      4.5
+      4.5,
+      10.0
     ]
   },
-  "bytes": 2009238,
-  "sha256": "3a9fcd30082949b4d5d8a59ff7463b2c8f2df1893bd8422daba079a87211a7b8",
+  "bytes": 2242720,
+  "sha256": "1ee4b31469759a863d1bffce800ab222dc110f2947024f4826ebb8bf9f7b21e8",
   "tool": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
   "validation": {
     "full_stream_decode": "pass",
     "source_hashes_unchanged": true,
     "fast_start_box_order": "pass",
-    "actual_duration_seconds": 17.5,
-    "decoded_frames": 420,
+    "actual_duration_seconds": 23.0,
+    "decoded_frames": 552,
     "review_frame_times_seconds": [
       0,
       2.458333,
@@ -62,11 +70,13 @@
       4.0,
       4.75,
       5.041667,
-      10.0,
-      17.458333
+      7.5,
+      10.25,
+      10.541667,
+      16.0,
+      22.958333
     ],
-    "under_2_5_MB": true,
-    "visual_review": "Road-to-neon and neon-to-nightlife dissolves, legible Medellin title, post-transition and final frames inspected. No blank opening, unintended letterboxing or damaged frame observed."
+    "under_10_MB": true
   },
   "source_preservation": "Original nightlife and stock sources remain unchanged."
 }

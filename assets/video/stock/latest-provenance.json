@@ -1,0 +1,93 @@
+{
+  "source": "Two Adobe Stock MOV files supplied by the user; originals remain unchanged outside the repository.",
+  "render_script": "scripts/import-latest-stock.py",
+  "imported_clips": [
+    {
+      "id": "787505338",
+      "subject": "Woman in sunglasses walking toward and past the camera on a tree-lined city sidewalk, with road traffic and an ENVIGADO bus behind her.",
+      "people_present": true,
+      "original_filename": "AdobeStock_787505338.mov",
+      "original": {
+        "bytes": 921387638,
+        "sha256": "8c8005875290ef98244714613c12fd145cd179b5d72c3d1c802955a355722b73",
+        "duration_seconds": 9.92,
+        "video_stream": "Stream #0:0[0x1]: Video: prores (HQ) (apch / 0x68637061), yuv422p10le(bt709, progressive), 3840x2160, 743301 kb/s, SAR 1:1 DAR 16:9, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "optimized_path": "assets/video/stock/AdobeStock_787505338.mp4",
+      "optimized": {
+        "bytes": 3068971,
+        "sha256": "1b21e20b1187bc79d3e5e6e2aaf1ded7002f01d8f25cf3ae36b521df711785de",
+        "duration_seconds": 9.88,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2482 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "poster_path": "assets/video/stock/AdobeStock_787505338-poster.jpg",
+      "poster_seconds": 3,
+      "poster_sha256": "6624be2fc26896373a6c485134154d083e6446243e96efd07b9831dc60c59e0e",
+      "encoding_options": [
+        "-an",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "slow",
+        "-crf",
+        "21",
+        "-maxrate",
+        "6M",
+        "-bufsize",
+        "12M",
+        "-profile:v",
+        "high",
+        "-level",
+        "3.1",
+        "-pix_fmt",
+        "yuv420p",
+        "-color_range",
+        "tv",
+        "-colorspace",
+        "bt709",
+        "-color_primaries",
+        "bt709",
+        "-color_trc",
+        "bt709",
+        "-r",
+        "24",
+        "-g",
+        "48",
+        "-movflags",
+        "+faststart",
+        "-threads",
+        "4"
+      ],
+      "video_filter": "scale=1280:720:force_original_aspect_ratio=increase:flags=lanczos:out_range=tv:out_color_matrix=bt709,crop=1280:720,setsar=1,fps=24,setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709",
+      "edit_note": "Full supplied clip at original speed and aspect ratio; no content edits, synthetic imagery or exposure adjustment. Subject walks out of frame near the end.",
+      "watermark_review": "No visible watermark in original representative frames at 10, 50 and 90 percent of duration.",
+      "location_note": "ENVIGADO is visible on a bus; exact shooting location is not independently verified. Illustrative stock footage, not a Dulcinea property or team member."
+    }
+  ],
+  "previously_imported": [
+    {
+      "id": "807462744",
+      "subject": "Glowing green MEDELLIN neon word animation on black",
+      "people_present": false,
+      "original_filename": "AdobeStock_807462744.mov",
+      "original": {
+        "bytes": 239602500,
+        "sha256": "993f7b7bcacdcf6029e9c0f66bb926cdedc60ece085c644bebe93d409395b4ff",
+        "duration_seconds": 10.0,
+        "video_stream": "Stream #0:0[0x1](eng): Video: prores (HQ) (apch / 0x68637061), yuv422p10le(bt709, progressive), 3840x2160, 190843 kb/s, SAR 1:1 DAR 16:9, 30 fps, 30 tbr, 30 tbn (default)",
+        "audio_tracks": 0
+      },
+      "matches_previous_original_sha256": true,
+      "previous_original_sha256": "993f7b7bcacdcf6029e9c0f66bb926cdedc60ece085c644bebe93d409395b4ff",
+      "existing_optimized_path": "assets/video/stock/AdobeStock_807462744.mp4",
+      "existing_optimized_hash_matches": true,
+      "action": "Exact source duplicate; retained existing optimized file and poster without changes.",
+      "prior_provenance": "assets/video/stock/additional-provenance.json",
+      "watermark_review": "No visible watermark in original representative frames at 10, 50 and 90 percent of duration."
+    }
+  ],
+  "validation": "New output completely decoded successfully and verified as silent H.264 1280x720 at 24 fps, with moov before mdat for fast start. Output below 25 MB.",
+  "main_compositions": "Introduction, after-dark and other presentation compositions are not modified by this import."
+}
