@@ -6,8 +6,6 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relativePath, encoding) => readFile(path.join(root, relativePath), encoding);
 
 const assets = [
-  ['{{HERO}}', 'assets/images/hospitality-concept.png', 'image/png'],
-  ['{{CITY}}', 'assets/images/medellin.jpg', 'image/jpeg'],
   ['{{LOGO_DARK}}', 'brand/dulcinea-one/svg/dulcinea-one-mono-white.svg', 'image/svg+xml'],
   ['{{LOGO_LIGHT}}', 'brand/dulcinea-one/svg/dulcinea-one-mono-black.svg', 'image/svg+xml'],
   ['{{SYMBOL_DARK}}', 'brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg', 'image/svg+xml'],
@@ -16,12 +14,14 @@ const assets = [
 ];
 
 async function build() {
+  const manifest = JSON.parse(await read('assets/manifest.json', 'utf8'));
+  const media = manifest.map(({ marker, path: assetPath, mime }) => [marker, assetPath, mime]);
   const [template, styles, script, paletteText, embeddedAssets] = await Promise.all([
     read('src/presentation.html', 'utf8'),
-    read('src/presentation.css', 'utf8'),
+    Promise.all([read('src/presentation.css', 'utf8'), read('src/story.css', 'utf8')]).then(parts => parts.join('\n')),
     read('src/navigation.js', 'utf8'),
     read('design/palette.json', 'utf8'),
-    Promise.all(assets.map(async ([marker, relativePath, mimeType]) => {
+    Promise.all([...assets, ...media].map(async ([marker, relativePath, mimeType]) => {
       // Base64 encodes the original file bytes; SVG artwork is never rewritten.
       const bytes = await read(relativePath);
       return [marker, `data:${mimeType};base64,${bytes.toString('base64')}`];
@@ -51,7 +51,10 @@ async function build() {
   ];
   let html = template;
   for (const [marker, content] of replacements) {
-    if (!html.includes(marker)) throw new Error(`Missing template marker: ${marker}`);
+    if (!html.includes(marker)) {
+      if (media.some(([assetMarker]) => assetMarker === marker)) continue;
+      throw new Error(`Missing template marker: ${marker}`);
+    }
     html = html.replaceAll(marker, () => content);
   }
   const unresolved = html.match(/\{\{[A-Z_]+\}\}|\/\*__[A-Z_]+__\*\//g);

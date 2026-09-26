@@ -1,0 +1,93 @@
+{
+  "source": "Four Adobe Stock MOV files supplied by the user",
+  "sources": [
+    {
+      "id": "80490822",
+      "subject": "Chefs preparing and plating food in a professional kitchen",
+      "people": true,
+      "original_filename": "AdobeStock_80490822.mov",
+      "original": {
+        "bytes": 10498222,
+        "sha256": "36b210e7c94434170c63afae457afec88b32d52c078f4ca3c10dd59ddc9fc4ca",
+        "duration_seconds": 25.39,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 3306 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)",
+        "audio_tracks": 0
+      },
+      "optimized_path": "assets/video/stock/AdobeStock_80490822.mp4",
+      "optimized": {
+        "bytes": 3572890,
+        "sha256": "02ca107f00a372198ee11c26e5f4c85a7e97a6657cc96877cb94b891c68a3e39",
+        "duration_seconds": 25.38,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1123 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "watermark_review": "No visible watermark in representative frames at 10, 50 and 90 percent of the original duration."
+    },
+    {
+      "id": "539938219",
+      "subject": "Woman smiling and waving in a pasture with cattle",
+      "people": true,
+      "original_filename": "AdobeStock_539938219.mov",
+      "original": {
+        "bytes": 520011645,
+        "sha256": "e35e24bcb61af1a2a99a471454abc7d70be6cd3fc69d14e9195f8d53253e7fbb",
+        "duration_seconds": 5.76,
+        "video_stream": "Stream #0:0[0x1]: Video: prores (HQ) (apch / 0x68637061), yuv422p10le(bt709, progressive), 4096x2160, 722234 kb/s, SAR 1:1 DAR 256:135, 25 fps, 25 tbr, 12800 tbn (default)",
+        "audio_tracks": 0
+      },
+      "optimized_path": "assets/video/stock/AdobeStock_539938219.mp4",
+      "optimized": {
+        "bytes": 1309712,
+        "sha256": "53601cf0531b444e08ece51269f0672c8c3f48cfa98d4185db4caab4625ca0b9",
+        "duration_seconds": 5.71,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1831 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "watermark_review": "No visible watermark in representative frames at 10, 50 and 90 percent of the original duration."
+    },
+    {
+      "id": "693150796",
+      "subject": "Aerial movement past modern city towers and green streets",
+      "people": false,
+      "original_filename": "AdobeStock_693150796.mov",
+      "original": {
+        "bytes": 279076928,
+        "sha256": "5db96027d8bd569aadcbf1a5ccede7584e1dba5080a296d40aef773c9a993e0a",
+        "duration_seconds": 20.75,
+        "video_stream": "Stream #0:0[0x1](eng): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(progressive), 4096x2160 [SAR 1:1 DAR 256:135], 107569 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)",
+        "audio_tracks": 0
+      },
+      "optimized_path": "assets/video/stock/AdobeStock_693150796.mp4",
+      "optimized": {
+        "bytes": 10790034,
+        "sha256": "b9b7e410f4a4c3fd19865f7dbb584c7b4d30455b8bbf9d71bce9c071e3349db2",
+        "duration_seconds": 20.71,
+        "video_stream": "Stream #0:0[0x1](eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 4165 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "watermark_review": "No visible watermark in representative frames at 10, 50 and 90 percent of the original duration."
+    },
+    {
+      "id": "1849343666",
+      "subject": "Aerial movement over a colonial town square and church with pedestrians",
+      "people": true,
+      "original_filename": "AdobeStock_1849343666.mov",
+      "original": {
+        "bytes": 173187589,
+        "sha256": "b7693c7c9c4db5b0bfc10804487c5a2e9cdb572e0f54b87695a27d4baef08927",
+        "duration_seconds": 14.0,
+        "video_stream": "Stream #0:0[0x1](eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 3840x2160 [SAR 1:1 DAR 16:9], 100126 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)",
+        "audio_tracks": 0
+      },
+      "optimized_path": "assets/video/stock/AdobeStock_1849343666.mp4",
+      "optimized": {
+        "bytes": 8308715,
+        "sha256": "4dbc26061bb64d7bbfd51326db78c7643ac863f4b890e73a4dcf1c63b94285ee",
+        "duration_seconds": 13.79,
+        "video_stream": "Stream #0:0[0x1](eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 4816 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "watermark_review": "No visible watermark in representative frames at 10, 50 and 90 percent of the original duration."
+    }
+  ]
+}

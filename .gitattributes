@@ -11,3 +11,6 @@ assets/images/** -text
 *.webp binary
 *.ico binary
 *.zip binary
+*.mp4 binary
+*.pptx binary
+*.xlsx binary

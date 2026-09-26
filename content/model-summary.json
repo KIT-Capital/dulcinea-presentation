@@ -1,0 +1,1325 @@
+{
+  "provenance": {
+    "source": "Dulcinea Model 07.xlsx",
+    "sha256": "0b83807af2fdbb2268eb78c22e2bb5b93d9a733891e1b0e821078c34d6517d8c",
+    "workbookModifiedMetadata": "2026-09-25T16:16:09Z",
+    "method": "Read-only ZIP XML and openpyxl cached-value/formula inspection. No Excel recalculation, workbook edit, or external upload. USD unless stated.",
+    "authority": "User-supplied authoritative model; numeric live cells take precedence over conflicting PPTX and stale workbook prose."
+  },
+  "activeScenario": {
+    "description": "Five selected properties; full USD 7M commitment model; 30% entry discount for all five; 60% booked occupancy; flat COP/USD 3090; six-month works for all five; 8.5% El Poblado and 7.15% El Retiro annual appreciation.",
+    "modelStart": {
+      "value": "2026-10-01T00:00:00",
+      "ref": "'Input'!C7"
+    },
+    "fullCommitmentUsd": {
+      "value": 7000000,
+      "ref": "'Input'!C37"
+    },
+    "currentlyCommittedUsd": {
+      "value": 2100000,
+      "ref": "'Input'!C42"
+    },
+    "remainingSubscriptionUsd": {
+      "value": 4900000,
+      "ref": "'Input'!C45"
+    },
+    "subscriptionFractionModeled": {
+      "value": 1,
+      "ref": "'Input'!C49"
+    },
+    "fxCopPerUsd": {
+      "value": 3090,
+      "ref": "'Input'!C5"
+    },
+    "annualCopDepreciation": {
+      "value": 0,
+      "ref": "'Input'!C6"
+    },
+    "rentGrowthAnnual": {
+      "value": 0.02,
+      "ref": "'Input'!C8"
+    },
+    "vacancy": {
+      "value": 0.4,
+      "ref": "'Input'!C10"
+    },
+    "finalExitModelMonth": {
+      "value": 43,
+      "ref": "'Input'!C56"
+    },
+    "modelLifeYears": {
+      "value": 4,
+      "ref": "'Input'!C57"
+    },
+    "minimumStayNights": {
+      "value": 28,
+      "ref": "'Input'!C171"
+    },
+    "minimumStayCapUsd": {
+      "value": 9500,
+      "ref": "'Input'!C170"
+    },
+    "averageStayNights": {
+      "value": 35,
+      "ref": "'Input'!C172"
+    }
+  },
+  "headline": {
+    "capitalCalledUsd": {
+      "value": 6719800.241363093,
+      "ref": "'Investor Return'!C16"
+    },
+    "grossDistributionsBeforeCarryUsd": {
+      "value": 10378143.190829415,
+      "ref": "'Investor Return'!C17"
+    },
+    "carryUsd": {
+      "value": 731668.5898932643,
+      "ref": "-'Investor Return'!C18"
+    },
+    "netDistributionsUsd": {
+      "value": 9646474.600936148,
+      "ref": "'Investor Return'!C19"
+    },
+    "investorProfitUsd": {
+      "value": 2926674.359573055,
+      "ref": "'Investor Return'!C20"
+    },
+    "moicOnCalledCapital": {
+      "value": 1.4355299643519444,
+      "ref": "'Investor Return'!C21"
+    },
+    "monthlyXirr": {
+      "value": 0.15722407698631283,
+      "ref": "'Investor Return'!C22"
+    },
+    "annualIrrApproximationNotHeadline": {
+      "value": 0.1594238116973712,
+      "ref": "'Investor Return'!C24"
+    },
+    "paybackModelYear": {
+      "value": 4,
+      "ref": "'Investor Return'!C23"
+    },
+    "undrawnCommitmentUsd": {
+      "value": 280199.75863690674,
+      "ref": "'Sources & Uses'!C23"
+    },
+    "propertyAllInUsd": {
+      "value": 6571966.019417476,
+      "ref": "'Dashboard'!C14"
+    },
+    "propertyGrossExitUsd": {
+      "value": 11376910.988620643,
+      "ref": "'Dashboard'!C15"
+    },
+    "netIncomeBeforeCarryUsd": {
+      "value": 3658342.949466321,
+      "ref": "SUM('Income Statement'!C154:F154)"
+    }
+  },
+  "annualInvestorCashFlows": [
+    {
+      "year": 1,
+      "period": {
+        "value": "Oct-26 – Sep-27",
+        "ref": "'Investor Return'!C5"
+      },
+      "capitalCalled": {
+        "value": 6630682.265400474,
+        "ref": "-'Investor Return'!C7"
+      },
+      "netDistributions": {
+        "value": 0,
+        "ref": "'Investor Return'!C11"
+      },
+      "netCashFlow": {
+        "value": -6630682.265400474,
+        "ref": "'Investor Return'!C12"
+      },
+      "sourceNote": "USD; net distributions after carry."
+    },
+    {
+      "year": 2,
+      "period": {
+        "value": "Oct-27 – Sep-28",
+        "ref": "'Investor Return'!D5"
+      },
+      "capitalCalled": {
+        "value": 84829.97660354954,
+        "ref": "-'Investor Return'!D7"
+      },
+      "netDistributions": {
+        "value": 0,
+        "ref": "'Investor Return'!D11"
+      },
+      "netCashFlow": {
+        "value": -84829.97660354954,
+        "ref": "'Investor Return'!D12"
+      },
+      "sourceNote": "USD; net distributions after carry."
+    },
+    {
+      "year": 3,
+      "period": {
+        "value": "Oct-28 – Sep-29",
+        "ref": "'Investor Return'!E5"
+      },
+      "capitalCalled": {
+        "value": 0,
+        "ref": "-'Investor Return'!E7"
+      },
+      "netDistributions": {
+        "value": 5057197.17,
+        "ref": "'Investor Return'!E11"
+      },
+      "netCashFlow": {
+        "value": 5057197.17,
+        "ref": "'Investor Return'!E12"
+      },
+      "sourceNote": "USD; net distributions after carry."
+    },
+    {
+      "year": 4,
+      "period": {
+        "value": "Oct-29 – Sep-30",
+        "ref": "'Investor Return'!F5"
+      },
+      "capitalCalled": {
+        "value": 4287.999359069814,
+        "ref": "-'Investor Return'!F7"
+      },
+      "netDistributions": {
+        "value": 4589277.430936149,
+        "ref": "'Investor Return'!F11"
+      },
+      "netCashFlow": {
+        "value": 4584989.43157708,
+        "ref": "'Investor Return'!F12"
+      },
+      "sourceNote": "USD; net distributions after carry."
+    }
+  ],
+  "monthlyInvestorCashFlows": [
+    {
+      "month": 1,
+      "date": "2026-10-31T00:00:00",
+      "calledUsd": 1107234.685750939,
+      "distributedUsd": 0,
+      "netUsd": -1107234.685750939,
+      "ref": "'_IRR Engine'!B6:G6"
+    },
+    {
+      "month": 2,
+      "date": "2026-11-30T00:00:00",
+      "calledUsd": 823257.37200956,
+      "distributedUsd": 0,
+      "netUsd": -823257.37200956,
+      "ref": "'_IRR Engine'!B7:G7"
+    },
+    {
+      "month": 3,
+      "date": "2026-12-31T00:00:00",
+      "calledUsd": 642572.9125947296,
+      "distributedUsd": 0,
+      "netUsd": -642572.9125947296,
+      "ref": "'_IRR Engine'!B8:G8"
+    },
+    {
+      "month": 4,
+      "date": "2027-01-31T00:00:00",
+      "calledUsd": 178271.05059363224,
+      "distributedUsd": 0,
+      "netUsd": -178271.05059363224,
+      "ref": "'_IRR Engine'!B9:G9"
+    },
+    {
+      "month": 5,
+      "date": "2027-02-28T00:00:00",
+      "calledUsd": 1585883.3037055114,
+      "distributedUsd": 0,
+      "netUsd": -1585883.3037055114,
+      "ref": "'_IRR Engine'!B10:G10"
+    },
+    {
+      "month": 6,
+      "date": "2027-03-31T00:00:00",
+      "calledUsd": 235186.97788413774,
+      "distributedUsd": 0,
+      "netUsd": -235186.97788413774,
+      "ref": "'_IRR Engine'!B11:G11"
+    },
+    {
+      "month": 7,
+      "date": "2027-04-30T00:00:00",
+      "calledUsd": 190187.12712050197,
+      "distributedUsd": 0,
+      "netUsd": -190187.12712050197,
+      "ref": "'_IRR Engine'!B12:G12"
+    },
+    {
+      "month": 8,
+      "date": "2027-05-31T00:00:00",
+      "calledUsd": 1384912.9143094257,
+      "distributedUsd": 0,
+      "netUsd": -1384912.9143094257,
+      "ref": "'_IRR Engine'!B13:G13"
+    },
+    {
+      "month": 9,
+      "date": "2027-06-30T00:00:00",
+      "calledUsd": 148247.15771210202,
+      "distributedUsd": 0,
+      "netUsd": -148247.15771210202,
+      "ref": "'_IRR Engine'!B14:G14"
+    },
+    {
+      "month": 10,
+      "date": "2027-07-31T00:00:00",
+      "calledUsd": 148247.15771210202,
+      "distributedUsd": 0,
+      "netUsd": -148247.15771210202,
+      "ref": "'_IRR Engine'!B15:G15"
+    },
+    {
+      "month": 11,
+      "date": "2027-08-31T00:00:00",
+      "calledUsd": 93340.8030039161,
+      "distributedUsd": 0,
+      "netUsd": -93340.8030039161,
+      "ref": "'_IRR Engine'!B16:G16"
+    },
+    {
+      "month": 12,
+      "date": "2027-09-30T00:00:00",
+      "calledUsd": 93340.8030039161,
+      "distributedUsd": 0,
+      "netUsd": -93340.8030039161,
+      "ref": "'_IRR Engine'!B17:G17"
+    },
+    {
+      "month": 13,
+      "date": "2027-10-31T00:00:00",
+      "calledUsd": 84829.97660354954,
+      "distributedUsd": 0,
+      "netUsd": -84829.97660354954,
+      "ref": "'_IRR Engine'!B18:G18"
+    },
+    {
+      "month": 28,
+      "date": "2029-01-31T00:00:00",
+      "calledUsd": 0,
+      "distributedUsd": 1153825.2592317786,
+      "netUsd": 1153825.2592317786,
+      "ref": "'_IRR Engine'!B33:G33"
+    },
+    {
+      "month": 30,
+      "date": "2029-03-31T00:00:00",
+      "calledUsd": 0,
+      "distributedUsd": 1841580.1954072681,
+      "netUsd": 1841580.1954072681,
+      "ref": "'_IRR Engine'!B35:G35"
+    },
+    {
+      "month": 31,
+      "date": "2029-04-30T00:00:00",
+      "calledUsd": 0,
+      "distributedUsd": 2061791.715360954,
+      "netUsd": 2061791.715360954,
+      "ref": "'_IRR Engine'!B36:G36"
+    },
+    {
+      "month": 37,
+      "date": "2029-10-31T00:00:00",
+      "calledUsd": 4287.999359069814,
+      "distributedUsd": 2231200.6138292435,
+      "netUsd": 2226912.6144701736,
+      "ref": "'_IRR Engine'!B42:G42"
+    },
+    {
+      "month": 43,
+      "date": "2030-04-30T00:00:00",
+      "calledUsd": 0,
+      "distributedUsd": 2358076.817106906,
+      "netUsd": 2358076.817106906,
+      "ref": "'_IRR Engine'!B48:G48"
+    }
+  ],
+  "returnBridge": {
+    "dealPreTaxXirr": {
+      "value": 0.23396413922309875,
+      "ref": "'Portfolio Analysis'!E13"
+    },
+    "afterGainsTaxXirr": {
+      "value": 0.2081031024456024,
+      "ref": "'Portfolio Analysis'!E14"
+    },
+    "afterOverheadsXirr": {
+      "value": 0.18998114466667174,
+      "ref": "'Portfolio Analysis'!E15"
+    },
+    "afterCarryIntermediateXirr": {
+      "value": 0.15883511900901795,
+      "ref": "'Portfolio Analysis'!E16"
+    },
+    "fundInvestorXirr": {
+      "value": 0.15722407698631283,
+      "ref": "'Portfolio Analysis'!E17"
+    },
+    "taxDragPercentagePoints": 2.5861036777496347,
+    "feesCarryAndFundCashFlowTimingDragPercentagePoints": 5.087902545928957,
+    "note": "Intermediate after-carry flows differ from final fund flow timing/reserve schedule; use final E17 for headline. PPTX condensed bridge 23.4 -> 20.8 -> 15.7 remains consistent."
+  },
+  "entryDiscountSensitivity": {
+    "note": "Grey-shaded 25% and 35% columns are pasted from a manual sweep of Input!I80:I84 (all five properties set to each discount) on 2026-09-25 after the fee, pricing and tax changes; re-run if inputs change. 30% column is live.",
+    "scenarios": [
+      {
+        "discount": {
+          "value": 0.25,
+          "ref": "'Portfolio Analysis'!I7"
+        },
+        "grossExitUsd": {
+          "value": 10618450.2560459,
+          "ref": "'Portfolio Analysis'!I8"
+        },
+        "afterTaxDealXirr": {
+          "value": 0.178975063562393,
+          "ref": "'Portfolio Analysis'!I9"
+        },
+        "investorXirr": {
+          "value": 0.132496839761734,
+          "ref": "'Portfolio Analysis'!I10"
+        },
+        "moic": {
+          "value": 1.36169522862374,
+          "ref": "'Portfolio Analysis'!I11"
+        },
+        "calculation": "pasted manual full-fund sweep 2026-09-25"
+      },
+      {
+        "discount": {
+          "value": 0.3,
+          "ref": "'Portfolio Analysis'!J7"
+        },
+        "grossExitUsd": {
+          "value": 11376910.988620643,
+          "ref": "'Portfolio Analysis'!J8"
+        },
+        "afterTaxDealXirr": {
+          "value": 0.2081031024456024,
+          "ref": "'Portfolio Analysis'!J9"
+        },
+        "investorXirr": {
+          "value": 0.15722407698631283,
+          "ref": "'Portfolio Analysis'!J10"
+        },
+        "moic": {
+          "value": 1.4355299643519444,
+          "ref": "'Portfolio Analysis'!J11"
+        },
+        "calculation": "live base"
+      },
+      {
+        "discount": {
+          "value": 0.35,
+          "ref": "'Portfolio Analysis'!K7"
+        },
+        "grossExitUsd": {
+          "value": 12252057.9877453,
+          "ref": "'Portfolio Analysis'!K8"
+        },
+        "afterTaxDealXirr": {
+          "value": 0.24050115942955,
+          "ref": "'Portfolio Analysis'!K9"
+        },
+        "investorXirr": {
+          "value": 0.184947258234024,
+          "ref": "'Portfolio Analysis'!K10"
+        },
+        "moic": {
+          "value": 1.52072388981774,
+          "ref": "'Portfolio Analysis'!K11"
+        },
+        "calculation": "pasted manual full-fund sweep 2026-09-25"
+      }
+    ],
+    "dashboardApproximation": {
+      "note": "Portfolio IRR (after gains tax) and Equity Investor IRR by entry discount — both anchored to the model at the base-case discount; other columns scale with the deal-level sensitivity on Portfolio Analysis",
+      "scenarios": [
+        {
+          "discount": {
+            "value": "Entry 20%",
+            "ref": "'Dashboard'!C76"
+          },
+          "investorXirr": {
+            "value": 0.11461455314211019,
+            "ref": "'Dashboard'!C78"
+          }
+        },
+        {
+          "discount": {
+            "value": "Entry 25%",
+            "ref": "'Dashboard'!D76"
+          },
+          "investorXirr": {
+            "value": 0.13490537458018628,
+            "ref": "'Dashboard'!D78"
+          }
+        },
+        {
+          "discount": {
+            "value": "Entry 30%",
+            "ref": "'Dashboard'!E76"
+          },
+          "investorXirr": {
+            "value": 0.15722407698631286,
+            "ref": "'Dashboard'!E78"
+          }
+        },
+        {
+          "discount": {
+            "value": "Entry 35%",
+            "ref": "'Dashboard'!F76"
+          },
+          "investorXirr": {
+            "value": 0.1819421119516238,
+            "ref": "'Dashboard'!F78"
+          }
+        },
+        {
+          "discount": {
+            "value": "Entry 40%",
+            "ref": "'Dashboard'!G76"
+          },
+          "investorXirr": {
+            "value": 0.20953488882511337,
+            "ref": "'Dashboard'!G78"
+          }
+        }
+      ]
+    },
+    "presentationChoice": "Use detailed full-fund sweep 13.2% / 15.7% / 18.5%, 1.36x / 1.44x / 1.52x with manual-sweep date caveat."
+  },
+  "taxAndFees": {
+    "ordinaryIncomeTaxRateAssumed": {
+      "value": 0.15,
+      "ref": "'Input'!C25"
+    },
+    "gainsTaxRateAssumed": {
+      "value": 0.15,
+      "ref": "'Input'!C26"
+    },
+    "taxBasisIndexationAnnual": {
+      "value": 0.0335,
+      "ref": "'Input'!C28"
+    },
+    "ordinaryIncomeTaxTotalUsd": {
+      "value": 0,
+      "ref": "SUM('Income Statement'!C150:F150)"
+    },
+    "gainsTaxTotalUsd": {
+      "value": 568608.746589315,
+      "ref": "SUM('Income Statement'!C151:F151)"
+    },
+    "strRevenueTaxRate": {
+      "value": 0.012500000000000002,
+      "ref": "'Input'!C21"
+    },
+    "strRevenueTaxTotalUsd": {
+      "value": 8042.837330741229,
+      "ref": "SUM('Income Statement'!C106:F106)"
+    },
+    "assetManagementFeeRate": {
+      "value": 0.01,
+      "ref": "'Input'!C30"
+    },
+    "propertyManagementAndHousekeepingRate": {
+      "value": 0.2,
+      "ref": "'Input'!C31"
+    },
+    "carryRate": {
+      "value": 0.2,
+      "ref": "'Input'!C46"
+    },
+    "sellingCostRate": {
+      "value": 0.038,
+      "ref": "'Input'!C15"
+    },
+    "closingCostRate": {
+      "value": 0.025,
+      "ref": "'Input'!C14"
+    },
+    "gmfRate": {
+      "value": 0.004,
+      "ref": "'Input'!C22"
+    },
+    "rentTotalUsd": {
+      "value": 643426.9864592984,
+      "ref": "SUM('Income Statement'!C7:F7)"
+    },
+    "rentalContributionMarginUsd": {
+      "value": 506698.7518366975,
+      "ref": "SUM('Income Statement'!C112:F112)"
+    },
+    "propertyFixedCostsUsd": {
+      "value": 346410.81951186626,
+      "ref": "SUM('Income Statement'!C139:F139)"
+    },
+    "fundFixedCostsUsd": {
+      "value": 305958.58790477953,
+      "ref": "SUM('Income Statement'!C144:F144)"
+    },
+    "totalFixedCostsUsd": {
+      "value": 652369.4074166458,
+      "ref": "SUM('Income Statement'!C145:F145)"
+    },
+    "note": "Model assumptions, not independently verified tax law. Ordinary rental tax formula carries cumulative losses forward. 15% gains rate applies to indexed taxable basis. El Retiro municipal rates include placeholders."
+  },
+  "properties": [
+    {
+      "name": "Aires de Campestre Apto 801 (Penthouse)",
+      "sourceRow": "'Properties'!6",
+      "assumptionRow": "'Input'!80",
+      "status": {
+        "value": "■ Signed",
+        "ref": "'Properties'!C6"
+      },
+      "statusDetail": {
+        "value": "Signed — closing Sep 2026",
+        "ref": "'Properties'!H6"
+      },
+      "areaM2": {
+        "value": 489,
+        "ref": "'Properties'!I6"
+      },
+      "purchaseUsd": {
+        "value": 666666.6666666666,
+        "ref": "'Properties'!M6"
+      },
+      "worksUsd": {
+        "value": 485436.8932038835,
+        "ref": "'Properties'!N6"
+      },
+      "closingUsd": {
+        "value": 16666.666666666668,
+        "ref": "'Properties'!O6"
+      },
+      "allInUsd": {
+        "value": 1168770.226537217,
+        "ref": "'Properties'!P6"
+      },
+      "purchaseModelMonth": {
+        "value": 2,
+        "ref": "'Properties'!Q6"
+      },
+      "worksMonths": {
+        "value": 6,
+        "ref": "'Properties'!R6"
+      },
+      "holdMonths": {
+        "value": 28,
+        "ref": "'Properties'!S6"
+      },
+      "rentalStartModelMonth": {
+        "value": 8,
+        "ref": "'Properties'!T6"
+      },
+      "saleModelMonth": {
+        "value": 30,
+        "ref": "'Properties'!U6"
+      },
+      "grossExitUsd": {
+        "value": 2019763.3569386934,
+        "ref": "'Properties'!W6"
+      },
+      "stabilizedAnnualNoiUsd": {
+        "value": 18984.21298867315,
+        "ref": "'Properties'!X6"
+      },
+      "stabilizedAnnualRentalRevenueUsd": {
+        "value": 59619.240000000005,
+        "ref": "'Properties'!Y6"
+      },
+      "minimumStayPriceUsd": {
+        "value": 7560,
+        "ref": "'Properties'!Z6"
+      },
+      "sellingCostsUsd": {
+        "value": 76751.00756367036,
+        "ref": "'Properties'!AA6"
+      },
+      "netSaleBeforeTaxUsd": {
+        "value": 1943012.349375023,
+        "ref": "'Properties'!AB6"
+      },
+      "gainBeforeTaxUsd": {
+        "value": 774242.1228378061,
+        "ref": "'Properties'!AC6"
+      },
+      "gainsTaxUsd": {
+        "value": 102125.3023920793,
+        "ref": "'Properties'!AD6"
+      },
+      "indexedTaxBasisUsd": {
+        "value": 1262177.0000944943,
+        "ref": "'Properties'!AN6"
+      },
+      "annualAppreciation": {
+        "value": 0.085,
+        "ref": "'Input'!F80"
+      },
+      "entryDiscount": {
+        "value": 0.3,
+        "ref": "'Input'!I80"
+      },
+      "dailyRateUsd": {
+        "value": 270,
+        "ref": "'Input'!J80"
+      },
+      "vacancy": {
+        "value": 0.4,
+        "ref": "'Input'!H80"
+      },
+      "purchaseCalendarMonth": "2026-11",
+      "saleCalendarMonth": "2029-03",
+      "entryValueBridge": {
+        "allInUsd": 1168770.226537217,
+        "improvedComparableValueUsd": 1669671.7521960242,
+        "boughtBelowCompsUsd": 500901.52565880725,
+        "appreciationUsd": 350091.60474266927,
+        "method": "Audit arithmetic: all-in / (1 - discount), then gross exit less that improved comparable value. Not an independent appraisal."
+      }
+    },
+    {
+      "name": "Fontanar Apto 201 (Penthouse)",
+      "sourceRow": "'Properties'!7",
+      "assumptionRow": "'Input'!81",
+      "status": {
+        "value": "■ Signed",
+        "ref": "'Properties'!C7"
+      },
+      "statusDetail": {
+        "value": "Signed — closing Sep 2026",
+        "ref": "'Properties'!H7"
+      },
+      "areaM2": {
+        "value": 389,
+        "ref": "'Properties'!I7"
+      },
+      "purchaseUsd": {
+        "value": 1019417.4757281553,
+        "ref": "'Properties'!M7"
+      },
+      "worksUsd": {
+        "value": 245954.6925566343,
+        "ref": "'Properties'!N7"
+      },
+      "closingUsd": {
+        "value": 25485.436893203885,
+        "ref": "'Properties'!O7"
+      },
+      "allInUsd": {
+        "value": 1290857.6051779937,
+        "ref": "'Properties'!P7"
+      },
+      "purchaseModelMonth": {
+        "value": 1,
+        "ref": "'Properties'!Q7"
+      },
+      "worksMonths": {
+        "value": 6,
+        "ref": "'Properties'!R7"
+      },
+      "holdMonths": {
+        "value": 30,
+        "ref": "'Properties'!S7"
+      },
+      "rentalStartModelMonth": {
+        "value": 7,
+        "ref": "'Properties'!T7"
+      },
+      "saleModelMonth": {
+        "value": 31,
+        "ref": "'Properties'!U7"
+      },
+      "grossExitUsd": {
+        "value": 2261281.570420494,
+        "ref": "'Properties'!W7"
+      },
+      "stabilizedAnnualNoiUsd": {
+        "value": 16957.635318770233,
+        "ref": "'Properties'!X7"
+      },
+      "stabilizedAnnualRentalRevenueUsd": {
+        "value": 59619.240000000005,
+        "ref": "'Properties'!Y7"
+      },
+      "minimumStayPriceUsd": {
+        "value": 7560,
+        "ref": "'Properties'!Z7"
+      },
+      "sellingCostsUsd": {
+        "value": 85928.69967597876,
+        "ref": "'Properties'!AA7"
+      },
+      "netSaleBeforeTaxUsd": {
+        "value": 2175352.870744515,
+        "ref": "'Properties'!AB7"
+      },
+      "gainBeforeTaxUsd": {
+        "value": 884495.2655665216,
+        "ref": "'Properties'!AC7"
+      },
+      "gainsTaxUsd": {
+        "value": 116048.18872833584,
+        "ref": "'Properties'!AD7"
+      },
+      "indexedTaxBasisUsd": {
+        "value": 1401698.2792222763,
+        "ref": "'Properties'!AN7"
+      },
+      "annualAppreciation": {
+        "value": 0.085,
+        "ref": "'Input'!F81"
+      },
+      "entryDiscount": {
+        "value": 0.3,
+        "ref": "'Input'!I81"
+      },
+      "dailyRateUsd": {
+        "value": 270,
+        "ref": "'Input'!J81"
+      },
+      "vacancy": {
+        "value": 0.4,
+        "ref": "'Input'!H81"
+      },
+      "purchaseCalendarMonth": "2026-10",
+      "saleCalendarMonth": "2029-04",
+      "entryValueBridge": {
+        "allInUsd": 1290857.6051779937,
+        "improvedComparableValueUsd": 1844082.2931114195,
+        "boughtBelowCompsUsd": 553224.6879334259,
+        "appreciationUsd": 417199.2773090743,
+        "method": "Audit arithmetic: all-in / (1 - discount), then gross exit less that improved comparable value. Not an independent appraisal."
+      }
+    },
+    {
+      "name": "San Lucas Apto 101",
+      "sourceRow": "'Properties'!8",
+      "assumptionRow": "'Input'!82",
+      "status": {
+        "value": "◆ Negotiated",
+        "ref": "'Properties'!C8"
+      },
+      "statusDetail": {
+        "value": "Negotiated — compraventa drafted",
+        "ref": "'Properties'!H8"
+      },
+      "areaM2": {
+        "value": 325,
+        "ref": "'Properties'!I8"
+      },
+      "purchaseUsd": {
+        "value": 444983.81877022656,
+        "ref": "'Properties'!M8"
+      },
+      "worksUsd": {
+        "value": 291262.1359223301,
+        "ref": "'Properties'!N8"
+      },
+      "closingUsd": {
+        "value": 11124.595469255664,
+        "ref": "'Properties'!O8"
+      },
+      "allInUsd": {
+        "value": 747370.5501618123,
+        "ref": "'Properties'!P8"
+      },
+      "purchaseModelMonth": {
+        "value": 3,
+        "ref": "'Properties'!Q8"
+      },
+      "worksMonths": {
+        "value": 6,
+        "ref": "'Properties'!R8"
+      },
+      "holdMonths": {
+        "value": 25,
+        "ref": "'Properties'!S8"
+      },
+      "rentalStartModelMonth": {
+        "value": 9,
+        "ref": "'Properties'!T8"
+      },
+      "saleModelMonth": {
+        "value": 28,
+        "ref": "'Properties'!U8"
+      },
+      "grossExitUsd": {
+        "value": 1265464.2924150538,
+        "ref": "'Properties'!W8"
+      },
+      "stabilizedAnnualNoiUsd": {
+        "value": 24391.152953074437,
+        "ref": "'Properties'!X8"
+      },
+      "stabilizedAnnualRentalRevenueUsd": {
+        "value": 55203,
+        "ref": "'Properties'!Y8"
+      },
+      "minimumStayPriceUsd": {
+        "value": 7000,
+        "ref": "'Properties'!Z8"
+      },
+      "sellingCostsUsd": {
+        "value": 48087.64311177204,
+        "ref": "'Properties'!AA8"
+      },
+      "netSaleBeforeTaxUsd": {
+        "value": 1217376.6493032817,
+        "ref": "'Properties'!AB8"
+      },
+      "gainBeforeTaxUsd": {
+        "value": 470006.09914146934,
+        "ref": "'Properties'!AC8"
+      },
+      "gainsTaxUsd": {
+        "value": 62534.774668072474,
+        "ref": "'Properties'!AD8"
+      },
+      "indexedTaxBasisUsd": {
+        "value": 800478.1515161318,
+        "ref": "'Properties'!AN8"
+      },
+      "annualAppreciation": {
+        "value": 0.085,
+        "ref": "'Input'!F82"
+      },
+      "entryDiscount": {
+        "value": 0.3,
+        "ref": "'Input'!I82"
+      },
+      "dailyRateUsd": {
+        "value": 250,
+        "ref": "'Input'!J82"
+      },
+      "vacancy": {
+        "value": 0.4,
+        "ref": "'Input'!H82"
+      },
+      "purchaseCalendarMonth": "2026-12",
+      "saleCalendarMonth": "2029-01",
+      "entryValueBridge": {
+        "allInUsd": 747370.5501618123,
+        "improvedComparableValueUsd": 1067672.2145168749,
+        "boughtBelowCompsUsd": 320301.66435506253,
+        "appreciationUsd": 197792.07789817895,
+        "method": "Audit arithmetic: all-in / (1 - discount), then gross exit less that improved comparable value. Not an independent appraisal."
+      }
+    },
+    {
+      "name": "Casa Montana Lote 2 (Samuel Gaviria House)",
+      "sourceRow": "'Properties'!9",
+      "assumptionRow": "'Input'!83",
+      "status": {
+        "value": "◆ Negotiated",
+        "ref": "'Properties'!C9"
+      },
+      "statusDetail": {
+        "value": "Negotiated — works being budgeted",
+        "ref": "'Properties'!H9"
+      },
+      "areaM2": {
+        "value": 591,
+        "ref": "'Properties'!I9"
+      },
+      "purchaseUsd": {
+        "value": 1135922.3300970874,
+        "ref": "'Properties'!M9"
+      },
+      "worksUsd": {
+        "value": 550161.8122977347,
+        "ref": "'Properties'!N9"
+      },
+      "closingUsd": {
+        "value": 28398.05825242719,
+        "ref": "'Properties'!O9"
+      },
+      "allInUsd": {
+        "value": 1714482.2006472494,
+        "ref": "'Properties'!P9"
+      },
+      "purchaseModelMonth": {
+        "value": 8,
+        "ref": "'Properties'!Q9"
+      },
+      "worksMonths": {
+        "value": 6,
+        "ref": "'Properties'!R9"
+      },
+      "holdMonths": {
+        "value": 35,
+        "ref": "'Properties'!S9"
+      },
+      "rentalStartModelMonth": {
+        "value": 14,
+        "ref": "'Properties'!T9"
+      },
+      "saleModelMonth": {
+        "value": 43,
+        "ref": "'Properties'!U9"
+      },
+      "grossExitUsd": {
+        "value": 2995795.1883356264,
+        "ref": "'Properties'!W9"
+      },
+      "stabilizedAnnualNoiUsd": {
+        "value": 24486.81573438512,
+        "ref": "'Properties'!X9"
+      },
+      "stabilizedAnnualRentalRevenueUsd": {
+        "value": 72891.20485714286,
+        "ref": "'Properties'!Y9"
+      },
+      "minimumStayPriceUsd": {
+        "value": 9500,
+        "ref": "'Properties'!Z9"
+      },
+      "sellingCostsUsd": {
+        "value": 113840.2171567538,
+        "ref": "'Properties'!AA9"
+      },
+      "netSaleBeforeTaxUsd": {
+        "value": 2881954.9711788725,
+        "ref": "'Properties'!AB9"
+      },
+      "gainBeforeTaxUsd": {
+        "value": 1167472.7705316232,
+        "ref": "'Properties'!AC9"
+      },
+      "gainsTaxUsd": {
+        "value": 149178.0743391686,
+        "ref": "'Properties'!AD9"
+      },
+      "indexedTaxBasisUsd": {
+        "value": 1887434.475584415,
+        "ref": "'Properties'!AN9"
+      },
+      "annualAppreciation": {
+        "value": 0.0715,
+        "ref": "'Input'!F83"
+      },
+      "entryDiscount": {
+        "value": 0.3,
+        "ref": "'Input'!I83"
+      },
+      "dailyRateUsd": {
+        "value": 340,
+        "ref": "'Input'!J83"
+      },
+      "vacancy": {
+        "value": 0.4,
+        "ref": "'Input'!H83"
+      },
+      "purchaseCalendarMonth": "2027-05",
+      "saleCalendarMonth": "2030-04",
+      "entryValueBridge": {
+        "allInUsd": 1714482.2006472494,
+        "improvedComparableValueUsd": 2449260.2866389276,
+        "boughtBelowCompsUsd": 734778.0859916783,
+        "appreciationUsd": 546534.9016966987,
+        "method": "Audit arithmetic: all-in / (1 - discount), then gross exit less that improved comparable value. Not an independent appraisal."
+      }
+    },
+    {
+      "name": "Casa Monte Sereno",
+      "sourceRow": "'Properties'!10",
+      "assumptionRow": "'Input'!84",
+      "status": {
+        "value": "◆ Negotiated",
+        "ref": "'Properties'!C10"
+      },
+      "statusDetail": {
+        "value": "Negotiated — finalizing modifications",
+        "ref": "'Properties'!H10"
+      },
+      "areaM2": {
+        "value": 420,
+        "ref": "'Properties'!I10"
+      },
+      "purchaseUsd": {
+        "value": 1294498.3818770226,
+        "ref": "'Properties'!M10"
+      },
+      "worksUsd": {
+        "value": 323624.59546925564,
+        "ref": "'Properties'!N10"
+      },
+      "closingUsd": {
+        "value": 32362.459546925566,
+        "ref": "'Properties'!O10"
+      },
+      "allInUsd": {
+        "value": 1650485.4368932038,
+        "ref": "'Properties'!P10"
+      },
+      "purchaseModelMonth": {
+        "value": 5,
+        "ref": "'Properties'!Q10"
+      },
+      "worksMonths": {
+        "value": 6,
+        "ref": "'Properties'!R10"
+      },
+      "holdMonths": {
+        "value": 32,
+        "ref": "'Properties'!S10"
+      },
+      "rentalStartModelMonth": {
+        "value": 11,
+        "ref": "'Properties'!T10"
+      },
+      "saleModelMonth": {
+        "value": 37,
+        "ref": "'Properties'!U10"
+      },
+      "grossExitUsd": {
+        "value": 2834606.5805107774,
+        "ref": "'Properties'!W10"
+      },
+      "stabilizedAnnualNoiUsd": {
+        "value": 12799.626459344663,
+        "ref": "'Properties'!X10"
+      },
+      "stabilizedAnnualRentalRevenueUsd": {
+        "value": 59958.225,
+        "ref": "'Properties'!Y10"
+      },
+      "minimumStayPriceUsd": {
+        "value": 7560,
+        "ref": "'Properties'!Z10"
+      },
+      "sellingCostsUsd": {
+        "value": 107715.05005940954,
+        "ref": "'Properties'!AA10"
+      },
+      "netSaleBeforeTaxUsd": {
+        "value": 2726891.530451368,
+        "ref": "'Properties'!AB10"
+      },
+      "gainBeforeTaxUsd": {
+        "value": 1076406.0935581643,
+        "ref": "'Properties'!AC10"
+      },
+      "gainsTaxUsd": {
+        "value": 138722.4064616588,
+        "ref": "'Properties'!AD10"
+      },
+      "indexedTaxBasisUsd": {
+        "value": 1802075.4873736426,
+        "ref": "'Properties'!AN10"
+      },
+      "annualAppreciation": {
+        "value": 0.0715,
+        "ref": "'Input'!F84"
+      },
+      "entryDiscount": {
+        "value": 0.3,
+        "ref": "'Input'!I84"
+      },
+      "dailyRateUsd": {
+        "value": 270,
+        "ref": "'Input'!J84"
+      },
+      "vacancy": {
+        "value": 0.4,
+        "ref": "'Input'!H84"
+      },
+      "purchaseCalendarMonth": "2027-02",
+      "saleCalendarMonth": "2029-10",
+      "entryValueBridge": {
+        "allInUsd": 1650485.4368932038,
+        "improvedComparableValueUsd": 2357836.338418863,
+        "boughtBelowCompsUsd": 707350.901525659,
+        "appreciationUsd": 476770.24209191464,
+        "method": "Audit arithmetic: all-in / (1 - discount), then gross exit less that improved comparable value. Not an independent appraisal."
+      }
+    }
+  ],
+  "kickers": {
+    "brandMaximumAtFullSubscription": {
+      "value": 0.03,
+      "ref": "'Input'!C48"
+    },
+    "modeledBrandInterest": {
+      "value": 0.03,
+      "ref": "'Input'!C50"
+    },
+    "brandInterestAtCurrentCommitments": {
+      "value": 0.009,
+      "ref": "'Input'!C51"
+    },
+    "brandCarryingValueUsd": {
+      "value": 0,
+      "ref": "'Input'!C52"
+    },
+    "note": "Up to 3% at full subscription; current $2.1M commitments imply 0.9%. No kicker value is included in base financial returns."
+  },
+  "sourcesAndUses": {
+    "usesUsd": {
+      "value": 6806601.575783429,
+      "ref": "'Sources & Uses'!C16"
+    },
+    "purchasesUsd": {
+      "value": 4561488.673139159,
+      "ref": "'Sources & Uses'!C10"
+    },
+    "closingUsd": {
+      "value": 114037.21682847897,
+      "ref": "'Sources & Uses'!C11"
+    },
+    "worksUsd": {
+      "value": 1896440.129449838,
+      "ref": "'Sources & Uses'!C12"
+    },
+    "yearOneRunwayUsd": {
+      "value": 210309.28953579155,
+      "ref": "'Sources & Uses'!C13"
+    },
+    "reserveTargetUsd": {
+      "value": 24326.26683016193,
+      "ref": "'Sources & Uses'!C14"
+    },
+    "presentationResidualUsd": {
+      "value": 86801.33442033548,
+      "ref": "'Sources & Uses'!C7"
+    },
+    "caution": "C7 = C16-C6, a balancing residual. Its label says commitment cap binding, contradicted by C23 undrawn $280,199.76. C18 is zero by construction, not an independent funding test. Do not label $6.8066M as investor called capital."
+  },
+  "reconciliation": [
+    {
+      "topic": "Capital denominator",
+      "pptx": "$7M commitment; $9.65M distribution; 1.44x on called capital",
+      "model": "$6,719,800.24 actually called, $280,199.76 undrawn; $9,646,474.60 net distribution / called = 1.435529964x",
+      "decision": "Resolved; keep commitment and called capital separate.",
+      "refs": [
+        "'Investor Return'!C16:C22",
+        "'Sources & Uses'!C23"
+      ]
+    },
+    {
+      "topic": "Ordinary tax and net income",
+      "pptx": "Slide 19 Year 2 tax $689 and lifetime net income $3,657,653",
+      "model": "Year 2 tax $0; Year 2 net income $1,968.2859; lifetime net income $3,658,342.9495",
+      "decision": "Use workbook values; cumulative loss formula supersedes earlier PPTX tax.",
+      "refs": [
+        "'Income Statement'!C150:F154"
+      ]
+    },
+    {
+      "topic": "Works duration",
+      "pptx": "Casa Montana nine months",
+      "model": "Six months for every active property, including Montana",
+      "decision": "Use six-month workbook scenario.",
+      "refs": [
+        "'Input'!M80:M84",
+        "'Properties'!R6:R10"
+      ]
+    },
+    {
+      "topic": "Acquisition status",
+      "pptx": "Conflicting one bought / two closed / signed pending closing",
+      "model": "Aires and Fontanar signed, closing Sep 2026; other three negotiated",
+      "decision": "Use signed and negotiated source labels. Actual closing is not verified.",
+      "refs": [
+        "'Properties'!C6:C10",
+        "'Properties'!H6:H10"
+      ]
+    },
+    {
+      "topic": "Acquisition hurdle",
+      "pptx": "15% investor IRR minimum after carry and tax",
+      "model": "20% deal-level after-gains-tax minimum; actual portfolio 20.8103%",
+      "decision": "Use workbook hurdle and distinguish deal from investor return. Do not claim all ten criteria verified.",
+      "refs": [
+        "'The Buy Box'!C18:D18",
+        "'The Buy Box'!C28",
+        "'The Buy Box'!J22:J26"
+      ]
+    },
+    {
+      "topic": "Entry sensitivities",
+      "pptx": "13.2%, 15.7%, 18.5% at 25%, 30%, 35% discount",
+      "model": "Detailed full-fund sweep agrees; dashboard approximations differ",
+      "decision": "Use Portfolio Analysis I10:K11 with dated manual-sweep note H12.",
+      "refs": [
+        "'Portfolio Analysis'!I7:K12",
+        "'Dashboard'!B74:F78"
+      ]
+    },
+    {
+      "topic": "Nightly prices",
+      "pptx": "$300-$1,000 Buy Box target",
+      "model": "Same target remains prose; modeled five-property ADRs are $250-$340",
+      "decision": "Separate acquisition target from financial assumptions.",
+      "refs": [
+        "'The Buy Box'!D15",
+        "'Input'!J80:J84"
+      ]
+    }
+  ],
+  "quality": {
+    "cachedExcelErrors": [],
+    "formulaCellCount": 20440,
+    "emptyFormulaCachesByXmlType": {
+      "str": 320
+    },
+    "openpyxlNoneFormulaResults": 320,
+    "emptyCacheSamples": [
+      {
+        "part": "xl/worksheets/sheet3.xml",
+        "cell": "B92",
+        "type": "str"
+      },
+      {
+        "part": "xl/worksheets/sheet3.xml",
+        "cell": "C92",
+        "type": "str"
+      },
+      {
+        "part": "xl/worksheets/sheet3.xml",
+        "cell": "D92",
+        "type": "str"
+      },
+      {
+        "part": "xl/worksheets/sheet3.xml",
+        "cell": "B93",
+        "type": "str"
+      },
+      {
+        "part": "xl/worksheets/sheet3.xml",
+        "cell": "C93",
+        "type": "str"
+      }
+    ],
+    "calcProperties": {
+      "calcId": "191029"
+    },
+    "externalLinkParts": 0,
+    "hiddenSheets": [
+      "ServCo Personnel US"
+    ],
+    "recalculated": false,
+    "independentXirrFromCachedMonthlyFlows": 0.15722407659403814,
+    "headlineXirrDifference": -3.9227468495717233e-10,
+    "notes": [
+      "Cached results are a saved snapshot, not a fresh workbook recalculation. No explicit last-calculated timestamp is recorded in calcPr.",
+      "Empty string formula caches are distinct from missing numeric caches; XML classification recorded above.",
+      "Workbook includes stale prose in Dashboard!B46, _Forced Assumptions and _IRR Engine!A2; live formulas and numeric inputs take precedence.",
+      "Financial assumptions and forecasted returns are not verified transaction outcomes or guarantees."
+    ]
+  }
+}

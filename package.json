@@ -2,7 +2,7 @@
   "name": "dulcinea-one-presentation",
   "version": "1.0.0",
   "private": true,
-  "description": "Standalone nine-slide Dulcinea One HTML presentation",
+  "description": "Dulcinea One visual investor website",
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs"

@@ -1,0 +1,107 @@
+[
+  {
+    "marker": "{{HERO}}",
+    "path": "assets/images/investor-deck/image1.png",
+    "mime": "image/png"
+  },
+  {
+    "marker": "{{CITY}}",
+    "path": "assets/images/investor-deck/image7.jpeg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{PEOPLE_DAY}}",
+    "path": "assets/images/investor-deck/image23.jpg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{PEOPLE_EVENING}}",
+    "path": "assets/images/investor-deck/image22.jpg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{SAN_LUCAS}}",
+    "path": "assets/images/investor-deck/image44.png",
+    "mime": "image/png"
+  },
+  {
+    "marker": "{{AIRES}}",
+    "path": "assets/images/investor-deck/image45.png",
+    "mime": "image/png"
+  },
+  {
+    "marker": "{{FONTANAR}}",
+    "path": "assets/images/investor-deck/image46.jpeg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{MONTE_SERENO}}",
+    "path": "assets/images/investor-deck/image47.png",
+    "mime": "image/png"
+  },
+  {
+    "marker": "{{MONTANA}}",
+    "path": "assets/images/investor-deck/image48.png",
+    "mime": "image/png"
+  },
+  {
+    "marker": "{{DOV}}",
+    "path": "assets/images/investor-deck/image49.png",
+    "mime": "image/png"
+  },
+  {
+    "marker": "{{RICARDO}}",
+    "path": "assets/images/investor-deck/image50.png",
+    "mime": "image/png"
+  },
+  {
+    "marker": "{{ADRIANA}}",
+    "path": "assets/images/investor-deck/image51.jpeg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{LOLA}}",
+    "path": "assets/images/investor-deck/image24.png",
+    "mime": "image/png"
+  },
+  {
+    "marker": "{{INTRO_VIDEO}}",
+    "path": "assets/video/dulcinea-introduction.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{PEOPLE_VIDEO}}",
+    "path": "assets/video/hospitality-people.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{CITY_VIDEO}}",
+    "path": "assets/video/stock/AdobeStock_693150796.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{CITY_VIDEO_POSTER}}",
+    "path": "assets/video/stock/AdobeStock_693150796-poster.jpg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{CHEF_VIDEO_POSTER}}",
+    "path": "assets/video/stock/AdobeStock_80490822-poster.jpg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{BATHROOM}}",
+    "path": "assets/images/investor-deck/image68.jpeg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{NIGHTLIFE_VIDEO}}",
+    "path": "assets/video/medellin-nightlife.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{NIGHTLIFE_POSTER}}",
+    "path": "assets/video/medellin-nightlife-poster.jpg",
+    "mime": "image/jpeg"
+  }
+]

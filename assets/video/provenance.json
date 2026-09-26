@@ -1,0 +1,65 @@
+{
+  "source": "Adobe Stock MOV files supplied by the user; full-resolution originals remain in the supplied location, unchanged.",
+  "method": "Actual stock footage optimized and edited locally with FFmpeg. This replaces the earlier animations rendered from deck stills.",
+  "rights": "Files supplied by the user; no additional stock purchase or independent license verification performed.",
+  "location_note": "Geographic locations are not independently verified from the footage. It illustrates setting and hospitality, not portfolio ownership.",
+  "source_metadata": "assets/video/stock/provenance.json",
+  "render_script": "scripts/render-stock-videos.py",
+  "encoding": {
+    "codec": "H.264 High",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "fps": 24,
+    "pixel_format": "yuv420p",
+    "color_space": "Rec.709",
+    "color_range": "limited",
+    "audio_tracks": 0,
+    "fast_start": true
+  },
+  "videos": [
+    {
+      "file": "dulcinea-introduction.mp4",
+      "bytes": 10324433,
+      "sha256": "9ab3a6f22b460e3c0f20cf43bee5b7d02929d049953318df5f0aa4df3d25f9d7",
+      "duration_seconds": 18.0,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 4585 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "audio_tracks": 0,
+      "scenes": [
+        {
+          "id": "693150796",
+          "start_seconds": 0
+        },
+        {
+          "id": "1849343666",
+          "start_seconds": 0
+        }
+      ],
+      "scene_seconds_before_overlap": 10,
+      "crossfade_seconds": 1,
+      "method": "Edited actual stock footage; circular dissolve; original speed; no synthetic scene generation."
+    },
+    {
+      "file": "hospitality-people.mp4",
+      "bytes": 2244280,
+      "sha256": "3137d7f2d4f22f096731963d164a114cdd869485b3f58e4c2baa30f9dc8625ff",
+      "duration_seconds": 14.0,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1279 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "audio_tracks": 0,
+      "scenes": [
+        {
+          "id": "80490822",
+          "start_seconds": 2
+        }
+      ],
+      "scene_seconds_before_overlap": 15,
+      "crossfade_seconds": 1,
+      "method": "Edited actual stock footage; circular dissolve; original speed; no synthetic scene generation."
+    }
+  ],
+  "unused_in_main_presentation": [
+    "AdobeStock_539938219.mp4"
+  ],
+  "validation": "Complete output streams decoded successfully and verified as silent H.264 1280x720. Source representative frames visually inspected."
+}

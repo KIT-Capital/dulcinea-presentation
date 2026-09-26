@@ -1,0 +1,56 @@
+{
+  "source": "Two Adobe Stock JPEG images supplied by the user; original images copied without modification.",
+  "method": "Photographic pan/zoom with two one-second circular dissolves; rendered from still images, not filmed nightlife footage. No human motion synthesized.",
+  "artwork": "Visible RECORD Dance Radio artwork in AdobeStock_70649459.jpeg is retained, not removed or obscured.",
+  "location_note": "Nightlife imagery is illustrative; the location and venue are not independently verified as Medellin.",
+  "rights": "Images supplied by the user; no independent license verification or additional stock purchase performed.",
+  "sources": [
+    {
+      "file": "AdobeStock_70649459.jpeg",
+      "description": "DJ, stage lights and a concert crowd; RECORD Dance Radio artwork remains visible",
+      "crop_y": "ih-oh",
+      "zoom_start": 1.012,
+      "zoom_end": 1.063,
+      "x_start": 0.45,
+      "x_end": 0.55,
+      "y": 0.78,
+      "path": "assets/images/stock/AdobeStock_70649459.jpeg",
+      "bytes": 3121632,
+      "sha256": "77cc2cf705a54ae395ee61065a169a77d6f1ddcd76fcb5af8270eab2da232062"
+    },
+    {
+      "file": "AdobeStock_99551296.jpeg",
+      "description": "DJ mixing with people dancing in the background",
+      "crop_y": "0",
+      "zoom_start": 1.058,
+      "zoom_end": 1.012,
+      "x_start": 0.56,
+      "x_end": 0.43,
+      "y": 0.28,
+      "path": "assets/images/stock/AdobeStock_99551296.jpeg",
+      "bytes": 752372,
+      "sha256": "72d4e1c42c884fdadfa43b468f122ebbc0d8b656cb3f2d1b7fb613f6ea585c7d"
+    }
+  ],
+  "video": {
+    "file": "medellin-nightlife.mp4",
+    "bytes": 1601565,
+    "sha256": "a472d8c8f2a506c80be72d20422b79ad6aa7fd756b30afc57e336cf4384c6297",
+    "duration_seconds": 13.0,
+    "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 982 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+    "audio_tracks": 0
+  },
+  "encoding": {
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "codec": "H.264 High",
+    "color_space": "Rec.709",
+    "color_range": "limited",
+    "audio_tracks": 0,
+    "fast_start": true
+  },
+  "render_script": "scripts/render-nightlife.py",
+  "validation": "Complete output decoded successfully; silent H.264, 1280x720 and exact duration verified.",
+  "visual_review": "Representative frames and loop return inspected; people, DJ equipment, and source RECORD Dance Radio artwork remain visible. Source-copy hashes match supplied originals."
+}

@@ -28,6 +28,92 @@
     let settleTimer = 0;
     let frame = 0;
     let returnFocus = null;
+    const videoStates = Array.from(deck.querySelectorAll('.ambient-video')).map((video) => ({
+      video,
+      slide: video.closest('.slide'),
+      button: video.closest('.slide').querySelector('.motion-toggle'),
+      manuallyPaused: false,
+      explicitlyEnabled: false,
+      blocked: false,
+      failed: false,
+      pending: false,
+    }));
+
+    function videoAllowed(state) {
+      return state.slide === slides[currentIndex] && !document.hidden && !menu?.open
+        && !state.manuallyPaused && !state.failed && !state.blocked
+        && (!reducedMotion.matches || state.explicitlyEnabled);
+    }
+
+    function updateVideoButton(state) {
+      if (!state.button) return;
+      const paused = state.video.paused;
+      state.button.textContent = paused ? 'Play motion  ▷' : 'Pause motion  Ⅱ';
+      state.button.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
+      state.button.setAttribute('aria-pressed', String(!paused));
+      state.button.hidden = state.failed;
+    }
+
+    function syncVideos() {
+      videoStates.forEach((state) => {
+        const { video } = state;
+        if (!videoAllowed(state)) {
+          video.pause();
+          updateVideoButton(state);
+          return;
+        }
+        if (!video.dataset.loaded) {
+          const source = video.querySelector('source[data-src]');
+          source.src = source.dataset.src;
+          video.dataset.loaded = 'true';
+          video.muted = true;
+          video.load();
+        }
+        if (!state.pending && video.paused) {
+          state.pending = true;
+          video.play().catch((error) => {
+            if (error.name !== 'AbortError' && videoAllowed(state)) state.blocked = true;
+          }).finally(() => {
+            state.pending = false;
+            if (!videoAllowed(state)) video.pause();
+            updateVideoButton(state);
+          });
+        }
+      });
+    }
+
+    videoStates.forEach((state) => {
+      state.video.addEventListener('loadeddata', () => state.video.classList.add('is-ready'));
+      state.video.addEventListener('playing', () => {
+        if (!videoAllowed(state)) state.video.pause();
+        updateVideoButton(state);
+      });
+      state.video.addEventListener('pause', () => updateVideoButton(state));
+      state.video.addEventListener('error', () => {
+        state.failed = true;
+        state.video.classList.remove('is-ready');
+        updateVideoButton(state);
+      });
+      state.button?.addEventListener('click', () => {
+        if (state.video.paused) {
+          state.manuallyPaused = false;
+          state.explicitlyEnabled = true;
+          state.blocked = false;
+          state.video.classList.add('user-enabled');
+        } else {
+          state.manuallyPaused = true;
+        }
+        syncVideos();
+      });
+    });
+    document.addEventListener('visibilitychange', syncVideos);
+    reducedMotion.addEventListener('change', () => {
+      videoStates.forEach((state) => {
+        state.explicitlyEnabled = false;
+        state.video.classList.remove('user-enabled');
+      });
+      syncVideos();
+    });
 
     const announce = (message) => {
       if (announcement) announcement.textContent = message;
@@ -66,7 +152,8 @@
           link.removeAttribute('aria-current');
         }
       });
-      if (changed) announce(`Slide ${index + 1} of ${slides.length}: ${slideTitle}`);
+      if (changed) announce(`Chapter ${index + 1} of ${slides.length}: ${slideTitle}`);
+      syncVideos();
       const nextHash = `#${slides[index].id}`;
       if (window.location.hash !== nextHash) {
         try {
@@ -116,9 +203,7 @@
 
     function goTo(index, { instant = false, focus = false } = {}) {
       const target = Math.max(0, Math.min(slides.length - 1, index));
-      // Direct slide changes stay deterministic during rapid input and resizes.
-      // Entrance transitions provide motion; wheel/touch retain native scrolling.
-      const jumpInstantly = true;
+      const jumpInstantly = instant || reducedMotion.matches;
       const slide = slides[target];
       const top = deck.scrollTop + slide.getBoundingClientRect().top
         - deck.getBoundingClientRect().top - deck.clientTop;
@@ -155,6 +240,38 @@
 
     previousButton?.addEventListener('click', () => goTo(currentIndex - 1));
     nextButton?.addEventListener('click', () => goTo(currentIndex + 1));
+
+    const gallery = deck.querySelector('.home-gallery');
+    const galleryButtons = Array.from(deck.querySelectorAll('[data-gallery-step]'));
+    if (gallery) {
+      const updateGallery = () => galleryButtons.forEach((button) => {
+        button.disabled = Number(button.dataset.galleryStep) < 0
+          ? gallery.scrollLeft < 2
+          : gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 2;
+      });
+      galleryButtons.forEach((button) => button.addEventListener('click', () => {
+        const card = gallery.querySelector('.home-card');
+        gallery.scrollBy({ left: Number(button.dataset.galleryStep) * (card.offsetWidth + 24),
+          behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+      }));
+      gallery.addEventListener('scroll', updateGallery, { passive: true });
+      window.addEventListener('resize', updateGallery, { passive: true });
+      updateGallery();
+    }
+
+    const revealTargets = deck.querySelectorAll('.reveal, .editorial-image, .home-card, .property-image');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      }), { root: deck, threshold: 0.12 });
+      revealTargets.forEach((element, index) => {
+        element.style.setProperty('--reveal-delay', `${Math.min(index % 3, 2) * 90}ms`);
+        revealObserver.observe(element);
+      });
+    }
 
     deck.addEventListener('scroll', () => {
       schedulePositionUpdate();
@@ -193,7 +310,7 @@
       if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || menu?.open) return;
       const target = event.target;
       if (target instanceof Element && target.closest(
-        'a, button, input, textarea, select, summary, video, audio, [contenteditable]:not([contenteditable="false"]), [role="button"], [role="textbox"], [role="slider"]',
+        'a, button, input, textarea, select, summary, video, audio, .table-scroll, .home-gallery, [contenteditable]:not([contenteditable="false"]), [role="button"], [role="textbox"], [role="slider"]',
       )) return;
       const verticalDirection = event.key === 'ArrowDown' || event.key === 'PageDown'
         || (event.key === ' ' && !event.shiftKey) ? 1
@@ -242,12 +359,14 @@
         if (menu.open) return;
         returnFocus = document.activeElement;
         menu.showModal();
+        syncVideos();
         menuButton.setAttribute('aria-expanded', 'true');
         const selectedLink = links.find((link) => link.hasAttribute('aria-current'));
         (selectedLink || menuClose)?.focus();
       });
       menuClose?.addEventListener('click', () => menu.close());
       menu.addEventListener('close', () => {
+        syncVideos();
         menuButton.setAttribute('aria-expanded', 'false');
         // Native dialog handles Escape and traps focus. Restore focus only if
         // a slide jump has not already placed it elsewhere.

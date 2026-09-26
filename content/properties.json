@@ -1,0 +1,154 @@
+[
+  {
+    "name": "San Lucas 101",
+    "token": "SAN_LUCAS",
+    "area": "El Poblado, Medellín",
+    "type": "Apartment",
+    "size": "325 m² (3,498 sq ft)",
+    "purchase": "$445K",
+    "allin": "$747K",
+    "works": "Six months; $291K budget",
+    "rent": "19 modeled rental months; approximately $24K stabilized annual property NOI",
+    "status": "Negotiated; compraventa drafted",
+    "exit": "4Q26 to 1Q29; 25-month hold",
+    "value": "$1.27M",
+    "uplift": "1.69×",
+    "submarket": "Furnished apartment, estrato 5–6",
+    "m2": [
+      "1,369",
+      "2,300",
+      "3,285"
+    ],
+    "rentalMonths": 19,
+    "rentalMonthsSource": "Properties!U8-T8; rental period excludes sale month",
+    "source": {
+      "model": "Dulcinea Model 07.xlsx",
+      "cells": "Properties!C8:X8",
+      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "slide": 14,
+      "status": "Source-reported property status; not independently refreshed"
+    },
+    "sourceNote": "All-in cost is below the stated $750K acquisition target."
+  },
+  {
+    "name": "Aires de Campestre",
+    "token": "AIRES",
+    "area": "El Poblado, Medellín",
+    "type": "Penthouse",
+    "size": "489 m² (5,264 sq ft)",
+    "purchase": "$667K",
+    "allin": "$1.17M",
+    "works": "Six months; $485K budget",
+    "rent": "22 modeled rental months; approximately $19K stabilized annual property NOI",
+    "status": "Signed; closing September 2026",
+    "exit": "4Q26 to 1Q29; 28-month hold",
+    "value": "$2.02M",
+    "uplift": "1.73×",
+    "submarket": "Penthouse, estrato 5–6",
+    "m2": [
+      "1,363",
+      "2,390",
+      "3,414"
+    ],
+    "rentalMonths": 22,
+    "rentalMonthsSource": "Properties!U6-T6; rental period excludes sale month",
+    "source": {
+      "model": "Dulcinea Model 07.xlsx",
+      "cells": "Properties!C6:X6",
+      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "slide": 15,
+      "status": "Source-reported property status; not independently refreshed"
+    }
+  },
+  {
+    "name": "Fontanar 201",
+    "token": "FONTANAR",
+    "area": "El Poblado, Medellín",
+    "type": "Penthouse",
+    "size": "389 m² (4,187 sq ft)",
+    "purchase": "$1.02M",
+    "allin": "$1.29M",
+    "works": "Six months; $246K budget",
+    "rent": "24 modeled rental months; approximately $17K stabilized annual property NOI",
+    "status": "Signed; closing September 2026",
+    "exit": "4Q26 to 2Q29; 30-month hold",
+    "value": "$2.26M",
+    "uplift": "1.75×",
+    "submarket": "Penthouse, estrato 5–6",
+    "m2": [
+      "2,621",
+      "3,318",
+      "4,741"
+    ],
+    "rentalMonths": 24,
+    "rentalMonthsSource": "Properties!U7-T7; rental period excludes sale month",
+    "source": {
+      "model": "Dulcinea Model 07.xlsx",
+      "cells": "Properties!C7:X7",
+      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "slide": 16,
+      "status": "Source-reported property status; not independently refreshed"
+    }
+  },
+  {
+    "name": "Casa Monte Sereno",
+    "token": "MONTE_SERENO",
+    "area": "El Retiro, Antioquia",
+    "type": "House",
+    "size": "420 m² on a 2,940 m² lot",
+    "purchase": "$1.29M",
+    "allin": "$1.65M",
+    "works": "Six months; $324K budget",
+    "rent": "26 modeled rental months; approximately $13K stabilized annual property NOI",
+    "status": "Negotiated; finalizing modifications",
+    "exit": "1Q27 to 4Q29; 32-month hold",
+    "value": "$2.83M",
+    "uplift": "1.72×",
+    "submarket": "Estate in Parcelación Monte Sereno",
+    "m2": [
+      "3,082",
+      "3,930",
+      "5,614"
+    ],
+    "rentalMonths": 26,
+    "rentalMonthsSource": "Properties!U10-T10; rental period excludes sale month",
+    "source": {
+      "model": "Dulcinea Model 07.xlsx",
+      "cells": "Properties!C10:X10",
+      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "slide": 17,
+      "status": "Source-reported property status; not independently refreshed"
+    }
+  },
+  {
+    "name": "Casa Montana",
+    "token": "MONTANA",
+    "area": "El Retiro, Antioquia",
+    "type": "House",
+    "size": "591 m² (6,361 sq ft)",
+    "purchase": "$1.14M",
+    "allin": "$1.71M",
+    "works": "Six months; $550K budget",
+    "rent": "29 modeled rental months; approximately $24K stabilized annual property NOI",
+    "status": "Negotiated; works being budgeted",
+    "exit": "2Q27 to 2Q30; 35-month hold",
+    "value": "$3.00M",
+    "uplift": "1.75×",
+    "submarket": "Estate in Parcelación Montana",
+    "m2": [
+      "1,922",
+      "2,901",
+      "4,144"
+    ],
+    "rentalMonths": 29,
+    "rentalMonthsSource": "Properties!U9-T9; rental period excludes sale month",
+    "source": {
+      "model": "Dulcinea Model 07.xlsx",
+      "cells": "Properties!C9:X9",
+      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "slide": 18,
+      "status": "Source-reported property status; not independently refreshed"
+    },
+    "sourceNote": "Model six-month works assumption supersedes the deck’s nine months."
+  }
+]
