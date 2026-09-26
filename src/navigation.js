@@ -290,8 +290,8 @@
           download.textContent = 'Download supplied plans';
         } else {
           const image = stage.querySelector('img');
-          const extension = image.src.startsWith('data:image/webp') ? 'webp'
-            : image.src.startsWith('data:image/png') ? 'png' : 'jpg';
+          const extension = image.src.startsWith('data:image/webp') || /\.webp(?:[?#]|$)/i.test(image.src) ? 'webp'
+            : image.src.startsWith('data:image/png') || /\.png(?:[?#]|$)/i.test(image.src) ? 'png' : 'jpg';
           download.href = image.src;
           download.download = `${opener.dataset.viewerTarget}.${extension}`;
           download.textContent = 'Download image';

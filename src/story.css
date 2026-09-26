@@ -237,3 +237,5 @@
 
 @media screen and (max-width:800px){.property-slide{padding-top:78px}}
 .team-grid article:nth-child(3) img{object-position:center top}
+@media screen and (max-width:600px){.offer-hero{flex-direction:column;align-items:flex-start;gap:20px}.offer-hero strong{font-size:clamp(76px,24vw,110px)}.offer-hero span{max-width:none;padding:0}.offer-hero span br{display:none}.offer-hero span br:after{content:" "}}
+@media screen and (min-width:601px){.offer-hero span{max-width:200px}}

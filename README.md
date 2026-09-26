@@ -10,6 +10,10 @@ The current team portraits of Dov, Ricardo and Adriana use the later photographs
 
 ## Open the presentation
 
+The hosted deployment targets **https://invest.dulcineainvestments.org** on Cloudflare Workers. It uses a name/email form and shared password, matching the requested Tamarindo access pattern. This is a password gate, not OAuth. Every presentation page, financial statement, image, video and download passes through the Worker before the asset is served. The login logo and robots policy are the only public assets. Sessions expire after eight hours; names and emails are not retained or sent anywhere. Access requests go to **ricardo@kitcapital.com**.
+
+The main offer states the $7M fund raise, $2.1M source-reported commitments and $4.9M remaining ask. Investors acquire fund membership units; detailed terms remain in the expandable offer section.
+
 Download or clone the repository and open `index.html` in a modern browser. This single file embeds its styles, scripts, images, SVG branding, videos, and supplied floorplan PDF. It works offline without installation or a server. External source links and the email contact require their respective services.
 
 Keep `financial-statements.html` alongside `index.html` for the optional financial menu links. This separate, self-contained page works offline and includes projected income and balance-sheet tables for the four model years, with USD units, period dates, source notes and mobile horizontal scrolling. It does not require opening or downloading the workbook.
@@ -35,6 +39,22 @@ node scripts/build.mjs
 The build uses only Node.js built-in modules. No package installation, Python, or FFmpeg is required to build the presentation. The builder writes `index.html`, embedding the original media and SVG bytes. Keep the generated file in version control so it can be opened directly.
 
 The optional financial page is maintained in `src/financial-statements.html` and copied identically to the repository root by the build. Its numbers and exact source-cell references are retained in `content/financials.json`.
+
+## Cloudflare deployment
+
+The offline files above contain the presentation directly and do not have a password gate. Deploy only the hosted build through `wrangler.jsonc`, which requires `run_worker_first: true`. Do not deploy the repository root as a public static site.
+
+```sh
+npm run test
+npm run build:site
+wrangler deploy --config wrangler.jsonc --secrets-file /private/path/secrets.json --strict
+```
+
+The web build writes `dist/private-site/`: a small HTML entry point, the separate financial page, and only the assets actually referenced by the presentation. It excludes source spreadsheets, PowerPoint files, archives and internal provenance. Videos can stream separately. The supplied floorplan PDF remains a protected download.
+
+Supply `INVESTOR_PASSWORD` (at least 12 characters) and `SESSION_SECRET` (at least 32 characters) through Cloudflare secrets. The secret file must remain outside this repository. Changing either value invalidates existing sessions. Never commit credentials or put them in browser JavaScript. The Worker requires the `LOGIN_LIMITER` binding and rejects login when configuration is missing. A local `.dev.vars` file is ignored by Git; use `PREVIEW_ONLY=true` with `wrangler dev --local` for local testing.
+
+The custom domain must be fully registered and its zone available in the configured Cloudflare account before deployment can attach it. Cloudflare manages the custom-domain DNS and certificate. After deploying, verify private direct URLs redirect to login, valid login grants access, wrong passwords fail, videos support playback, and logout clears the session.
 
 ## Optional video rendering
 

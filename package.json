@@ -5,6 +5,8 @@
   "description": "Dulcinea One visual investor website",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "build:site": "node scripts/build.mjs --web",
+    "test": "node --test server/*.test.mjs"
   }
 }

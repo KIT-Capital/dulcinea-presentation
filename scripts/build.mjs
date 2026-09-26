@@ -1,9 +1,11 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, copyFile, rm, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relativePath, encoding) => readFile(path.join(root, relativePath), encoding);
+const web = process.argv.includes('--web');
+const siteRoot = path.join(root, 'dist', 'private-site');
 
 const assets = [
   ['{{LOGO_DARK}}', 'brand/dulcinea-one/svg/dulcinea-one-mono-white.svg', 'image/svg+xml'],
@@ -16,17 +18,38 @@ const assets = [
 async function build() {
   const manifest = JSON.parse(await read('assets/manifest.json', 'utf8'));
   const media = manifest.map(({ marker, path: assetPath, mime }) => [marker, assetPath, mime]);
-  const [template, styles, script, paletteText, embeddedAssets] = await Promise.all([
+  if (web) {
+    if (path.resolve(siteRoot) !== path.resolve(root, 'dist', 'private-site')) throw new Error('Invalid build directory');
+    await rm(siteRoot, { recursive: true, force: true });
+    await mkdir(siteRoot, { recursive: true });
+  }
+  const [template, styles, script, paletteText] = await Promise.all([
     read('src/presentation.html', 'utf8'),
     Promise.all([read('src/presentation.css', 'utf8'), read('src/story.css', 'utf8'), read('src/property-viewer.css', 'utf8')]).then(parts => parts.join('\n')),
     read('src/navigation.js', 'utf8'),
     read('design/palette.json', 'utf8'),
-    Promise.all([...assets, ...media].map(async ([marker, relativePath, mimeType]) => {
-      // Base64 encodes the original file bytes; SVG artwork is never rewritten.
-      const bytes = await read(relativePath);
-      return [marker, `data:${mimeType};base64,${bytes.toString('base64')}`];
-    })),
   ]);
+  const copied = new Set();
+  async function copyAsset(relativePath, destination = relativePath) {
+    const source = path.resolve(root, relativePath);
+    const target = path.resolve(siteRoot, destination);
+    if (!source.startsWith(root + path.sep) || !target.startsWith(siteRoot + path.sep)) throw new Error('Asset outside build directory');
+    if ((await stat(source)).size > 25 * 1024 * 1024) throw new Error(`Asset exceeds hosting limit: ${relativePath}`);
+    if (!copied.has(target)) {
+      copied.add(target);
+      await mkdir(path.dirname(target), { recursive: true });
+      await copyFile(source, target);
+    }
+    return '/' + destination.replaceAll('\\', '/');
+  }
+  const embeddedAssets = [];
+  for (const [marker, relativePath, mimeType] of [...assets, ...media]) {
+    if (!template.includes(marker)) continue;
+    const content = web
+      ? await copyAsset(relativePath, marker === '{{FLOORPLAN_PDF}}' ? 'downloads/Dulcinea-Floorplans.pdf' : relativePath)
+      : `data:${mimeType};base64,${(await read(relativePath)).toString('base64')}`;
+    embeddedAssets.push([marker, content]);
+  }
 
   const palette = JSON.parse(paletteText);
   if (!Array.isArray(palette.colors) || palette.colors.length !== 5) {
@@ -60,10 +83,19 @@ async function build() {
   const unresolved = html.match(/\{\{[A-Z_0-9]+\}\}|\/\*__[A-Z_]+__\*\//g);
   if (unresolved) throw new Error(`Unresolved template markers: ${[...new Set(unresolved)].join(', ')}`);
 
-  const output = path.join(root, 'index.html');
+  let financial = await read('src/financial-statements.html', 'utf8');
+  if (web) {
+    const signOut = '<form class="session-exit" action="/logout" method="post"><button type="submit">Sign out</button></form>';
+    const exitStyle = '<style>.session-exit{margin:24px 0}.session-exit button{font:inherit;font-size:14px;color:inherit;background:transparent;border:1px solid currentColor;border-radius:0;padding:12px 20px;cursor:pointer}.session-exit button:focus-visible{outline:3px solid #009B74;outline-offset:4px}#slide-menu>.session-exit{margin:24px 5vw}</style>';
+    html = html.replace('<details class="credits">', signOut + '<details class="credits">').replace('</head>', exitStyle + '</head>');
+    financial = financial.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
+    await copyAsset('brand/dulcinea-one/svg/dulcinea-one-mono-black.svg', 'gate-assets/logo.svg');
+  }
+  const destination = web ? siteRoot : root;
+  const output = path.join(destination, 'index.html');
   await writeFile(output, html, 'utf8');
-  await writeFile(path.join(root, 'financial-statements.html'), await read('src/financial-statements.html', 'utf8'), 'utf8');
-  console.log(`Built index.html (${Buffer.byteLength(html, 'utf8').toLocaleString('en-US')} bytes)`);
+  await writeFile(path.join(destination, 'financial-statements.html'), financial, 'utf8');
+  console.log(`Built ${web ? 'dist/private-site/' : ''}index.html (${Buffer.byteLength(html, 'utf8').toLocaleString('en-US')} bytes)${web ? ` and ${copied.size} selected assets` : ''}`);
 }
 
 build().catch((error) => {
