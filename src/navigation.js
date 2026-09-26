@@ -22,6 +22,7 @@
     const progress = document.getElementById('progress-fill');
     const announcement = document.getElementById('slide-announcement');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let allMotionPaused = reducedMotion.matches;
     const links = Array.from(menuLinks?.querySelectorAll('a[href^="#"]') || []);
     let currentIndex = -1;
     let pendingIndex = null;
@@ -41,7 +42,7 @@
 
     function videoAllowed(state) {
       return state.slide === slides[currentIndex] && !document.hidden && !document.querySelector('dialog[open]')
-        && !state.manuallyPaused && !state.failed && !state.blocked
+        && !allMotionPaused && !state.manuallyPaused && !state.failed && !state.blocked
         && (!reducedMotion.matches || state.explicitlyEnabled);
     }
 
@@ -100,6 +101,7 @@
           state.explicitlyEnabled = true;
           state.blocked = false;
           state.video.classList.add('user-enabled');
+          if (allMotionPaused) document.dispatchEvent(new CustomEvent('dulcinea-motion-request', { detail: { paused: false } }));
         } else {
           state.manuallyPaused = true;
         }
@@ -107,6 +109,15 @@
       });
     });
     document.addEventListener('visibilitychange', syncVideos);
+    document.addEventListener('dulcinea-motion-change', (event) => {
+      allMotionPaused = event.detail.paused;
+      if (!allMotionPaused) videoStates.forEach((state) => {
+        state.explicitlyEnabled = true;
+        state.blocked = false;
+        state.video.classList.add('user-enabled');
+      });
+      syncVideos();
+    });
     reducedMotion.addEventListener('change', () => {
       videoStates.forEach((state) => {
         state.explicitlyEnabled = false;
@@ -203,7 +214,7 @@
 
     function goTo(index, { instant = false, focus = false } = {}) {
       const target = Math.max(0, Math.min(slides.length - 1, index));
-      const jumpInstantly = instant || reducedMotion.matches;
+      const jumpInstantly = instant || reducedMotion.matches || allMotionPaused;
       const slide = slides[target];
       const top = deck.scrollTop + slide.getBoundingClientRect().top
         - deck.getBoundingClientRect().top - deck.clientTop;

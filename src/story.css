@@ -266,3 +266,10 @@
  #slide-menu .menu-resources a{font-size:13px}
 }
 @media screen and (max-width:360px){#slide-menu .menu-brand-logo{width:120px}#slide-menu .menu-top{gap:8px}#menu-links a{font-size:11px}}
+
+/* Quiet parent-company signature on the opening page. */
+.cover-partner{position:absolute;right:4%;bottom:25px;width:76px;z-index:3;opacity:.8}
+.cover-partner img{display:block;width:100%;height:auto}
+.js-ready .cover-partner{position:fixed;bottom:calc(var(--bar) + 20px);visibility:hidden}
+.js-ready .cover[data-active="true"] .cover-partner{visibility:visible}
+@media(max-width:800px){.cover-partner{right:7%;bottom:20px;width:54px}.cover-qualification{max-width:230px}}

@@ -4,7 +4,9 @@ Dulcinea is a real estate investment firm with a unique platform focused on Mede
 
 The presentation uses the supplied Dulcinea branding and exact five-color Pantone palette, with lighter backgrounds and Coconut Shell reserved for accents. Wide property films alternate with split layouts to give the homes and people more space. Five user-requested AI lifestyle illustrations show fictional adults in settings based on the supplied property images. Each is labeled, and the original property imagery remains available in the viewer. PNG masters, optimized web images, and generation provenance are retained.
 
-Silent videos use the user's supplied Adobe Stock footage: city and town aerials open the presentation, chefs preparing food bring the hospitality story to life, and the countryside portrait appears in the closing contact chapter. All six distinct supplied stock clips are used. Five nine-second property loops animate the AI lifestyle stills with gentle camera motion; the people remain still. The 17.5-second after-dark sequence moves from night-road stock footage to the supplied Medellín neon animation, then into camera moves across supplied DJ and crowd photographs. The original 13-second photographic sequence is also retained. These photographic animations are not filmed human movement. The visual direction draws on [Radisson Resort Maldives](https://radissonresortmaldives.com/); no assets from that website are reused.
+Silent videos use the user's supplied Adobe Stock footage: city and town aerials alternate with all five property films in the 30-second opening, chefs preparing food bring the hospitality story to life, and the countryside portrait appears in the closing contact chapter. All six distinct supplied stock clips are used. Five nine-second property loops animate the AI lifestyle stills with gentle camera motion; the people remain still. The 17.5-second after-dark sequence moves from night-road stock footage to the supplied Medellín neon animation, then into camera moves across supplied DJ and crowd photographs. The original 13-second photographic sequence is also retained. These photographic animations are not filmed human movement. The visual direction draws on [Radisson Resort Maldives](https://radissonresortmaldives.com/); no assets from that website are reused.
+
+The opening also carries the supplied KIT Capital logo discreetly in its lower-right corner.
 
 The current team portraits of Dov, Ricardo and Adriana use the later photographs supplied by the user, directly and unchanged. Earlier AI restoration candidates and the original deck portraits are retained as source material but are not used on screen. The local-specialists chapter uses a supplied Fontanar architectural plan.
 
@@ -24,7 +26,7 @@ Scroll continuously through the story, or use the previous/next buttons, Left/Ri
 
 Property viewers open the lifestyle illustration, original imagery, and supplied plans with paging and zoom. Nine complete plan pages cover four homes, as confirmed by the user; source area labels are retained. Casa Montana has no supplied plan. The original PDF is available from the viewer.
 
-Background videos are silent and play only on their active slide. The motion control pauses or resumes playback. Reduced-motion preferences start with a still image; motion can be enabled explicitly. Still images also remain available when video playback is unavailable.
+Background videos are silent and play only on their active slide. The footer motion control pauses or resumes videos and photo effects together. Editorial and gallery photos have gentle camera drift, portraits have a staggered soft reveal, and plans stay still for inspection. Motion pauses while a dialog is open or the page is hidden, and only visible photos animate. Reduced-motion preferences start with a still image; motion can be enabled explicitly. Still images also remain available when video playback is unavailable.
 
 ## Edit and rebuild
 
@@ -66,7 +68,7 @@ The optimized stock clips and edited loops are already included. To regenerate t
 python scripts/render-stock-videos.py
 ```
 
-The 12-second introduction combines city and town footage with 0.625-second circular dissolves. Its dedicated renderer is `scripts/render-introduction.py`; the stock renderer calls it automatically.
+The 30-second introduction combines city and town footage with all five animated property films, using half-second circular dissolves. Its dedicated renderer is `scripts/render-introduction.py`; the stock renderer calls it automatically.
 
 To re-import the initial four original MOV files, add `--source-dir "/path/to/Stock Video"`. Originals remain untouched and are not copied into the repository. The two later stock clips are retained in optimized form with encoding options in `assets/video/stock/additional-provenance.json`. To rebuild the nightlife animation from its retained stock photographs, run:
 

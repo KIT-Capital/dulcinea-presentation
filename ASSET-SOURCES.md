@@ -130,16 +130,16 @@ The two unique files have optimized MP4 versions and posters in the same stock f
 
 ## Edited stock background loops
 
-The introduction and hospitality loops use actual footage from the supplied Adobe Stock clips. They replace the earlier introduction and hospitality animations made from deck still images. The after-dark sequence combines filmed stock footage with the nightlife photographic animation. Property animations and the photographic part of the nightlife sequence remain camera motion across still images.
+The introduction combines footage from the supplied Adobe Stock clips with the five animated AI property illustrations. The hospitality loop uses the supplied chef footage. They replace the earlier introduction and hospitality animations made from deck still images. The after-dark sequence combines filmed stock footage with the nightlife photographic animation. Property animations and the photographic part of the nightlife sequence remain camera motion across still images.
 
 | File | Duration | Sequence |
 | --- | --- | --- |
-| `assets/video/dulcinea-introduction.mp4` | 12 seconds | Modern city aerial and colonial town aerial |
+| `assets/video/dulcinea-introduction.mp4` | 30 seconds | City, Fontanar, San Lucas, town, Aires, Monte Sereno, Montana |
 | `assets/video/hospitality-people.mp4` | 14 seconds | Chefs preparing food |
 
-The introduction uses 0.625-second circular dissolves; the hospitality loop uses a one-second circular dissolve. Both preserve the source playback speed. Matching `-poster.jpg` files provide still fallbacks. Individual optimized city and town clips are also available for location sections. MP4 files referenced by the presentation are embedded directly into `index.html` for offline playback.
+The introduction uses half-second circular dissolves; the hospitality loop uses a one-second circular dissolve. Both preserve their source playback speeds, including the gentle camera movement in the property films. Matching `-poster.jpg` files provide still fallbacks. Individual optimized city and town clips are also available for location sections. MP4 files referenced by the presentation are embedded directly into `index.html` for offline playback.
 
-`scripts/render-stock-videos.py` reproduces the optimization and edits using FFmpeg; it calls `scripts/render-introduction.py` for the two-scene introduction. `assets/video/stock/provenance.json` records original and optimized file hashes and metadata; `assets/video/provenance.json` records the edited loops, their sources, encoding, and validation. Rendering tools are optional and are not required to run the Node.js HTML builder. The older `scripts/render-videos.py` remains as a superseded workflow for still-image animation.
+`scripts/render-stock-videos.py` reproduces the optimization and edits using FFmpeg; it calls `scripts/render-introduction.py` for the seven-scene introduction. `assets/video/stock/provenance.json` records original and optimized file hashes and metadata; `assets/video/provenance.json` records the edited loops, their sources, encoding, and validation. Rendering tools are optional and are not required to run the Node.js HTML builder. The older `scripts/render-videos.py` remains as a superseded workflow for still-image animation.
 
 ## Property illustration camera loops
 
@@ -179,3 +179,11 @@ The current after-dark chapter uses `assets/video/medellin-after-dark.mp4`, a 17
 `assets/images/hospitality-concept.png` and `assets/images/medellin.jpg` remain in the repository from the earlier presentation. They are absent from the current media manifest and are not used by the current presentation.
 
 The former is an illustrative image created with the built-in image generation tool. The latter is Gustavo Sánchez's [Medellín city and mountain photograph on Unsplash](https://unsplash.com/photos/a-view-of-a-city-with-mountains-in-the-background-uz6ElCAmQtw). Neither is evidence of an acquired Dulcinea property.
+
+## KIT Capital cover signature
+
+`brand/kit-capital/kit-capital.png` is the unchanged KIT Capital Partners artwork supplied in the company folder as `KIT Capital.png`. It appears only on the opening page, in the lower-right corner. It does not change Dulcinea’s stated role as the real estate investment firm and operating company.
+
+## Photo effects
+
+CSS adds slow, reversible camera drift to editorial and gallery photos, a soft staggered portrait reveal, and opacity-only entry for plans. The original image files remain unchanged. The shared motion control pauses photos and videos; off-screen, hidden-page and dialog states suspend animation. Reduced-motion settings keep photo effects still. Visible stock-footage captions were removed at the user’s request; original media provenance remains in this document and the video metadata.

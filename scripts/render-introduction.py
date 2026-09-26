@@ -1,7 +1,8 @@
-"""Build the silent city and town introduction from supplied stock.
+"""Build a silent city-and-property montage from retained presentation films.
 
 Usage: python scripts/render-introduction.py [--ffmpeg /path/to/ffmpeg] [--keep-poster]
-Reuses the retained optimized MP4s; original MOV files remain untouched.
+Reuses the retained optimized MP4s; original source materials remain untouched.
+Property films animate AI lifestyle illustrations, not filmed human movement.
 Only replaces the introduction, its poster and its provenance entry.
 """
 
@@ -13,10 +14,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VIDEO = ROOT / "assets" / "video"
 FPS = 24
-FADE = 15 / FPS  # Frame-aligned, approximately 0.6 seconds.
+FADE = 12 / FPS  # Restrained, frame-aligned half-second dissolves.
 SCENES = [
-    {"id": "693150796", "subject": "City towers and green streets", "start_seconds": 0, "duration_seconds": 6.625},
-    {"id": "1849343666", "subject": "Colonial town square with pedestrians", "start_seconds": 0, "duration_seconds": 6.625},
+    {"id": "693150796", "subject": "City towers and green streets", "source_path": "assets/video/stock/AdobeStock_693150796.mp4", "source_kind": "Actual supplied stock footage", "start_seconds": 0, "duration_seconds": 5.5},
+    {"id": "fontanar", "subject": "Fontanar kitchen lifestyle scene", "source_path": "assets/video/properties/fontanar.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 1, "duration_seconds": 4.5},
+    {"id": "san-lucas", "subject": "San Lucas living room lifestyle scene", "source_path": "assets/video/properties/san-lucas.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 1, "duration_seconds": 4.5},
+    {"id": "1849343666", "subject": "Colonial town square with pedestrians", "source_path": "assets/video/stock/AdobeStock_1849343666.mp4", "source_kind": "Actual supplied stock footage", "start_seconds": 2, "duration_seconds": 4.5},
+    {"id": "aires", "subject": "Aires de Campestre living room lifestyle scene", "source_path": "assets/video/properties/aires.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 1, "duration_seconds": 4.5},
+    {"id": "monte-sereno", "subject": "Monte Sereno garden lifestyle scene", "source_path": "assets/video/properties/monte-sereno.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 1, "duration_seconds": 4.5},
+    {"id": "montana", "subject": "Casa Montana evening terrace lifestyle scene", "source_path": "assets/video/properties/montana.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 2, "duration_seconds": 5.5},
 ]
 
 
@@ -33,7 +39,7 @@ def render_intro(ffmpeg, *, update_poster=True):
     inputs = SCENES + [{**SCENES[0], "duration_seconds": FADE + 0.25}]
     filters = []
     for index, scene in enumerate(inputs):
-        source = VIDEO / "stock" / f"AdobeStock_{scene['id']}.mp4"
+        source = ROOT / scene["source_path"]
         command += ["-ss", str(scene["start_seconds"]), "-i", str(source)]
         filters.append(
             f"[{index}:v]trim=duration={scene['duration_seconds']},setpts=PTS-STARTPTS,"
@@ -50,7 +56,7 @@ def render_intro(ffmpeg, *, update_poster=True):
     filters.append(f"[{previous}]trim=start={FADE}:duration={duration},setpts=PTS-STARTPTS[out]")
     output = VIDEO / "dulcinea-introduction.mp4"
     encoding = [
-        "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "23", "-maxrate", "6M", "-bufsize", "12M",
+        "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "22", "-maxrate", "7M", "-bufsize", "14M",
         "-profile:v", "high", "-level", "3.1", "-pix_fmt", "yuv420p", "-color_range", "tv", "-colorspace", "bt709",
         "-color_primaries", "bt709", "-color_trc", "bt709", "-r", str(FPS), "-g", str(FPS * 2),
         "-movflags", "+faststart", "-threads", "4",
@@ -59,10 +65,22 @@ def render_intro(ffmpeg, *, update_poster=True):
     metadata = helper.validate(ffmpeg, output)
     if update_poster:
         helper.poster(ffmpeg, output, VIDEO / "dulcinea-introduction-poster.jpg")
+    timeline = []
+    cursor = 0
+    for scene in SCENES:
+        end = cursor + scene["duration_seconds"] - FADE
+        timeline.append({"id": scene["id"], "section_start_seconds": cursor, "section_end_seconds": end,
+                         "outgoing_dissolve_start_seconds": end - FADE, "outgoing_dissolve_end_seconds": end})
+        cursor = end
+    sources = [{**scene, "source_sha256": helper.sha256(ROOT / scene["source_path"])} for scene in SCENES]
     return {
-        "file": output.name, **metadata, "scenes": SCENES,
+        "file": output.name, **metadata, "scenes": sources,
         "crossfade_seconds": FADE,
-        "method": "Actual supplied city and town footage at original speed; circular dissolves; no synthetic scene generation.",
+        "method": "A seven-scene montage of actual city/town aerial footage and existing camera-move films made from all five AI property lifestyle illustrations. All source films retain their original speed, framing and color; short circular dissolves connect them. No new image generation or simulated human movement.",
+        "source_provenance": ["assets/video/stock/provenance.json", "assets/video/properties/metadata/provenance.json", "assets/images/lifestyle/provenance.json"],
+        "timeline": timeline,
+        "timeline_note": "Each section includes its outgoing half-second dissolve; the last dissolve returns to the opening city shot. Incoming clips begin during the preceding section's outgoing dissolve.",
+        "excluded_from_opening": "AdobeStock_539938219 countryside woman footage",
         "loop_method": "Repeat the first city segment after the final dissolve, then trim at matching city camera positions.",
         "render_script": "scripts/render-introduction.py",
         "encoding_options": encoding,
@@ -79,8 +97,6 @@ def main():
     path = VIDEO / "provenance.json"
     provenance = json.loads(path.read_text(encoding="utf-8-sig"))
     provenance["videos"] = [metadata if video["file"] == metadata["file"] else video for video in provenance["videos"]]
-    provenance["unused_in_main_presentation"] = []
-    provenance["render_scripts"] = {"introduction": "scripts/render-introduction.py", "hospitality": "scripts/render-stock-videos.py"}
     path.write_text(json.dumps(provenance, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(metadata, indent=2))
 

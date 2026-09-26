@@ -8,6 +8,7 @@ const web = process.argv.includes('--web');
 const siteRoot = path.join(root, 'dist', 'private-site');
 
 const assets = [
+  ['{{KIT_LOGO}}', 'brand/kit-capital/kit-capital.png', 'image/png'],
   ['{{LOGO_DARK}}', 'brand/dulcinea-one/svg/dulcinea-one-mono-white.svg', 'image/svg+xml'],
   ['{{LOGO_LIGHT}}', 'brand/dulcinea-one/svg/dulcinea-one-mono-black.svg', 'image/svg+xml'],
   ['{{SYMBOL_DARK}}', 'brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg', 'image/svg+xml'],
@@ -24,8 +25,8 @@ async function build() {
   }
   const [template, styles, script, paletteText] = await Promise.all([
     read('src/presentation.html', 'utf8'),
-    Promise.all([read('src/presentation.css', 'utf8'), read('src/story.css', 'utf8'), read('src/property-viewer.css', 'utf8')]).then(parts => parts.join('\n')),
-    read('src/navigation.js', 'utf8'),
+    Promise.all([read('src/presentation.css', 'utf8'), read('src/story.css', 'utf8'), read('src/property-viewer.css', 'utf8'), read('src/photo-motion.css', 'utf8')]).then(parts => parts.join('\n')),
+    Promise.all([read('src/navigation.js', 'utf8'), read('src/photo-motion.js', 'utf8')]).then(parts => parts.join('\n')),
     read('design/palette.json', 'utf8'),
   ]);
   const copied = new Set();

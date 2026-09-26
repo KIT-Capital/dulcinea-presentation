@@ -1,0 +1,206 @@
+/* Photo motion is opt-in. photo-motion.js excludes brand artwork and video posters.
+   It tags eligible images and pauses them when hidden, off screen or user-paused.
+   Only editorial/gallery images receive clipping frames; portrait and viewer
+   dimensions, object positions and zoom behavior stay with the existing layout. */
+
+.photo-motion-frame {
+  display: block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.home-card > .photo-motion-frame {
+  margin: 0;
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: normal;
+  transition: transform .65s cubic-bezier(.2,.6,.3,1), box-shadow .65s ease;
+}
+
+img.photo-motion {
+  opacity: 1;
+  transition: opacity .95s cubic-bezier(.2,.6,.3,1) var(--photo-delay, 0ms);
+}
+
+img.photo-motion:not([data-photo-seen="true"]) {
+  opacity: .48;
+}
+
+img.photo-motion[data-photo-effect="ambient"],
+img.photo-motion[data-photo-effect="gallery"] {
+  transform-origin: 50% 50%;
+  animation: dulcinea-photo-drift 28s cubic-bezier(.37,0,.63,1) infinite alternate both;
+  animation-play-state: paused;
+}
+
+img.photo-motion[data-photo-effect="gallery"] {
+  animation-name: dulcinea-gallery-drift;
+  animation-duration: 24s;
+}
+
+img.photo-motion[data-photo-active="true"] {
+  will-change: opacity;
+}
+
+img.photo-motion[data-photo-effect="ambient"][data-photo-active="true"],
+img.photo-motion[data-photo-effect="gallery"][data-photo-active="true"] {
+  animation-play-state: running;
+  will-change: transform, opacity;
+}
+
+/* The six-percent maximum zoom always has enough overscan for the gentle pan. */
+@keyframes dulcinea-photo-drift {
+  from { transform: translate(-.25%, .15%) scale(1.015); }
+  to { transform: translate(.65%, -.35%) scale(1.06); }
+}
+
+@keyframes dulcinea-gallery-drift {
+  from { transform: translate(-.2%, 0) scale(1.012); }
+  to { transform: translate(.35%, -.2%) scale(1.045); }
+}
+
+/* Portraits reveal in sequence without moving or resampling the face. */
+img.photo-motion[data-photo-effect="portrait"] {
+  transition: opacity .9s ease var(--photo-delay, 0ms), box-shadow .65s ease;
+}
+
+img.photo-motion[data-photo-effect="portrait"]:not([data-photo-seen="true"]) {
+  opacity: .28;
+}
+
+/* A viewer or plan gains only an opacity entry; no transform can disturb zoom. */
+img.photo-motion[data-photo-effect="reveal"],
+img.photo-motion[data-photo-effect="viewer"] {
+  animation: none;
+  transition: opacity .6s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html:not([data-photo-motion-paused="true"]) .home-card:where(:hover, :focus-visible) > .photo-motion-frame:has(img[data-photo-active="true"]) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgb(39 50 56 / .12), 0 0 0 1px rgb(120 189 212 / .4);
+  }
+
+  html:not([data-photo-motion-paused="true"]) .team-grid article:where(:hover, :focus-within) img.photo-motion[data-photo-effect="portrait"][data-photo-active="true"] {
+    box-shadow: 0 12px 30px rgb(120 189 212 / .22), 0 0 0 1px rgb(120 189 212 / .5);
+  }
+}
+
+html:not([data-photo-motion-paused="true"]) .home-card:focus-visible > .photo-motion-frame:has(img[data-photo-active="true"]) {
+  box-shadow: 0 0 0 2px var(--blue, #78BDD4);
+}
+
+/* Effective pause includes a hidden document and an open dialog. It freezes the
+   cinematic frame instead of restarting the drift on every visibility change. */
+html[data-photo-motion-paused="true"] img.photo-motion[data-photo-effect] {
+  opacity: 1;
+  animation-play-state: paused;
+  transition: none;
+  will-change: auto;
+}
+
+html[data-photo-motion-paused="true"] .photo-motion-frame {
+  transform: none;
+  box-shadow: none;
+  transition: none;
+}
+
+html[data-photo-motion-paused="true"] .slide :is(.reveal, .editorial-image, .home-card, .property-image) {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+html[data-photo-motion-paused="true"] img.photo-motion[data-photo-effect="portrait"] {
+  box-shadow: none;
+}
+
+.control-actions #photo-motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto;
+  min-width: 110px;
+  height: 32px;
+  padding: 0 11px;
+  border: 1px solid rgb(39 50 56 / .2);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: .1px;
+  white-space: nowrap;
+  color: var(--ink, #273238);
+  background: transparent;
+}
+
+.control-actions #photo-motion-toggle:hover {
+  background: rgb(120 189 212 / .14);
+  border-color: rgb(39 50 56 / .36);
+}
+
+.control-actions #photo-motion-toggle:focus-visible {
+  outline: 2px solid var(--ink, #273238);
+  outline-offset: 3px;
+}
+
+#photo-motion-toggle .photo-motion-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+@media (max-width: 800px) {
+  .controls { gap: 8px; }
+  .controls .slide-position { min-width: 0; }
+  .controls #current-title {
+    min-width: 0;
+    max-width: clamp(80px, 25vw, 135px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .controls .control-actions { flex: 0 0 auto; }
+  .control-actions #photo-motion-toggle {
+    flex: 0 0 30px;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    padding: 0;
+  }
+  #photo-motion-toggle .photo-motion-label { display: none; }
+  #photo-motion-toggle .photo-motion-icon { font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.photo-motion {
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+  img.photo-motion[data-photo-effect="ambient"],
+  img.photo-motion[data-photo-effect="gallery"],
+  .home-card:hover img.photo-motion,
+  .photo-motion-frame {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .photo-motion-frame,
+  img.photo-motion[data-photo-effect="portrait"] {
+    transition: none !important;
+    box-shadow: none !important;
+  }
+}
+
+@media print {
+  img.photo-motion { opacity: 1 !important; animation: none !important; transition: none !important; will-change: auto !important; }
+  img.photo-motion[data-photo-effect="ambient"], img.photo-motion[data-photo-effect="gallery"], .photo-motion-frame { transform: none !important; box-shadow: none !important; }
+  #photo-motion-toggle { display: none !important; }
+}

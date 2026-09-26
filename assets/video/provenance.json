@@ -21,27 +21,136 @@
   "videos": [
     {
       "file": "dulcinea-introduction.mp4",
-      "bytes": 7125976,
-      "sha256": "d82b8c4f17bac59e877b340b3467940ed846000a0e2dcde161ba490da3702297",
-      "duration_seconds": 12.0,
-      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 4747 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "bytes": 12912878,
+      "sha256": "f0f2a7318f74cf61610ce81e5566a4f1085a90ea987064813009ceacad826e9b",
+      "duration_seconds": 30.0,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 3440 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
       "audio_tracks": 0,
       "scenes": [
         {
           "id": "693150796",
           "subject": "City towers and green streets",
+          "source_path": "assets/video/stock/AdobeStock_693150796.mp4",
+          "source_kind": "Actual supplied stock footage",
           "start_seconds": 0,
-          "duration_seconds": 6.625
+          "duration_seconds": 5.5,
+          "source_sha256": "b9b7e410f4a4c3fd19865f7dbb584c7b4d30455b8bbf9d71bce9c071e3349db2"
+        },
+        {
+          "id": "fontanar",
+          "subject": "Fontanar kitchen lifestyle scene",
+          "source_path": "assets/video/properties/fontanar.mp4",
+          "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement",
+          "start_seconds": 1,
+          "duration_seconds": 4.5,
+          "source_sha256": "5e3f5d4bb161215e0c79190373a2dabce6e4e3e4887d682f1e4ff888b586baab"
+        },
+        {
+          "id": "san-lucas",
+          "subject": "San Lucas living room lifestyle scene",
+          "source_path": "assets/video/properties/san-lucas.mp4",
+          "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement",
+          "start_seconds": 1,
+          "duration_seconds": 4.5,
+          "source_sha256": "f83fbbf5fb1cc945067e16ac63a7d4eec910ef6334d88e6f68c3c8f083bad171"
         },
         {
           "id": "1849343666",
           "subject": "Colonial town square with pedestrians",
-          "start_seconds": 0,
-          "duration_seconds": 6.625
+          "source_path": "assets/video/stock/AdobeStock_1849343666.mp4",
+          "source_kind": "Actual supplied stock footage",
+          "start_seconds": 2,
+          "duration_seconds": 4.5,
+          "source_sha256": "4dbc26061bb64d7bbfd51326db78c7643ac863f4b890e73a4dcf1c63b94285ee"
+        },
+        {
+          "id": "aires",
+          "subject": "Aires de Campestre living room lifestyle scene",
+          "source_path": "assets/video/properties/aires.mp4",
+          "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement",
+          "start_seconds": 1,
+          "duration_seconds": 4.5,
+          "source_sha256": "393b73d4e38409e1ab5676c04a8b66835a62f9695eb18236816b41e07afc1b44"
+        },
+        {
+          "id": "monte-sereno",
+          "subject": "Monte Sereno garden lifestyle scene",
+          "source_path": "assets/video/properties/monte-sereno.mp4",
+          "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement",
+          "start_seconds": 1,
+          "duration_seconds": 4.5,
+          "source_sha256": "8613aa411553e3183e26ee1f5ccdc135886f3034938f16990180047d8aea03ef"
+        },
+        {
+          "id": "montana",
+          "subject": "Casa Montana evening terrace lifestyle scene",
+          "source_path": "assets/video/properties/montana.mp4",
+          "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement",
+          "start_seconds": 2,
+          "duration_seconds": 5.5,
+          "source_sha256": "4615ecce7191acff9b615165efe67fda63c1b64fa036d7f3d02c5ef262d4aced"
         }
       ],
-      "crossfade_seconds": 0.625,
-      "method": "Actual supplied city and town footage at original speed; circular dissolves; no synthetic scene generation.",
+      "crossfade_seconds": 0.5,
+      "method": "A seven-scene montage of actual city/town aerial footage and existing camera-move films made from all five AI property lifestyle illustrations. All source films retain their original speed, framing and color; short circular dissolves connect them. No new image generation or simulated human movement.",
+      "source_provenance": [
+        "assets/video/stock/provenance.json",
+        "assets/video/properties/metadata/provenance.json",
+        "assets/images/lifestyle/provenance.json"
+      ],
+      "timeline": [
+        {
+          "id": "693150796",
+          "section_start_seconds": 0,
+          "section_end_seconds": 5.0,
+          "outgoing_dissolve_start_seconds": 4.5,
+          "outgoing_dissolve_end_seconds": 5.0
+        },
+        {
+          "id": "fontanar",
+          "section_start_seconds": 5.0,
+          "section_end_seconds": 9.0,
+          "outgoing_dissolve_start_seconds": 8.5,
+          "outgoing_dissolve_end_seconds": 9.0
+        },
+        {
+          "id": "san-lucas",
+          "section_start_seconds": 9.0,
+          "section_end_seconds": 13.0,
+          "outgoing_dissolve_start_seconds": 12.5,
+          "outgoing_dissolve_end_seconds": 13.0
+        },
+        {
+          "id": "1849343666",
+          "section_start_seconds": 13.0,
+          "section_end_seconds": 17.0,
+          "outgoing_dissolve_start_seconds": 16.5,
+          "outgoing_dissolve_end_seconds": 17.0
+        },
+        {
+          "id": "aires",
+          "section_start_seconds": 17.0,
+          "section_end_seconds": 21.0,
+          "outgoing_dissolve_start_seconds": 20.5,
+          "outgoing_dissolve_end_seconds": 21.0
+        },
+        {
+          "id": "monte-sereno",
+          "section_start_seconds": 21.0,
+          "section_end_seconds": 25.0,
+          "outgoing_dissolve_start_seconds": 24.5,
+          "outgoing_dissolve_end_seconds": 25.0
+        },
+        {
+          "id": "montana",
+          "section_start_seconds": 25.0,
+          "section_end_seconds": 30.0,
+          "outgoing_dissolve_start_seconds": 29.5,
+          "outgoing_dissolve_end_seconds": 30.0
+        }
+      ],
+      "timeline_note": "Each section includes its outgoing half-second dissolve; the last dissolve returns to the opening city shot. Incoming clips begin during the preceding section's outgoing dissolve.",
+      "excluded_from_opening": "AdobeStock_539938219 countryside woman footage",
       "loop_method": "Repeat the first city segment after the final dissolve, then trim at matching city camera positions.",
       "render_script": "scripts/render-introduction.py",
       "encoding_options": [
@@ -51,11 +160,11 @@
         "-preset",
         "slow",
         "-crf",
-        "23",
+        "22",
         "-maxrate",
-        "6M",
+        "7M",
         "-bufsize",
-        "12M",
+        "14M",
         "-profile:v",
         "high",
         "-level",
