@@ -1,0 +1,33 @@
+/* Navigation occupies its own rows. The story scrolls only between the bars. */
+@media screen {
+  :root{--masthead-height:88px}
+  body{height:100dvh;display:grid;grid-template-rows:var(--masthead-height) minmax(0,1fr) var(--bar)}
+  .masthead{position:relative;inset:auto;grid-row:1;height:100%;background:#17282d;backdrop-filter:none;pointer-events:auto}
+  .masthead.scrolled{background:#17282d;backdrop-filter:none}
+  .masthead.on-light,.masthead.on-light.scrolled{background:var(--paper)}
+  #deck{grid-row:2;height:100%;min-height:0;min-width:0}
+  .controls{position:relative;inset:auto;grid-row:3;height:100%;min-width:0}
+  .slide{min-height:100%}
+
+  /* Remove the padding that previously made room for an overlaid header. */
+  .slide:not(.investment-story)>.content{padding-top:62px}
+  .slide.cover>.cover-content{padding-top:122px}
+  .slide.closing>.content{padding-top:92px}
+  .slide.nightlife>.content{padding-top:132px}
+  .slide.team-story>.content{padding-top:32px}
+  .property-split .property-copy{padding-top:32px}
+  .slide>.motion-toggle{top:25px}
+
+  @media(max-width:800px){
+    :root{--masthead-height:78px}
+    .slide:not(.investment-story)>.content{padding-top:34px}
+    .slide.cover>.cover-content{padding-top:152px}
+    .slide.location>.content,.slide.hospitality>.content{padding-top:97px}
+    .slide.closing>.content{padding-top:102px}
+    .slide.nightlife>.content{padding-top:162px}
+    .slide.team-story>.content{padding-top:34px}
+    .property-slide{padding-top:0}
+    .property-split .property-copy{padding-top:30px}
+    .slide>.motion-toggle{top:15px}
+  }
+}

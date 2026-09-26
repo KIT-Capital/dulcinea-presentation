@@ -228,5 +228,15 @@
     "marker": "{{INTRO_VIDEO_POSTER}}",
     "path": "assets/video/dulcinea-introduction-poster.jpg",
     "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{PROPERTY_VIEWING_VIDEO}}",
+    "path": "assets/video/stock/AdobeStock_762119818.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{PROPERTY_VIEWING_POSTER}}",
+    "path": "assets/video/stock/AdobeStock_762119818-poster.jpg",
+    "mime": "image/jpeg"
   }
 ]

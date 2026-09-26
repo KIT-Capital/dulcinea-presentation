@@ -9,8 +9,8 @@ const siteRoot = path.join(root, 'dist', 'private-site');
 
 const assets = [
   ['{{KIT_LOGO}}', 'brand/kit-capital/kit-capital.png', 'image/png'],
-  ['{{LOGO_DARK}}', 'brand/dulcinea-one/svg/dulcinea-one-mono-white.svg', 'image/svg+xml'],
-  ['{{LOGO_LIGHT}}', 'brand/dulcinea-one/svg/dulcinea-one-mono-black.svg', 'image/svg+xml'],
+  ['{{LOGO_DARK}}', 'brand/dulcinea-one/svg/dulcinea-one-white-gold.svg', 'image/svg+xml'],
+  ['{{LOGO_LIGHT}}', 'brand/dulcinea-one/svg/dulcinea-one-black-gold.svg', 'image/svg+xml'],
   ['{{SYMBOL_DARK}}', 'brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg', 'image/svg+xml'],
   ['{{SYMBOL_LIGHT}}', 'brand/shared-symbol/svg/dulcinea-symbol-mono-black.svg', 'image/svg+xml'],
   ['{{FAVICON}}', 'brand/shared-symbol/svg/dulcinea-symbol-mono-black.svg', 'image/svg+xml'],
@@ -25,7 +25,7 @@ async function build() {
   }
   const [template, styles, script, paletteText] = await Promise.all([
     read('src/presentation.html', 'utf8'),
-    Promise.all([read('src/presentation.css', 'utf8'), read('src/story.css', 'utf8'), read('src/property-viewer.css', 'utf8'), read('src/photo-motion.css', 'utf8')]).then(parts => parts.join('\n')),
+    Promise.all([read('src/presentation.css', 'utf8'), read('src/story.css', 'utf8'), read('src/property-viewer.css', 'utf8'), read('src/photo-motion.css', 'utf8'), read('src/navigation-layout.css', 'utf8')]).then(parts => parts.join('\n')),
     Promise.all([read('src/navigation.js', 'utf8'), read('src/photo-motion.js', 'utf8')]).then(parts => parts.join('\n')),
     read('design/palette.json', 'utf8'),
   ]);
@@ -52,15 +52,18 @@ async function build() {
   }
 
   const palette = JSON.parse(paletteText);
-  if (!Array.isArray(palette.colors) || palette.colors.length !== 5) {
+  const originalColors = ['blue-topaz', 'plumeria', 'african-violet', 'simply-green', 'coconut-shell'];
+  if (!Array.isArray(palette.colors) || !originalColors.every(token => palette.colors.some(color => color.token === token))) {
     throw new Error('The presentation requires the five supplied Pantone colors.');
   }
-  const paletteCss = ':root{\n' + palette.colors.map(({ token, hex }) => {
+  if (new Set(palette.colors.map(color => color.token)).size !== palette.colors.length) throw new Error('Duplicate palette token');
+  const paletteCss = ':root{\n' + palette.colors.map(({ token, hex, pantone }) => {
     if (!/^[a-z]+(?:-[a-z]+)*$/.test(token) || !/^#[0-9A-Fa-f]{6}$/.test(hex)) {
       throw new Error('Invalid palette token or digital color value.');
     }
     const rgb = [1, 3, 5].map((start) => parseInt(hex.slice(start, start + 2), 16)).join(',');
-    return `  --pantone-${token}:${hex};\n  --pantone-${token}-rgb:${rgb};`;
+    const prefix = pantone ? 'pantone' : 'brand';
+    return `  --${prefix}-${token}:${hex};\n  --${prefix}-${token}-rgb:${rgb};`;
   }).join('\n') + '\n}';
   const themeColor = palette.colors.find(({ token }) => token === 'blue-topaz')?.hex;
   if (!themeColor) throw new Error('The palette must include Blue Topaz.');
@@ -85,13 +88,16 @@ async function build() {
 
   let financial = await read('src/financial-statements.html', 'utf8');
   let criteria = await read('src/investment-criteria.html', 'utf8');
+  const resourceLogo = embeddedAssets.find(([marker]) => marker === '{{LOGO_DARK}}')[1];
+  financial = financial.replaceAll('{{RESOURCE_LOGO}}', () => resourceLogo);
+  criteria = criteria.replaceAll('{{RESOURCE_LOGO}}', () => resourceLogo);
   if (web) {
     const signOut = '<form class="session-exit" action="/logout" method="post"><button type="submit">Sign out</button></form>';
     const exitStyle = '<style>.session-exit{margin:24px 0}.session-exit button{font:inherit;font-size:14px;color:inherit;background:transparent;border:1px solid currentColor;border-radius:0;padding:12px 20px;cursor:pointer}.session-exit button:focus-visible{outline:3px solid #009B74;outline-offset:4px}#slide-menu>.session-exit{margin:24px 5vw}</style>';
     html = html.replace('<button aria-label="Close slide menu"', signOut + '<button aria-label="Close slide menu"').replace('</head>', exitStyle + '</head>');
     financial = financial.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
     criteria = criteria.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
-    await copyAsset('brand/dulcinea-one/svg/dulcinea-one-mono-black.svg', 'gate-assets/logo.svg');
+    await copyAsset('brand/dulcinea-one/svg/dulcinea-one-black-gold.svg', 'gate-assets/logo.svg');
   }
   const destination = web ? siteRoot : root;
   const output = path.join(destination, 'index.html');

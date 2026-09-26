@@ -14,16 +14,16 @@ Content coverage and the handling of financial source differences are documented
 
 The original copper logo archive is preserved at `source-packages/Dulcinea_Logo_Package_Copper.zip`. Its complete extracted package remains unchanged under `brand/`.
 
-The presentation uses these supplied monochrome SVG variants:
+The presentation uses two derived full wordmarks and the supplied monochrome symbols:
 
-- `brand/dulcinea-one/svg/dulcinea-one-mono-white.svg`
-- `brand/dulcinea-one/svg/dulcinea-one-mono-black.svg`
+- `brand/dulcinea-one/svg/dulcinea-one-white-gold.svg`
+- `brand/dulcinea-one/svg/dulcinea-one-black-gold.svg`
 - `brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg`
 - `brand/shared-symbol/svg/dulcinea-symbol-mono-black.svg`
 
-The black doorway symbol also supplies the browser favicon. The builder embeds the original SVG bytes as Base64 data URIs without redrawing, recoloring, or rewriting the artwork. The Lola & Ber graphic comes from the supplied PowerPoint. Dulcinea is a real estate investment firm with a unique platform focused on Medellín, Colombia, managing acquisition through sale. Dulcinea One is its first fund, co-branded by Lola & Ber Hospitality.
+The derived wordmarks change only the `fund-one` path fill in the supplied monochrome SVGs to Yellow Gold (#D4AF37), following the user's request to distinguish “One.” The original masters remain unchanged. The black doorway symbol also supplies the browser favicon. The builder embeds these assets as Base64 data URIs in the offline presentation and copies them unchanged for web hosting. The Lola & Ber graphic comes from the supplied PowerPoint. Dulcinea is a real estate investment firm with a unique platform focused on Medellín, Colombia, managing acquisition through sale. Dulcinea One is its first fund, co-branded by Lola & Ber Hospitality.
 
-## Active Pantone palette
+## Active brand palette
 
 Both user-supplied saved pages, `Pantone Connect.html` and `Pantone Connect 2.html`, contain the same selected palette. These are the exact displayed digital values:
 
@@ -34,6 +34,8 @@ Both user-supplied saved pages, `Pantone Connect.html` and `Pantone Connect 2.ht
 | African Violet | 16-3520 TCX | `#B085B7` | 176, 133, 183 |
 | Simply Green | 17-5936 TCX | `#009B74` | 0, 155, 116 |
 | Coconut Shell | 18-1230 TCX | `#874E3C` | 135, 78, 60 |
+
+Yellow Gold (#D4AF37; RGB 212, 175, 55) was added later at the user's request as a custom digital accent. It does not come from the Pantone screenshots, and no Pantone equivalence is assigned.
 
 Source hashes and extraction evidence are recorded in `design/palette.json`; roles are documented in `design/README.md`. The later references, `design/Dulcinea-Pantone-palette.png` and `design/Dulcinea-Pantone-swatch-values.png`, are retained unchanged and match all five RGB/HEX values. The saved application pages remain outside the repository. White, graphite and near-black are functional neutrals outside the five selected colors. Lighter fields and the blue, pink, violet and green tones carry the current layout; Coconut Shell is an accent rather than the dominant background. The original copper brand package remains intact.
 
@@ -116,7 +118,7 @@ The user initially supplied four MOV files from the Dulcinea stock-video folder.
 
 Representative frames at 10%, 50%, and 90% of each original were visually inspected; no visible watermarks appeared in those samples. Geographic locations and licensing terms were not independently verified. Footage illustrates setting and hospitality and does not establish portfolio ownership or that depicted people work for Dulcinea. The pasture portrait appears in the closing contact chapter; it is excluded from the opening film.
 
-Each optimized video keeps the original filename stem with an `.mp4` extension; a corresponding `-poster.jpg` is also included. Scaling preserves aspect ratio and uses a centered 16:9 crop when necessary. Optimized clips are silent H.264 at 1280 × 720 and 24 fps, with Rec.709 color, limited range, and fast-start metadata.
+Each optimized video keeps the original filename stem with an `.mp4` extension; a corresponding `-poster.jpg` is also included. Scaling preserves aspect ratio and uses a centered 16:9 crop when necessary. These initially imported clips are silent H.264 at 1280 × 720 and 24 fps, with Rec.709 color, limited range, and fast-start metadata.
 
 The user later supplied three more MOV files. Two are unique; the third is an exact duplicate of an earlier source:
 
@@ -201,3 +203,11 @@ The user re-supplied `AdobeStock_787505338.mov` and `AdobeStock_807462744.mov`. 
 `AdobeStock_891890158.jpeg` is the wide green city panorama used as a moving photograph within the opening sequence. `AdobeStock_259715040.jpeg` is the evening photograph used between the neon sign and the DJ/crowd scenes in After dark. Both original JPEG files are copied unchanged into `assets/images/stock/`. The six-second loops use restrained cyclic camera motion; no person or object movement is synthesized. Import hashes, crops, encoding and decode checks are in `assets/video/latest-photos-provenance.json`.
 
 The later re-supplied `AdobeStock_727024520.mov` was also checked against the existing original SHA-256 and is an exact match. Its existing night-road segment remains in After dark; no duplicate import was needed.
+
+## Apartment-viewing footage
+
+The later supplied `AdobeStock_762119818.mp4` shows an agent with papers walking an adult couple through a bright apartment. The original is 27.55 seconds at 2048 × 1080 and 60 fps, with no audio. It is distinct from the eight earlier supplied stock clips; no duplicate source is copied into the repository.
+
+A short, silent H.264 loop and matching poster appear in Buying well, beside the acquisition criteria. The full width of the scene is retained to keep all three adults visible. This illustrative viewing replaces the bathroom still in that chapter; it does not depict a verified Dulcinea property or team member. The original 174 MB source stays unchanged in the supplied stock-video folder.
+
+`scripts/render-property-viewing.py` reproduces the web edit. Source/output hashes, exact timing, encoding and validation are recorded in `assets/video/stock/property-viewing-provenance.json`. This brings the presentation to nine unique supplied stock clips, all served as MP4.

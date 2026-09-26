@@ -1,0 +1,82 @@
+{
+  "id": "762119818",
+  "subject": "Three adults in a bright, mostly unfurnished apartment. A suited man holding papers gestures around the room to a casually dressed couple; the scene reads as a property viewing.",
+  "source": {
+    "filename": "AdobeStock_762119818.mp4",
+    "bytes": 174179455,
+    "sha256": "f8a31bf62e427345992d56d043ba39d6bfca551e7bbc00edd9afe94c1a3e77fd",
+    "duration_seconds": 27.55,
+    "video_stream": "Stream #0:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(progressive), 2048x1080 [SAR 1:1 DAR 256:135], 50575 kb/s, 60 fps, 60 tbr, 15360 tbn (default)",
+    "audio_tracks": 0,
+    "unchanged": true
+  },
+  "output": {
+    "path": "assets/video/stock/AdobeStock_762119818.mp4",
+    "bytes": 1473225,
+    "sha256": "7d50539838617d04e63cfa33b193057426b1dbbee42a2fa5563b2c99fa3a2b59",
+    "duration_seconds": 7.5,
+    "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x676 [SAR 1:1 DAR 320:169], 1568 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+    "audio_tracks": 0
+  },
+  "poster": {
+    "path": "assets/video/stock/AdobeStock_762119818-poster.jpg",
+    "seconds": 3,
+    "sha256": "82e461bd7160147c9f3db97bb0944195ddba1f18d9f4c29a2555808c175d201f"
+  },
+  "edit": {
+    "source_range_seconds": [
+      6.0,
+      14.0
+    ],
+    "source_duration_seconds": 8.0,
+    "output_duration_seconds": 7.5,
+    "crossfade_seconds": 0.5,
+    "output_dissolve_interval_seconds": [
+      7,
+      7.5
+    ],
+    "loop_method": "Repeat the first 0.75 seconds of the selected excerpt, dissolve back to it, then trim at matching source positions. Half-second overlap makes the 8-second source excerpt a 7.5-second loop.",
+    "geometry": "Complete original 2048x1080 frame is scaled to 1280x676 without cropping. The even output dimensions introduce only a 0.15 percent vertical aspect correction relative to 1280x675, avoiding a native FFmpeg failure with the odd-height intermediate. All three people remain within the original framing.",
+    "motion": "Actual footage at original playback speed. Frame rate converted from 60 to 24 fps; no synthetic motion, generated imagery or optical-flow interpolation."
+  },
+  "encoding_options": [
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "slow",
+    "-crf",
+    "21",
+    "-maxrate",
+    "6M",
+    "-bufsize",
+    "12M",
+    "-profile:v",
+    "high",
+    "-level",
+    "3.1",
+    "-pix_fmt",
+    "yuv420p",
+    "-color_range",
+    "tv",
+    "-colorspace",
+    "bt709",
+    "-color_primaries",
+    "bt709",
+    "-color_trc",
+    "bt709",
+    "-r",
+    "24",
+    "-g",
+    "48",
+    "-movflags",
+    "+faststart",
+    "-threads",
+    "4"
+  ],
+  "normalization_filter": "setpts=PTS-STARTPTS,fps=24,settb=1/24,scale=1280:676:flags=lanczos:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p,setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709",
+  "render_script": "scripts/render-property-viewing.py",
+  "watermark_review": "No visible watermark across six representative original frames.",
+  "location_note": "Illustrative stock property-viewing scene; no specific location, Dulcinea property or team identity is asserted.",
+  "validation": "Complete output decoded successfully; verified 7.5 seconds, silent H.264 yuv420p, 1280x676 at 24 fps and moov before mdat for fast start."
+}

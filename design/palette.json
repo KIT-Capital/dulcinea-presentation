@@ -1,5 +1,5 @@
 {
-  "name": "Dulcinea Pantone palette",
+  "name": "Dulcinea brand palette",
   "colors": [
     {
       "token": "blue-topaz",
@@ -55,6 +55,18 @@
         78,
         60
       ]
+    },
+    {
+      "token": "yellow-gold",
+      "name": "Yellow Gold",
+      "pantone": null,
+      "hex": "#D4AF37",
+      "rgb": [
+        212,
+        175,
+        55
+      ],
+      "kind": "Custom digital accent requested by the user; no Pantone equivalence assigned"
     }
   ],
   "sources": [
