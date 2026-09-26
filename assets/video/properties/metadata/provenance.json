@@ -1,0 +1,276 @@
+{
+  "method": "Gentle looping camera motion applied to AI-generated still property illustrations. Animated stills, not filmed footage.",
+  "people": "Adults are fictional and remain still. No fabricated human movement, frame interpolation or generative video.",
+  "source_handling": "Retained PNGs unchanged; 16:9 crop, then 0.8-3.5 percent eased zoom with slight pan. Architecture and all depicted adults remain in frame.",
+  "render_script": "scripts/render-property-videos.py",
+  "tool": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+  "total_bytes": 7733024,
+  "videos": [
+    {
+      "slug": "san-lucas",
+      "file": "assets/video/properties/san-lucas.mp4",
+      "source": "assets/images/lifestyle/san-lucas.png",
+      "source_sha256": "391410af65825178e58c9edc1010d5b865106fac83b193ef0d99e66950f3f0b0",
+      "source_dimensions": [
+        1536,
+        1024
+      ],
+      "sha256": "f83fbbf5fb1cc945067e16ac63a7d4eec910ef6334d88e6f68c3c8f083bad171",
+      "bytes": 1669910,
+      "seconds": 9,
+      "frames": 216,
+      "fps": 24,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "codec": "H.264 High / yuv420p",
+      "audio_tracks": 0,
+      "fast_start": true,
+      "encoding": {
+        "preset": "slow",
+        "crf": 22,
+        "maxrate": "1400k",
+        "bufsize": "2800k",
+        "threads": 2
+      },
+      "camera": {
+        "crop_y": 0.44,
+        "x": 0.42,
+        "drift": 0.06,
+        "y": 0.46,
+        "zoom_min": 1.008,
+        "zoom_max": 1.035,
+        "easing": "0.5 - 0.5*cos(2*pi*frame/215); same position and zero speed at both ends"
+      },
+      "verification": {
+        "full_stream_decode": "pass",
+        "uncompressed_endpoint_md5": [
+          "3679701fc24cf8dd961d47acc5463142",
+          "3679701fc24cf8dd961d47acc5463142"
+        ],
+        "uncompressed_endpoints_identical": true,
+        "encoded_endpoint_sha256": [
+          "3410610c7ed281739f060ff0958e416c7e4641ee510f25b1eaf1410c3567fa3e",
+          "a5c02ae9fe976adfffbab723eb970a767c3657bb5500dd15f66258b0bc6fc05c"
+        ],
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 3.162109736689815,
+        "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
+      }
+    },
+    {
+      "slug": "aires",
+      "file": "assets/video/properties/aires.mp4",
+      "source": "assets/images/lifestyle/aires.png",
+      "source_sha256": "aa426239adc3a98d6d793ec4fc2f6a51ae6a59dce21308f05146985168e44299",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "393b73d4e38409e1ab5676c04a8b66835a62f9695eb18236816b41e07afc1b44",
+      "bytes": 1625531,
+      "seconds": 9,
+      "frames": 216,
+      "fps": 24,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "codec": "H.264 High / yuv420p",
+      "audio_tracks": 0,
+      "fast_start": true,
+      "encoding": {
+        "preset": "slow",
+        "crf": 22,
+        "maxrate": "1400k",
+        "bufsize": "2800k",
+        "threads": 2
+      },
+      "camera": {
+        "crop_y": 0.5,
+        "x": 0.52,
+        "drift": -0.05,
+        "y": 0.49,
+        "zoom_min": 1.008,
+        "zoom_max": 1.035,
+        "easing": "0.5 - 0.5*cos(2*pi*frame/215); same position and zero speed at both ends"
+      },
+      "verification": {
+        "full_stream_decode": "pass",
+        "uncompressed_endpoint_md5": [
+          "2d7718a6c1a96424f7f20aa0fbfaaee9",
+          "2d7718a6c1a96424f7f20aa0fbfaaee9"
+        ],
+        "uncompressed_endpoints_identical": true,
+        "encoded_endpoint_sha256": [
+          "12590e3d1a5b551c6af9e269e4dcf80c9a7127274be18b2cab9d0327880199f6",
+          "91cac05f94c6c14c2c58981cc235122653fac4902e5301d0dd5a7318781fce4a"
+        ],
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 2.2789789496527777,
+        "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
+      }
+    },
+    {
+      "slug": "fontanar",
+      "file": "assets/video/properties/fontanar.mp4",
+      "source": "assets/images/lifestyle/fontanar.png",
+      "source_sha256": "3c7c702c88813e8cdc301e4d2e45a0bafefc3ca89472857da39d249b8ed8c083",
+      "source_dimensions": [
+        1536,
+        1024
+      ],
+      "sha256": "5e3f5d4bb161215e0c79190373a2dabce6e4e3e4887d682f1e4ff888b586baab",
+      "bytes": 1075890,
+      "seconds": 9,
+      "frames": 216,
+      "fps": 24,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "codec": "H.264 High / yuv420p",
+      "audio_tracks": 0,
+      "fast_start": true,
+      "encoding": {
+        "preset": "slow",
+        "crf": 22,
+        "maxrate": "1400k",
+        "bufsize": "2800k",
+        "threads": 2
+      },
+      "camera": {
+        "crop_y": 0.46,
+        "x": 0.5,
+        "drift": 0.05,
+        "y": 0.52,
+        "zoom_min": 1.008,
+        "zoom_max": 1.035,
+        "easing": "0.5 - 0.5*cos(2*pi*frame/215); same position and zero speed at both ends"
+      },
+      "verification": {
+        "full_stream_decode": "pass",
+        "uncompressed_endpoint_md5": [
+          "4332f3d3cc3f2f82f1c88ac15220be74",
+          "4332f3d3cc3f2f82f1c88ac15220be74"
+        ],
+        "uncompressed_endpoints_identical": true,
+        "encoded_endpoint_sha256": [
+          "a7224b1ce5392894eaed52c303a8d23c20a0f2fefcc64bf629354c1cc99c2ed5",
+          "e58e4812a4c2f12cf4e3fdbf961174df38573a8f4404b1a0e118b994e301cef6"
+        ],
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 1.504129050925926,
+        "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
+      }
+    },
+    {
+      "slug": "monte-sereno",
+      "file": "assets/video/properties/monte-sereno.mp4",
+      "source": "assets/images/lifestyle/monte-sereno.png",
+      "source_sha256": "ee8624f4799d11cef226ed3524bd32921bd961d5a36e435e185d20e40dd01c3f",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "8613aa411553e3183e26ee1f5ccdc135886f3034938f16990180047d8aea03ef",
+      "bytes": 1698801,
+      "seconds": 9,
+      "frames": 216,
+      "fps": 24,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "codec": "H.264 High / yuv420p",
+      "audio_tracks": 0,
+      "fast_start": true,
+      "encoding": {
+        "preset": "slow",
+        "crf": 22,
+        "maxrate": "1400k",
+        "bufsize": "2800k",
+        "threads": 2
+      },
+      "camera": {
+        "crop_y": 0.5,
+        "x": 0.46,
+        "drift": 0.05,
+        "y": 0.54,
+        "zoom_min": 1.008,
+        "zoom_max": 1.035,
+        "easing": "0.5 - 0.5*cos(2*pi*frame/215); same position and zero speed at both ends"
+      },
+      "verification": {
+        "full_stream_decode": "pass",
+        "uncompressed_endpoint_md5": [
+          "b67e22cf135633f61dc9b5d2f6ec9a97",
+          "b67e22cf135633f61dc9b5d2f6ec9a97"
+        ],
+        "uncompressed_endpoints_identical": true,
+        "encoded_endpoint_sha256": [
+          "955910cc2aefc279db5d9463b10d505823de8ca450e127b186725eb09ffbb2f0",
+          "434cbc989b380b32331049dd39ddcd638f139f3db4a9091eb55ed5526bc7ba46"
+        ],
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 4.6489033564814815,
+        "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
+      }
+    },
+    {
+      "slug": "montana",
+      "file": "assets/video/properties/montana.mp4",
+      "source": "assets/images/lifestyle/montana.png",
+      "source_sha256": "b82c3248c3fbe57ab56ef4e7ad032663c914415a393fd402cea456489536b837",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "4615ecce7191acff9b615165efe67fda63c1b64fa036d7f3d02c5ef262d4aced",
+      "bytes": 1662892,
+      "seconds": 9,
+      "frames": 216,
+      "fps": 24,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "codec": "H.264 High / yuv420p",
+      "audio_tracks": 0,
+      "fast_start": true,
+      "encoding": {
+        "preset": "slow",
+        "crf": 22,
+        "maxrate": "1400k",
+        "bufsize": "2800k",
+        "threads": 2
+      },
+      "camera": {
+        "crop_y": 0.5,
+        "x": 0.56,
+        "drift": -0.04,
+        "y": 0.51,
+        "zoom_min": 1.008,
+        "zoom_max": 1.035,
+        "easing": "0.5 - 0.5*cos(2*pi*frame/215); same position and zero speed at both ends"
+      },
+      "verification": {
+        "full_stream_decode": "pass",
+        "uncompressed_endpoint_md5": [
+          "a1b7c472b92dd73e443a8ae27a48a092",
+          "a1b7c472b92dd73e443a8ae27a48a092"
+        ],
+        "uncompressed_endpoints_identical": true,
+        "encoded_endpoint_sha256": [
+          "7026c6965be35ad378c3f41ec981a18b922413508985c2e8004eefae030e313f",
+          "f3b20afda8270abd4ba6b546794c09c5e5f390d6d1878cae2e084aabf848a32f"
+        ],
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 3.8725517216435184,
+        "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
+      }
+    }
+  ],
+  "visual_review": {
+    "reviewed": "All five actual encoded midpoint frames",
+    "result": "All depicted adults remain visible; recognizable architectural views preserved; no framing defect found.",
+    "loop_check": "Identical uncompressed first/last frame MD5s for all five camera transforms. Encoded endpoint differences are lossy compression only.",
+    "review_frames": "work/property-video-review/{slug}-01.png, -02.png, -03.png are first/midpoint/last."
+  }
+}

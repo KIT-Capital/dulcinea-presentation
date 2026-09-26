@@ -131,8 +131,11 @@ def main():
         stock_provenance.write_text(json.dumps({"source": "Four Adobe Stock MOV files supplied by the user", "sources": sources}, indent=2) + "\n")
     else:
         sources = json.loads(stock_provenance.read_text())["sources"]
+    intro_spec = importlib.util.spec_from_file_location("introduction_renderer", ROOT / "scripts" / "render-introduction.py")
+    intro_module = importlib.util.module_from_spec(intro_spec)
+    intro_spec.loader.exec_module(intro_module)
     videos = [
-        compose(ffmpeg, "dulcinea-introduction.mp4", [{"id": "693150796", "start_seconds": 0}, {"id": "1849343666", "start_seconds": 0}], 10),
+        intro_module.render_intro(ffmpeg),
         compose(ffmpeg, "hospitality-people.mp4", [{"id": "80490822", "start_seconds": 2}], 15),
     ]
     provenance = {
@@ -142,7 +145,8 @@ def main():
         "location_note": "Geographic locations are not independently verified from the footage. It illustrates setting and hospitality, not portfolio ownership.",
         "source_metadata": "assets/video/stock/provenance.json", "render_script": "scripts/render-stock-videos.py",
         "encoding": {"codec": "H.264 High", "dimensions": [1280, 720], "fps": 24, "pixel_format": "yuv420p", "color_space": "Rec.709", "color_range": "limited", "audio_tracks": 0, "fast_start": True},
-        "videos": videos, "unused_in_main_presentation": ["AdobeStock_539938219.mp4"],
+        "videos": videos, "unused_in_main_presentation": [],
+        "render_scripts": {"introduction": "scripts/render-introduction.py", "hospitality": "scripts/render-stock-videos.py"},
         "validation": "Complete output streams decoded successfully and verified as silent H.264 1280x720. Source representative frames visually inspected.",
     }
     (VIDEO / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")

@@ -1,0 +1,52 @@
+{
+  "person": "Adriana Suárez",
+  "selected_asset": "assets/images/team/adriana-supplied.jpeg",
+  "source_filename": "Adriana Suarez.jpeg",
+  "source_sha256": "e49940f39872a54be6c25efa6dbd47cafc10ee088060d568bfe158a2c4e75642",
+  "selected_sha256": "e49940f39872a54be6c25efa6dbd47cafc10ee088060d568bfe158a2c4e75642",
+  "width": 1024,
+  "height": 1536,
+  "bytes": 108768,
+  "actual_use": "User-supplied original portrait, copied unchanged. No AI rendering, retouching, resizing or recompression applied to the selected image.",
+  "review": "Supplied color portrait visually inspected: white blazer, pulled-back hair and seated pose in a softly lit interior.",
+  "superseded_ai_candidate": {
+    "person": "Adriana Suárez",
+    "task": "Photographic portrait restoration",
+    "tool": "Built-in image_gen.imagegen",
+    "source": "assets/images/investor-deck/image51.jpeg",
+    "sourceSha256": "ea7e5acc295df89f4a81f9b4722d6e25092c7fa44f72f155fb941416654f068d",
+    "sourceDimensions": [
+      107,
+      107
+    ],
+    "prompt": "Use case: identity-preserve photographic restoration. Edit the attached low-resolution portrait photograph of Adriana; the attached image is the exact identity/edit target, not a style reference. Produce one tasteful photorealistic professional head-and-shoulders portrait in a 4:5 vertical crop. Preserve her actual recognizable face as closely as the source allows: same head and jaw shape, cheek fullness, eye shape and spacing, eyebrow shape, nose width and tip, lips, gentle closed-mouth smile, hairline, pulled-back hair, apparent age, expression and front-facing pose. Do not beautify, reshape, slim, rejuvenate, replace her face or alter ethnic appearance. Keep natural skin texture and under-eye/age details; avoid heavy smoothing and synthetic pore detail. The source is monochrome and only 107 pixels square: retain neutral black-and-white tones rather than invent eye, hair or skin colors. Improve tonal balance, soft even photographic light and restrained clarity while faithfully retaining the visible features. Keep the light collared garment visible in the original, with only a modest natural head-and-shoulders expansion needed for the 4:5 crop. Replace the busy dark wall with a clean subtle pale neutral-gray studio background. Comfortable room above the head and around the shoulders, straight natural perspective, professional but warm, no glamour styling, no new jewelry, no logos, no text, no watermark. This is restoration of the same woman, not a new model or idealized reinterpretation.",
+    "generationCount": 1,
+    "generationAsset": "exec-8023c238-4586-4547-96f4-0e5416e913b6.png",
+    "master": "assets/images/team/adriana-retouched.png",
+    "webAsset": "assets/images/team/adriana-retouched.jpg",
+    "userDeliverable": "outputs/team-portraits/adriana.png",
+    "treatment": "Neutral monochrome retained because the original source is grayscale. Soft even light, pale neutral background, head-and-shoulders crop; no intended facial reshaping, rejuvenation or heavy smoothing.",
+    "review": {
+      "result": "Selected first generation after comparison with the original.",
+      "observations": [
+        "Original face proportions, pulled-back hairstyle, eyebrow shape and gentle closed-mouth expression remain recognizable.",
+        "Natural skin texture retained; no visible anatomy or rendering defect.",
+        "Pale neutral background and comfortable head-and-shoulders framing."
+      ],
+      "limitation": "The source is only 107 by 107 pixels; newly resolved fine detail is generative reconstruction, not documentary recovery of detail absent from the source."
+    },
+    "masterDimensions": [
+      1122,
+      1402
+    ],
+    "webDimensions": [
+      960,
+      1200
+    ],
+    "masterSha256": "7b9927c6174f50ec95dac8514a16554ab87c8c4d04dc46098afbdc20178ed52b",
+    "webSha256": "5c99a4bf5c3b986a20253ebd6b360dd2a553ba96a870b08f9fe2a66aba1be948",
+    "webEncoding": "Progressive optimized JPEG, quality 91, proportional thumbnail to maximum 960x1200; no crop or retouch.",
+    "selected_for_use": false,
+    "superseded_reason": "User supplied a better finished portrait and requested direct use of that image."
+  }
+}

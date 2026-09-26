@@ -18,7 +18,7 @@ async function build() {
   const media = manifest.map(({ marker, path: assetPath, mime }) => [marker, assetPath, mime]);
   const [template, styles, script, paletteText, embeddedAssets] = await Promise.all([
     read('src/presentation.html', 'utf8'),
-    Promise.all([read('src/presentation.css', 'utf8'), read('src/story.css', 'utf8')]).then(parts => parts.join('\n')),
+    Promise.all([read('src/presentation.css', 'utf8'), read('src/story.css', 'utf8'), read('src/property-viewer.css', 'utf8')]).then(parts => parts.join('\n')),
     read('src/navigation.js', 'utf8'),
     read('design/palette.json', 'utf8'),
     Promise.all([...assets, ...media].map(async ([marker, relativePath, mimeType]) => {
@@ -39,8 +39,8 @@ async function build() {
     const rgb = [1, 3, 5].map((start) => parseInt(hex.slice(start, start + 2), 16)).join(',');
     return `  --pantone-${token}:${hex};\n  --pantone-${token}-rgb:${rgb};`;
   }).join('\n') + '\n}';
-  const themeColor = palette.colors.find(({ token }) => token === 'coconut-shell')?.hex;
-  if (!themeColor) throw new Error('The palette must include Coconut Shell.');
+  const themeColor = palette.colors.find(({ token }) => token === 'blue-topaz')?.hex;
+  if (!themeColor) throw new Error('The palette must include Blue Topaz.');
 
   const replacements = [
     ['{{THEME_COLOR}}', themeColor],
@@ -57,11 +57,12 @@ async function build() {
     }
     html = html.replaceAll(marker, () => content);
   }
-  const unresolved = html.match(/\{\{[A-Z_]+\}\}|\/\*__[A-Z_]+__\*\//g);
+  const unresolved = html.match(/\{\{[A-Z_0-9]+\}\}|\/\*__[A-Z_]+__\*\//g);
   if (unresolved) throw new Error(`Unresolved template markers: ${[...new Set(unresolved)].join(', ')}`);
 
   const output = path.join(root, 'index.html');
   await writeFile(output, html, 'utf8');
+  await writeFile(path.join(root, 'financial-statements.html'), await read('src/financial-statements.html', 'utf8'), 'utf8');
   console.log(`Built index.html (${Buffer.byteLength(html, 'utf8').toLocaleString('en-US')} bytes)`);
 }
 

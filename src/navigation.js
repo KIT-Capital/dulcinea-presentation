@@ -40,7 +40,7 @@
     }));
 
     function videoAllowed(state) {
-      return state.slide === slides[currentIndex] && !document.hidden && !menu?.open
+      return state.slide === slides[currentIndex] && !document.hidden && !document.querySelector('dialog[open]')
         && !state.manuallyPaused && !state.failed && !state.blocked
         && (!reducedMotion.matches || state.explicitlyEnabled);
     }
@@ -133,7 +133,7 @@
       if (index < 0 || index >= slides.length) return;
       const changed = currentIndex !== index;
       currentIndex = index;
-      masthead?.classList.toggle('on-light', slides[index].classList.contains('ivory') || slides[index].classList.contains('blue'));
+      masthead?.classList.toggle('on-light', slides[index].matches('.ivory, .blue, .pink, .violet, .green'));
       slides.forEach((slide, position) => {
         slide.dataset.active = String(position === index);
       });
@@ -259,6 +259,77 @@
       updateGallery();
     }
 
+    const viewer = document.getElementById('property-viewer');
+    if (viewer && typeof viewer.showModal === 'function') {
+      const viewerTitle = viewer.querySelector('#viewer-title');
+      const stage = viewer.querySelector('.viewer-stage');
+      const count = viewer.querySelector('.viewer-count');
+      const back = viewer.querySelector('[data-viewer-prev]');
+      const forward = viewer.querySelector('[data-viewer-next]');
+      const zoom = viewer.querySelector('[data-viewer-zoom]');
+      const close = viewer.querySelector('[data-viewer-close]');
+      const download = viewer.querySelector('.viewer-toolbar a');
+      const suppliedPlansHref = download.href;
+      let figures = [];
+      let pageIndex = 0;
+      let opener = null;
+      let showingPlans = false;
+      function renderPage() {
+        stage.replaceChildren(figures[pageIndex].cloneNode(true));
+        stage.classList.remove('zoomed');
+        stage.scrollTop = 0;
+        stage.scrollLeft = 0;
+        zoom.textContent = 'Zoom in';
+        zoom.setAttribute('aria-pressed', 'false');
+        count.textContent = `${pageIndex + 1} / ${figures.length}`;
+        back.disabled = pageIndex === 0;
+        forward.disabled = pageIndex === figures.length - 1;
+        if (showingPlans) {
+          download.href = suppliedPlansHref;
+          download.download = 'Dulcinea-Floorplans.pdf';
+          download.textContent = 'Download supplied plans';
+        } else {
+          const image = stage.querySelector('img');
+          const extension = image.src.startsWith('data:image/webp') ? 'webp'
+            : image.src.startsWith('data:image/png') ? 'png' : 'jpg';
+          download.href = image.src;
+          download.download = `${opener.dataset.viewerTarget}.${extension}`;
+          download.textContent = 'Download image';
+        }
+      }
+      document.querySelectorAll('[data-viewer-target]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const template = document.getElementById(button.dataset.viewerTarget);
+          if (!template?.content) return;
+          figures = Array.from(template.content.querySelectorAll('figure'));
+          if (!figures.length) return;
+          opener = button;
+          showingPlans = button.dataset.viewerTarget.startsWith('plans-');
+          pageIndex = 0;
+          viewerTitle.textContent = button.dataset.viewerTitle;
+          renderPage();
+          viewer.showModal();
+          syncVideos();
+          close.focus();
+        });
+      });
+      back.addEventListener('click', () => { if (pageIndex > 0) { pageIndex--; renderPage(); } });
+      forward.addEventListener('click', () => { if (pageIndex < figures.length - 1) { pageIndex++; renderPage(); } });
+      zoom.addEventListener('click', () => {
+        const expanded = stage.classList.toggle('zoomed');
+        zoom.textContent = expanded ? 'Fit to screen' : 'Zoom in';
+        zoom.setAttribute('aria-pressed', String(expanded));
+      });
+      close.addEventListener('click', () => viewer.close());
+      viewer.addEventListener('close', () => { syncVideos(); opener?.focus({ preventScroll: true }); });
+      viewer.addEventListener('keydown', (event) => {
+        event.stopPropagation();
+        if (stage.classList.contains('zoomed')) return;
+        if (event.key === 'ArrowRight') { event.preventDefault(); forward.click(); }
+        if (event.key === 'ArrowLeft') { event.preventDefault(); back.click(); }
+      });
+    }
+
     const revealTargets = deck.querySelectorAll('.reveal, .editorial-image, .home-card, .property-image');
     if ('IntersectionObserver' in window) {
       const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
@@ -307,7 +378,7 @@
     }
 
     document.addEventListener('keydown', (event) => {
-      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || menu?.open) return;
+      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || document.querySelector('dialog[open]')) return;
       const target = event.target;
       if (target instanceof Element && target.closest(
         'a, button, input, textarea, select, summary, video, audio, .table-scroll, .home-gallery, [contenteditable]:not([contenteditable="false"]), [role="button"], [role="textbox"], [role="slider"]',

@@ -1,0 +1,99 @@
+[
+  {
+    "property": "San Lucas 101",
+    "slug": "san-lucas",
+    "tool": "Built-in image_gen.imagegen",
+    "date": "2026-09-26",
+    "sourceReference": "assets/images/investor-deck/image44.png",
+    "sourceSha256": "699d3c323cb960c59dff38f3cbeba5bd6315ecd099af1bcc7552e4d85fe136d4",
+    "master": "assets/images/lifestyle/san-lucas.png",
+    "webAsset": "assets/images/lifestyle/san-lucas.webp",
+    "prompt": "Use case: photorealistic-natural. Create ONE ultra-photorealistic landscape 3:2 lifestyle photograph for a Dulcinea property investor website, based closely on the LEFT-HAND photograph in the attached San Lucas 101 reference collage. The attached image is an architectural reference, not a layout to reproduce. Render a single coherent full-frame photograph, never a collage or split panel. Keep the actual apartment: warm polished wood flooring, tall black-framed windows looking onto dense green trees, pale square columns, white ceiling and simple cornice, original dark carved rectangular wooden coffee table with books and ceramic vessel, the two pale sculptural figures on pedestals near the windows, the original walls and furniture materials. Preserve the source camera direction, window spacing, structural geometry and scale; adapt the framing to landscape without adding rooms or redesigning the apartment. Add exactly two clearly fictional adult residents around 35–50 in relaxed neutral everyday clothing, standing near the windows with coffee, talking naturally and looking at each other rather than posing for camera. People should be secondary to the home, anatomically natural with believable hands and one ordinary mug each. Natural soft daylight, realistic exposure, tactile existing materials, candid architectural editorial photography, subtle film-like texture, not glossy CGI. No extra architecture, no resort/service features, no new pool, no staff, no logos, no wording, no watermark. Do not reproduce the lattice wall photo on the right.",
+    "generationCount": 1,
+    "disclosure": "AI-generated lifestyle visualization based on supplied property imagery, with fictional adults. Not documentary photography or confirmation of finished condition.",
+    "review": {
+      "checked": [
+        "single coherent landscape frame",
+        "exact requested adult count",
+        "natural anatomy and gestures",
+        "recognizable source architecture, materials and perspective",
+        "no added amenities, logos or wording"
+      ],
+      "decision": "Selected first generation; no clear defect requiring regeneration. Architectural resemblance is illustrative rather than measured as-built verification."
+    }
+  },
+  {
+    "property": "Aires de Campestre",
+    "slug": "aires",
+    "tool": "Built-in image_gen.imagegen",
+    "date": "2026-09-26",
+    "sourceReference": "assets/images/investor-deck/image45.png",
+    "sourceSha256": "824b41f53def68d33081fa71734f6c44babb0e42dc0a86512cb1dc1829ca21b2",
+    "master": "assets/images/lifestyle/aires.png",
+    "webAsset": "assets/images/lifestyle/aires.jpg",
+    "prompt": "Use case: compositing.\nAsset type: ultra-photorealistic landscape lifestyle visualization for the supplied Aires de Campestre apartment, 16:9.\nInput image 1 is the architecture edit target, a three-panel collage. Use ONLY its TOP wide apartment photograph as the scene. Output one continuous photograph, never a collage. Lock that top view's camera position, perspective and architecture: warm timber floor; blank ivory left wall with the tall inset vertical wood slat panel; recessed ceiling and warm cove light; deep navy kitchen cabinets at the back; stainless hood, oven and microwave; the distinctive long white angular island with dark gray inset front; exact black-framed rear windows and green mountain outlook. Do not import the hot tub or pergola from the lower panels. For a 16:9 composition extend only the foreground floor area naturally, not the architecture.\nAdd restrained movable furnishings to this presently empty apartment: one low cream sofa at the left, two simple lounge chairs and a small wood coffee table with three ceramic coffee cups, keeping the kitchen and island clearly visible and circulation open. Show exactly three fictional adults aged about 30–50 using the home: two seated comfortably in a candid conversation over coffee, one standing casually beside the kitchen island with a coffee cup, engaged with the others rather than with the camera. Comfortable understated linen and cotton casual clothing. Natural faces and individual expressions, believable body scale, anatomically correct hands and limbs, realistic contact and occlusion.\nRender as a very high-quality real interior lifestyle photograph: convincing skin pores, fabric weave, wood grain, natural soft daylight from the existing windows, warm existing interior light, physically consistent shadows, gentle lived-in realism, not glossy CGI. The people belong in the actual room; no staged advertising poses.\nKeep all permanent features, window count, layout, surfaces, materials and colors faithful to the top source photo. No extra windows, doors, terrace, pool, amenities, renovation or architectural redesign. No logos, lettering, labels, watermark, border or text.",
+    "generationCount": 1,
+    "disclosure": "AI-generated lifestyle visualization based on supplied property imagery, with fictional adults. Not documentary photography or confirmation of finished condition.",
+    "review": "Three fictional adults in a coffee conversation. Added movable lounge furnishings. Top source panel's wood-slat wall, cove-lit ceiling, navy kitchen, angular island and black window frames preserved. No hot tub or pergola imported from collage. Natural faces, hands, seating scale and occlusion visually checked."
+  },
+  {
+    "property": "Fontanar 201",
+    "slug": "fontanar",
+    "tool": "Built-in image_gen.imagegen",
+    "date": "2026-09-26",
+    "sourceReference": "assets/images/investor-deck/image46.jpeg",
+    "sourceSha256": "e844733b48cfcd4361d736a85735fe6333f90408b867d6e286b9e60074b2efb0",
+    "master": "assets/images/lifestyle/fontanar.png",
+    "webAsset": "assets/images/lifestyle/fontanar.jpg",
+    "prompt": "Use case: compositing.\nAsset type: ultra-photorealistic landscape lifestyle visualization for the supplied Fontanar 201 penthouse, 3:2.\nInput image 1 is the exact architecture edit target. Preserve its camera position and central kitchen-island perspective, the broad white marble island with warm brown veining and rectangular black induction hob, matte charcoal island drawers, four long thin black pendant lights above, refrigerator and dark illuminated glass-front oven cabinets on the left, white open-riser staircase with glass balustrade on the right, and the dining/living room receding toward the distant city-view windows. Keep the exact layout, proportions, sightlines, cabinetry, windows, staircase, materials, colors, furniture and light.\nAdd exactly three fictional adults aged about 30–50 naturally using the home. Two stand BEHIND the island: one preparing a simple lunch on a small wooden cutting board placed on the clear countertop to one side of the hob, the other sharing an easy conversation while holding a ceramic coffee cup. A third adult sits comfortably in the existing far living-room seating, reading. Their attention is on each other or their activity, never on the camera. Understated casual cotton or linen clothing, relaxed natural gestures, individual realistic faces, correct hand anatomy and believable scale. A modest bowl of tomatoes and a few kitchen items are enough; preserve uncluttered surfaces and the room's actual features.\nThe result must look like a high-end candid architectural lifestyle photograph, not a computer rendering: lifelike skin texture and hair, accurate fabric, true marble and metal reflections, existing soft window daylight with matching shadow direction and warm accent lights, realistic depth. Keep the background geography and every permanent architectural element unchanged. No added windows, walls, appliances, doors, pools, terraces or invented amenities. No text, logo, watermark, border or collage.",
+    "generationCount": 1,
+    "disclosure": "AI-generated lifestyle visualization based on supplied property imagery, with fictional adults. Not documentary photography or confirmation of finished condition.",
+    "review": "Three fictional adults: food preparation, conversation over coffee, and reading in the living area. Preserves front island view, marble and charcoal cabinetry, four slim pendants, left appliance bank, right glass stair, dining/living sightline. Hands and body scale visually checked; no obvious anatomy defects."
+  },
+  {
+    "property": "Casa Monte Sereno",
+    "slug": "monte-sereno",
+    "tool": "Built-in image_gen.imagegen",
+    "date": "2026-09-26",
+    "sourceReference": "assets/images/investor-deck/image47.png",
+    "sourceSha256": "ef35786f9114d5461dae6eadb0403b04b3a3d37ad6896344d1ef73f7f0c97187",
+    "master": "assets/images/lifestyle/monte-sereno.png",
+    "webAsset": "assets/images/lifestyle/monte-sereno.webp",
+    "prompt": "Use case: photorealistic-natural. Create ONE ultra-photorealistic wide 16:9 lifestyle photograph of Casa Monte Sereno using the LOWER exterior photograph in the attached collage as the architectural and landscape reference. Single coherent image, not a collage. Preserve that exact recognizable house and garden: modern two-storey horizontal house at the LEFT, original concrete/stone and glazing, existing dark pergola over patio, garden paths, agave/yuca plant, broad gently sloping lawn and lush trees, distant landscape and the same camera perspective across the lawn toward the house. Do not change the facade, roofline, window/door positions, pergola shape or add new amenities. Add exactly three clearly fictional adults around 30–50 using the garden naturally: two casually standing on the existing patio talking with coffee cups, one walking on the lawn toward them. Relaxed tasteful summer shirts/linen trousers/light dress, fully clothed; realistic body proportions, hands and subtle faces, not models posing. The home remains the main subject. Warm natural late-afternoon light with true greens, believable shadows and tactile stone/concrete; very high realism as candid architecture-and-lifestyle editorial photography, not a render. No added pool, no new terrace or furniture structures, no staff or implied service, no logos, no text, no watermark. Do not use the upper bedroom image as a second frame.",
+    "generationCount": 1,
+    "disclosure": "AI-generated lifestyle visualization based on supplied property imagery, with fictional adults. Not documentary photography or confirmation of finished condition.",
+    "review": {
+      "checked": [
+        "single coherent landscape frame",
+        "exact requested adult count",
+        "natural anatomy and gestures",
+        "recognizable source architecture, materials and perspective",
+        "no added amenities, logos or wording"
+      ],
+      "decision": "Selected first generation; no clear defect requiring regeneration. Architectural resemblance is illustrative rather than measured as-built verification."
+    }
+  },
+  {
+    "property": "Casa Montana",
+    "slug": "montana",
+    "tool": "Built-in image_gen.imagegen",
+    "date": "2026-09-26",
+    "sourceReference": "assets/images/investor-deck/image48.png",
+    "sourceSha256": "0bd6f4187e6e88999e4cf27cb12931034ccac0c0e5cff99b77a6f3a483d88335",
+    "master": "assets/images/lifestyle/montana.png",
+    "webAsset": "assets/images/lifestyle/montana.webp",
+    "prompt": "Use case: photorealistic-natural. Turn the LOWER perspective view in the attached Casa Montana collage into ONE ultra-photorealistic wide 16:9 lifestyle architectural photograph. Use that lower image as strict architectural reference: the same forest-side contemporary house, exposed board-textured concrete roof plane and columns, vertical timber cladding, tall dark slim-framed glazing, glass balustrade along the long deck, existing soft outdoor seating, dense green trees, and exact source perspective along the facade. Preserve structural proportions, concrete cantilever, glazing divisions, existing deck footprint and material placement; do not redesign the house, combine the upper view, or invent extra rooms/pools/terraces. Add exactly three clearly fictional adults around 35–55 on the existing deck: two sitting comfortably in the existing lounge seats in quiet conversation and one standing nearby holding a cup of coffee. Natural casual linen/cotton clothing, candid understated gestures, relaxed expressions, anatomically correct bodies/hands, plausible reflections behind them. Make the source render feel like a real high-end architectural editorial photograph with natural early-evening light, delicate interior warm light already suggested by reference, realistic concrete grain, timber, glass reflections and forest atmosphere. Landscape frame, one scene only; home dominates and people are secondary. No logos, no wording, no watermark, no staff, no new amenities.",
+    "generationCount": 1,
+    "disclosure": "AI-generated lifestyle visualization based on supplied property imagery, with fictional adults. Not documentary photography or confirmation of finished condition.",
+    "review": {
+      "checked": [
+        "single coherent landscape frame",
+        "exact requested adult count",
+        "natural anatomy and gestures",
+        "recognizable source architecture, materials and perspective",
+        "no added amenities, logos or wording"
+      ],
+      "decision": "Selected first generation; no clear defect requiring regeneration. Architectural resemblance is illustrative rather than measured as-built verification."
+    }
+  }
+]

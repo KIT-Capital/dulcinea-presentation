@@ -6,35 +6,55 @@
       "name": "Blue Topaz",
       "pantone": "14-4310 TCX",
       "hex": "#78BDD4",
-      "rgb": [120, 189, 212]
+      "rgb": [
+        120,
+        189,
+        212
+      ]
     },
     {
       "token": "plumeria",
       "name": "Plumeria",
       "pantone": "15-1822 TCX",
       "hex": "#FB90A2",
-      "rgb": [251, 144, 162]
+      "rgb": [
+        251,
+        144,
+        162
+      ]
     },
     {
       "token": "african-violet",
       "name": "African Violet",
       "pantone": "16-3520 TCX",
       "hex": "#B085B7",
-      "rgb": [176, 133, 183]
+      "rgb": [
+        176,
+        133,
+        183
+      ]
     },
     {
       "token": "simply-green",
       "name": "Simply Green",
       "pantone": "17-5936 TCX",
       "hex": "#009B74",
-      "rgb": [0, 155, 116]
+      "rgb": [
+        0,
+        155,
+        116
+      ]
     },
     {
       "token": "coconut-shell",
       "name": "Coconut Shell",
       "pantone": "18-1230 TCX",
       "hex": "#874E3C",
-      "rgb": [135, 78, 60]
+      "rgb": [
+        135,
+        78,
+        60
+      ]
     }
   ],
   "sources": [
@@ -45,12 +65,23 @@
     {
       "file": "Pantone Connect 2.html",
       "sha256": "2b56d93e52a2dd2ed138c02f14cc9d60d3e7b3b1694f9550b76b390c6a8b646e"
+    },
+    {
+      "file": "Dulcinea-Pantone-palette.png",
+      "sha256": "4f3e03b7547141a06d7830c3ba3f7ff624029951f97cc83ecdc24cd90c883719",
+      "kind": "User-confirmed palette reference"
+    },
+    {
+      "file": "Dulcinea-Pantone-swatch-values.png",
+      "sha256": "fade5491ddd7eba92a237eeabecccb0bc33d4ee596b53509287c87a07452bbcf",
+      "kind": "User-confirmed palette reference"
     }
   ],
   "evidence": {
     "selectedPaletteName": "Untitled",
     "generatorTheme": "Tropical Elegance",
     "selector": "div.css-oloq0d > div.css-1la8ssy",
-    "comparison": "Identical after local saved-resource directory names are normalized"
+    "comparison": "Identical after local saved-resource directory names are normalized",
+    "screenshotVerification": "All five dominant swatch RGB values match the saved Pantone Connect digital values exactly. Later swatch reference explicitly prints the same RGB and HEX values."
   }
 }

@@ -2,10 +2,11 @@
 
 ## Supplied source materials
 
-The user supplied the investor deck, financial model, branding package, saved Pantone palette pages, four Adobe Stock video files, and two Adobe Stock nightlife photographs. The original PowerPoint and workbook are retained at:
+The user supplied the investor deck, financial model, branding package, palette references, floorplan PDF, Adobe Stock video files, two Adobe Stock nightlife photographs, and later higher-quality portraits of Dov, Ricardo and Adriana. Original document copies are retained at:
 
 - `source-packages/Dulcinea - Investor Presentation 027.pptx`
 - `source-packages/Dulcinea Model 07.xlsx`
+- `source-packages/PLANOS PROPIEDADES DULCINEA.pdf`
 
 Content coverage and the handling of financial source differences are documented in `CONTENT-SOURCES.md`. Asset ownership and usage rights remain with their respective owners; inclusion in this repository does not grant an additional license.
 
@@ -20,7 +21,7 @@ The presentation uses these supplied monochrome SVG variants:
 - `brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg`
 - `brand/shared-symbol/svg/dulcinea-symbol-mono-black.svg`
 
-The black doorway symbol also supplies the browser favicon. The builder embeds the original SVG bytes as Base64 data URIs without redrawing, recoloring, or rewriting the artwork. The Lola & Ber graphic comes from the supplied PowerPoint.
+The black doorway symbol also supplies the browser favicon. The builder embeds the original SVG bytes as Base64 data URIs without redrawing, recoloring, or rewriting the artwork. The Lola & Ber graphic comes from the supplied PowerPoint. Dulcinea is a real estate investment firm with a unique platform focused on Medellín, Colombia, managing acquisition through sale. Dulcinea One is its first fund, co-branded by Lola & Ber Hospitality.
 
 ## Active Pantone palette
 
@@ -34,11 +35,11 @@ Both user-supplied saved pages, `Pantone Connect.html` and `Pantone Connect 2.ht
 | Simply Green | 17-5936 TCX | `#009B74` | 0, 155, 116 |
 | Coconut Shell | 18-1230 TCX | `#874E3C` | 135, 78, 60 |
 
-Source hashes and extraction evidence are recorded in `design/palette.json`; roles are documented in `design/README.md`. The saved application pages remain outside the repository. White and graphite are functional neutrals outside the five selected colors. The original copper brand package remains intact.
+Source hashes and extraction evidence are recorded in `design/palette.json`; roles are documented in `design/README.md`. The later references, `design/Dulcinea-Pantone-palette.png` and `design/Dulcinea-Pantone-swatch-values.png`, are retained unchanged and match all five RGB/HEX values. The saved application pages remain outside the repository. White, graphite and near-black are functional neutrals outside the five selected colors. Lighter fields and the blue, pink, violet and green tones carry the current layout; Coconut Shell is an accent rather than the dominant background. The original copper brand package remains intact.
 
 ## Images from the investor deck
 
-Current still images are extracted from `Dulcinea - Investor Presentation 027.pptx` into `assets/images/investor-deck/`. The media manifest supplies the builder's exact file references.
+Source still images are extracted from `Dulcinea - Investor Presentation 027.pptx` into `assets/images/investor-deck/`. The original property images remain available through each home's viewer alongside the clearly labeled AI lifestyle illustration. The media manifest supplies the builder's exact file references.
 
 | Source media file | Presentation use |
 | --- | --- |
@@ -52,15 +53,59 @@ Current still images are extracted from `Dulcinea - Investor Presentation 027.pp
 | `image46.jpeg` | Fontanar 201 property imagery |
 | `image47.png` | Casa Monte Sereno property imagery |
 | `image48.png` | Casa Montana property imagery |
-| `image49.png` | K. Dov Isaza Tuzman portrait |
-| `image50.png` | Ricardo Cidale portrait |
-| `image51.jpeg` | Adriana portrait |
+| `image49.png` | Original K. Dov Isaza Tuzman portrait, retained; superseded on screen by the later supplied photograph |
+| `image50.png` | Original Ricardo Cidale portrait, retained; superseded on screen by the later supplied photograph |
+| `image51.jpeg` | Original Adriana Suárez portrait, retained; superseded on screen by the later supplied photograph |
 
 Source lifestyle and architectural imagery is illustrative. Inclusion does not establish that a depicted person is an investor or guest, or that an illustrative setting is an acquired property. Property images and acquisition statuses retain the source qualifications shown in the presentation.
 
+## Team portraits
+
+All three current team portraits use the later photographs supplied by the user directly, with their original file bytes unchanged. The website frames these photographs with CSS; it does not apply AI restoration to the selected images.
+
+| Person | Current asset | Treatment and provenance |
+| --- | --- | --- |
+| K. Dov Isaza Tuzman | `assets/images/team/dov-supplied.png` | Later photograph supplied by the user, copied unchanged and used directly; no AI rendering |
+| Adriana Suárez | `assets/images/team/adriana-supplied.jpeg` | Later photograph supplied by the user, copied unchanged and used directly; no AI rendering |
+| Ricardo Cidale | `assets/images/team/ricardo-supplied.jpg` | Later high-quality photograph supplied by the user, copied unchanged and used directly; no AI rendering |
+
+Provenance records are in `assets/images/team/`. Original portraits extracted from the PowerPoint remain unchanged. Earlier AI restoration candidates and their exact prompts, source hashes and review notes are retained for provenance but are not used by the presentation. Generated reconstruction in those candidates is not documentary recovery.
+
+## User-requested AI lifestyle illustrations
+
+Five illustrations were generated with the built-in image generation tool from the supplied property images. They show fictional adults using the homes, with illustrative furnishing arrangements. They are labeled AI lifestyle visualizations and do not document completed conditions, actual residents, or measured architecture.
+
+All files below are under `assets/images/lifestyle/`:
+
+| Property | Source image | PNG master | Web asset |
+| --- | --- | --- | --- |
+| San Lucas 101 | `image44.png` | `san-lucas.png` | `san-lucas.webp` |
+| Aires de Campestre | `image45.png` | `aires.png` | `aires.jpg` |
+| Fontanar 201 | `image46.jpeg` | `fontanar.png` | `fontanar.jpg` |
+| Casa Monte Sereno | `image47.png` | `monte-sereno.png` | `monte-sereno.webp` |
+| Casa Montana | `image48.png` | `montana.png` | `montana.webp` |
+
+`assets/images/lifestyle/provenance.json` records source references and hashes, prompts, generation details, disclosure, and review notes. Source property images remain unchanged under `assets/images/investor-deck/`.
+
+## Supplied floorplans
+
+The nine-page `PLANOS PROPIEDADES DULCINEA.pdf` is preserved unchanged in `source-packages/`. Complete pages were rendered with bundled Poppler and encoded as lossless WebP at 2000 × 1125 under `assets/images/floorplans/`. No page content was cropped or rewritten; the web images match the rendered PNG pixels.
+
+| Property | Source pages | Drawings |
+| --- | --- | --- |
+| San Lucas 101 | 8–9 | Floors 1 and 2 |
+| Aires de Campestre | 6–7 | Floors 1 and 2, labeled Aires del Campestre |
+| Fontanar 201 | 1–2 | Floors 1 and 2 |
+| Casa Monte Sereno | 3–5 | Site, floor 1, and roof |
+| Casa Montana | None | No plan supplied |
+
+The user confirmed use of these four plan groups after the unit-label and area differences were identified. Source areas remain visible as supplied: Fontanar 358.41 m², San Lucas 422.46 m², and Aires printed total 315.87 m². Aires' two printed floor areas sum to 403.48 m². These differ from the presentation's property sizes and do not replace them. Unit numbers 101 and 201 are not printed in the PDF.
+
+`content/floorplans.json` records exact page evidence, source and image hashes, the user confirmation, and retained discrepancies. The viewer provides all nine page images and the original PDF. A supplied Fontanar plan also appears in the local-specialists chapter, replacing the former illustrative chef photograph there.
+
 ## Supplied Adobe Stock footage
 
-The user supplied the four original MOV files from the Dulcinea stock-video folder. Those originals remain unchanged in their supplied location; the large MOV files are not copied into this repository. Optimized individual versions and posters are retained under `assets/video/stock/`.
+The user initially supplied four MOV files from the Dulcinea stock-video folder. Those originals remain unchanged in their supplied location; the large MOV files are not copied into this repository. Optimized individual versions and posters are retained under `assets/video/stock/`.
 
 | Original filename | Original duration | Original resolution | Observed subject |
 | --- | --- | --- | --- |
@@ -69,22 +114,48 @@ The user supplied the four original MOV files from the Dulcinea stock-video fold
 | `AdobeStock_693150796.mov` | 20.75 seconds | 4096 × 2160 | Aerial movement past modern city towers and green streets |
 | `AdobeStock_1849343666.mov` | 14.00 seconds | 3840 × 2160 | Aerial movement over a colonial town square and church with pedestrians |
 
-Representative frames at 10%, 50%, and 90% of each original were visually inspected; no visible watermarks appeared in those samples. Geographic locations and licensing terms were not independently verified. Footage illustrates setting and hospitality and does not establish portfolio ownership or that depicted people work for Dulcinea. The pasture portrait is retained as an optimized source option and is not used in the main presentation.
+Representative frames at 10%, 50%, and 90% of each original were visually inspected; no visible watermarks appeared in those samples. Geographic locations and licensing terms were not independently verified. Footage illustrates setting and hospitality and does not establish portfolio ownership or that depicted people work for Dulcinea. The pasture portrait appears in the introduction after the city and town aerials.
 
 Each optimized video keeps the original filename stem with an `.mp4` extension; a corresponding `-poster.jpg` is also included. Scaling preserves aspect ratio and uses a centered 16:9 crop when necessary. Optimized clips are silent H.264 at 1280 × 720 and 24 fps, with Rec.709 color, limited range, and fast-start metadata.
 
-## Edited background loops
+The user later supplied three more MOV files. Two are unique; the third is an exact duplicate of an earlier source:
 
-The current loops use actual footage from the supplied Adobe Stock clips. They replace the earlier motion rendered from deck still images.
+| Original filename | Original duration | Observed subject or relationship |
+| --- | --- | --- |
+| `AdobeStock_727024520.mov` | 32.46 seconds | Rotating overhead night aerial of an illuminated winding road and traffic |
+| `AdobeStock_807462744.mov` | 10.00 seconds | Glowing green MEDELLIN neon word animation on black |
+| `AdobeStock_539938219 (1).mov` | 5.76 seconds | SHA-256-identical to the earlier pasture portrait clip; its existing optimized asset is reused |
+
+The two unique files have optimized MP4 versions and posters in the same stock folder; both appear in the after-dark sequence. Together with the city, town, pasture and chef clips, all six distinct supplied stock videos are used. The two later unique clips contain no close-up people. Road location is not inferred from the imagery. Source hashes, duplicate evidence, output metadata, and exact encoding options are recorded in `assets/video/stock/additional-provenance.json`.
+
+## Edited stock background loops
+
+The introduction and hospitality loops use actual footage from the supplied Adobe Stock clips. They replace the earlier introduction and hospitality animations made from deck still images. The after-dark sequence combines filmed stock footage with the nightlife photographic animation. Property animations and the photographic part of the nightlife sequence remain camera motion across still images.
 
 | File | Duration | Sequence |
 | --- | --- | --- |
-| `assets/video/dulcinea-introduction.mp4` | 18 seconds | Modern city aerial followed by colonial town aerial |
+| `assets/video/dulcinea-introduction.mp4` | 17 seconds | Modern city aerial, colonial town aerial, then a smiling woman in a pasture |
 | `assets/video/hospitality-people.mp4` | 14 seconds | Chefs preparing food |
 
-The loops use one-second dissolves and preserve the source playback speed. Matching `-poster.jpg` files provide still fallbacks. Individual optimized city and town clips are also available for location sections. MP4 files referenced by the presentation are embedded directly into `index.html` for offline playback.
+The introduction uses 0.625-second circular dissolves; the hospitality loop uses a one-second circular dissolve. Both preserve the source playback speed. Matching `-poster.jpg` files provide still fallbacks. Individual optimized city and town clips are also available for location sections. MP4 files referenced by the presentation are embedded directly into `index.html` for offline playback.
 
-`scripts/render-stock-videos.py` reproduces the optimization and edits using FFmpeg. `assets/video/stock/provenance.json` records original and optimized file hashes and metadata; `assets/video/provenance.json` records the edited loops, their sources, encoding, and validation. Rendering tools are optional and are not required to run the Node.js HTML builder. The older `scripts/render-videos.py` remains as a superseded workflow for still-image animation.
+`scripts/render-stock-videos.py` reproduces the optimization and edits using FFmpeg; it calls `scripts/render-introduction.py` for the three-scene introduction. `assets/video/stock/provenance.json` records original and optimized file hashes and metadata; `assets/video/provenance.json` records the edited loops, their sources, encoding, and validation. Rendering tools are optional and are not required to run the Node.js HTML builder. The older `scripts/render-videos.py` remains as a superseded workflow for still-image animation.
+
+## Property illustration camera loops
+
+Five silent nine-second loops are rendered from the retained AI lifestyle illustration PNGs. Gentle pan and eased zoom animate the camera framing; the fictional adults remain still. These are animated still images, not filmed property footage or generated human movement.
+
+| Property | Loop |
+| --- | --- |
+| San Lucas 101 | `assets/video/properties/san-lucas.mp4` |
+| Aires de Campestre | `assets/video/properties/aires.mp4` |
+| Fontanar 201 | `assets/video/properties/fontanar.mp4` |
+| Casa Monte Sereno | `assets/video/properties/monte-sereno.mp4` |
+| Casa Montana | `assets/video/properties/montana.mp4` |
+
+Each loop is H.264, 1280 × 720 at 24 fps, with no audio and fast-start metadata. The source PNGs remain unchanged. The 16:9 framing and gentle motion were reviewed to keep the depicted adults and recognizable architectural views visible. Property chapters alternate wide film compositions and split layouts; original imagery and supplied plans remain accessible from the viewer.
+
+Rebuild with `python scripts/render-property-videos.py`. Exact source/output hashes, camera parameters, encoding and validation are recorded in `assets/video/properties/metadata/provenance.json`.
 
 ## Nightlife photography and animation
 
@@ -96,6 +167,8 @@ Two additional user-supplied photographs are preserved without modification unde
 `assets/video/medellin-nightlife.mp4` is a 13-second silent loop rendered from these still photographs. It uses deliberate crops, gentle pan/zoom, and one-second dissolves. It is not filmed nightlife footage and does not synthesize human movement. The location and venues are illustrative and have not been independently verified as Medellín. Original photographs and visible artwork are preserved.
 
 The video is H.264, 1280 × 720, 24 fps, Rec.709 limited range, with fast-start metadata. `assets/video/medellin-nightlife-poster.jpg` provides the still fallback. `assets/video/medellin-nightlife-provenance.json` records source and output hashes, framing, encoding, and validation. Rebuild it with `python scripts/render-nightlife.py` using the retained originals; optional `--source-dir` imports them from the supplied photo folder without changing those originals.
+
+The current after-dark chapter uses `assets/video/medellin-after-dark.mp4`, a 17.5-second edit. It uses the first three seconds of the supplied `AdobeStock_727024520` night-road footage, the 4.0–6.5-second excerpt of `AdobeStock_807462744` Medellín neon animation, then the full retained 13-second photographic animation. Half-second dissolves begin at output times 2.5 and 4.5 seconds. No new human motion is synthesized. It is silent H.264 at 1280 × 720 and 24 fps, with fast-start metadata. `scripts/render-after-dark.py` reproduces the edit; `assets/video/after-dark-provenance.json` records source hashes, timing, encoding and validation. The original footage and photographic animation remain unchanged.
 
 ## Visual inspiration
 

@@ -21,24 +21,70 @@
   "videos": [
     {
       "file": "dulcinea-introduction.mp4",
-      "bytes": 10324433,
-      "sha256": "9ab3a6f22b460e3c0f20cf43bee5b7d02929d049953318df5f0aa4df3d25f9d7",
-      "duration_seconds": 18.0,
-      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 4585 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "bytes": 6062789,
+      "sha256": "5414255e915781d2a0081adbb9c454ebeddc9598eefc6c46e44e83ea819a7108",
+      "duration_seconds": 17.0,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2850 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
       "audio_tracks": 0,
       "scenes": [
         {
           "id": "693150796",
-          "start_seconds": 0
+          "subject": "City towers and green streets",
+          "start_seconds": 0,
+          "duration_seconds": 6.625
         },
         {
           "id": "1849343666",
-          "start_seconds": 0
+          "subject": "Colonial town square with pedestrians",
+          "start_seconds": 0,
+          "duration_seconds": 6.625
+        },
+        {
+          "id": "539938219",
+          "subject": "Woman smiling and waving in a pasture with cattle",
+          "start_seconds": 0,
+          "duration_seconds": 5.625
         }
       ],
-      "scene_seconds_before_overlap": 10,
-      "crossfade_seconds": 1,
-      "method": "Edited actual stock footage; circular dissolve; original speed; no synthetic scene generation."
+      "crossfade_seconds": 0.625,
+      "method": "Actual supplied city, town and countryside footage at original speed; circular dissolves; no synthetic scene generation.",
+      "loop_method": "Repeat the first city segment after the final dissolve, then trim at matching city camera positions.",
+      "render_script": "scripts/render-introduction.py",
+      "encoding_options": [
+        "-an",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "slow",
+        "-crf",
+        "24",
+        "-maxrate",
+        "3M",
+        "-bufsize",
+        "6M",
+        "-profile:v",
+        "high",
+        "-level",
+        "3.1",
+        "-pix_fmt",
+        "yuv420p",
+        "-color_range",
+        "tv",
+        "-colorspace",
+        "bt709",
+        "-color_primaries",
+        "bt709",
+        "-color_trc",
+        "bt709",
+        "-r",
+        "24",
+        "-g",
+        "48",
+        "-movflags",
+        "+faststart",
+        "-threads",
+        "4"
+      ]
     },
     {
       "file": "hospitality-people.mp4",
@@ -58,8 +104,10 @@
       "method": "Edited actual stock footage; circular dissolve; original speed; no synthetic scene generation."
     }
   ],
-  "unused_in_main_presentation": [
-    "AdobeStock_539938219.mp4"
-  ],
-  "validation": "Complete output streams decoded successfully and verified as silent H.264 1280x720. Source representative frames visually inspected."
+  "unused_in_main_presentation": [],
+  "validation": "Complete output streams decoded successfully and verified as silent H.264 1280x720. Source representative frames visually inspected.",
+  "render_scripts": {
+    "introduction": "scripts/render-introduction.py",
+    "hospitality": "scripts/render-stock-videos.py"
+  }
 }

@@ -1,6 +1,6 @@
 # Dulcinea Pantone palette
 
-The presentation uses the exact saved sRGB values from the five selected Pantone Connect swatches. `palette.json` records the values and SHA-256 hashes of the two user-supplied saved pages.
+The presentation uses the exact saved sRGB values from the five selected Pantone Connect swatches. Both later user-confirmed palette images match these values exactly. `palette.json` records the values and SHA-256 hashes; the two PNG references are retained here unchanged.
 
 | Color | Pantone | Hex | RGB |
 | --- | --- | --- | --- |
@@ -12,7 +12,7 @@ The presentation uses the exact saved sRGB values from the five selected Pantone
 
 ## Application
 
-Coconut Shell supplies dark backgrounds and headings. Blue Topaz provides a supporting slide background; Plumeria, African Violet, and Simply Green provide accents. White and graphite serve as functional neutrals outside the selected five colors. Original logo artwork stays unchanged, using the supplied monochrome variants alongside the palette.
+Coconut Shell is reserved for small accents and selected labels, per the user's direction to avoid too much brown. Navigation and the investment background are white. Blue Topaz identifies the fund offer; Plumeria the company/fund relationship; Simply Green the local specialists and progress indicator; African Violet the additional investment rights. Photographs retain their natural colors. White, graphite and near-black serve as functional neutrals. On Violet and Green, near-black #111111 provides normal-text contrast of 6.19:1 and 5.34:1 respectively. Original logo artwork stays unchanged, using the supplied monochrome variants alongside the palette.
 
 ## Saved-page evidence
 

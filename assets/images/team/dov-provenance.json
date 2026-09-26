@@ -1,0 +1,49 @@
+{
+  "person": "K. Dov Isaza Tuzman",
+  "selected_asset": "assets/images/team/dov-supplied.png",
+  "source_filename": "Ber 3.png",
+  "source_sha256": "73bd88efe8e9c722d92eb0011e5837c2f21be596f28a0fa6fa82be489dd03cc0",
+  "selected_sha256": "73bd88efe8e9c722d92eb0011e5837c2f21be596f28a0fa6fa82be489dd03cc0",
+  "width": 423,
+  "height": 400,
+  "bytes": 119873,
+  "actual_use": "User-supplied original portrait, copied unchanged. No AI rendering, retouching, resizing or recompression applied to the selected image.",
+  "review": "Monochrome portrait visually inspected: smiling expression, glasses, dark waistcoat and open white shirt against a gray background.",
+  "superseded_ai_candidate": {
+    "subject": "K. Dov Isaza Tuzman",
+    "operation": "Identity-preserving photographic restoration and restrained colorization",
+    "date": "2026-09-26",
+    "tool": "image_gen.imagegen",
+    "mode": "built-in",
+    "source": {
+      "path": "assets/images/investor-deck/image49.png",
+      "sha256": "f8194e86e3be8f31eb651be9d74b1dd631839a25fe736ec46244f9846f799e50",
+      "type": "Low-resolution grayscale portrait cutout supplied in the investor deck",
+      "unchanged": true
+    },
+    "prompt": "Use case: identity-preserve.\nAsset type: restored professional portrait for an existing investor presentation, vertical 4:5.\nInput image 1 is the exact portrait edit target and sole identity reference. Restore this SAME man, not a newly cast lookalike. Preserve his facial proportions, broad smiling expression, visible teeth and smile shape, eye spacing and eye expression, nose, cheeks, jaw and chin, ears, natural age lines, receding short hairline, short stubble, and distinctive thin dark oval-round eyeglasses. Keep the same slight head turn and smile. Do not beautify, reshape, slim, de-age, change hairstyle or substitute the identity.\nImprove photographic clarity and tonal detail with gentle, natural studio light; restrained realistic color, believable skin pores and stubble, no plastic smoothing, no oversharpening, no glowing outlines. The source is a low-resolution grayscale cutout: restore it conservatively, preserving characteristic details rather than inventing a different face.\nKeep his dark blazer and open-collar light shirt, without a tie. Place him against a clean subtle pale warm-neutral studio background. Remove the blue edge/halo and hard circular cutout boundary. Frame head and shoulders as an authentic camera portrait, face large enough to read, with comfortable room above the hair and around both shoulders; naturally extend only the jacket/shoulders where needed for the 4:5 frame. Maintain true head-to-shoulder proportions.\nThe result should feel like a faithful high-quality photographic restoration of this supplied portrait. No text, logo, watermark, graphic shapes, dramatic retouching or artificial glamour.",
+    "result": {
+      "png": "assets/images/team/dov-retouched.png",
+      "jpeg": "assets/images/team/dov-retouched.jpg",
+      "width": 1122,
+      "height": 1402,
+      "pngSha256": "ea22fab6071af025352aceaff3644776336e5428b38fc2614cbbdb16a23af8e1",
+      "generationCalls": 1,
+      "pngBytes": 1943379,
+      "jpegBytes": 244283,
+      "jpegEncoding": {
+        "method": "System.Drawing JPEG encoding",
+        "quality": 92,
+        "resized": false
+      }
+    },
+    "review": {
+      "comparison": "Compared generated output with source portrait.",
+      "likeness": "Broad smiling expression, head angle, receding hairline, face proportions, stubble and round eyeglasses closely follow the original.",
+      "presentation": "Blue cutout halo removed; pale neutral background; dark blazer and open light shirt; 4:5 head-and-shoulders framing.",
+      "limitation": "Color and fine texture are inferred from a low-resolution grayscale source. This is a generated restoration, not recovered original photographic detail."
+    },
+    "selected_for_use": false,
+    "superseded_reason": "User supplied a better finished portrait and requested direct use of that image."
+  }
+}

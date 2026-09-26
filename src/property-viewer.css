@@ -1,0 +1,23 @@
+.property-actions{display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:25px}
+.property-actions button{display:flex;gap:25px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}
+.property-actions button span{font-size:19px;color:var(--coconut)}
+#property-viewer{background:#fafafa;padding:25px 3%;color:#273238}
+#property-viewer[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:18px}
+.viewer-top{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.viewer-top h2{font-size:27px;letter-spacing:-.03em;margin-top:6px}
+.viewer-top>button{font-size:13px;display:flex;gap:24px;align-items:center;padding:12px}
+.viewer-top>button span{font-size:29px}
+.viewer-stage{min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;background:#fff;border:1px solid #27323820}
+.viewer-stage figure{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0}
+.viewer-stage img{display:block;max-width:100%;max-height:calc(100% - 50px);object-fit:contain;flex-shrink:1;min-height:0}
+.viewer-stage figcaption{font-size:11px;line-height:1.6;padding:14px 20px;text-align:center;flex-shrink:0}
+.viewer-stage.zoomed figure{width:max-content;height:auto;min-height:100%;align-items:flex-start}
+.viewer-stage.zoomed img{width:2000px;max-width:none;max-height:none;height:auto;flex-shrink:0}
+.viewer-stage.zoomed figcaption{position:sticky;left:0;max-width:90vw;text-align:left}
+.viewer-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:12px}
+.viewer-paging{display:flex;align-items:center;gap:15px}
+.viewer-paging button{width:40px;height:40px;font-size:23px;border:1px solid #27323830;border-radius:50%}
+.viewer-count{font-variant-numeric:tabular-nums;font-size:12px;min-width:35px;text-align:center}
+[data-viewer-zoom]{padding:10px 14px;border:1px solid #27323830;border-radius:4px;font-size:12px}
+@media(max-width:800px){#property-viewer{padding:18px 5%;gap:14px}.viewer-top h2{font-size:21px;max-width:250px}.viewer-top .small-label{font-size:9px}.viewer-top>button{font-size:11px;gap:10px;padding:5px}.viewer-toolbar{flex-wrap:wrap}.viewer-toolbar>a{flex-basis:100%;text-align:center;font-size:11px;padding:6px}.viewer-stage figcaption{font-size:10px;padding:10px}.viewer-paging{gap:10px}.viewer-paging button{width:35px;height:35px}.property-actions{gap:22px}}
+@media print{#property-viewer,.property-actions{display:none!important}}

@@ -1,0 +1,142 @@
+{
+  "source": "Additional Adobe Stock MOV files supplied by the user; originals remain unchanged outside the repository.",
+  "unique_clips": [
+    {
+      "id": "727024520",
+      "subject": "Rotating overhead night aerial of a winding illuminated road with traffic",
+      "people_present": false,
+      "original": {
+        "name": "AdobeStock_727024520.mov",
+        "bytes": 202304990,
+        "sha256": "43051eeea7cd68cf01195caa6488276a53caed99ca38b7de95aff22350722314",
+        "streams": [
+          "Duration: 00:00:32.46, start: 0.000000, bitrate: 49862 kb/s",
+          "Stream #0:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 49861 kb/s, 24 fps, 24 tbr, 24 tbn (default)"
+        ]
+      },
+      "optimized_path": "assets/video/stock/AdobeStock_727024520.mp4",
+      "optimized": {
+        "bytes": 1966511,
+        "sha256": "3080650ac0e90c803973ffbbda6425870aa14040e7140e3da2a267f8534d1539",
+        "duration_seconds": 32.42,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 482 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "poster_path": "assets/video/stock/AdobeStock_727024520-poster.jpg",
+      "encoding_options": [
+        "-an",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "slow",
+        "-crf",
+        "24",
+        "-maxrate",
+        "1100k",
+        "-bufsize",
+        "2200k",
+        "-profile:v",
+        "high",
+        "-level",
+        "3.1",
+        "-pix_fmt",
+        "yuv420p",
+        "-color_range",
+        "tv",
+        "-colorspace",
+        "bt709",
+        "-color_primaries",
+        "bt709",
+        "-color_trc",
+        "bt709",
+        "-r",
+        "24",
+        "-g",
+        "48",
+        "-movflags",
+        "+faststart",
+        "-threads",
+        "4"
+      ],
+      "video_filter": "scale=1280:720:force_original_aspect_ratio=increase:flags=lanczos:out_range=tv:out_color_matrix=bt709,crop=1280:720,setsar=1,fps=24",
+      "watermark_review": "No visible watermark in representative original frames at 10, 50, and 90 percent of duration.",
+      "location_note": "No geographic identification inferred from road imagery. Neon clip visibly spells MEDELLIN."
+    },
+    {
+      "id": "807462744",
+      "subject": "Glowing green MEDELLIN neon word animation on black",
+      "people_present": false,
+      "original": {
+        "name": "AdobeStock_807462744.mov",
+        "bytes": 239602500,
+        "sha256": "993f7b7bcacdcf6029e9c0f66bb926cdedc60ece085c644bebe93d409395b4ff",
+        "streams": [
+          "Duration: 00:00:10.00, start: 0.000000, bitrate: 191682 kb/s",
+          "Stream #0:0[0x1](eng): Video: prores (HQ) (apch / 0x68637061), yuv422p10le(bt709, progressive), 3840x2160, 190843 kb/s, SAR 1:1 DAR 16:9, 30 fps, 30 tbr, 30 tbn (default)"
+        ]
+      },
+      "optimized_path": "assets/video/stock/AdobeStock_807462744.mp4",
+      "optimized": {
+        "bytes": 483655,
+        "sha256": "acacd4ec6eff9cb373bf66e1c2f3d0380929b44cc54e02d4332a45a903aea731",
+        "duration_seconds": 9.96,
+        "video_stream": "Stream #0:0[0x1](eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 385 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "poster_path": "assets/video/stock/AdobeStock_807462744-poster.jpg",
+      "encoding_options": [
+        "-an",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "slow",
+        "-crf",
+        "21",
+        "-maxrate",
+        "1500k",
+        "-bufsize",
+        "3000k",
+        "-profile:v",
+        "high",
+        "-level",
+        "3.1",
+        "-pix_fmt",
+        "yuv420p",
+        "-color_range",
+        "tv",
+        "-colorspace",
+        "bt709",
+        "-color_primaries",
+        "bt709",
+        "-color_trc",
+        "bt709",
+        "-r",
+        "24",
+        "-g",
+        "48",
+        "-movflags",
+        "+faststart",
+        "-threads",
+        "4"
+      ],
+      "video_filter": "scale=1280:720:force_original_aspect_ratio=increase:flags=lanczos:out_range=tv:out_color_matrix=bt709,crop=1280:720,setsar=1,fps=24",
+      "watermark_review": "No visible watermark in representative original frames at 10, 50, and 90 percent of duration.",
+      "location_note": "No geographic identification inferred from road imagery. Neon clip visibly spells MEDELLIN."
+    }
+  ],
+  "duplicate": {
+    "name": "AdobeStock_539938219 (1).mov",
+    "bytes": 520011645,
+    "sha256": "e35e24bcb61af1a2a99a471454abc7d70be6cd3fc69d14e9195f8d53253e7fbb",
+    "streams": [
+      "Duration: 00:00:05.76, start: 0.000000, bitrate: 722238 kb/s",
+      "Stream #0:0[0x1]: Video: prores (HQ) (apch / 0x68637061), yuv422p10le(bt709, progressive), 4096x2160, 722234 kb/s, SAR 1:1 DAR 256:135, 25 fps, 25 tbr, 12800 tbn (default)"
+    ],
+    "matches_prior_original_sha256": true,
+    "reused_optimized_path": "assets/video/stock/AdobeStock_539938219.mp4",
+    "action": "Exact duplicate of the previously supplied pasture portrait clip. No duplicate asset created.",
+    "comparison": "SHA-256 of both original files was checked and matched in this import."
+  },
+  "validation": "Complete optimized video streams decoded successfully; H.264, 1280x720, 24 fps, silent, fast-start. Original representative frames inspected.",
+  "main_compositions": "Introduction and hospitality videos were not modified by this import."
+}

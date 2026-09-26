@@ -1,0 +1,294 @@
+{
+  "source": {
+    "filename": "PLANOS PROPIEDADES DULCINEA.pdf",
+    "path": "source-packages/PLANOS PROPIEDADES DULCINEA.pdf",
+    "sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+    "bytes": 988111,
+    "page_count": 9,
+    "original_preserved": true
+  },
+  "mapping_policy": "The user confirmed use of the four supplied plan groups for their named homes. Actual source labels and area discrepancies remain recorded. Unit identifiers 101 and 201 do not appear in the PDF; no plan was assigned to Casa Montana. Confirmation does not establish dimensions, design approval, or completed construction.",
+  "rendering": {
+    "tool": "Bundled Poppler pdftoppm",
+    "command": "pdftoppm -png -scale-to 2000 INPUT_PDF PAGE_PREFIX",
+    "format": "Lossless WebP derived from complete rendered pages",
+    "width": 2000,
+    "height": 1125,
+    "cropped": false,
+    "validation": "All nine complete pages visually reviewed; lossless WebP pixels match the Poppler PNG render; original PDF copy SHA-256 matches the supplied source."
+  },
+  "pages": [
+    {
+      "page": 1,
+      "property_slug": "fontanar-201",
+      "property_token": "FONTANAR",
+      "title": "Fontanar - Floor 1",
+      "drawing_type": "floor_plan",
+      "match_status": "user_confirmed_supplied_plan",
+      "exact_evidence": [
+        "CASA FONTANAR",
+        "PISO 1",
+        "ÁREA: 258.66M2"
+      ],
+      "asset_path": "assets/images/floorplans/page-01-fontanar-floor-1.webp",
+      "mime": "image/webp",
+      "width": 2000,
+      "height": 1125,
+      "bytes": 377736,
+      "asset_sha256": "97782bcf67923e0539177d1da8eb1f4355ee1759ffbd3017dfb169d95d19a05a",
+      "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+      "source_match_status": "name_only_unit_and_area_unconfirmed"
+    },
+    {
+      "page": 2,
+      "property_slug": "fontanar-201",
+      "property_token": "FONTANAR",
+      "title": "Fontanar - Floor 2",
+      "drawing_type": "floor_plan",
+      "match_status": "user_confirmed_supplied_plan",
+      "exact_evidence": [
+        "CASA FONTANAR",
+        "PISO 2",
+        "ÁREA: 99,75M2",
+        "ÁREA TOTAL: 358,41"
+      ],
+      "asset_path": "assets/images/floorplans/page-02-fontanar-floor-2.webp",
+      "mime": "image/webp",
+      "width": 2000,
+      "height": 1125,
+      "bytes": 282786,
+      "asset_sha256": "ad16971a669bcf735b01ff8ad4172a41a0d93549f87f071dc530cc5193441a5f",
+      "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+      "source_match_status": "name_only_unit_and_area_unconfirmed"
+    },
+    {
+      "page": 3,
+      "property_slug": "casa-monte-sereno",
+      "property_token": "MONTE_SERENO",
+      "title": "Monte Sereno - Site plan",
+      "drawing_type": "site_plan",
+      "match_status": "user_confirmed_supplied_plan",
+      "exact_evidence": [
+        "CASA MONTESERENO",
+        "UBICACIÓN"
+      ],
+      "asset_path": "assets/images/floorplans/page-03-monte-sereno-site.webp",
+      "mime": "image/webp",
+      "width": 2000,
+      "height": 1125,
+      "bytes": 617966,
+      "asset_sha256": "a791f54d8e4358f3cecf29cdb9de6e6448831f2989f10bf37c350510c4eba8eb",
+      "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+      "source_match_status": "direct_name_match"
+    },
+    {
+      "page": 4,
+      "property_slug": "casa-monte-sereno",
+      "property_token": "MONTE_SERENO",
+      "title": "Monte Sereno - Floor 1",
+      "drawing_type": "floor_plan",
+      "match_status": "user_confirmed_supplied_plan",
+      "exact_evidence": [
+        "CASA MONTESERENO",
+        "PISO 1",
+        "PLANTA ARQUITECTONICA",
+        "ESCALA 1:100"
+      ],
+      "asset_path": "assets/images/floorplans/page-04-monte-sereno-floor-1.webp",
+      "mime": "image/webp",
+      "width": 2000,
+      "height": 1125,
+      "bytes": 282570,
+      "asset_sha256": "810a259387ce8dfb001a2a08be944dd4058849517a5a3307ec5d6f951012916e",
+      "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+      "source_match_status": "direct_name_match"
+    },
+    {
+      "page": 5,
+      "property_slug": "casa-monte-sereno",
+      "property_token": "MONTE_SERENO",
+      "title": "Monte Sereno - Roof plan",
+      "drawing_type": "roof_plan",
+      "match_status": "user_confirmed_supplied_plan",
+      "exact_evidence": [
+        "CASA MONTESERENO",
+        "PLANTA DE CUBIERTA"
+      ],
+      "asset_path": "assets/images/floorplans/page-05-monte-sereno-roof.webp",
+      "mime": "image/webp",
+      "width": 2000,
+      "height": 1125,
+      "bytes": 292300,
+      "asset_sha256": "f0ff0ebd6628e4631e8da449d5bdcdcbc5770c70bf5330a5acd79a25ef211a08",
+      "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+      "source_match_status": "direct_name_match"
+    },
+    {
+      "page": 6,
+      "property_slug": "aires-de-campestre",
+      "property_token": "AIRES",
+      "title": "Aires del Campestre - Floor 1",
+      "drawing_type": "floor_plan",
+      "match_status": "user_confirmed_supplied_plan",
+      "exact_evidence": [
+        "CASA AIRES DEL CAMPESTRE",
+        "PISO 1",
+        "ÁREA: 244,13M2"
+      ],
+      "asset_path": "assets/images/floorplans/page-06-aires-del-campestre-floor-1.webp",
+      "mime": "image/webp",
+      "width": 2000,
+      "height": 1125,
+      "bytes": 30714,
+      "asset_sha256": "c15e5f3d5efa0aee6fb2ca445fdf890cbe67377f7baa5fd586c5561c34b9da0e",
+      "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+      "source_match_status": "name_match_area_conflict"
+    },
+    {
+      "page": 7,
+      "property_slug": "aires-de-campestre",
+      "property_token": "AIRES",
+      "title": "Aires del Campestre - Floor 2",
+      "drawing_type": "floor_plan",
+      "match_status": "user_confirmed_supplied_plan",
+      "exact_evidence": [
+        "CASA AIRES DEL CAMPESTRE",
+        "PISO 2",
+        "ÁREA: 159.35M2",
+        "ÁREA TOTAL: 315,87M2"
+      ],
+      "asset_path": "assets/images/floorplans/page-07-aires-del-campestre-floor-2.webp",
+      "mime": "image/webp",
+      "width": 2000,
+      "height": 1125,
+      "bytes": 34058,
+      "asset_sha256": "bb0122fab645c574c67461bb8b6d66efd65f33e291353a3c77c1de7a1ca074d1",
+      "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+      "source_match_status": "name_match_area_conflict"
+    },
+    {
+      "page": 8,
+      "property_slug": "san-lucas-101",
+      "property_token": "SAN_LUCAS",
+      "title": "San Lucas - Floor 1",
+      "drawing_type": "floor_plan",
+      "match_status": "user_confirmed_supplied_plan",
+      "exact_evidence": [
+        "CASA SAN LUCAS",
+        "PISO 1",
+        "ÁREA: 238,77M2"
+      ],
+      "asset_path": "assets/images/floorplans/page-08-san-lucas-floor-1.webp",
+      "mime": "image/webp",
+      "width": 2000,
+      "height": 1125,
+      "bytes": 44262,
+      "asset_sha256": "e406b197347100f55903cc8c7493e62d1ea814c9f6ab16cb4d7963d5ac4dfb51",
+      "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+      "source_match_status": "name_only_unit_and_area_unconfirmed"
+    },
+    {
+      "page": 9,
+      "property_slug": "san-lucas-101",
+      "property_token": "SAN_LUCAS",
+      "title": "San Lucas - Floor 2",
+      "drawing_type": "floor_plan",
+      "match_status": "user_confirmed_supplied_plan",
+      "exact_evidence": [
+        "CASA SAN LUCAS",
+        "PISO 2",
+        "ÁREA: 183,69M2",
+        "ÁREA TOTAL: 422,46 M2"
+      ],
+      "asset_path": "assets/images/floorplans/page-09-san-lucas-floor-2.webp",
+      "mime": "image/webp",
+      "width": 2000,
+      "height": 1125,
+      "bytes": 48590,
+      "asset_sha256": "0437d7cd187fcf976c36d463a93d3c2511b32359f325c3e82428ba2bdec5c109",
+      "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
+      "source_match_status": "name_only_unit_and_area_unconfirmed"
+    }
+  ],
+  "properties": [
+    {
+      "property_slug": "san-lucas-101",
+      "property_name": "San Lucas 101",
+      "property_token": "SAN_LUCAS",
+      "pages": [
+        8,
+        9
+      ],
+      "match_status": "user_confirmed_supplied_plan",
+      "source_label": "CASA SAN LUCAS",
+      "identity_note": "Base name matches. Unit 101 is not shown; unit identity is not established by the PDF.",
+      "discrepancies": [
+        "PDF total 422.46 m2 differs from investor-deck size 325 m2.",
+        "PDF shows two floors and uses CASA; investor deck describes an apartment."
+      ],
+      "source_match_status": "name_only_unit_and_area_unconfirmed"
+    },
+    {
+      "property_slug": "aires-de-campestre",
+      "property_name": "Aires de Campestre",
+      "property_token": "AIRES",
+      "pages": [
+        6,
+        7
+      ],
+      "match_status": "user_confirmed_supplied_plan",
+      "source_label": "CASA AIRES DEL CAMPESTRE",
+      "identity_note": "Source uses Aires del Campestre; deck uses Aires de Campestre. Association is based on the distinctive property name, not an address or unit identifier.",
+      "discrepancies": [
+        "PDF printed total 315.87 m2 differs from investor-deck size 489 m2.",
+        "PDF floor areas 244.13 and 159.35 m2 sum to 403.48 m2, not the printed total 315.87 m2."
+      ],
+      "source_match_status": "name_match_area_conflict"
+    },
+    {
+      "property_slug": "fontanar-201",
+      "property_name": "Fontanar 201",
+      "property_token": "FONTANAR",
+      "pages": [
+        1,
+        2
+      ],
+      "match_status": "user_confirmed_supplied_plan",
+      "source_label": "CASA FONTANAR",
+      "identity_note": "Base name matches. Unit 201 is not shown; unit identity is not established by the PDF.",
+      "discrepancies": [
+        "PDF total 358.41 m2 differs from investor-deck size 389 m2."
+      ],
+      "source_match_status": "name_only_unit_and_area_unconfirmed"
+    },
+    {
+      "property_slug": "casa-monte-sereno",
+      "property_name": "Casa Monte Sereno",
+      "property_token": "MONTE_SERENO",
+      "pages": [
+        3,
+        4,
+        5
+      ],
+      "match_status": "user_confirmed_supplied_plan",
+      "source_label": "CASA MONTESERENO",
+      "identity_note": "Direct property-name match after whitespace normalization. Site plan, floor plan and roof plan are each explicitly labeled.",
+      "discrepancies": [],
+      "source_match_status": "direct_name_match"
+    },
+    {
+      "property_slug": "casa-montana",
+      "property_name": "Casa Montana",
+      "property_token": "MONTANA",
+      "pages": [],
+      "match_status": "not_present",
+      "source_label": null,
+      "identity_note": "No page in the nine-page source PDF is labeled Montana or Casa Montana. No plan assigned.",
+      "discrepancies": []
+    }
+  ],
+  "user_confirmation": {
+    "quote": "Yes, use the four plans as supplied",
+    "scope": "User authorized associating the four supplied property plan groups with their named homes after being informed of the missing Montana plan and area differences."
+  }
+}

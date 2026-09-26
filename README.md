@@ -1,14 +1,22 @@
 # Dulcinea One
 
-A flowing, 19-chapter HTML investor presentation based on the supplied **Dulcinea - Investor Presentation 027.pptx**. It brings lifestyle and investment together through the Medellín setting, nightlife, Lola & Ber hospitality, selected investment highlights, management, the offer and equity participation, and five property profiles. Numbers are kept light; **Dulcinea Model 07.xlsx** is retained for internal checks, not displayed as spreadsheet or financial-statement sections.
+Dulcinea is a real estate investment firm with a unique platform focused on Medellín, Colombia. This flowing, 19-chapter presentation introduces Dulcinea One, its first fund, co-branded by Lola & Ber Hospitality. Dulcinea manages acquisition, renovation, operation and sale. It is based on the supplied **Dulcinea - Investor Presentation 027.pptx**. It brings lifestyle and investment together through the Medellín setting, nightlife, the Lola & Ber Hospitality co-brand, selected investment highlights, management, the offer and equity participation, and five property profiles. Numbers are kept light in the main story. Optional income-statement and balance-sheet menu links open a separate page using saved results from **Dulcinea Model 07.xlsx**.
 
-The presentation uses the supplied Dulcinea branding, the exact five-color Pantone palette, and portraits, lifestyle imagery, and property images from the source deck. Silent videos use the user's supplied Adobe Stock footage: city and town aerials establish the setting, while chefs preparing food bring the hospitality story to life. A separate nightlife animation uses slow camera moves and dissolves across the supplied DJ and crowd photographs; it does not synthesize human movement. The visual direction draws on [Radisson Resort Maldives](https://radissonresortmaldives.com/); no assets from that website are reused.
+The presentation uses the supplied Dulcinea branding and exact five-color Pantone palette, with lighter backgrounds and Coconut Shell reserved for accents. Wide property films alternate with split layouts to give the homes and people more space. Five user-requested AI lifestyle illustrations show fictional adults in settings based on the supplied property images. Each is labeled, and the original property imagery remains available in the viewer. PNG masters, optimized web images, and generation provenance are retained.
+
+Silent videos use the user's supplied Adobe Stock footage: city and town aerials plus a smiling woman in the countryside establish the setting, while chefs preparing food bring the hospitality story to life. All six distinct supplied stock clips are used. Five nine-second property loops animate the AI lifestyle stills with gentle camera motion; the people remain still. The 17.5-second after-dark sequence moves from night-road stock footage to the supplied Medellín neon animation, then into camera moves across supplied DJ and crowd photographs. The original 13-second photographic sequence is also retained. These photographic animations are not filmed human movement. The visual direction draws on [Radisson Resort Maldives](https://radissonresortmaldives.com/); no assets from that website are reused.
+
+The current team portraits of Dov, Ricardo and Adriana use the later photographs supplied by the user, directly and unchanged. Earlier AI restoration candidates and the original deck portraits are retained as source material but are not used on screen. The local-specialists chapter uses a supplied Fontanar architectural plan.
 
 ## Open the presentation
 
-Download or clone the repository and open `index.html` in a modern browser. This single file embeds its styles, scripts, images, SVG branding, and the MP4 videos used by the presentation. It works offline without installation or a server. External source links and the email contact require their respective services.
+Download or clone the repository and open `index.html` in a modern browser. This single file embeds its styles, scripts, images, SVG branding, videos, and supplied floorplan PDF. It works offline without installation or a server. External source links and the email contact require their respective services.
+
+Keep `financial-statements.html` alongside `index.html` for the optional financial menu links. This separate, self-contained page works offline and includes projected income and balance-sheet tables for the four model years, with USD units, period dates, source notes and mobile horizontal scrolling. It does not require opening or downloading the workbook.
 
 Scroll continuously through the story, or use the previous/next buttons, Left/Right keys, and Explore menu to jump between chapters. The home gallery supports touch, horizontal scrolling, and arrow buttons. Home/End jump to the beginning/end. Fullscreen is available where the browser permits it.
+
+Property viewers open the lifestyle illustration, original imagery, and supplied plans with paging and zoom. Nine complete plan pages cover four homes, as confirmed by the user; source area labels are retained. Casa Montana has no supplied plan. The original PDF is available from the viewer.
 
 Background videos are silent and play only on their active slide. The motion control pauses or resumes playback. Reduced-motion preferences start with a still image; motion can be enabled explicitly. Still images also remain available when video playback is unavailable.
 
@@ -26,6 +34,8 @@ node scripts/build.mjs
 
 The build uses only Node.js built-in modules. No package installation, Python, or FFmpeg is required to build the presentation. The builder writes `index.html`, embedding the original media and SVG bytes. Keep the generated file in version control so it can be opened directly.
 
+The optional financial page is maintained in `src/financial-statements.html` and copied identically to the repository root by the build. Its numbers and exact source-cell references are retained in `content/financials.json`.
+
 ## Optional video rendering
 
 The optimized stock clips and edited loops are already included. To regenerate the introduction and hospitality loops from the retained optimized clips, use Python and FFmpeg:
@@ -34,11 +44,29 @@ The optimized stock clips and edited loops are already included. To regenerate t
 python scripts/render-stock-videos.py
 ```
 
-To re-import the four original MOV files, add `--source-dir "/path/to/Stock Video"`. Originals remain untouched and are not copied into the repository. To rebuild the nightlife animation from its retained stock photographs, run:
+The 17-second introduction combines city, town and countryside footage with 0.625-second circular dissolves. Its dedicated renderer is `scripts/render-introduction.py`; the stock renderer calls it automatically.
+
+To re-import the initial four original MOV files, add `--source-dir "/path/to/Stock Video"`. Originals remain untouched and are not copied into the repository. The two later stock clips are retained in optimized form with encoding options in `assets/video/stock/additional-provenance.json`. To rebuild the nightlife animation from its retained stock photographs, run:
 
 ```sh
 python scripts/render-nightlife.py
 ```
+
+To combine the night-road and Medellín neon clips with that retained photographic sequence, run:
+
+```sh
+python scripts/render-after-dark.py
+```
+
+The result is `assets/video/medellin-after-dark.mp4`; its sequence, source hashes and validation are in `assets/video/after-dark-provenance.json`.
+
+To rebuild the five property loops from their retained AI illustration masters, run:
+
+```sh
+python scripts/render-property-videos.py
+```
+
+This renderer records camera transforms, encoding and source hashes in `assets/video/properties/metadata/provenance.json`.
 
 FFmpeg can be on `PATH`, supplied with `--ffmpeg /path/to/ffmpeg`, or provided by the optional `imageio-ffmpeg` Python package. These are rendering tools, not dependencies of the HTML build. Run the Node.js build after rendering to embed the new videos.
 
@@ -47,18 +75,28 @@ FFmpeg can be on `PATH`, supplied with `--ffmpeg /path/to/ffmpeg`, or provided b
 ## Files
 
 - `index.html`: complete offline presentation, including inline videos.
+- `financial-statements.html`: optional offline income statement and balance sheet, also retained in `src/`.
 - `src/`: editable presentation template, CSS, navigation/media controls, and retained internal source material.
 - `scripts/build.mjs`: dependency-free Node.js builder.
 - `scripts/render-stock-videos.py`: optional optimizer and editor for the supplied stock footage.
+- `scripts/render-introduction.py`: optional renderer for the 17-second city, town and countryside introduction.
 - `scripts/render-nightlife.py`: optional renderer for camera motion across the supplied nightlife photographs.
+- `scripts/render-after-dark.py`: optional editor combining night-road footage, Medellín neon and the retained nightlife animation.
+- `scripts/render-property-videos.py`: optional renderer for the five nine-second property camera loops.
 - `scripts/render-videos.py`: superseded still-image renderer, retained for reference.
 - `assets/manifest.json`: current image and video references used by the builder.
 - `assets/images/investor-deck/`: images extracted from the supplied PowerPoint.
+- `assets/images/lifestyle/`: five AI illustration masters, optimized web assets, and generation provenance.
+- `assets/images/team/`: three unchanged supplied team photographs, provenance, and unused earlier restoration candidates.
+- `assets/images/floorplans/`: nine complete, lossless web images rendered from the supplied PDF.
 - `assets/images/stock/`: original supplied nightlife stock photographs, unchanged.
-- `assets/video/`: edited loops, optimized individual stock clips, posters, and source metadata.
+- `assets/video/`: edited stock loops, nightlife animation, optimized clips, posters, and source metadata.
+- `assets/video/properties/`: five nine-second animations of AI property illustrations, with camera and encoding provenance.
 - `brand/`: complete original supplied brand package, preserved without changes.
-- `design/`: active Pantone palette, digital values, roles, and evidence.
-- `source-packages/`: original supplied PowerPoint, financial workbook, and copper logo ZIP.
+- `design/`: active Pantone palette, source evidence, and the unchanged `Dulcinea-Pantone-palette.png` and `Dulcinea-Pantone-swatch-values.png` references.
+- `content/floorplans.json`: page mappings, exact source evidence, user confirmation, and area differences.
+- `content/financials.json`: saved income-statement and balance-sheet values, source cells, derived totals and reconciliation notes.
+- `source-packages/`: original supplied PowerPoint, financial workbook, copper logo ZIP, and `PLANOS PROPIEDADES DULCINEA.pdf`.
 - `CONTENT-SOURCES.md`: content coverage, source references, and model notes.
 - `ASSET-SOURCES.md`: imagery, video, palette, and branding provenance.
 

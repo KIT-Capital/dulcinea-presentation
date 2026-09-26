@@ -46,17 +46,17 @@
   },
   {
     "marker": "{{DOV}}",
-    "path": "assets/images/investor-deck/image49.png",
+    "path": "assets/images/team/dov-supplied.png",
     "mime": "image/png"
   },
   {
     "marker": "{{RICARDO}}",
-    "path": "assets/images/investor-deck/image50.png",
-    "mime": "image/png"
+    "path": "assets/images/team/ricardo-supplied.jpg",
+    "mime": "image/jpeg"
   },
   {
     "marker": "{{ADRIANA}}",
-    "path": "assets/images/investor-deck/image51.jpeg",
+    "path": "assets/images/team/adriana-supplied.jpeg",
     "mime": "image/jpeg"
   },
   {
@@ -96,12 +96,112 @@
   },
   {
     "marker": "{{NIGHTLIFE_VIDEO}}",
-    "path": "assets/video/medellin-nightlife.mp4",
+    "path": "assets/video/medellin-after-dark.mp4",
     "mime": "video/mp4"
   },
   {
     "marker": "{{NIGHTLIFE_POSTER}}",
     "path": "assets/video/medellin-nightlife-poster.jpg",
     "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{PLAN_PAGE_8}}",
+    "path": "assets/images/floorplans/page-08-san-lucas-floor-1.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{PLAN_PAGE_9}}",
+    "path": "assets/images/floorplans/page-09-san-lucas-floor-2.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{PLAN_PAGE_6}}",
+    "path": "assets/images/floorplans/page-06-aires-del-campestre-floor-1.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{PLAN_PAGE_7}}",
+    "path": "assets/images/floorplans/page-07-aires-del-campestre-floor-2.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{PLAN_PAGE_1}}",
+    "path": "assets/images/floorplans/page-01-fontanar-floor-1.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{PLAN_PAGE_2}}",
+    "path": "assets/images/floorplans/page-02-fontanar-floor-2.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{PLAN_PAGE_3}}",
+    "path": "assets/images/floorplans/page-03-monte-sereno-site.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{PLAN_PAGE_4}}",
+    "path": "assets/images/floorplans/page-04-monte-sereno-floor-1.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{PLAN_PAGE_5}}",
+    "path": "assets/images/floorplans/page-05-monte-sereno-roof.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{FLOORPLAN_PDF}}",
+    "path": "source-packages/PLANOS PROPIEDADES DULCINEA.pdf",
+    "mime": "application/pdf"
+  },
+  {
+    "marker": "{{LIFESTYLE_SAN_LUCAS}}",
+    "path": "assets/images/lifestyle/san-lucas.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{LIFESTYLE_AIRES}}",
+    "path": "assets/images/lifestyle/aires.jpg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{LIFESTYLE_FONTANAR}}",
+    "path": "assets/images/lifestyle/fontanar.jpg",
+    "mime": "image/jpeg"
+  },
+  {
+    "marker": "{{LIFESTYLE_MONTE_SERENO}}",
+    "path": "assets/images/lifestyle/monte-sereno.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{LIFESTYLE_MONTANA}}",
+    "path": "assets/images/lifestyle/montana.webp",
+    "mime": "image/webp"
+  },
+  {
+    "marker": "{{PROPERTY_VIDEO_SAN_LUCAS}}",
+    "path": "assets/video/properties/san-lucas.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{PROPERTY_VIDEO_AIRES}}",
+    "path": "assets/video/properties/aires.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{PROPERTY_VIDEO_FONTANAR}}",
+    "path": "assets/video/properties/fontanar.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{PROPERTY_VIDEO_MONTE_SERENO}}",
+    "path": "assets/video/properties/monte-sereno.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{PROPERTY_VIDEO_MONTANA}}",
+    "path": "assets/video/properties/montana.mp4",
+    "mime": "video/mp4"
   }
 ]

@@ -1,0 +1,70 @@
+{
+  "person": "Ricardo Cidale",
+  "selected_asset": "assets/images/team/ricardo-supplied.jpg",
+  "source_filename": "Small sq-Ricardo_Cidale---Edit.jpg",
+  "source_sha256": "e5625ae0e432620aed75f1118d0fd36303a29f598c497cb2d266f9b6b36e29e0",
+  "selected_sha256": "e5625ae0e432620aed75f1118d0fd36303a29f598c497cb2d266f9b6b36e29e0",
+  "width": 2092,
+  "height": 2092,
+  "bytes": 796934,
+  "actual_use": "User-supplied original professional portrait, copied unchanged. No AI rendering, retouching, resizing or recompression applied to the selected image.",
+  "review": "Supplied square portrait visually inspected: blue background, blue collared shirt, smiling expression; image clarity is suitable for the team section.",
+  "superseded_ai_candidate": {
+    "person": "Ricardo Cidale",
+    "mode": "identity-preserve photographic restoration",
+    "tool": "Built-in image_gen.imagegen",
+    "generation_count": 1,
+    "source": "assets/images/investor-deck/image50.png",
+    "source_sha256": "051b5d067650cca1779e3715d20fa32734c8bb04aaa5f5a0bd0971ee6b42c865",
+    "master": "assets/images/team/ricardo-retouched.png",
+    "web_asset": "assets/images/team/ricardo-retouched.jpg",
+    "result_metadata": {
+      "generated_file_name": "exec-3671c7e4-3fac-41ac-aeea-1e841d735606.png",
+      "generation_id": "01a0dcd8-6aa9-7b20-a1cb-a720a97cbd2f",
+      "delivery_format": "PNG"
+    },
+    "prompt": "Use case: identity-preserve.\nAsset type: restored photographic team portrait for an investor website.\nInput image 1 is the exact edit target: Ricardo's small monochrome cutout headshot with a blue edge. Restore this same photograph, preserving the person's exact likeness, apparent age, expression, facial geometry, and recognizable features.\nPrimary request: tasteful photoreal photographic restoration and subtle natural colorization. Improve exposure, neutral color, fine clarity and separation while keeping natural skin texture and age lines. Remove the blue cutout halo and replace the transparent/black surrounding area with a clean, very pale warm-gray studio background.\nIdentity invariants: preserve the same head angle and slight tilt, gray hair pattern and hairline, forehead and eyebrows, eye shapes and spacing, nose, cheek and jaw shapes, ears, broad friendly smile, visible teeth, smile lines and asymmetry. Do not reshape the face, slim it, de-age it, beautify it, change the smile or invent a different identity. Keep the original casual collared shirt, its open collar and understated fabric rather than adding a suit, tie or accessories.\nComposition: one 4:5 vertical portrait, head and shoulders, with comfortable space above the hair and around the shoulders. Reconstruct only the cropped peripheral shirt/shoulder edges needed for this rectangular portrait, staying consistent with the source pose. Face remains the priority and should stay faithful to the source.\nLighting and finish: soft balanced portrait light, natural warm skin color, realistic gray hair, gentle contrast, restrained professional retouching. No plastic skin, heavy smoothing, glamour styling, dramatic shadows, text, logos, borders, watermark or decorative elements. Output one polished high-resolution photographic image.",
+    "changes_requested": [
+      "Improve exposure, neutral color and fine clarity",
+      "Preserve recognizable facial geometry, apparent age, expression and gray hair",
+      "Remove blue cutout halo",
+      "Use a pale neutral background",
+      "Restore peripheral shirt and shoulder edges for a 4:5 portrait"
+    ],
+    "review": {
+      "decision": "Selected first generation after visual comparison with the supplied source.",
+      "retained_features": [
+        "Gray hair pattern and hairline",
+        "Head angle and slight tilt",
+        "Eyebrow and eye shapes",
+        "Nose and cheek structure",
+        "Broad smile and visible teeth",
+        "Natural age lines and skin texture",
+        "Casual open-collar gray shirt"
+      ],
+      "limitations": "Color and fine detail are AI reconstructions from a small monochrome source, not new documentary photographic evidence."
+    },
+    "originals_preserved": true,
+    "master_metadata": {
+      "width": 1122,
+      "height": 1402,
+      "bytes": 2454925,
+      "sha256": "066468bf8e0ec8e3cdc3ac728061b6d8c7509e2b9f42ad149172c03a8332fe88"
+    },
+    "web_metadata": {
+      "width": 1122,
+      "height": 1402,
+      "bytes": 404357,
+      "sha256": "99864a9afdb69258cfc9e81411344f7ba9d7ea4f394c842903d1641ecedc0034"
+    },
+    "web_encoding": {
+      "format": "JPEG",
+      "quality": 92,
+      "chroma_subsampling": "4:4:4",
+      "progressive": true,
+      "pixel_dimensions_unchanged": true
+    },
+    "selected_for_use": false,
+    "superseded_reason": "User supplied a higher-quality finished portrait and instructed direct use of that image."
+  }
+}
