@@ -187,7 +187,7 @@ export default {
       const readRequest = ['GET', 'HEAD'].includes(request.method);
       if (url.pathname === '/robots.txt' && readRequest) return text(request.method === 'HEAD' ? null : 'User-agent: *\nDisallow: /\n');
       if (PUBLIC_ASSETS.has(url.pathname) && readRequest) return protect(await env.ASSETS.fetch(request));
-      if (typeof env.INVESTOR_PASSWORD !== 'string' || env.INVESTOR_PASSWORD.length < 12
+      if (typeof env.INVESTOR_PASSWORD !== 'string' || env.INVESTOR_PASSWORD.length < 11
           || typeof env.SESSION_SECRET !== 'string' || env.SESSION_SECRET.length < 32) return text('Access is not configured yet.', 503);
       if (url.pathname === '/login') {
         if (request.method === 'POST') return await submitLogin(request, env, url);

@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir, copyFile, rm, stat } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, copyFile, rm, stat, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -20,7 +20,6 @@ async function build() {
   const media = manifest.map(({ marker, path: assetPath, mime }) => [marker, assetPath, mime]);
   if (web) {
     if (path.resolve(siteRoot) !== path.resolve(root, 'dist', 'private-site')) throw new Error('Invalid build directory');
-    await rm(siteRoot, { recursive: true, force: true });
     await mkdir(siteRoot, { recursive: true });
   }
   const [template, styles, script, paletteText] = await Promise.all([
@@ -84,17 +83,33 @@ async function build() {
   if (unresolved) throw new Error(`Unresolved template markers: ${[...new Set(unresolved)].join(', ')}`);
 
   let financial = await read('src/financial-statements.html', 'utf8');
+  let criteria = await read('src/investment-criteria.html', 'utf8');
   if (web) {
     const signOut = '<form class="session-exit" action="/logout" method="post"><button type="submit">Sign out</button></form>';
     const exitStyle = '<style>.session-exit{margin:24px 0}.session-exit button{font:inherit;font-size:14px;color:inherit;background:transparent;border:1px solid currentColor;border-radius:0;padding:12px 20px;cursor:pointer}.session-exit button:focus-visible{outline:3px solid #009B74;outline-offset:4px}#slide-menu>.session-exit{margin:24px 5vw}</style>';
     html = html.replace('<details class="credits">', signOut + '<details class="credits">').replace('</head>', exitStyle + '</head>');
     financial = financial.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
+    criteria = criteria.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
     await copyAsset('brand/dulcinea-one/svg/dulcinea-one-mono-black.svg', 'gate-assets/logo.svg');
   }
   const destination = web ? siteRoot : root;
   const output = path.join(destination, 'index.html');
   await writeFile(output, html, 'utf8');
   await writeFile(path.join(destination, 'financial-statements.html'), financial, 'utf8');
+  await writeFile(path.join(destination, 'investment-criteria.html'), criteria, 'utf8');
+  if (web) {
+    const keep = new Set([...copied, output, path.join(destination, 'financial-statements.html'), path.join(destination, 'investment-criteria.html')]);
+    // Keep watched directories in place on Windows; remove only stale build files.
+    async function prune(directory) {
+      for (const entry of await readdir(directory, { withFileTypes: true })) {
+        const file = path.join(directory, entry.name);
+        if (!file.startsWith(siteRoot + path.sep)) throw new Error('Invalid build cleanup path');
+        if (entry.isDirectory()) await prune(file);
+        else if (!keep.has(file)) await rm(file);
+      }
+    }
+    await prune(siteRoot);
+  }
   console.log(`Built ${web ? 'dist/private-site/' : ''}index.html (${Buffer.byteLength(html, 'utf8').toLocaleString('en-US')} bytes)${web ? ` and ${copied.size} selected assets` : ''}`);
 }
 

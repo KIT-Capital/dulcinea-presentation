@@ -18,6 +18,8 @@ Download or clone the repository and open `index.html` in a modern browser. This
 
 Keep `financial-statements.html` alongside `index.html` for the optional financial menu links. This separate, self-contained page works offline and includes projected income and balance-sheet tables for the four model years, with USD units, period dates, source notes and mobile horizontal scrolling. It does not require opening or downloading the workbook.
 
+Keep `investment-criteria.html` alongside these files for the Investment criteria link. It presents the ten acquisition tests from the supplied Buy Box, with targets distinguished from modeled results. The Explore menu groups criteria, income statement and balance sheet under Investor resources.
+
 Scroll continuously through the story, or use the previous/next buttons, Left/Right keys, and Explore menu to jump between chapters. The home gallery supports touch, horizontal scrolling, and arrow buttons. Home/End jump to the beginning/end. Fullscreen is available where the browser permits it.
 
 Property viewers open the lifestyle illustration, original imagery, and supplied plans with paging and zoom. Nine complete plan pages cover four homes, as confirmed by the user; source area labels are retained. Casa Montana has no supplied plan. The original PDF is available from the viewer.
@@ -52,7 +54,7 @@ wrangler deploy --config wrangler.jsonc --secrets-file /private/path/secrets.jso
 
 The web build writes `dist/private-site/`: a small HTML entry point, the separate financial page, and only the assets actually referenced by the presentation. It excludes source spreadsheets, PowerPoint files, archives and internal provenance. Videos can stream separately. The supplied floorplan PDF remains a protected download.
 
-Supply `INVESTOR_PASSWORD` (at least 12 characters) and `SESSION_SECRET` (at least 32 characters) through Cloudflare secrets. The secret file must remain outside this repository. Changing either value invalidates existing sessions. Never commit credentials or put them in browser JavaScript. The Worker requires the `LOGIN_LIMITER` binding and rejects login when configuration is missing. A local `.dev.vars` file is ignored by Git; use `PREVIEW_ONLY=true` with `wrangler dev --local` for local testing.
+Supply `INVESTOR_PASSWORD` (at least 11 characters) and `SESSION_SECRET` (at least 32 characters) through Cloudflare secrets. The secret file must remain outside this repository. Changing either value invalidates existing sessions. Never commit credentials or put them in browser JavaScript. The Worker requires the `LOGIN_LIMITER` binding and rejects login when configuration is missing. A local `.dev.vars` file is ignored by Git; use `PREVIEW_ONLY=true` with `wrangler dev --local` for local testing.
 
 The custom domain must be fully registered and its zone available in the configured Cloudflare account before deployment can attach it. Cloudflare manages the custom-domain DNS and certificate. After deploying, verify private direct URLs redirect to login, valid login grants access, wrong passwords fail, videos support playback, and logout clears the session.
 

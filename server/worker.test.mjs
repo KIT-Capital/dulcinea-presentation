@@ -55,7 +55,7 @@ function signedCookie(env, payload) {
 
 test('every private route, image, video, plan and financial statement is gated before assets are read', async () => {
   const { env, assetRequests } = fixture();
-  for (const path of ['/', '/index.html', '/financial-statements.html', '/assets/video/medellin-after-dark.mp4',
+  for (const path of ['/', '/index.html', '/financial-statements.html', '/investment-criteria.html', '/assets/video/medellin-after-dark.mp4',
     '/assets/images/team/dov-supplied.jpg', '/source-packages/PLANOS.pdf', '/downloads/deck.html', '/gate-assets/not-public.svg']) {
     for (const method of ['GET', 'HEAD']) {
       const response = await worker.fetch(request(path, { method }), env);
@@ -177,6 +177,25 @@ test('logout only accepts same-origin POST and expires the correct cookie', asyn
   assert.equal(response.headers.get('Location'), '/login');
   assert.match(response.headers.get('Set-Cookie'), /^__Host-dulcinea_session=;/);
   assert.match(response.headers.get('Set-Cookie'), /Max-Age=0/);
+});
+
+test('an eleven-character configured password grants access; ten characters fail closed', async () => {
+  const accepted = fixture({ INVESTOR_PASSWORD: 'test-only11' });
+  assert.equal(accepted.env.INVESTOR_PASSWORD.length, 11);
+  const cookie = await session(accepted.env, { next: '/investment-criteria.html' });
+  const page = await worker.fetch(request('/investment-criteria.html', { headers: { Cookie: cookie } }), accepted.env);
+  assert.equal(page.status, 200);
+  assert.equal(await page.text(), 'private asset bytes');
+  assert.equal(accepted.assetRequests.length, 1);
+
+  const rejected = fixture({ INVESTOR_PASSWORD: 'test-only1' });
+  assert.equal(rejected.env.INVESTOR_PASSWORD.length, 10);
+  const response = await worker.fetch(loginRequest(rejected.env), rejected.env);
+  assert.equal(response.status, 503);
+  assert.equal(response.headers.get('Set-Cookie'), null);
+  assert.equal((await worker.fetch(request('/investment-criteria.html'), rejected.env)).status, 503);
+  assert.equal(rejected.assetRequests.length, 0);
+  assert.equal(rejected.rateKeys.length, 0);
 });
 
 test('missing or weak secrets and unavailable login limiting fail closed', async () => {
