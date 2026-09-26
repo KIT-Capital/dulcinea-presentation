@@ -3,7 +3,7 @@ import { renderLogin } from './login.mjs';
 const encoder = new TextEncoder();
 const SESSION_SECONDS = 8 * 60 * 60;
 const MAX_FORM_BYTES = 4096;
-const CONTACT_EMAIL = 'ricardo@kitcapital.com';
+const CONTACT_EMAIL = 'kit@kitcapital.com';
 const PUBLIC_ASSETS = new Set(['/gate-assets/logo.svg']);
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",

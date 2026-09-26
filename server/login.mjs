@@ -8,9 +8,9 @@ function localDestination(value) {
     ? path : '/';
 }
 
-export function renderLogin({ name = '', email = '', next = '/', error = '', contactEmail = 'ricardo@kitcapital.com' } = {}) {
+export function renderLogin({ name = '', email = '', next = '/', error = '', contactEmail = 'kit@kitcapital.com' } = {}) {
   const contact = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(String(contactEmail))
-    ? String(contactEmail) : 'ricardo@kitcapital.com';
+    ? String(contactEmail) : 'kit@kitcapital.com';
   const requestAccess = `mailto:${encodeURIComponent(contact)}?subject=Dulcinea%20One%20%E2%80%94%20Investor%20access`;
   const errorBlock = error ? `<div class="error" id="sign-in-error" role="alert" tabindex="-1" autofocus>
       <strong>We couldn’t sign you in.</strong><p>${escapeHtml(error)}</p>

@@ -116,7 +116,7 @@ The user initially supplied four MOV files from the Dulcinea stock-video folder.
 | `AdobeStock_693150796.mov` | 20.75 seconds | 4096 × 2160 | Aerial movement past modern city towers and green streets |
 | `AdobeStock_1849343666.mov` | 14.00 seconds | 3840 × 2160 | Aerial movement over a colonial town square and church with pedestrians |
 
-Representative frames at 10%, 50%, and 90% of each original were visually inspected; no visible watermarks appeared in those samples. Geographic locations and licensing terms were not independently verified. Footage illustrates setting and hospitality and does not establish portfolio ownership or that depicted people work for Dulcinea. The pasture portrait appears in the closing contact chapter; it is excluded from the opening film.
+Representative frames at 10%, 50%, and 90% of each original were visually inspected; no visible watermarks appeared in those samples. Geographic locations and licensing terms were not independently verified. Footage illustrates setting and hospitality and does not establish portfolio ownership or that depicted people work for Dulcinea. The pasture portrait appears briefly in the Why Medellín chapter as illustrative countryside footage; it is excluded from the opening and closing chapters.
 
 Each optimized video keeps the original filename stem with an `.mp4` extension; a corresponding `-poster.jpg` is also included. Scaling preserves aspect ratio and uses a centered 16:9 crop when necessary. These initially imported clips are silent H.264 at 1280 × 720 and 24 fps, with Rec.709 color, limited range, and fast-start metadata.
 
