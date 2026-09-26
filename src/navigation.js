@@ -47,7 +47,7 @@
       if (index < 0 || index >= slides.length) return;
       const changed = currentIndex !== index;
       currentIndex = index;
-      masthead?.classList.toggle('on-light', slides[index].classList.contains('ivory') || slides[index].classList.contains('mist'));
+      masthead?.classList.toggle('on-light', slides[index].classList.contains('ivory') || slides[index].classList.contains('blue'));
       slides.forEach((slide, position) => {
         slide.dataset.active = String(position === index);
       });

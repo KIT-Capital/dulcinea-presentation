@@ -6,13 +6,19 @@ The copper Dulcinea logo package was supplied by the user for this presentation.
 
 The presentation uses these supplied SVG files:
 
-- `brand/dulcinea-one/svg/dulcinea-one-color-on-dark.svg`
-- `brand/dulcinea-one/svg/dulcinea-one-color-on-light.svg`
-- `brand/shared-symbol/svg/dulcinea-symbol-color-on-dark.svg`
-- `brand/shared-symbol/svg/dulcinea-symbol-color-on-light.svg`
-- `brand/favicon/favicon.svg`
+- `brand/dulcinea-one/svg/dulcinea-one-mono-white.svg`
+- `brand/dulcinea-one/svg/dulcinea-one-mono-black.svg`
+- `brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg`
+- `brand/shared-symbol/svg/dulcinea-symbol-mono-black.svg`
+The black doorway symbol also supplies the browser favicon.
 
 The builder embeds the original SVG file bytes as Base64 data URIs. It does not redraw, recolor, or otherwise rewrite the SVG artwork. Asset ownership and usage rights remain with their respective owners; inclusion here does not grant an additional license.
+
+## Current presentation palette
+
+The user supplied two saved Pantone Connect pages, `Pantone Connect.html` and `Pantone Connect 2.html`. Their selected palette is the same: Blue Topaz, Plumeria, African Violet, Simply Green, and Coconut Shell. The exact displayed sRGB and hex values, source file hashes, and DOM evidence are recorded in `design/palette.json`; color roles are documented in `design/README.md`. The raw application pages remain outside the repository.
+
+These colors replace the earlier copper and teal presentation theme. The complete original brand package remains intact; the presentation now uses its supplied monochrome logo variants. White and graphite are functional neutral colors, outside the selected five-color palette.
 
 ## Hospitality concept
 

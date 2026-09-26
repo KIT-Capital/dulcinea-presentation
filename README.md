@@ -1,6 +1,6 @@
 # Dulcinea One
 
-A nine-slide HTML presentation about Dulcinea One, hospitality ownership, Medellín, the proposed Buy Box, fund, owner benefits, and owner journey. It uses the supplied copper Dulcinea branding.
+A nine-slide HTML presentation about Dulcinea One, hospitality ownership, Medellín, the proposed Buy Box, fund, owner benefits, and owner journey. It uses the supplied Dulcinea logos and the five-color palette selected in the Pantone Connect files.
 
 ## Open the presentation
 
@@ -10,7 +10,7 @@ Use the previous/next buttons, Left/Right keys, or slide menu to navigate. Up/Do
 
 ## Edit and rebuild
 
-Edit the files in `src/`, then run either command from the repository root with Node.js 18 or newer:
+Edit the files in `src/` and the color values in `design/palette.json`, then run either command from the repository root with Node.js 18 or newer:
 
 ```sh
 npm run build
@@ -28,7 +28,8 @@ No package installation or third-party dependencies are required. The builder wr
 - `src/`: editable HTML template, CSS, and navigation JavaScript.
 - `scripts/build.mjs`: portable Node.js builder.
 - `assets/images/`: the hospitality concept image and Medellín photograph.
-- `brand/`: extracted supplied brand assets, including Dulcinea One logos, shared symbols, and favicon.
+- `brand/`: original supplied brand package, preserved without changes.
+- `design/`: active Pantone palette, digital values, roles, and source evidence.
 - `source-packages/Dulcinea_Logo_Package_Copper.zip`: original supplied copper brand archive.
 - `ASSET-SOURCES.md`: image and brand provenance.
 

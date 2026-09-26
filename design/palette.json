@@ -1,0 +1,56 @@
+{
+  "name": "Dulcinea Pantone palette",
+  "colors": [
+    {
+      "token": "blue-topaz",
+      "name": "Blue Topaz",
+      "pantone": "14-4310 TCX",
+      "hex": "#78BDD4",
+      "rgb": [120, 189, 212]
+    },
+    {
+      "token": "plumeria",
+      "name": "Plumeria",
+      "pantone": "15-1822 TCX",
+      "hex": "#FB90A2",
+      "rgb": [251, 144, 162]
+    },
+    {
+      "token": "african-violet",
+      "name": "African Violet",
+      "pantone": "16-3520 TCX",
+      "hex": "#B085B7",
+      "rgb": [176, 133, 183]
+    },
+    {
+      "token": "simply-green",
+      "name": "Simply Green",
+      "pantone": "17-5936 TCX",
+      "hex": "#009B74",
+      "rgb": [0, 155, 116]
+    },
+    {
+      "token": "coconut-shell",
+      "name": "Coconut Shell",
+      "pantone": "18-1230 TCX",
+      "hex": "#874E3C",
+      "rgb": [135, 78, 60]
+    }
+  ],
+  "sources": [
+    {
+      "file": "Pantone Connect.html",
+      "sha256": "cce559b15f988a1d7eb202b20b88d944a0812f0f8183d83ad7cac569af503a0c"
+    },
+    {
+      "file": "Pantone Connect 2.html",
+      "sha256": "2b56d93e52a2dd2ed138c02f14cc9d60d3e7b3b1694f9550b76b390c6a8b646e"
+    }
+  ],
+  "evidence": {
+    "selectedPaletteName": "Untitled",
+    "generatorTheme": "Tropical Elegance",
+    "selector": "div.css-oloq0d > div.css-1la8ssy",
+    "comparison": "Identical after local saved-resource directory names are normalized"
+  }
+}

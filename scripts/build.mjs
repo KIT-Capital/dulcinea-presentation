@@ -8,18 +8,19 @@ const read = (relativePath, encoding) => readFile(path.join(root, relativePath),
 const assets = [
   ['{{HERO}}', 'assets/images/hospitality-concept.png', 'image/png'],
   ['{{CITY}}', 'assets/images/medellin.jpg', 'image/jpeg'],
-  ['{{LOGO_DARK}}', 'brand/dulcinea-one/svg/dulcinea-one-color-on-dark.svg', 'image/svg+xml'],
-  ['{{LOGO_LIGHT}}', 'brand/dulcinea-one/svg/dulcinea-one-color-on-light.svg', 'image/svg+xml'],
-  ['{{SYMBOL_DARK}}', 'brand/shared-symbol/svg/dulcinea-symbol-color-on-dark.svg', 'image/svg+xml'],
-  ['{{SYMBOL_LIGHT}}', 'brand/shared-symbol/svg/dulcinea-symbol-color-on-light.svg', 'image/svg+xml'],
-  ['{{FAVICON}}', 'brand/favicon/favicon.svg', 'image/svg+xml'],
+  ['{{LOGO_DARK}}', 'brand/dulcinea-one/svg/dulcinea-one-mono-white.svg', 'image/svg+xml'],
+  ['{{LOGO_LIGHT}}', 'brand/dulcinea-one/svg/dulcinea-one-mono-black.svg', 'image/svg+xml'],
+  ['{{SYMBOL_DARK}}', 'brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg', 'image/svg+xml'],
+  ['{{SYMBOL_LIGHT}}', 'brand/shared-symbol/svg/dulcinea-symbol-mono-black.svg', 'image/svg+xml'],
+  ['{{FAVICON}}', 'brand/shared-symbol/svg/dulcinea-symbol-mono-black.svg', 'image/svg+xml'],
 ];
 
 async function build() {
-  const [template, styles, script, embeddedAssets] = await Promise.all([
+  const [template, styles, script, paletteText, embeddedAssets] = await Promise.all([
     read('src/presentation.html', 'utf8'),
     read('src/presentation.css', 'utf8'),
     read('src/navigation.js', 'utf8'),
+    read('design/palette.json', 'utf8'),
     Promise.all(assets.map(async ([marker, relativePath, mimeType]) => {
       // Base64 encodes the original file bytes; SVG artwork is never rewritten.
       const bytes = await read(relativePath);
@@ -27,7 +28,23 @@ async function build() {
     })),
   ]);
 
+  const palette = JSON.parse(paletteText);
+  if (!Array.isArray(palette.colors) || palette.colors.length !== 5) {
+    throw new Error('The presentation requires the five supplied Pantone colors.');
+  }
+  const paletteCss = ':root{\n' + palette.colors.map(({ token, hex }) => {
+    if (!/^[a-z]+(?:-[a-z]+)*$/.test(token) || !/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+      throw new Error('Invalid palette token or digital color value.');
+    }
+    const rgb = [1, 3, 5].map((start) => parseInt(hex.slice(start, start + 2), 16)).join(',');
+    return `  --pantone-${token}:${hex};\n  --pantone-${token}-rgb:${rgb};`;
+  }).join('\n') + '\n}';
+  const themeColor = palette.colors.find(({ token }) => token === 'coconut-shell')?.hex;
+  if (!themeColor) throw new Error('The palette must include Coconut Shell.');
+
   const replacements = [
+    ['{{THEME_COLOR}}', themeColor],
+    ['/*__PALETTE__*/', paletteCss],
     ['/*__STYLES__*/', styles],
     ['/*__SCRIPT__*/', script],
     ...embeddedAssets,
