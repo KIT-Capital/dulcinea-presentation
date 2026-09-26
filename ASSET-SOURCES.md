@@ -114,7 +114,7 @@ The user initially supplied four MOV files from the Dulcinea stock-video folder.
 | `AdobeStock_693150796.mov` | 20.75 seconds | 4096 × 2160 | Aerial movement past modern city towers and green streets |
 | `AdobeStock_1849343666.mov` | 14.00 seconds | 3840 × 2160 | Aerial movement over a colonial town square and church with pedestrians |
 
-Representative frames at 10%, 50%, and 90% of each original were visually inspected; no visible watermarks appeared in those samples. Geographic locations and licensing terms were not independently verified. Footage illustrates setting and hospitality and does not establish portfolio ownership or that depicted people work for Dulcinea. The pasture portrait appears in the introduction after the city and town aerials.
+Representative frames at 10%, 50%, and 90% of each original were visually inspected; no visible watermarks appeared in those samples. Geographic locations and licensing terms were not independently verified. Footage illustrates setting and hospitality and does not establish portfolio ownership or that depicted people work for Dulcinea. The pasture portrait appears in the closing contact chapter; it is excluded from the opening film.
 
 Each optimized video keeps the original filename stem with an `.mp4` extension; a corresponding `-poster.jpg` is also included. Scaling preserves aspect ratio and uses a centered 16:9 crop when necessary. Optimized clips are silent H.264 at 1280 × 720 and 24 fps, with Rec.709 color, limited range, and fast-start metadata.
 
@@ -134,12 +134,12 @@ The introduction and hospitality loops use actual footage from the supplied Adob
 
 | File | Duration | Sequence |
 | --- | --- | --- |
-| `assets/video/dulcinea-introduction.mp4` | 17 seconds | Modern city aerial, colonial town aerial, then a smiling woman in a pasture |
+| `assets/video/dulcinea-introduction.mp4` | 12 seconds | Modern city aerial and colonial town aerial |
 | `assets/video/hospitality-people.mp4` | 14 seconds | Chefs preparing food |
 
 The introduction uses 0.625-second circular dissolves; the hospitality loop uses a one-second circular dissolve. Both preserve the source playback speed. Matching `-poster.jpg` files provide still fallbacks. Individual optimized city and town clips are also available for location sections. MP4 files referenced by the presentation are embedded directly into `index.html` for offline playback.
 
-`scripts/render-stock-videos.py` reproduces the optimization and edits using FFmpeg; it calls `scripts/render-introduction.py` for the three-scene introduction. `assets/video/stock/provenance.json` records original and optimized file hashes and metadata; `assets/video/provenance.json` records the edited loops, their sources, encoding, and validation. Rendering tools are optional and are not required to run the Node.js HTML builder. The older `scripts/render-videos.py` remains as a superseded workflow for still-image animation.
+`scripts/render-stock-videos.py` reproduces the optimization and edits using FFmpeg; it calls `scripts/render-introduction.py` for the two-scene introduction. `assets/video/stock/provenance.json` records original and optimized file hashes and metadata; `assets/video/provenance.json` records the edited loops, their sources, encoding, and validation. Rendering tools are optional and are not required to run the Node.js HTML builder. The older `scripts/render-videos.py` remains as a superseded workflow for still-image animation.
 
 ## Property illustration camera loops
 

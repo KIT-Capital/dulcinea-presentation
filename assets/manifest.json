@@ -203,5 +203,15 @@
     "marker": "{{PROPERTY_VIDEO_MONTANA}}",
     "path": "assets/video/properties/montana.mp4",
     "mime": "video/mp4"
+  },
+  {
+    "marker": "{{COUNTRYSIDE_VIDEO}}",
+    "path": "assets/video/stock/AdobeStock_539938219.mp4",
+    "mime": "video/mp4"
+  },
+  {
+    "marker": "{{COUNTRYSIDE_POSTER}}",
+    "path": "assets/video/stock/AdobeStock_539938219-poster.jpg",
+    "mime": "image/jpeg"
   }
 ]

@@ -21,10 +21,10 @@
   "videos": [
     {
       "file": "dulcinea-introduction.mp4",
-      "bytes": 6062789,
-      "sha256": "5414255e915781d2a0081adbb9c454ebeddc9598eefc6c46e44e83ea819a7108",
-      "duration_seconds": 17.0,
-      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2850 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "bytes": 7125976,
+      "sha256": "d82b8c4f17bac59e877b340b3467940ed846000a0e2dcde161ba490da3702297",
+      "duration_seconds": 12.0,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 4747 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
       "audio_tracks": 0,
       "scenes": [
         {
@@ -38,16 +38,10 @@
           "subject": "Colonial town square with pedestrians",
           "start_seconds": 0,
           "duration_seconds": 6.625
-        },
-        {
-          "id": "539938219",
-          "subject": "Woman smiling and waving in a pasture with cattle",
-          "start_seconds": 0,
-          "duration_seconds": 5.625
         }
       ],
       "crossfade_seconds": 0.625,
-      "method": "Actual supplied city, town and countryside footage at original speed; circular dissolves; no synthetic scene generation.",
+      "method": "Actual supplied city and town footage at original speed; circular dissolves; no synthetic scene generation.",
       "loop_method": "Repeat the first city segment after the final dissolve, then trim at matching city camera positions.",
       "render_script": "scripts/render-introduction.py",
       "encoding_options": [
@@ -57,11 +51,11 @@
         "-preset",
         "slow",
         "-crf",
-        "24",
+        "23",
         "-maxrate",
-        "3M",
-        "-bufsize",
         "6M",
+        "-bufsize",
+        "12M",
         "-profile:v",
         "high",
         "-level",

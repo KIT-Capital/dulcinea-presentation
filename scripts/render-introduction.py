@@ -1,6 +1,6 @@
-"""Build the silent city, town and countryside introduction from supplied stock.
+"""Build the silent city and town introduction from supplied stock.
 
-Usage: python scripts/render-introduction.py [--ffmpeg /path/to/ffmpeg]
+Usage: python scripts/render-introduction.py [--ffmpeg /path/to/ffmpeg] [--keep-poster]
 Reuses the retained optimized MP4s; original MOV files remain untouched.
 Only replaces the introduction, its poster and its provenance entry.
 """
@@ -17,7 +17,6 @@ FADE = 15 / FPS  # Frame-aligned, approximately 0.6 seconds.
 SCENES = [
     {"id": "693150796", "subject": "City towers and green streets", "start_seconds": 0, "duration_seconds": 6.625},
     {"id": "1849343666", "subject": "Colonial town square with pedestrians", "start_seconds": 0, "duration_seconds": 6.625},
-    {"id": "539938219", "subject": "Woman smiling and waving in a pasture with cattle", "start_seconds": 0, "duration_seconds": 5.625},
 ]
 
 
@@ -28,7 +27,7 @@ def load_helper(name, filename):
     return module
 
 
-def render_intro(ffmpeg):
+def render_intro(ffmpeg, *, update_poster=True):
     helper = load_helper("stock_renderer", "render-stock-videos.py")
     command = [ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-filter_complex_threads", "2"]
     inputs = SCENES + [{**SCENES[0], "duration_seconds": FADE + 0.25}]
@@ -51,18 +50,19 @@ def render_intro(ffmpeg):
     filters.append(f"[{previous}]trim=start={FADE}:duration={duration},setpts=PTS-STARTPTS[out]")
     output = VIDEO / "dulcinea-introduction.mp4"
     encoding = [
-        "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "24", "-maxrate", "3M", "-bufsize", "6M",
+        "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "23", "-maxrate", "6M", "-bufsize", "12M",
         "-profile:v", "high", "-level", "3.1", "-pix_fmt", "yuv420p", "-color_range", "tv", "-colorspace", "bt709",
         "-color_primaries", "bt709", "-color_trc", "bt709", "-r", str(FPS), "-g", str(FPS * 2),
         "-movflags", "+faststart", "-threads", "4",
     ]
     helper.run([*command, "-filter_complex", ";".join(filters), "-map", "[out]", *encoding, "-t", str(duration), str(output)])
     metadata = helper.validate(ffmpeg, output)
-    helper.poster(ffmpeg, output, VIDEO / "dulcinea-introduction-poster.jpg")
+    if update_poster:
+        helper.poster(ffmpeg, output, VIDEO / "dulcinea-introduction-poster.jpg")
     return {
         "file": output.name, **metadata, "scenes": SCENES,
         "crossfade_seconds": FADE,
-        "method": "Actual supplied city, town and countryside footage at original speed; circular dissolves; no synthetic scene generation.",
+        "method": "Actual supplied city and town footage at original speed; circular dissolves; no synthetic scene generation.",
         "loop_method": "Repeat the first city segment after the final dissolve, then trim at matching city camera positions.",
         "render_script": "scripts/render-introduction.py",
         "encoding_options": encoding,
@@ -72,9 +72,10 @@ def render_intro(ffmpeg):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ffmpeg")
+    parser.add_argument("--keep-poster", action="store_true", help="Preserve the existing city poster.")
     args = parser.parse_args()
     ffmpeg = load_helper("ffmpeg_locator", "render-videos.py").find_ffmpeg(args.ffmpeg)
-    metadata = render_intro(ffmpeg)
+    metadata = render_intro(ffmpeg, update_poster=not args.keep_poster)
     path = VIDEO / "provenance.json"
     provenance = json.loads(path.read_text(encoding="utf-8-sig"))
     provenance["videos"] = [metadata if video["file"] == metadata["file"] else video for video in provenance["videos"]]

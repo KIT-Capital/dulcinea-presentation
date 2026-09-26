@@ -239,3 +239,30 @@
 .team-grid article:nth-child(3) img{object-position:center top}
 @media screen and (max-width:600px){.offer-hero{flex-direction:column;align-items:flex-start;gap:20px}.offer-hero strong{font-size:clamp(76px,24vw,110px)}.offer-hero span{max-width:none;padding:0}.offer-hero span br{display:none}.offer-hero span br:after{content:" "}}
 @media screen and (min-width:601px){.offer-hero span{max-width:200px}}
+/* Compact chapter menu: preserve the SVG ratio instead of its intrinsic height. */
+#slide-menu{padding:24px 5vw 30px}
+#slide-menu .menu-top{max-width:1400px;margin:0 auto 24px;gap:20px}
+#slide-menu .menu-brand-logo{width:190px;height:auto;display:block;flex-shrink:0}
+#slide-menu .menu-top .session-exit{margin:0 0 0 auto}
+#slide-menu .menu-top .session-exit button{padding:10px 16px;font-size:12px}
+#slide-menu .menu-body{grid-template-columns:.65fr 1.35fr;gap:6%}
+#slide-menu .menu-body .eyebrow{margin-bottom:16px}
+#menu-title{font-size:clamp(36px,4vw,54px);line-height:1.08}
+#slide-menu .menu-help{margin-top:18px;font-size:12px}
+#menu-links a{padding:11px 0;min-height:44px;line-height:1.25;font-size:14px}
+#menu-links a[aria-current=step]{color:var(--green);border-color:var(--green)}
+#slide-menu .menu-resources{max-width:1400px;margin:22px auto 0;padding:14px 0;gap:18px 30px}
+#slide-menu .credits{margin-top:12px}
+@media screen and (max-width:800px){
+ #slide-menu{padding:20px 6% 30px}
+ #slide-menu .menu-top{margin-bottom:22px;gap:12px}
+ #slide-menu .menu-brand-logo{width:150px}
+ #slide-menu .menu-top .session-exit button{font-size:11px;padding:8px 10px}
+ #slide-menu .menu-body{grid-template-columns:1fr;gap:20px}
+ #slide-menu .menu-body>div{display:none}
+ #menu-links{grid-template-columns:1fr 1fr;gap:0 18px}
+ #menu-links a{font-size:12px;gap:7px;min-height:48px}
+ #slide-menu .menu-resources{margin-top:18px;padding:14px 0;gap:8px 22px}
+ #slide-menu .menu-resources a{font-size:13px}
+}
+@media screen and (max-width:360px){#slide-menu .menu-brand-logo{width:120px}#slide-menu .menu-top{gap:8px}#menu-links a{font-size:11px}}

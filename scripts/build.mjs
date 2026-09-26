@@ -87,7 +87,7 @@ async function build() {
   if (web) {
     const signOut = '<form class="session-exit" action="/logout" method="post"><button type="submit">Sign out</button></form>';
     const exitStyle = '<style>.session-exit{margin:24px 0}.session-exit button{font:inherit;font-size:14px;color:inherit;background:transparent;border:1px solid currentColor;border-radius:0;padding:12px 20px;cursor:pointer}.session-exit button:focus-visible{outline:3px solid #009B74;outline-offset:4px}#slide-menu>.session-exit{margin:24px 5vw}</style>';
-    html = html.replace('<details class="credits">', signOut + '<details class="credits">').replace('</head>', exitStyle + '</head>');
+    html = html.replace('<button aria-label="Close slide menu"', signOut + '<button aria-label="Close slide menu"').replace('</head>', exitStyle + '</head>');
     financial = financial.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
     criteria = criteria.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
     await copyAsset('brand/dulcinea-one/svg/dulcinea-one-mono-black.svg', 'gate-assets/logo.svg');
