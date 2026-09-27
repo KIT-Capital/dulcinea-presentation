@@ -32,8 +32,6 @@
     const videoStates = Array.from(deck.querySelectorAll('.ambient-video')).map((video) => ({
       video,
       slide: video.closest('.slide'),
-      button: video.closest('.slide').querySelector('.motion-toggle'),
-      manuallyPaused: false,
       explicitlyEnabled: false,
       blocked: false,
       failed: false,
@@ -42,17 +40,8 @@
 
     function videoAllowed(state) {
       return state.slide === slides[currentIndex] && !document.hidden && !document.querySelector('dialog[open]')
-        && !allMotionPaused && !state.manuallyPaused && !state.failed && !state.blocked
+        && !allMotionPaused && !state.failed && !state.blocked
         && (!reducedMotion.matches || state.explicitlyEnabled);
-    }
-
-    function updateVideoButton(state) {
-      if (!state.button) return;
-      const paused = state.video.paused;
-      state.button.textContent = paused ? 'Play motion  ▷' : 'Pause motion  Ⅱ';
-      state.button.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
-      state.button.setAttribute('aria-pressed', String(!paused));
-      state.button.hidden = state.failed;
     }
 
     function syncVideos() {
@@ -60,7 +49,6 @@
         const { video } = state;
         if (!videoAllowed(state)) {
           video.pause();
-          updateVideoButton(state);
           return;
         }
         if (!video.dataset.loaded) {
@@ -77,7 +65,6 @@
           }).finally(() => {
             state.pending = false;
             if (!videoAllowed(state)) video.pause();
-            updateVideoButton(state);
           });
         }
       });
@@ -87,25 +74,10 @@
       state.video.addEventListener('loadeddata', () => state.video.classList.add('is-ready'));
       state.video.addEventListener('playing', () => {
         if (!videoAllowed(state)) state.video.pause();
-        updateVideoButton(state);
       });
-      state.video.addEventListener('pause', () => updateVideoButton(state));
       state.video.addEventListener('error', () => {
         state.failed = true;
         state.video.classList.remove('is-ready');
-        updateVideoButton(state);
-      });
-      state.button?.addEventListener('click', () => {
-        if (state.video.paused) {
-          state.manuallyPaused = false;
-          state.explicitlyEnabled = true;
-          state.blocked = false;
-          state.video.classList.add('user-enabled');
-          if (allMotionPaused) document.dispatchEvent(new CustomEvent('dulcinea-motion-request', { detail: { paused: false } }));
-        } else {
-          state.manuallyPaused = true;
-        }
-        syncVideos();
       });
     });
     document.addEventListener('visibilitychange', syncVideos);

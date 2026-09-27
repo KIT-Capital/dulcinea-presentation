@@ -6,25 +6,12 @@
     const root = document.documentElement;
     if (!deck || root.dataset.photoMotionReady === 'true') return;
 
-    const button = document.getElementById('photo-motion-toggle');
     const viewer = document.getElementById('property-viewer');
     const viewerStage = viewer?.querySelector('.viewer-stage');
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const states = new Map();
     let userPaused = preference.matches;
     let pauseOrigin = userPaused ? 'preference' : null;
-    let icon;
-    let label;
-
-    if (button) {
-      button.type = 'button';
-      icon = document.createElement('span');
-      icon.className = 'photo-motion-icon';
-      icon.setAttribute('aria-hidden', 'true');
-      label = document.createElement('span');
-      label.className = 'photo-motion-label';
-      button.replaceChildren(icon, label);
-    }
 
     function isExcluded(image) {
       return image.matches('.video-poster, .logo-full, .logo-symbol, .menu-brand-logo, [data-no-photo-motion], [data-photo-motion="off"]')
@@ -39,17 +26,6 @@
       if (image.closest('.home-card')) return 'gallery';
       if (image.matches('.full-image') || image.closest('.editorial-image, .investment-image')) return 'ambient';
       return 'reveal';
-    }
-
-    function updateButton() {
-      if (!button) return;
-      const action = userPaused ? 'Resume' : 'Pause';
-      icon.textContent = userPaused ? '▷' : 'Ⅱ';
-      label.textContent = `${action} motion`;
-      button.setAttribute('aria-label', `${action} all motion`);
-      button.setAttribute('aria-pressed', String(userPaused));
-      button.title = `${action} all motion`;
-      button.dataset.motionState = userPaused ? 'paused' : 'running';
     }
 
     function syncPhotos() {
@@ -79,7 +55,6 @@
       root.dataset.photoCount = String(states.size);
       root.dataset.photoVisibleCount = String(visibleCount);
       root.dataset.photoActiveCount = String(activeCount);
-      updateButton();
     }
 
     // Only the shared user preference is sent to video controls. Visibility and
@@ -174,7 +149,6 @@
     document.addEventListener('dulcinea-motion-request', (event) => {
       if (typeof event.detail?.paused === 'boolean') setPaused(event.detail.paused);
     });
-    button?.addEventListener('click', () => setPaused(!userPaused));
 
     function preferenceChanged() {
       if (preference.matches) {

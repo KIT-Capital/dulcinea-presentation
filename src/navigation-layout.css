@@ -1,7 +1,8 @@
 /* Navigation occupies its own rows. The story scrolls only between the bars. */
 @media screen {
-  .locale-switch{display:inline-flex;align-items:center;gap:4px;padding:3px;border:1px solid currentColor;border-radius:999px;font-size:11px;white-space:nowrap}
-  .locale-switch a{display:inline-flex;align-items:center;gap:4px;padding:6px 8px;border-radius:999px;color:inherit;text-decoration:none;opacity:.78}
+  .locale-switch{display:inline-flex;align-items:center;gap:4px;padding:3px;border:1px solid currentColor;border-radius:999px;font-size:11px;white-space:nowrap;flex:0 0 auto}
+  .locale-switch a{display:inline-flex;align-items:center;gap:5px;padding:6px 8px;border-radius:999px;color:inherit;text-decoration:none;opacity:.78}
+  .locale-switch .flag-icon{display:block;width:18px;height:12px;flex:0 0 auto;border-radius:1px;box-shadow:0 0 0 1px #0002}
   .locale-switch a[aria-current="page"]{background:#ffffff2b;opacity:1;font-weight:700}
   .masthead.on-light .locale-switch a[aria-current="page"]{background:#20333012}
   .locale-switch a:focus-visible{outline:2px solid currentColor;outline-offset:2px}
@@ -21,10 +22,9 @@
   .slide.nightlife>.content{padding-top:132px}
   .slide.team-story>.content{padding-top:32px}
   .property-split .property-copy{padding-top:32px}
-  .slide>.motion-toggle{top:25px}
 
   @media(max-width:800px){
-    .locale-switch{font-size:10px;gap:1px;padding:2px}.locale-switch a{font-size:0;gap:0;padding:5px 6px}.locale-switch a[lang="en"]::before{content:"🇺🇸";font-size:14px}.locale-switch a[lang="es"]::before{content:"🇨🇴";font-size:14px}
+    .locale-switch{gap:1px;padding:2px}.locale-switch a{font-size:0;gap:0;padding:5px 6px}
     :root{--masthead-height:78px}
     .slide:not(.investment-story)>.content{padding-top:34px}
     .slide.cover>.cover-content{padding-top:152px}
@@ -34,6 +34,5 @@
     .slide.team-story>.content{padding-top:34px}
     .property-slide{padding-top:0}
     .property-split .property-copy{padding-top:30px}
-    .slide>.motion-toggle{top:15px}
   }
 }
