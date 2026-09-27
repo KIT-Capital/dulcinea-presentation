@@ -8,8 +8,11 @@
 @media(max-width:1250px) { .header { gap:13px } .primary { gap:17px } .contact-nav { display:none } }
 @media(max-width:760px) { .header { gap:7px; padding-inline:16px } .brand img { width:105px; height:34px } .present-launch { margin-left:auto; padding:8px; font-size:10px } .language { margin-left:0 } .primary { gap:7px } }
 @media(max-width:380px) { .present-launch span { display:none } }
+html { scroll-padding-top:calc(var(--header) + env(safe-area-inset-top,0px)) }
+body:not(.is-presenting) > .header { padding-top:max(10px,env(safe-area-inset-top,0px)); padding-left:max(3.3vw,env(safe-area-inset-left,0px)); padding-right:max(3.3vw,env(safe-area-inset-right,0px)) }
+@media(max-width:760px) { body:not(.is-presenting) > .header { padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)) } }
 
-body.is-presenting { min-height:100svh; overflow:hidden; background:#09171b; touch-action:pan-y }
+body.is-presenting { min-height:100svh; overflow:hidden; background:#09171b; touch-action:pan-y pinch-zoom }
 body.is-presenting > .header, body.is-presenting > .skip, body.is-presenting > .signout-error { display:none }
 body.is-presenting #main { position:fixed; left:var(--presentation-left,0px); top:var(--presentation-top,0px); width:1440px; height:810px; transform:scale(var(--presentation-scale,1)); transform-origin:top left; background:var(--paper); box-shadow:0 0 60px #0004 }
 body.is-presenting #main > * { display:none }

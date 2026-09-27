@@ -77,7 +77,7 @@ async function output(name,content){
   await writeFile(file,content.replace(/^[\t ]+$/gm,''));
   kept.add(file);
 }
-const [template,styles,script,presentationStyles,presentationScript]=await Promise.all(['src/investor/index.html','src/investor/style.css','src/investor/app.js','src/investor/presentation.css','src/investor/presentation.js'].map(read));
+const [template,styles,script,presentationStyles,presentationScript,responsiveStyles]=await Promise.all(['src/investor/index.html','src/investor/style.css','src/investor/app.js','src/investor/presentation.css','src/investor/presentation.js','src/investor/presentation-responsive.css'].map(read));
 for(const locale of ['en','es']){
   const prefix=locale==='es'?'es/':'';
   const relative=locale==='es'?'../':'';
@@ -86,6 +86,7 @@ for(const locale of ['en','es']){
     .replace(/<title>[^<]*<\/title>/,shareMetadata(locale))
     .replace('<link rel="stylesheet" href="style.css">',`<style>${styles}</style>`)
     .replace('<link rel="stylesheet" href="presentation.css">',`<style>${presentationStyles}</style>`)
+    .replace('<link rel="stylesheet" href="presentation-responsive.css">',`<style>${responsiveStyles}</style>`)
     .replace(/(["'])media\/([^"']+)\1/g,(_,quote,name)=>{
       if(!localeMedia[name]) throw Error(`Unknown media alias: ${name}`);
       return quote+localeMedia[name]+quote;

@@ -72,10 +72,21 @@
   }
   function fitCanvas() {
     if (!active) return;
+    // Preserve the user's pinch zoom rather than reflowing under their fingers.
+    const zoomed = window.visualViewport && window.visualViewport.scale > 1.01;
+    if (zoomed && document.body.dataset.presentationLayout) return;
     const width = document.documentElement.clientWidth;
-    const height = window.innerHeight;
+    const height = zoomed ? window.innerHeight : Math.min(window.innerHeight,window.visualViewport?.height || window.innerHeight);
+    const responsive = width < 1180 || height < 600;
+    document.body.dataset.presentationLayout = responsive ? 'responsive' : 'canvas';
     const toolbarHeight = controls.getBoundingClientRect().height || 64;
     const availableHeight = Math.max(1,height - toolbarHeight);
+    document.body.style.setProperty('--presentation-width',`${width}px`);
+    document.body.style.setProperty('--presentation-height',`${availableHeight}px`);
+    if (responsive) {
+      ['--presentation-scale','--presentation-left','--presentation-top'].forEach(name => document.body.style.removeProperty(name));
+      return;
+    }
     const scale = Math.min(width / 1440,availableHeight / 810);
     document.body.style.setProperty('--presentation-scale',String(scale));
     document.body.style.setProperty('--presentation-left',`${Math.max(0,(width - 1440 * scale) / 2)}px`);
@@ -83,7 +94,7 @@
   }
   function scheduleFit() {
     cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(fitCanvas);
+    resizeFrame = requestAnimationFrame(() => { fitCanvas(); refreshMedia(); });
   }
   function refreshMedia() {
     cancelAnimationFrame(mediaFrame);
@@ -91,10 +102,12 @@
       if (!active) { syncMotion(); return; }
       // Reconcile immediately when consecutive slides share a section. The
       // intersection observer continues normal playback management afterward.
+      const viewport = main.getBoundingClientRect();
       videos.forEach(video => {
         const bounds = video.getBoundingClientRect();
         const section = video.closest('.presentation-active');
-        if (section && bounds.width > 0 && bounds.height > 0) visibleVideos.add(video);
+        const visible = bounds.bottom > viewport.top && bounds.top < viewport.bottom && bounds.right > viewport.left && bounds.left < viewport.right;
+        if (section && visible && bounds.width > 0 && bounds.height > 0) visibleVideos.add(video);
         else visibleVideos.delete(video);
       });
       syncMotion();
@@ -140,7 +153,9 @@
   function goTo(number, updateRoute = true) {
     if (!active) return start(number);
     status?.classList.remove('presentation-feedback');
-    index = clamp(number);
+    const nextIndex = clamp(number);
+    const resetScroll = nextIndex !== index || !document.body.dataset.presentationStep;
+    index = nextIndex;
     const step = steps[index];
     const section = document.querySelector(step.selector);
     if (!section) return;
@@ -164,6 +179,7 @@
     if (updateRoute) writeHash(`present-${index + 1}`);
     updateControls();
     fitCanvas();
+    if (resetScroll) main.scrollTo({top:0,left:0,behavior:'instant'});
     refreshMedia();
     announce(`${translated(['Slide','Diapositiva'])} ${index + 1} ${translated(['of','de'])} ${steps.length}: ${stepTitle(index)}`);
     window.dispatchEvent(new CustomEvent('dulcinea:presentation-slide',{detail:{index,id:step.id,count:steps.length}}));
@@ -205,7 +221,8 @@
     touch = null;
     document.body.classList.remove('is-presenting');
     delete document.body.dataset.presentationStep;
-    ['--presentation-scale','--presentation-left','--presentation-top'].forEach(name => document.body.style.removeProperty(name));
+    delete document.body.dataset.presentationLayout;
+    ['--presentation-scale','--presentation-left','--presentation-top','--presentation-height','--presentation-width'].forEach(name => document.body.style.removeProperty(name));
     sections.forEach(item => {
       item.classList.remove('presentation-active');
       const state = sectionState.get(item);
@@ -280,6 +297,7 @@
     menuItems.append(button);
   });
   controls.tabIndex = -1;
+  main.tabIndex = -1;
   startButton.addEventListener('click',() => start());
   previousButton.addEventListener('click',() => goTo(index - 1));
   nextButton.addEventListener('click',() => goTo(index + 1));
@@ -301,6 +319,7 @@
   document.addEventListener('dulcinea:language',updateControls);
   window.addEventListener('resize',scheduleFit);
   window.visualViewport?.addEventListener('resize',scheduleFit);
+  if ('ResizeObserver' in window) new ResizeObserver(() => { if (active) scheduleFit(); }).observe(controls);
   document.addEventListener('fullscreenchange',() => { updateControls(); scheduleFit(); });
   function syncRoute() {
     const requested = routeIndex();
@@ -328,6 +347,16 @@
     if (event.key === 'Escape') { event.preventDefault(); exit(); return; }
     if (event.key.toLowerCase() === 'f') { event.preventDefault(); toggleFullscreen(); return; }
     const interactive = target?.closest('a,button,summary,[role="button"]');
+    const readingKey = event.key === 'PageDown' || event.key === 'PageUp' || ((event.key === ' ' || event.code === 'Space') && !interactive);
+    if (document.body.dataset.presentationLayout === 'responsive' && readingKey) {
+      const direction = event.key === 'PageUp' || (event.shiftKey && (event.key === ' ' || event.code === 'Space')) ? -1 : 1;
+      const remaining = direction > 0 ? main.scrollHeight - main.clientHeight - main.scrollTop : main.scrollTop;
+      if (remaining > 2) {
+        event.preventDefault();
+        main.scrollBy({top:direction * main.clientHeight * .8,behavior:'instant'});
+        return;
+      }
+    }
     let destination = null;
     if (event.key === 'ArrowRight' || event.key === 'PageDown') destination = index + 1;
     if (event.key === 'ArrowLeft' || event.key === 'PageUp') destination = index - 1;
@@ -360,17 +389,25 @@
     goTo(requested);
   },true);
   main.addEventListener('touchstart',event => {
-    if (!active || hasOpenDialog() || event.touches.length !== 1) { touch = null; return; }
+    if (!active || hasOpenDialog() || event.touches.length !== 1 || window.visualViewport?.scale > 1.01) { touch = null; return; }
     if (event.target instanceof Element && event.target.closest('a,button,input,summary,video[controls]')) { touch = null; return; }
-    touch = {x:event.touches[0].clientX,y:event.touches[0].clientY,time:Date.now()};
+    touch = {x:event.touches[0].clientX,y:event.touches[0].clientY,time:Date.now(),scrollTop:main.scrollTop};
+  },{passive:true});
+  main.addEventListener('touchmove',event => {
+    if (!touch) return;
+    if (event.touches.length !== 1) { touch = null; return; }
+    const x = Math.abs(event.touches[0].clientX - touch.x);
+    const y = Math.abs(event.touches[0].clientY - touch.y);
+    if (y > 18 && y > x * 1.2) touch = null;
   },{passive:true});
   main.addEventListener('touchend',event => {
-    if (!active || !touch || !event.changedTouches.length || hasOpenDialog()) { touch = null; return; }
+    if (!active || !touch || !event.changedTouches.length || event.touches.length || hasOpenDialog()) { touch = null; return; }
     const deltaX = event.changedTouches[0].clientX - touch.x;
     const deltaY = event.changedTouches[0].clientY - touch.y;
     const elapsed = Date.now() - touch.time;
+    const scrolled = Math.abs(main.scrollTop - touch.scrollTop) > 12;
     touch = null;
-    if (elapsed < 900 && Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) goTo(index + (deltaX < 0 ? 1 : -1));
+    if (!scrolled && elapsed < 900 && Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) goTo(index + (deltaX < 0 ? 1 : -1));
   },{passive:true});
   main.addEventListener('touchcancel',() => { touch = null; },{passive:true});
   window.DulcineaPresentation = Object.freeze({

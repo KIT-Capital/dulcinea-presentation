@@ -1,0 +1,270 @@
+/* Small screens keep one slide at a time, with readable type and natural
+   vertical scrolling instead of shrinking a desktop canvas to fit. */
+body.is-presenting[data-presentation-layout="responsive"] { touch-action:pan-y pinch-zoom }
+body.is-presenting[data-presentation-layout="responsive"] #main {
+  position:fixed; inset:0 auto auto 0; width:var(--presentation-width,100%);
+  height:var(--presentation-height,calc(100dvh - 108px)); transform:none;
+  overflow-x:hidden; overflow-y:auto; overscroll-behavior:contain;
+  scroll-behavior:auto; scroll-padding:0; -webkit-overflow-scrolling:touch;
+  box-shadow:none; touch-action:pan-y pinch-zoom;
+}
+body.is-presenting[data-presentation-layout="responsive"] #main > .presentation-active {
+  width:100%; height:auto; min-height:100%; max-height:none; margin:0;
+  padding:32px 22px; overflow:visible; box-sizing:border-box;
+}
+body.is-presenting[data-presentation-layout="responsive"] #main :where(div,section,article,nav,figure,dl,dt,dd) { min-width:0 }
+body.is-presenting[data-presentation-layout="responsive"] h2 { font-size:40px; line-height:1.08; letter-spacing:-.045em }
+body.is-presenting[data-presentation-layout="responsive"] .micro { font-size:11px; line-height:1.5; letter-spacing:.08em }
+body.is-presenting[data-presentation-layout="responsive"] .section-index { margin-bottom:24px }
+body.is-presenting[data-presentation-layout="responsive"] .section-heading { display:block; height:auto; gap:24px; margin-bottom:28px }
+body.is-presenting[data-presentation-layout="responsive"] .section-heading .section-index { margin-bottom:16px }
+body.is-presenting[data-presentation-layout="responsive"] .section-aside { font-size:16px; line-height:1.5; margin-top:18px; white-space:normal }
+body.is-presenting[data-presentation-layout="responsive"] .line-link { width:100%; max-width:330px; min-height:44px; font-size:18px; margin-top:24px; padding:14px 0; gap:20px }
+body.is-presenting[data-presentation-layout="responsive"] .footnote { font-size:13px; line-height:1.6; max-width:100%; margin-top:24px }
+
+/* Opening and lifestyle films retain their full-bleed treatment. */
+body.is-presenting[data-presentation-layout="responsive"] #main > .hero.presentation-active { padding:24px 22px; gap:24px; min-height:var(--presentation-height) }
+body.is-presenting[data-presentation-layout="responsive"] .hero-top { gap:12px; padding-right:0 }
+body.is-presenting[data-presentation-layout="responsive"] .hero-top .micro { font-size:10px; letter-spacing:.035em }
+body.is-presenting[data-presentation-layout="responsive"] .hero-statement { width:100%; max-width:590px; margin:80px 0 auto; padding:0 0 34px }
+body.is-presenting[data-presentation-layout="responsive"] .hero-statement p { font-size:34px; line-height:1.15; max-width:100% }
+body.is-presenting[data-presentation-layout="responsive"] .hero h1 { font-size:clamp(46px,12.5vw,125px); line-height:.96; letter-spacing:-.06em; white-space:nowrap }
+body.is-presenting[data-presentation-layout="responsive"] .hero-baseline { margin-top:24px; padding-top:18px; flex-wrap:wrap; align-items:center; gap:18px }
+body.is-presenting[data-presentation-layout="responsive"] .hero-baseline > .micro { font-size:10px; max-width:100%; flex:1 1 100% }
+body.is-presenting[data-presentation-layout="responsive"] .partners { flex-wrap:wrap; gap:18px }
+body.is-presenting[data-presentation-layout="responsive"] .motion { top:65px; right:22px; width:44px; height:44px }
+body.is-presenting[data-presentation-layout="responsive"] .intro-grid { grid-template-columns:minmax(0,1fr); gap:32px; margin-top:12px }
+body.is-presenting[data-presentation-layout="responsive"] .intro h2 { font-size:42px }
+body.is-presenting[data-presentation-layout="responsive"] .intro-copy { max-width:100%; padding:0 }
+body.is-presenting[data-presentation-layout="responsive"] .intro-copy p,
+body.is-presenting[data-presentation-layout="responsive"] .intro-copy p + p { font-size:18px; line-height:1.6 }
+body.is-presenting[data-presentation-layout="responsive"] .intro-copy p + p { margin-top:20px }
+body.is-presenting[data-presentation-layout="responsive"] .lifestyle-title { font-size:40px }
+body.is-presenting[data-presentation-layout="responsive"] .approach-films { grid-template-columns:minmax(0,1fr); gap:30px; margin-top:30px }
+body.is-presenting[data-presentation-layout="responsive"] .approach-films figure { margin:0 }
+body.is-presenting[data-presentation-layout="responsive"] .approach-film { width:100%; height:auto; min-height:210px; aspect-ratio:16/10 }
+body.is-presenting[data-presentation-layout="responsive"] .approach-films figcaption { font-size:18px; line-height:1.4; padding-top:14px; gap:8px; align-items:flex-start }
+body.is-presenting[data-presentation-layout="responsive"] .approach-films figcaption .micro { font-size:10px }
+
+/* Property details stay readable beneath the film on phones. */
+body.is-presenting[data-presentation-layout="responsive"] .homes .section-heading { height:auto; margin-bottom:24px }
+body.is-presenting[data-presentation-layout="responsive"] .homes h2 { font-size:35px; white-space:normal }
+body.is-presenting[data-presentation-layout="responsive"] .property-layout { grid-template-columns:minmax(0,1fr); height:auto; min-height:0 }
+body.is-presenting[data-presentation-layout="responsive"] .property-visual { height:clamp(230px,62vw,420px); min-height:0; aspect-ratio:auto }
+body.is-presenting[data-presentation-layout="responsive"] .property-info { padding:24px 0 0 }
+body.is-presenting[data-presentation-layout="responsive"] .property-count { font-size:14px }
+body.is-presenting[data-presentation-layout="responsive"] .property-details { margin:0; padding:20px 0 0 }
+body.is-presenting[data-presentation-layout="responsive"] .property-info h3 { font-size:35px; line-height:1.1; margin:12px 0 16px; overflow-wrap:anywhere }
+body.is-presenting[data-presentation-layout="responsive"] .property-description { font-size:18px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] .property-info dl { margin-top:22px }
+body.is-presenting[data-presentation-layout="responsive"] .property-info dl div { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); font-size:18px; line-height:1.5; padding:14px 0; gap:16px }
+body.is-presenting[data-presentation-layout="responsive"] .property-info dd { max-width:none; overflow-wrap:anywhere }
+body.is-presenting[data-presentation-layout="responsive"] .floorplan-link { min-height:44px; font-size:18px; padding:12px 0 }
+body.is-presenting[data-presentation-layout="responsive"] .image-caption { left:12px; bottom:70px; max-width:calc(100% - 24px); font-size:11px; padding:7px 9px }
+body.is-presenting[data-presentation-layout="responsive"] .original { right:12px; bottom:12px; min-height:44px; max-width:calc(100% - 24px); font-size:13px; padding:12px }
+body.is-presenting[data-presentation-layout="responsive"] .homes .footnote { font-size:13px; margin-top:24px }
+
+body.is-presenting[data-presentation-layout="responsive"] #main > .experience.presentation-active { align-items:center; min-height:var(--presentation-height) }
+body.is-presenting[data-presentation-layout="responsive"] .experience-content { width:100%; max-width:650px }
+body.is-presenting[data-presentation-layout="responsive"] .experience-content > .micro { font-size:11px; line-height:1.6 }
+body.is-presenting[data-presentation-layout="responsive"] .experience h2 { font-size:44px; margin:28px 0 }
+body.is-presenting[data-presentation-layout="responsive"] .experience-content > p:not(.micro),
+body.is-presenting[data-presentation-layout="responsive"] .experience-content > p.co-brand-copy { font-size:18px; line-height:1.6; max-width:100% }
+body.is-presenting[data-presentation-layout="responsive"] .experience-content > p.co-brand-copy { margin-top:24px }
+body.is-presenting[data-presentation-layout="responsive"] .experience-note { font-size:14px; line-height:1.6; margin-top:28px }
+
+/* Offer, optional benefits and projected returns remain separate slides. */
+body.is-presenting[data-presentation-layout="responsive"] .fund-summary { max-width:100%; font-size:18px; line-height:1.6; margin-top:24px }
+body.is-presenting[data-presentation-layout="responsive"] .capital { grid-template-columns:minmax(0,1fr); gap:0; padding:8px 0 22px }
+body.is-presenting[data-presentation-layout="responsive"] .capital > div { flex-direction:row; align-items:center; justify-content:space-between; padding:18px 0; gap:16px; border-bottom:1px solid #17282d35 }
+body.is-presenting[data-presentation-layout="responsive"] .capital > div:last-child { border-bottom:0 }
+body.is-presenting[data-presentation-layout="responsive"] .capital .micro { font-size:12px; max-width:140px }
+body.is-presenting[data-presentation-layout="responsive"] .capital strong { font-size:58px; line-height:1.05; white-space:nowrap }
+body.is-presenting[data-presentation-layout="responsive"] .raise-status { font-size:16px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] .fund-bottom { flex-direction:column; align-items:stretch; gap:24px; margin:28px 0 0 }
+body.is-presenting[data-presentation-layout="responsive"] .fund-bottom p { font-size:22px; line-height:1.4 }
+body.is-presenting[data-presentation-layout="responsive"] .fund-bottom .fund-small { font-size:18px; line-height:1.5; max-width:100%; margin-top:12px }
+body.is-presenting[data-presentation-layout="responsive"] .button-dark { font-size:18px; padding:18px 22px; gap:24px; min-height:56px }
+body.is-presenting[data-presentation-layout="responsive"] #fund > .kickers { height:auto; min-height:0 }
+body.is-presenting[data-presentation-layout="responsive"] .kickers h3 { font-size:40px; line-height:1.1; margin:0 0 32px; max-width:100% }
+body.is-presenting[data-presentation-layout="responsive"] .kicker-strip { grid-template-columns:minmax(0,1fr); gap:8px }
+body.is-presenting[data-presentation-layout="responsive"] .kicker-strip > div { gap:12px; padding:24px 0 }
+body.is-presenting[data-presentation-layout="responsive"] .kicker-strip strong { font-size:44px; line-height:1.08 }
+body.is-presenting[data-presentation-layout="responsive"] .kicker-strip span { font-size:22px; line-height:1.35 }
+body.is-presenting[data-presentation-layout="responsive"] .kicker-strip p { font-size:18px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] .kickers .footnote { font-size:14px; line-height:1.65; margin-top:26px; max-width:100% }
+body.is-presenting[data-presentation-layout="responsive"] #fund > .model summary { font-size:36px; line-height:1.15; padding:0 0 26px; max-width:100%; white-space:normal }
+body.is-presenting[data-presentation-layout="responsive"] .projection { grid-template-columns:minmax(0,1fr); gap:0; margin:0 0 28px }
+body.is-presenting[data-presentation-layout="responsive"] .projection div { display:flex; flex-direction:column; gap:10px; padding:22px 0; border-top:1px solid #17282d35 }
+body.is-presenting[data-presentation-layout="responsive"] .projection strong { font-size:66px; line-height:1.05 }
+body.is-presenting[data-presentation-layout="responsive"] .projection span { font-size:18px; line-height:1.4; max-width:100% }
+body.is-presenting[data-presentation-layout="responsive"] .model-content .footnote { font-size:14px; line-height:1.65; max-width:100% }
+body.is-presenting[data-presentation-layout="responsive"] .document-links { flex-direction:column; gap:10px; margin-top:30px; font-size:18px; align-items:flex-start }
+body.is-presenting[data-presentation-layout="responsive"] .document-links a { min-height:44px; padding:12px 0; line-height:1.4 }
+
+/* Every team biography remains available; phones stack portraits and text. */
+body.is-presenting[data-presentation-layout="responsive"] .team h2 { font-size:40px }
+body.is-presenting[data-presentation-layout="responsive"] .team-portraits { grid-template-columns:minmax(0,1fr); gap:40px; margin-top:0 }
+body.is-presenting[data-presentation-layout="responsive"] .team-photo { height:auto; width:100%; aspect-ratio:5/4; max-height:420px }
+body.is-presenting[data-presentation-layout="responsive"] .team-portraits .micro { font-size:11px; min-height:0; margin-top:18px; line-height:1.6 }
+body.is-presenting[data-presentation-layout="responsive"] .team-portraits h3 { font-size:28px; line-height:1.2; margin-top:8px }
+body.is-presenting[data-presentation-layout="responsive"] .team-bio { font-size:18px; line-height:1.6; max-width:100%; margin-top:14px }
+body.is-presenting[data-presentation-layout="responsive"] .specialists-section .section-heading { margin-bottom:30px }
+body.is-presenting[data-presentation-layout="responsive"] .specialists-section h2 { font-size:40px }
+body.is-presenting[data-presentation-layout="responsive"] .specialists-section .line-link { width:100%; max-width:330px; margin-top:24px; font-size:18px }
+body.is-presenting[data-presentation-layout="responsive"] .specialists div { grid-template-columns:24px minmax(0,1fr); gap:10px 16px; min-height:0; padding:24px 0; align-items:start }
+body.is-presenting[data-presentation-layout="responsive"] .specialists div:before { grid-row:span 2; align-self:start; padding-top:3px; font-size:12px }
+body.is-presenting[data-presentation-layout="responsive"] .specialists dt { font-size:16px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] .specialists dd { grid-column:2; font-size:23px; line-height:1.35; overflow-wrap:anywhere }
+body.is-presenting[data-presentation-layout="responsive"] .legal-notice h2 { font-size:32px; line-height:1.2; margin:8px 0 26px }
+body.is-presenting[data-presentation-layout="responsive"] .legal-notice > div { max-width:100%; padding-top:22px }
+body.is-presenting[data-presentation-layout="responsive"] .legal-notice p { font-size:14px; line-height:1.75 }
+body.is-presenting[data-presentation-layout="responsive"] .legal-notice p + p { margin-top:20px }
+body.is-presenting[data-presentation-layout="responsive"] .legal-notice a { display:inline-flex; align-items:center; min-height:44px; font-size:14px; line-height:1.5; margin-top:24px }
+
+/* The closing links join the document flow; no absolute side panel on phones. */
+body.is-presenting[data-presentation-layout="responsive"] #main > .contact.presentation-active { display:flex; gap:38px; justify-content:flex-start }
+body.is-presenting[data-presentation-layout="responsive"] #contact .contact-content { width:100%; max-width:100% }
+body.is-presenting[data-presentation-layout="responsive"] #contact h2 { font-size:44px; line-height:1.1; max-width:100%; margin:26px 0 }
+body.is-presenting[data-presentation-layout="responsive"] .contact-person { width:100%; max-width:390px; gap:16px; min-height:68px }
+body.is-presenting[data-presentation-layout="responsive"] .contact-person img { width:60px; height:60px; flex-shrink:0 }
+body.is-presenting[data-presentation-layout="responsive"] .contact-person strong { font-size:21px }
+body.is-presenting[data-presentation-layout="responsive"] .contact-person > span span { font-size:14px; line-height:1.4 }
+body.is-presenting[data-presentation-layout="responsive"] .contact .line-link { width:100%; max-width:390px }
+body.is-presenting[data-presentation-layout="responsive"] .contact-email { display:inline-flex; align-items:center; min-height:44px; font-size:18px; margin-top:12px; overflow-wrap:anywhere }
+body.is-presenting[data-presentation-layout="responsive"] .presentation-closing-navigation { position:static; inset:auto; width:100%; padding:28px 0 0; margin:0; border-left:0; border-top:1px solid #ffffff50 }
+body.is-presenting[data-presentation-layout="responsive"] .presentation-closing-navigation h3 { font-size:31px; line-height:1.15; margin:14px 0 20px }
+body.is-presenting[data-presentation-layout="responsive"] .presentation-section-links { gap:0 22px }
+body.is-presenting[data-presentation-layout="responsive"] .presentation-closing-navigation a { min-height:48px; font-size:18px; line-height:1.4; padding:15px 0; gap:12px }
+body.is-presenting[data-presentation-layout="responsive"] .presentation-resource-links { margin-top:24px }
+body.is-presenting[data-presentation-layout="responsive"] .presentation-resource-links a { font-size:17px }
+body.is-presenting[data-presentation-layout="responsive"] footer { width:100%; margin-top:0; padding-top:22px; gap:18px; font-size:12px; line-height:1.5; flex-wrap:wrap }
+body.is-presenting[data-presentation-layout="responsive"] footer a { display:inline-flex; align-items:center; min-height:44px }
+body.is-presenting[data-presentation-layout="responsive"] footer span:last-child { flex-basis:100% }
+
+/* Tablets and wider landscape phones use columns where the content benefits. */
+@media(min-width:700px) {
+  body.is-presenting[data-presentation-layout="responsive"] #main > .presentation-active { padding:38px 36px }
+  body.is-presenting[data-presentation-layout="responsive"] h2,
+  body.is-presenting[data-presentation-layout="responsive"] .intro h2,
+  body.is-presenting[data-presentation-layout="responsive"] .team h2,
+  body.is-presenting[data-presentation-layout="responsive"] .specialists-section h2 { font-size:48px }
+  body.is-presenting[data-presentation-layout="responsive"] #main > .hero.presentation-active { padding:30px 36px }
+  body.is-presenting[data-presentation-layout="responsive"] .hero-statement p { font-size:44px }
+  body.is-presenting[data-presentation-layout="responsive"] .hero-baseline > .micro { flex:1 1 auto; max-width:330px }
+  body.is-presenting[data-presentation-layout="responsive"] .intro-grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:40px; margin-top:36px }
+  body.is-presenting[data-presentation-layout="responsive"] .approach-films { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-top:36px }
+  body.is-presenting[data-presentation-layout="responsive"] .approach-film { min-height:240px; aspect-ratio:4/3 }
+  body.is-presenting[data-presentation-layout="responsive"] .approach-films figcaption { flex-direction:column; gap:10px }
+  body.is-presenting[data-presentation-layout="responsive"] .property-layout { grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); align-items:stretch }
+  body.is-presenting[data-presentation-layout="responsive"] .property-visual { height:100%; min-height:430px }
+  body.is-presenting[data-presentation-layout="responsive"] .property-info { padding:24px 0 0 26px }
+  body.is-presenting[data-presentation-layout="responsive"] .property-info h3 { font-size:36px }
+  body.is-presenting[data-presentation-layout="responsive"] .experience h2 { font-size:62px }
+  body.is-presenting[data-presentation-layout="responsive"] .experience-content > p:not(.micro) { max-width:580px }
+  body.is-presenting[data-presentation-layout="responsive"] .fund .section-heading { display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:end }
+  body.is-presenting[data-presentation-layout="responsive"] .fund-summary { margin:0 }
+  body.is-presenting[data-presentation-layout="responsive"] .capital { grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; padding:30px 0 }
+  body.is-presenting[data-presentation-layout="responsive"] .capital > div { flex-direction:column; justify-content:flex-start; align-items:flex-start; gap:16px; border:0; padding:0 }
+  body.is-presenting[data-presentation-layout="responsive"] .capital strong { font-size:72px }
+  body.is-presenting[data-presentation-layout="responsive"] .capital .micro { max-width:100% }
+  body.is-presenting[data-presentation-layout="responsive"] .fund-bottom { flex-direction:row; align-items:center; gap:32px }
+  body.is-presenting[data-presentation-layout="responsive"] .kicker-strip { grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px }
+  body.is-presenting[data-presentation-layout="responsive"] .kicker-strip strong { font-size:40px }
+  body.is-presenting[data-presentation-layout="responsive"] .projection { grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin:22px 0 34px }
+  body.is-presenting[data-presentation-layout="responsive"] .projection strong { font-size:72px }
+  body.is-presenting[data-presentation-layout="responsive"] .document-links { flex-direction:row; flex-wrap:wrap; gap:12px 24px }
+  body.is-presenting[data-presentation-layout="responsive"] .team-portraits { grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px }
+  body.is-presenting[data-presentation-layout="responsive"] .team-photo { width:100%; height:clamp(190px,30dvh,260px); aspect-ratio:auto; max-height:none }
+  body.is-presenting[data-presentation-layout="responsive"] .team-portraits .micro { min-height:54px }
+  body.is-presenting[data-presentation-layout="responsive"] .team-portraits h3 { font-size:25px; min-height:60px }
+  body.is-presenting[data-presentation-layout="responsive"] .specialists div { grid-template-columns:24px minmax(0,.9fr) minmax(0,1.1fr); gap:20px; align-items:center }
+  body.is-presenting[data-presentation-layout="responsive"] .specialists div:before { grid-row:auto; align-self:center; padding:0 }
+  body.is-presenting[data-presentation-layout="responsive"] .specialists dd { grid-column:auto; font-size:25px }
+  body.is-presenting[data-presentation-layout="responsive"] #main > .contact.presentation-active { display:grid; grid-template-columns:1fr 1fr; gap:34px }
+  body.is-presenting[data-presentation-layout="responsive"] #contact h2 { font-size:50px }
+  body.is-presenting[data-presentation-layout="responsive"] .presentation-closing-navigation { padding:0 0 0 28px; border-top:0; border-left:1px solid #ffffff50 }
+  body.is-presenting[data-presentation-layout="responsive"] .presentation-section-links { grid-template-columns:1fr; gap:0 }
+  body.is-presenting[data-presentation-layout="responsive"] footer { grid-column:1 / -1 }
+}
+@media(min-width:900px) {
+  body.is-presenting[data-presentation-layout="responsive"] .team-portraits .micro,
+  body.is-presenting[data-presentation-layout="responsive"] .team-portraits h3 { min-height:0 }
+}
+
+/* Toolbar height includes the safe area and is measured by the runtime. */
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls { height:calc(64px + env(safe-area-inset-bottom,0px)); padding:6px max(10px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px)); gap:6px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls button { min-height:44px; min-width:44px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-title { display:none }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-overview { min-width:86px!important }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-status.presentation-feedback { bottom:calc(100dvh - var(--presentation-height) + 12px) }
+body.is-presenting[data-presentation-layout="responsive"] dialog { max-height:calc(100dvh - 32px); overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain }
+body.is-presenting[data-presentation-layout="responsive"] dialog button { min-width:44px; min-height:44px }
+body.is-presenting[data-presentation-layout="responsive"] .dialog-top h2 { overflow-wrap:anywhere }
+@media(max-width:900px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls { display:grid; grid-template-columns:minmax(0,1fr) auto auto; grid-template-rows:44px 44px; height:calc(108px + env(safe-area-inset-bottom,0px)); padding-top:8px; padding-bottom:calc(10px + env(safe-area-inset-bottom,0px)); gap:2px 6px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-exit { grid-row:1; grid-column:1; margin:0; padding-left:0!important; justify-self:start }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-exit span { font-size:12px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-website { grid-row:1; grid-column:2 / 4; margin:0; justify-self:end; font-size:12px; gap:4px; padding:8px }
+  body.is-presenting[data-presentation-layout="responsive"] .presentation-paging { grid-row:2; grid-column:1; justify-self:start; gap:2px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-overview { min-width:78px!important; gap:5px; padding:6px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-overview svg { width:16px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-count { font-size:12px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-language { grid-row:2; grid-column:2; padding-left:8px!important }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-fullscreen { grid-row:2; grid-column:3 }
+}
+@media(max-height:600px) and (orientation:landscape) and (min-width:380px) {
+  body.is-presenting[data-presentation-layout="responsive"] #main > .presentation-active { padding:26px 28px }
+  body.is-presenting[data-presentation-layout="responsive"] #main > .hero.presentation-active { padding:24px 28px }
+  body.is-presenting[data-presentation-layout="responsive"] .hero-statement { margin-top:36px; padding-bottom:16px }
+  body.is-presenting[data-presentation-layout="responsive"] .hero-statement p { font-size:34px }
+  body.is-presenting[data-presentation-layout="responsive"] .hero h1 { font-size:clamp(48px,10vw,88px) }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls { display:flex; height:calc(56px + env(safe-area-inset-bottom,0px)); padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px)); gap:4px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-exit span { display:none }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-website { margin-right:auto }
+  body.is-presenting[data-presentation-layout="responsive"] .presentation-paging { gap:2px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-overview { min-width:78px!important; padding:6px; gap:5px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-language { padding-left:6px!important; gap:4px }
+}
+@media(max-height:600px) and (orientation:landscape) and (min-width:380px) and (max-width:540px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-website span,
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-language span { display:none }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-website { margin:0; padding:8px; gap:0 }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-website::before { content:''; width:14px; height:11px; border-block:1px solid currentColor; background:linear-gradient(currentColor,currentColor) center/100% 1px no-repeat }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-website svg { display:none }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-language { margin-left:auto; border-left:0!important; padding:6px!important }
+}
+
+/* Keep content clear of device cutouts in both fullscreen orientations. */
+body.is-presenting[data-presentation-layout="responsive"] {
+  --slide-inline:22px; --slide-block:32px;
+  --hero-inline:22px; --hero-block:24px;
+}
+@media(min-width:700px) {
+  body.is-presenting[data-presentation-layout="responsive"] {
+    --slide-inline:36px; --slide-block:38px;
+    --hero-inline:36px; --hero-block:30px;
+  }
+}
+@media(max-height:600px) and (orientation:landscape) and (min-width:380px) {
+  body.is-presenting[data-presentation-layout="responsive"] {
+    --slide-inline:28px; --slide-block:26px;
+    --hero-inline:28px; --hero-block:24px;
+  }
+}
+body.is-presenting[data-presentation-layout="responsive"] #main > .presentation-active {
+  padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px));
+}
+body.is-presenting[data-presentation-layout="responsive"] #main > .hero.presentation-active {
+  padding:max(var(--hero-block),env(safe-area-inset-top,0px)) max(var(--hero-inline),env(safe-area-inset-right,0px)) max(var(--hero-block),env(safe-area-inset-bottom,0px)) max(var(--hero-inline),env(safe-area-inset-left,0px));
+}
+body.is-presenting[data-presentation-layout="responsive"] .motion {
+  top:calc(max(var(--hero-block),env(safe-area-inset-top,0px)) + 41px);
+  right:max(var(--hero-inline),env(safe-area-inset-right,0px));
+}
+body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items .presentation-menu-label { min-width:0; overflow-wrap:anywhere }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items .presentation-menu-number { flex-shrink:0 }
+@media(max-width:420px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items { grid-template-columns:minmax(0,1fr) }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items button { min-height:48px; font-size:14px }
+}
