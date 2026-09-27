@@ -6,6 +6,8 @@
   const controls = document.querySelector('#presentation-controls');
   const startButton = document.querySelector('#start-presentation');
   const menu = document.querySelector('#presentation-menu');
+  const websiteMenu = document.querySelector('#presentation-website-menu');
+  const websiteButton = document.querySelector('#presentation-website');
   if (!main || !controls || !startButton || !menu) return;
 
   const steps = [
@@ -107,7 +109,9 @@
     label(previousButton,['Previous slide','Diapositiva anterior']);
     label(nextButton,['Next slide','Siguiente diapositiva']);
     label(document.querySelector('#presentation-overview'),['All slides','Todas las diapositivas']);
-    label(document.querySelector('#presentation-exit'),['Return to website','Volver al sitio web']);
+    label(document.querySelector('#presentation-exit'),['Back to website','Volver al sitio web']);
+    label(websiteButton,['Explore website','Explorar sitio web']);
+    label(document.querySelector('#presentation-website-close'),['Close website navigation','Cerrar navegación del sitio web']);
     label(document.querySelector('#presentation-menu-close'),['Close slide overview','Cerrar índice de diapositivas']);
     label(startButton,['Start presentation','Iniciar presentación']);
     label(fullscreenButton,document.fullscreenElement ? ['Exit full screen','Salir de pantalla completa'] : ['Full screen','Pantalla completa']);
@@ -141,6 +145,7 @@
     const section = document.querySelector(step.selector);
     if (!section) return;
     if (menu.open) menu.close();
+    if (websiteMenu?.open) websiteMenu.close();
     const focusedSection = sections.find(item => item.contains(document.activeElement));
     if (focusedSection && focusedSection !== section) controls.focus({preventScroll:true});
     document.body.dataset.presentationStep = step.id;
@@ -178,10 +183,23 @@
     goTo(number,false);
     controls.focus({preventScroll:true});
   }
-  function exit(updateRoute = true, restoreFocus = true) {
+  function focusWebsiteSection(section) {
+    if (!section) return;
+    const headingId = section.getAttribute('aria-labelledby')?.split(/\s+/)[0];
+    const heading = (headingId && document.getElementById(headingId)) || section.querySelector('h1,h2,h3') || section;
+    const previousTabIndex = heading.getAttribute('tabindex');
+    heading.setAttribute('tabindex','-1');
+    heading.focus({preventScroll:true});
+    heading.addEventListener('blur',() => {
+      if (previousTabIndex === null) heading.removeAttribute('tabindex');
+      else heading.setAttribute('tabindex',previousTabIndex);
+    },{once:true});
+  }
+  function exit(updateRoute = true, restoreFocus = true, destinationId = null) {
     if (!active) return;
-    const section = document.querySelector(steps[index].selector);
+    const section = (destinationId && document.getElementById(destinationId)) || document.querySelector(steps[index].selector);
     if (menu.open) menu.close();
+    if (websiteMenu?.open) websiteMenu.close();
     active = false;
     status?.classList.remove('presentation-feedback');
     touch = null;
@@ -205,7 +223,10 @@
     requestAnimationFrame(() => {
       if (active) return;
       destination?.scrollIntoView({behavior:'instant',block:'start'});
-      if (restoreFocus) (opener?.isConnected ? opener : startButton).focus({preventScroll:true});
+      if (restoreFocus) {
+        if (destination) focusWebsiteSection(destination);
+        else (opener?.isConnected ? opener : startButton).focus({preventScroll:true});
+      }
       syncMotion();
     });
     announce(translated(['Website view','Vista del sitio web']));
@@ -234,6 +255,13 @@
     menuItems.querySelector(`[data-presentation-index="${index}"]`)?.focus();
     syncMotion();
   }
+  function showWebsiteMenu() {
+    if (!active || !websiteMenu || hasOpenDialog()) return;
+    websiteMenu.showModal();
+    websiteButton?.setAttribute('aria-expanded','true');
+    websiteMenu.querySelector('[data-website-section]')?.focus();
+    syncMotion();
+  }
   steps.forEach((step,number) => {
     const button = document.createElement('button');
     button.type = 'button';
@@ -258,11 +286,17 @@
   document.querySelector('#presentation-exit').addEventListener('click',() => exit());
   document.querySelector('#presentation-overview').addEventListener('click',showOverview);
   document.querySelector('#presentation-menu-close').addEventListener('click',() => menu.close());
+  websiteButton?.addEventListener('click',showWebsiteMenu);
+  document.querySelector('#presentation-website-close')?.addEventListener('click',() => websiteMenu.close());
   fullscreenButton?.addEventListener('click',toggleFullscreen);
   if (fullscreenButton) fullscreenButton.hidden = !document.fullscreenEnabled || !document.documentElement.requestFullscreen;
   languageButton?.addEventListener('click',() => setLanguage(spanish() ? 'en' : 'es'));
   menu.addEventListener('close',() => {
     if (active) document.querySelector('#presentation-overview')?.focus({preventScroll:true});
+  });
+  websiteMenu?.addEventListener('close',() => {
+    websiteButton?.setAttribute('aria-expanded','false');
+    if (active) websiteButton?.focus({preventScroll:true});
   });
   document.addEventListener('dulcinea:language',updateControls);
   window.addEventListener('resize',scheduleFit);
@@ -277,6 +311,16 @@
   }
   window.addEventListener('hashchange',syncRoute);
   window.addEventListener('popstate',syncRoute);
+  // These destinations deliberately return to the scrolling site; ordinary
+  // in-slide anchor links continue to navigate the presentation itself.
+  document.addEventListener('click',event => {
+    if (!active || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const target = event.target instanceof Element ? event.target : null;
+    const link = target?.closest('a[data-website-section]');
+    if (!link || link.target === '_blank' || !document.getElementById(link.dataset.websiteSection)) return;
+    event.preventDefault();
+    exit(true,true,link.dataset.websiteSection);
+  },true);
   document.addEventListener('keydown',event => {
     if (!active || hasOpenDialog() || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
     const target = event.target instanceof Element ? event.target : null;

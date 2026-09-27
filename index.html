@@ -186,13 +186,13 @@ body.is-presenting .specialists div:before { counter-increment:specialist; conte
 body.is-presenting .specialists dt { font-size:22px; line-height:1.4 }
 body.is-presenting .specialists dd { font-size:28px; line-height:1.3; letter-spacing:-.025em; text-align:left; max-width:none; grid-column:auto }
 
-/* Disclosures remain readable when projected. */
+/* A quiet, readable disclosure treatment with a link to the full notice. */
 body.is-presenting #main > .legal-notice { border:0; background:var(--paper); color:var(--ink) }
-body.is-presenting .legal-notice h2 { font:400 68px/1.1 Arial,Helvetica,sans-serif; letter-spacing:-.04em; margin:8px 0 55px }
-body.is-presenting .legal-notice > div { max-width:1160px }
-body.is-presenting .legal-notice p { font-size:25px; line-height:1.55 }
-body.is-presenting .legal-notice p + p { margin-top:30px }
-body.is-presenting .legal-notice a { font-size:20px; margin-top:35px }
+body.is-presenting .legal-notice h2 { font:400 40px/1.2 Arial,Helvetica,sans-serif; letter-spacing:-.025em; margin:38px 0 38px }
+body.is-presenting .legal-notice > div { max-width:1020px; padding-top:30px; border-top:1px solid #17282d25 }
+body.is-presenting .legal-notice p { font-size:18px; line-height:1.7; color:#425559 }
+body.is-presenting .legal-notice p + p { margin-top:24px }
+body.is-presenting .legal-notice a { font-size:16px; margin-top:28px }
 
 /* Controls occupy their own space, below the canvas. */
 #presentation-controls { position:fixed; z-index:80; bottom:0; left:0; right:0; height:64px; display:flex; align-items:center; gap:16px; padding:0 24px; background:#102126; color:#e8eded; border-top:1px solid #ffffff18 }
@@ -218,7 +218,49 @@ body.is-presenting .legal-notice a { font-size:20px; margin-top:35px }
 .presentation-help { color:#52635f; font-size:12px; line-height:1.6; margin-top:22px }
 @media(max-width:760px) { #presentation-controls { padding:0 8px; gap:4px } #presentation-title { display:none } #presentation-exit { margin-right:auto } #presentation-exit span { font-size:12px } #presentation-language { padding-left:8px!important } #presentation-overview { min-width:86px!important } #presentation-menu { padding:22px } #presentation-menu-items { grid-template-columns:repeat(2,minmax(0,1fr)) } #presentation-menu-items button { font-size:12px } }
 @media(prefers-reduced-motion:reduce) { body.is-presenting #main > .presentation-active { animation:none } }
-</style>
+
+/* Website destinations remain available throughout the presentation. */
+#presentation-exit, #presentation-website { flex-shrink:0; white-space:nowrap }
+#presentation-controls #presentation-website { border-color:#ffffff35; padding-left:12px; padding-right:12px }
+#presentation-website-menu { max-width:760px; padding:36px }
+#presentation-website-menu .dialog-top h2 { font-size:36px; letter-spacing:-.035em }
+.presentation-website-sections { display:grid; grid-template-columns:1fr 1fr; gap:0 32px }
+.presentation-website-sections a, .presentation-website-resources a { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0; border-bottom:1px solid #17282d30; font-size:21px; line-height:1.3 }
+.presentation-website-sections a:hover, .presentation-website-resources a:hover { color:#007a60 }
+.presentation-website-resources { margin-top:30px; padding-top:12px; border-top:1px solid #17282d55 }
+.presentation-website-resources a { font-size:17px; padding:15px 0 }
+.presentation-website-sections a span:last-child, .presentation-website-resources a span:last-child { font-size:20px }
+body.is-presenting #contact .contact-content { max-width:670px }
+body.is-presenting #contact h2 { font-size:96px; max-width:670px }
+body.is-presenting .presentation-closing-navigation { display:block; position:absolute; top:132px; right:80px; width:440px; padding-left:36px; border-left:1px solid #ffffff50 }
+body.is-presenting .presentation-closing-navigation .micro { font-size:12px; letter-spacing:.08em; color:#e3ebea }
+body.is-presenting .presentation-closing-navigation h3 { font-size:38px; letter-spacing:-.035em; line-height:1.15; margin:15px 0 24px }
+body.is-presenting .presentation-section-links { display:grid; grid-template-columns:1fr 1fr; gap:0 28px }
+body.is-presenting .presentation-closing-navigation a { display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid #ffffff45; padding:17px 0; font-size:22px; line-height:1.25 }
+body.is-presenting .presentation-closing-navigation a:hover { color:var(--gold) }
+body.is-presenting .presentation-resource-links { margin-top:28px }
+body.is-presenting .presentation-resource-links a { font-size:18px; padding:14px 0 }
+body.is-presenting .presentation-closing-navigation a span:last-child { flex-shrink:0; color:var(--gold); font-size:21px }
+@media(max-width:1000px) { #presentation-title { display:none } #presentation-controls { gap:10px } #presentation-website { margin-right:auto } }
+@media(max-width:760px) {
+  #presentation-controls { display:grid; grid-template-columns:minmax(0,1fr) auto auto; grid-template-rows:42px 42px; height:104px; padding:8px 12px; gap:2px 6px }
+  #presentation-controls[hidden] { display:none }
+  #presentation-exit { grid-row:1; grid-column:1; margin:0; justify-self:start; padding-left:0!important }
+  #presentation-controls #presentation-exit span { font-size:12px }
+  #presentation-controls #presentation-website { grid-row:1; grid-column:2 / 4; margin:0; justify-self:end; min-width:0; gap:5px; padding:8px; font-size:12px }
+  #presentation-website svg { width:16px }
+  .presentation-paging { grid-row:2; grid-column:1; gap:3px; justify-self:start }
+  #presentation-controls #presentation-language { grid-row:2; grid-column:2; padding-left:10px!important }
+  #presentation-fullscreen { grid-row:2; grid-column:3 }
+  #presentation-status.presentation-feedback { bottom:120px }
+  #presentation-website-menu { padding:24px; width:calc(100vw - 32px) }
+  #presentation-website-menu .dialog-top { gap:12px }
+  #presentation-website-menu .dialog-top h2 { font-size:29px }
+  .presentation-website-sections { gap:0 20px }
+  .presentation-website-sections a { font-size:17px; padding:17px 0 }
+  .presentation-website-resources { margin-top:24px }
+  .presentation-website-resources a { font-size:16px }
+}</style>
 </head>
 <body>
 <a class="skip" href="#main" data-en="Skip to content" data-es="Ir al contenido">Skip to content</a>
@@ -296,17 +338,52 @@ body.is-presenting .legal-notice a { font-size:20px; margin-top:35px }
     <details class="model"><summary><span data-en="Projected returns + investor documents" data-es="Retornos proyectados + documentos">Projected returns + investor documents</span><span class="plus">+</span></summary><div class="model-content"><div class="projection"><div><strong>15.7%</strong><span data-en="Projected investor IRR" data-es="TIR proyectada del inversionista">Projected investor IRR</span></div><div><strong>1.44×</strong><span data-en="Projected capital multiple" data-es="Múltiplo de capital proyectado">Projected capital multiple</span></div><div><strong>4</strong><span data-en="Projected years" data-es="Años proyectados">Projected years</span></div></div><p class="footnote" data-en="Projected on called capital, after tax and carry. Returns are not guaranteed. Proposed 20% carry follows the return of contributed capital." data-es="Proyecciones sobre el capital llamado, después de impuestos y carry. Los retornos no están garantizados. El carry propuesto del 20% aplica después de devolver el capital aportado.">Projected on called capital, after tax and carry. Returns are not guaranteed. Proposed 20% carry follows the return of contributed capital.</p><div class="document-links"><a data-path="financial-statements.html#income-statement" href="financial-statements.html#income-statement" target="_blank" rel="noopener" data-en="Income statement ↗" data-es="Estado de resultados ↗">Income statement ↗</a><a data-path="financial-statements.html#cash-flow-statement" href="financial-statements.html#cash-flow-statement" target="_blank" rel="noopener" data-en="Cash flows ↗" data-es="Flujos de efectivo ↗">Cash flows ↗</a><a data-path="financial-statements.html#balance-sheet" href="financial-statements.html#balance-sheet" target="_blank" rel="noopener" data-en="Balance sheet ↗" data-es="Balance general ↗">Balance sheet ↗</a><a data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener" data-en="Investment criteria ↗" data-es="Criterios de inversión ↗">Investment criteria ↗</a></div></div></details>
   </section>
 
-  <section class="contact film" id="contact" aria-labelledby="contact-title"><video class="background-video" src="assets/video/stock/AdobeStock_693150796.mp4" poster="assets/video/stock/AdobeStock_693150796-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="contact-content"><p class="micro" data-en="07 / The next step" data-es="07 / El siguiente paso">07 / The next step</p><h2 id="contact-title" data-en="Let's talk&#10;Dulcinea One." data-es="Hablemos de&#10;Dulcinea One.">Let's talk<br>Dulcinea One.</h2><a class="contact-person" href="https://wa.me/19174284062" target="_blank" rel="noopener"><img src="assets/images/team/dov-supplied.png" alt="K. Dov Isaza Tuzman" width="64" height="64"><span><strong>Dov Tuzman</strong><span data-en="Managing Director" data-es="Director General">Managing Director</span></span><span class="contact-arrow" aria-hidden="true">↗</span></a><a class="line-link" href="https://wa.me/19174284062" target="_blank" rel="noopener"><span data-en="Connect on WhatsApp" data-es="Conectar por WhatsApp">Connect on WhatsApp</span><span>↗</span></a><a class="contact-email" href="mailto:kit@kitcapital.com">kit@kitcapital.com</a></div><footer><span data-en="Dulcinea One · For qualified investors" data-es="Dulcinea One · Para inversionistas calificados">Dulcinea One · For qualified investors</span><a href="#home" data-en="Back to top ↑" data-es="Volver arriba ↑">Back to top ↑</a><span data-en="Membership documents govern." data-es="Aplican los documentos de membresía.">Membership documents govern.</span></footer></section>
+  <section class="contact film" id="contact" aria-labelledby="contact-title"><video class="background-video" src="assets/video/stock/AdobeStock_693150796.mp4" poster="assets/video/stock/AdobeStock_693150796-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="contact-content"><p class="micro" data-en="07 / The next step" data-es="07 / El siguiente paso">07 / The next step</p><h2 id="contact-title" data-en="Let's talk&#10;Dulcinea One." data-es="Hablemos de&#10;Dulcinea One.">Let's talk<br>Dulcinea One.</h2><a class="contact-person" href="https://wa.me/19174284062" target="_blank" rel="noopener"><img src="assets/images/team/dov-supplied.png" alt="K. Dov Isaza Tuzman" width="64" height="64"><span><strong>Dov Tuzman</strong><span data-en="Managing Director" data-es="Director General">Managing Director</span></span><span class="contact-arrow" aria-hidden="true">↗</span></a><a class="line-link" href="https://wa.me/19174284062" target="_blank" rel="noopener"><span data-en="Connect on WhatsApp" data-es="Conectar por WhatsApp">Connect on WhatsApp</span><span>↗</span></a><a class="contact-email" href="mailto:kit@kitcapital.com">kit@kitcapital.com</a></div>
+    <nav class="presentation-only presentation-closing-navigation" aria-labelledby="presentation-closing-title">
+      <p class="micro" data-en="Continue on the website" data-es="Continúe en el sitio web">Continue on the website</p>
+      <h3 id="presentation-closing-title" data-en="Explore Dulcinea One." data-es="Explore Dulcinea One.">Explore Dulcinea One.</h3>
+      <div class="presentation-section-links">
+        <a href="#home" data-website-section="home"><span data-en="Home" data-es="Inicio">Home</span><span aria-hidden="true">↗</span></a>
+        <a href="#homes" data-website-section="homes"><span data-en="The homes" data-es="Las propiedades">The homes</span><span aria-hidden="true">↗</span></a>
+        <a href="#fund" data-website-section="fund"><span data-en="The fund" data-es="El fondo">The fund</span><span aria-hidden="true">↗</span></a>
+        <a href="#experience" data-website-section="experience"><span data-en="The lifestyle" data-es="El estilo de vida">The lifestyle</span><span aria-hidden="true">↗</span></a>
+        <a href="#team" data-website-section="team"><span data-en="The team" data-es="El equipo">The team</span><span aria-hidden="true">↗</span></a>
+        <a href="#specialists" data-website-section="specialists"><span data-en="Specialists" data-es="Especialistas">Specialists</span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="presentation-resource-links">
+        <a data-path="financial-statements.html" href="financial-statements.html" target="_blank" rel="noopener"><span data-en="Pro forma financial statements" data-es="Estados financieros pro forma">Pro forma financial statements</span><span aria-hidden="true">↗</span></a>
+        <a data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener"><span data-en="Investment criteria" data-es="Criterios de inversión">Investment criteria</span><span aria-hidden="true">↗</span></a>
+        <a data-path="disclaimer.html" href="disclaimer.html" target="_blank" rel="noopener"><span data-en="Disclaimer" data-es="Aviso legal">Disclaimer</span><span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+    <footer><span data-en="Dulcinea One · For qualified investors" data-es="Dulcinea One · Para inversionistas calificados">Dulcinea One · For qualified investors</span><a href="#home" data-en="Back to top ↑" data-es="Volver arriba ↑">Back to top ↑</a><span data-en="Membership documents govern." data-es="Aplican los documentos de membresía.">Membership documents govern.</span></footer></section>
   <section class="legal-notice" aria-labelledby="disclaimer-title"><h2 id="disclaimer-title" data-en="Disclaimer" data-es="Aviso legal">Disclaimer</h2><div><p data-en="Dulcinea Investments, LLC is a Delaware limited liability company and the issuer of the investment presented as Dulcinea One. Dulcinea is a real estate investment firm; it oversees its own investments and does not offer real estate brokerage or third-party property-management services." data-es="Dulcinea Investments, LLC es una sociedad de responsabilidad limitada constituida en Delaware y la emisora de la inversión presentada como Dulcinea One. Dulcinea es una firma de inversión inmobiliaria; supervisa sus propias inversiones y no ofrece servicios de corretaje ni de administración de inmuebles para terceros.">Dulcinea Investments, LLC is a Delaware limited liability company and the issuer of the investment presented as Dulcinea One. Dulcinea is a real estate investment firm; it oversees its own investments and does not offer real estate brokerage or third-party property-management services.</p><p data-en="For information only. Any investment is subject to definitive offering and membership documents and investor eligibility. Pro forma financial statements and return targets are unaudited estimates; actual results may differ materially. Investments are illiquid and may lose all their value. Returns are not guaranteed." data-es="Esta presentación es informativa. Toda inversión está sujeta a los documentos definitivos de oferta y membresía y a los requisitos de elegibilidad. Los estados financieros pro forma y los retornos objetivo son estimaciones no auditadas; los resultados reales pueden diferir sustancialmente. Las inversiones son ilíquidas y pueden perder todo su valor. Los rendimientos no están garantizados.">For information only. Any investment is subject to definitive offering and membership documents and investor eligibility. Pro forma financial statements and return targets are unaudited estimates; actual results may differ materially. Investments are illiquid and may lose all their value. Returns are not guaranteed.</p><a class="resource" data-path="disclaimer.html" href="disclaimer.html" data-en="Read the full disclaimer ↗" data-es="Leer el aviso legal completo ↗">Read the full disclaimer ↗</a></div></section>
 </main>
 <div id="presentation-controls" role="toolbar" aria-label="Presentation controls" hidden>
-  <button type="button" id="presentation-exit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m10 5-7 7 7 7M3 12h18"/></svg><span data-en="Website" data-es="Sitio web">Website</span></button>
+  <button type="button" id="presentation-exit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m10 5-7 7 7 7M3 12h18"/></svg><span data-en="Back to website" data-es="Volver al sitio web">Back to website</span></button>
+  <button type="button" id="presentation-website" aria-haspopup="dialog" aria-controls="presentation-website-menu" aria-expanded="false"><span data-en="Explore website" data-es="Explorar sitio web">Explore website</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
   <span id="presentation-title"></span>
   <div class="presentation-paging"><button type="button" id="presentation-previous" aria-label="Previous slide">←</button><button type="button" id="presentation-overview" aria-label="Choose slide"><span id="presentation-count"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg></button><button type="button" id="presentation-next" aria-label="Next slide">→</button></div>
   <button type="button" id="presentation-language" aria-label="Switch language"></button>
   <button type="button" id="presentation-fullscreen" aria-label="Full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></svg></button>
 </div>
 <p id="presentation-status" class="sr-only" role="status" aria-live="polite"></p>
+<dialog id="presentation-website-menu" aria-labelledby="presentation-website-title">
+  <div class="dialog-top"><h2 id="presentation-website-title" data-en="Explore the website" data-es="Explore el sitio web">Explore the website</h2><button type="button" id="presentation-website-close" aria-label="Close website navigation">×</button></div>
+  <nav class="presentation-website-sections" aria-label="Website sections" data-en-aria-label="Website sections" data-es-aria-label="Secciones del sitio web">
+    <a href="#home" data-website-section="home"><span data-en="Home" data-es="Inicio">Home</span><span aria-hidden="true">↗</span></a>
+    <a href="#homes" data-website-section="homes"><span data-en="The homes" data-es="Las propiedades">The homes</span><span aria-hidden="true">↗</span></a>
+    <a href="#fund" data-website-section="fund"><span data-en="The fund" data-es="El fondo">The fund</span><span aria-hidden="true">↗</span></a>
+    <a href="#experience" data-website-section="experience"><span data-en="The lifestyle" data-es="El estilo de vida">The lifestyle</span><span aria-hidden="true">↗</span></a>
+    <a href="#team" data-website-section="team"><span data-en="The team" data-es="El equipo">The team</span><span aria-hidden="true">↗</span></a>
+    <a href="#specialists" data-website-section="specialists"><span data-en="Specialists" data-es="Especialistas">Specialists</span><span aria-hidden="true">↗</span></a>
+  </nav>
+  <nav class="presentation-website-resources" aria-label="Investor documents" data-en-aria-label="Investor documents" data-es-aria-label="Documentos para inversionistas">
+    <a data-path="financial-statements.html" href="financial-statements.html" target="_blank" rel="noopener"><span data-en="Pro forma financial statements" data-es="Estados financieros pro forma">Pro forma financial statements</span><span aria-hidden="true">↗</span></a>
+    <a data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener"><span data-en="Investment criteria" data-es="Criterios de inversión">Investment criteria</span><span aria-hidden="true">↗</span></a>
+    <a data-path="disclaimer.html" href="disclaimer.html" target="_blank" rel="noopener"><span data-en="Disclaimer" data-es="Aviso legal">Disclaimer</span><span aria-hidden="true">↗</span></a>
+  </nav>
+</dialog>
 <dialog id="presentation-menu" aria-labelledby="presentation-menu-title"><div class="dialog-top"><h2 id="presentation-menu-title" data-en="Choose a slide" data-es="Elija una diapositiva">Choose a slide</h2><button type="button" id="presentation-menu-close" aria-label="Close slide list">×</button></div><div id="presentation-menu-items"></div><p class="presentation-help" data-en="← → Next / previous · Home / End First / last · F Full screen · Esc Website" data-es="← → Siguiente / anterior · Inicio / Fin Primera / última · F Pantalla completa · Esc Sitio web">← → Next / previous · Home / End First / last · F Full screen · Esc Website</p></dialog>
 <dialog id="original-dialog" aria-labelledby="original-title"><div class="dialog-top"><h2 id="original-title">Fontanar 201</h2><button id="close-original" aria-label="Close original imagery">×</button></div><img id="original-image" src="assets/images/investor-deck/image46.jpeg" alt="Original supplied Fontanar 201 imagery"><p data-en="Original property imagery supplied in the investor presentation." data-es="Imagen original suministrada en la presentación para inversionistas.">Original property imagery supplied in the investor presentation.</p></dialog>
 <dialog id="plans-dialog" aria-labelledby="plans-title"><div class="dialog-top"><h2 id="plans-title">Fontanar 201</h2><button type="button" id="close-plans" aria-label="Close floorplans" data-en-aria-label="Close floorplans" data-es-aria-label="Cerrar planos">×</button></div><img id="plan-image" alt="Fontanar 201 · Floor 1"><p id="plan-caption"></p><div class="plans-toolbar"><div class="plan-paging"><button type="button" id="prev-plan" aria-label="Previous floorplan" data-en-aria-label="Previous floorplan" data-es-aria-label="Plano anterior">←</button><span id="plan-count" aria-live="polite">1 / 2</span><button type="button" id="next-plan" aria-label="Next floorplan" data-en-aria-label="Next floorplan" data-es-aria-label="Siguiente plano">→</button></div><a href="source-packages/PLANOS PROPIEDADES DULCINEA.pdf" download="Dulcinea-Floorplans.pdf" data-en="Download plans ↓" data-es="Descargar planos ↓">Download plans ↓</a></div></dialog>
@@ -552,6 +629,8 @@ migrateLegacyHash();
   const controls = document.querySelector('#presentation-controls');
   const startButton = document.querySelector('#start-presentation');
   const menu = document.querySelector('#presentation-menu');
+  const websiteMenu = document.querySelector('#presentation-website-menu');
+  const websiteButton = document.querySelector('#presentation-website');
   if (!main || !controls || !startButton || !menu) return;
 
   const steps = [
@@ -653,7 +732,9 @@ migrateLegacyHash();
     label(previousButton,['Previous slide','Diapositiva anterior']);
     label(nextButton,['Next slide','Siguiente diapositiva']);
     label(document.querySelector('#presentation-overview'),['All slides','Todas las diapositivas']);
-    label(document.querySelector('#presentation-exit'),['Return to website','Volver al sitio web']);
+    label(document.querySelector('#presentation-exit'),['Back to website','Volver al sitio web']);
+    label(websiteButton,['Explore website','Explorar sitio web']);
+    label(document.querySelector('#presentation-website-close'),['Close website navigation','Cerrar navegación del sitio web']);
     label(document.querySelector('#presentation-menu-close'),['Close slide overview','Cerrar índice de diapositivas']);
     label(startButton,['Start presentation','Iniciar presentación']);
     label(fullscreenButton,document.fullscreenElement ? ['Exit full screen','Salir de pantalla completa'] : ['Full screen','Pantalla completa']);
@@ -687,6 +768,7 @@ migrateLegacyHash();
     const section = document.querySelector(step.selector);
     if (!section) return;
     if (menu.open) menu.close();
+    if (websiteMenu?.open) websiteMenu.close();
     const focusedSection = sections.find(item => item.contains(document.activeElement));
     if (focusedSection && focusedSection !== section) controls.focus({preventScroll:true});
     document.body.dataset.presentationStep = step.id;
@@ -724,10 +806,23 @@ migrateLegacyHash();
     goTo(number,false);
     controls.focus({preventScroll:true});
   }
-  function exit(updateRoute = true, restoreFocus = true) {
+  function focusWebsiteSection(section) {
+    if (!section) return;
+    const headingId = section.getAttribute('aria-labelledby')?.split(/\s+/)[0];
+    const heading = (headingId && document.getElementById(headingId)) || section.querySelector('h1,h2,h3') || section;
+    const previousTabIndex = heading.getAttribute('tabindex');
+    heading.setAttribute('tabindex','-1');
+    heading.focus({preventScroll:true});
+    heading.addEventListener('blur',() => {
+      if (previousTabIndex === null) heading.removeAttribute('tabindex');
+      else heading.setAttribute('tabindex',previousTabIndex);
+    },{once:true});
+  }
+  function exit(updateRoute = true, restoreFocus = true, destinationId = null) {
     if (!active) return;
-    const section = document.querySelector(steps[index].selector);
+    const section = (destinationId && document.getElementById(destinationId)) || document.querySelector(steps[index].selector);
     if (menu.open) menu.close();
+    if (websiteMenu?.open) websiteMenu.close();
     active = false;
     status?.classList.remove('presentation-feedback');
     touch = null;
@@ -751,7 +846,10 @@ migrateLegacyHash();
     requestAnimationFrame(() => {
       if (active) return;
       destination?.scrollIntoView({behavior:'instant',block:'start'});
-      if (restoreFocus) (opener?.isConnected ? opener : startButton).focus({preventScroll:true});
+      if (restoreFocus) {
+        if (destination) focusWebsiteSection(destination);
+        else (opener?.isConnected ? opener : startButton).focus({preventScroll:true});
+      }
       syncMotion();
     });
     announce(translated(['Website view','Vista del sitio web']));
@@ -780,6 +878,13 @@ migrateLegacyHash();
     menuItems.querySelector(`[data-presentation-index="${index}"]`)?.focus();
     syncMotion();
   }
+  function showWebsiteMenu() {
+    if (!active || !websiteMenu || hasOpenDialog()) return;
+    websiteMenu.showModal();
+    websiteButton?.setAttribute('aria-expanded','true');
+    websiteMenu.querySelector('[data-website-section]')?.focus();
+    syncMotion();
+  }
   steps.forEach((step,number) => {
     const button = document.createElement('button');
     button.type = 'button';
@@ -804,11 +909,17 @@ migrateLegacyHash();
   document.querySelector('#presentation-exit').addEventListener('click',() => exit());
   document.querySelector('#presentation-overview').addEventListener('click',showOverview);
   document.querySelector('#presentation-menu-close').addEventListener('click',() => menu.close());
+  websiteButton?.addEventListener('click',showWebsiteMenu);
+  document.querySelector('#presentation-website-close')?.addEventListener('click',() => websiteMenu.close());
   fullscreenButton?.addEventListener('click',toggleFullscreen);
   if (fullscreenButton) fullscreenButton.hidden = !document.fullscreenEnabled || !document.documentElement.requestFullscreen;
   languageButton?.addEventListener('click',() => setLanguage(spanish() ? 'en' : 'es'));
   menu.addEventListener('close',() => {
     if (active) document.querySelector('#presentation-overview')?.focus({preventScroll:true});
+  });
+  websiteMenu?.addEventListener('close',() => {
+    websiteButton?.setAttribute('aria-expanded','false');
+    if (active) websiteButton?.focus({preventScroll:true});
   });
   document.addEventListener('dulcinea:language',updateControls);
   window.addEventListener('resize',scheduleFit);
@@ -823,6 +934,16 @@ migrateLegacyHash();
   }
   window.addEventListener('hashchange',syncRoute);
   window.addEventListener('popstate',syncRoute);
+  // These destinations deliberately return to the scrolling site; ordinary
+  // in-slide anchor links continue to navigate the presentation itself.
+  document.addEventListener('click',event => {
+    if (!active || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const target = event.target instanceof Element ? event.target : null;
+    const link = target?.closest('a[data-website-section]');
+    if (!link || link.target === '_blank' || !document.getElementById(link.dataset.websiteSection)) return;
+    event.preventDefault();
+    exit(true,true,link.dataset.websiteSection);
+  },true);
   document.addEventListener('keydown',event => {
     if (!active || hasOpenDialog() || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
     const target = event.target instanceof Element ? event.target : null;
