@@ -14,6 +14,7 @@
 .experience-content>p.co-brand-copy{font-size:14px;line-height:1.55;margin-top:20px;max-width:420px;color:#e2e8e5}.raise-status{font-size:12px;margin-top:12px}.kickers{border-top:1px solid #17282d50;padding-top:26px;margin:0 0 38px}.kickers h3{font-size:24px;letter-spacing:-.035em;line-height:1.2;margin-bottom:26px;text-wrap:balance}.kicker-strip{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:28px}.kicker-strip>div{display:flex;flex-direction:column;align-items:flex-start;gap:10px}.kicker-strip strong{font-size:clamp(30px,3.2vw,46px);font-weight:400;letter-spacing:-.045em;line-height:1.1}.kicker-strip span{font-size:14px;line-height:1.4}.kicker-strip p{font-size:11px;line-height:1.5;color:#304d55}.kickers .footnote{margin-top:24px}
 @media(max-width:760px){.experience-content>p.co-brand-copy{font-size:13px;max-width:330px}.experience-note{margin-top:26px}.raise-status{font-size:11px}.kickers h3{font-size:23px;margin-bottom:18px}.kicker-strip{grid-template-columns:1fr;gap:0}.kicker-strip>div{display:grid;grid-template-columns:minmax(100px,.8fr) minmax(0,1fr);gap:5px 20px;padding:19px 0;border-bottom:1px solid #17282d25}.kicker-strip strong{grid-row:span 2;font-size:29px;align-self:center}.kicker-strip span{font-size:13px}.kicker-strip p{font-size:11px}.kickers .footnote{margin-top:18px}.kickers{margin-bottom:30px}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.signout:disabled{opacity:.45;cursor:wait}.signout-error{position:sticky;top:var(--header);z-index:49;padding:12px 4vw;background:#fbe1e6;color:var(--ink);border-bottom:1px solid #17282d26;font-size:13px;line-height:1.5}.signout-error[hidden]{display:none}
 .partners{flex-shrink:0}.partners>.dulcinea-partner{width:74px;height:20px;object-fit:contain}
 @media(max-width:760px){.hero-baseline{flex-wrap:wrap}.hero-baseline>.micro{flex:1;min-width:125px}.partners{margin-left:auto}.partners>.dulcinea-partner{width:60px;height:17px}}
 .contact-email{display:inline-block;font-size:12px;margin-top:20px;color:#d5dddd}.contact-email:hover{color:white;text-decoration:underline}
@@ -45,6 +46,7 @@
   <a class="contact-nav" href="#contact" data-en="Talk to us ↗" data-es="Hable con nosotros ↗">Talk to us ↗</a>
 
 </header>
+<p id="signout-error" class="signout-error" role="alert" hidden data-en="Could not sign out. Please try again." data-es="No se pudo cerrar sesión. Inténtelo de nuevo.">Could not sign out. Please try again.</p>
 <main id="main">
   <section class="hero film" id="home" aria-labelledby="hero-title">
     <video class="background-video" src="assets/video/dulcinea-introduction.mp4" poster="assets/video/dulcinea-introduction-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
@@ -273,6 +275,28 @@ function setLanguage(next,updateRoute = true) {
   renderHome(false); translateAria(); motionState();
 }
 document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click',() => setLanguage(button.dataset.language)));
+// CORS-mode fetch retains the real Origin under the site's no-referrer policy;
+// native form navigation would send Origin:null and fail the server check.
+document.querySelectorAll('.signout-form').forEach(form => form.addEventListener('submit',async event => {
+  event.preventDefault();
+  const button = form.querySelector('button[type="submit"]');
+  const feedback = $('#signout-error');
+  if (button.disabled) return;
+  button.disabled = true;
+  form.setAttribute('aria-busy','true');
+  feedback.hidden = true;
+  feedback.textContent = '';
+  try {
+    const response = await fetch('/logout', { method:'POST', mode:'cors', credentials:'same-origin', headers:{ Accept:'application/json' } });
+    if (!response.ok) throw new Error('Sign-out failed');
+    location.replace(lang === 'es' ? '/login?lang=es&next=%2Fes%2F' : '/login');
+  } catch {
+    feedback.textContent = lang === 'es' ? 'No se pudo cerrar sesión. Inténtelo de nuevo.' : 'Could not sign out. Please try again.';
+    feedback.hidden = false;
+    button.disabled = false;
+    form.removeAttribute('aria-busy');
+  }
+}));
 function openDialog(dialog) { dialog.showModal(); syncMotion(); }
 $('#view-original').addEventListener('click',() => openDialog(originalDialog));
 $('#close-original').addEventListener('click',() => originalDialog.close());

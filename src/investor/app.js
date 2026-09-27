@@ -168,6 +168,28 @@ function setLanguage(next,updateRoute = true) {
   renderHome(false); translateAria(); motionState();
 }
 document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click',() => setLanguage(button.dataset.language)));
+// CORS-mode fetch retains the real Origin under the site's no-referrer policy;
+// native form navigation would send Origin:null and fail the server check.
+document.querySelectorAll('.signout-form').forEach(form => form.addEventListener('submit',async event => {
+  event.preventDefault();
+  const button = form.querySelector('button[type="submit"]');
+  const feedback = $('#signout-error');
+  if (button.disabled) return;
+  button.disabled = true;
+  form.setAttribute('aria-busy','true');
+  feedback.hidden = true;
+  feedback.textContent = '';
+  try {
+    const response = await fetch('/logout', { method:'POST', mode:'cors', credentials:'same-origin', headers:{ Accept:'application/json' } });
+    if (!response.ok) throw new Error('Sign-out failed');
+    location.replace(lang === 'es' ? '/login?lang=es&next=%2Fes%2F' : '/login');
+  } catch {
+    feedback.textContent = lang === 'es' ? 'No se pudo cerrar sesión. Inténtelo de nuevo.' : 'Could not sign out. Please try again.';
+    feedback.hidden = false;
+    button.disabled = false;
+    form.removeAttribute('aria-busy');
+  }
+}));
 function openDialog(dialog) { dialog.showModal(); syncMotion(); }
 $('#view-original').addEventListener('click',() => openDialog(originalDialog));
 $('#close-original').addEventListener('click',() => originalDialog.close());

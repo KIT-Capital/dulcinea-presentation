@@ -62,7 +62,7 @@ Investor pages stay concise, without Excel filenames, cells or calculation expla
 
 ## Protected hosting
 
-The configured Cloudflare Worker targets `https://invest.dulcineainvestments.org`. The design migration preserves the name/email form and shared-password login, eight-hour sessions, rate limiting and same-origin POST logout. This is a password gate, not OAuth. Names and emails are not retained or sent anywhere. Investor pages, media, financials, criteria and floorplans require authentication.
+The configured Cloudflare Worker targets `https://invest.dulcineainvestments.org`. Access uses the name/email form and shared password, with a browser-session cookie and an eight-hour server-side maximum. There is no persistent remembered sign-in. The session-policy version rejects cookies issued under the former persistent policy. Browser session restoration can restore session cookies according to the visitor's browser settings. Sign-out submits a same-origin CORS POST so the browser supplies the required Origin even under the site's no-referrer policy. This is a password gate, not OAuth. Names and emails are not retained or sent anywhere. Investor pages, media, financials, criteria and floorplans require authentication.
 
 Only the exact gate logo, social-preview panorama and aerial-video URLs, plus the robots policy, are public. The unauthenticated root serves the login page with social metadata. The panorama is the primary share image; video metadata is also supplied. Private responses use `Cache-Control: private, no-store`; `run_worker_first: true` must remain enabled. The Worker serves single byte ranges for MP4 playback and seeking, after the same access checks as full video requests.
 

@@ -163,7 +163,7 @@ test('only the gate logo, exact social media URLs and robots are public, even be
   assert.equal(assetRequests.length, 3);
 });
 
-test('correct login grants an eight-hour secure signed session without storing visitor identity', async () => {
+test('correct login grants a browser-session cookie with an eight-hour limit and no visitor identity', async () => {
   const { env, assetRequests, rateKeys } = fixture();
   const response = await worker.fetch(loginRequest(env, { next: '/financial-statements.html#balance-sheet' },
     { headers: { 'CF-Connecting-IP': '192.0.2.11' } }), env);
@@ -171,10 +171,12 @@ test('correct login grants an eight-hour secure signed session without storing v
   assert.equal(response.headers.get('Location'), '/financial-statements.html#balance-sheet');
   const cookie = response.headers.get('Set-Cookie');
   assert.match(cookie, /^__Host-dulcinea_session=/);
-  for (const flag of ['Path=/', 'HttpOnly', 'SameSite=Strict', 'Max-Age=28800', 'Secure']) assert.ok(cookie.includes(flag));
+  for (const flag of ['Path=/', 'HttpOnly', 'SameSite=Strict', 'Secure']) assert.ok(cookie.includes(flag));
+  assert.doesNotMatch(cookie, /Max-Age=|Expires=/i);
   assert.ok(!cookie.includes('Domain='));
   const payload = JSON.parse(Buffer.from(cookie.split('=')[1].split('.')[0], 'base64url').toString());
-  assert.deepEqual(Object.keys(payload).sort(), ['exp', 'iat', 'nonce']);
+  assert.deepEqual(Object.keys(payload).sort(), ['exp', 'iat', 'nonce', 'v']);
+  assert.equal(payload.v, 2);
   assert.equal(payload.exp - payload.iat, SESSION_SECONDS);
   assert.equal(rateKeys.length, 1);
   assert.ok(!rateKeys[0].includes('192.0.2.11'));
@@ -232,9 +234,9 @@ test('malformed, forged, expired, future-issued and overlong sessions fail close
   const cookie = await session(env);
   const now = Math.floor(Date.now() / 1000);
   const forged = cookie.replace(/\.[^.;]+$/, '.invalidsignature');
-  const expired = signedCookie(env, { iat: now - SESSION_SECONDS - 1, exp: now - 1, nonce: 'test-expired' });
-  const future = signedCookie(env, { iat: now + 120, exp: now + 120 + SESSION_SECONDS, nonce: 'test-future' });
-  const longer = signedCookie(env, { iat: now, exp: now + SESSION_SECONDS + 60, nonce: 'test-long' });
+  const expired = signedCookie(env, { v: 2, iat: now - SESSION_SECONDS - 1, exp: now - 1, nonce: 'test-expired' });
+  const future = signedCookie(env, { v: 2, iat: now + 120, exp: now + 120 + SESSION_SECONDS, nonce: 'test-future' });
+  const longer = signedCookie(env, { v: 2, iat: now, exp: now + SESSION_SECONDS + 60, nonce: 'test-long' });
   for (const invalid of ['__Host-dulcinea_session=garbage', '__Host-dulcinea_session=a.b.c',
     `__Host-dulcinea_session=${'a'.repeat(1025)}`, forged, expired, future, longer]) {
     assert.equal((await worker.fetch(request('/assets/private.pdf', { headers: { Cookie: invalid } }), env)).status, 302);
@@ -252,6 +254,17 @@ test('changing either secret invalidates previously issued sessions', async () =
     loginFormAction(await response.text());
   }
   assert.equal(assetRequests.length, 0);
+});
+
+test('formerly persistent sessions no longer grant access', async () => {
+  const { env, assetRequests } = fixture();
+  const now = Math.floor(Date.now() / 1000);
+  const former = signedCookie(env, { iat: now, exp: now + SESSION_SECONDS, nonce: 'old-policy' });
+  const denied = await worker.fetch(request('/financial-statements.html', { headers: { Cookie: former } }), env);
+  assert.equal(denied.status, 302);
+  assert.equal(assetRequests.length, 0);
+  const fresh = await session(env);
+  assert.equal((await worker.fetch(request('/financial-statements.html', { headers: { Cookie: fresh } }), env)).status, 200);
 });
 
 test('logout only accepts same-origin POST and expires the correct cookie', async () => {

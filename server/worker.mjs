@@ -4,6 +4,7 @@ import { videoSizes } from './video-sizes.mjs';
 
 const encoder = new TextEncoder();
 const SESSION_SECONDS = 8 * 60 * 60;
+const SESSION_VERSION = 2; // Reject sessions issued under the former persistent-cookie policy.
 const MAX_FORM_BYTES = 4096;
 const CONTACT_EMAIL = 'kit@kitcapital.com';
 // Only the brand mark and the two promotional media URLs can be fetched before sign-in.
@@ -75,8 +76,9 @@ function cookieName(url) {
   return url.protocol === 'https:' ? '__Host-dulcinea_session' : 'dulcinea_preview_session';
 }
 
-function sessionCookie(url, value, seconds = SESSION_SECONDS) {
-  return `${cookieName(url)}=${value}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${seconds}${url.protocol === 'https:' ? '; Secure' : ''}`;
+function sessionCookie(url, value, seconds) {
+  // No expiry attributes on sign-in: the browser keeps this cookie for its session only.
+  return `${cookieName(url)}=${value}; Path=/; HttpOnly; SameSite=Strict${seconds === 0 ? '; Max-Age=0' : ''}${url.protocol === 'https:' ? '; Secure' : ''}`;
 }
 
 function readCookie(request, name) {
@@ -114,7 +116,7 @@ async function signingKey(env) {
 async function issueSession(env) {
   const now = Math.floor(Date.now() / 1000);
   // No visitor identity or access record is retained in the session.
-  const payload = b64url(encoder.encode(JSON.stringify({ iat: now, exp: now + SESSION_SECONDS, nonce: crypto.randomUUID() })));
+  const payload = b64url(encoder.encode(JSON.stringify({ v: SESSION_VERSION, iat: now, exp: now + SESSION_SECONDS, nonce: crypto.randomUUID() })));
   const signature = await crypto.subtle.sign('HMAC', await signingKey(env), encoder.encode(payload));
   return `${payload}.${b64url(signature)}`;
 }
@@ -128,7 +130,7 @@ async function authenticated(request, env, url) {
     if (!await crypto.subtle.verify('HMAC', await signingKey(env), unb64(parts[1]), encoder.encode(parts[0]))) return false;
     const payload = JSON.parse(new TextDecoder().decode(unb64(parts[0])));
     const now = Math.floor(Date.now() / 1000);
-    return Number.isInteger(payload.iat) && Number.isInteger(payload.exp)
+    return payload.v === SESSION_VERSION && Number.isInteger(payload.iat) && Number.isInteger(payload.exp)
       && payload.iat <= now && payload.exp > now && payload.exp - payload.iat === SESSION_SECONDS;
   } catch { return false; }
 }
