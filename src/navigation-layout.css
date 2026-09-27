@@ -5,6 +5,10 @@
   .masthead{position:relative;inset:auto;grid-row:1;height:100%;background:#17282d;backdrop-filter:none;pointer-events:auto}
   .masthead.scrolled{background:#17282d;backdrop-filter:none}
   .masthead.on-light,.masthead.on-light.scrolled{background:var(--paper)}
+  .header-resources .header-signout{margin:0;flex-shrink:0}
+  .header-resources .header-signout button{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:8px 0;font:inherit;font-size:11px;white-space:nowrap;color:inherit;background:transparent;border:0;border-bottom:1px solid transparent}
+  .header-resources .header-signout button:hover{border-bottom-color:var(--gold)}
+  .header-signout svg{display:block;flex-shrink:0}
   #deck{grid-row:2;height:100%;min-height:0;min-width:0}
   .controls{position:relative;inset:auto;grid-row:3;height:100%;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:24px}
   .controls>.locale-switch{justify-self:center}
@@ -23,6 +27,8 @@
 
   @media(max-width:800px){
     :root{--masthead-height:78px}
+    .header-resources .header-signout button{width:28px;justify-content:center}
+    .header-signout button>span{display:none}
     .slide:not(.investment-story)>.content{padding-top:34px}
     .slide.cover>.cover-content{padding-top:152px}
     .slide.location>.content,.slide.hospitality>.content{padding-top:97px}

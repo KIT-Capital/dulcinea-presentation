@@ -95,14 +95,14 @@ async function build() {
   criteria = criteria.replaceAll('{{RESOURCE_LOGO}}', () => resourceLogo);
   if (web) {
     const signOut = '<form class="session-exit" action="/logout" method="post"><button type="submit">Sign out</button></form>';
+    const headerSignOut = '<form class="session-exit header-signout" action="/logout" method="post"><button type="submit" aria-label="Sign out" title="Sign out"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4H4v16h5M14 8l4 4-4 4M8 12h10"/></svg><span>Sign out</span></button></form>';
     const exitStyle = '<style>.session-exit{margin:24px 0}.session-exit button{font:inherit;font-size:14px;color:inherit;background:transparent;border:1px solid currentColor;border-radius:0;padding:12px 20px;cursor:pointer}.session-exit button:focus-visible{outline:3px solid #009B74;outline-offset:4px}#slide-menu>.session-exit{margin:24px 5vw}</style>';
-    html = html.replace('<button aria-label="Close slide menu"', signOut + '<button aria-label="Close slide menu"').replace('</head>', exitStyle + '</head>');
-    financial = financial.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
-    criteria = criteria.replace('</main>', signOut + '</main>').replace('</head>', exitStyle + '</head>');
+    html = html.replace('<!--__HEADER_SIGN_OUT__-->', headerSignOut).replace('<button aria-label="Close slide menu"', signOut + '<button aria-label="Close slide menu"').replace('</head>', exitStyle + '</head>');
     await copyAsset('brand/dulcinea-one/svg/dulcinea-one-black-gold.svg', 'gate-assets/logo.svg');
     // The exact image URL in the public Open Graph metadata must exist in the deployment.
     await copyAsset('assets/images/stock/AdobeStock_891890158-web.jpg');
   }
+  html = html.replace('<!--__HEADER_SIGN_OUT__-->', '');
   const destination = web ? siteRoot : root;
   const output = path.join(destination, 'index.html');
   const addLanguageSwitch = (markup, englishPath, spanishPath, locale) => {
