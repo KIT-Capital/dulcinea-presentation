@@ -1,6 +1,16 @@
 // Complete phrases for the expanded, workbook-sourced financial statements.
 // Accounting net income remains distinct from the after-carry investor bridge.
 export const financialTranslations = [
+  ['Dulcinea One pro forma financial statements.', 'Estados financieros pro forma de Dulcinea One.'],
+  ['Pro forma financial statements', 'Estados financieros pro forma'],
+  ['Pro forma income statement in USD; scroll horizontally for all years', 'Estado de resultados pro forma en USD; desplácese horizontalmente para ver todos los años'],
+  ['Pro forma cash flow statement in USD; scroll horizontally for all years', 'Estado de flujos de efectivo pro forma en USD; desplácese horizontalmente para ver todos los años'],
+  ['Pro forma balance sheet in USD; scroll horizontally for all years', 'Balance general pro forma en USD; desplácese horizontalmente para ver todos los años'],
+  ['Pro forma income statement', 'Estado de resultados pro forma'],
+  ['Pro forma statement of cash flows', 'Estado de flujos de efectivo pro forma'],
+  ['Pro forma balance sheet', 'Balance general pro forma'],
+  ['Unaudited projections in USD, October 2026–September 2030.', 'Proyecciones no auditadas en USD, octubre de 2026 a septiembre de 2030.'],
+  ['Unaudited projections. Actual results may differ materially. Returns are not guaranteed.', 'Proyecciones no auditadas. Los resultados reales pueden diferir sustancialmente. Los rendimientos no están garantizados.'],
   ['Net income after carry margin %', 'Margen neto después de carry %'],
   ['Net income after carry', 'Utilidad neta después de carry'],
   ['>Year</th>', '>Año</th>'],

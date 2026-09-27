@@ -3,6 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {toColombianSpanish} from './spanish.mjs';
 import {renderLanguageSwitch,languageSwitchCss} from '../shared/language-switch.mjs';
+import {disclosures,homeDisclosure,fullDisclosure} from '../shared/investor-disclosures.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const web=process.argv.includes('--web');
@@ -13,6 +14,7 @@ const aliases=JSON.parse(await read('src/investor/media.json'));
 const manifest=JSON.parse(await read('assets/manifest.json'));
 for(let page=1;page<=9;page++) aliases[`plan-${page}.webp`]=manifest.find(item=>item.marker===`{{PLAN_PAGE_${page}}}`).path;
 const origin='https://invest.dulcineainvestments.org';
+const resources=['financial-statements','investment-criteria','disclaimer'];
 
 async function asset(source,target=source){
   const sourcePath=path.resolve(root,source),targetPath=path.resolve(destination,target);
@@ -47,6 +49,12 @@ function localize(markup,locale){
     return `<${tag}${attributes}>${text.replaceAll('&#10;','<br>')}</${tag}>`;
   });
 }
+function translateResource(markup){
+  // Phrase translation must never turn CSS syntax such as "screen and" into prose.
+  const code=[];
+  const protectedMarkup=markup.replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi,block=>`__DLCODE${code.push(block)-1}__`);
+  return toColombianSpanish(protectedMarkup).replace(/__DLCODE(\d+)__/g,(_,index)=>code[Number(index)]);
+}
 function shareMetadata(locale){
   const es=locale==='es';
   const title=es?'Dulcinea One | Inversión inmobiliaria en Medellín':'Dulcinea One | Medellín real estate investment';
@@ -73,7 +81,7 @@ for(const locale of ['en','es']){
   const prefix=locale==='es'?'es/':'';
   const relative=locale==='es'?'../':'';
   const localeMedia=Object.fromEntries(Object.entries(media).map(([name,url])=>[name,web?url:relative+url]));
-  let html=localize(template,locale).replace('<html lang="en">',`<html lang="${locale}">`)
+  let html=localize(template.replace('{{HOME_DISCLOSURE}}',homeDisclosure(locale)),locale).replace('<html lang="en">',`<html lang="${locale}">`)
     .replace(/<title>[^<]*<\/title>/,shareMetadata(locale))
     .replace('<link rel="stylesheet" href="style.css">',`<style>${styles}</style>`)
     .replace(/(["'])media\/([^"']+)\1/g,(_,quote,name)=>{
@@ -82,18 +90,21 @@ for(const locale of ['en','es']){
     });
   if(!web)html=html.replace(/<form\b[^>]*class="[^"]*(?:signout|session-exit)[^"]*"[^>]*>[\s\S]*?<\/form>/g,'');
   html=html.replaceAll('href="/downloads/Dulcinea-Floorplans.pdf"',`href="${localeMedia['floorplans.pdf']}"`);
-  for(const resource of ['financial-statements','investment-criteria']){
+  for(const resource of resources){
     const target=web?`/${prefix}${resource}.html`:`${resource}.html`;
     html=html.replaceAll(`href="${resource}.html`, `href="${target}`);
   }
   html=html.replace('<script src="app.js"></script>',`<script>window.DULCINEA_WEB=${web};window.DULCINEA_ASSETS=${JSON.stringify(localeMedia)};\n${script}</script>`);
   await output(`${prefix}index.html`,html);
-  for(const name of ['financial-statements','investment-criteria']){
+  for(const name of resources){
     let page=await read(`src/${name}.html`);
+    if(name==='disclaimer')page=localize(page.replace('{{DISCLAIMER_TITLE}}',`Dulcinea One — ${disclosures.title[locale==='es'?1:0]}`).replace('{{DISCLAIMER_CONTENT}}',fullDisclosure(locale)),locale);
     const logo=name==='financial-statements'?lightLogo:darkLogo;
     page=page.replaceAll('{{RESOURCE_LOGO}}',web?logo:relative+logo);
     page=page.replace(/href="index\.html#slide-[78]"/g,`href="${web?(locale==='es'?'/es/':'/'):'index.html'}#${name==='financial-statements'?'fund':'homes'}"`);
-    if(locale==='es') page=toColombianSpanish(page).replace('<html lang="en">','<html lang="es">');
+    page=page.replaceAll('href="index.html#home"',`href="${web?'/'+prefix:'index.html'}#home"`);
+    for(const resource of resources)page=page.replaceAll(`href="${resource}.html`, `href="${web?'/'+prefix:''}${resource}.html`);
+    if(locale==='es') page=(name==='disclaimer'?page.replace('aria-label="Documents"','aria-label="Documentos"'):translateResource(page)).replace('<html lang="en">','<html lang="es">');
     await output(`${prefix}${name}.html`,languageSwitch(page,name,locale));
   }
 }
@@ -108,4 +119,4 @@ if(web){
   }
   await prune(destination);
 }
-console.log(`Built new investor design (${web?'protected web':'portable'}), English/Spanish, ${Object.keys(media).length} media aliases, three financial statements and criteria.`);
+console.log(`Built new investor design (${web?'protected web':'portable'}), English/Spanish, ${Object.keys(media).length} media aliases, pro forma financial statements, criteria and disclaimer.`);
