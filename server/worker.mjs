@@ -1,4 +1,6 @@
 import { renderLogin } from './login.mjs';
+import { withVideoRange } from './video-range.mjs';
+import { videoSizes } from './video-sizes.mjs';
 
 const encoder = new TextEncoder();
 const SESSION_SECONDS = 8 * 60 * 60;
@@ -196,7 +198,7 @@ export default {
     try {
       const readRequest = ['GET', 'HEAD'].includes(request.method);
       if (url.pathname === '/robots.txt' && readRequest) return text(request.method === 'HEAD' ? null : 'User-agent: *\nDisallow: /\n');
-      if (PUBLIC_ASSETS.has(url.pathname) && readRequest) return protect(await env.ASSETS.fetch(request));
+      if (PUBLIC_ASSETS.has(url.pathname) && readRequest) return protect(await withVideoRange(request, await env.ASSETS.fetch(request), videoSizes[url.pathname]));
       if (typeof env.INVESTOR_PASSWORD !== 'string' || env.INVESTOR_PASSWORD.length < 11
           || typeof env.SESSION_SECRET !== 'string' || env.SESSION_SECRET.length < 32) return text('Access is not configured yet.', 503);
       if (url.pathname === '/login') {
@@ -219,7 +221,7 @@ export default {
         return redirect(`/login?next=${encodeURIComponent(url.pathname + url.search)}`, null, 302);
       }
       if (!readRequest) return text('Method not allowed.', 405, { Allow: 'GET, HEAD' });
-      return protect(await env.ASSETS.fetch(request));
+      return protect(await withVideoRange(request, await env.ASSETS.fetch(request), videoSizes[url.pathname]));
     } catch {
       // Do not log secrets, cookies, visitor details, or session tokens.
       return text('Access is temporarily unavailable. Please try again.', 503);

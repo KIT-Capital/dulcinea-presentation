@@ -64,7 +64,7 @@ Investor pages stay concise, without Excel filenames, cells or calculation expla
 
 The configured Cloudflare Worker targets `https://invest.dulcineainvestments.org`. The design migration preserves the name/email form and shared-password login, eight-hour sessions, rate limiting and same-origin POST logout. This is a password gate, not OAuth. Names and emails are not retained or sent anywhere. Investor pages, media, financials, criteria and floorplans require authentication.
 
-Only the exact gate logo, social-preview panorama and aerial-video URLs, plus the robots policy, are public. The unauthenticated root serves the login page with social metadata. The panorama is the primary share image; video metadata is also supplied. Private responses use `Cache-Control: private, no-store`; `run_worker_first: true` must remain enabled.
+Only the exact gate logo, social-preview panorama and aerial-video URLs, plus the robots policy, are public. The unauthenticated root serves the login page with social metadata. The panorama is the primary share image; video metadata is also supplied. Private responses use `Cache-Control: private, no-store`; `run_worker_first: true` must remain enabled. The Worker serves single byte ranges for MP4 playback and seeking, after the same access checks as full video requests.
 
 Access requests and contact email use `kit@kitcapital.com`. Dov’s WhatsApp link is `https://wa.me/19174284062`.
 

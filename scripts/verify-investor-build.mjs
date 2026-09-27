@@ -4,6 +4,7 @@ import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Script } from 'node:vm';
+import { videoSizes } from '../server/video-sizes.mjs';
 
 // Read-only release gate. Build first with `node scripts/build.mjs --web`.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -141,6 +142,7 @@ for (const prefix of ['', '/es']) {
 const videoHashes = new Map();
 for (const [url, filename] of files) {
   if (!url.endsWith('.mp4')) continue;
+  assert.equal(videoSizes[url], (await stat(filename)).size, `Incorrect video range size: ${url}`);
   const hash = createHash('sha256').update(await readFile(filename)).digest('hex');
   assert.ok(!videoHashes.has(hash), `Duplicate MP4 bytes: ${url} and ${videoHashes.get(hash)}`);
   videoHashes.set(hash, url);
