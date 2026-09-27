@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir, copyFile, rm, stat, readdir } from 'node:fs
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { toColombianSpanish } from './spanish.mjs';
+import { renderLanguageSwitch, languageSwitchCss } from '../shared/language-switch.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relativePath, encoding) => readFile(path.join(root, relativePath), encoding);
@@ -104,17 +105,14 @@ async function build() {
   }
   const destination = web ? siteRoot : root;
   const output = path.join(destination, 'index.html');
-  const flags = '<svg class="flag-icon" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><path fill="#b22234" d="M0 0h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0z"/><path fill="#3c3b6e" d="M0 0h10.4v8.62H0z"/><path fill="#fff" d="m1.2 1 .3.7.75.05-.58.48.18.72-.65-.4-.65.4.18-.72-.58-.48.75-.05zm2.8 0 .3.7.75.05-.58.48.18.72-.65-.4-.65.4.18-.72-.58-.48.75-.05zm2.8 0 .3.7.75.05-.58.48.18.72-.65-.4-.65.4.18-.72-.58-.48.75-.05zm-4.2 2.5.3.7.75.05-.58.48.18.72-.65-.4-.65.4.18-.72-.58-.48.75-.05zm2.8 0 .3.7.75.05-.58.48.18.72-.65-.4-.65.4.18-.72-.58-.48.75-.05zm-1.4 2.5.3.7.75.05-.58.48.18.72-.65-.4-.65.4.18-.72-.58-.48.75-.05zm2.8 0 .3.7.75.05-.58.48.18.72-.65-.4-.65.4.18-.72-.58-.48.75-.05z"/></svg>';
-  const colombiaFlag = '<svg class="flag-icon" viewBox="0 0 24 16" aria-hidden="true"><path fill="#fcd116" d="M0 0h24v8H0z"/><path fill="#003893" d="M0 8h24v4H0z"/><path fill="#ce1126" d="M0 12h24v4H0z"/></svg>';
-  const languageLinks = (englishPath, spanishPath, active) => `<nav class="locale-switch" aria-label="${active === 'es' ? 'Idioma' : 'Language'}"><a href="${englishPath}" lang="en" aria-label="English (United States)"${active === 'en' ? ' aria-current="page"' : ''}>${flags}<span>English</span></a><a href="${spanishPath}" lang="es" aria-label="Español (Colombia)"${active === 'es' ? ' aria-current="page"' : ''}>${colombiaFlag}<span>Español</span></a></nav>`;
   const addLanguageSwitch = (markup, englishPath, spanishPath, locale) => {
-    const switchMarkup = languageLinks(englishPath, spanishPath, locale);
-    const languageStyle = '<style>.locale-switch{display:inline-flex;align-items:center;gap:4px;padding:3px;border:1px solid currentColor;border-radius:999px;font-size:11px;white-space:nowrap;flex:0 0 auto}.locale-switch a{display:inline-flex;align-items:center;gap:5px;padding:6px 8px;border-radius:999px;color:inherit;text-decoration:none;opacity:.78}.locale-switch a[aria-current="page"]{background:#ffffff38;opacity:1;font-weight:700}.locale-switch a:focus-visible{outline:2px solid currentColor;outline-offset:2px}.locale-switch .flag-icon{display:block;width:18px;height:12px;flex:0 0 auto;border-radius:1px;box-shadow:0 0 0 1px #0002}@media(max-width:800px){.locale-switch{gap:1px;padding:2px}.locale-switch a{font-size:0;gap:0;padding:5px 6px}}</style>';
+    const switchMarkup = renderLanguageSwitch({ englishPath, spanishPath, locale });
+    const languageStyle = `<style>${languageSwitchCss}</style>`;
     const localeScript = '<script>document.querySelectorAll(".locale-switch a").forEach(link=>link.addEventListener("click",()=>{const target=new URL(link.href);target.hash=location.hash;link.href=target.href;}));</script>';
     markup = markup.replace('</head>', `${languageStyle}</head>`);
     markup = markup.replace('</body>', `${localeScript}</body>`);
-    if (markup.includes('class="header-resources"')) {
-      return markup.replace('</a><span class="edition">', `</a>${switchMarkup}<span class="edition">`);
+    if (markup.includes('<!--__LANGUAGE_SWITCH__-->')) {
+      return markup.replace('<!--__LANGUAGE_SWITCH__-->', switchMarkup);
     }
     return markup.replace('</a></div><div class="hero">', `</a>${switchMarkup}</div><div class="hero">`);
   };

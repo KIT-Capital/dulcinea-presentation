@@ -30,6 +30,20 @@ function request(path = '/', { origin = ORIGIN, ...options } = {}) {
   return new Request(new URL(path, origin), options);
 }
 
+function htmlAttribute(tag, name) {
+  const match = tag?.match(new RegExp(`\\b${name}="([^"]*)"`));
+  assert.ok(match, `Missing ${name} attribute`);
+  return match[1].replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'");
+}
+
+function loginFormAction(html, language = 'en') {
+  const action = new URL(htmlAttribute(html.match(/<form\b[^>]*>/)?.[0], 'action'), ORIGIN);
+  assert.equal(action.origin, ORIGIN);
+  assert.equal(action.pathname, '/login');
+  assert.equal(action.searchParams.get('lang'), language);
+  return action;
+}
+
 function loginRequest(env, fields = {}, options = {}) {
   const { origin = ORIGIN, headers = {}, ...rest } = options;
   return request('/login', {
@@ -76,9 +90,63 @@ test('the shared root shows Open Graph metadata without granting access to the p
   assert.match(html, /<meta property="og:title" content="Dulcinea One \| Investor presentation">/);
   assert.match(html, /<meta property="og:image" content="https:\/\/invest\.dulcineainvestments\.org\/assets\/images\/stock\/AdobeStock_891890158-web\.jpg">/);
   assert.match(html, /<meta property="og:video" content="https:\/\/invest\.dulcineainvestments\.org\/assets\/video\/stock\/AdobeStock_693150796\.mp4">/);
-  assert.match(html, /<form action="\/login"/);
+  loginFormAction(html);
   assert.equal(assetRequests.length, 0);
   assert.equal((await worker.fetch(request('/', { method: 'HEAD' }), env)).status, 302);
+});
+
+test('login language switches preserve destinations and anchors through Spanish errors and successful sign-in', async () => {
+  const { env, assetRequests } = fixture();
+  const inputValue = (html, name) => htmlAttribute(
+    html.match(/<input\b[^>]*>/g)?.find((tag) => tag.includes(`name="${name}"`)), 'value');
+
+  for (const englishNext of ['/financial-statements.html?view=full&currency=USD#balance-sheet', '/#slide-12']) {
+    let page = await worker.fetch(request(`/login?next=${encodeURIComponent(englishNext)}`), env);
+    let html = await page.text();
+    assert.equal(page.status, 200);
+    loginFormAction(html, 'en');
+
+    for (const language of ['es', 'en']) {
+      const link = html.match(/<a\b[^>]*>/g)?.find((tag) => tag.includes(`lang="${language}"`));
+      const target = new URL(htmlAttribute(link, 'href'), ORIGIN);
+      assert.equal(target.origin, ORIGIN);
+      assert.equal(target.pathname, '/login');
+      assert.equal(target.searchParams.get('lang'), language);
+      const expectedNext = language === 'es' ? `/es${englishNext}` : englishNext;
+      assert.equal(target.searchParams.get('next'), expectedNext);
+      page = await worker.fetch(request(target), env);
+      html = await page.text();
+      assert.equal(page.status, 200);
+      assert.match(html, new RegExp(`<html lang="${language}">`));
+      assert.equal(inputValue(html, 'next'), expectedNext);
+      assert.equal(inputValue(html, 'lang'), language);
+
+      const submit = (markup, password) => worker.fetch(request(loginFormAction(markup, language), {
+        method: 'POST',
+        headers: { Origin: ORIGIN, 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ name: 'Test Investor', email: 'investor@example.test', password,
+          next: inputValue(markup, 'next'), lang: inputValue(markup, 'lang') }),
+      }), env);
+
+      if (language === 'es') {
+        const denied = await submit(html, 'wrong-test-password');
+        assert.equal(denied.status, 401);
+        assert.equal(denied.headers.get('Set-Cookie'), null);
+        html = await denied.text();
+        assert.match(html, /<html lang="es">/);
+        assert.match(html, /La contraseña no es correcta/);
+        assert.equal(inputValue(html, 'next'), expectedNext);
+        assert.equal(inputValue(html, 'name'), 'Test Investor');
+        assert.equal(inputValue(html, 'email'), 'investor@example.test');
+      }
+
+      const accepted = await submit(html, env.INVESTOR_PASSWORD);
+      assert.equal(accepted.status, 303);
+      assert.equal(accepted.headers.get('Location'), expectedNext);
+      assert.ok(accepted.headers.get('Set-Cookie'));
+    }
+  }
+  assert.equal(assetRequests.length, 0);
 });
 
 test('only the gate logo, exact social media URLs and robots are public, even before secrets exist', async () => {
@@ -181,7 +249,7 @@ test('changing either secret invalidates previously issued sessions', async () =
     { ...env, SESSION_SECRET: 'a-different-test-only-session-secret-32-chars' }]) {
     const response = await worker.fetch(request('/', { headers: { Cookie: cookie } }), changed);
     assert.equal(response.status, 200);
-    assert.match(await response.text(), /<form action="\/login"/);
+    loginFormAction(await response.text());
   }
   assert.equal(assetRequests.length, 0);
 });

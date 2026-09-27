@@ -134,9 +134,12 @@ def main():
     intro_spec = importlib.util.spec_from_file_location("introduction_renderer", ROOT / "scripts" / "render-introduction.py")
     intro_module = importlib.util.module_from_spec(intro_spec)
     intro_spec.loader.exec_module(intro_module)
+    hospitality_spec = importlib.util.spec_from_file_location("hospitality_renderer", ROOT / "scripts" / "render-hospitality.py")
+    hospitality_module = importlib.util.module_from_spec(hospitality_spec)
+    hospitality_spec.loader.exec_module(hospitality_module)
     videos = [
         intro_module.render_intro(ffmpeg),
-        compose(ffmpeg, "hospitality-people.mp4", [{"id": "80490822", "start_seconds": 2}], 15),
+        hospitality_module.render_hospitality(ffmpeg),
     ]
     provenance = {
         "source": "Adobe Stock MOV files supplied by the user; full-resolution originals remain in the supplied location, unchanged.",
@@ -146,7 +149,7 @@ def main():
         "source_metadata": "assets/video/stock/provenance.json", "render_script": "scripts/render-stock-videos.py",
         "encoding": {"codec": "H.264 High", "dimensions": [1280, 720], "fps": 24, "pixel_format": "yuv420p", "color_space": "Rec.709", "color_range": "limited", "audio_tracks": 0, "fast_start": True},
         "videos": videos, "unused_in_main_presentation": [],
-        "render_scripts": {"introduction": "scripts/render-introduction.py", "hospitality": "scripts/render-stock-videos.py"},
+        "render_scripts": {"introduction": "scripts/render-introduction.py", "hospitality": "scripts/render-hospitality.py"},
         "validation": "Complete output streams decoded successfully and verified as silent H.264 1280x720. Source representative frames visually inspected.",
     }
     (VIDEO / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")

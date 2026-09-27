@@ -1,18 +1,16 @@
 /* Navigation occupies its own rows. The story scrolls only between the bars. */
 @media screen {
-  .locale-switch{display:inline-flex;align-items:center;gap:4px;padding:3px;border:1px solid currentColor;border-radius:999px;font-size:11px;white-space:nowrap;flex:0 0 auto}
-  .locale-switch a{display:inline-flex;align-items:center;gap:5px;padding:6px 8px;border-radius:999px;color:inherit;text-decoration:none;opacity:.78}
-  .locale-switch .flag-icon{display:block;width:18px;height:12px;flex:0 0 auto;border-radius:1px;box-shadow:0 0 0 1px #0002}
-  .locale-switch a[aria-current="page"]{background:#ffffff2b;opacity:1;font-weight:700}
-  .masthead.on-light .locale-switch a[aria-current="page"]{background:#20333012}
-  .locale-switch a:focus-visible{outline:2px solid currentColor;outline-offset:2px}
   :root{--masthead-height:88px}
   body{height:100dvh;display:grid;grid-template-rows:var(--masthead-height) minmax(0,1fr) var(--bar)}
   .masthead{position:relative;inset:auto;grid-row:1;height:100%;background:#17282d;backdrop-filter:none;pointer-events:auto}
   .masthead.scrolled{background:#17282d;backdrop-filter:none}
   .masthead.on-light,.masthead.on-light.scrolled{background:var(--paper)}
   #deck{grid-row:2;height:100%;min-height:0;min-width:0}
-  .controls{position:relative;inset:auto;grid-row:3;height:100%;min-width:0}
+  .controls{position:relative;inset:auto;grid-row:3;height:100%;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:24px}
+  .controls>.locale-switch{justify-self:center}
+  .controls>.slide-position{min-width:0}
+  .controls #current-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .controls>.control-actions{justify-self:end}
   .slide{min-height:100%}
 
   /* Remove the padding that previously made room for an overlaid header. */
@@ -24,7 +22,6 @@
   .property-split .property-copy{padding-top:32px}
 
   @media(max-width:800px){
-    .locale-switch{gap:1px;padding:2px}.locale-switch a{font-size:0;gap:0;padding:5px 6px}
     :root{--masthead-height:78px}
     .slide:not(.investment-story)>.content{padding-top:34px}
     .slide.cover>.cover-content{padding-top:152px}
@@ -34,5 +31,13 @@
     .slide.team-story>.content{padding-top:34px}
     .property-slide{padding-top:0}
     .property-split .property-copy{padding-top:30px}
+  }
+
+  @media(max-width:600px){
+    .controls{grid-template-columns:auto minmax(0,1fr) auto;column-gap:8px;padding-inline:12px}
+    .controls #current-title,.controls #fullscreen{display:none}
+    .controls>.slide-position{gap:5px}
+    .controls .control-actions{gap:2px}
+    .controls .top-link{min-width:28px}
   }
 }

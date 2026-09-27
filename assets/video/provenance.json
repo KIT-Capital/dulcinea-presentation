@@ -228,26 +228,108 @@
     },
     {
       "file": "hospitality-people.mp4",
-      "bytes": 2244280,
-      "sha256": "3137d7f2d4f22f096731963d164a114cdd869485b3f58e4c2baa30f9dc8625ff",
-      "duration_seconds": 14.0,
-      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1279 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "bytes": 2366048,
+      "sha256": "9e91509a4fcae6e69efdfb769c4a8f56107fe8d5d51f7b04fbe8e510ecacba01",
+      "duration_seconds": 12.0,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1574 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
       "audio_tracks": 0,
-      "scenes": [
+      "poster": "assets/video/hospitality-people-poster.jpg",
+      "poster_sha256": "4de968c04b6570e7f04a84cba6bcfc480f278cb30154b724449787e5e4c5b134",
+      "method": "Supplied kitchen and countryside footage at original speed, framing and color, joined with 0.75-second dissolves. The city walker is used only in the earlier city-location chapter. No generated imagery or synthetic human movement.",
+      "sources": [
         {
           "id": "80490822",
-          "start_seconds": 2
+          "subject": "Chefs preparing and plating food in a professional kitchen",
+          "path": "assets/video/stock/AdobeStock_80490822.mp4",
+          "source_start_seconds": 2.0,
+          "source_duration_seconds": 8.0,
+          "sha256": "02ca107f00a372198ee11c26e5f4c85a7e97a6657cc96877cb94b891c68a3e39"
+        },
+        {
+          "id": "539938219",
+          "subject": "Woman smiling and waving in a pasture with cattle",
+          "path": "assets/video/stock/AdobeStock_539938219.mp4",
+          "source_start_seconds": 0.0,
+          "source_duration_seconds": 5.5,
+          "sha256": "53601cf0531b444e08ece51269f0672c8c3f48cfa98d4185db4caab4625ca0b9"
         }
       ],
-      "scene_seconds_before_overlap": 15,
-      "crossfade_seconds": 1,
-      "method": "Edited actual stock footage; circular dissolve; original speed; no synthetic scene generation."
+      "source_provenance": [
+        "assets/video/stock/provenance.json"
+      ],
+      "timeline": [
+        {
+          "start_seconds": 0,
+          "end_seconds": 6.375,
+          "content": "Chefs preparing food"
+        },
+        {
+          "start_seconds": 6.375,
+          "end_seconds": 7.125,
+          "content": "Kitchen-to-countryside dissolve"
+        },
+        {
+          "start_seconds": 7.125,
+          "end_seconds": 11.125,
+          "content": "Woman in a pasture"
+        },
+        {
+          "start_seconds": 11.125,
+          "end_seconds": 11.875,
+          "content": "Countryside-to-kitchen dissolve"
+        },
+        {
+          "start_seconds": 11.875,
+          "end_seconds": 12,
+          "content": "Kitchen, returning to opening camera position"
+        }
+      ],
+      "crossfade_seconds": 0.75,
+      "loop_method": "Repeat the opening kitchen source after the last dissolve and trim both endpoints at matching camera positions.",
+      "location_note": "The scenes are illustrative hospitality and countryside footage; precise shooting locations are unverified. Stock people are not Dulcinea team members.",
+      "render_script": "scripts/render-hospitality.py",
+      "encoding_options": [
+        "-an",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "slow",
+        "-crf",
+        "23",
+        "-maxrate",
+        "6M",
+        "-bufsize",
+        "12M",
+        "-profile:v",
+        "high",
+        "-level",
+        "3.1",
+        "-pix_fmt",
+        "yuv420p",
+        "-color_range",
+        "tv",
+        "-colorspace",
+        "bt709",
+        "-color_primaries",
+        "bt709",
+        "-color_trc",
+        "bt709",
+        "-r",
+        "24",
+        "-g",
+        "48",
+        "-movflags",
+        "+faststart",
+        "-threads",
+        "4"
+      ],
+      "validation": "Complete output decoded successfully; silent H.264 1280x720 at 24 fps, 12 seconds, faststart and below 10 MB."
     }
   ],
   "unused_in_main_presentation": [],
   "validation": "Complete output streams decoded successfully and verified as silent H.264 1280x720. Source representative frames visually inspected.",
   "render_scripts": {
     "introduction": "scripts/render-introduction.py",
-    "hospitality": "scripts/render-stock-videos.py"
+    "hospitality": "scripts/render-hospitality.py"
   }
 }

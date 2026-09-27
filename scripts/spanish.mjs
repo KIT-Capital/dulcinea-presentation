@@ -266,7 +266,7 @@ const translations = [
   ['City aerials and animated property lifestyle scenes', 'Tomas aéreas de la ciudad y escenas animadas de estilo de vida en las propiedades'],
   ['City aerials and a walk along a tree-lined neighborhood street', 'Tomas aéreas de la ciudad y recorrido por una calle arbolada del barrio'],
   ['DJ and crowd enjoying a night out', 'DJ y público disfrutando la noche'],
-  ['Chefs preparing and plating food in a professional kitchen', 'Chefs preparando y sirviendo platos en una cocina profesional'],
+  ['Chefs preparing food and countryside lifestyle', 'Chefs preparando platos y vida en el campo'],
   ['An agent and an adult couple viewing an apartment', 'Un asesor inmobiliario y una pareja adulta recorren un apartamento'],
   ['Fictional adults enjoying coffee in a San Lucas lifestyle visualization', 'Adultos ficticios tomando café en una visualización de estilo de vida de San Lucas'],
   ['Chapter ', 'Capítulo '],
