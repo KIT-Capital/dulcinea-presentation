@@ -1,0 +1,184 @@
+/* The webpage and the deck share content. Only presentation mode uses a
+   fixed 16:9 canvas, fitted by presentation.js without cropping a slide. */
+.presentation-only, #presentation-controls[hidden] { display:none }
+.present-launch { display:flex; align-items:center; gap:7px; flex-shrink:0; padding:10px 12px; border:1px solid #ffffff55; border-radius:2px; background:transparent; color:white; font-size:12px }
+.present-launch svg { width:19px; height:19px }
+.present-launch:hover { background:#ffffff18; border-color:var(--gold) }
+.header { gap:18px }
+@media(max-width:1250px) { .header { gap:13px } .primary { gap:17px } .contact-nav { display:none } }
+@media(max-width:760px) { .header { gap:7px; padding-inline:16px } .brand img { width:105px; height:34px } .present-launch { margin-left:auto; padding:8px; font-size:10px } .language { margin-left:0 } .primary { gap:7px } }
+@media(max-width:380px) { .present-launch span { display:none } }
+
+body.is-presenting { min-height:100svh; overflow:hidden; background:#09171b; touch-action:pan-y }
+body.is-presenting > .header, body.is-presenting > .skip, body.is-presenting > .signout-error { display:none }
+body.is-presenting #main { position:fixed; left:var(--presentation-left,0px); top:var(--presentation-top,0px); width:1440px; height:810px; transform:scale(var(--presentation-scale,1)); transform-origin:top left; background:var(--paper); box-shadow:0 0 60px #0004 }
+body.is-presenting #main > * { display:none }
+body.is-presenting #main > .presentation-active { display:block; width:1440px; height:810px; min-height:0; max-height:none; margin:0; padding:64px 80px; overflow:hidden; animation:slide-reveal .25s ease-out }
+@keyframes slide-reveal { from { opacity:.6 } to { opacity:1 } }
+body.is-presenting h2 { font-size:76px; line-height:1.04; letter-spacing:-.055em }
+body.is-presenting .micro { font-size:13px; line-height:1.5; letter-spacing:.1em }
+body.is-presenting .section-index { margin-bottom:32px; gap:0 }
+body.is-presenting .section-index > span:first-child { display:none }
+body.is-presenting .section-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:56px; margin-bottom:36px }
+body.is-presenting .section-heading .section-index { margin-bottom:18px }
+body.is-presenting .line-link { font-size:18px; width:280px; margin-top:24px; padding:14px 0 }
+body.is-presenting .footnote { font-size:14px; line-height:1.5; max-width:1120px; margin-top:18px }
+
+/* Opening film. */
+body.is-presenting #main > .hero.presentation-active { display:flex; flex-direction:column; padding:40px 64px 36px }
+body.is-presenting .hero-statement { width:650px; max-width:none; margin:auto 0 56px }
+body.is-presenting .hero-statement p { font-size:48px; max-width:none; line-height:1.14 }
+body.is-presenting .hero h1 { font-size:195px; line-height:.88; letter-spacing:-.065em }
+body.is-presenting .hero-top .micro { font-size:13px; letter-spacing:.1em }
+body.is-presenting .hero-baseline { margin-top:34px; padding-top:20px; flex-wrap:nowrap; align-items:center; gap:20px }
+body.is-presenting .hero-baseline > .micro { font-size:13px; min-width:0; max-width:none; flex:initial }
+body.is-presenting .partners { gap:19px }
+body.is-presenting .partners > .dulcinea-partner { width:74px; height:20px }
+body.is-presenting .partners > img:not(.dulcinea-partner) { width:29px; height:30px }
+body.is-presenting .partners > div { font-size:8px; gap:9px }
+body.is-presenting .partners > div img { width:31px; height:31px }
+body.is-presenting .motion { top:84px; right:64px; width:38px; height:38px }
+
+/* Idea and lifestyle are two distinct slides. */
+body.is-presenting[data-presentation-step="idea"] .approach-films { display:none }
+body.is-presenting .intro-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:100px; margin-top:90px }
+body.is-presenting .intro h2 { font-size:88px }
+body.is-presenting .intro-copy { padding-top:12px; max-width:none }
+body.is-presenting .intro-copy p { font-size:26px; line-height:1.45 }
+body.is-presenting .intro-copy p + p { margin-top:28px; font-size:23px; line-height:1.5 }
+body.is-presenting[data-presentation-step="lifestyle"] .intro-grid,
+body.is-presenting[data-presentation-step="lifestyle"] .section-index { display:none }
+body.is-presenting[data-presentation-step="lifestyle"] .lifestyle-title { display:block; font-size:70px }
+body.is-presenting .approach-films { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:60px }
+body.is-presenting .approach-films figure + figure { margin-top:0 }
+body.is-presenting .approach-film { height:430px; aspect-ratio:auto }
+body.is-presenting .approach-films figcaption { font-size:21px; padding-top:22px; flex-wrap:wrap; gap:10px }
+body.is-presenting .approach-films figcaption .micro { font-size:12px }
+
+/* One property per slide, with working plans and original-image dialogs. */
+body.is-presenting #main > .homes { padding:44px 60px }
+body.is-presenting .homes .section-heading { margin:0 0 26px; height:73px }
+body.is-presenting .homes .section-index { display:none }
+body.is-presenting .homes h2 { font-size:42px; white-space:normal }
+body.is-presenting .section-aside { margin:0; font-size:17px; line-height:1.4 }
+body.is-presenting .property-layout { display:grid; grid-template-columns:860px 1fr; min-height:0; height:556px }
+body.is-presenting .property-visual { min-height:0; height:556px; aspect-ratio:auto }
+body.is-presenting .property-info { padding:24px 0 0 32px }
+body.is-presenting .property-count { font-size:16px }
+body.is-presenting .property-controls, body.is-presenting .property-tabs { display:none }
+body.is-presenting .property-details { margin:auto 0; padding:20px 0 }
+body.is-presenting .property-info h3 { font-size:48px; margin:14px 0 20px }
+body.is-presenting .property-description { font-size:21px; line-height:1.4; min-height:0 }
+body.is-presenting .property-info dl { margin-top:26px }
+body.is-presenting .property-info dl div { font-size:16px; padding:14px 0; gap:12px }
+body.is-presenting .property-info dt { flex-shrink:1 }
+body.is-presenting .property-info dd { max-width:205px }
+body.is-presenting .floorplan-link { font-size:17px; padding:16px 0 0 }
+body.is-presenting .image-caption { left:20px; bottom:20px; font-size:12px; padding:8px 10px }
+body.is-presenting .original { right:20px; bottom:20px; font-size:14px; padding:12px }
+body.is-presenting .homes .footnote { font-size:13px; max-width:none; margin-top:20px }
+
+/* Hospitality and the closing film. */
+body.is-presenting #main > .experience.presentation-active { display:flex; align-items:center }
+body.is-presenting .experience-content { max-width:760px }
+body.is-presenting .experience-content > .micro { font-size:16px; letter-spacing:.06em }
+body.is-presenting .experience h2 { font-size:108px; margin:36px 0 }
+body.is-presenting .experience-content > p:not(.micro) { font-size:25px; line-height:1.45; max-width:590px }
+body.is-presenting .experience-content > p.co-brand-copy { font-size:21px; margin-top:28px; max-width:630px }
+body.is-presenting .experience-note { font-size:16px; margin-top:32px }
+body.is-presenting #main > .contact.presentation-active { display:flex; flex-direction:column; justify-content:space-between }
+body.is-presenting .contact h2 { font-size:108px; margin:32px 0 }
+body.is-presenting .contact-person { width:390px; max-width:none; gap:20px }
+body.is-presenting .contact-person img { width:68px; height:68px }
+body.is-presenting .contact-person strong { font-size:23px }
+body.is-presenting .contact-person > span span { font-size:15px }
+body.is-presenting .contact .line-link { width:390px }
+body.is-presenting .contact-email { font-size:17px; margin-top:24px }
+body.is-presenting footer { margin-top:32px; padding-top:22px; font-size:13px; gap:25px; flex-wrap:nowrap }
+body.is-presenting footer span:last-child { width:auto }
+
+/* The offer, kickers and returns each have room of their own. */
+body.is-presenting #fund > .kickers, body.is-presenting #fund > .model { display:none }
+body.is-presenting .fund-summary { font-size:24px; line-height:1.5; max-width:500px; margin:0 }
+body.is-presenting .capital { display:grid; grid-template-columns:1fr 1fr 1.1fr; padding:34px 0 28px; gap:36px }
+body.is-presenting .capital > div { display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:0; border:0; gap:16px }
+body.is-presenting .capital .micro { font-size:15px; max-width:none }
+body.is-presenting .capital strong { font-size:108px }
+body.is-presenting .raise-status { font-size:18px; margin-top:15px }
+body.is-presenting .fund-bottom { flex-direction:row; align-items:center; gap:50px; margin:30px 0 0 }
+body.is-presenting .fund-bottom p { font-size:27px }
+body.is-presenting .fund-bottom .fund-small { font-size:18px; max-width:780px; margin-top:10px }
+body.is-presenting .button-dark { padding:22px 26px; font-size:18px; gap:48px; flex-shrink:0 }
+body.is-presenting[data-presentation-step="kickers"] #fund { background:var(--violet) }
+body.is-presenting[data-presentation-step="kickers"] #fund > :not(.kickers),
+body.is-presenting[data-presentation-step="returns"] #fund > :not(.model) { display:none }
+body.is-presenting[data-presentation-step="kickers"] #fund > .kickers { display:flex; flex-direction:column; height:100%; border:0; padding:0; margin:0 }
+body.is-presenting .kickers h3 { font-size:72px; line-height:1.1; max-width:1110px; margin:12px 0 76px }
+body.is-presenting .kicker-strip { display:grid; grid-template-columns:1fr 1fr 1.1fr; gap:40px }
+body.is-presenting .kicker-strip > div { display:flex; flex-direction:column; align-items:flex-start; gap:23px; padding:28px 0; border-top:1px solid #17282d55; border-bottom:0 }
+body.is-presenting .kicker-strip strong { align-self:auto; font-size:62px }
+body.is-presenting .kicker-strip span { font-size:25px; line-height:1.3 }
+body.is-presenting .kicker-strip p { font-size:19px; color:var(--ink) }
+body.is-presenting .kickers .footnote { margin-top:auto; color:var(--ink); font-size:16px; max-width:1100px }
+body.is-presenting[data-presentation-step="returns"] #fund > .model { display:block; border:0 }
+body.is-presenting[data-presentation-step="returns"] #fund > .model summary { font-size:58px; letter-spacing:-.04em; line-height:1.1; padding:8px 0 32px; max-width:1180px; pointer-events:none }
+body.is-presenting .model .plus { display:none }
+body.is-presenting .model-content { padding:0 }
+body.is-presenting .projection { display:grid; grid-template-columns:1.1fr 1.1fr 1fr; gap:60px; margin:74px 0 60px }
+body.is-presenting .projection div { gap:20px }
+body.is-presenting .projection strong { font-size:114px }
+body.is-presenting .projection span { font-size:22px; line-height:1.4; max-width:none }
+body.is-presenting .model-content .footnote { font-size:18px; max-width:1130px }
+body.is-presenting .document-links { display:flex; flex-direction:row; gap:35px; flex-wrap:wrap; margin-top:58px; font-size:18px }
+
+/* Team portraits are not cropped or recolored differently between modes. */
+body.is-presenting .team-portraits { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; margin-top:36px }
+body.is-presenting .team-photo { aspect-ratio:auto; height:380px; max-height:none }
+body.is-presenting .team-portraits .micro { margin-top:22px; font-size:12px; min-height:36px }
+body.is-presenting .team-portraits h3 { font-size:32px; margin-top:8px }
+body.is-presenting .team-details { display:none }
+body.is-presenting[data-presentation-step="expertise"] .team-portraits,
+body.is-presenting[data-presentation-step="expertise"] .team > .section-heading { display:none }
+body.is-presenting[data-presentation-step="expertise"] .team-details { display:block; border:0; margin:0 }
+body.is-presenting .team-details summary { pointer-events:none; font-size:56px; line-height:1.1; letter-spacing:-.04em; padding:8px 0 50px }
+body.is-presenting .team-detail-content { padding:0 }
+body.is-presenting .team-bios { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px }
+body.is-presenting .team-bios h3 { font-size:24px; margin-bottom:18px }
+body.is-presenting .team-bios p { font-size:21px; line-height:1.5 }
+body.is-presenting .specialists { margin-top:46px }
+body.is-presenting .specialists div { display:flex; justify-content:space-between; gap:25px; padding:15px 0; font-size:19px }
+body.is-presenting .specialists dt { font-size:19px; flex-shrink:1 }
+body.is-presenting .specialists dd { text-align:right; max-width:none }
+
+/* Disclosures remain readable when projected. */
+body.is-presenting #main > .legal-notice { border:0; background:var(--paper); color:var(--ink) }
+body.is-presenting .legal-notice h2 { font:400 68px/1.1 Arial,Helvetica,sans-serif; letter-spacing:-.04em; margin:8px 0 55px }
+body.is-presenting .legal-notice > div { max-width:1160px }
+body.is-presenting .legal-notice p { font-size:25px; line-height:1.55 }
+body.is-presenting .legal-notice p + p { margin-top:30px }
+body.is-presenting .legal-notice a { font-size:20px; margin-top:35px }
+
+/* Controls occupy their own space, below the canvas. */
+#presentation-controls { position:fixed; z-index:80; bottom:0; left:0; right:0; height:64px; display:flex; align-items:center; gap:16px; padding:0 24px; background:#102126; color:#e8eded; border-top:1px solid #ffffff18 }
+#presentation-controls button { min-height:40px; min-width:40px; border:1px solid transparent; border-radius:4px; background:none; color:inherit; display:flex; align-items:center; justify-content:center; gap:9px; font-size:13px; padding:8px }
+#presentation-controls button:hover:not(:disabled) { background:#ffffff13; border-color:#ffffff28 }
+#presentation-controls button:disabled { opacity:.28; cursor:default }
+#presentation-controls button[hidden] { display:none }
+#presentation-controls svg { width:19px; height:19px }
+#presentation-status.presentation-feedback { position:fixed; z-index:85; left:24px; bottom:80px; width:auto; height:auto; max-width:calc(100vw - 48px); margin:0; padding:12px 16px; clip:auto; overflow:visible; white-space:normal; background:var(--paper); color:var(--ink); font-size:13px; line-height:1.5; border:1px solid #17282d40 }
+#presentation-title { flex:1; font-size:13px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:#aabcbc }
+.presentation-paging { display:flex; align-items:center; gap:6px }
+#presentation-count { font:13px 'Courier New',monospace; white-space:nowrap }
+#presentation-overview { min-width:114px!important }
+#presentation-language { border-left:1px solid #ffffff28!important; border-radius:0!important; padding-left:18px!important }
+#presentation-language svg { width:19px; height:14px }
+#presentation-menu { max-width:940px; padding:32px }
+#presentation-menu .dialog-top h2 { font-size:35px }
+#presentation-menu-items { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px }
+#presentation-menu-items button { display:flex; align-items:center; gap:14px; min-height:58px; padding:12px 14px; text-align:left; background:transparent; border:1px solid #17282d25; border-radius:2px; font-size:14px; line-height:1.25 }
+#presentation-menu-items button:hover { background:#78bdd426 }
+#presentation-menu-items .is-current { background:var(--ink); color:white; border-color:var(--ink) }
+.presentation-menu-number { font:12px 'Courier New',monospace; opacity:.6 }
+.presentation-help { color:#52635f; font-size:12px; line-height:1.6; margin-top:22px }
+@media(max-width:760px) { #presentation-controls { padding:0 8px; gap:4px } #presentation-title { display:none } #presentation-exit { margin-right:auto } #presentation-exit span { font-size:12px } #presentation-language { padding-left:8px!important } #presentation-overview { min-width:86px!important } #presentation-menu { padding:22px } #presentation-menu-items { grid-template-columns:repeat(2,minmax(0,1fr)) } #presentation-menu-items button { font-size:12px } }
+@media(prefers-reduced-motion:reduce) { body.is-presenting #main > .presentation-active { animation:none } }

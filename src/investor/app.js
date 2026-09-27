@@ -166,6 +166,7 @@ function setLanguage(next,updateRoute = true) {
     try { history.replaceState(history.state,'',url); } catch { /* File previews still switch in place. */ }
   }
   renderHome(false); translateAria(); motionState();
+  document.dispatchEvent(new CustomEvent('dulcinea:language'));
 }
 document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click',() => setLanguage(button.dataset.language)));
 // CORS-mode fetch retains the real Origin under the site's no-referrer policy;

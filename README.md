@@ -6,6 +6,12 @@ The approved design is a flowing website: a cinematic opening, the investment ap
 
 English is the default; compact American and Colombian flag controls switch between English and Spanish. The header provides property and fund anchors, financials, criteria, contact and sign-out. Old `#slide-N` links map to corresponding new sections.
 
+## Present live
+
+Choose **Present** in the navigation bar, or open `/#present-1`, for a 16-slide presentation of the same current content. Each slide fits a 16:9 canvas, including one slide per property and separate slides for the offer, kickers, returns and team. Videos, original imagery and floorplans remain interactive. Presentation controls sit below the slide.
+
+Use the arrow or Page Up/Down keys to move, Home/End to jump to the beginning/end, the slide counter to choose a slide, and F for full screen. Escape or **Website** returns to the scrolling page. The flag button changes language without losing the current slide. Full screen requires a supported browser; slide mode also works inside a normal browser window. A landscape screen is best for presenting. The same source content feeds both views.
+
 ## Design and media
 
 The visual direction follows the approved Aker and KOBU references recorded in `design/investor-site-reference-lock.md`, retaining the earlier Radisson lifestyle direction. The supplied palette leads: Blue Topaz, Plumeria, African Violet and Simply Green, with Coconut Shell used sparingly. Yellow Gold (`#D4AF37`) distinguishes “One.” Dulcinea, KIT Capital and Lola & Ber appear together discreetly in the opening. Contact buttons say “Talk to us” / “Hable con nosotros,” with Dov retained as the named contact.
@@ -34,6 +40,7 @@ The active website source is:
 - `src/investor/index.html`: structure and concise English/Spanish copy.
 - `src/investor/style.css`: responsive visual design.
 - `src/investor/app.js`: language, gallery, motion, dialogs and legacy anchors.
+- `src/investor/presentation.css` and `presentation.js`: fitted slideshow layouts and navigation.
 - `src/investor/media.json`: canonical media aliases.
 - `src/financial-statements.html` and `src/investment-criteria.html`: investor resources.
 - `scripts/build-investor.mjs`: active builder, called by `scripts/build.mjs`.
@@ -52,7 +59,7 @@ This writes portable English pages at the repository root and Spanish pages unde
 npm run build:site
 ```
 
-The hosted build writes `dist/private-site/`: six English/Spanish pages and selected media, branding and the floorplan download. It excludes Excel and PowerPoint sources, archives, internal notes and provenance. Canonical media paths allow videos to stream separately. Neither build requires Python or FFmpeg.
+The hosted build writes `dist/private-site/`: eight English/Spanish pages and selected media, branding and the floorplan download. It excludes Excel and PowerPoint sources, archives, internal notes and provenance. Canonical media paths allow videos to stream separately. Neither build requires Python or FFmpeg.
 
 ## Financial statements
 

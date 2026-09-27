@@ -106,5 +106,22 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
   </main>
 </body>
 </html>`;
-  return lang === 'es' ? toColombianSpanish(markup).replace('<html lang="en">', '<html lang="es">') : markup;
+  const localized = lang === 'es' ? toColombianSpanish(markup).replace('<html lang="en">', '<html lang="es">') : markup;
+  // URL fragments never reach the server. Carry a shared slide through the
+  // access form and language switch without changing any authentication rule.
+  return localized.replace('</body>', `<script>
+    if (/^#present-[0-9]+$/.test(location.hash)) {
+      const next = document.querySelector('input[name="next"]');
+      const destination = new URL(next.value, location.origin);
+      destination.hash = location.hash;
+      next.value = destination.pathname + destination.search + destination.hash;
+      document.querySelectorAll('.locale-switch a').forEach(link => {
+        const url = new URL(link.href);
+        const target = new URL(url.searchParams.get('next') || '/', location.origin);
+        target.hash = location.hash;
+        url.searchParams.set('next', target.pathname + target.search + target.hash);
+        link.href = url.href;
+      });
+    }
+  </script></body>`);
 }
