@@ -70,7 +70,8 @@ function signedCookie(env, payload) {
 test('every private route, image, video, plan and financial statement is gated before assets are read', async () => {
   const { env, assetRequests } = fixture();
   for (const path of ['/index.html', '/financial-statements.html', '/investment-criteria.html', '/assets/video/medellin-after-dark.mp4',
-    '/assets/images/team/dov-supplied.jpg', '/source-packages/PLANOS.pdf', '/downloads/deck.html', '/gate-assets/not-public.svg']) {
+    '/assets/images/team/dov-supplied.jpg', '/source-packages/PLANOS.pdf', '/downloads/deck.html', '/gate-assets/not-public.svg',
+    '/assets/social/not-public.jpg', '/assets/social/README.md']) {
     for (const method of ['GET', 'HEAD']) {
       const response = await worker.fetch(request(path, { method }), env);
       assert.equal(response.status, 302, `${method} ${path}`);
@@ -82,17 +83,42 @@ test('every private route, image, video, plan and financial statement is gated b
   assert.equal(assetRequests.length, 0);
 });
 
-test('the shared root shows Open Graph metadata without granting access to the presentation', async () => {
+test('shared English and Spanish home URLs serve localized cards without granting investor access', async () => {
   const { env, assetRequests } = fixture();
-  const response = await worker.fetch(request('/'), env);
-  const html = await response.text();
-  assert.equal(response.status, 200);
-  assert.match(html, /<meta property="og:title" content="Dulcinea Investments, LLC \| Investor access">/);
-  assert.match(html, /<meta property="og:image" content="https:\/\/invest\.dulcineainvestments\.org\/assets\/images\/stock\/AdobeStock_891890158-web\.jpg">/);
-  assert.match(html, /<meta property="og:video" content="https:\/\/invest\.dulcineainvestments\.org\/assets\/video\/stock\/AdobeStock_693150796\.mp4">/);
-  loginFormAction(html);
+  for (const [route, language, locale, alternate, image, title] of [
+    ['/', 'en', 'en_US', 'es_CO', 'dulcinea-one-medellin-v2.jpg', 'Dulcinea One | Five homes. One portfolio.'],
+    ['/es/', 'es', 'es_CO', 'en_US', 'dulcinea-one-medellin-es-v2.jpg', 'Dulcinea One | Cinco propiedades. Un portafolio.'],
+  ]) {
+    for (const target of [route, `/login?next=${encodeURIComponent(route)}`]) {
+      const response = await worker.fetch(request(target), env);
+      const html = await response.text();
+      assert.equal(response.status, 200);
+      const meta = key => htmlAttribute(html.match(/<meta\b[^>]*>/g)?.find(tag =>
+        tag.includes(`property="${key}"`) || tag.includes(`name="${key}"`)), 'content');
+      assert.equal(meta('og:title'), title);
+      assert.equal(meta('twitter:title'), title);
+      assert.equal(meta('og:url'), `https://invest.dulcineainvestments.org${route}`);
+      assert.equal(meta('og:locale'), locale);
+      assert.equal(meta('og:locale:alternate'), alternate);
+      assert.equal(meta('og:image'), `https://invest.dulcineainvestments.org/assets/social/${image}`);
+      assert.equal(meta('twitter:image'), meta('og:image'));
+      assert.equal(meta('og:image:width'), '1200');
+      assert.equal(meta('og:image:height'), '630');
+      assert.equal(meta('twitter:image:alt'), meta('og:image:alt'));
+      assert.equal(meta('og:video'), 'https://invest.dulcineainvestments.org/assets/video/stock/AdobeStock_693150796.mp4');
+      assert.equal(meta('og:video:width'), '1280');
+      assert.equal(meta('og:video:height'), '720');
+      assert.match(html, /Dulcinea Investments, LLC/);
+      assert.doesNotMatch(html, /id="(?:homes|fund|team)"/);
+      assert.match(response.headers.get('X-Robots-Tag'), /noindex/);
+      loginFormAction(html, language);
+    }
+    const head = await worker.fetch(request(route, { method: 'HEAD' }), env);
+    assert.equal(head.status, 200);
+    assert.equal(await head.text(), '');
+    assert.match(head.headers.get('Content-Type'), /text\/html/);
+  }
   assert.equal(assetRequests.length, 0);
-  assert.equal((await worker.fetch(request('/', { method: 'HEAD' }), env)).status, 302);
 });
 
 test('login language switches preserve destinations and anchors through Spanish errors and successful sign-in', async () => {
@@ -152,15 +178,16 @@ test('login language switches preserve destinations and anchors through Spanish 
 test('only the gate logo, exact social media URLs and robots are public, even before secrets exist', async () => {
   const { env, assetRequests } = fixture({ INVESTOR_PASSWORD: undefined, SESSION_SECRET: undefined });
   for (const path of ['/gate-assets/logo.svg', '/assets/images/stock/AdobeStock_891890158-web.jpg',
-    '/assets/video/stock/AdobeStock_693150796.mp4']) {
-    assert.equal((await worker.fetch(request(path), env)).status, 200, path);
+    '/assets/video/stock/AdobeStock_693150796.mp4', '/assets/social/dulcinea-one-medellin-v2.jpg',
+    '/assets/social/dulcinea-one-medellin-es-v2.jpg']) {
+    for (const method of ['GET', 'HEAD']) assert.equal((await worker.fetch(request(path, { method }), env)).status, 200, `${method} ${path}`);
   }
   const robots = await worker.fetch(request('/robots.txt'), env);
   assert.match(await robots.text(), /Disallow: \/$/m);
-  assert.equal(assetRequests.length, 3);
+  assert.equal(assetRequests.length, 10);
   assert.equal((await worker.fetch(request('/favicon.ico'), env)).status, 503);
   assert.equal((await worker.fetch(request('/gate-assets/logo.svg', { method: 'POST' }), env)).status, 503);
-  assert.equal(assetRequests.length, 3);
+  assert.equal(assetRequests.length, 10);
 });
 
 test('correct login grants a browser-session cookie with an eight-hour limit and no visitor identity', async () => {

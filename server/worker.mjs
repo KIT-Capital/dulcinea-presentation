@@ -1,15 +1,18 @@
 import { renderLogin } from './login.mjs';
 import { withVideoRange } from './video-range.mjs';
 import { videoSizes } from './video-sizes.mjs';
+import { SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
 
 const encoder = new TextEncoder();
 const SESSION_SECONDS = 8 * 60 * 60;
 const SESSION_VERSION = 2; // Reject sessions issued under the former persistent-cookie policy.
 const MAX_FORM_BYTES = 4096;
 const CONTACT_EMAIL = 'kit@kitcapital.com';
-// Only the brand mark and the two promotional media URLs can be fetched before sign-in.
+// Only the brand mark and exact promotional media URLs can be fetched before sign-in.
 const PUBLIC_ASSETS = new Set([
   '/gate-assets/logo.svg',
+  SOCIAL_IMAGE_PATH,
+  SOCIAL_IMAGE_ES_PATH,
   '/assets/images/stock/AdobeStock_891890158-web.jpg',
   '/assets/video/stock/AdobeStock_693150796.mp4',
 ]);
@@ -219,7 +222,10 @@ export default {
       }
       if (!await authenticated(request, env, url)) {
         // A share crawler must be able to read the card metadata at the shared URL.
-        if (url.pathname === '/' && request.method === 'GET') return loginPage();
+        if (['/', '/es/'].includes(url.pathname) && readRequest) {
+          const page = loginPage({ lang: url.pathname === '/es/' ? 'es' : 'en', next: url.pathname });
+          return request.method === 'HEAD' ? new Response(null, { status: page.status, headers: page.headers }) : page;
+        }
         return redirect(`/login?next=${encodeURIComponent(url.pathname + url.search)}`, null, 302);
       }
       if (!readRequest) return text('Method not allowed.', 405, { Allow: 'GET, HEAD' });

@@ -5,6 +5,7 @@ import {toColombianSpanish} from './spanish.mjs';
 import {renderLanguageSwitch,languageSwitchCss} from '../shared/language-switch.mjs';
 import {disclosures,homeDisclosure,fullDisclosure} from '../shared/investor-disclosures.mjs';
 import {renderSpecialists} from '../shared/team.mjs';
+import {renderSocialMetadata,SOCIAL_IMAGE_PATH,SOCIAL_IMAGE_ES_PATH} from '../shared/social-metadata.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const web=process.argv.includes('--web');
@@ -14,7 +15,6 @@ const kept=new Set();
 const aliases=JSON.parse(await read('src/investor/media.json'));
 const manifest=JSON.parse(await read('assets/manifest.json'));
 for(let page=1;page<=9;page++) aliases[`plan-${page}.webp`]=manifest.find(item=>item.marker===`{{PLAN_PAGE_${page}}}`).path;
-const origin='https://invest.dulcineainvestments.org';
 const resources=['financial-statements','investment-criteria','specialists','disclaimer'];
 
 async function asset(source,target=source){
@@ -41,6 +41,8 @@ const darkLogo=await asset('brand/dulcinea-one/svg/dulcinea-one-white-gold.svg')
 const lightLogo=await asset('brand/dulcinea-one/svg/dulcinea-one-black-gold.svg');
 await asset('brand/dulcinea/svg/dulcinea-color-on-light.svg','gate-assets/logo.svg');
 await asset('assets/images/stock/AdobeStock_891890158-web.jpg');
+await asset(SOCIAL_IMAGE_PATH.slice(1));
+await asset(SOCIAL_IMAGE_ES_PATH.slice(1));
 await asset('assets/video/stock/AdobeStock_693150796.mp4');
 
 function localize(markup,locale){
@@ -57,10 +59,7 @@ function translateResource(markup){
   return toColombianSpanish(protectedMarkup).replace(/__DLCODE(\d+)__/g,(_,index)=>code[Number(index)]);
 }
 function shareMetadata(locale){
-  const es=locale==='es';
-  const title=es?'Dulcinea One | Inversión inmobiliaria en Medellín':'Dulcinea One | Medellín real estate investment';
-  const description=es?'Cinco propiedades en El Poblado y El Retiro. El primer fondo de Dulcinea, con la marca compartida de Lola &amp; Ber Hospitality.':'Five homes in El Poblado and El Retiro. Dulcinea’s first real estate fund, co-branded by Lola &amp; Ber Hospitality.';
-  return `<title>${title}</title><meta name="description" content="${description}"><meta property="og:type" content="website"><meta property="og:site_name" content="Dulcinea"><meta property="og:url" content="${origin}${es?'/es/':'/'}"><meta property="og:locale" content="${es?'es_CO':'en_US'}"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:image" content="${origin}/assets/images/stock/AdobeStock_891890158-web.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="2000"><meta property="og:image:height" content="1000"><meta property="og:image:alt" content="${es?'Medellín entre montañas y barrios verdes':'Medellín’s green neighborhoods and mountain skyline'}"><meta property="og:video" content="${origin}/assets/video/stock/AdobeStock_693150796.mp4"><meta property="og:video:type" content="video/mp4"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${title}"><meta name="twitter:description" content="${description}"><meta name="twitter:image" content="${origin}/assets/images/stock/AdobeStock_891890158-web.jpg">`;
+  return renderSocialMetadata(locale,{includeDocumentMetadata:true});
 }
 function languageSwitch(markup,name,locale){
   const prefix=locale==='es'?'../':'';

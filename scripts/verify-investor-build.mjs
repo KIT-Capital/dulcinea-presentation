@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Script } from 'node:vm';
 import { videoSizes } from '../server/video-sizes.mjs';
+import { socialMetadata, SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
 
 // Read-only release gate. Build first with `node scripts/build.mjs --web`.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -57,8 +58,25 @@ function resolveBuiltURL(reference, base, label) {
 await inventory(site);
 const requiredPages = ['', 'es/'].flatMap(prefix => ['index', 'financial-statements', 'investment-criteria', 'specialists', 'disclaimer'].map(name => `/${prefix}${name}.html`));
 assert.deepEqual([...pages.keys()].sort(), [...requiredPages].sort(), 'Expected only EN/ES investor, financial, criteria, specialists and disclaimer pages');
-const publicAssets = ['/gate-assets/logo.svg', '/assets/images/stock/AdobeStock_891890158-web.jpg', '/assets/video/stock/AdobeStock_693150796.mp4'];
+const publicAssets = ['/gate-assets/logo.svg', SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH, '/assets/images/stock/AdobeStock_891890158-web.jpg', '/assets/video/stock/AdobeStock_693150796.mp4'];
 for (const asset of publicAssets) assert.ok(files.has(asset), `Missing public share/login asset: ${asset}`);
+for (const asset of [SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH]) {
+  const image = await readFile(files.get(asset));
+  assert.equal(image.readUInt16BE(0), 0xffd8, `Share image must be JPEG: ${asset}`);
+  let dimensions;
+  for (let offset = 2; offset + 9 < image.length;) {
+    assert.equal(image[offset], 0xff, `Invalid JPEG segment: ${asset}`);
+    const marker = image[offset + 1];
+    if ([0xc0, 0xc1, 0xc2].includes(marker)) {
+      dimensions = [image.readUInt16BE(offset + 7), image.readUInt16BE(offset + 5)];
+      break;
+    }
+    const length = image.readUInt16BE(offset + 2);
+    assert.ok(length >= 2, `Invalid JPEG segment length: ${asset}`);
+    offset += length + 2;
+  }
+  assert.deepEqual(dimensions, [1200, 630], `Share-card dimensions do not match metadata: ${asset}`);
+}
 
 // A new alias must resolve to its canonical source, not a second copy of a video.
 const aliases = JSON.parse(await read('src/investor/media.json'));
@@ -96,6 +114,23 @@ for (const [pagePath, html] of pages) {
   }
 
   if (!pagePath.endsWith('/index.html')) continue;
+  const card = socialMetadata(language);
+  const socialTags = [...markup.matchAll(/<meta\b[^>]*>/gi)].map(match => attributes(match[0]));
+  const socialValue = key => {
+    const matches = socialTags.filter(tag => tag.property === key || tag.name === key);
+    assert.equal(matches.length, 1, `Expected one ${key} tag: ${pagePath}`);
+    return matches[0].content;
+  };
+  assert.equal(socialValue('og:title'), card.title);
+  assert.equal(socialValue('og:description'), card.description);
+  assert.equal(socialValue('og:url'), card.url);
+  assert.equal(socialValue('og:locale'), card.locale);
+  assert.equal(socialValue('og:locale:alternate'), card.alternateLocale);
+  assert.equal(socialValue('og:image'), origin + card.imagePath);
+  assert.equal(socialValue('og:image:width'), '1200');
+  assert.equal(socialValue('og:image:height'), '630');
+  assert.equal(socialValue('twitter:image'), socialValue('og:image'));
+  assert.equal(socialValue('twitter:image:alt'), card.imageAlt);
   assert.match(html, /window\.DULCINEA_WEB\s*=\s*true\s*;/, `Portable build deployed: ${pagePath}`);
   const injected = html.match(/window\.DULCINEA_ASSETS\s*=\s*(\{[^\n]*?\})\s*;/);
   assert.ok(injected, `Missing injected media map: ${pagePath}`);

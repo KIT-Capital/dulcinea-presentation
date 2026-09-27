@@ -1,5 +1,6 @@
 import { toColombianSpanish } from '../scripts/spanish.mjs';
 import { renderLanguageSwitch, languageSwitchCss } from '../shared/language-switch.mjs';
+import { renderSocialMetadata } from '../shared/social-metadata.mjs';
 
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
@@ -47,24 +48,7 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
   <meta name="referrer" content="same-origin">
   <meta name="theme-color" content="#78BDD4">
   <meta name="description" content="${firmDescription} Medellín, Colombia.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="${firmName}">
-  <meta property="og:url" content="https://invest.dulcineainvestments.org/">
-  <meta property="og:title" content="${firmName} | ${accessTitle}">
-  <meta property="og:description" content="${firmDescription} Medellín, Colombia.">
-  <meta property="og:image" content="https://invest.dulcineainvestments.org/assets/images/stock/AdobeStock_891890158-web.jpg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="2000">
-  <meta property="og:image:height" content="1000">
-  <meta property="og:image:alt" content="Panoramic view of Medellín’s green neighborhoods and mountain skyline">
-  <meta property="og:video" content="https://invest.dulcineainvestments.org/assets/video/stock/AdobeStock_693150796.mp4">
-  <meta property="og:video:type" content="video/mp4">
-  <meta property="og:video:width" content="1280">
-  <meta property="og:video:height" content="720">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${firmName} | ${accessTitle}">
-  <meta name="twitter:description" content="${firmDescription} Medellín, Colombia.">
-  <meta name="twitter:image" content="https://invest.dulcineainvestments.org/assets/images/stock/AdobeStock_891890158-web.jpg">
+  {{SOCIAL_METADATA}}
   <title>${accessTitle} · ${firmName}</title>
   <style>
     :root{color-scheme:light;--blue:#78BDD4;--pink:#FB90A2;--violet:#B085B7;--green:#009B74;--ink:#203330;--muted:#536561;--line:#80908a;--paper:#fff;--copper:#8b6552;font-family:"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f6f9f8}
@@ -119,7 +103,8 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
   </main>
 </body>
 </html>`;
-  const localized = lang === 'es' ? toColombianSpanish(markup).replace('<html lang="en">', '<html lang="es">') : markup;
+  const localized = (lang === 'es' ? toColombianSpanish(markup).replace('<html lang="en">', '<html lang="es">') : markup)
+    .replace('{{SOCIAL_METADATA}}', renderSocialMetadata(lang));
   // URL fragments never reach the server. Carry a shared slide through the
   // access form and language switch without changing any authentication rule.
   return localized.replace('</body>', `<script>
