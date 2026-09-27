@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {toColombianSpanish} from './spanish.mjs';
 import {renderLanguageSwitch,languageSwitchCss} from '../shared/language-switch.mjs';
 import {disclosures,homeDisclosure,fullDisclosure} from '../shared/investor-disclosures.mjs';
+import {renderSpecialists} from '../shared/team.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const web=process.argv.includes('--web');
@@ -14,7 +15,7 @@ const aliases=JSON.parse(await read('src/investor/media.json'));
 const manifest=JSON.parse(await read('assets/manifest.json'));
 for(let page=1;page<=9;page++) aliases[`plan-${page}.webp`]=manifest.find(item=>item.marker===`{{PLAN_PAGE_${page}}}`).path;
 const origin='https://invest.dulcineainvestments.org';
-const resources=['financial-statements','investment-criteria','disclaimer'];
+const resources=['financial-statements','investment-criteria','specialists','disclaimer'];
 
 async function asset(source,target=source){
   const sourcePath=path.resolve(root,source),targetPath=path.resolve(destination,target);
@@ -38,7 +39,7 @@ if(web){
 }
 const darkLogo=await asset('brand/dulcinea-one/svg/dulcinea-one-white-gold.svg');
 const lightLogo=await asset('brand/dulcinea-one/svg/dulcinea-one-black-gold.svg');
-await asset('brand/dulcinea-one/svg/dulcinea-one-black-gold.svg','gate-assets/logo.svg');
+await asset('brand/dulcinea/svg/dulcinea-color-on-light.svg','gate-assets/logo.svg');
 await asset('assets/images/stock/AdobeStock_891890158-web.jpg');
 await asset('assets/video/stock/AdobeStock_693150796.mp4');
 
@@ -81,7 +82,7 @@ for(const locale of ['en','es']){
   const prefix=locale==='es'?'es/':'';
   const relative=locale==='es'?'../':'';
   const localeMedia=Object.fromEntries(Object.entries(media).map(([name,url])=>[name,web?url:relative+url]));
-  let html=localize(template.replace('{{HOME_DISCLOSURE}}',homeDisclosure(locale)),locale).replace('<html lang="en">',`<html lang="${locale}">`)
+  let html=localize(template.replace('{{HOME_DISCLOSURE}}',homeDisclosure(locale)).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale)),locale).replace('<html lang="en">',`<html lang="${locale}">`)
     .replace(/<title>[^<]*<\/title>/,shareMetadata(locale))
     .replace('<link rel="stylesheet" href="style.css">',`<style>${styles}</style>`)
     .replace('<link rel="stylesheet" href="presentation.css">',`<style>${presentationStyles}</style>`)
@@ -101,12 +102,13 @@ for(const locale of ['en','es']){
   for(const name of resources){
     let page=await read(`src/${name}.html`);
     if(name==='disclaimer')page=localize(page.replace('{{DISCLAIMER_TITLE}}',`Dulcinea One — ${disclosures.title[locale==='es'?1:0]}`).replace('{{DISCLAIMER_CONTENT}}',fullDisclosure(locale)),locale);
-    const logo=name==='financial-statements'?lightLogo:darkLogo;
+    if(name==='specialists')page=localize(page.replace('{{SPECIALISTS_TITLE}}',`Dulcinea One — ${locale==='es'?'Especialistas locales':'Local specialists'}`).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale)),locale);
+    const logo=['financial-statements','specialists'].includes(name)?lightLogo:darkLogo;
     page=page.replaceAll('{{RESOURCE_LOGO}}',web?logo:relative+logo);
     page=page.replace(/href="index\.html#slide-[78]"/g,`href="${web?(locale==='es'?'/es/':'/'):'index.html'}#${name==='financial-statements'?'fund':'homes'}"`);
-    page=page.replaceAll('href="index.html#home"',`href="${web?'/'+prefix:'index.html'}#home"`);
+    page=page.replace(/href="index\.html#(home|team|specialists)"/g,(_,section)=>`href="${web?'/'+prefix:'index.html'}#${section}"`);
     for(const resource of resources)page=page.replaceAll(`href="${resource}.html`, `href="${web?'/'+prefix:''}${resource}.html`);
-    if(locale==='es') page=(name==='disclaimer'?page.replace('aria-label="Documents"','aria-label="Documentos"'):translateResource(page)).replace('<html lang="en">','<html lang="es">');
+    if(locale==='es') page=(['disclaimer','specialists'].includes(name)?page.replace('aria-label="Documents"','aria-label="Documentos"'):translateResource(page)).replace('<html lang="en">','<html lang="es">');
     await output(`${prefix}${name}.html`,languageSwitch(page,name,locale));
   }
 }
@@ -121,4 +123,4 @@ if(web){
   }
   await prune(destination);
 }
-console.log(`Built new investor design (${web?'protected web':'portable'}), English/Spanish, ${Object.keys(media).length} media aliases, pro forma financial statements, criteria and disclaimer.`);
+console.log(`Built new investor design (${web?'protected web':'portable'}), English/Spanish, ${Object.keys(media).length} media aliases, pro forma financial statements, criteria, specialists and disclaimer.`);

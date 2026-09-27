@@ -19,9 +19,14 @@ function destinationForLanguage(value, language) {
 
 export function renderLogin({ name = '', email = '', next = '/', error = '', lang = 'en', contactEmail = 'kit@kitcapital.com' } = {}) {
   lang = lang === 'es' ? 'es' : 'en';
+  const firmName = 'Dulcinea Investments, LLC';
+  const firmDescription = lang === 'es'
+    ? `${firmName} es una firma de inversión inmobiliaria.`
+    : `${firmName} is a real estate investment firm.`;
+  const accessTitle = lang === 'es' ? 'Acceso para inversionistas' : 'Investor access';
   const contact = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(String(contactEmail))
     ? String(contactEmail) : 'kit@kitcapital.com';
-  const requestAccess = `mailto:${encodeURIComponent(contact)}?subject=Dulcinea%20One%20%E2%80%94%20Investor%20access`;
+  const requestAccess = `mailto:${encodeURIComponent(contact)}?subject=${encodeURIComponent(`${firmName} — ${accessTitle}`)}`;
   const englishNext = destinationForLanguage(next, 'en');
   const spanishNext = destinationForLanguage(next, 'es');
   const loginLanguageLinks = renderLanguageSwitch({
@@ -41,12 +46,12 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
   <meta name="robots" content="noindex, nofollow">
   <meta name="referrer" content="same-origin">
   <meta name="theme-color" content="#78BDD4">
-  <meta name="description" content="Five selected homes across El Poblado and El Retiro, Medellín. Dulcinea’s first real estate fund, co-branded by Lola &amp; Ber Hospitality.">
+  <meta name="description" content="${firmDescription} Medellín, Colombia.">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Dulcinea">
+  <meta property="og:site_name" content="${firmName}">
   <meta property="og:url" content="https://invest.dulcineainvestments.org/">
-  <meta property="og:title" content="Dulcinea One | Investor presentation">
-  <meta property="og:description" content="Five selected homes across El Poblado and El Retiro, Medellín. Dulcinea’s first real estate fund, co-branded by Lola &amp; Ber Hospitality.">
+  <meta property="og:title" content="${firmName} | ${accessTitle}">
+  <meta property="og:description" content="${firmDescription} Medellín, Colombia.">
   <meta property="og:image" content="https://invest.dulcineainvestments.org/assets/images/stock/AdobeStock_891890158-web.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="2000">
@@ -57,10 +62,10 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
   <meta property="og:video:width" content="1280">
   <meta property="og:video:height" content="720">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dulcinea One | Investor presentation">
-  <meta name="twitter:description" content="Five selected homes across El Poblado and El Retiro, Medellín. Dulcinea’s first real estate fund, co-branded by Lola &amp; Ber Hospitality.">
+  <meta name="twitter:title" content="${firmName} | ${accessTitle}">
+  <meta name="twitter:description" content="${firmDescription} Medellín, Colombia.">
   <meta name="twitter:image" content="https://invest.dulcineainvestments.org/assets/images/stock/AdobeStock_891890158-web.jpg">
-  <title>Investor access · Dulcinea One</title>
+  <title>${accessTitle} · ${firmName}</title>
   <style>
     :root{color-scheme:light;--blue:#78BDD4;--pink:#FB90A2;--violet:#B085B7;--green:#009B74;--ink:#203330;--muted:#536561;--line:#80908a;--paper:#fff;--copper:#8b6552;font-family:"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f6f9f8}
     *{box-sizing:border-box}body{margin:0;min-height:100vh;min-height:100dvh}a{color:inherit;text-underline-offset:5px}a:hover{text-decoration-thickness:2px}a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #73457a;outline-offset:4px}button,input{font:inherit}button{cursor:pointer}.skip-link{position:absolute;top:12px;left:16px;z-index:5;background:white;padding:12px;transform:translateY(-160%)}.skip-link:focus{transform:none}
@@ -84,11 +89,11 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
   <a class="skip-link" href="#investor-access">Skip to investor access</a>
   <main class="page">
     <section class="welcome" aria-labelledby="brand-title">
-      <img class="logo" src="/gate-assets/logo.svg" alt="Dulcinea" width="258" height="84">
+      <img class="logo" src="/gate-assets/logo.svg" alt="${firmName}" width="2135" height="565">
       <div class="intro">
         <p class="eyebrow">Private investor presentation</p>
-        <h1 id="brand-title">Dulcinea One.</h1>
-        <p class="intro-copy">Dulcinea is a real estate investment firm.<span class="place">Medellín, Colombia.</span></p>
+        <h1 id="brand-title">Dulcinea.</h1>
+        <p class="intro-copy">${firmDescription}<span class="place">Medellín, Colombia.</span></p>
       </div>
       <p class="co-brand">Co-branded by Lola &amp; Ber Hospitality.</p>
       <div class="ribbons" aria-hidden="true"></div>

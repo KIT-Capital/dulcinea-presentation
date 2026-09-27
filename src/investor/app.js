@@ -214,7 +214,7 @@ dialogs.forEach(dialog => {
   });
 });
 // Preserve links shared from the former nineteen-slide presentation.
-const legacyAnchors = ['home','approach','experience','experience','homes','approach','approach','fund','homes','homes','homes','homes','homes','homes','team','team','fund','fund','contact'];
+const legacyAnchors = ['home','approach','experience','experience','homes','approach','approach','fund','homes','homes','homes','homes','homes','homes','team','specialists','fund','fund','contact'];
 const legacyHomes = {10:1,11:2,12:0,13:3,14:4};
 function migrateLegacyHash() {
   const match = /^#slide-(\d+)$/.exec(location.hash);

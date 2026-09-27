@@ -8,7 +8,7 @@ English is the default; compact American and Colombian flag controls switch betw
 
 ## Present live
 
-Choose **Present** in the navigation bar, or open `/#present-1`, for a 16-slide presentation of the same current content. Each slide fits a 16:9 canvas, including one slide per property and separate slides for the offer, kickers, returns and team. Videos, original imagery and floorplans remain interactive. Presentation controls sit below the slide.
+Choose **Present** in the navigation bar, or open `/#present-1`, for a 16-slide presentation of the same current content. Each slide fits a 16:9 canvas, including one slide per property and separate slides for the offer, kickers, returns, core team and local specialists. Core-team biographies appear with their portraits in both views. The specialists have their own slide, website section and linked resource page. Videos, original imagery and floorplans remain interactive. Presentation controls sit below the slide.
 
 Use the arrow or Page Up/Down keys to move, Home/End to jump to the beginning/end, the slide counter to choose a slide, and F for full screen. Escape or **Website** returns to the scrolling page. The flag button changes language without losing the current slide. Full screen requires a supported browser; slide mode also works inside a normal browser window. A landscape screen is best for presenting. The same source content feeds both views.
 
@@ -42,7 +42,8 @@ The active website source is:
 - `src/investor/app.js`: language, gallery, motion, dialogs and legacy anchors.
 - `src/investor/presentation.css` and `presentation.js`: fitted slideshow layouts and navigation.
 - `src/investor/media.json`: canonical media aliases.
-- `src/financial-statements.html` and `src/investment-criteria.html`: investor resources.
+- `src/financial-statements.html`, `src/investment-criteria.html`, `src/specialists.html` and `src/disclaimer.html`: investor resources.
+- `shared/team.mjs`: the specialists directory shared by the website, presentation and resource page.
 - `scripts/build-investor.mjs`: active builder, called by `scripts/build.mjs`.
 
 The former slide presentation remains in `src/presentation.*` and related files. `scripts/build-legacy.mjs` is retained for reference, not used by the standard production build. `assets/manifest.json` still supplies floorplan mappings.
@@ -59,7 +60,7 @@ This writes portable English pages at the repository root and Spanish pages unde
 npm run build:site
 ```
 
-The hosted build writes `dist/private-site/`: eight English/Spanish pages and selected media, branding and the floorplan download. It excludes Excel and PowerPoint sources, archives, internal notes and provenance. Canonical media paths allow videos to stream separately. Neither build requires Python or FFmpeg.
+The hosted build writes `dist/private-site/`: ten English/Spanish pages and selected media, branding and the floorplan download. It excludes Excel and PowerPoint sources, archives, internal notes and provenance. Canonical media paths allow videos to stream separately. Neither build requires Python or FFmpeg.
 
 ## Financial statements
 

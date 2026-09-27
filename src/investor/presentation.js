@@ -22,7 +22,7 @@
     {id:'kickers', selector:'#fund', title:['Three equity kickers','Tres beneficios de participación']},
     {id:'returns', selector:'#fund', title:['Projected returns','Retornos proyectados']},
     {id:'team', selector:'#team', title:['The core team','El equipo principal']},
-    {id:'expertise', selector:'#team', title:['Experience + local specialists','Experiencia + especialistas locales']},
+    {id:'specialists', selector:'#specialists', title:['Local specialists','Especialistas locales']},
     {id:'disclaimer', selector:'#main .legal-notice', title:['Important disclosures','Información importante']},
     {id:'contact', selector:'#contact', title:['Talk to us','Hable con nosotros']}
   ];
@@ -156,7 +156,6 @@
       renderHome(changed);
     }
     if (step.id === 'returns') document.querySelector('#fund > details.model').open = true;
-    if (step.id === 'expertise') document.querySelector('#team .team-details').open = true;
     if (updateRoute) writeHash(`present-${index + 1}`);
     updateControls();
     fitCanvas();
@@ -305,7 +304,7 @@
       goTo(steps.findIndex(step => step.home === chosen));
       return;
     }
-    const summary = target?.closest('#fund > details.model > summary,#team .team-details > summary');
+    const summary = target?.closest('#fund > details.model > summary');
     if (summary) { event.preventDefault(); return; }
     const link = target?.closest('a[href]');
     if (!link || link.target === '_blank') return;

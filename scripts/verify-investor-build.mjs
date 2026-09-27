@@ -55,8 +55,8 @@ function resolveBuiltURL(reference, base, label) {
 }
 
 await inventory(site);
-const requiredPages = ['', 'es/'].flatMap(prefix => ['index', 'financial-statements', 'investment-criteria', 'disclaimer'].map(name => `/${prefix}${name}.html`));
-assert.deepEqual([...pages.keys()].sort(), [...requiredPages].sort(), 'Expected only EN/ES investor, financial, criteria and disclaimer pages');
+const requiredPages = ['', 'es/'].flatMap(prefix => ['index', 'financial-statements', 'investment-criteria', 'specialists', 'disclaimer'].map(name => `/${prefix}${name}.html`));
+assert.deepEqual([...pages.keys()].sort(), [...requiredPages].sort(), 'Expected only EN/ES investor, financial, criteria, specialists and disclaimer pages');
 const publicAssets = ['/gate-assets/logo.svg', '/assets/images/stock/AdobeStock_891890158-web.jpg', '/assets/video/stock/AdobeStock_693150796.mp4'];
 for (const asset of publicAssets) assert.ok(files.has(asset), `Missing public share/login asset: ${asset}`);
 
@@ -115,7 +115,7 @@ for (const [pagePath, html] of pages) {
   assert.equal(homePlans.filter(([, planList]) => planList.length).length, 4, `Expected four homes with plans: ${pagePath}`);
   assert.deepEqual(homePlans.flatMap(([, planList]) => planList).sort((a, b) => a - b), [1, 2, 3, 4, 5, 6, 7, 8, 9], `Plan coverage is incomplete or duplicated: ${pagePath}`);
   assert.deepEqual(homePlans.find(([key]) => key === 'montana')?.[1], [], 'Do not invent Casa Montana plans');
-  for (const name of ['financial-statements', 'investment-criteria', 'disclaimer']) {
+  for (const name of ['financial-statements', 'investment-criteria', 'specialists', 'disclaimer']) {
     const target = `/${language === 'es' ? 'es/' : ''}${name}.html`;
     assert.ok(markup.includes(`href="${target}"`), `Missing ${language} navigation resource ${name}`);
   }
@@ -132,10 +132,19 @@ for (const prefix of ['', '/es']) {
   const financial = pages.get(`${prefix}/financial-statements.html`);
   const criteria = pages.get(`${prefix}/investment-criteria.html`);
   const disclaimer = pages.get(`${prefix}/disclaimer.html`);
+  const specialists = pages.get(`${prefix}/specialists.html`);
   assert.match(textContent(financial), prefix ? /Estados financieros pro forma/ : /Pro forma financial statements/);
   assert.match(textContent(disclaimer), prefix ? /portafolio en su conjunto/ : /portfolio as a whole/);
   assert.match(textContent(disclaimer), prefix ? /no auditadas/ : /unaudited/);
-  for(const document of [financial,criteria])assert.ok(document.includes(`href="${prefix}/disclaimer.html"`), 'Missing localized disclaimer link');
+  assert.match(textContent(specialists), prefix ? /Especialistas locales/ : /Local specialists/);
+  assert.ok(specialists.includes('dulcinea-one-black-gold.svg'), 'Specialists page needs the dark logo on its light background');
+  assert.ok(specialists.includes(`href="${prefix}/#specialists"`), 'Missing localized specialists return link');
+  assert.ok(specialists.includes(`href="${prefix}/#team"`), 'Missing localized core-team return link');
+  const specialistBlock=html=>html.match(/<dl class="specialists">[\s\S]*?<\/dl>/)?.[0];
+  assert.ok(specialistBlock(specialists), 'Missing specialists directory');
+  assert.equal(specialistBlock(specialists),specialistBlock(pages.get(`${prefix}/index.html`)), 'Specialists content differs between presentation and resource page');
+  for(const person of ['Marcela Vélez','María Antonia Uribe','John Mario Piedrahita','Juan Carlos Pérez','Jorge Valiente'])assert.ok(textContent(specialists).includes(person), `Missing specialist: ${person}`);
+  for(const document of [financial,criteria,specialists])assert.ok(document.includes(`href="${prefix}/disclaimer.html"`), 'Missing localized disclaimer link');
   for (const section of ['income-statement', 'after-carry', 'cash-flow-statement', 'balance-sheet']) {
     assert.ok(financial.includes(`id="${section}"`), `Missing financial section ${section}: ${prefix || '/'}`);
     assert.ok(financial.includes(`href="#${section}"`), `Missing financial navigation ${section}: ${prefix || '/'}`);
@@ -146,7 +155,7 @@ for (const prefix of ['', '/es']) {
 }
 
 const videoHashes = new Map();
-for(const name of ['financial-statements','investment-criteria']){
+for(const name of ['financial-statements','investment-criteria','specialists']){
   const styles=html=>[...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map(match=>match[1]);
   assert.deepEqual(styles(pages.get(`/es/${name}.html`)),styles(pages.get(`/${name}.html`)),`Translation changed responsive CSS: ${name}`);
 }

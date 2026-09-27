@@ -87,7 +87,7 @@ test('the shared root shows Open Graph metadata without granting access to the p
   const response = await worker.fetch(request('/'), env);
   const html = await response.text();
   assert.equal(response.status, 200);
-  assert.match(html, /<meta property="og:title" content="Dulcinea One \| Investor presentation">/);
+  assert.match(html, /<meta property="og:title" content="Dulcinea Investments, LLC \| Investor access">/);
   assert.match(html, /<meta property="og:image" content="https:\/\/invest\.dulcineainvestments\.org\/assets\/images\/stock\/AdobeStock_891890158-web\.jpg">/);
   assert.match(html, /<meta property="og:video" content="https:\/\/invest\.dulcineainvestments\.org\/assets\/video\/stock\/AdobeStock_693150796\.mp4">/);
   loginFormAction(html);
