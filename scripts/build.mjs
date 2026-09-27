@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir, copyFile, rm, stat, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { toColombianSpanish } from './spanish.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relativePath, encoding) => readFile(path.join(root, relativePath), encoding);
@@ -103,11 +104,36 @@ async function build() {
   }
   const destination = web ? siteRoot : root;
   const output = path.join(destination, 'index.html');
+  const languageLinks = (englishPath, spanishPath, active) => `<nav class="locale-switch" aria-label="${active === 'es' ? 'Idioma' : 'Language'}"><a href="${englishPath}" lang="en" aria-label="English (United States)"${active === 'en' ? ' aria-current="page"' : ''}>🇺🇸 English</a><a href="${spanishPath}" lang="es" aria-label="Español (Colombia)"${active === 'es' ? ' aria-current="page"' : ''}>🇨🇴 Español</a></nav>`;
+  const addLanguageSwitch = (markup, englishPath, spanishPath, locale) => {
+    const switchMarkup = languageLinks(englishPath, spanishPath, locale);
+    const languageStyle = '<style>.locale-switch{display:inline-flex;align-items:center;gap:4px;padding:3px;border:1px solid currentColor;border-radius:999px;font-size:11px;white-space:nowrap}.locale-switch a{display:inline-flex;align-items:center;gap:4px;padding:6px 8px;border-radius:999px;color:inherit;text-decoration:none;opacity:.78}.locale-switch a[aria-current="page"]{background:#ffffff38;opacity:1;font-weight:700}.locale-switch a:focus-visible{outline:2px solid currentColor;outline-offset:2px}@media(max-width:800px){.locale-switch{font-size:10px;gap:1px;padding:2px}.locale-switch a{font-size:0;gap:0;padding:5px 6px}.locale-switch a[lang="en"]:before{content:"🇺🇸";font-size:14px}.locale-switch a[lang="es"]:before{content:"🇨🇴";font-size:14px}}</style>';
+    const localeScript = '<script>document.querySelectorAll(".locale-switch a").forEach(link=>link.addEventListener("click",()=>{const target=new URL(link.href);target.hash=location.hash;link.href=target.href;}));</script>';
+    markup = markup.replace('</head>', `${languageStyle}</head>`);
+    markup = markup.replace('</body>', `${localeScript}</body>`);
+    if (markup.includes('class="header-resources"')) {
+      return markup.replace('</nav><button aria-controls="slide-menu"', `</nav>${switchMarkup}<button aria-controls="slide-menu"`);
+    }
+    return markup.replace('</a></div><div class="hero">', `</a>${switchMarkup}</div><div class="hero">`);
+  };
+  const spanishIndex = toColombianSpanish(html).replace('<html lang="en">', '<html lang="es">')
+    .replace('content="https://invest.dulcineainvestments.org/"', 'content="https://invest.dulcineainvestments.org/es/"');
+  const spanishFinancial = toColombianSpanish(financial).replace('<html lang="en">', '<html lang="es">');
+  const spanishCriteria = toColombianSpanish(criteria).replace('<html lang="en">', '<html lang="es">');
+  html = addLanguageSwitch(html, '/', '/es/', 'en');
+  financial = addLanguageSwitch(financial, '/financial-statements.html', '/es/financial-statements.html', 'en');
+  criteria = addLanguageSwitch(criteria, '/investment-criteria.html', '/es/investment-criteria.html', 'en');
+  const spanish = path.join(destination, 'es');
+  await mkdir(spanish, { recursive: true });
   await writeFile(output, html, 'utf8');
   await writeFile(path.join(destination, 'financial-statements.html'), financial, 'utf8');
   await writeFile(path.join(destination, 'investment-criteria.html'), criteria, 'utf8');
+  await writeFile(path.join(spanish, 'index.html'), addLanguageSwitch(spanishIndex, '/', '/es/', 'es'), 'utf8');
+  await writeFile(path.join(spanish, 'financial-statements.html'), addLanguageSwitch(spanishFinancial, '/financial-statements.html', '/es/financial-statements.html', 'es'), 'utf8');
+  await writeFile(path.join(spanish, 'investment-criteria.html'), addLanguageSwitch(spanishCriteria, '/investment-criteria.html', '/es/investment-criteria.html', 'es'), 'utf8');
   if (web) {
-    const keep = new Set([...copied, output, path.join(destination, 'financial-statements.html'), path.join(destination, 'investment-criteria.html')]);
+    const keep = new Set([...copied, output, path.join(destination, 'financial-statements.html'), path.join(destination, 'investment-criteria.html'),
+      path.join(spanish, 'index.html'), path.join(spanish, 'financial-statements.html'), path.join(spanish, 'investment-criteria.html')]);
     // Keep watched directories in place on Windows; remove only stale build files.
     async function prune(directory) {
       for (const entry of await readdir(directory, { withFileTypes: true })) {

@@ -157,8 +157,9 @@ async function readSmallForm(request) {
 
 async function submitLogin(request, env, url) {
   const wantsJson = request.headers.get('Accept')?.includes('application/json');
+  const requestLanguage = url.searchParams.get('lang') === 'es' ? 'es' : 'en';
   const failure = (error, status, options = {}, headers = {}) => wantsJson
-    ? json({ error }, status, headers) : loginPage({ ...options, error }, status, headers);
+    ? json({ error }, status, headers) : loginPage({ lang: requestLanguage, ...options, error }, status, headers);
   if (request.headers.get('Origin') !== url.origin) return text('Please submit the form from this website.', 403);
   if (typeof env.LOGIN_LIMITER?.limit !== 'function') return text('Access is temporarily unavailable.', 503);
   const rateKey = b64url(await digest(`${request.headers.get('CF-Connecting-IP') || 'unknown'}\n${env.SESSION_SECRET}`));
@@ -170,8 +171,12 @@ async function submitLogin(request, env, url) {
   const name = (form.get('name') || '').trim().replace(/\s+/g, ' ');
   const email = (form.get('email') || '').trim().toLowerCase();
   const password = form.get('password') || '';
-  const next = safeNext(form.get('next') || '/', url.origin);
-  const options = { name, email, next };
+  let next = safeNext(form.get('next') || '/', url.origin);
+  const lang = form.get('lang') === 'es' || requestLanguage === 'es' ? 'es' : 'en';
+  if (lang === 'es') next = next === '/' || next === '/es' ? '/es/' : next.startsWith('/es/') ? next : `/es${next}`;
+  else if (next === '/es' || next === '/es/') next = '/';
+  else if (next.startsWith('/es/')) next = next.slice(3);
+  const options = { name, email, next, lang };
   if (name.length < 2 || name.length > 120 || /[\x00-\x1f\x7f]/.test(name)
       || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
       || password.length < 1 || password.length > 128) {
@@ -197,7 +202,9 @@ export default {
       if (url.pathname === '/login') {
         if (request.method === 'POST') return await submitLogin(request, env, url);
         if (request.method !== 'GET') return text('Method not allowed.', 405, { Allow: 'GET, POST' });
-        return loginPage({ next: safeNext(url.searchParams.get('next') || '/', url.origin) });
+        const next = safeNext(url.searchParams.get('next') || '/', url.origin);
+        const lang = url.searchParams.get('lang') === 'es' || next === '/es' || next.startsWith('/es/') ? 'es' : 'en';
+        return loginPage({ next, lang });
       }
       if (url.pathname === '/logout') {
         if (request.method !== 'POST') return text('Method not allowed.', 405, { Allow: 'POST' });
