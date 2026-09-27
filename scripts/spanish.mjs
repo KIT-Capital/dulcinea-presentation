@@ -1,6 +1,9 @@
 // Colombian Spanish localization for the presentation and its investor resources.
 // Replacements are complete visible phrases so markup, data, figures and asset URLs stay intact.
+import { financialTranslations, preserveFinancialIdentifiers } from './financial-spanish.mjs';
+
 const translations = [
+  ...financialTranslations,
   ['Dulcinea One | Investor presentation', 'Dulcinea One | Presentación para inversionistas'],
   ['Dulcinea One — Financial statements', 'Dulcinea One — Estados financieros'],
   ['Dulcinea One — Investment criteria', 'Dulcinea One — Criterios de inversión'],
@@ -504,9 +507,10 @@ const translations = [
 ];
 
 export function toColombianSpanish(input) {
-  let output = input;
+  const { value, protect, restore } = preserveFinancialIdentifiers(input);
+  let output = value;
   for (const [english, spanish] of [...translations].sort(([left], [right]) => right.length - left.length)) {
-    output = output.replaceAll(english, spanish);
+    output = output.replaceAll(protect(english), protect(spanish));
   }
-  return output;
+  return restore(output);
 }

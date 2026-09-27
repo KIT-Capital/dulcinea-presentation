@@ -1,0 +1,104 @@
+import {readFile,writeFile,mkdir,copyFile,stat,readdir,rm} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {toColombianSpanish} from './spanish.mjs';
+import {renderLanguageSwitch,languageSwitchCss} from '../shared/language-switch.mjs';
+
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const web=process.argv.includes('--web');
+const destination=web?path.join(root,'dist/private-site'):root;
+const read=(name)=>readFile(path.join(root,name),'utf8');
+const kept=new Set();
+const aliases=JSON.parse(await read('src/investor/media.json'));
+const manifest=JSON.parse(await read('assets/manifest.json'));
+for(let page=1;page<=9;page++) aliases[`plan-${page}.webp`]=manifest.find(item=>item.marker===`{{PLAN_PAGE_${page}}}`).path;
+const origin='https://invest.dulcineainvestments.org';
+
+async function asset(source,target=source){
+  const sourcePath=path.resolve(root,source),targetPath=path.resolve(destination,target);
+  if(!sourcePath.startsWith(root+path.sep)||!targetPath.startsWith(destination+path.sep)) throw Error('Asset outside build directory');
+  if((await stat(sourcePath)).size>25*1024*1024) throw Error(`Asset exceeds Cloudflare limit: ${source}`);
+  if(web&&!kept.has(targetPath)){
+    await mkdir(path.dirname(targetPath),{recursive:true});
+    await copyFile(sourcePath,targetPath);
+  }
+  kept.add(targetPath);
+  return web?'/'+target.replaceAll('\\','/'):source.replaceAll('\\','/');
+}
+const media={};
+for(const [name,source] of Object.entries(aliases)) media[name]=await asset(source,name==='floorplans.pdf'?'downloads/Dulcinea-Floorplans.pdf':source);
+const darkLogo=await asset('brand/dulcinea-one/svg/dulcinea-one-white-gold.svg');
+const lightLogo=await asset('brand/dulcinea-one/svg/dulcinea-one-black-gold.svg');
+await asset('brand/dulcinea-one/svg/dulcinea-one-black-gold.svg','gate-assets/logo.svg');
+await asset('assets/images/stock/AdobeStock_891890158-web.jpg');
+await asset('assets/video/stock/AdobeStock_693150796.mp4');
+
+function localize(markup,locale){
+  // Translate only authored text nodes, never JavaScript or media identifiers.
+  return markup.replace(/<([a-z][\w-]*)\b([^>]*\bdata-en="[^"]*"[^>]*\bdata-es="[^"]*"[^>]*)>[\s\S]*?<\/\1>/g,(whole,tag,attributes)=>{
+    const text=attributes.match(new RegExp(`\\bdata-${locale}="([^"]*)"`))[1];
+    return `<${tag}${attributes}>${text.replaceAll('&#10;','<br>')}</${tag}>`;
+  });
+}
+function shareMetadata(locale){
+  const es=locale==='es';
+  const title=es?'Dulcinea One | Inversión inmobiliaria en Medellín':'Dulcinea One | Medellín real estate investment';
+  const description=es?'Cinco propiedades en El Poblado y El Retiro. El primer fondo de Dulcinea, con la marca compartida de Lola &amp; Ber Hospitality.':'Five homes in El Poblado and El Retiro. Dulcinea’s first real estate fund, co-branded by Lola &amp; Ber Hospitality.';
+  return `<title>${title}</title><meta name="description" content="${description}"><meta property="og:type" content="website"><meta property="og:site_name" content="Dulcinea"><meta property="og:url" content="${origin}${es?'/es/':'/'}"><meta property="og:locale" content="${es?'es_CO':'en_US'}"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:image" content="${origin}/assets/images/stock/AdobeStock_891890158-web.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="2000"><meta property="og:image:height" content="1000"><meta property="og:image:alt" content="${es?'Medellín entre montañas y barrios verdes':'Medellín’s green neighborhoods and mountain skyline'}"><meta property="og:video" content="${origin}/assets/video/stock/AdobeStock_693150796.mp4"><meta property="og:video:type" content="video/mp4"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${title}"><meta name="twitter:description" content="${description}"><meta name="twitter:image" content="${origin}/assets/images/stock/AdobeStock_891890158-web.jpg">`;
+}
+function languageSwitch(markup,name,locale){
+  const prefix=locale==='es'?'../':'';
+  const englishPath=web?`/${name}.html`:`${prefix}${name}.html`;
+  const spanishPath=web?`/es/${name}.html`:`${locale==='es'?'':'es/'}${name}.html`;
+  return markup.replace('</head>',`<style>${languageSwitchCss}</style></head>`)
+    .replace('</a></div><div class="hero">',`</a>${renderLanguageSwitch({englishPath,spanishPath,locale})}</div><div class="hero">`)
+    .replace('</body>','<script>document.querySelectorAll(".locale-switch a").forEach(link=>link.addEventListener("click",()=>{const next=new URL(link.href);next.hash=location.hash;link.href=next.href;}));</script></body>');
+}
+async function output(name,content){
+  const file=path.join(destination,name);
+  if(/\{\{[A-Z_0-9]+\}\}/.test(content)) throw Error(`Unresolved marker: ${name}`);
+  await mkdir(path.dirname(file),{recursive:true});
+  await writeFile(file,content.replace(/^[\t ]+$/gm,''));
+  kept.add(file);
+}
+const [template,styles,script]=await Promise.all(['src/investor/index.html','src/investor/style.css','src/investor/app.js'].map(read));
+for(const locale of ['en','es']){
+  const prefix=locale==='es'?'es/':'';
+  const relative=locale==='es'?'../':'';
+  const localeMedia=Object.fromEntries(Object.entries(media).map(([name,url])=>[name,web?url:relative+url]));
+  let html=localize(template,locale).replace('<html lang="en">',`<html lang="${locale}">`)
+    .replace(/<title>[^<]*<\/title>/,shareMetadata(locale))
+    .replace('<link rel="stylesheet" href="style.css">',`<style>${styles}</style>`)
+    .replace(/(["'])media\/([^"']+)\1/g,(_,quote,name)=>{
+      if(!localeMedia[name]) throw Error(`Unknown media alias: ${name}`);
+      return quote+localeMedia[name]+quote;
+    });
+  if(!web)html=html.replace(/<form\b[^>]*class="[^"]*(?:signout|session-exit)[^"]*"[^>]*>[\s\S]*?<\/form>/g,'');
+  html=html.replaceAll('href="/downloads/Dulcinea-Floorplans.pdf"',`href="${localeMedia['floorplans.pdf']}"`);
+  for(const resource of ['financial-statements','investment-criteria']){
+    const target=web?`/${prefix}${resource}.html`:`${resource}.html`;
+    html=html.replaceAll(`href="${resource}.html`, `href="${target}`);
+  }
+  html=html.replace('<script src="app.js"></script>',`<script>window.DULCINEA_WEB=${web};window.DULCINEA_ASSETS=${JSON.stringify(localeMedia)};\n${script}</script>`);
+  await output(`${prefix}index.html`,html);
+  for(const name of ['financial-statements','investment-criteria']){
+    let page=await read(`src/${name}.html`);
+    const logo=name==='financial-statements'?lightLogo:darkLogo;
+    page=page.replaceAll('{{RESOURCE_LOGO}}',web?logo:relative+logo);
+    page=page.replace(/href="index\.html#slide-[78]"/g,`href="${web?(locale==='es'?'/es/':'/'):'index.html'}#${name==='financial-statements'?'fund':'homes'}"`);
+    if(locale==='es') page=toColombianSpanish(page).replace('<html lang="en">','<html lang="es">');
+    await output(`${prefix}${name}.html`,languageSwitch(page,name,locale));
+  }
+}
+if(web){
+  if(destination!==path.join(root,'dist/private-site')) throw Error('Unexpected output path');
+  async function prune(directory){
+    for(const entry of await readdir(directory,{withFileTypes:true})){
+      const file=path.resolve(directory,entry.name);
+      if(!file.startsWith(destination+path.sep)) throw Error('Unsafe cleanup path');
+      if(entry.isDirectory())await prune(file);else if(!kept.has(file))await rm(file);
+    }
+  }
+  await prune(destination);
+}
+console.log(`Built new investor design (${web?'protected web':'portable'}), English/Spanish, ${Object.keys(media).length} media aliases, three financial statements and criteria.`);

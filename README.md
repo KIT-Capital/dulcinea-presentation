@@ -1,136 +1,105 @@
 # Dulcinea One
 
-Dulcinea is a real estate investment firm with a unique platform focused on Medellín, Colombia. This flowing, 19-chapter presentation introduces Dulcinea One, its first fund, co-branded by Lola & Ber Hospitality. Dulcinea manages acquisition, renovation, operation and sale. It is based on the supplied **Dulcinea - Investor Presentation 027.pptx**. It brings lifestyle and investment together through the Medellín setting, nightlife, the Lola & Ber Hospitality co-brand, selected investment highlights, management, the offer and equity participation, and five property profiles. Numbers are kept light in the main story. Optional income-statement and balance-sheet menu links open a separate page using saved results from **Dulcinea Model 07.xlsx**.
+Dulcinea is a real estate investment firm focused on Medellín, Colombia. This investor website presents Dulcinea One, its first fund, co-branded by Lola & Ber Hospitality. Dulcinea manages acquisition, renovation, operation and sale. Investors acquire fund membership units in a Delaware LLC.
 
-The presentation uses the supplied Dulcinea branding and five exact Pantone colors, supplemented by a custom Yellow Gold accent (#D4AF37). Gold distinguishes “One” in the opening headline and wordmarks. Lighter backgrounds lead, with Coconut Shell reserved for accents. Wide property films alternate with split layouts to give the homes and people more space. Five user-requested AI lifestyle illustrations show fictional adults in settings based on the supplied property images. Each is labeled, and the original property imagery remains available in the viewer. PNG masters, optimized web images, and generation provenance are retained.
+The approved design is a flowing website: a cinematic opening, the investment approach, an interactive five-home collection, Lola & Ber lifestyle, the team, the offer and ask, and contact with Dov Tuzman. The offer shows a $7M raise, $2.1M committed and $4.9M open, plus three equity kickers. Detailed projections and acquisition criteria are separate resources. Figures and acquisition statuses reflect the supplied materials, not independently verified current subscriptions or completed closings.
 
-Silent videos use the user's supplied Adobe Stock footage: city and town aerials alternate with all five property films in the expanded opening, chefs preparing food bring the hospitality story to life, and the countryside shot appears briefly in the Why Medellín chapter. All nine distinct supplied stock clips are used. A property-viewing loop appears beside the acquisition criteria in Buying well. The Why Medellín chapter combines a city aerial, street-walking footage and a brief countryside scene in a 12-second loop; the countryside location is unverified and illustrative. The re-supplied green Medellín neon clip was verified as the same file already included in After dark. Five nine-second property loops animate the AI lifestyle stills with gentle camera motion; the people remain still. The 23-second after-dark sequence moves from night-road footage to the supplied Medellín neon animation, then into gentle camera moves across the evening and DJ/crowd photographs. The original 13-second photographic sequence is also retained. These photographic animations are not filmed human movement. The visual direction draws on [Radisson Resort Maldives](https://radissonresortmaldives.com/); no assets from that website are reused.
+English is the default; compact American and Colombian flag controls switch between English and Spanish. The header provides property and fund anchors, financials, criteria, contact and sign-out. Old `#slide-N` links map to corresponding new sections.
 
-The opening carries the supplied KIT Capital logo beside the supplied Lola & Ber emblem and wordmark, discreetly in its lower-right corner. The header and bottom controls occupy separate layout rows; the presentation scrolls between them so navigation does not overlay the content. `src/navigation-layout.css` owns that screen layout and leaves print sizing unchanged.
+## Design and media
 
-The current team portraits of Dov, Ricardo and Adriana use the later photographs supplied by the user, directly and unchanged. Earlier AI restoration candidates and the original deck portraits are retained as source material but are not used on screen. The local-specialists chapter uses a supplied Fontanar architectural plan.
+The visual direction follows the approved Aker and KOBU references recorded in `design/investor-site-reference-lock.md`, retaining the earlier Radisson lifestyle direction. The supplied palette leads: Blue Topaz, Plumeria, African Violet and Simply Green, with Coconut Shell used sparingly. Yellow Gold (`#D4AF37`) distinguishes “One.” Dulcinea, KIT Capital and Lola & Ber appear together discreetly in the opening. Contact buttons say “Talk to us” / “Hable con nosotros,” with Dov retained as the named contact.
 
-## Open the presentation
+The manual gallery contains all five selected homes, their original imagery, and five camera-move films made from AI lifestyle illustrations. The illustrations remain labeled. Nine complete floorplan pages cover Fontanar, San Lucas, Aires and Monte Sereno; Casa Montana has no supplied plan. The original PDF is available from the viewer. The team uses the later, unchanged photographs supplied for Dov, Ricardo and Adriana.
 
-The hosted deployment targets **https://invest.dulcineainvestments.org** on Cloudflare Workers. It uses a name/email form and shared password, matching the requested Tamarindo access pattern. This is a password gate, not OAuth. Presentation pages, financial statements, property media and downloads require sign-in. The exact login logo, Open Graph panorama and aerial clip URLs are public so link previews can fetch them; the robots policy is public as well. Sessions expire after eight hours; names and emails are not retained or sent anywhere. Access requests go to **kit@kitcapital.com**. The final presentation chapter offers Dov Tuzman by email or WhatsApp.
+All nine distinct supplied stock videos and all four supplied stock photographs are used on screen, directly or within edited films:
 
-The root URL serves the login form with a Dulcinea One title, description, panoramic Medellín share image and optional aerial-video metadata to visitors without a session. Open Graph video support varies by platform, so the image remains the primary preview. Both the login form and signed-in presentation carry the same social metadata.
+| Placement | Supplied stock assets |
+| --- | --- |
+| Opening montage | Videos `695926335`, `693150796`, `1849343666`; city photo `891890158`; all five property films |
+| Medellín lifestyle film | Videos `693150796` and `787505338` |
+| Hospitality film | Videos `80490822` and `539938219` |
+| Nightlife film | Videos `727024520` and `807462744`; photos `259715040`, `70649459` and `99551296` |
+| Property viewing | Video `762119818` |
+| Closing aerial | Video `693150796` |
 
-The main offer states the $7M fund raise, $2.1M source-reported commitments and $4.9M remaining ask. Investors acquire fund membership units; detailed terms remain in the expandable offer section.
+The walking woman and countryside woman remain in separate films and sections, outside the opening and closing. Repeated uploads and MOV/MP4 versions count as the same source asset. The website uses optimized MP4s and reuses canonical files rather than copying the same video under multiple names. Montages are distinct edits. Internal provenance and hashes remain in `assets/video/` and are excluded from the hosted build.
 
-Download or clone the repository and open `index.html` in a modern browser. This single file embeds its styles, scripts, images, SVG branding, videos, and supplied floorplan PDF. It works offline without installation or a server. External source links and the email contact require their respective services.
+Videos are silent and play while visible. Motion pauses when the page is hidden or a dialog is open. Reduced-motion preferences are respected; the icon control can pause animation. Camera movement over photographs does not simulate human movement. Floorplans remain still for inspection.
 
-Keep `financial-statements.html` alongside `index.html` for the optional financial menu links. This separate, self-contained page works offline and includes projected income and balance-sheet tables for the four model years, with USD units, period dates, source notes and mobile horizontal scrolling. It does not require opening or downloading the workbook.
+## Source and builds
 
-Keep `investment-criteria.html` alongside these files for the Investment criteria link. It presents the ten acquisition tests from the supplied Buy Box, with targets distinguished from modeled results. The Explore menu groups criteria, income statement and balance sheet under Investor resources.
+The active website source is:
 
-Scroll continuously through the story, or use the previous/next buttons, Left/Right keys, and Explore menu to jump between chapters. The home gallery supports touch, horizontal scrolling, and arrow buttons. Home/End jump to the beginning/end. Fullscreen is available where the browser permits it.
+- `src/investor/index.html`: structure and concise English/Spanish copy.
+- `src/investor/style.css`: responsive visual design.
+- `src/investor/app.js`: language, gallery, motion, dialogs and legacy anchors.
+- `src/investor/media.json`: canonical media aliases.
+- `src/financial-statements.html` and `src/investment-criteria.html`: investor resources.
+- `scripts/build-investor.mjs`: active builder, called by `scripts/build.mjs`.
 
-Property viewers open the lifestyle illustration, original imagery, and supplied plans with paging and zoom. Nine complete plan pages cover four homes, as confirmed by the user; source area labels are retained. Casa Montana has no supplied plan. The original PDF is available from the viewer.
+The former slide presentation remains in `src/presentation.*` and related files. `scripts/build-legacy.mjs` is retained for reference, not used by the standard production build. `assets/manifest.json` still supplies floorplan mappings.
 
-Background videos are silent and play only on their active slide. The footer motion control pauses or resumes videos and photo effects together. Editorial and gallery photos have gentle camera drift, portraits have a staggered soft reveal, and plans stay still for inspection. Motion pauses while a dialog is open or the page is hidden, and only visible photos animate. Reduced-motion preferences start with a still image; motion can be enabled explicitly. Still images also remain available when video playback is unavailable.
-
-## Edit and rebuild
-
-Edit the templates, CSS, and JavaScript in `src/`, the media references in `assets/manifest.json`, and palette values in `design/palette.json`. Run either command from the repository root with **Node.js 18 or newer**:
+Run from the repository root with Node.js 18 or newer:
 
 ```sh
 npm run build
 ```
 
-```sh
-node scripts/build.mjs
-```
-
-The build uses only Node.js built-in modules. No package installation, Python, or FFmpeg is required to build the presentation. The builder writes `index.html`, embedding the original media and SVG bytes. Keep the generated file in version control so it can be opened directly.
-
-The optional financial page is maintained in `src/financial-statements.html` and copied identically to the repository root by the build. Its numbers and exact source-cell references are retained in `content/financials.json`.
-
-## Cloudflare deployment
-
-The offline files above contain the presentation directly and do not have a password gate. Deploy only the hosted build through `wrangler.jsonc`, which requires `run_worker_first: true`. Do not deploy the repository root as a public static site.
+This writes portable English pages at the repository root and Spanish pages under `es/`. Styles and JavaScript are inline; media and branding remain separate files. Open `index.html` from a complete clone, keeping `assets/`, `brand/`, `source-packages/` and generated resource pages in place. The portable build has no password gate and is not a self-contained HTML file. External contact services require a connection. Do not publish the repository root as a static site.
 
 ```sh
-npm run test
 npm run build:site
-wrangler deploy --config wrangler.jsonc --secrets-file /private/path/secrets.json --strict
 ```
 
-The web build writes `dist/private-site/`: a small HTML entry point, the separate financial page, and only the assets actually referenced by the presentation. It excludes source spreadsheets, PowerPoint files, archives and internal provenance. Videos can stream separately. The supplied floorplan PDF remains a protected download.
+The hosted build writes `dist/private-site/`: six English/Spanish pages and selected media, branding and the floorplan download. It excludes Excel and PowerPoint sources, archives, internal notes and provenance. Canonical media paths allow videos to stream separately. Neither build requires Python or FFmpeg.
 
-Supply `INVESTOR_PASSWORD` (at least 11 characters) and `SESSION_SECRET` (at least 32 characters) through Cloudflare secrets. The secret file must remain outside this repository. Changing either value invalidates existing sessions. Never commit credentials or put them in browser JavaScript. The Worker requires the `LOGIN_LIMITER` binding and rejects login when configuration is missing. A local `.dev.vars` file is ignored by Git; use `PREVIEW_ONLY=true` with `wrangler dev --local` for local testing.
+## Financial statements
 
-The custom domain must be fully registered and its zone available in the configured Cloudflare account before deployment can attach it. Cloudflare manages the custom-domain DNS and certificate. After deploying, verify private direct URLs redirect to login, valid login grants access, wrong passwords fail, videos support playback, and logout clears the session.
+The financial resource contains the projected income statement, statement of cash flows and balance sheet. Key profit amounts have percentage margins immediately underneath. Net income after carry is expandable: the result and margin remain visible, while deduction detail opens on request. Numeric zero entries display as blank cells; missing values are not silently converted to zero.
 
-## Optional video rendering
+Investor pages stay concise, without Excel filenames, cells or calculation explanations. Exact values and reconciliation evidence remain internally in `content/financials.json`, `CONTENT-SOURCES.md` and `design/financial-reporting-rules.md`. Membership documents govern; projected returns are not guaranteed.
 
-The optimized stock clips and edited loops are already included. To regenerate the introduction and hospitality loops from the retained optimized clips, use Python and FFmpeg:
+## Protected hosting
+
+The configured Cloudflare Worker targets `https://invest.dulcineainvestments.org`. The design migration preserves the name/email form and shared-password login, eight-hour sessions, rate limiting and same-origin POST logout. This is a password gate, not OAuth. Names and emails are not retained or sent anywhere. Investor pages, media, financials, criteria and floorplans require authentication.
+
+Only the exact gate logo, social-preview panorama and aerial-video URLs, plus the robots policy, are public. The unauthenticated root serves the login page with social metadata. The panorama is the primary share image; video metadata is also supplied. Private responses use `Cache-Control: private, no-store`; `run_worker_first: true` must remain enabled.
+
+Access requests and contact email use `kit@kitcapital.com`. Dov’s WhatsApp link is `https://wa.me/19174284062`.
+
+### Local Worker preview
+
+Use an ignored `.dev.vars` file for local credentials. Keep credentials out of tracked files and browser JavaScript.
 
 ```sh
-python scripts/render-stock-videos.py
+npm run build:site
+wrangler dev --config wrangler.jsonc --local --ip 127.0.0.1 --port 8782 --local-upstream 127.0.0.1:8782 --upstream-protocol http --var PREVIEW_ONLY:true
 ```
 
-The introduction opens on the latest green city aerial and combines the retained city and town footage, all five animated property films, and the latest city panorama photograph, using half-second circular dissolves. Its dedicated renderer is `scripts/render-introduction.py`; the stock renderer calls it automatically.
+The explicit upstream host and protocol keep local requests on loopback HTTP, which the Worker permits for preview. Production remains HTTPS-only.
 
-To re-import the initial four original MOV files, add `--source-dir "/path/to/Stock Video"`. Originals remain untouched and are not copied into the repository. The two later stock clips are retained in optimized form with encoding options in `assets/video/stock/additional-provenance.json`. To rebuild the nightlife animation from its retained stock photographs, run:
+### Validate and deploy an update
 
 ```sh
-python scripts/render-nightlife.py
+npm test
+npm run build:site
+node scripts/verify-financials.mjs
+node scripts/verify-investor-build.mjs
+wrangler deploy --config wrangler.jsonc
 ```
 
-To combine the night-road and Medellín neon clips with that retained photographic sequence, run:
+Ordinary deployment preserves existing remote secrets. Do not add `--secrets-file` or reset credentials for a design update. Initial setup requires `INVESTOR_PASSWORD` of at least 11 characters, `SESSION_SECRET` of at least 32 characters, and the configured `LOGIN_LIMITER`. Changing either secret invalidates existing sessions.
 
-```sh
-python scripts/render-after-dark.py
-```
+The build gate checks packaged assets, language routes, navigation, inline script syntax, public share assets, team and plan coverage, and duplicate MP4s. Financial checks reconcile source values, margins, carry and cash balances. After deployment, separately verify login, wrong-password rejection, private direct links, English/Spanish resources, video playback/range requests and logout. A successful local build does not establish a verified production release.
 
-The result is `assets/video/medellin-after-dark.mp4`; its sequence, source hashes and validation are in `assets/video/after-dark-provenance.json`.
+## Optional media rendering
 
-To rebuild the five property loops from their retained AI illustration masters, run:
+Optimized files are included. Python and FFmpeg are needed only to regenerate media; original user files remain unchanged. Dedicated renderers include:
 
-```sh
-python scripts/render-property-videos.py
-```
+- `scripts/render-introduction.py`: city/town, city photograph and property montage.
+- `scripts/render-location.py` and `scripts/render-hospitality.py`: separate city-walking and hospitality/countryside films.
+- `scripts/render-nightlife.py`, `scripts/render-latest-photos.py` and `scripts/render-after-dark.py`: photographic camera moves and the combined nightlife film.
+- `scripts/render-property-videos.py` and `scripts/render-property-viewing.py`: property illustration loops and the apartment-viewing excerpt.
 
-This renderer records camera transforms, encoding and source hashes in `assets/video/properties/metadata/provenance.json`.
-
-FFmpeg can be on `PATH`, supplied with `--ffmpeg /path/to/ffmpeg`, or provided by the optional `imageio-ffmpeg` Python package. These are rendering tools, not dependencies of the HTML build. Run the Node.js build after rendering to embed the new videos.
-
-`scripts/render-videos.py` preserves the earlier still-image animation workflow for reference. It is superseded by the stock-footage renderer and is not part of the current build.
-
-## Files
-
-- `index.html`: complete offline presentation, including inline videos.
-- `financial-statements.html`: optional offline income statement and balance sheet, also retained in `src/`.
-- `src/`: editable presentation template, CSS, navigation/media controls, and retained internal source material.
-- `scripts/build.mjs`: dependency-free Node.js builder.
-- `scripts/render-stock-videos.py`: optional optimizer and editor for the supplied stock footage.
-- `scripts/render-introduction.py`: renderer for the city, property-film and photographic opening montage.
-- `scripts/render-nightlife.py`: optional renderer for camera motion across the supplied nightlife photographs.
-- `scripts/render-after-dark.py`: optional editor combining night-road footage, Medellín neon and the retained nightlife animation.
-- `scripts/render-property-videos.py`: optional renderer for the five nine-second property camera loops.
-- `scripts/render-property-viewing.py`: optional renderer for the supplied apartment-viewing footage used in Buying well.
-- `scripts/render-videos.py`: superseded still-image renderer, retained for reference.
-- `assets/manifest.json`: current image and video references used by the builder.
-- `assets/images/investor-deck/`: images extracted from the supplied PowerPoint.
-- `assets/images/lifestyle/`: five AI illustration masters, optimized web assets, and generation provenance.
-- `assets/images/team/`: three unchanged supplied team photographs, provenance, and unused earlier restoration candidates.
-- `assets/images/floorplans/`: nine complete, lossless web images rendered from the supplied PDF.
-- `assets/images/stock/`: original supplied nightlife stock photographs, unchanged.
-- `assets/video/`: edited stock loops, nightlife animation, optimized clips, posters, and source metadata.
-- `assets/video/properties/`: five nine-second animations of AI property illustrations, with camera and encoding provenance.
-- `brand/`: complete original supplied brand package, preserved without changes.
-- `design/`: brand palette with five supplied Pantone colors and custom Yellow Gold, source evidence, and the unchanged `Dulcinea-Pantone-palette.png` and `Dulcinea-Pantone-swatch-values.png` references.
-- `content/floorplans.json`: page mappings, exact source evidence, user confirmation, and area differences.
-- `content/financials.json`: saved income-statement and balance-sheet values, source cells, derived totals and reconciliation notes.
-- `source-packages/`: original supplied PowerPoint, financial workbook, copper logo ZIP, and `PLANOS PROPIEDADES DULCINEA.pdf`.
-- `CONTENT-SOURCES.md`: content coverage, source references, and model notes.
-- `ASSET-SOURCES.md`: imagery, video, palette, and branding provenance.
-
-## Content status
-
-Financial figures are source projections; acquisition statuses and other business claims reflect the supplied materials and documented user corrections. This repository does not independently verify those claims or guarantee returns. See `CONTENT-SOURCES.md` and the presentation's source notes for the treatment of differences between the deck and model. Membership documents govern the investment terms. Lifestyle and market imagery is illustrative unless identified as a source property image.
-
-The later street-walking source can be imported with `python scripts/import-latest-stock.py --source-dir "/path/to/Stock Video"`. Build the city-and-street sequence with `python scripts/render-location.py`. The original MOV files stay outside the repository; optimized MP4s and source hashes are retained.
-
-Import the later aerial with `python scripts/import-feature-stock.py "/path/to/Stock Video/AdobeStock_695926335.mov"`. `scripts/render-latest-photos.py` creates the two subtle photographic loops used by the opening and After dark sequences. Source files stay unchanged. See each script’s `--help` for source arguments.
+Consult each script’s help and matching provenance before rerendering, then rebuild the website. `scripts/render-videos.py` is a superseded workflow retained for reference. Source documents and evidence remain under `source-packages/`, `CONTENT-SOURCES.md` and `ASSET-SOURCES.md`; none are public report copy.
