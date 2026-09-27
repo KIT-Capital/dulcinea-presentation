@@ -12,8 +12,8 @@ export const disclosures = {
   ],
   offeringTitle: ['The investment', 'La inversión'],
   offering: [
-    'This presentation is informational and does not replace the definitive offering and membership documents, which govern eligibility, fees, carry, distributions and investor rights. It is not personalized investment, legal or tax advice. Consult your own advisers before investing.',
-    'Esta presentación es informativa y no sustituye los documentos definitivos de oferta y membresía, que rigen la elegibilidad, las comisiones, el carry, las distribuciones y los derechos del inversionista. No constituye asesoría personalizada de inversión, legal ni tributaria. Consulte a sus propios asesores antes de invertir.',
+    'Dulcinea Investments, LLC’s Managing Member is KIT Capital LLC, whose Managing Director is K. Dov Isaza Tuzman. This presentation does not replace the definitive offering and membership documents, which govern eligibility, fees, carry, distributions and investor rights. It is not personalized investment, legal or tax advice. Consult your own advisers before investing.',
+    'El socio administrador de Dulcinea Investments, LLC es KIT Capital LLC, cuyo director general es K. Dov Isaza Tuzman. Esta presentación no sustituye los documentos definitivos de oferta y membresía, que rigen la elegibilidad, las comisiones, el carry, las distribuciones y los derechos del inversionista. No constituye asesoría personalizada de inversión, legal ni tributaria. Consulte a sus propios asesores antes de invertir.',
   ],
   riskTitle: ['Capital at risk', 'Capital en riesgo'],
   risk: [

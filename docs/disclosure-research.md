@@ -22,3 +22,7 @@ The executed agreement supports $10,000 per unit. Its page 5 waterfall returns c
 - [Fundrise's homepage](https://fundrise.com/) uses a compact disclosure with a link to its [full notice](https://fundrise.com/legal/disclosure). The inspected homepage disclosure computed to 12px with 18px line height. Dulcinea uses 12px readable homepage/criteria disclosure text, solid backgrounds and dark type; the full Disclaimer page uses 14px body text. This is a design benchmark, not a legally approved font size.
 
 Homepage risk language is visible without opening a disclosure control. Financial projections and criteria have adjacent qualifications; the navigation also links to the full notice. English and Spanish have equivalent wording. The login screen is unchanged.
+
+## Management wording
+
+The user authorized management identification without Ashoka ownership details. The public Disclaimer identifies KIT Capital LLC as Dulcinea's Managing Member and K. Dov Isaza Tuzman as KIT's Managing Director. The executed operating agreement, section 5.1 and signature page 15, supports those roles; [KIT's team page](https://www.kitcapital.com/team/) corroborates the Managing Director title. Do not replace these with a blanket "Managing Partner of all companies" description. Ashoka's Managing Partner has not been verified; no Ashoka ownership information is included in investor-facing copy.
