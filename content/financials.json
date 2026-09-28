@@ -1,7 +1,7 @@
 {
   "source": {
-    "file": "Dulcinea Model 07.xlsx",
-    "sha256": "03ed999959a8b86eb4bce4695a2f50a1e8f34843d890a058af42c7aeec93511c",
+    "file": "Dulcinea Model 09.xlsx",
+    "sha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3",
     "method": "Read saved XML formula caches and formulas from the currently supplied workbook without editing or recalculating it. Annual values use C:F. Annual EBITDA and net income margins use the workbook percentages; aggregate margins use aggregate income / aggregate revenue. After-carry result is derived using the workbook carry payment timing.",
     "priorDeck": {
       "file": "Dulcinea - Investor Presentation 027.pptx",
@@ -10,7 +10,8 @@
         "balanceSheet": 20
       }
     },
-    "previousSourceSha256": "0b83807af2fdbb2268eb78c22e2bb5b93d9a733891e1b0e821078c34d6517d8c"
+    "previousSourceSha256": "03ed999959a8b86eb4bce4695a2f50a1e8f34843d890a058af42c7aeec93511c",
+    "modifiedUtc": "2026-09-28T12:20:47.370646+00:00"
   },
   "status": "Workbook projections; not actual results or guaranteed returns",
   "currency": "USD",
@@ -164,19 +165,19 @@
             "cell": "'Income Statement'!D29",
             "cachedValue": 308211.8392542858,
             "cachedValueText": "308211.83925428579",
-            "formula": null
+            "formula": "=D7+D18"
           },
           {
             "cell": "'Income Statement'!E29",
             "cachedValue": 5757019.7032676125,
             "cachedValueText": "5757019.7032676125",
-            "formula": null
+            "formula": "=E7+E18"
           },
           {
             "cell": "'Income Statement'!F29",
             "cachedValue": 5870880.757558045,
             "cachedValueText": "5870880.757558045",
-            "formula": null
+            "formula": "=F7+F18"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -213,19 +214,19 @@
             "cell": "'Income Statement'!D109",
             "cachedValue": 65495.015841535715,
             "cachedValueText": "65495.015841535715",
-            "formula": null
+            "formula": "=SUM(D104:D108)"
           },
           {
             "cell": "'Income Statement'!E109",
             "cachedValue": 3462499.2099707853,
             "cachedValueText": "3462499.2099707853",
-            "formula": null
+            "formula": "=SUM(E104:E108)"
           },
           {
             "cell": "'Income Statement'!F109",
             "cachedValue": 3595124.68985784,
             "cachedValueText": "3595124.6898578401",
-            "formula": null
+            "formula": "=SUM(F104:F108)"
           }
         ],
         "sourceSignMultiplier": -1,
@@ -262,19 +263,19 @@
             "cell": "'Income Statement'!D110",
             "cachedValue": 242716.8234127501,
             "cachedValueText": "242716.82341275009",
-            "formula": null
+            "formula": "=D103-D109"
           },
           {
             "cell": "'Income Statement'!E110",
             "cachedValue": 2294520.493296827,
             "cachedValueText": "2294520.4932968272",
-            "formula": null
+            "formula": "=E103-E109"
           },
           {
             "cell": "'Income Statement'!F110",
             "cachedValue": 2275756.067700205,
             "cachedValueText": "2275756.0677002049",
-            "formula": null
+            "formula": "=F103-F109"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -311,19 +312,19 @@
             "cell": "'Income Statement'!D111",
             "cachedValue": 0.7875000000000001,
             "cachedValueText": "0.78750000000000009",
-            "formula": null
+            "formula": "=IF(D103=0,0,D110/D103)"
           },
           {
             "cell": "'Income Statement'!E111",
             "cachedValue": 0.3985604725296469,
             "cachedValueText": "0.39856047252964688",
-            "formula": null
+            "formula": "=IF(E103=0,0,E110/E103)"
           },
           {
             "cell": "'Income Statement'!F111",
             "cachedValue": 0.3876345239631116,
             "cachedValueText": "0.3876345239631116",
-            "formula": null
+            "formula": "=IF(F103=0,0,F110/F103)"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -360,19 +361,19 @@
             "cell": "'Income Statement'!D139",
             "cachedValue": 143443.4701995685,
             "cachedValueText": "143443.47019956849",
-            "formula": null
+            "formula": "=SUM(D133:D138)"
           },
           {
             "cell": "'Income Statement'!E139",
             "cachedValue": 98751.51867583604,
             "cachedValueText": "98751.518675836036",
-            "formula": null
+            "formula": "=SUM(E133:E138)"
           },
           {
             "cell": "'Income Statement'!F139",
             "cachedValue": 16457.504045307447,
             "cachedValueText": "16457.504045307447",
-            "formula": null
+            "formula": "=SUM(F133:F138)"
           }
         ],
         "sourceSignMultiplier": -1,
@@ -409,19 +410,19 @@
             "cell": "'Income Statement'!D144",
             "cachedValue": 97305.06732064772,
             "cachedValueText": "97305.067320647722",
-            "formula": null
+            "formula": "=SUM(D141:D143)"
           },
           {
             "cell": "'Income Statement'!E144",
             "cachedValue": 77723.57577315922,
             "cachedValueText": "77723.575773159217",
-            "formula": null
+            "formula": "=SUM(E141:E143)"
           },
           {
             "cell": "'Income Statement'!F144",
             "cachedValue": 26276.937803835317,
             "cachedValueText": "26276.937803835317",
-            "formula": null
+            "formula": "=SUM(F141:F143)"
           }
         ],
         "sourceSignMultiplier": -1,
@@ -458,19 +459,19 @@
             "cell": "'Income Statement'!D147",
             "cachedValue": 1968.285892533895,
             "cachedValueText": "1968.2858925338951",
-            "formula": null
+            "formula": "=D110-D145"
           },
           {
             "cell": "'Income Statement'!E147",
             "cachedValue": 2118045.398847832,
             "cachedValueText": "2118045.3988478319",
-            "formula": null
+            "formula": "=E110-E145"
           },
           {
             "cell": "'Income Statement'!F147",
             "cachedValue": 2233021.625851062,
             "cachedValueText": "2233021.6258510621",
-            "formula": null
+            "formula": "=F110-F145"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -556,19 +557,19 @@
             "cell": "'Income Statement'!D153",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=D151+D152"
           },
           {
             "cell": "'Income Statement'!E153",
             "cachedValue": 280708.2657884876,
             "cachedValueText": "280708.26578848762",
-            "formula": null
+            "formula": "=E151+E152"
           },
           {
             "cell": "'Income Statement'!F153",
             "cachedValue": 287900.4808008274,
             "cachedValueText": "287900.48080082738",
-            "formula": null
+            "formula": "=F151+F152"
           }
         ],
         "sourceSignMultiplier": -1,
@@ -1019,19 +1020,19 @@
             "cell": "'Statement of Cash Flows'!D18",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=SUM(D8:D17)"
           },
           {
             "cell": "'Statement of Cash Flows'!E18",
             "cachedValue": 3206998.381877023,
             "cachedValueText": "3206998.3818770228",
-            "formula": null
+            "formula": "=SUM(E8:E17)"
           },
           {
             "cell": "'Statement of Cash Flows'!F18",
             "cachedValue": 3364967.637540453,
             "cachedValueText": "3364967.6375404531",
-            "formula": null
+            "formula": "=SUM(F8:F17)"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1068,19 +1069,19 @@
             "cell": "'Statement of Cash Flows'!D19",
             "cachedValue": 1968.285892533895,
             "cachedValueText": "1968.2858925338951",
-            "formula": null
+            "formula": "=D7+D18"
           },
           {
             "cell": "'Statement of Cash Flows'!E19",
             "cachedValue": 5044335.514936367,
             "cachedValueText": "5044335.514936367",
-            "formula": null
+            "formula": "=E7+E18"
           },
           {
             "cell": "'Statement of Cash Flows'!F19",
             "cachedValue": 5310088.782590687,
             "cachedValueText": "5310088.7825906873",
-            "formula": null
+            "formula": "=F7+F18"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1120,19 +1121,19 @@
             "cell": "'Statement of Cash Flows'!D32",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=SUM(D22:D31)"
           },
           {
             "cell": "'Statement of Cash Flows'!E32",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=SUM(E22:E31)"
           },
           {
             "cell": "'Statement of Cash Flows'!F32",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=SUM(F22:F31)"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1169,19 +1170,19 @@
             "cell": "'Statement of Cash Flows'!D43",
             "cachedValue": -91693.63538295578,
             "cachedValueText": "-91693.635382955777",
-            "formula": null
+            "formula": "=SUM(D33:D42)"
           },
           {
             "cell": "'Statement of Cash Flows'!E43",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=SUM(E33:E42)"
           },
           {
             "cell": "'Statement of Cash Flows'!F43",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=SUM(F33:F42)"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1218,19 +1219,19 @@
             "cell": "'Statement of Cash Flows'!D44",
             "cachedValue": -91693.63538295578,
             "cachedValueText": "-91693.635382955777",
-            "formula": null
+            "formula": "=D32+D43"
           },
           {
             "cell": "'Statement of Cash Flows'!E44",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=E32+E43"
           },
           {
             "cell": "'Statement of Cash Flows'!F44",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=F32+F43"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1417,19 +1418,19 @@
             "cell": "'Statement of Cash Flows'!D50",
             "cachedValue": 84829.97660354954,
             "cachedValueText": "84829.976603549541",
-            "formula": null
+            "formula": "=D47+D48+D49"
           },
           {
             "cell": "'Statement of Cash Flows'!E50",
             "cachedValue": -5057197.17,
             "cachedValueText": "-5057197.17",
-            "formula": null
+            "formula": "=E47+E48+E49"
           },
           {
             "cell": "'Statement of Cash Flows'!F50",
             "cachedValue": -5316658.021470345,
             "cachedValueText": "-5316658.0214703446",
-            "formula": null
+            "formula": "=F47+F48+F49"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1469,19 +1470,19 @@
             "cell": "'Statement of Cash Flows'!D52",
             "cachedValue": -4895.372886872341,
             "cachedValueText": "-4895.372886872341",
-            "formula": null
+            "formula": "=D19+D44+D50"
           },
           {
             "cell": "'Statement of Cash Flows'!E52",
             "cachedValue": -12861.655063632876,
             "cachedValueText": "-12861.655063632876",
-            "formula": null
+            "formula": "=E19+E44+E50"
           },
           {
             "cell": "'Statement of Cash Flows'!F52",
             "cachedValue": -6569.2388796573505,
             "cachedValueText": "-6569.2388796573505",
-            "formula": null
+            "formula": "=F19+F44+F50"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1518,19 +1519,19 @@
             "cell": "'Statement of Cash Flows'!D53",
             "cachedValue": 24326.266830162145,
             "cachedValueText": "24326.266830162145",
-            "formula": null
+            "formula": "=IF(D$4=1,0,C54)"
           },
           {
             "cell": "'Statement of Cash Flows'!E53",
             "cachedValue": 19430.893943289804,
             "cachedValueText": "19430.893943289804",
-            "formula": null
+            "formula": "=IF(E$4=1,0,D54)"
           },
           {
             "cell": "'Statement of Cash Flows'!F53",
             "cachedValue": 6569.2388796569285,
             "cachedValueText": "6569.2388796569285",
-            "formula": null
+            "formula": "=IF(F$4=1,0,E54)"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1567,19 +1568,19 @@
             "cell": "'Statement of Cash Flows'!D54",
             "cachedValue": 19430.893943289804,
             "cachedValueText": "19430.893943289804",
-            "formula": null
+            "formula": "=D52+D53"
           },
           {
             "cell": "'Statement of Cash Flows'!E54",
             "cachedValue": 6569.2388796569285,
             "cachedValueText": "6569.2388796569285",
-            "formula": null
+            "formula": "=E52+E53"
           },
           {
             "cell": "'Statement of Cash Flows'!F54",
             "cachedValue": -4.220055416226387e-10,
             "cachedValueText": "-4.220055416226387E-10",
-            "formula": null
+            "formula": "=F52+F53"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1652,7 +1653,7 @@
           6480272.384034519,
           6571966.019417475,
           3364967.6375404513,
-          -1.862645149230957e-9
+          -1.862645149230957e-09
         ],
         "displayValues": [
           "6,480,272",
@@ -1682,7 +1683,7 @@
           },
           {
             "cell": "'Balance Sheet'!F8",
-            "cachedValue": -1.862645149230957e-9,
+            "cachedValue": -1.862645149230957e-09,
             "cachedValueText": "-1.862645149230957E-9",
             "formula": "=SUMPRODUCT(('_Month Engine'!$C$5:$DR$5<=F$4)*('_Month Engine'!$C$18:$DR$18+'_Month Engine'!$C$31:$DR$31-'_Month Engine'!$C$83:$DR$83))"
           }
@@ -1699,7 +1700,7 @@
           6504598.650864681,
           6591396.913360765,
           3371536.876420108,
-          -2.2846506908535957e-9
+          -2.2846506908535957e-09
         ],
         "displayValues": [
           "6,504,599",
@@ -1719,19 +1720,19 @@
             "cell": "'Balance Sheet'!D10",
             "cachedValue": 6591396.913360765,
             "cachedValueText": "6591396.9133607652",
-            "formula": null
+            "formula": "=D7+D8+D9"
           },
           {
             "cell": "'Balance Sheet'!E10",
             "cachedValue": 3371536.876420108,
             "cachedValueText": "3371536.8764201081",
-            "formula": null
+            "formula": "=E7+E8+E9"
           },
           {
             "cell": "'Balance Sheet'!F10",
-            "cachedValue": -2.2846506908535957e-9,
+            "cachedValue": -2.2846506908535957e-09,
             "cachedValueText": "-2.2846506908535957E-9",
-            "formula": null
+            "formula": "=F7+F8+F9"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1813,19 +1814,19 @@
             "cell": "'Balance Sheet'!D20",
             "cachedValue": 6591396.913360766,
             "cachedValueText": "6591396.9133607661",
-            "formula": null
+            "formula": "=D17+D18+D19"
           },
           {
             "cell": "'Balance Sheet'!E20",
             "cachedValue": 3371536.8764201105,
             "cachedValueText": "3371536.8764201105",
-            "formula": null
+            "formula": "=E17+E18+E19"
           },
           {
             "cell": "'Balance Sheet'!F20",
             "cachedValue": 0,
             "cachedValueText": "0",
-            "formula": null
+            "formula": "=F17+F18+F19"
           }
         ],
         "sourceSignMultiplier": 1,
@@ -1834,7 +1835,7 @@
     ]
   },
   "reconciliation": {
-    "toleranceUsd": 1e-8,
+    "toleranceUsd": 1e-08,
     "passed": true,
     "checks": [
       "Annual statement section sums",

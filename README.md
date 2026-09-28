@@ -72,6 +72,8 @@ The financial resource contains the projected income statement, statement of cas
 
 Investor pages stay concise, without Excel filenames, cells or calculation explanations. Exact values and reconciliation evidence remain internally in `content/financials.json`, `CONTENT-SOURCES.md` and `design/financial-reporting-rules.md`. Membership documents govern; projected returns are not guaranteed.
 
+The current financial source is **Dulcinea Model 09.xlsx**, verified on 2026-09-28. `content/model-summary.json`, `content/financials.json` and property records use the same source hash. The workbook remains outside the app. The read-only source check requires Python with openpyxl; it reads saved values and expanded formulas without modifying or recalculating the workbook. The reconciliation is recorded in `docs/model-09-reconciliation.md`.
+
 ## Protected hosting
 
 The configured Cloudflare Worker targets `https://invest.dulcineainvestments.org`. Access uses the name/email form and shared password, with a browser-session cookie and an eight-hour server-side maximum. There is no persistent remembered sign-in. The session-policy version rejects cookies issued under the former persistent policy. Browser session restoration can restore session cookies according to the visitor's browser settings. Sign-out submits a same-origin CORS POST so the browser supplies the required Origin even under the site's no-referrer policy. This is a password gate, not OAuth. Names and emails are not retained or sent anywhere. Investor pages, media, financials, criteria and floorplans require authentication.
@@ -96,7 +98,8 @@ The explicit upstream host and protocol keep local requests on loopback HTTP, wh
 ```sh
 npm test
 npm run build:site
-node scripts/verify-financials.mjs
+python scripts/verify-model-source.py --source "/private/path/Dulcinea Model 09.xlsx"
+node scripts/verify-financials.mjs --source "/private/path/Dulcinea Model 09.xlsx"
 node scripts/verify-investor-build.mjs
 wrangler deploy --config wrangler.jsonc
 ```

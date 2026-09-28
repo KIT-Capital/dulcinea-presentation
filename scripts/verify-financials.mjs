@@ -32,8 +32,12 @@ for(let i=0;i<5;i++){
 for(const section of [data.profitAndLoss,data.afterCarry,data.cashFlows,data.balanceSheet])for(const row of section.rows.filter(r=>r.id)){
  for(let i=0;i<row.values.length;i++){const roundedZero=Math.round(Math.abs(row.values[i])*(row.unit==='percent'?1000:1))===0;assert.equal(row.displayValues[i]==='',roundedZero,`${row.id}[${i}] zero display`);}
 }
-const snapshot=await readFile(path.join(root,'source-packages/Dulcinea Model 07 - Financial statements 2026-09-27.xlsx'));
+const sourceArgument=process.argv.indexOf('--source');
+assert(sourceArgument!==-1&&process.argv[sourceArgument+1],'Pass --source with the private authoritative workbook path');
+const snapshot=await readFile(path.resolve(process.argv[sourceArgument+1]));
 assert.equal(createHash('sha256').update(snapshot).digest('hex'),data.source.sha256);
+const summary=JSON.parse(await readFile(path.join(root,'content/model-summary.json'),'utf8'));
+assert.equal(summary.provenance.sha256,data.source.sha256,'All financial source records must use the same workbook');
 for(const locale of ['','es/']){
  const html=await readFile(path.join(root,`dist/private-site/${locale}financial-statements.html`),'utf8');
  const cells=[...html.matchAll(/<td\b[^>]*>(.*?)<\/td>/gs)].map(m=>m[1]);
@@ -46,5 +50,15 @@ for(const locale of ['','es/']){
    const rows=[...html.matchAll(/<tr[^>]*data-id="([^"]+)"[^>]*>/g)].map(m=>m[1]);
    const index=rows.indexOf(id);assert.equal(rows[index+1],margin,`${id} margin placement`);
  }
+ const home=await readFile(path.join(root,`dist/private-site/${locale}index.html`),'utf8');
+ const irr=(summary.headline.monthlyXirr.value*100).toFixed(1)+'%';
+ const multiple=summary.headline.moicOnCalledCapital.value.toFixed(2)+'×';
+ assert(home.includes(`<strong>${irr}</strong>`),'Homepage/presentation investor IRR differs from model');
+ assert(home.includes(`<strong>${multiple}</strong>`),'Homepage/presentation multiple differs from model');
+ const criteria=await readFile(path.join(root,`dist/private-site/${locale}investment-criteria.html`),'utf8');
+ const hurdle=(summary.criteria.minimumDealIrr.value*100).toFixed(0);
+ assert(criteria.includes(locale?`TIR del ${hurdle}% por operación`:`${hurdle}% deal-level IRR`),'Criteria hurdle differs from model');
+ assert(!criteria.includes('15% investor IRR')&&!criteria.includes('TIR del 15% para el inversionista'),'Stale investor-level screening hurdle');
+ assert(!criteria.includes('data-source='),'Criteria page exposes internal source references');
 }
 console.log('Verified source hash, statement arithmetic, margins, carry bridge, cash/BS reconciliation, EN/ES values, blank zeros and investor-facing content.');

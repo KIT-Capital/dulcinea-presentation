@@ -5,9 +5,10 @@ import { financialTranslations, preserveFinancialIdentifiers } from './financial
 const translations = [
   ...financialTranslations,
   ['Criteria marked as met reflect estimates of anticipated results for each property and the portfolio as a whole. They are subject to underwriting and due diligence, not confirmation of achieved results or a guarantee of future performance.', 'Los criterios señalados como cumplidos reflejan estimaciones de los resultados esperados de cada propiedad y del portafolio en su conjunto. Están sujetos a evaluación de inversión y debida diligencia; no confirman resultados ya alcanzados ni garantizan el desempeño futuro.'],
-  ['Investor-level screening hurdle, after carry and gains tax.', 'Umbral de selección a nivel del inversionista, después de carry e impuestos sobre las ganancias.'],
+  ['Deal-level screening hurdle, after gains tax.', 'Umbral de selección por operación, después de impuestos sobre las ganancias.'],
+  ['20% deal-level IRR', 'TIR del 20% por operación'],
   ['Return targets and assumptions', 'Objetivos de rentabilidad y supuestos'],
-  ['Screening thresholds are 15% investor IRR after carry and gains tax, and 20% deal-level IRR after gains tax. The fund’s projected 15.7% investor IRR is a separate portfolio projection.', 'Los umbrales de selección son una TIR del 15% para el inversionista después de carry e impuestos sobre las ganancias, y una TIR del 20% por operación después de impuestos sobre las ganancias. La TIR proyectada del 15,7% para el inversionista del fondo es una proyección independiente del portafolio.'],
+  ['The screening threshold is 20% deal-level IRR after gains tax. The fund’s projected 15.7% investor IRR is a separate portfolio projection, after tax and carry.', 'El umbral de selección es una TIR del 20% por operación después de impuestos sobre las ganancias. La TIR proyectada del 15,7% para el inversionista del fondo es una proyección independiente del portafolio, después de impuestos y carry.'],
   ['Selection targets. Membership documents govern.', 'Objetivos de selección. Prevalecen los documentos de suscripción.'],
   ['Disclaimer', 'Aviso legal'],
   ['Dulcinea One | Investor presentation', 'Dulcinea One | Presentación para inversionistas'],

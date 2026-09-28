@@ -22,11 +22,12 @@
     "rentalMonths": 19,
     "rentalMonthsSource": "Properties!U8-T8; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 07.xlsx",
+      "model": "Dulcinea Model 09.xlsx",
       "cells": "Properties!C8:X8",
       "deck": "Dulcinea - Investor Presentation 027.pptx",
       "slide": 14,
-      "status": "Source-reported property status; not independently refreshed"
+      "status": "Source-reported property status; not independently refreshed",
+      "sha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3"
     },
     "sourceNote": "All-in cost is below the stated $750K acquisition target."
   },
@@ -40,7 +41,7 @@
     "allin": "$1.17M",
     "works": "Six months; $485K budget",
     "rent": "22 modeled rental months; approximately $19K stabilized annual property NOI",
-    "status": "Signed; closing September 2026",
+    "status": "Signed; closing 4Q26",
     "exit": "4Q26 to 1Q29; 28-month hold",
     "value": "$2.02M",
     "uplift": "1.73×",
@@ -53,11 +54,12 @@
     "rentalMonths": 22,
     "rentalMonthsSource": "Properties!U6-T6; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 07.xlsx",
+      "model": "Dulcinea Model 09.xlsx",
       "cells": "Properties!C6:X6",
       "deck": "Dulcinea - Investor Presentation 027.pptx",
       "slide": 15,
-      "status": "Source-reported property status; not independently refreshed"
+      "status": "Source-reported property status; not independently refreshed",
+      "sha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3"
     }
   },
   {
@@ -70,7 +72,7 @@
     "allin": "$1.29M",
     "works": "Six months; $246K budget",
     "rent": "24 modeled rental months; approximately $17K stabilized annual property NOI",
-    "status": "Signed; closing September 2026",
+    "status": "Signed; closing 4Q26",
     "exit": "4Q26 to 2Q29; 30-month hold",
     "value": "$2.26M",
     "uplift": "1.75×",
@@ -83,11 +85,12 @@
     "rentalMonths": 24,
     "rentalMonthsSource": "Properties!U7-T7; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 07.xlsx",
+      "model": "Dulcinea Model 09.xlsx",
       "cells": "Properties!C7:X7",
       "deck": "Dulcinea - Investor Presentation 027.pptx",
       "slide": 16,
-      "status": "Source-reported property status; not independently refreshed"
+      "status": "Source-reported property status; not independently refreshed",
+      "sha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3"
     }
   },
   {
@@ -113,11 +116,12 @@
     "rentalMonths": 26,
     "rentalMonthsSource": "Properties!U10-T10; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 07.xlsx",
+      "model": "Dulcinea Model 09.xlsx",
       "cells": "Properties!C10:X10",
       "deck": "Dulcinea - Investor Presentation 027.pptx",
       "slide": 17,
-      "status": "Source-reported property status; not independently refreshed"
+      "status": "Source-reported property status; not independently refreshed",
+      "sha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3"
     }
   },
   {
@@ -143,11 +147,12 @@
     "rentalMonths": 29,
     "rentalMonthsSource": "Properties!U9-T9; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 07.xlsx",
+      "model": "Dulcinea Model 09.xlsx",
       "cells": "Properties!C9:X9",
       "deck": "Dulcinea - Investor Presentation 027.pptx",
       "slide": 18,
-      "status": "Source-reported property status; not independently refreshed"
+      "status": "Source-reported property status; not independently refreshed",
+      "sha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3"
     },
     "sourceNote": "Model six-month works assumption supersedes the deck’s nine months."
   }

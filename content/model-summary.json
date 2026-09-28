@@ -1,10 +1,12 @@
 {
   "provenance": {
-    "source": "Dulcinea Model 07.xlsx",
-    "sha256": "0b83807af2fdbb2268eb78c22e2bb5b93d9a733891e1b0e821078c34d6517d8c",
-    "workbookModifiedMetadata": "2026-09-25T16:16:09Z",
+    "source": "Dulcinea Model 09.xlsx",
+    "sha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3",
+    "workbookModifiedMetadata": "2026-09-28T12:20:47Z",
     "method": "Read-only ZIP XML and openpyxl cached-value/formula inspection. No Excel recalculation, workbook edit, or external upload. USD unless stated.",
-    "authority": "User-supplied authoritative model; numeric live cells take precedence over conflicting PPTX and stale workbook prose."
+    "authority": "User-supplied authoritative model; numeric live cells take precedence over conflicting PPTX and stale workbook prose.",
+    "modifiedUtc": "2026-09-28T12:20:47.370646+00:00",
+    "previousSourceSha256": "0b83807af2fdbb2268eb78c22e2bb5b93d9a733891e1b0e821078c34d6517d8c"
   },
   "activeScenario": {
     "description": "Five selected properties; full USD 7M commitment model; 30% entry discount for all five; 60% booked occupancy; flat COP/USD 3090; six-month works for all five; 8.5% El Poblado and 7.15% El Retiro annual appreciation.",
@@ -116,7 +118,7 @@
     },
     "netIncomeBeforeCarryUsd": {
       "value": 3658342.949466321,
-      "ref": "SUM('Income Statement'!C154:F154)"
+      "ref": "SUM('Income Statement'!C155:F155)"
     }
   },
   "annualInvestorCashFlows": [
@@ -517,11 +519,11 @@
     },
     "ordinaryIncomeTaxTotalUsd": {
       "value": 0,
-      "ref": "SUM('Income Statement'!C150:F150)"
+      "ref": "SUM('Income Statement'!C151:F151)"
     },
     "gainsTaxTotalUsd": {
       "value": 568608.746589315,
-      "ref": "SUM('Income Statement'!C151:F151)"
+      "ref": "SUM('Income Statement'!C152:F152)"
     },
     "strRevenueTaxRate": {
       "value": 0.012500000000000002,
@@ -1197,7 +1199,7 @@
       "value": 86801.33442033548,
       "ref": "'Sources & Uses'!C7"
     },
-    "caution": "C7 = C16-C6, a balancing residual. Its label says commitment cap binding, contradicted by C23 undrawn $280,199.76. C18 is zero by construction, not an independent funding test. Do not label $6.8066M as investor called capital."
+    "caution": "C7 is the contribution from rental income and retained sale proceeds, not additional called capital. C23 is undrawn commitment; the capital cap is not binding. Do not label total uses of $6.8066M as investor called capital."
   },
   "reconciliation": [
     {
@@ -1216,7 +1218,7 @@
       "model": "Year 2 tax $0; Year 2 net income $1,968.2859; lifetime net income $3,658,342.9495",
       "decision": "Use workbook values; cumulative loss formula supersedes earlier PPTX tax.",
       "refs": [
-        "'Income Statement'!C150:F154"
+        "'Income Statement'!C151:F155"
       ]
     },
     {
@@ -1233,7 +1235,7 @@
       "topic": "Acquisition status",
       "pptx": "Conflicting one bought / two closed / signed pending closing",
       "model": "Aires and Fontanar signed, closing Sep 2026; other three negotiated",
-      "decision": "Use signed and negotiated source labels. Actual closing is not verified.",
+      "decision": "Use signed and negotiated source labels with the user-requested 4Q26 closing wording. Actual closing is not verified.",
       "refs": [
         "'Properties'!C6:C10",
         "'Properties'!H6:H10"
@@ -1243,9 +1245,10 @@
       "topic": "Acquisition hurdle",
       "pptx": "15% investor IRR minimum after carry and tax",
       "model": "20% deal-level after-gains-tax minimum; actual portfolio 20.8103%",
-      "decision": "Use workbook hurdle and distinguish deal from investor return. Do not claim all ten criteria verified.",
+      "decision": "Use 20% deal-level IRR after gains tax in the criteria page. Keep the projected 15.7% investor return distinct. Do not claim all ten criteria verified.",
       "refs": [
         "'The Buy Box'!C18:D18",
+        "'The Buy Box'!C37",
         "'The Buy Box'!C28",
         "'The Buy Box'!J22:J26"
       ]
@@ -1273,7 +1276,7 @@
   ],
   "quality": {
     "cachedExcelErrors": [],
-    "formulaCellCount": 20440,
+    "formulaCellCount": 20466,
     "emptyFormulaCachesByXmlType": {
       "str": 320
     },
@@ -1321,5 +1324,12 @@
       "Workbook includes stale prose in Dashboard!B46, _Forced Assumptions and _IRR Engine!A2; live formulas and numeric inputs take precedence.",
       "Financial assumptions and forecasted returns are not verified transaction outcomes or guarantees."
     ]
+  },
+  "criteria": {
+    "minimumDealIrr": {
+      "value": 0.2,
+      "ref": "'The Buy Box'!C37"
+    },
+    "returnBasis": "Deal-level IRR after gains tax; separate from net investor IRR after fund costs and carry."
   }
 }
