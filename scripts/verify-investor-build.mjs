@@ -144,6 +144,16 @@ for (const [pagePath, html] of pages) {
   assert.match(markup, /href=["']mailto:kit@kitcapital\.com["']/, `Missing Dov email: ${pagePath}`);
   for (const person of ['K. Dov Isaza Tuzman', 'Ricardo Cidale', 'Adriana Suárez']) assert.ok(textContent(markup).includes(person), `Missing team member ${person}: ${pagePath}`);
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
+  for(const chapter of ['destination','ownership','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
+  assert.deepEqual([...markup.matchAll(/data-preview-home="(\d)"/g)].map(match=>Number(match[1])),[0,1,2,3,4],`Every property film must be directly discoverable: ${pagePath}`);
+  assert.ok(markup.indexOf('id="fund"') < markup.indexOf('id="team"'),'The offer should precede the team directory');
+  assert.match(markup, /<details class="model" open>/,'Projected results should be visible without a click');
+  assert.match(markup, /id="experience-hospitality"[^>]*loop/,'Hospitality film must loop independently');
+  assert.match(markup, /id="experience-nightlife"[^>]*loop/,'Nightlife film must loop independently');
+  assert.doesNotMatch(html, /#experience-hospitality\s*\{\s*opacity:\s*0/, 'Hospitality video must remain visible');
+  const homepageFilms = new Set([...markup.matchAll(/<video\b[^>]*>/gi)].map(match=>attributes(match[0]).src));
+  const expectedFilms = new Set(Object.entries(map).filter(([alias])=>alias.endsWith('.mp4')).map(([,url])=>url));
+  assert.deepEqual(homepageFilms,expectedFilms,`Every film should appear while scrolling the homepage: ${pagePath}`);
   const homeBlock = html.match(/const homes\s*=\s*\[([\s\S]*?)\n\];/);
   assert.ok(homeBlock, `Missing home configuration: ${pagePath}`);
   const homePlans = [...homeBlock[1].matchAll(/key:\s*['"]([^'"]+)['"][^\n]*?plans:\s*\[([^\]]*)\]/g)].map(([, key, planList]) => [key, planList.split(',').map(value => value.trim()).filter(Boolean).map(Number)]);

@@ -29,12 +29,9 @@ const plansDownload = $('#plans-dialog a[download]');
 if (plansDownload) plansDownload.href = assetMap['floorplans.pdf'] || new URL(plansDownload.getAttribute('href'),location.href).href;
 const dialogs = [...document.querySelectorAll('dialog')];
 const propertyVideo = $('#property-video');
-const experienceVideos = [$('#experience-nightlife'),$('#experience-hospitality')].filter(Boolean);
-let experienceActive = 0, experienceChanging = false, experienceRetryAt = 0;
 function canAnimate() { return !paused && !document.hidden && !dialogs.some(dialog => dialog.open); }
-function isExperienceActive(video) { return !experienceVideos.includes(video) || video === experienceVideos[experienceActive] || experienceChanging; }
 function syncVideo(video) {
-  if (canAnimate() && visibleVideos.has(video) && isExperienceActive(video)) video.play().catch(() => {});
+  if (canAnimate() && visibleVideos.has(video)) video.play().catch(() => {});
   else video.pause();
 }
 function syncMotion() { document.body.classList.toggle('is-paused',!canAnimate()); videos.forEach(syncVideo); }
@@ -56,63 +53,7 @@ function motionState() {
 motion?.addEventListener('click',() => { paused = !paused; motionState(); });
 reduce.addEventListener('change',event => { paused = event.matches; motionState(); });
 document.addEventListener('visibilitychange',syncMotion);
-// Keep hospitality and nightlife distinct from the city-walking, hero and closing films.
-function advanceExperience() {
-  if (experienceVideos.length < 2 || experienceChanging || !canAnimate() || Date.now() < experienceRetryAt) return;
-  const outgoing = experienceVideos[experienceActive];
-  const previousIndex = experienceActive;
-  const nextIndex = (experienceActive + 1) % experienceVideos.length;
-  const incoming = experienceVideos[nextIndex];
-  if (!visibleVideos.has(outgoing)) return;
-  experienceChanging = true;
-  let settled = false, fadeStarted = false, timeout, fadeTimer;
-  const cleanup = () => {
-    clearTimeout(timeout); clearTimeout(fadeTimer);
-    incoming.removeEventListener('canplay',startFade);
-    incoming.removeEventListener('error',onError);
-  };
-  const recover = (retryDelay = true) => {
-    if (settled) return;
-    settled = true; cleanup(); experienceChanging = false; experienceActive = previousIndex;
-    experienceRetryAt = retryDelay ? Date.now() + 30000 : 0;
-    incoming.pause(); incoming.style.opacity = '0'; outgoing.style.opacity = '1';
-    // Keep the available film moving while a failed clip waits for a later retry.
-    outgoing.loop = true;
-    if (outgoing.ended) outgoing.currentTime = 0;
-    syncMotion();
-  };
-  const onError = () => recover();
-  const startFade = () => {
-    if (settled || fadeStarted) return;
-    if (!canAnimate() || !visibleVideos.has(outgoing)) { recover(false); return; }
-    fadeStarted = true;
-    incoming.play().then(() => {
-      if (settled) { incoming.pause(); return; }
-      if (!canAnimate() || !visibleVideos.has(outgoing)) { recover(false); return; }
-      outgoing.loop = false; incoming.loop = false;
-      incoming.style.opacity = '1'; outgoing.style.opacity = '0'; experienceActive = nextIndex;
-      clearTimeout(timeout);
-      fadeTimer = setTimeout(() => {
-        if (settled) return;
-        settled = true; cleanup(); experienceChanging = false; experienceRetryAt = 0;
-        outgoing.pause(); syncMotion();
-      },800);
-    }).catch(() => recover(canAnimate()));
-  };
-  incoming.addEventListener('error',onError,{once:true});
-  timeout = setTimeout(() => recover(),15000);
-  incoming.currentTime = 0;
-  if (incoming.readyState >= 2) startFade();
-  else { incoming.addEventListener('canplay',startFade,{once:true}); incoming.load(); }
-}
-experienceVideos.forEach((video,index) => {
-  video.loop = false;
-  video.style.opacity = index === 0 ? '1' : '0';
-  video.addEventListener('timeupdate',() => {
-    if (index === experienceActive && Number.isFinite(video.duration) && video.currentTime >= video.duration - .85) advanceExperience();
-  });
-  video.addEventListener('ended',advanceExperience);
-});
+// Hospitality and nightlife now have separate, viewport-controlled film chapters.
 function homeLabel(index) { return `${lang === 'es' ? 'Ver' : 'View'} ${homes[index].name}`; }
 function layoutPlan(preservePosition = true) {
   if (!plansDialog?.open || !planImage?.complete || !planImage.naturalWidth || planImage.hidden) return;
@@ -199,6 +140,18 @@ function renderHome(changeMedia = true) {
 $('#next-home').addEventListener('click',() => { current = (current + 1) % homes.length; renderHome(); });
 $('#prev-home').addEventListener('click',() => { current = (current + homes.length - 1) % homes.length; renderHome(); });
 document.querySelectorAll('[data-home]').forEach(button => button.addEventListener('click',() => { current = Number(button.dataset.home); renderHome(); }));
+// Film previews lead to the existing detailed viewer, including plans and status.
+document.querySelectorAll('[data-preview-home]').forEach(link => link.addEventListener('click',event => {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  const index = Number(link.dataset.previewHome);
+  if (!Number.isInteger(index) || !homes[index]) return;
+  current = index; renderHome();
+  const url = new URL(location.href); url.hash = 'homes'; history.replaceState(history.state,'',url);
+  $('#homes').scrollIntoView({behavior:reduce.matches ? 'instant' : 'smooth',block:'start'});
+  const heading = $('#property-name');
+  heading.setAttribute('tabindex','-1'); heading.focus({preventScroll:true});
+}));
 function translateAria() {
   const labels = {
     '.primary':['Main navigation','Navegación principal'], '.language':['Language','Idioma'],

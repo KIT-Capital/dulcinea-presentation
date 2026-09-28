@@ -1,7 +1,7 @@
 {
   "source": {
     "file": "Dulcinea Model 09.xlsx",
-    "sha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3",
+    "sha256": "9c6f9654d3cf02b83fbe71902619eb5fd5a7a83bd5dc1247aaae80635cdf8fb9",
     "method": "Read saved XML formula caches and formulas from the currently supplied workbook without editing or recalculating it. Annual values use C:F. Annual EBITDA and net income margins use the workbook percentages; aggregate margins use aggregate income / aggregate revenue. After-carry result is derived using the workbook carry payment timing.",
     "priorDeck": {
       "file": "Dulcinea - Investor Presentation 027.pptx",
@@ -10,8 +10,8 @@
         "balanceSheet": 20
       }
     },
-    "previousSourceSha256": "03ed999959a8b86eb4bce4695a2f50a1e8f34843d890a058af42c7aeec93511c",
-    "modifiedUtc": "2026-09-28T12:20:47.370646+00:00"
+    "previousSourceSha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3",
+    "modifiedUtc": "2026-09-28T12:49:00.894371+00:00"
   },
   "status": "Workbook projections; not actual results or guaranteed returns",
   "currency": "USD",

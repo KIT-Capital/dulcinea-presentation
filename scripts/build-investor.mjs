@@ -78,7 +78,7 @@ async function output(name,content){
   await writeFile(file,content.replace(/^[\t ]+$/gm,''));
   kept.add(file);
 }
-const [template,styles,script,presentationStyles,presentationScript,responsiveStyles,floorplanStyles,propertyStyles]=await Promise.all(['src/investor/index.html','src/investor/style.css','src/investor/app.js','src/investor/presentation.css','src/investor/presentation.js','src/investor/presentation-responsive.css','src/investor/floorplans.css','src/investor/properties.css'].map(read));
+const [template,styles,script,presentationStyles,presentationScript,responsiveStyles,floorplanStyles,propertyStyles,storyStyles]=await Promise.all(['src/investor/index.html','src/investor/style.css','src/investor/app.js','src/investor/presentation.css','src/investor/presentation.js','src/investor/presentation-responsive.css','src/investor/floorplans.css','src/investor/properties.css','src/investor/homepage-story.css'].map(read));
 for(const locale of ['en','es']){
   const prefix=locale==='es'?'es/':'';
   const relative=locale==='es'?'../':'';
@@ -90,6 +90,7 @@ for(const locale of ['en','es']){
     .replace('<link rel="stylesheet" href="presentation-responsive.css">',`<style>${responsiveStyles}</style>`)
     .replace('<link rel="stylesheet" href="floorplans.css">',`<style>${floorplanStyles}</style>`)
     .replace('<link rel="stylesheet" href="properties.css">',`<style>${propertyStyles}</style>`)
+    .replace('<link rel="stylesheet" href="homepage-story.css">',`<style>${storyStyles}</style>`)
     .replace(/(["'])media\/([^"']+)\1/g,(_,quote,name)=>{
       if(!localeMedia[name]) throw Error(`Unknown media alias: ${name}`);
       return quote+localeMedia[name]+quote;

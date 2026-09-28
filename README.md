@@ -2,7 +2,7 @@
 
 Dulcinea is a real estate investment firm focused on Medellín, Colombia. This investor website presents Dulcinea One, its first fund, co-branded by Lola & Ber Hospitality. Dulcinea manages acquisition, renovation, operation and sale. Investors acquire fund membership units in a Delaware LLC.
 
-The approved design is a flowing website: a cinematic opening, the investment approach, an interactive five-home collection, Lola & Ber lifestyle, the team, the offer and ask, and contact with Dov Tuzman. The offer shows a $7M raise, $2.1M committed and $4.9M open, plus three equity kickers. Detailed projections and acquisition criteria are separate resources. Figures and acquisition statuses reflect the supplied materials, not independently verified current subscriptions or completed closings.
+The website tells the investment story on the homepage: a cinematic opening, a visible subscription summary, the investment approach, Medellín, all five property films, Lola & Ber hospitality, ownership benefits and nightlife. The offer, three equity kickers and expanded projected returns precede the team and contact. A chapter index and resource directory supplement the existing navigation. The offer shows a $7M raise, $2.1M committed and $4.9M open. Detailed projections and acquisition criteria remain separate resources. Figures and acquisition statuses reflect the supplied materials, not independently verified current subscriptions or completed closings.
 
 English is the default; compact American and Colombian flag controls switch between English and Spanish. The header provides property and fund anchors, financials, criteria, contact and sign-out. Old `#slide-N` links map to corresponding new sections.
 
@@ -33,6 +33,8 @@ The walking woman and countryside woman remain in separate films and sections, o
 
 Videos are silent and play while visible. Motion pauses when the page is hidden or a dialog is open. Reduced-motion preferences are respected; the icon control can pause animation. Camera movement over photographs does not simulate human movement. Floorplans remain still for inspection.
 
+All eleven distinct presentation films are discoverable by scrolling the homepage. Property-film links select the corresponding home in the detailed viewer, including its status, original imagery and available plans. Hospitality and nightlife loop in separate chapters. New homepage chapters do not add or alter the sixteen presentation steps. The homepage reference decisions are recorded in `design/homepage-story.md`.
+
 The property floorplan viewer prioritizes notebook screens, with direct sheet selection, fit-to-window and zoom controls. Nine plan-only drawings cover Fontanar, San Lucas, Aires and Monte Sereno, including Monte Sereno's site and roof plans. The original PDF remains available for download; no plan is assigned to Casa Montana. The supplied PNGs are encoded losslessly at their original resolution. Fontanar uses the original PDF image's transparency mask on white to correct the PNG export's black borders. Room geometry, labels and dimensions are preserved; no generative reconstruction or invented detail is used. Asset hashes and the earlier source discrepancies remain in `content/floorplans.json`.
 
 ## Source and builds
@@ -41,6 +43,7 @@ The active website source is:
 
 - `src/investor/index.html`: structure and concise English/Spanish copy.
 - `src/investor/style.css`: responsive visual design.
+- `src/investor/homepage-story.css`: homepage chapters, film previews and resource directory.
 - `src/investor/properties.css`: notebook-first collection and individual property slides.
 - `src/investor/floorplans.css`: notebook-first drawing viewer, with touch support.
 - `src/investor/app.js`: language, gallery, motion, dialogs and legacy anchors.

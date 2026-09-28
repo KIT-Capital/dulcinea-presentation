@@ -2,7 +2,7 @@
 
 Internal verification record. Excluded from the investor build and unavailable through the Worker, including after authentication.
 
-Source: `Dulcinea Model 09.xlsx`, modified 2026-09-28T12:20:47.370646Z. SHA-256: `e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3`.
+Source: `Dulcinea Model 09.xlsx`, modified 2026-09-28T12:49:00.894371Z. SHA-256: `9c6f9654d3cf02b83fbe71902619eb5fd5a7a83bd5dc1247aaae80635cdf8fb9`.
 
 Read the saved values and formulas without modifying, copying into the repository, uploading or recalculating the workbook. Expanded shared and array formulas for the internal source map. The original hash was unchanged after verification.
 
@@ -17,3 +17,7 @@ Read the saved values and formulas without modifying, copying into the repositor
 The Buy Box nightly-rate and deal-size ranges are screening targets. Modeled ADRs of $250–$340 and San Lucas's $747,370.55 all-in cost are not evidence that every target has been met. Existing anticipated-results and underwriting qualifiers remain.
 
 Source workbook, company documents and this record are not included in hosted assets. The approved floorplan PDF remains available.
+
+## Same-value source refresh
+
+A later save of the same workbook changed its hash from `e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3` to the current hash above. Rechecked all 144 financial cell/formula references, 228 model metrics, monthly cash-flow records, and 55 property bridge/date/area/cost checks: no published value or financial formula changed. Saved-cell snapshots for Input, Investor Return, Properties, Portfolio Analysis and The Buy Box also show no value changes. Only source provenance was refreshed; the workbook remained unchanged throughout verification.

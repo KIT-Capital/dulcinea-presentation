@@ -1,12 +1,12 @@
 {
   "provenance": {
     "source": "Dulcinea Model 09.xlsx",
-    "sha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3",
-    "workbookModifiedMetadata": "2026-09-28T12:20:47Z",
+    "sha256": "9c6f9654d3cf02b83fbe71902619eb5fd5a7a83bd5dc1247aaae80635cdf8fb9",
+    "workbookModifiedMetadata": "2026-09-28T12:49:00Z",
     "method": "Read-only ZIP XML and openpyxl cached-value/formula inspection. No Excel recalculation, workbook edit, or external upload. USD unless stated.",
     "authority": "User-supplied authoritative model; numeric live cells take precedence over conflicting PPTX and stale workbook prose.",
-    "modifiedUtc": "2026-09-28T12:20:47.370646+00:00",
-    "previousSourceSha256": "0b83807af2fdbb2268eb78c22e2bb5b93d9a733891e1b0e821078c34d6517d8c"
+    "modifiedUtc": "2026-09-28T12:49:00.894371+00:00",
+    "previousSourceSha256": "e05e55ce433a2a5e601b828c349f4f12ed0cc68b4c83310a204254bab9395ef3"
   },
   "activeScenario": {
     "description": "Five selected properties; full USD 7M commitment model; 30% entry discount for all five; 60% booked occupancy; flat COP/USD 3090; six-month works for all five; 8.5% El Poblado and 7.15% El Retiro annual appreciation.",
