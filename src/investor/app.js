@@ -20,6 +20,11 @@ const visibleVideos = new Set();
 const motion = $('.motion');
 const originalDialog = $('#original-dialog');
 const plansDialog = $('#plans-dialog');
+const planImage = $('#plan-image');
+const planViewport = $('#plan-viewport');
+const planCanvas = $('#plan-canvas');
+const planZoomLevels = [1,1.5,2,3,4];
+let planZoom = 1, renderedPlan = null, planLayoutFrame = 0;
 const plansDownload = $('#plans-dialog a[download]');
 if (plansDownload) plansDownload.href = assetMap['floorplans.pdf'] || new URL(plansDownload.getAttribute('href'),location.href).href;
 const dialogs = [...document.querySelectorAll('dialog')];
@@ -109,15 +114,67 @@ experienceVideos.forEach((video,index) => {
   video.addEventListener('ended',advanceExperience);
 });
 function homeLabel(index) { return `${lang === 'es' ? 'Ver' : 'View'} ${homes[index].name}`; }
+function layoutPlan(preservePosition = true) {
+  if (!plansDialog?.open || !planImage?.complete || !planImage.naturalWidth || planImage.hidden) return;
+  const width = planViewport.clientWidth, height = planViewport.clientHeight;
+  if (!width || !height) return;
+  const centerX = (planViewport.scrollLeft + width / 2) / Math.max(width,planCanvas.offsetWidth);
+  const centerY = (planViewport.scrollTop + height / 2) / Math.max(height,planCanvas.offsetHeight);
+  const fit = Math.min(Math.max(1,width - 32) / planImage.naturalWidth,Math.max(1,height - 32) / planImage.naturalHeight);
+  const imageWidth = Math.round(planImage.naturalWidth * fit * planZoom);
+  const imageHeight = Math.round(planImage.naturalHeight * fit * planZoom);
+  planImage.style.width = `${imageWidth}px`;
+  planImage.style.height = `${imageHeight}px`;
+  planCanvas.style.width = `${Math.max(width,imageWidth + 32)}px`;
+  planCanvas.style.height = `${Math.max(height,imageHeight + 32)}px`;
+  planViewport.scrollTo({left:preservePosition ? centerX * planCanvas.offsetWidth - width / 2 : 0,top:preservePosition ? centerY * planCanvas.offsetHeight - height / 2 : 0,behavior:'instant'});
+  planViewport.classList.toggle('is-zoomed',planZoom > 1);
+  $('#plan-zoom-value').textContent = `${Math.round(planZoom * 100)}%`;
+  $('#plan-zoom-out').disabled = planZoom === planZoomLevels[0];
+  $('#plan-zoom-in').disabled = planZoom === planZoomLevels.at(-1);
+}
+function schedulePlanLayout() {
+  cancelAnimationFrame(planLayoutFrame);
+  planLayoutFrame = requestAnimationFrame(() => layoutPlan());
+}
+function zoomPlan(direction) {
+  planZoom = planZoomLevels[Math.max(0,Math.min(planZoomLevels.length - 1,planZoomLevels.indexOf(planZoom) + direction))];
+  layoutPlan();
+}
 function renderPlan() {
   const home = homes[current], page = home.plans[planIndex];
   if (!page || !plansDialog) return;
-  const labels = {1:['Floor 1','Piso 1'],2:['Floor 2','Piso 2'],3:['Site plan','Plano del terreno'],4:['Floor 1','Piso 1'],5:['Roof plan','Plano de cubierta'],6:['Floor 1','Piso 1'],7:['Floor 2','Piso 2'],8:['Floor 1','Piso 1'],9:['Floor 2','Piso 2']};
+  const labels = {1:['Floor 1','Piso 1'],2:['Floor 2','Piso 2'],3:['Site plan','Terreno'],4:['Floor 1','Piso 1'],5:['Roof plan','Cubierta'],6:['Floor 1','Piso 1'],7:['Floor 2','Piso 2'],8:['Floor 1','Piso 1'],9:['Floor 2','Piso 2']};
   const caption = `${home.name} · ${labels[page][lang === 'es' ? 1 : 0]}`;
-  $('#plans-title').textContent = `${home.name} · ${lang === 'es' ? 'Planos' : 'Floorplans'}`;
-  $('#plan-image').src = asset(`plan-${page}.webp`); $('#plan-image').alt = caption;
+  $('#plans-title').textContent = home.name;
+  const sheets = $('#plan-sheets');
+  // Reuse sheet controls when possible so keyboard focus survives selection.
+  if (sheets.dataset.property !== home.key) {
+    sheets.replaceChildren(...home.plans.map((_,index) => {
+      const button = document.createElement('button');
+      button.type = 'button'; button.dataset.plan = String(index);
+      return button;
+    }));
+    sheets.dataset.property = home.key;
+  }
+  [...sheets.children].forEach((button,index) => {
+    button.textContent = labels[home.plans[index]][lang === 'es' ? 1 : 0];
+    button.setAttribute('aria-pressed',String(index === planIndex));
+  });
+  if (renderedPlan !== page) {
+    renderedPlan = page; planZoom = 1; planImage.hidden = true;
+    $('#plan-error').hidden = true; planViewport.setAttribute('aria-busy','true');
+    planCanvas.style.width = '100%'; planCanvas.style.height = '100%';
+    planViewport.scrollTo({left:0,top:0,behavior:'instant'});
+    planImage.src = asset(`plan-${page}.webp`);
+    $('#plan-zoom-value').textContent = '100%';
+    $('#plan-zoom-out').disabled = true; $('#plan-zoom-in').disabled = true;
+  }
+  planImage.alt = caption;
+  $('#plan-open').href = asset(`plan-${page}.webp`);
   $('#plan-caption').textContent = caption; $('#plan-count').textContent = `${planIndex + 1} / ${home.plans.length}`;
   $('#prev-plan').disabled = home.plans.length < 2; $('#next-plan').disabled = home.plans.length < 2;
+  schedulePlanLayout();
 }
 function renderHome(changeMedia = true) {
   const home = homes[current], i = lang === 'es' ? 1 : 0;
@@ -125,6 +182,8 @@ function renderHome(changeMedia = true) {
   $('#property-type').textContent = home.type[i]; $('#property-description').textContent = home.description[i];
   $('#property-area').textContent = home.area; $('#property-status').textContent = home.status[i];
   $('#property-count').textContent = `0${current + 1} / 05`;
+  $('#property-plan-count').textContent = String(home.plans.length).padStart(2,'0');
+  $('.property-layout').dataset.property = home.key;
   document.querySelectorAll('[data-home]').forEach((button,index) => {
     button.setAttribute('aria-pressed',String(index === current)); button.setAttribute('aria-label',homeLabel(index));
   });
@@ -196,14 +255,56 @@ $('#view-original').addEventListener('click',() => openDialog(originalDialog));
 $('#close-original').addEventListener('click',() => originalDialog.close());
 $('#view-plans')?.addEventListener('click',() => {
   if (!homes[current].plans.length) return;
-  planIndex = 0; renderPlan(); openDialog(plansDialog);
+  planIndex = 0; planZoom = 1; renderPlan(); openDialog(plansDialog); schedulePlanLayout();
 });
 $('#close-plans')?.addEventListener('click',() => plansDialog.close());
 function stepPlan(direction) { planIndex = (planIndex + direction + homes[current].plans.length) % homes[current].plans.length; renderPlan(); }
 $('#prev-plan')?.addEventListener('click',() => stepPlan(-1));
 $('#next-plan')?.addEventListener('click',() => stepPlan(1));
+$('#plan-sheets')?.addEventListener('click',event => {
+  const button = event.target.closest('button[data-plan]');
+  if (!button) return;
+  planIndex = Number(button.dataset.plan); renderPlan();
+});
+$('#plan-zoom-out')?.addEventListener('click',() => zoomPlan(-1));
+$('#plan-zoom-in')?.addEventListener('click',() => zoomPlan(1));
+$('#plan-fit')?.addEventListener('click',() => { planZoom = 1; layoutPlan(false); });
+planImage?.addEventListener('load',() => {
+  planImage.hidden = false; planViewport.removeAttribute('aria-busy');
+  layoutPlan(false);
+});
+planImage?.addEventListener('error',() => {
+  renderedPlan = null;
+  $('#plan-zoom-out').disabled = true; $('#plan-zoom-in').disabled = true;
+  planImage.hidden = true; planViewport.removeAttribute('aria-busy'); $('#plan-error').hidden = false;
+});
+if (typeof ResizeObserver === 'function') new ResizeObserver(schedulePlanLayout).observe(planViewport);
+else window.addEventListener('resize',schedulePlanLayout);
+// Mouse dragging complements native touch panning and trackpad scrolling.
+let planDrag = null;
+planViewport?.addEventListener('pointerdown',event => {
+  if (event.pointerType !== 'mouse' || event.button !== 0 || planZoom <= 1) return;
+  planDrag = {x:event.clientX,y:event.clientY,left:planViewport.scrollLeft,top:planViewport.scrollTop};
+  planViewport.setPointerCapture(event.pointerId); planViewport.classList.add('is-dragging');
+});
+planViewport?.addEventListener('pointermove',event => {
+  if (!planDrag) return;
+  planViewport.scrollLeft = planDrag.left + planDrag.x - event.clientX;
+  planViewport.scrollTop = planDrag.top + planDrag.y - event.clientY;
+});
+function endPlanDrag() { planDrag = null; planViewport?.classList.remove('is-dragging'); }
+planViewport?.addEventListener('pointerup',endPlanDrag);
+planViewport?.addEventListener('pointercancel',endPlanDrag);
+planViewport?.addEventListener('lostpointercapture',endPlanDrag);
+plansDialog?.addEventListener('close',endPlanDrag);
 plansDialog?.addEventListener('keydown',event => {
+  if (event.altKey || event.ctrlKey || event.metaKey) return;
+  // The drawing region retains arrow-key scrolling while enlarged.
+  if (event.target === planViewport && planZoom > 1 && event.key.startsWith('Arrow')) return;
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); stepPlan(event.key === 'ArrowLeft' ? -1 : 1); }
+  if (event.key === '+' || event.key === '=') { event.preventDefault(); zoomPlan(1); }
+  if (event.key === '-') { event.preventDefault(); zoomPlan(-1); }
+  if (event.key === '0') { event.preventDefault(); planZoom = 1; layoutPlan(false); }
 });
 dialogs.forEach(dialog => {
   dialog.addEventListener('close',syncMotion);

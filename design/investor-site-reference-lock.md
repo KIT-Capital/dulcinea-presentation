@@ -33,4 +33,22 @@ Use full-size imagery, large system-sans headlines, restrained monospace labels,
 
 ## Release review
 
+### Property collection and drawing viewer — notebook-first update
+
+Build target: the existing Dulcinea website and its 16:9 presentation, preserving the approved palette, typography, concise facts, bilingual content and five individual property slides. Desktop/notebook viewers are the priority.
+
+Reference research through Refero: KOBU (`2b86e8de-b21d-40d0-894a-f9d3a177a193`) remains the primary property-gallery reference. Samara (`b7b0af34-1d65-4fc3-bb92-bc9ce9b0fb09`, https://samara.com) contributes only the clear separation of aspirational imagery and objective specifications. Scape's plan modal (`a9e7469d-a0bb-4bb0-b15f-5f87de5b1d8e`) supports keeping technical drawings isolated on a quiet, readable surface.
+
+| Decision | Source and role | Implementation |
+| --- | --- | --- |
+| Photography leads | KOBU's architectural gallery | Large rectangular films near their native 16:9 ratio; no decorative cards or shadows. |
+| Named property selectors | User's five-home portfolio and navigation task | Names accompany sequence numbers. A compact collection heading reserves notebook height for imagery. |
+| Facts read at a glance | Samara's objective specification hierarchy | Location/type, property name, one sentence, prominent area, neutral acquisition status, then plans and original imagery. No invented features or claims. |
+| Preserve the brand | Existing approved Dulcinea design | Paper/ink surfaces, existing sans and monospace roles, gold for restrained selection feedback. No imported reference palette or new font dependency. |
+| Website and presentation stay equivalent | User's explicit requirement | One source of facts, films and dialogs; one slide per property. All drawing and original-image actions work in both views. |
+| Drawings stay factual | Supplied PNGs and original PDF | Native-resolution lossless compression; recover Fontanar's original alpha mask on white. No redraw or generative enhancement. |
+| Inspection has room | Scape plan-modal pattern adapted to notebooks | Near-window-size canvas, labeled floor/roof/site choices, zoom, fit, pan, and original PDF download. |
+
+Reject: anonymous number-only navigation, oversized repeated collection headlines on slides, cropped original collages, approval-style status stamps, extra pan effects layered over the existing camera-move films, and fabricated property details.
+
 Run the financial and investor-build verification scripts after building. Review desktop and mobile layouts, header clearance, property selection, four plan groups, language switching, resource links, stock-media sequences and reduced-motion behavior. Verify protected login/logout and deployed routes separately. Source promotion, a screenshot or a successful build is not proof that production has been updated.

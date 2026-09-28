@@ -1,0 +1,80 @@
+/* Drawing viewer: controls remain visible while the white paper canvas pans. */
+#plans-dialog {
+  width:min(1320px,96vw); max-width:1320px;
+  height:min(940px,94dvh); max-height:94dvh;
+  padding:0; overflow:hidden; background:#f5f6f2;
+  border:1px solid #dce1dc; box-shadow:0 24px 100px #0005;
+}
+#plans-dialog[open] { display:flex; flex-direction:column }
+#plans-dialog .plan-header {
+  flex:none; margin:0; padding:12px 20px 8px; gap:16px;
+  background:var(--paper); border-bottom:1px solid #17282d1b;
+}
+#plans-dialog .plan-header .micro { font-size:9px; letter-spacing:.09em; color:#52605b }
+#plans-dialog .plan-header h2 { margin:4px 0 0; font-size:25px; line-height:1.15; letter-spacing:-.035em; white-space:normal }
+#plans-dialog #close-plans { flex:none; min-width:44px; min-height:44px; width:44px; height:44px; font-size:29px; border-radius:50% }
+#plans-dialog #close-plans:hover { background:#17282d0d }
+#plans-dialog .plan-controls { flex:none; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:7px 20px; border-bottom:1px solid #17282d1b; background:var(--paper) }
+#plans-dialog #plan-sheets { display:flex; gap:6px; min-width:0 }
+#plans-dialog #plan-sheets button { min-width:60px; min-height:44px; padding:8px 16px; border:1px solid transparent; background:transparent; color:#44544e; font-size:13px; white-space:nowrap; border-radius:3px }
+#plans-dialog #plan-sheets button:hover { background:#17282d09 }
+#plans-dialog #plan-sheets button[aria-pressed=true] { color:var(--ink); background:white; border-color:#aab8b0; box-shadow:0 1px 2px #17282d0a }
+#plans-dialog .plan-zoom { display:flex; align-items:center; gap:2px; flex:none }
+#plans-dialog .plan-zoom button { min-width:44px; min-height:44px; background:transparent; border-radius:3px; font-size:22px }
+#plans-dialog .plan-zoom button:hover:not(:disabled) { background:#17282d0b }
+#plans-dialog .plan-zoom button:disabled { opacity:.3; cursor:default }
+#plans-dialog #plan-zoom-value { min-width:49px; text-align:center; font:12px/1 'Courier New',monospace; color:#43514c }
+#plans-dialog #plan-fit { padding:8px 12px; margin-left:5px; font-size:12px; border-left:1px solid #17282d25; border-radius:0 }
+#plans-dialog #plan-viewport { position:relative; flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; touch-action:pan-x pan-y pinch-zoom; -webkit-overflow-scrolling:touch; background:white; scroll-behavior:auto; outline-offset:-4px }
+#plans-dialog #plan-canvas { display:grid; place-items:center; width:100%; height:100%; min-width:100%; min-height:100%; background:white }
+#plans-dialog #plan-image { display:block; max-width:none; max-height:none; height:auto; width:auto; object-fit:contain; background:white; pointer-events:none; user-select:none; animation:none!important; transform:none; transition:none }
+#plans-dialog #plan-image[hidden] { display:none }
+#plans-dialog #plan-viewport.is-zoomed { cursor:grab }
+#plans-dialog #plan-viewport.is-dragging { cursor:grabbing; user-select:none }
+#plans-dialog #plan-error { position:absolute; inset:0; padding:30px; font-size:14px; line-height:1.6; color:#52605b }
+#plans-dialog .plans-toolbar { flex:none; display:flex; align-items:center; justify-content:space-between; gap:16px; margin:0; padding:5px 20px; border-top:1px solid #17282d1b; background:var(--paper) }
+#plans-dialog .plan-paging { display:flex; align-items:center; gap:10px }
+#plans-dialog .plan-paging button { width:44px; height:44px; min-width:44px; min-height:44px; border:0; border-radius:3px }
+#plans-dialog #plan-count { min-width:38px; text-align:center; font-size:12px }
+#plans-dialog .plan-downloads { display:flex; gap:22px; align-items:center; font-size:12px }
+#plans-dialog .plan-downloads a { display:flex; align-items:center; min-height:44px; padding:8px 0; text-decoration:underline; text-decoration-color:#17282d50; text-underline-offset:4px }
+#plans-dialog .plan-downloads a:hover { text-decoration-color:currentColor }
+#plans-dialog button:focus-visible,#plans-dialog a:focus-visible { outline-offset:-3px }
+@media(min-width:900px) {
+  #plans-dialog[open] { display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto minmax(0,1fr) auto }
+  #plans-dialog .plan-header { grid-column:1; grid-row:1; border-bottom:1px solid #17282d1b; padding:12px 20px }
+  #plans-dialog #close-plans { position:absolute; right:14px; top:13px }
+  #plans-dialog .plan-controls { grid-column:2; grid-row:1; padding:10px 74px 10px 16px; gap:18px }
+  #plans-dialog #plan-viewport { grid-column:1 / -1; grid-row:2 }
+  #plans-dialog .plans-toolbar { grid-column:1 / -1; grid-row:3 }
+}
+@media(max-width:620px) {
+  #plans-dialog { width:100vw; height:100dvh; max-height:100dvh; max-width:100vw; margin:0; border:0; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px) }
+  #plans-dialog .plan-header { padding:10px max(12px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px)); gap:10px }
+  #plans-dialog .plan-header h2 { font-size:22px }
+  #plans-dialog .plan-header .micro { font-size:8px }
+  #plans-dialog .plan-controls { flex-wrap:wrap; gap:2px 8px; padding:4px 12px }
+  #plans-dialog #plan-sheets { gap:2px; flex:1 }
+  #plans-dialog #plan-sheets button { min-width:44px; padding:8px 11px; font-size:12px }
+  #plans-dialog .plan-zoom { margin-left:auto }
+  #plans-dialog .plans-toolbar { padding:4px 8px; gap:7px; flex-wrap:nowrap }
+  #plans-dialog .plan-paging { gap:0 }
+  #plans-dialog #plan-count { min-width:34px; font-size:11px }
+  #plans-dialog .plan-downloads { gap:14px; font-size:11px }
+}
+@media(max-height:500px) and (min-width:621px) {
+  #plans-dialog { height:98dvh; max-height:98dvh; width:98vw }
+  #plans-dialog .plan-header { padding:4px 14px; min-height:52px }
+  #plans-dialog .plan-header h2 { font-size:21px; margin:0 }
+  #plans-dialog .plan-header .micro { display:none }
+  #plans-dialog .plan-controls { padding:2px 14px }
+  #plans-dialog .plans-toolbar { padding:0 12px }
+}
+/* More specific than presentation mode's generic dialog sizing. */
+body.is-presenting[data-presentation-layout="responsive"] #plans-dialog { overflow:hidden; max-height:94dvh }
+@media(max-width:620px) {
+  body.is-presenting[data-presentation-layout="responsive"] #plans-dialog { max-height:100dvh }
+}
+@media(max-height:500px) and (min-width:621px) {
+  body.is-presenting[data-presentation-layout="responsive"] #plans-dialog { max-height:98dvh }
+}

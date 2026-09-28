@@ -561,6 +561,272 @@ body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-ite
   body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items button { min-height:48px; font-size:14px }
 }
 </style>
+  <style>/* The collection: architectural imagery, a quiet fact panel and direct plans. */
+#homes { padding:26px 4vw 28px; scroll-margin-top:0 }
+#homes > .section-heading { align-items:center; gap:30px; margin:0 0 16px }
+#homes > .section-heading > div { display:flex; align-items:baseline; gap:22px; min-width:0 }
+#homes .section-heading .section-index { flex:none; margin:0; gap:12px; font-size:9px; letter-spacing:.1em }
+#homes .section-heading h2 { font-size:clamp(32px,3vw,42px); line-height:1.08; letter-spacing:-.045em; white-space:normal }
+#homes .section-aside { flex:none; max-width:290px; font-size:12px; line-height:1.5; margin:0; color:#53635d }
+#homes > .property-tabs { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0; width:100%; margin:0 0 12px; border-top:1px solid #17282d35; border-bottom:1px solid #17282d35 }
+#homes .property-tabs button { display:flex; align-items:center; gap:10px; min-width:0; min-height:52px; padding:10px 12px; border:0; border-bottom:2px solid transparent; background:transparent; color:#53635d; text-align:left; transition:background .18s ease,color .18s ease,border-color .18s ease }
+#homes .property-tabs button + button { border-left:1px solid #17282d18 }
+#homes .property-tabs button:hover { background:#e9eeea; color:var(--ink) }
+#homes .property-tabs button[aria-pressed=true] { background:#e9eeea; border-bottom-color:var(--old-gold); color:var(--ink); font-weight:400 }
+#homes .property-tab-number { flex:none; font:10px/1.2 'Courier New',monospace; color:#65736b }
+#homes .property-tab-name { font:13px/1.35 Arial,Helvetica,sans-serif; letter-spacing:-.015em }
+#homes .property-layout { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); min-height:0; height:auto; border:0; background:#f8f9f5; align-items:stretch }
+#homes .property-visual { min-width:0; min-height:0; height:auto; aspect-ratio:16/9; background:#c9d4cc }
+#homes .property-visual video { object-fit:cover }
+#homes .image-caption { left:16px; bottom:16px; right:auto; max-width:calc(100% - 32px); padding:6px 8px; font-size:9px; line-height:1.4; background:#17282dab }
+#homes .property-info { min-width:0; padding:16px 24px 18px; display:flex; flex-direction:column; gap:12px }
+#homes .property-count { min-height:44px; font:11px/1.4 'Courier New',monospace; color:#5b6b64 }
+#homes .property-controls { display:flex; gap:3px }
+#homes .property-controls button { width:44px; height:44px; min-width:44px; min-height:44px; border:1px solid #17282d25; border-radius:0; font-size:20px; background:transparent; color:var(--ink); transition:background .18s ease,color .18s ease }
+#homes .property-controls button:hover { color:white; background:var(--ink) }
+#homes .property-details { min-width:0; padding:0; margin:0; flex:1 }
+#homes .property-location-row { display:flex; align-items:center; flex-wrap:wrap; gap:7px 10px; color:#50665d; font-size:11px; line-height:1.4; letter-spacing:.03em }
+#homes #property-location { font:inherit; letter-spacing:inherit; text-transform:none }
+#homes #property-type { padding-left:10px; border-left:1px solid #8c9d93; color:#50665d; font-size:11px }
+#homes .property-info h3 { margin:9px 0 10px; font-size:clamp(30px,2.75vw,40px); line-height:1.03; letter-spacing:-.045em; overflow-wrap:normal }
+#homes .property-description { min-height:0; font-size:15px; line-height:1.45; color:#46594f }
+#homes .property-facts { display:grid; grid-template-columns:minmax(0,.95fr) minmax(0,1.2fr); gap:18px; margin:16px 0 0; padding-top:12px; border-top:1px solid #17282d2c }
+#homes .property-facts > div { display:block; min-width:0; padding:0; border:0; font-size:14px; line-height:1.45 }
+#homes .property-facts dt { font-size:10px; line-height:1.4; color:#627169; flex-shrink:1 }
+#homes .property-facts dd { max-width:none; text-align:left; margin:7px 0 0; color:var(--ink) }
+#homes .property-area-row dd { font-size:clamp(34px,3.2vw,46px); font-weight:400; letter-spacing:-.05em; line-height:1.05; white-space:nowrap }
+#homes .property-status-row dd { font-size:14px; line-height:1.45; letter-spacing:-.015em }
+#homes .property-actions { display:flex; flex-direction:column; gap:3px; margin-top:auto; padding-top:4px }
+#homes .property-actions button { position:static; inset:auto; display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; max-width:none; min-height:44px; margin:0; padding:12px 14px; border:0; border-radius:0; font-size:12px; line-height:1.35; text-align:left; transition:background .18s ease,color .18s ease }
+#homes .property-actions .floorplan-link { color:white; background:var(--ink) }
+#homes .property-actions .floorplan-link:hover { color:white; background:#27443f }
+#homes .property-actions .floorplan-link[hidden] { display:none }
+#homes #property-plan-label { flex:1 }
+#homes #property-plan-count { font:11px/1 'Courier New',monospace; color:#c7d4cd }
+#homes .property-actions .original { background:transparent; color:#4a5e54; padding-inline:0 }
+#homes .property-actions .original:hover { color:var(--ink); background:#e9eeea }
+#homes .property-actions button > span:last-child { flex:none; font-size:19px; line-height:1 }
+#homes > .footnote { max-width:none; margin-top:12px; font-size:10px; line-height:1.5; color:#637067 }
+#homes button:focus-visible { outline-offset:-3px }
+
+/* Moderate notebook heights keep both actions in the first collection view. */
+@media(min-width:1100px) and (max-height:800px) {
+  #homes { padding-top:20px; padding-bottom:20px }
+  #homes > .section-heading { margin-bottom:13px }
+  #homes .section-heading h2 { font-size:36px }
+  #homes .property-info { padding:12px 20px 13px; gap:9px }
+  #homes .property-info h3 { font-size:35px; margin-top:7px; margin-bottom:8px }
+  #homes .property-facts { margin-top:12px; padding-top:10px; gap:12px }
+  #homes .property-description { font-size:14px }
+  #homes .property-status-row dd { font-size:13px }
+  #homes .property-actions { padding-top:0 }
+}
+@media(min-width:768px) and (max-width:1099px) {
+  #homes { padding:26px 3vw }
+  #homes > .section-heading > div { display:block }
+  #homes .section-heading .section-index { margin-bottom:8px }
+  #homes .section-heading h2 { font-size:34px }
+  #homes .section-aside { max-width:220px; font-size:11px }
+  #homes .property-tabs button { gap:7px; padding:9px 8px; min-height:55px }
+  #homes .property-tab-name { font-size:11px }
+  #homes .property-layout { grid-template-columns:minmax(0,1.35fr) minmax(290px,1fr) }
+  #homes .property-visual { aspect-ratio:auto; min-height:440px }
+  #homes .property-info { padding:15px 18px; gap:10px }
+  #homes .property-info h3 { font-size:31px }
+  #homes .property-facts { gap:12px }
+  #homes .property-area-row dd { font-size:37px }
+}
+@media(max-width:767px) {
+  #homes { padding:32px 20px }
+  #homes > .section-heading { display:block; margin-bottom:21px }
+  #homes > .section-heading > div { display:block }
+  #homes .section-heading .section-index { margin-bottom:10px; font-size:10px }
+  #homes .section-heading h2 { font-size:35px; line-height:1.05; max-width:350px }
+  #homes .section-aside { margin-top:12px; max-width:none; font-size:13px }
+  #homes > .property-tabs { display:flex; gap:0; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; margin-bottom:14px }
+  #homes .property-tabs button { flex:0 0 160px; min-height:58px; padding:10px 12px; gap:10px }
+  #homes .property-tab-name { font-size:12px }
+  #homes .property-layout { grid-template-columns:minmax(0,1fr); height:auto }
+  #homes .property-visual { aspect-ratio:16/9; min-height:0; height:auto }
+  #homes .image-caption { left:11px; bottom:11px; max-width:calc(100% - 22px); font-size:8px }
+  #homes .property-info { padding:17px 18px 13px; gap:12px }
+  #homes .property-info h3 { font-size:36px; line-height:1.06; margin-top:10px; margin-bottom:12px }
+  #homes .property-location-row,#homes #property-type { font-size:12px }
+  #homes .property-description { font-size:16px; line-height:1.5 }
+  #homes .property-facts { gap:22px; margin-top:20px; padding-top:15px }
+  #homes .property-facts dt { font-size:11px }
+  #homes .property-area-row dd { font-size:43px }
+  #homes .property-status-row dd { font-size:14px }
+  #homes .property-actions { margin-top:10px; gap:5px }
+  #homes .property-actions button { font-size:14px; min-height:48px; padding-block:13px }
+  #homes > .footnote { font-size:11px; line-height:1.6; margin-top:15px }
+}
+
+/* The same property becomes a single, image-led presentation slide. */
+body.is-presenting #main > #homes.presentation-active { padding:88px 60px 44px }
+body.is-presenting #homes > .section-heading { display:flex; align-items:center; justify-content:space-between; height:42px; margin:0 0 24px; gap:28px }
+body.is-presenting #homes > .section-heading > div { display:block }
+body.is-presenting #homes .section-heading .section-index { display:flex; margin:0; font-size:13px; letter-spacing:.1em; line-height:1.5 }
+body.is-presenting #homes .section-heading h2 { display:none }
+body.is-presenting #homes .section-aside { max-width:none; margin:0; font-size:15px; line-height:1.4; white-space:pre-line; text-align:right }
+body.is-presenting #homes > .property-tabs { display:none }
+body.is-presenting #homes .property-layout { grid-template-columns:920px minmax(0,1fr); height:518px; min-height:0 }
+body.is-presenting #homes .property-visual { height:518px; min-height:0; aspect-ratio:16/9 }
+body.is-presenting #homes .property-info { padding:22px 26px 15px; gap:14px }
+body.is-presenting #homes .property-count { min-height:24px; font-size:14px }
+body.is-presenting #homes .property-controls { display:none }
+body.is-presenting #homes .property-details { margin:0; padding:0 }
+body.is-presenting #homes .property-location-row,body.is-presenting #homes #property-type { font-size:13px; line-height:1.4 }
+body.is-presenting #homes .property-info h3 { font-size:40px; line-height:1.05; margin:12px 0 }
+body.is-presenting #homes .property-description { font-size:18px; line-height:1.45 }
+body.is-presenting #homes .property-facts { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:16px; margin:19px 0 0; padding-top:15px }
+body.is-presenting #homes .property-facts > div { display:block; padding:0; border:0; font-size:16px }
+body.is-presenting #homes .property-facts dt { font-size:12px; line-height:1.4 }
+body.is-presenting #homes .property-facts dd { max-width:none; text-align:left; margin-top:9px; overflow-wrap:normal }
+body.is-presenting #homes .property-area-row dd { font-size:48px; line-height:1.05 }
+body.is-presenting #homes .property-status-row dd { font-size:15px; line-height:1.45 }
+body.is-presenting #homes .property-actions { gap:5px; padding-top:0 }
+body.is-presenting #homes .property-actions button { min-height:46px; font-size:15px; padding:12px 14px }
+body.is-presenting #homes .property-actions .original { padding-inline:0 }
+body.is-presenting #homes #property-plan-count { font-size:13px }
+body.is-presenting #homes .image-caption { left:18px; bottom:18px; font-size:11px; padding:7px 9px }
+body.is-presenting #homes > .footnote { font-size:12px; line-height:1.5; max-width:none; margin-top:18px }
+
+/* Responsive presentations keep the original content at a readable size. */
+body.is-presenting[data-presentation-layout="responsive"] #main > #homes.presentation-active { padding:24px 22px 30px }
+body.is-presenting[data-presentation-layout="responsive"] #homes > .section-heading { height:auto; min-height:32px; margin-bottom:18px; gap:14px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .section-heading .section-index { margin:0; font-size:11px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .section-aside { font-size:12px; line-height:1.45; max-width:55%; margin:0; white-space:normal }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-layout { grid-template-columns:minmax(0,1fr); height:auto; min-height:0 }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-visual { height:auto; min-height:0; aspect-ratio:16/9 }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-info { padding:18px; gap:12px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-count { min-height:20px; font-size:13px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-info h3 { font-size:36px; margin:10px 0 12px; line-height:1.07; overflow-wrap:normal }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-description { font-size:18px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-facts { grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr); gap:18px; margin-top:20px; padding-top:15px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-facts > div { display:block; padding:0; font-size:16px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-facts dt { font-size:12px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-area-row dd { font-size:43px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-status-row dd { font-size:16px; line-height:1.45 }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-actions { margin-top:12px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-actions button { min-height:48px; font-size:16px; padding:12px 14px }
+body.is-presenting[data-presentation-layout="responsive"] #homes .property-actions .original { padding-inline:0 }
+body.is-presenting[data-presentation-layout="responsive"] #homes .image-caption { left:12px; bottom:12px; font-size:10px; padding:6px 8px }
+body.is-presenting[data-presentation-layout="responsive"] #homes > .footnote { font-size:12px; margin-top:16px }
+@media(min-width:768px) {
+  body.is-presenting[data-presentation-layout="responsive"] #main > #homes.presentation-active { padding:28px }
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-layout { grid-template-columns:minmax(0,1.55fr) minmax(290px,1fr) }
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-visual { height:auto; min-height:440px; aspect-ratio:auto }
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-info { padding:18px; gap:12px }
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-info h3 { font-size:32px }
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-description { font-size:16px }
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-facts { gap:12px }
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-status-row dd { font-size:14px }
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-actions button { font-size:14px }
+}
+@media(max-width:380px) {
+  #homes .property-facts,
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-facts { grid-template-columns:120px minmax(0,1fr); gap:12px }
+  #homes .property-area-row dd,
+  body.is-presenting[data-presentation-layout="responsive"] #homes .property-area-row dd { font-size:36px }
+}
+@media(prefers-reduced-motion:reduce) {
+  #homes button { transition:none }
+}
+
+/* Original collages need a quiet viewer, not the slide's display typography. */
+#original-dialog { width:min(1280px,94vw); max-width:1280px; max-height:94dvh; padding:20px; overflow:auto }
+#original-dialog .dialog-top { margin-bottom:14px }
+#original-dialog .dialog-top h2 { font-size:28px; line-height:1.15; letter-spacing:-.035em; white-space:normal }
+#original-dialog .dialog-top button { flex:none; width:44px; height:44px }
+#original-dialog > img { width:100%; height:calc(94dvh - 144px); max-height:none; object-fit:contain }
+#original-dialog > p { font-size:11px; line-height:1.5; margin-top:12px }
+@media(max-width:767px) {
+  #original-dialog { padding:16px }
+  #original-dialog .dialog-top h2 { font-size:24px }
+}
+</style>
+  <style>/* Drawing viewer: controls remain visible while the white paper canvas pans. */
+#plans-dialog {
+  width:min(1320px,96vw); max-width:1320px;
+  height:min(940px,94dvh); max-height:94dvh;
+  padding:0; overflow:hidden; background:#f5f6f2;
+  border:1px solid #dce1dc; box-shadow:0 24px 100px #0005;
+}
+#plans-dialog[open] { display:flex; flex-direction:column }
+#plans-dialog .plan-header {
+  flex:none; margin:0; padding:12px 20px 8px; gap:16px;
+  background:var(--paper); border-bottom:1px solid #17282d1b;
+}
+#plans-dialog .plan-header .micro { font-size:9px; letter-spacing:.09em; color:#52605b }
+#plans-dialog .plan-header h2 { margin:4px 0 0; font-size:25px; line-height:1.15; letter-spacing:-.035em; white-space:normal }
+#plans-dialog #close-plans { flex:none; min-width:44px; min-height:44px; width:44px; height:44px; font-size:29px; border-radius:50% }
+#plans-dialog #close-plans:hover { background:#17282d0d }
+#plans-dialog .plan-controls { flex:none; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:7px 20px; border-bottom:1px solid #17282d1b; background:var(--paper) }
+#plans-dialog #plan-sheets { display:flex; gap:6px; min-width:0 }
+#plans-dialog #plan-sheets button { min-width:60px; min-height:44px; padding:8px 16px; border:1px solid transparent; background:transparent; color:#44544e; font-size:13px; white-space:nowrap; border-radius:3px }
+#plans-dialog #plan-sheets button:hover { background:#17282d09 }
+#plans-dialog #plan-sheets button[aria-pressed=true] { color:var(--ink); background:white; border-color:#aab8b0; box-shadow:0 1px 2px #17282d0a }
+#plans-dialog .plan-zoom { display:flex; align-items:center; gap:2px; flex:none }
+#plans-dialog .plan-zoom button { min-width:44px; min-height:44px; background:transparent; border-radius:3px; font-size:22px }
+#plans-dialog .plan-zoom button:hover:not(:disabled) { background:#17282d0b }
+#plans-dialog .plan-zoom button:disabled { opacity:.3; cursor:default }
+#plans-dialog #plan-zoom-value { min-width:49px; text-align:center; font:12px/1 'Courier New',monospace; color:#43514c }
+#plans-dialog #plan-fit { padding:8px 12px; margin-left:5px; font-size:12px; border-left:1px solid #17282d25; border-radius:0 }
+#plans-dialog #plan-viewport { position:relative; flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; touch-action:pan-x pan-y pinch-zoom; -webkit-overflow-scrolling:touch; background:white; scroll-behavior:auto; outline-offset:-4px }
+#plans-dialog #plan-canvas { display:grid; place-items:center; width:100%; height:100%; min-width:100%; min-height:100%; background:white }
+#plans-dialog #plan-image { display:block; max-width:none; max-height:none; height:auto; width:auto; object-fit:contain; background:white; pointer-events:none; user-select:none; animation:none!important; transform:none; transition:none }
+#plans-dialog #plan-image[hidden] { display:none }
+#plans-dialog #plan-viewport.is-zoomed { cursor:grab }
+#plans-dialog #plan-viewport.is-dragging { cursor:grabbing; user-select:none }
+#plans-dialog #plan-error { position:absolute; inset:0; padding:30px; font-size:14px; line-height:1.6; color:#52605b }
+#plans-dialog .plans-toolbar { flex:none; display:flex; align-items:center; justify-content:space-between; gap:16px; margin:0; padding:5px 20px; border-top:1px solid #17282d1b; background:var(--paper) }
+#plans-dialog .plan-paging { display:flex; align-items:center; gap:10px }
+#plans-dialog .plan-paging button { width:44px; height:44px; min-width:44px; min-height:44px; border:0; border-radius:3px }
+#plans-dialog #plan-count { min-width:38px; text-align:center; font-size:12px }
+#plans-dialog .plan-downloads { display:flex; gap:22px; align-items:center; font-size:12px }
+#plans-dialog .plan-downloads a { display:flex; align-items:center; min-height:44px; padding:8px 0; text-decoration:underline; text-decoration-color:#17282d50; text-underline-offset:4px }
+#plans-dialog .plan-downloads a:hover { text-decoration-color:currentColor }
+#plans-dialog button:focus-visible,#plans-dialog a:focus-visible { outline-offset:-3px }
+@media(min-width:900px) {
+  #plans-dialog[open] { display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto minmax(0,1fr) auto }
+  #plans-dialog .plan-header { grid-column:1; grid-row:1; border-bottom:1px solid #17282d1b; padding:12px 20px }
+  #plans-dialog #close-plans { position:absolute; right:14px; top:13px }
+  #plans-dialog .plan-controls { grid-column:2; grid-row:1; padding:10px 74px 10px 16px; gap:18px }
+  #plans-dialog #plan-viewport { grid-column:1 / -1; grid-row:2 }
+  #plans-dialog .plans-toolbar { grid-column:1 / -1; grid-row:3 }
+}
+@media(max-width:620px) {
+  #plans-dialog { width:100vw; height:100dvh; max-height:100dvh; max-width:100vw; margin:0; border:0; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px) }
+  #plans-dialog .plan-header { padding:10px max(12px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px)); gap:10px }
+  #plans-dialog .plan-header h2 { font-size:22px }
+  #plans-dialog .plan-header .micro { font-size:8px }
+  #plans-dialog .plan-controls { flex-wrap:wrap; gap:2px 8px; padding:4px 12px }
+  #plans-dialog #plan-sheets { gap:2px; flex:1 }
+  #plans-dialog #plan-sheets button { min-width:44px; padding:8px 11px; font-size:12px }
+  #plans-dialog .plan-zoom { margin-left:auto }
+  #plans-dialog .plans-toolbar { padding:4px 8px; gap:7px; flex-wrap:nowrap }
+  #plans-dialog .plan-paging { gap:0 }
+  #plans-dialog #plan-count { min-width:34px; font-size:11px }
+  #plans-dialog .plan-downloads { gap:14px; font-size:11px }
+}
+@media(max-height:500px) and (min-width:621px) {
+  #plans-dialog { height:98dvh; max-height:98dvh; width:98vw }
+  #plans-dialog .plan-header { padding:4px 14px; min-height:52px }
+  #plans-dialog .plan-header h2 { font-size:21px; margin:0 }
+  #plans-dialog .plan-header .micro { display:none }
+  #plans-dialog .plan-controls { padding:2px 14px }
+  #plans-dialog .plans-toolbar { padding:0 12px }
+}
+/* More specific than presentation mode's generic dialog sizing. */
+body.is-presenting[data-presentation-layout="responsive"] #plans-dialog { overflow:hidden; max-height:94dvh }
+@media(max-width:620px) {
+  body.is-presenting[data-presentation-layout="responsive"] #plans-dialog { max-height:100dvh }
+}
+@media(max-height:500px) and (min-width:621px) {
+  body.is-presenting[data-presentation-layout="responsive"] #plans-dialog { max-height:98dvh }
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main" data-en="Skip to content" data-es="Ir al contenido">Skip to content</a>
@@ -599,10 +865,28 @@ body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-ite
   </section>
 
   <section class="homes section-pad" id="homes" aria-labelledby="homes-title">
-    <div class="section-heading"><div><p class="micro section-index"><span>02 /</span> <span data-en="The collection" data-es="La colección">The collection</span></p><h2 id="homes-title" data-en="Five homes.&#10;One portfolio." data-es="Cinco propiedades.&#10;Un portafolio.">Five homes.<br>One portfolio.</h2></div><p class="section-aside" data-en="City apartments. Country houses.&#10;Selected for Dulcinea One." data-es="Apartamentos en la ciudad. Casas en el campo.&#10;Seleccionados para Dulcinea One.">City apartments. Country houses.<br>Selected for Dulcinea One.</p></div>
+    <div class="section-heading"><div><p class="micro section-index"><span>02 /</span> <span data-en="The collection" data-es="La colección">The collection</span></p><h2 id="homes-title" data-en="Five homes. One portfolio." data-es="Cinco propiedades. Un portafolio.">Five homes. One portfolio.</h2></div><p class="section-aside" data-en="El Poblado & El Retiro&#10;Selected for Dulcinea One." data-es="El Poblado y El Retiro&#10;Seleccionados para Dulcinea One.">El Poblado & El Retiro<br>Selected for Dulcinea One.</p></div>
+    <div class="property-tabs" role="group" aria-label="Select a property">
+      <button data-home="0" aria-pressed="true"><span class="property-tab-number">01</span><span class="property-tab-name">Fontanar 201</span></button>
+      <button data-home="1" aria-pressed="false"><span class="property-tab-number">02</span><span class="property-tab-name">San Lucas 101</span></button>
+      <button data-home="2" aria-pressed="false"><span class="property-tab-number">03</span><span class="property-tab-name">Aires de Campestre</span></button>
+      <button data-home="3" aria-pressed="false"><span class="property-tab-number">04</span><span class="property-tab-name">Casa Monte Sereno</span></button>
+      <button data-home="4" aria-pressed="false"><span class="property-tab-number">05</span><span class="property-tab-name">Casa Montana</span></button>
+    </div>
     <div class="property-layout">
-      <div class="property-visual"><video id="property-video" src="assets/video/properties/fontanar.mp4" poster="assets/images/lifestyle/fontanar.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video><span class="image-caption" data-en="AI lifestyle visualization" data-es="Visualización de estilo de vida con IA">AI lifestyle visualization</span><button type="button" class="original" id="view-original"><span data-en="Original imagery" data-es="Imagen original">Original imagery</span> ↗</button></div>
-      <div class="property-info"><div class="property-count"><span id="property-count">01 / 05</span><span class="property-controls"><button id="prev-home" aria-label="Previous property">←</button><button id="next-home" aria-label="Next property">→</button></span></div><div class="property-details" aria-live="polite"><p class="micro" id="property-location">El Poblado</p><h3 id="property-name">Fontanar 201</h3><p class="property-description" id="property-description">A penthouse above the city.</p><dl><div><dt data-en="Property" data-es="Propiedad">Property</dt><dd id="property-type">Penthouse</dd></div><div><dt data-en="Area" data-es="Área">Area</dt><dd id="property-area">389 m²</dd></div><div><dt data-en="Acquisition status¹" data-es="Estado de adquisición¹">Acquisition status¹</dt><dd id="property-status">Signed · closing in 4Q26</dd></div></dl><button type="button" class="floorplan-link" id="view-plans"><span data-en="Floorplans" data-es="Planos">Floorplans</span><span aria-hidden="true">↗</span></button></div><div class="property-tabs" role="group" aria-label="Select a property"><button data-home="0" aria-pressed="true">01</button><button data-home="1" aria-pressed="false">02</button><button data-home="2" aria-pressed="false">03</button><button data-home="3" aria-pressed="false">04</button><button data-home="4" aria-pressed="false">05</button></div></div>
+      <div class="property-visual"><video id="property-video" src="assets/video/properties/fontanar.mp4" poster="assets/images/lifestyle/fontanar.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video><span class="image-caption" data-en="AI lifestyle visualization" data-es="Visualización de estilo de vida con IA">AI lifestyle visualization</span></div>
+      <div class="property-info">
+        <div class="property-count"><span id="property-count">01 / 05</span><span class="property-controls"><button id="prev-home" aria-label="Previous property">←</button><button id="next-home" aria-label="Next property">→</button></span></div>
+        <div class="property-details" aria-live="polite">
+          <div class="property-location-row micro"><span id="property-location">El Poblado</span><span id="property-type">Penthouse</span></div>
+          <h3 id="property-name">Fontanar 201</h3><p class="property-description" id="property-description">A penthouse above the city.</p>
+          <dl class="property-facts"><div class="property-area-row"><dt data-en="Area" data-es="Área">Area</dt><dd id="property-area">389 m²</dd></div><div class="property-status-row"><dt data-en="Acquisition status¹" data-es="Estado de adquisición¹">Acquisition status¹</dt><dd id="property-status">Signed · closing in 4Q26</dd></div></dl>
+        </div>
+        <div class="property-actions">
+          <button type="button" class="floorplan-link" id="view-plans"><span id="property-plan-label" data-en="View floorplans" data-es="Ver planos">View floorplans</span><span id="property-plan-count">02</span><span aria-hidden="true">↗</span></button>
+          <button type="button" class="original" id="view-original"><span data-en="Original imagery" data-es="Imagen original">Original imagery</span><span aria-hidden="true">↗</span></button>
+        </div>
+      </div>
     </div>
     <p class="footnote" data-en="¹ Acquisition status as of 4Q26. Signed transactions remain subject to closing. People and furnishings in visualizations are illustrative." data-es="¹ Estado de adquisición a 4T26. Las transacciones firmadas siguen sujetas al cierre. Las personas y el mobiliario de las visualizaciones son ilustrativos.">¹ Acquisition status as of 4Q26. Signed transactions remain subject to closing. People and furnishings in visualizations are illustrative.</p>
   </section>
@@ -686,7 +970,12 @@ body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-ite
 </dialog>
 <dialog id="presentation-menu" aria-labelledby="presentation-menu-title"><div class="dialog-top"><h2 id="presentation-menu-title" data-en="Choose a slide" data-es="Elija una diapositiva">Choose a slide</h2><button type="button" id="presentation-menu-close" aria-label="Close slide list">×</button></div><div id="presentation-menu-items"></div><p class="presentation-help" data-en="← → Next / previous · Home / End First / last · F Full screen · Esc Website" data-es="← → Siguiente / anterior · Inicio / Fin Primera / última · F Pantalla completa · Esc Sitio web">← → Next / previous · Home / End First / last · F Full screen · Esc Website</p></dialog>
 <dialog id="original-dialog" aria-labelledby="original-title"><div class="dialog-top"><h2 id="original-title">Fontanar 201</h2><button id="close-original" aria-label="Close original imagery">×</button></div><img id="original-image" src="assets/images/investor-deck/image46.jpeg" alt="Original supplied Fontanar 201 imagery"><p data-en="Original property imagery supplied in the investor presentation." data-es="Imagen original suministrada en la presentación para inversionistas.">Original property imagery supplied in the investor presentation.</p></dialog>
-<dialog id="plans-dialog" aria-labelledby="plans-title"><div class="dialog-top"><h2 id="plans-title">Fontanar 201</h2><button type="button" id="close-plans" aria-label="Close floorplans" data-en-aria-label="Close floorplans" data-es-aria-label="Cerrar planos">×</button></div><img id="plan-image" alt="Fontanar 201 · Floor 1"><p id="plan-caption"></p><div class="plans-toolbar"><div class="plan-paging"><button type="button" id="prev-plan" aria-label="Previous floorplan" data-en-aria-label="Previous floorplan" data-es-aria-label="Plano anterior">←</button><span id="plan-count" aria-live="polite">1 / 2</span><button type="button" id="next-plan" aria-label="Next floorplan" data-en-aria-label="Next floorplan" data-es-aria-label="Siguiente plano">→</button></div><a href="source-packages/PLANOS PROPIEDADES DULCINEA.pdf" download="Dulcinea-Floorplans.pdf" data-en="Download plans ↓" data-es="Descargar planos ↓">Download plans ↓</a></div></dialog>
+<dialog id="plans-dialog" aria-labelledby="plans-title">
+  <div class="dialog-top plan-header"><div><p class="micro" data-en="Property drawings" data-es="Planos de la propiedad">Property drawings</p><h2 id="plans-title">Fontanar 201</h2></div><button type="button" id="close-plans" aria-label="Close floorplans" data-en-aria-label="Close floorplans" data-es-aria-label="Cerrar planos">×</button></div>
+  <div class="plan-controls"><div id="plan-sheets" role="group" aria-label="Choose a drawing" data-en-aria-label="Choose a drawing" data-es-aria-label="Elegir un plano"></div><div class="plan-zoom" role="group" aria-label="Drawing zoom" data-en-aria-label="Drawing zoom" data-es-aria-label="Ampliación del plano"><button type="button" id="plan-zoom-out" aria-label="Zoom out" data-en-aria-label="Zoom out" data-es-aria-label="Reducir">−</button><output id="plan-zoom-value" aria-live="polite">100%</output><button type="button" id="plan-zoom-in" aria-label="Zoom in" data-en-aria-label="Zoom in" data-es-aria-label="Ampliar">+</button><button type="button" id="plan-fit" data-en="Fit" data-es="Ajustar">Fit</button></div></div>
+  <div id="plan-viewport" tabindex="0" role="region" aria-label="Drawing. Zoom to inspect, then scroll to move around." data-en-aria-label="Drawing. Zoom to inspect, then scroll to move around." data-es-aria-label="Plano. Amplíe para ver los detalles y desplácese para recorrerlo."><div id="plan-canvas"><img id="plan-image" alt="Fontanar 201 · Floor 1" draggable="false" decoding="async"></div><p id="plan-error" role="status" hidden data-en="This drawing could not load. Open the original PDF below." data-es="No se pudo cargar el plano. Abra el PDF original abajo.">This drawing could not load. Open the original PDF below.</p></div>
+  <div class="plans-toolbar"><div class="plan-paging"><button type="button" id="prev-plan" aria-label="Previous floorplan" data-en-aria-label="Previous floorplan" data-es-aria-label="Plano anterior">←</button><span id="plan-count" aria-live="polite">1 / 2</span><button type="button" id="next-plan" aria-label="Next floorplan" data-en-aria-label="Next floorplan" data-es-aria-label="Siguiente plano">→</button></div><p id="plan-caption" class="sr-only"></p><div class="plan-downloads"><a id="plan-open" target="_blank" rel="noopener" data-en="Open drawing ↗" data-es="Abrir plano ↗">Open drawing ↗</a><a href="source-packages/PLANOS PROPIEDADES DULCINEA.pdf" download="Dulcinea-Floorplans.pdf" data-en="Original PDF ↓" data-es="PDF original ↓">Original PDF ↓</a></div></div>
+</dialog>
 <script>window.DULCINEA_WEB=false;window.DULCINEA_ASSETS={"logo.svg":"brand/dulcinea-one/svg/dulcinea-one-white-gold.svg","dulcinea.svg":"brand/dulcinea/svg/dulcinea-mono-white.svg","symbol.svg":"brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg","kit.png":"brand/kit-capital/kit-capital.png","lola.png":"assets/images/investor-deck/image24.png","introduction.mp4":"assets/video/dulcinea-introduction.mp4","introduction.jpg":"assets/video/dulcinea-introduction-poster.jpg","medellin.mp4":"assets/video/stock/AdobeStock_693150796.mp4","medellin.jpg":"assets/video/stock/AdobeStock_693150796-poster.jpg","nightlife.mp4":"assets/video/medellin-after-dark.mp4","nightlife.jpg":"assets/video/medellin-nightlife-poster.jpg","location.mp4":"assets/video/medellin-location.mp4","location.jpg":"assets/video/medellin-location-poster.jpg","hospitality.mp4":"assets/video/hospitality-people.mp4","hospitality.jpg":"assets/video/hospitality-people-poster.jpg","viewing.mp4":"assets/video/stock/AdobeStock_762119818.mp4","viewing.jpg":"assets/video/stock/AdobeStock_762119818-poster.jpg","dov.png":"assets/images/team/dov-supplied.png","ricardo.jpg":"assets/images/team/ricardo-supplied.jpg","adriana.jpg":"assets/images/team/adriana-supplied.jpeg","san-lucas-original.png":"assets/images/investor-deck/image44.png","aires-original.png":"assets/images/investor-deck/image45.png","fontanar-original.jpeg":"assets/images/investor-deck/image46.jpeg","monte-sereno-original.png":"assets/images/investor-deck/image47.png","montana-original.png":"assets/images/investor-deck/image48.png","fontanar.mp4":"assets/video/properties/fontanar.mp4","fontanar.jpg":"assets/images/lifestyle/fontanar.jpg","san-lucas.mp4":"assets/video/properties/san-lucas.mp4","san-lucas.webp":"assets/images/lifestyle/san-lucas.webp","aires.mp4":"assets/video/properties/aires.mp4","aires.jpg":"assets/images/lifestyle/aires.jpg","monte-sereno.mp4":"assets/video/properties/monte-sereno.mp4","monte-sereno.webp":"assets/images/lifestyle/monte-sereno.webp","montana.mp4":"assets/video/properties/montana.mp4","montana.webp":"assets/images/lifestyle/montana.webp","floorplans.pdf":"source-packages/PLANOS PROPIEDADES DULCINEA.pdf","plan-1.webp":"assets/images/floorplans/page-01-fontanar-floor-1.webp","plan-2.webp":"assets/images/floorplans/page-02-fontanar-floor-2.webp","plan-3.webp":"assets/images/floorplans/page-03-monte-sereno-site.webp","plan-4.webp":"assets/images/floorplans/page-04-monte-sereno-floor-1.webp","plan-5.webp":"assets/images/floorplans/page-05-monte-sereno-roof.webp","plan-6.webp":"assets/images/floorplans/page-06-aires-del-campestre-floor-1.webp","plan-7.webp":"assets/images/floorplans/page-07-aires-del-campestre-floor-2.webp","plan-8.webp":"assets/images/floorplans/page-08-san-lucas-floor-1.webp","plan-9.webp":"assets/images/floorplans/page-09-san-lucas-floor-2.webp"};
 const homes = [
   {name:'Fontanar 201',key:'fontanar',image:'fontanar.jpg',original:'fontanar-original.jpeg',plans:[1,2],location:'El Poblado',type:['Penthouse','Penthouse'],area:'389 m²',description:['A penthouse above the city.','Un penthouse sobre la ciudad.'],status:['Signed · closing in 4Q26','Firmado · cierre en 4T26']},
@@ -710,6 +999,11 @@ const visibleVideos = new Set();
 const motion = $('.motion');
 const originalDialog = $('#original-dialog');
 const plansDialog = $('#plans-dialog');
+const planImage = $('#plan-image');
+const planViewport = $('#plan-viewport');
+const planCanvas = $('#plan-canvas');
+const planZoomLevels = [1,1.5,2,3,4];
+let planZoom = 1, renderedPlan = null, planLayoutFrame = 0;
 const plansDownload = $('#plans-dialog a[download]');
 if (plansDownload) plansDownload.href = assetMap['floorplans.pdf'] || new URL(plansDownload.getAttribute('href'),location.href).href;
 const dialogs = [...document.querySelectorAll('dialog')];
@@ -799,15 +1093,67 @@ experienceVideos.forEach((video,index) => {
   video.addEventListener('ended',advanceExperience);
 });
 function homeLabel(index) { return `${lang === 'es' ? 'Ver' : 'View'} ${homes[index].name}`; }
+function layoutPlan(preservePosition = true) {
+  if (!plansDialog?.open || !planImage?.complete || !planImage.naturalWidth || planImage.hidden) return;
+  const width = planViewport.clientWidth, height = planViewport.clientHeight;
+  if (!width || !height) return;
+  const centerX = (planViewport.scrollLeft + width / 2) / Math.max(width,planCanvas.offsetWidth);
+  const centerY = (planViewport.scrollTop + height / 2) / Math.max(height,planCanvas.offsetHeight);
+  const fit = Math.min(Math.max(1,width - 32) / planImage.naturalWidth,Math.max(1,height - 32) / planImage.naturalHeight);
+  const imageWidth = Math.round(planImage.naturalWidth * fit * planZoom);
+  const imageHeight = Math.round(planImage.naturalHeight * fit * planZoom);
+  planImage.style.width = `${imageWidth}px`;
+  planImage.style.height = `${imageHeight}px`;
+  planCanvas.style.width = `${Math.max(width,imageWidth + 32)}px`;
+  planCanvas.style.height = `${Math.max(height,imageHeight + 32)}px`;
+  planViewport.scrollTo({left:preservePosition ? centerX * planCanvas.offsetWidth - width / 2 : 0,top:preservePosition ? centerY * planCanvas.offsetHeight - height / 2 : 0,behavior:'instant'});
+  planViewport.classList.toggle('is-zoomed',planZoom > 1);
+  $('#plan-zoom-value').textContent = `${Math.round(planZoom * 100)}%`;
+  $('#plan-zoom-out').disabled = planZoom === planZoomLevels[0];
+  $('#plan-zoom-in').disabled = planZoom === planZoomLevels.at(-1);
+}
+function schedulePlanLayout() {
+  cancelAnimationFrame(planLayoutFrame);
+  planLayoutFrame = requestAnimationFrame(() => layoutPlan());
+}
+function zoomPlan(direction) {
+  planZoom = planZoomLevels[Math.max(0,Math.min(planZoomLevels.length - 1,planZoomLevels.indexOf(planZoom) + direction))];
+  layoutPlan();
+}
 function renderPlan() {
   const home = homes[current], page = home.plans[planIndex];
   if (!page || !plansDialog) return;
-  const labels = {1:['Floor 1','Piso 1'],2:['Floor 2','Piso 2'],3:['Site plan','Plano del terreno'],4:['Floor 1','Piso 1'],5:['Roof plan','Plano de cubierta'],6:['Floor 1','Piso 1'],7:['Floor 2','Piso 2'],8:['Floor 1','Piso 1'],9:['Floor 2','Piso 2']};
+  const labels = {1:['Floor 1','Piso 1'],2:['Floor 2','Piso 2'],3:['Site plan','Terreno'],4:['Floor 1','Piso 1'],5:['Roof plan','Cubierta'],6:['Floor 1','Piso 1'],7:['Floor 2','Piso 2'],8:['Floor 1','Piso 1'],9:['Floor 2','Piso 2']};
   const caption = `${home.name} · ${labels[page][lang === 'es' ? 1 : 0]}`;
-  $('#plans-title').textContent = `${home.name} · ${lang === 'es' ? 'Planos' : 'Floorplans'}`;
-  $('#plan-image').src = asset(`plan-${page}.webp`); $('#plan-image').alt = caption;
+  $('#plans-title').textContent = home.name;
+  const sheets = $('#plan-sheets');
+  // Reuse sheet controls when possible so keyboard focus survives selection.
+  if (sheets.dataset.property !== home.key) {
+    sheets.replaceChildren(...home.plans.map((_,index) => {
+      const button = document.createElement('button');
+      button.type = 'button'; button.dataset.plan = String(index);
+      return button;
+    }));
+    sheets.dataset.property = home.key;
+  }
+  [...sheets.children].forEach((button,index) => {
+    button.textContent = labels[home.plans[index]][lang === 'es' ? 1 : 0];
+    button.setAttribute('aria-pressed',String(index === planIndex));
+  });
+  if (renderedPlan !== page) {
+    renderedPlan = page; planZoom = 1; planImage.hidden = true;
+    $('#plan-error').hidden = true; planViewport.setAttribute('aria-busy','true');
+    planCanvas.style.width = '100%'; planCanvas.style.height = '100%';
+    planViewport.scrollTo({left:0,top:0,behavior:'instant'});
+    planImage.src = asset(`plan-${page}.webp`);
+    $('#plan-zoom-value').textContent = '100%';
+    $('#plan-zoom-out').disabled = true; $('#plan-zoom-in').disabled = true;
+  }
+  planImage.alt = caption;
+  $('#plan-open').href = asset(`plan-${page}.webp`);
   $('#plan-caption').textContent = caption; $('#plan-count').textContent = `${planIndex + 1} / ${home.plans.length}`;
   $('#prev-plan').disabled = home.plans.length < 2; $('#next-plan').disabled = home.plans.length < 2;
+  schedulePlanLayout();
 }
 function renderHome(changeMedia = true) {
   const home = homes[current], i = lang === 'es' ? 1 : 0;
@@ -815,6 +1161,8 @@ function renderHome(changeMedia = true) {
   $('#property-type').textContent = home.type[i]; $('#property-description').textContent = home.description[i];
   $('#property-area').textContent = home.area; $('#property-status').textContent = home.status[i];
   $('#property-count').textContent = `0${current + 1} / 05`;
+  $('#property-plan-count').textContent = String(home.plans.length).padStart(2,'0');
+  $('.property-layout').dataset.property = home.key;
   document.querySelectorAll('[data-home]').forEach((button,index) => {
     button.setAttribute('aria-pressed',String(index === current)); button.setAttribute('aria-label',homeLabel(index));
   });
@@ -886,14 +1234,56 @@ $('#view-original').addEventListener('click',() => openDialog(originalDialog));
 $('#close-original').addEventListener('click',() => originalDialog.close());
 $('#view-plans')?.addEventListener('click',() => {
   if (!homes[current].plans.length) return;
-  planIndex = 0; renderPlan(); openDialog(plansDialog);
+  planIndex = 0; planZoom = 1; renderPlan(); openDialog(plansDialog); schedulePlanLayout();
 });
 $('#close-plans')?.addEventListener('click',() => plansDialog.close());
 function stepPlan(direction) { planIndex = (planIndex + direction + homes[current].plans.length) % homes[current].plans.length; renderPlan(); }
 $('#prev-plan')?.addEventListener('click',() => stepPlan(-1));
 $('#next-plan')?.addEventListener('click',() => stepPlan(1));
+$('#plan-sheets')?.addEventListener('click',event => {
+  const button = event.target.closest('button[data-plan]');
+  if (!button) return;
+  planIndex = Number(button.dataset.plan); renderPlan();
+});
+$('#plan-zoom-out')?.addEventListener('click',() => zoomPlan(-1));
+$('#plan-zoom-in')?.addEventListener('click',() => zoomPlan(1));
+$('#plan-fit')?.addEventListener('click',() => { planZoom = 1; layoutPlan(false); });
+planImage?.addEventListener('load',() => {
+  planImage.hidden = false; planViewport.removeAttribute('aria-busy');
+  layoutPlan(false);
+});
+planImage?.addEventListener('error',() => {
+  renderedPlan = null;
+  $('#plan-zoom-out').disabled = true; $('#plan-zoom-in').disabled = true;
+  planImage.hidden = true; planViewport.removeAttribute('aria-busy'); $('#plan-error').hidden = false;
+});
+if (typeof ResizeObserver === 'function') new ResizeObserver(schedulePlanLayout).observe(planViewport);
+else window.addEventListener('resize',schedulePlanLayout);
+// Mouse dragging complements native touch panning and trackpad scrolling.
+let planDrag = null;
+planViewport?.addEventListener('pointerdown',event => {
+  if (event.pointerType !== 'mouse' || event.button !== 0 || planZoom <= 1) return;
+  planDrag = {x:event.clientX,y:event.clientY,left:planViewport.scrollLeft,top:planViewport.scrollTop};
+  planViewport.setPointerCapture(event.pointerId); planViewport.classList.add('is-dragging');
+});
+planViewport?.addEventListener('pointermove',event => {
+  if (!planDrag) return;
+  planViewport.scrollLeft = planDrag.left + planDrag.x - event.clientX;
+  planViewport.scrollTop = planDrag.top + planDrag.y - event.clientY;
+});
+function endPlanDrag() { planDrag = null; planViewport?.classList.remove('is-dragging'); }
+planViewport?.addEventListener('pointerup',endPlanDrag);
+planViewport?.addEventListener('pointercancel',endPlanDrag);
+planViewport?.addEventListener('lostpointercapture',endPlanDrag);
+plansDialog?.addEventListener('close',endPlanDrag);
 plansDialog?.addEventListener('keydown',event => {
+  if (event.altKey || event.ctrlKey || event.metaKey) return;
+  // The drawing region retains arrow-key scrolling while enlarged.
+  if (event.target === planViewport && planZoom > 1 && event.key.startsWith('Arrow')) return;
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); stepPlan(event.key === 'ArrowLeft' ? -1 : 1); }
+  if (event.key === '+' || event.key === '=') { event.preventDefault(); zoomPlan(1); }
+  if (event.key === '-') { event.preventDefault(); zoomPlan(-1); }
+  if (event.key === '0') { event.preventDefault(); planZoom = 1; layoutPlan(false); }
 });
 dialogs.forEach(dialog => {
   dialog.addEventListener('close',syncMotion);

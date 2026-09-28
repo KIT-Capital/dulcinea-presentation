@@ -9,13 +9,16 @@
   },
   "mapping_policy": "The user confirmed use of the four supplied plan groups for their named homes. Actual source labels and area discrepancies remain recorded. Unit identifiers 101 and 201 do not appear in the PDF; no plan was assigned to Casa Montana. Confirmation does not establish dimensions, design approval, or completed construction.",
   "rendering": {
-    "tool": "Bundled Poppler pdftoppm",
-    "command": "pdftoppm -png -scale-to 2000 INPUT_PDF PAGE_PREFIX",
-    "format": "Lossless WebP derived from complete rendered pages",
-    "width": 2000,
-    "height": 1125,
+    "tool": "Pillow lossless WebP and pypdf embedded-image extraction",
+    "command": "python scripts/optimize-floorplans.py --source-dir PATH_TO_FLOORPLANS_PNG",
+    "format": "Lossless WebP of the supplied plan images at their native resolution",
+    "dimensions": "Native source dimensions recorded for each page",
     "cropped": false,
-    "validation": "All nine complete pages visually reviewed; lossless WebP pixels match the Poppler PNG render; original PDF copy SHA-256 matches the supplied source."
+    "resized": false,
+    "drawing_geometry_modified": false,
+    "fontanar_alpha": "Original PDF alpha mask restored and flattened on white; no generated pixels or redrawing.",
+    "source_policy": "Seven supplied PNGs retained pixel-for-pixel. Two Fontanar images use the matching original PDF RGBA image to restore its existing transparency. The original PDF and supplied PNGs remain unchanged.",
+    "validation": "Every WebP decoded and compared byte-for-byte in RGB against its reference image. All nine source and output hashes recorded. PDF hash verified against the existing approved catalog."
   },
   "pages": [
     {
@@ -32,12 +35,25 @@
       ],
       "asset_path": "assets/images/floorplans/page-01-fontanar-floor-1.webp",
       "mime": "image/webp",
-      "width": 2000,
-      "height": 1125,
-      "bytes": 377736,
-      "asset_sha256": "97782bcf67923e0539177d1da8eb1f4355ee1759ffbd3017dfb169d95d19a05a",
+      "width": 1579,
+      "height": 1092,
+      "bytes": 569860,
+      "asset_sha256": "d8485a9cf80fe95aec1b5aa7d5994ad7e0f850d8d5c732c54ea6e4ac5ae0c773",
       "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
-      "source_match_status": "name_only_unit_and_area_unconfirmed"
+      "source_match_status": "name_only_unit_and_area_unconfirmed",
+      "supplied_source": {
+        "filename": "Casa_Fontanar_Piso1.png",
+        "sha256": "63bd01c18c243ac64cbef7b9a7042b96be104fdd57e272ff30fb4bf913bcbb2a",
+        "bytes": 1110761,
+        "width": 1579,
+        "height": 1092,
+        "original_preserved": true
+      },
+      "treatment": "Original PDF embedded image and its existing alpha mask flattened on white; the supplied PNG has identical RGB pixels but omits the alpha mask. Native dimensions and drawing geometry preserved.",
+      "pixel_validation": {
+        "reference": "original_pdf_rgba_flattened_on_white",
+        "decoded_rgb_pixels_identical": true
+      }
     },
     {
       "page": 2,
@@ -54,12 +70,25 @@
       ],
       "asset_path": "assets/images/floorplans/page-02-fontanar-floor-2.webp",
       "mime": "image/webp",
-      "width": 2000,
-      "height": 1125,
-      "bytes": 282786,
-      "asset_sha256": "ad16971a669bcf735b01ff8ad4172a41a0d93549f87f071dc530cc5193441a5f",
+      "width": 1558,
+      "height": 1146,
+      "bytes": 412120,
+      "asset_sha256": "871dab5820119bdc41262353f7d14c623d76a908630ef0cde8a8474d9b00fe50",
       "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
-      "source_match_status": "name_only_unit_and_area_unconfirmed"
+      "source_match_status": "name_only_unit_and_area_unconfirmed",
+      "supplied_source": {
+        "filename": "Casa_Fontanar_Piso2.png",
+        "sha256": "7d481e0774ee7a6393d1922b6cc09cee353777d24041329ba301eeb682efd24c",
+        "bytes": 789457,
+        "width": 1558,
+        "height": 1146,
+        "original_preserved": true
+      },
+      "treatment": "Original PDF embedded image and its existing alpha mask flattened on white; the supplied PNG has identical RGB pixels but omits the alpha mask. Native dimensions and drawing geometry preserved.",
+      "pixel_validation": {
+        "reference": "original_pdf_rgba_flattened_on_white",
+        "decoded_rgb_pixels_identical": true
+      }
     },
     {
       "page": 3,
@@ -74,12 +103,25 @@
       ],
       "asset_path": "assets/images/floorplans/page-03-monte-sereno-site.webp",
       "mime": "image/webp",
-      "width": 2000,
-      "height": 1125,
-      "bytes": 617966,
-      "asset_sha256": "a791f54d8e4358f3cecf29cdb9de6e6448831f2989f10bf37c350510c4eba8eb",
+      "width": 701,
+      "height": 777,
+      "bytes": 328748,
+      "asset_sha256": "257f01c34cb47eea6c076c138fa30b2daeb8881651a7ed66ac061f47f7470e95",
       "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
-      "source_match_status": "direct_name_match"
+      "source_match_status": "direct_name_match",
+      "supplied_source": {
+        "filename": "Casa_MonteSereno_Ubicacion.png",
+        "sha256": "1965d3bbfb940fb2814b8d470a2c28b021da3b4ce2e728d252edc31338eebd8f",
+        "bytes": 608517,
+        "width": 701,
+        "height": 777,
+        "original_preserved": true
+      },
+      "treatment": "Supplied PNG pixels preserved at native resolution.",
+      "pixel_validation": {
+        "reference": "supplied_png",
+        "decoded_rgb_pixels_identical": true
+      }
     },
     {
       "page": 4,
@@ -96,12 +138,25 @@
       ],
       "asset_path": "assets/images/floorplans/page-04-monte-sereno-floor-1.webp",
       "mime": "image/webp",
-      "width": 2000,
-      "height": 1125,
-      "bytes": 282570,
-      "asset_sha256": "810a259387ce8dfb001a2a08be944dd4058849517a5a3307ec5d6f951012916e",
+      "width": 804,
+      "height": 671,
+      "bytes": 66488,
+      "asset_sha256": "958e4f175dce461bc1ee9b7a719e525d600c94da115be740e910546c35b92436",
       "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
-      "source_match_status": "direct_name_match"
+      "source_match_status": "direct_name_match",
+      "supplied_source": {
+        "filename": "Casa_MonteSereno_Piso1.png",
+        "sha256": "81d51aa397bd57de4f54c5df39aef44a5f330baca4096c40a19f6037e7b0d9f2",
+        "bytes": 161462,
+        "width": 804,
+        "height": 671,
+        "original_preserved": true
+      },
+      "treatment": "Supplied PNG pixels preserved at native resolution.",
+      "pixel_validation": {
+        "reference": "supplied_png",
+        "decoded_rgb_pixels_identical": true
+      }
     },
     {
       "page": 5,
@@ -116,12 +171,25 @@
       ],
       "asset_path": "assets/images/floorplans/page-05-monte-sereno-roof.webp",
       "mime": "image/webp",
-      "width": 2000,
-      "height": 1125,
-      "bytes": 292300,
-      "asset_sha256": "f0ff0ebd6628e4631e8da449d5bdcdcbc5770c70bf5330a5acd79a25ef211a08",
+      "width": 670,
+      "height": 608,
+      "bytes": 70642,
+      "asset_sha256": "7a417c349e4afb625e07ff6bc80bf9a47bc13aca14abf12f963131eb08b97d64",
       "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
-      "source_match_status": "direct_name_match"
+      "source_match_status": "direct_name_match",
+      "supplied_source": {
+        "filename": "Casa_MonteSereno_Planta_Cubierta.png",
+        "sha256": "0d10d9fb6d316a40f51d20ffd5dbec5b28d9f753849907bb30211283509001b3",
+        "bytes": 169190,
+        "width": 670,
+        "height": 608,
+        "original_preserved": true
+      },
+      "treatment": "Supplied PNG pixels preserved at native resolution.",
+      "pixel_validation": {
+        "reference": "supplied_png",
+        "decoded_rgb_pixels_identical": true
+      }
     },
     {
       "page": 6,
@@ -137,12 +205,25 @@
       ],
       "asset_path": "assets/images/floorplans/page-06-aires-del-campestre-floor-1.webp",
       "mime": "image/webp",
-      "width": 2000,
-      "height": 1125,
-      "bytes": 30714,
-      "asset_sha256": "c15e5f3d5efa0aee6fb2ca445fdf890cbe67377f7baa5fd586c5561c34b9da0e",
+      "width": 451,
+      "height": 576,
+      "bytes": 4068,
+      "asset_sha256": "0e2d3361068f00a2da95be9a469e9402d5fdd1cecf36e75e001264c279ecc565",
       "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
-      "source_match_status": "name_match_area_conflict"
+      "source_match_status": "name_match_area_conflict",
+      "supplied_source": {
+        "filename": "Casa_Aires_del_Campestre_Piso1.png",
+        "sha256": "f6794845f28e761a8ed6180967f5b2a816afd81b1b9dd82c6420a2e10750c30d",
+        "bytes": 13684,
+        "width": 451,
+        "height": 576,
+        "original_preserved": true
+      },
+      "treatment": "Supplied PNG pixels preserved at native resolution.",
+      "pixel_validation": {
+        "reference": "supplied_png",
+        "decoded_rgb_pixels_identical": true
+      }
     },
     {
       "page": 7,
@@ -159,12 +240,25 @@
       ],
       "asset_path": "assets/images/floorplans/page-07-aires-del-campestre-floor-2.webp",
       "mime": "image/webp",
-      "width": 2000,
-      "height": 1125,
-      "bytes": 34058,
-      "asset_sha256": "bb0122fab645c574c67461bb8b6d66efd65f33e291353a3c77c1de7a1ca074d1",
+      "width": 443,
+      "height": 565,
+      "bytes": 4620,
+      "asset_sha256": "94705af93c1664552da3b6f71ea39336f8f24af0a8f0b20127f7d16a2a03d202",
       "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
-      "source_match_status": "name_match_area_conflict"
+      "source_match_status": "name_match_area_conflict",
+      "supplied_source": {
+        "filename": "Casa_Aires_del_Campestre_Piso2.png",
+        "sha256": "28cb9aa40b4b987f534215da37cc77dbd8477fa08fececb43e43d1a21a938218",
+        "bytes": 14503,
+        "width": 443,
+        "height": 565,
+        "original_preserved": true
+      },
+      "treatment": "Supplied PNG pixels preserved at native resolution.",
+      "pixel_validation": {
+        "reference": "supplied_png",
+        "decoded_rgb_pixels_identical": true
+      }
     },
     {
       "page": 8,
@@ -180,12 +274,25 @@
       ],
       "asset_path": "assets/images/floorplans/page-08-san-lucas-floor-1.webp",
       "mime": "image/webp",
-      "width": 2000,
-      "height": 1125,
-      "bytes": 44262,
-      "asset_sha256": "e406b197347100f55903cc8c7493e62d1ea814c9f6ab16cb4d7963d5ac4dfb51",
+      "width": 468,
+      "height": 404,
+      "bytes": 6602,
+      "asset_sha256": "88a85c224c06a67cb6eaff7e05ecb41db8e4e2dc9d0147db4794a46b2526ea1e",
       "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
-      "source_match_status": "name_only_unit_and_area_unconfirmed"
+      "source_match_status": "name_only_unit_and_area_unconfirmed",
+      "supplied_source": {
+        "filename": "Casa_San_Lucas_Piso1.png",
+        "sha256": "47fce1c0cef62480b35bac87bd0b5298290e4063b8784c31bae285c375ebc031",
+        "bytes": 13447,
+        "width": 468,
+        "height": 404,
+        "original_preserved": true
+      },
+      "treatment": "Supplied PNG pixels preserved at native resolution.",
+      "pixel_validation": {
+        "reference": "supplied_png",
+        "decoded_rgb_pixels_identical": true
+      }
     },
     {
       "page": 9,
@@ -202,12 +309,25 @@
       ],
       "asset_path": "assets/images/floorplans/page-09-san-lucas-floor-2.webp",
       "mime": "image/webp",
-      "width": 2000,
-      "height": 1125,
-      "bytes": 48590,
-      "asset_sha256": "0437d7cd187fcf976c36d463a93d3c2511b32359f325c3e82428ba2bdec5c109",
+      "width": 392,
+      "height": 403,
+      "bytes": 6120,
+      "asset_sha256": "36d2db005807526d7f45c58e2063a859f36ffd12ef018a6f07bd7c2b952977d5",
       "source_sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01",
-      "source_match_status": "name_only_unit_and_area_unconfirmed"
+      "source_match_status": "name_only_unit_and_area_unconfirmed",
+      "supplied_source": {
+        "filename": "Casa_San_Lucas_Piso2.png",
+        "sha256": "126687a2e8a3d17137aa6d93622a94e96a50ca69b368b95c0697a485e5e0ef6f",
+        "bytes": 12650,
+        "width": 392,
+        "height": 403,
+        "original_preserved": true
+      },
+      "treatment": "Supplied PNG pixels preserved at native resolution.",
+      "pixel_validation": {
+        "reference": "supplied_png",
+        "decoded_rgb_pixels_identical": true
+      }
     }
   ],
   "properties": [

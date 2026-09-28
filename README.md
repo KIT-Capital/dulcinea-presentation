@@ -16,7 +16,7 @@ Use the arrow or Page Up/Down keys to move, Home/End to jump to the beginning/en
 
 The visual direction follows the approved Aker and KOBU references recorded in `design/investor-site-reference-lock.md`, retaining the earlier Radisson lifestyle direction. The supplied palette leads: Blue Topaz, Plumeria, African Violet and Simply Green, with Coconut Shell used sparingly. Old Gold (`#CFB53B`) distinguishes “One”; Yellow Gold (`#D4AF37`) remains an interface accent. Dulcinea, KIT Capital and Lola & Ber appear together discreetly in the opening. Contact buttons say “Talk to us” / “Hable con nosotros,” with Dov retained as the named contact.
 
-The manual gallery contains all five selected homes, their original imagery, and five camera-move films made from AI lifestyle illustrations. The illustrations remain labeled. Nine complete floorplan pages cover Fontanar, San Lucas, Aires and Monte Sereno; Casa Montana has no supplied plan. The original PDF is available from the viewer. The team uses the later, unchanged photographs supplied for Dov, Ricardo and Adriana.
+The notebook-first gallery contains all five selected homes, named selectors, original imagery, and five camera-move films made from AI lifestyle illustrations. Large property visuals sit alongside concise facts, area, acquisition status and drawing links. The same design and actions work in each property's individual presentation slide. The illustrations remain labeled. Nine plan-only drawings cover Fontanar, San Lucas, Aires and Monte Sereno; Casa Montana has no supplied plan. The original PDF is available from the viewer. The team uses the later, unchanged photographs supplied for Dov, Ricardo and Adriana.
 
 All nine distinct supplied stock videos and all four supplied stock photographs are used on screen, directly or within edited films:
 
@@ -33,12 +33,16 @@ The walking woman and countryside woman remain in separate films and sections, o
 
 Videos are silent and play while visible. Motion pauses when the page is hidden or a dialog is open. Reduced-motion preferences are respected; the icon control can pause animation. Camera movement over photographs does not simulate human movement. Floorplans remain still for inspection.
 
+The property floorplan viewer prioritizes notebook screens, with direct sheet selection, fit-to-window and zoom controls. Nine plan-only drawings cover Fontanar, San Lucas, Aires and Monte Sereno, including Monte Sereno's site and roof plans. The original PDF remains available for download; no plan is assigned to Casa Montana. The supplied PNGs are encoded losslessly at their original resolution. Fontanar uses the original PDF image's transparency mask on white to correct the PNG export's black borders. Room geometry, labels and dimensions are preserved; no generative reconstruction or invented detail is used. Asset hashes and the earlier source discrepancies remain in `content/floorplans.json`.
+
 ## Source and builds
 
 The active website source is:
 
 - `src/investor/index.html`: structure and concise English/Spanish copy.
 - `src/investor/style.css`: responsive visual design.
+- `src/investor/properties.css`: notebook-first collection and individual property slides.
+- `src/investor/floorplans.css`: notebook-first drawing viewer, with touch support.
 - `src/investor/app.js`: language, gallery, motion, dialogs and legacy anchors.
 - `src/investor/presentation.css` and `presentation.js`: fitted slideshow layouts and navigation.
 - `src/investor/media.json`: canonical media aliases.
