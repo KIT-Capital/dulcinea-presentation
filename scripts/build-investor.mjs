@@ -18,6 +18,8 @@ for(let page=1;page<=9;page++) aliases[`plan-${page}.webp`]=manifest.find(item=>
 const resources=['financial-statements','investment-criteria','specialists','disclaimer'];
 
 async function asset(source,target=source){
+  const approvedFloorplans = source === 'source-packages/PLANOS PROPIEDADES DULCINEA.pdf' && target === 'downloads/Dulcinea-Floorplans.pdf';
+  if (!approvedFloorplans && !/\.(?:avif|gif|jpe?g|png|svg|webp|mp4|woff2?|ttf)$/i.test(source)) throw Error(`Source documents cannot be published: ${source}`);
   const sourcePath=path.resolve(root,source),targetPath=path.resolve(destination,target);
   if(!sourcePath.startsWith(root+path.sep)||!targetPath.startsWith(destination+path.sep)) throw Error('Asset outside build directory');
   if((await stat(sourcePath)).size>25*1024*1024) throw Error(`Asset exceeds Cloudflare limit: ${source}`);

@@ -216,6 +216,32 @@ test('correct login grants a browser-session cookie with an eight-hour limit and
   assert.match(privateResponse.headers.get('Content-Security-Policy'), /media-src 'self' data: blob:/);
 });
 
+test('source documents remain unavailable after sign-in, including claimed admin requests', async () => {
+  const { env, assetRequests } = fixture();
+  const cookie = await session(env);
+  const paths = [
+    '/source-packages/company.pdf', '/docs/disclosure-research.md', '/company-documents/formation.pdf',
+    '/downloads/Operating%20Agreement.pdf', '/downloads/model.xlsx', '/downloads/terms.docx',
+    '/downloads/source.zip', '/downloads/statement.csv', '/downloads/terms.PDF',
+    '/downloads/terms%2Epdf', '/downloads/terms%252Epdf', '/downloads/terms.pdf/preview',
+    '/%64ocs/internal', '/server/worker.mjs',
+  ];
+  for (const path of paths) {
+    for (const method of ['GET', 'HEAD']) {
+      const response = await worker.fetch(request(path, { method, headers: { Cookie: cookie, 'X-Role': 'admin' } }), env);
+      assert.equal(response.status, 404, `${method} ${path}`);
+      assert.match(response.headers.get('Cache-Control'), /no-store/);
+      assert.equal(await response.text(), method === 'HEAD' ? '' : 'Not found.');
+    }
+  }
+  assert.equal(assetRequests.length, 0, 'Source requests must never reach the asset binding');
+  for (const path of ['/downloads/Dulcinea-Floorplans.pdf', '/financial-statements.html', '/assets/floorplans/plan-1.webp']) {
+    const response = await worker.fetch(request(path, { headers: { Cookie: cookie } }), env);
+    assert.equal(response.status, 200, `Approved investor content remains available: ${path}`);
+  }
+  assert.equal(assetRequests.length, 3);
+});
+
 test('wrong password and malformed identity never issue a cookie or fetch private assets', async () => {
   const { env, assetRequests } = fixture();
   for (const [fields, expected] of [

@@ -16,6 +16,19 @@ const PUBLIC_ASSETS = new Set([
   '/assets/images/stock/AdobeStock_891890158-web.jpg',
   '/assets/video/stock/AdobeStock_693150796.mp4',
 ]);
+// Source documents are never served, regardless of session or claimed role.
+// The investor floorplan PDF is the only explicitly approved document download.
+function restrictedSource(pathname) {
+  let decoded = pathname;
+  try {
+    for (let i = 0; i < 4 && decoded.includes('%'); i++) decoded = decodeURIComponent(decoded);
+  } catch { return true; }
+  if (decoded.includes('%')) return true;
+  const normalized = decoded.replaceAll('\\', '/').toLowerCase();
+  if (normalized === '/downloads/dulcinea-floorplans.pdf') return false;
+  return /(?:^|\/)(?:source-packages|company[ -]documents|source-documents|content|docs|design|scripts|server|\.git|\.wrangler)(?:\/|$)/.test(normalized)
+    || /\.(?:pdf|docx?|xlsx?|xlsm|xlsb|pptx?|csv|tsv|ods|odt|odp|rtf|txt|md|zip|7z|rar|tar|gz)(?:\/|$)/.test(normalized);
+}
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
   "img-src 'self' data:",
@@ -229,6 +242,7 @@ export default {
         return redirect(`/login?next=${encodeURIComponent(url.pathname + url.search)}`, null, 302);
       }
       if (!readRequest) return text('Method not allowed.', 405, { Allow: 'GET, HEAD' });
+      if (restrictedSource(url.pathname)) return text(request.method === 'HEAD' ? null : 'Not found.', 404);
       return protect(await withVideoRange(request, await env.ASSETS.fetch(request), videoSizes[url.pathname]));
     } catch {
       // Do not log secrets, cookies, visitor details, or session tokens.

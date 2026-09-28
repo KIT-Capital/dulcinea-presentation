@@ -30,8 +30,9 @@ async function inventory(directory) {
     const relative = path.relative(site, filename).replaceAll('\\', '/');
     const info = await stat(filename);
     assert.ok(info.size <= limit, `Asset exceeds 25 MiB: ${relative}`);
-    assert.ok(!/(^|\/)(?:source-packages|content|design|server|scripts|\.git|\.wrangler|node_modules)(?:\/|$)/i.test(relative), `Internal file in build: ${relative}`);
-    assert.ok(!/(?:\.(?:xlsx?|pptx?|zip|mov)|(?:^|\/)(?:\.env[^/]*|\.dev\.vars[^/]*|[^/]*(?:secrets|provenance)[^/]*))$/i.test(relative), `Source or private file in build: ${relative}`);
+    assert.ok(!/(^|\/)(?:source-packages|source-documents|company[ -]documents|content|docs|design|server|scripts|\.git|\.wrangler|node_modules)(?:\/|$)/i.test(relative), `Internal file in build: ${relative}`);
+    assert.ok(!/(?:\.(?:docx?|xlsx?|xlsm|xlsb|pptx?|csv|tsv|ods|odt|odp|rtf|txt|md|zip|7z|rar|tar|gz|mov)|(?:^|\/)(?:\.env[^/]*|\.dev\.vars[^/]*|[^/]*(?:secrets|provenance)[^/]*))$/i.test(relative), `Source or private file in build: ${relative}`);
+    if (/\.pdf$/i.test(relative)) assert.equal(relative, 'downloads/Dulcinea-Floorplans.pdf', 'Only the approved floorplan PDF may be published');
     files.set('/' + relative, filename);
     if (relative.endsWith('.html')) pages.set('/' + relative, await readFile(filename, 'utf8'));
   }
