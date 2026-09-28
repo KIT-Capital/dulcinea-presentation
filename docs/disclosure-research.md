@@ -1,4 +1,4 @@
-# Investor disclosure basis — September 27, 2026
+# Investor disclosure basis — September 28, 2026
 
 Internal editorial record. This file and the underlying company documents are not included in the website build. The disclosure is concise investor communication, not a legal opinion or confirmation of offering compliance. Counsel should review the applicable offering exemption, investor eligibility, distribution practices, and final language.
 
@@ -25,4 +25,25 @@ Homepage risk language is visible without opening a disclosure control. Financia
 
 ## Management wording
 
-The user authorized management identification without Ashoka ownership details. The public Disclaimer identifies KIT Capital LLC as Dulcinea's Managing Member and K. Dov Isaza Tuzman as KIT's Managing Director. The executed operating agreement, section 5.1 and signature page 15, supports those roles; [KIT's team page](https://www.kitcapital.com/team/) corroborates the Managing Director title. Do not replace these with a blanket "Managing Partner of all companies" description. Ashoka's Managing Partner has not been verified; no Ashoka ownership information is included in investor-facing copy.
+The user authorized management identification without Ashoka ownership details. The public Disclaimer identifies KIT Capital LLC as Dulcinea's Managing Member and K. Dov Isaza Tuzman as KIT's Managing Director. The executed operating agreement, section 5.1 and signature page 15, supports those roles; [KIT's team page](https://www.kitcapital.com/team/) corroborates the Managing Director title. Do not replace these with a blanket "Managing Partner of all companies" description. Ashoka's Managing Partner has not been verified; on September 28 the user said they would supply additional documents. The notice describes only Ashoka's evidenced acquisition-intermediary role. No Ashoka ownership information is included in investor-facing copy.
+
+## September 28 screenshot coverage review
+
+The full EN/ES Disclaimer now covers all nine subject areas in the supplied slide: private offering; unregistered securities/transfers; issuer/management; Colombian structure; fees/conflicts; risk; projections/criteria; ownership/benefits; and documents/tax/law. The homepage and presentation retain a short visible summary and a full-notice link. Formation file number and EIN issuance date are omitted as unnecessary investor-facing administrative detail. No source company documents are hosted.
+
+Verified documentary basis and corrections:
+
+- **Private placement:** March 2026 term sheet, p1, states Rule 506(b) and accredited-investor-only placement. Wording describes the intended exemption, rather than certifying actual compliance or stating as a verified fact that no solicitation has occurred. [SEC Rule 506(b) guidance](https://www.sec.gov/resources-small-businesses/exempt-offerings/private-placements-rule-506b) prohibits general solicitation. [SEC electronic-media guidance](https://www.sec.gov/rules-regulations/2000/04/use-electronic-media) explains why password access alone does not settle the fact-specific solicitation analysis. Counsel should review distribution practices, public share metadata and investor qualification; no access-control change is included here.
+- **Transfers:** OA p9, sections 7.1–7.3: Supermajority Approval, with specified permitted-transfer exceptions, securities-law compliance and KYC/AML. The screenshot's narrower "Managing Member consent" summary was corrected.
+- **Carry and fees:** OA p5, sections 4.2(b), 4.3(b)–(c): 20% carry, capital returned first, investment by investment. OA p7 section 5.3(b): no separate asset-management, acquisition or disposition fee to the Managing Member unless approved by Supermajority Approval. This is not a statement that the fund has no other expenses or service-provider compensation.
+- **Colombian structure / Ashoka:** `Acuerdo de compraventa Ashoka Medellin Firmado_CM y KDIT y JR.pdf`, p1 recital 3, p2 second clause, p3 fourth clause, contemplates Ashoka Colombia Ltda facilitating specific acquisitions pending the Colombian branch, with final title intended for that branch. It does not establish current registration/title status, KIT's current management role in Ashoka, or an entitlement to Ashoka compensation. Public copy avoids those assertions. Possible service-provider conflicts are described conditionally.
+- **Law:** OA p13 sections 12.1–12.2 explicitly provide New York governing law and binding AAA Commercial Arbitration, New York seat. Delaware formation and default LLC member rights (p2 section 2.1) are separate. The notice does not infer governing law from the state of formation.
+- **Tax:** term sheet p1 states partnership taxation/K-1s; OA p11 section 9.3 provides tax information and p12 section 9.4 a partnership representative. Notice states expected treatment, not a tax determination.
+- **Document priority:** the term sheet is nonbinding except confidentiality/governing law; OA p14 section 13.1 is the entire agreement. The executed OA itself is not described as nonbinding.
+- **Projections:** keep the non-historical, unaudited, assumption-based qualifications; anticipated criteria are not achieved results. No assurance of updates is expressly subject to applicable law.
+
+### Items awaiting documentary reconciliation
+
+1. **Authorized capital vs presentation target:** OA p3 section 3.1(b) authorizes 500 units / $5 million; the presentation describes a $7 million target. No later amendment/approval was among the reviewed files. The user was notified. Do not invent an amendment or silently change economics.
+2. **Supermajority definition:** term sheet describes 75% of non-KIT members; OA p2 defines it as Managing Member approval plus holders of 75% of outstanding units. The notice uses the defined term without restating a potentially conflicting percentage.
+3. **KIT / Ashoka management role and compensation:** await the additional documents promised by the user. Do not infer management from signatories or reveal Ashoka ownership.
