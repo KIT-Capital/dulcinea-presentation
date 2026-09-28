@@ -31,8 +31,8 @@ export const disclosures = {
   ],
   colombiaTitle: ['Colombian structure', 'Estructura en Colombia'],
   colombia: [
-    'The initial acquisition agreements contemplate Ashoka Colombia Ltda, a separate company, acting as an intermediary for specified purchases, with final title intended for Dulcinea’s Colombian branch once registered. This does not confirm that registration or transfers have been completed. Properties described as signed or in negotiation may not close, or may close on different terms.',
-    'Los acuerdos iniciales de adquisición contemplan que Ashoka Colombia Ltda, una entidad jurídica distinta, actúe como intermediaria en ciertas compras, con la titularidad final prevista a nombre de la sucursal colombiana de Dulcinea una vez registrada. Esto no confirma que el registro o las transferencias se hayan completado. Las propiedades con acuerdos firmados o en negociación pueden no cerrar, o cerrar bajo condiciones diferentes.',
+    'Colombian properties are intended to be held through Dulcinea’s Colombian branch, subject to applicable registration and title-transfer requirements. Properties described as signed or in negotiation may not close, or may close on different terms.',
+    'Se prevé que las propiedades colombianas estén a nombre de la sucursal colombiana de Dulcinea, sujetas a los requisitos aplicables de registro y transferencia de titularidad. Las propiedades con acuerdos firmados o en negociación pueden no cerrar, o cerrar bajo condiciones diferentes.',
   ],
   feesTitle: ['Fees and conflicts', 'Comisiones y conflictos'],
   fees: [

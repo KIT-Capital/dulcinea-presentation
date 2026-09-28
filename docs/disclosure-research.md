@@ -25,7 +25,7 @@ Homepage risk language is visible without opening a disclosure control. Financia
 
 ## Management wording
 
-The user authorized management identification without Ashoka ownership details. The public Disclaimer identifies KIT Capital LLC as Dulcinea's Managing Member and K. Dov Isaza Tuzman as KIT's Managing Director. The executed operating agreement, section 5.1 and signature page 15, supports those roles; [KIT's team page](https://www.kitcapital.com/team/) corroborates the Managing Director title. Do not replace these with a blanket "Managing Partner of all companies" description. Ashoka's Managing Partner has not been verified; on September 28 the user said they would supply additional documents. The notice describes only Ashoka's evidenced acquisition-intermediary role. No Ashoka ownership information is included in investor-facing copy.
+The public Disclaimer identifies KIT Capital LLC as Dulcinea's Managing Member and K. Dov Isaza Tuzman as KIT's Managing Director. The executed operating agreement, section 5.1 and signature page 15, supports those roles; [KIT's team page](https://www.kitcapital.com/team/) corroborates the Managing Director title. Do not replace these with a blanket "Managing Partner of all companies" description. On September 28 the user explicitly instructed that Ashoka not be mentioned on the website. Investor-facing copy therefore omits its name, management and ownership details, while retaining general fees/conflicts language and the intended Colombian branch structure.
 
 ## September 28 screenshot coverage review
 
@@ -42,8 +42,8 @@ Verified documentary basis and corrections:
 - **Document priority:** the term sheet is nonbinding except confidentiality/governing law; OA p14 section 13.1 is the entire agreement. The executed OA itself is not described as nonbinding.
 - **Projections:** keep the non-historical, unaudited, assumption-based qualifications; anticipated criteria are not achieved results. No assurance of updates is expressly subject to applicable law.
 
-### Items awaiting documentary reconciliation
+### Subsequent user confirmation and internal record
 
-1. **Authorized capital vs presentation target:** OA p3 section 3.1(b) authorizes 500 units / $5 million; the presentation describes a $7 million target. No later amendment/approval was among the reviewed files. The user was notified. Do not invent an amendment or silently change economics.
+1. **Approved target:** On September 28, the user confirmed that the $7 million target has been approved and instructed that the unavailable approval documents and earlier discrepancy not be discussed on the website. Retain $7 million in investor-facing copy. The supplied OA p3 section 3.1(b) documents the earlier 500-unit / $5 million authorization; the later approval is user-confirmed, not independently document-verified. Do not present the earlier amount or document-availability discussion in the website or slides.
 2. **Supermajority definition:** term sheet describes 75% of non-KIT members; OA p2 defines it as Managing Member approval plus holders of 75% of outstanding units. The notice uses the defined term without restating a potentially conflicting percentage.
-3. **KIT / Ashoka management role and compensation:** await the additional documents promised by the user. Do not infer management from signatories or reveal Ashoka ownership.
+3. **Ashoka:** user explicitly directs no website mention. Do not infer management from signatories, reveal ownership, or reintroduce its name from the source-document citations in this internal record.
