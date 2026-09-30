@@ -7,9 +7,9 @@ const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character
 })[character]);
 
 function localDestination(value) {
-  const path = String(value ?? '/');
+  const path = String(value ?? '/financial-statements.html');
   return path.startsWith('/') && !path.startsWith('//') && !/[\\\u0000-\u001f\u007f]/.test(path)
-    ? path : '/';
+    ? path : '/financial-statements.html';
 }
 
 function destinationForLanguage(value, language) {
@@ -18,13 +18,20 @@ function destinationForLanguage(value, language) {
   return path === '/es' || path === '/es/' ? '/' : path.startsWith('/es/') ? path.slice(3) : path;
 }
 
-export function renderLogin({ name = '', email = '', next = '/', error = '', lang = 'en', contactEmail = 'kit@kitcapital.com' } = {}) {
+export function renderLogin({ name = '', email = '', next = '/financial-statements.html', error = '', lang = 'en', contactEmail = 'kit@kitcapital.com' } = {}) {
   lang = lang === 'es' ? 'es' : 'en';
   const firmName = 'Dulcinea Investments, LLC';
   const firmDescription = lang === 'es'
     ? `${firmName} es una firma de inversión inmobiliaria.`
     : `${firmName} is a real estate investment firm.`;
-  const accessTitle = lang === 'es' ? 'Acceso para inversionistas' : 'Investor access';
+  const accessTitle = lang === 'es' ? 'Estados financieros privados' : 'Private financial statements';
+  const accessLabel = lang === 'es' ? 'Acceso con contraseña' : 'Password access';
+  const accessIntro = lang === 'es'
+    ? 'El sitio web y la presentación están abiertos. Ingrese sus datos y contraseña para consultar los estados financieros.'
+    : 'The website and presentation are open. Enter your details and password to view the financial statements.';
+  const submitLabel = lang === 'es' ? 'Ver estados financieros' : 'View financial statements';
+  const websiteLabel = lang === 'es' ? 'Volver al sitio web' : 'Back to website';
+  const websitePath = lang === 'es' ? '/es/#home' : '/#home';
   const contact = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(String(contactEmail))
     ? String(contactEmail) : 'kit@kitcapital.com';
   const requestAccess = `mailto:${encodeURIComponent(contact)}?subject=${encodeURIComponent(`${firmName} — ${accessTitle}`)}`;
@@ -67,15 +74,18 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
     ${languageSwitchCss}
     .access-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
     .access-toolbar>.access-label{margin:0;min-width:0;flex:1;line-height:1.7}
+    .website-back{display:inline-flex;align-items:center;align-self:flex-start;min-height:44px;margin:0 0 18px;font-size:14px;gap:8px}
+    @media(min-width:781px) and (max-height:800px){.welcome{padding-block:32px}.intro{padding-block:48px}.access{padding-block:28px}.access-toolbar{margin-bottom:14px}h2{font-size:36px}.form-intro{margin-bottom:20px;line-height:1.5}.field{margin-top:14px}input:not([type="hidden"]){height:48px}.submit{margin-top:20px}.request{margin-top:20px;padding-top:16px}}
   </style>
 </head>
 <body>
   <a class="skip-link" href="#investor-access">Skip to investor access</a>
   <main class="page">
     <section class="welcome" aria-labelledby="brand-title">
+      <a class="website-back" href="${websitePath}"><span aria-hidden="true">←</span>${websiteLabel}</a>
       <img class="logo" src="/gate-assets/logo.svg" alt="${firmName}" width="2135" height="565">
       <div class="intro">
-        <p class="eyebrow">Private investor presentation</p>
+        <p class="eyebrow">Dulcinea One</p>
         <h1 id="brand-title">Dulcinea.</h1>
         <p class="intro-copy">${firmDescription}<span class="place">Medellín, Colombia.</span></p>
       </div>
@@ -84,9 +94,9 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
     </section>
     <section class="access" aria-labelledby="investor-access">
       <div class="form-wrap">
-        <div class="access-toolbar"><p class="access-label">Welcome to Dulcinea</p>${loginLanguageLinks}</div>
-        <h2 id="investor-access" tabindex="-1">Investor access</h2>
-        <p class="form-intro">Enter your details and the access password provided to you.</p>
+        <div class="access-toolbar"><p class="access-label">${accessLabel}</p>${loginLanguageLinks}</div>
+        <h2 id="investor-access" tabindex="-1">${accessTitle}</h2>
+        <p class="form-intro">${accessIntro}</p>
         ${errorBlock}
         <form action="/login?lang=${lang}" method="post" aria-describedby="sign-in-privacy${error ? ' sign-in-error' : ''}">
           <input type="hidden" name="next" value="${escapeHtml(destinationForLanguage(next, lang))}">
@@ -94,7 +104,7 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
           <div class="field"><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" required maxlength="120" value="${escapeHtml(name)}"></div>
           <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" required maxlength="254" value="${escapeHtml(email)}"></div>
           <div class="field"><label for="password">Access password</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
-          <button class="submit" type="submit"><span>Enter presentation</span><span aria-hidden="true">→</span></button>
+          <button class="submit" type="submit"><span>${submitLabel}</span><span aria-hidden="true">→</span></button>
           <p class="privacy" id="sign-in-privacy">Your name and email are used for this sign-in only.</p>
         </form>
         <p class="request">Need an invitation? <a href="${escapeHtml(requestAccess)}">Request access</a></p>
@@ -103,19 +113,22 @@ export function renderLogin({ name = '', email = '', next = '/', error = '', lan
   </main>
 </body>
 </html>`;
-  const localized = (lang === 'es' ? toColombianSpanish(markup).replace('<html lang="en">', '<html lang="es">') : markup)
+  const styles = [];
+  const translatable = markup.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, block => `__LOGINSTYLE${styles.push(block)-1}__`);
+  const localized = (lang === 'es' ? toColombianSpanish(translatable).replace('<html lang="en">', '<html lang="es">') : translatable)
+    .replace(/__LOGINSTYLE(\d+)__/g, (_, index) => styles[Number(index)])
     .replace('{{SOCIAL_METADATA}}', renderSocialMetadata(lang));
-  // URL fragments never reach the server. Carry a shared slide through the
+  // URL fragments never reach the server. Carry a statement section through the
   // access form and language switch without changing any authentication rule.
   return localized.replace('</body>', `<script>
-    if (/^#present-[0-9]+$/.test(location.hash)) {
+    if (/^#(?:income-statement|after-carry|cash-flow-statement|balance-sheet)$/.test(location.hash)) {
       const next = document.querySelector('input[name="next"]');
       const destination = new URL(next.value, location.origin);
       destination.hash = location.hash;
       next.value = destination.pathname + destination.search + destination.hash;
       document.querySelectorAll('.locale-switch a').forEach(link => {
         const url = new URL(link.href);
-        const target = new URL(url.searchParams.get('next') || '/', location.origin);
+        const target = new URL(url.searchParams.get('next') || '/financial-statements.html', location.origin);
         target.hash = location.hash;
         url.searchParams.set('next', target.pathname + target.search + target.hash);
         link.href = url.href;

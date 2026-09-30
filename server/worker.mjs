@@ -1,21 +1,14 @@
 import { renderLogin } from './login.mjs';
 import { withVideoRange } from './video-range.mjs';
 import { videoSizes } from './video-sizes.mjs';
-import { SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
+import { assetPolicy } from './access-policy.mjs';
 
 const encoder = new TextEncoder();
 const SESSION_SECONDS = 8 * 60 * 60;
 const SESSION_VERSION = 2; // Reject sessions issued under the former persistent-cookie policy.
 const MAX_FORM_BYTES = 4096;
 const CONTACT_EMAIL = 'kit@kitcapital.com';
-// Only the brand mark and exact promotional media URLs can be fetched before sign-in.
-const PUBLIC_ASSETS = new Set([
-  '/gate-assets/logo.svg',
-  SOCIAL_IMAGE_PATH,
-  SOCIAL_IMAGE_ES_PATH,
-  '/assets/images/stock/AdobeStock_891890158-web.jpg',
-  '/assets/video/stock/AdobeStock_693150796.mp4',
-]);
+const DEFAULT_NEXT = '/financial-statements.html';
 // Source documents are never served, regardless of session or claimed role.
 // The investor floorplan PDF is the only explicitly approved document download.
 function restrictedSource(pathname) {
@@ -80,12 +73,12 @@ function redirect(location, cookie, status = 303) {
 
 function safeNext(value, origin) {
   if (typeof value !== 'string' || value.length > 2048 || !value.startsWith('/')
-      || value.startsWith('//') || /[\\\r\n\x00]/.test(value)) return '/';
+      || value.startsWith('//') || /[\\\r\n\x00]/.test(value)) return DEFAULT_NEXT;
   try {
     const url = new URL(value, origin);
-    if (url.origin !== origin || ['/login', '/logout'].includes(url.pathname)) return '/';
+    if (url.origin !== origin || ['/login', '/logout'].includes(url.pathname)) return DEFAULT_NEXT;
     return url.pathname + url.search + url.hash;
-  } catch { return '/'; }
+  } catch { return DEFAULT_NEXT; }
 }
 
 function cookieName(url) {
@@ -191,7 +184,7 @@ async function submitLogin(request, env, url) {
   const name = (form.get('name') || '').trim().replace(/\s+/g, ' ');
   const email = (form.get('email') || '').trim().toLowerCase();
   const password = form.get('password') || '';
-  let next = safeNext(form.get('next') || '/', url.origin);
+  let next = safeNext(form.get('next') || DEFAULT_NEXT, url.origin);
   const lang = form.get('lang') === 'es' || requestLanguage === 'es' ? 'es' : 'en';
   if (lang === 'es') next = next === '/' || next === '/es' ? '/es/' : next.startsWith('/es/') ? next : `/es${next}`;
   else if (next === '/es' || next === '/es/') next = '/';
@@ -216,13 +209,26 @@ export default {
     try {
       const readRequest = ['GET', 'HEAD'].includes(request.method);
       if (url.pathname === '/robots.txt' && readRequest) return text(request.method === 'HEAD' ? null : 'User-agent: *\nDisallow: /\n');
-      if (PUBLIC_ASSETS.has(url.pathname) && readRequest) return protect(await withVideoRange(request, await env.ASSETS.fetch(request), videoSizes[url.pathname]));
+      const policy = assetPolicy(url.pathname);
+      const serve = async () => {
+        const assetURL = new URL(url);
+        assetURL.pathname = policy.asset;
+        const assetRequest = new Request(assetURL, request);
+        return protect(await withVideoRange(assetRequest, await env.ASSETS.fetch(assetRequest), videoSizes[policy.asset]));
+      };
+      if (policy.access === 'public') {
+        if (!readRequest) return text('Method not allowed.', 405, { Allow: 'GET, HEAD' });
+        return await serve();
+      }
+      if (!['/login', '/logout'].includes(url.pathname) && policy.access === 'denied') {
+        return text(request.method === 'HEAD' ? null : 'Not found.', 404);
+      }
       if (typeof env.INVESTOR_PASSWORD !== 'string' || env.INVESTOR_PASSWORD.length < 11
           || typeof env.SESSION_SECRET !== 'string' || env.SESSION_SECRET.length < 32) return text('Access is not configured yet.', 503);
       if (url.pathname === '/login') {
         if (request.method === 'POST') return await submitLogin(request, env, url);
         if (request.method !== 'GET') return text('Method not allowed.', 405, { Allow: 'GET, POST' });
-        const next = safeNext(url.searchParams.get('next') || '/', url.origin);
+        const next = safeNext(url.searchParams.get('next') || DEFAULT_NEXT, url.origin);
         const lang = url.searchParams.get('lang') === 'es' || next === '/es' || next.startsWith('/es/') ? 'es' : 'en';
         return loginPage({ next, lang });
       }
@@ -230,20 +236,16 @@ export default {
         if (request.method !== 'POST') return text('Method not allowed.', 405, { Allow: 'POST' });
         if (request.headers.get('Origin') !== url.origin) return text('Please sign out from this website.', 403);
         const cookie = sessionCookie(url, '', 0);
+        const home = url.searchParams.get('lang') === 'es' ? '/es/' : '/';
         return request.headers.get('Accept')?.includes('application/json')
-          ? json({ next: '/login' }, 200, { 'Set-Cookie': cookie }) : redirect('/login', cookie);
+          ? json({ next: home }, 200, { 'Set-Cookie': cookie }) : redirect(home, cookie);
       }
       if (!await authenticated(request, env, url)) {
-        // A share crawler must be able to read the card metadata at the shared URL.
-        if (['/', '/es/'].includes(url.pathname) && readRequest) {
-          const page = loginPage({ lang: url.pathname === '/es/' ? 'es' : 'en', next: url.pathname });
-          return request.method === 'HEAD' ? new Response(null, { status: page.status, headers: page.headers }) : page;
-        }
         return redirect(`/login?next=${encodeURIComponent(url.pathname + url.search)}`, null, 302);
       }
       if (!readRequest) return text('Method not allowed.', 405, { Allow: 'GET, HEAD' });
-      if (restrictedSource(url.pathname)) return text(request.method === 'HEAD' ? null : 'Not found.', 404);
-      return protect(await withVideoRange(request, await env.ASSETS.fetch(request), videoSizes[url.pathname]));
+      if (!policy.asset || restrictedSource(url.pathname)) return text(request.method === 'HEAD' ? null : 'Not found.', 404);
+      return await serve();
     } catch {
       // Do not log secrets, cookies, visitor details, or session tokens.
       return text('Access is temporarily unavailable. Please try again.', 503);

@@ -17,10 +17,12 @@
 
 /* Carry disclosure */
 #after-carry{scroll-margin-top:90px}#after-carry th:first-child{padding-block:0}.carry-toggle{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:10px 0;border:0;background:transparent;color:inherit;font:inherit;font-weight:600;text-align:left;cursor:pointer}.carry-toggle svg{flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;transition:transform .18s ease}.carry-toggle[aria-expanded="true"] svg{transform:rotate(90deg)}.carry-toggle:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.carry-toggle:hover span{text-decoration:underline;text-underline-offset:4px}.carry-detail th,.carry-detail td{background:#f4f9fb;font-size:13px}.carry-detail th:first-child{background:#f4f9fb;padding-left:43px}[hidden]{display:none!important}@media(prefers-reduced-motion:reduce){.carry-toggle svg{transition:none}}@media print{#carry-breakdown[hidden]{display:table-row!important}.carry-toggle svg{display:none}.carry-toggle{min-height:0;padding:9px 0}.carry-detail th:first-child{padding-left:20px}}
-</style></head>
+</style>
+<style>.statement-signout{display:flex;align-items:center;margin:0 0 0 auto;flex-shrink:0}.statement-signout button{min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--ink);font:inherit;font-size:13px;white-space:nowrap;cursor:pointer}.statement-signout button:hover{background:#e5f3f8;border-color:var(--blue)}.statement-signout button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.statement-signout button:disabled{opacity:.6;cursor:wait}.statement-signout-error{padding:16px clamp(20px,6vw,88px);font-size:14px;color:#6f2238;background:#fff1f4}@media print{.statement-signout,.statement-signout-error{display:none}}</style></head>
 <body><a class="skip-link" href="#income-statement">Skip to financial statements</a>
 <header><div class="topline"><img class="brand" src="{{RESOURCE_LOGO}}" alt="Dulcinea One" width="240" height="73"><a class="back-link" href="index.html#slide-8">← Back to presentation</a></div><div class="hero"><p class="eyebrow">Dulcinea One</p><h1>Pro forma financial statements</h1><p>Unaudited projections in USD, October 2026–September 2030.</p></div></header>
-<nav class="section-nav" aria-label="Pro forma financial statements"><a href="#income-statement">Income statement</a><a href="#after-carry">After carry</a><a href="#cash-flow-statement">Cash flows</a><a href="#balance-sheet">Balance sheet</a></nav>
+<nav class="section-nav" aria-label="Pro forma financial statements"><a href="#income-statement">Income statement</a><a href="#after-carry">After carry</a><a href="#cash-flow-statement">Cash flows</a><a href="#balance-sheet">Balance sheet</a><form class="session-exit statement-signout" action="/logout" method="post"><button type="submit">Sign out</button></form></nav>
+<p class="statement-signout-error" id="statement-signout-error" role="alert" hidden></p>
 <main>
 <section id="income-statement" aria-labelledby="income-title"><h2 id="income-title">Pro forma income statement</h2><div class="table-scroll" role="region" aria-label="Pro forma income statement in USD; scroll horizontally for all years" tabindex="0"><table><caption>USD · Margins as % of revenue</caption><thead><tr><th scope="col">Year</th><th scope="col">Year 1<span>Oct 2026–Sep 2027</span></th><th scope="col">Year 2<span>Oct 2027–Sep 2028</span></th><th scope="col">Year 3<span>Oct 2028–Sep 2029</span></th><th scope="col">Year 4<span>Oct 2029–Sep 2030</span></th><th scope="col">Total<span>Years 1–4</span></th></tr></thead><tbody>
 <tr data-id="rentalIncome"><th scope="row">Rental income</th><td data-value="84225.675">84,226</td><td data-value="308211.8392542858">308,212</td><td data-value="210510.4834933715">210,510</td><td data-value="40478.98871164114">40,479</td><td data-value="643426.9864592984">643,427</td></tr>
@@ -66,4 +68,24 @@
 <tr data-id="debt"><th scope="row">Debt and payables</th><td data-value="0" aria-label="Zero"></td><td data-value="0" aria-label="Zero"></td><td data-value="0" aria-label="Zero"></td><td data-value="0" aria-label="Zero"></td></tr>
 <tr class="result" data-id="equity"><th scope="row">Total equity</th><td data-value="6504598.650864682">6,504,599</td><td data-value="6591396.913360766">6,591,397</td><td data-value="3371536.8764201105">3,371,537</td><td data-value="0" aria-label="Zero"></td></tr>
 </tbody></table></div><p class="scroll-hint">Scroll horizontally to view every year on smaller screens.</p></section>
-</main><footer><div class="footer-inner"><p>Unaudited projections. Actual results may differ materially. Returns are not guaranteed.</p><p>Dulcinea One · Pro forma financial statements</p><p><a href="disclaimer.html">Disclaimer</a></p></div></footer><script id="carry-disclosure">(()=>{const button=document.getElementById('carry-toggle');const row=document.getElementById('carry-breakdown');if(!button||!row)return;const setExpanded=expanded=>{button.setAttribute('aria-expanded',String(expanded));row.hidden=!expanded;};setExpanded(false);button.addEventListener('click',()=>setExpanded(button.getAttribute('aria-expanded')!=='true'));})();</script></body></html>
+</main><footer><div class="footer-inner"><p>Unaudited projections. Actual results may differ materially. Returns are not guaranteed.</p><p>Dulcinea One · Pro forma financial statements</p><p><a href="disclaimer.html">Disclaimer</a></p></div></footer><script id="carry-disclosure">(()=>{const button=document.getElementById('carry-toggle');const row=document.getElementById('carry-breakdown');if(!button||!row)return;const setExpanded=expanded=>{button.setAttribute('aria-expanded',String(expanded));row.hidden=!expanded;};setExpanded(false);button.addEventListener('click',()=>setExpanded(button.getAttribute('aria-expanded')!=='true'));})();</script><script id="statement-session-exit">(()=>{
+  const form=document.querySelector('.statement-signout');
+  if(!form)return;
+  const spanish=document.documentElement.lang==='es';
+  form.action=spanish?'/logout?lang=es':'/logout';
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();
+    const button=form.querySelector('button');
+    const feedback=document.getElementById('statement-signout-error');
+    if(button.disabled)return;
+    button.disabled=true;form.setAttribute('aria-busy','true');feedback.hidden=true;
+    try{
+      const response=await fetch(form.action,{method:'POST',mode:'cors',credentials:'same-origin',headers:{Accept:'application/json'}});
+      if(!response.ok)throw new Error('Sign-out failed');
+      location.replace(spanish?'/es/#home':'/#home');
+    }catch{
+      feedback.textContent=spanish?'No se pudo cerrar sesión. Inténtelo de nuevo.':'Could not sign out. Please try again.';
+      feedback.hidden=false;button.disabled=false;form.removeAttribute('aria-busy');
+    }
+  });
+})();</script></body></html>

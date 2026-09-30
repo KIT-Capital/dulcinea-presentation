@@ -4,7 +4,7 @@ Dulcinea is a real estate investment firm focused on Medellín, Colombia. This i
 
 The website tells the investment story on the homepage: a cinematic opening, a visible subscription summary, the investment approach, Medellín, all five property films, Lola & Ber hospitality, ownership benefits and nightlife. The offer, three equity kickers and expanded projected returns precede the team and contact. A chapter index and resource directory supplement the existing navigation. The offer shows a $7M raise, $2.1M committed and $4.9M open. Detailed projections and acquisition criteria remain separate resources. Figures and acquisition statuses reflect the supplied materials, not independently verified current subscriptions or completed closings.
 
-English is the default; compact American and Colombian flag controls switch between English and Spanish. The header provides property and fund anchors, financials, criteria, contact and sign-out. Old `#slide-N` links map to corresponding new sections.
+English is the default; compact American and Colombian flag controls switch between English and Spanish. The header provides property and fund anchors, financials, criteria, and contact. Sign-out appears only in the password-protected financial statements. Old `#slide-N` links map to corresponding new sections.
 
 ## Present live
 
@@ -77,11 +77,17 @@ Investor pages stay concise, without Excel filenames, cells or calculation expla
 
 The current financial source is **Dulcinea Model 09.xlsx**, verified on 2026-09-28. `content/model-summary.json`, `content/financials.json` and property records use the same source hash. The workbook remains outside the app. The read-only source check requires Python with openpyxl; it reads saved values and expanded formulas without modifying or recalculating the workbook. The reconciliation is recorded in `docs/model-09-reconciliation.md`.
 
-## Protected hosting
+## Public website and private financial statements
 
-The configured Cloudflare Worker targets `https://invest.dulcineainvestments.org`. Access uses the name/email form and shared password, with a browser-session cookie and an eight-hour server-side maximum. There is no persistent remembered sign-in. The session-policy version rejects cookies issued under the former persistent policy. Browser session restoration can restore session cookies according to the visitor's browser settings. Sign-out submits a same-origin CORS POST so the browser supplies the required Origin even under the site's no-referrer policy. This is a password gate, not OAuth. Names and emails are not retained or sent anywhere. Investor pages, media, financials, criteria and floorplans require authentication.
+The configured Cloudflare Worker targets `https://invest.dulcineainvestments.org`. The homepage, presentation, investment criteria, property imagery and films, specialists, disclaimer and headline return/IRR figures are public in both languages. The approved floorplan PDF remains available from the public property viewer.
 
-Only the exact gate logo, English/Spanish social-card images, previous social-preview panorama and aerial-video URLs, plus the robots policy, are public. Anonymous requests to `/` and `/es/` serve the login gate with localized social metadata; HEAD returns the same headers without a body. The branded 1200 × 630 JPEG cards are the primary share images. Optional video metadata remains available, and the former panorama URL is retained for cached previews. `shared/social-metadata.mjs` keeps titles, descriptions, locales and card URLs consistent between the login gate and investor pages. All responses retain `noindex, nofollow` and `Cache-Control: private, no-store`; `run_worker_first: true` must remain enabled. The Worker serves single byte ranges for MP4 playback and seeking, after the same access checks as full video requests.
+Formal financial statements require the existing name/email form and shared password. Clean URLs, `.html` URLs, English/Spanish paths, direct links and HEAD requests use the same server-side access check. `/login` defaults to the statements and includes a public website link. Sign-out appears only on the statements and returns to the public website. Names and emails are not retained or sent anywhere. This is a password gate, not OAuth.
+
+`server/access-policy.mjs` resolves approved page aliases and the exact public media list generated as `server/public-asset-paths.mjs`. Unknown assets are denied even after sign-in. `/downloads/` (except the approved floorplan PDF) and `/private-documents/` are reserved for future private investor downloads; no new documents are enabled yet. Adding an investor download requires an explicit build allowlist and private route entry. Corporate/legal source files and source workbooks remain excluded from the build and unavailable to all visitors, including signed-in users and claimed administrators.
+
+Sessions use an HttpOnly browser-session cookie with an eight-hour server-side maximum and no persistent remembered sign-in. Browser session restoration can restore cookies according to the visitor's browser settings. Sign-out submits a same-origin CORS POST so the browser supplies the required Origin even under the site's no-referrer policy. The session-policy version rejects cookies issued under the former persistent policy.
+
+The branded English/Spanish 1200 × 630 JPEG cards remain the primary share images, with optional aerial-video metadata. Public home URLs now serve the complete website and their localized metadata. All responses retain `noindex, nofollow` and `Cache-Control: private, no-store`. `run_worker_first: true` and `html_handling: none` must remain enabled: the Worker resolves page aliases and authorizes every asset before the asset binding reads it. Approved public MP4s support single byte ranges for playback and seeking. Public content continues to work if private sign-in configuration is unavailable; private content fails closed.
 
 Access requests and contact email use `kit@kitcapital.com`. Dov’s WhatsApp link is `https://wa.me/19174284062`.
 
@@ -109,7 +115,7 @@ wrangler deploy --config wrangler.jsonc
 
 Ordinary deployment preserves existing remote secrets. Do not add `--secrets-file` or reset credentials for a design update. Initial setup requires `INVESTOR_PASSWORD` of at least 11 characters, `SESSION_SECRET` of at least 32 characters, and the configured `LOGIN_LIMITER`. Changing either secret invalidates existing sessions.
 
-The build gate checks packaged assets, language routes, navigation, inline script syntax, public share assets, team and plan coverage, and duplicate MP4s. Financial checks reconcile source values, margins, carry and cash balances. After deployment, separately verify login, wrong-password rejection, private direct links, English/Spanish resources, video playback/range requests and logout. A successful local build does not establish a verified production release.
+The build gate checks packaged assets, language routes, navigation, inline script syntax, public share assets, team and plan coverage, and duplicate MP4s. Financial checks reconcile source values, margins, carry and cash balances. After deployment, separately verify login, wrong-password rejection, anonymous public pages and media, protected financial direct links, English/Spanish resources, video playback/range requests and logout. A successful local build does not establish a verified production release.
 
 ## Optional media rendering
 

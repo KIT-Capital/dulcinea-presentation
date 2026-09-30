@@ -5,6 +5,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Script } from 'node:vm';
 import { videoSizes } from '../server/video-sizes.mjs';
+import { assetPolicy } from '../server/access-policy.mjs';
+import { publicAssetPaths } from '../server/public-asset-paths.mjs';
 import { socialMetadata, SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
 
 // Read-only release gate. Build first with `node scripts/build.mjs --web`.
@@ -57,6 +59,9 @@ function resolveBuiltURL(reference, base, label) {
 }
 
 await inventory(site);
+assert.deepEqual([...publicAssetPaths].sort(), [...files.keys()].filter(file=>!file.endsWith('.html')).sort(), 'Public asset allowlist must match approved built media');
+for (const asset of publicAssetPaths) assert.equal(assetPolicy(asset).access, 'public', `Public media classification: ${asset}`);
+for (const page of pages.keys()) assert.equal(assetPolicy(page).access, page.endsWith('/financial-statements.html')?'private':'public', `Page access classification: ${page}`);
 const requiredPages = ['', 'es/'].flatMap(prefix => ['index', 'financial-statements', 'investment-criteria', 'specialists', 'disclaimer'].map(name => `/${prefix}${name}.html`));
 assert.deepEqual([...pages.keys()].sort(), [...requiredPages].sort(), 'Expected only EN/ES investor, financial, criteria, specialists and disclaimer pages');
 const publicAssets = ['/gate-assets/logo.svg', SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH, '/assets/images/stock/AdobeStock_891890158-web.jpg', '/assets/video/stock/AdobeStock_693150796.mp4'];
@@ -96,6 +101,9 @@ for (const [pagePath, html] of pages) {
   assert.match(html, new RegExp(`<html\\s+lang=["']${language}["']`), `Wrong language: ${pagePath}`);
   assert.doesNotMatch(html, /Design preview|Vista previa|\{\{[A-Z_0-9]+\}\}|\/\*__[A-Z_]+__\*\//i, `Preview text or unexpanded marker: ${pagePath}`);
   const markup = withoutScripts(html);
+  const forms = [...markup.matchAll(/<form\b[^>]*>/gi)].map(match => attributes(match[0]));
+  const hasSignout = forms.some(form => form.action === '/logout' && form.method?.toLowerCase() === 'post');
+  assert.equal(hasSignout, pagePath.endsWith('/financial-statements.html'), `Sign-out belongs only in financial statements: ${pagePath}`);
   for (const tag of markup.match(/<[a-z][^>]*>/gi) || []) {
     const attrs = attributes(tag);
     for (const name of ['src', 'poster', 'href', 'action']) {
@@ -138,8 +146,6 @@ for (const [pagePath, html] of pages) {
   const map = JSON.parse(injected[1]);
   assert.deepEqual(map, expectedMap, `Media alias map diverges from sources: ${pagePath}`);
   for (const [alias, url] of Object.entries(map)) resolveBuiltURL(url, pagePath, `${pagePath} media alias ${alias}`);
-  const forms = [...markup.matchAll(/<form\b[^>]*>/gi)].map(match => attributes(match[0]));
-  assert.ok(forms.some(form => form.action === '/logout' && form.method?.toLowerCase() === 'post'), `Missing POST sign-out: ${pagePath}`);
   assert.match(markup, /href=["']https:\/\/wa\.me\/19174284062["']/, `Missing Dov WhatsApp: ${pagePath}`);
   assert.match(markup, /href=["']mailto:kit@kitcapital\.com["']/, `Missing Dov email: ${pagePath}`);
   for (const person of ['K. Dov Isaza Tuzman', 'Ricardo Cidale', 'Adriana Suárez']) assert.ok(textContent(markup).includes(person), `Missing team member ${person}: ${pagePath}`);
@@ -168,8 +174,8 @@ for (const [pagePath, html] of pages) {
   const text = textContent(markup);
   assert.match(markup, /class="legal-notice"/, `Missing homepage disclosure: ${pagePath}`);
   for (const phrase of language === 'en'
-    ? ['Our first fund.', 'Lola & Ber Hospitality', '30% already committed.', 'Three equity kickers.', 'Delaware LLC', 'Sign out']
-    : ['Nuestro primer fondo.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Tres beneficios de participación adicionales.', 'LLC de Delaware', 'Cerrar sesión']) {
+    ? ['Our first fund.', 'Lola & Ber Hospitality', '30% already committed.', 'Three equity kickers.', 'Delaware LLC']
+    : ['Nuestro primer fondo.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Tres beneficios de participación adicionales.', 'LLC de Delaware']) {
     assert.ok(text.includes(phrase), `Missing visible ${language} investor content: ${phrase}`);
   }
 }

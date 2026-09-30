@@ -1108,9 +1108,7 @@ body.is-presenting .website-only { display:none !important; }
     <button type="button" data-language="es" aria-label="Español" aria-pressed="false"><svg viewBox="0 0 26 18" aria-hidden="true"><path fill="#fcd116" d="M0 0h26v9H0z"/><path fill="#003893" d="M0 9h26v4.5H0z"/><path fill="#ce1126" d="M0 13.5h26V18H0z"/></svg><span>ES</span></button>
   </div>
   <a class="contact-nav" href="#contact" data-en="Talk to us ↗" data-es="Hable con nosotros ↗">Talk to us ↗</a>
-
 </header>
-<p id="signout-error" class="signout-error" role="alert" hidden data-en="Could not sign out. Please try again." data-es="No se pudo cerrar sesión. Inténtelo de nuevo.">Could not sign out. Please try again.</p>
 <main id="main">
   <section class="hero film" id="home" aria-labelledby="hero-title">
     <video class="background-video" src="assets/video/dulcinea-introduction.mp4" poster="assets/video/dulcinea-introduction-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
@@ -1217,7 +1215,7 @@ body.is-presenting .website-only { display:none !important; }
 
   <section class="investor-resources section-pad website-only" id="resources" aria-labelledby="resources-title">
     <div class="resources-heading"><p class="micro" data-en="Investor information" data-es="Información para inversionistas">Investor information</p><h2 id="resources-title" data-en="Review the investment." data-es="Revise la inversión.">Review the investment.</h2></div>
-    <div class="resource-directory"><a data-path="financial-statements.html" href="financial-statements.html" target="_blank" rel="noopener"><span class="micro" data-en="01 / The numbers" data-es="01 / Las cifras">01 / The numbers</span><h3 data-en="Pro forma financials" data-es="Finanzas pro forma">Pro forma financials</h3><p data-en="Income, cash flows and balance sheet." data-es="Resultados, flujos de efectivo y balance general.">Income, cash flows and balance sheet.</p><span aria-hidden="true">↗</span></a><a data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener"><span class="micro" data-en="02 / Property selection" data-es="02 / Selección de propiedades">02 / Property selection</span><h3 data-en="Investment criteria" data-es="Criterios de inversión">Investment criteria</h3><p data-en="How we evaluate properties." data-es="Cómo evaluamos las propiedades.">How we evaluate properties.</p><span aria-hidden="true">↗</span></a><a href="#team"><span class="micro" data-en="03 / The people" data-es="03 / Las personas">03 / The people</span><h3 data-en="Meet Dulcinea" data-es="Conozca a Dulcinea">Meet Dulcinea</h3><p data-en="The team behind the portfolio." data-es="El equipo detrás del portafolio.">The team behind the portfolio.</p><span aria-hidden="true">↓</span></a></div>
+    <div class="resource-directory"><a data-path="financial-statements.html" href="financial-statements.html" target="_blank" rel="noopener"><span class="micro" data-en="01 / The numbers" data-es="01 / Las cifras">01 / The numbers</span><h3 data-en="Pro forma financials" data-es="Finanzas pro forma">Pro forma financials</h3><p data-en="Income, cash flows and balance sheet. Password required." data-es="Resultados, flujos de efectivo y balance general. Requiere contraseña.">Income, cash flows and balance sheet. Password required.</p><span aria-hidden="true">↗</span></a><a data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener"><span class="micro" data-en="02 / Property selection" data-es="02 / Selección de propiedades">02 / Property selection</span><h3 data-en="Investment criteria" data-es="Criterios de inversión">Investment criteria</h3><p data-en="How we evaluate properties." data-es="Cómo evaluamos las propiedades.">How we evaluate properties.</p><span aria-hidden="true">↗</span></a><a href="#team"><span class="micro" data-en="03 / The people" data-es="03 / Las personas">03 / The people</span><h3 data-en="Meet Dulcinea" data-es="Conozca a Dulcinea">Meet Dulcinea</h3><p data-en="The team behind the portfolio." data-es="El equipo detrás del portafolio.">The team behind the portfolio.</p><span aria-hidden="true">↓</span></a></div>
   </section>
 
   <section class="team section-pad" id="team" aria-labelledby="team-title">
@@ -1475,28 +1473,6 @@ function setLanguage(next,updateRoute = true) {
   document.dispatchEvent(new CustomEvent('dulcinea:language'));
 }
 document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click',() => setLanguage(button.dataset.language)));
-// CORS-mode fetch retains the real Origin under the site's no-referrer policy;
-// native form navigation would send Origin:null and fail the server check.
-document.querySelectorAll('.signout-form').forEach(form => form.addEventListener('submit',async event => {
-  event.preventDefault();
-  const button = form.querySelector('button[type="submit"]');
-  const feedback = $('#signout-error');
-  if (button.disabled) return;
-  button.disabled = true;
-  form.setAttribute('aria-busy','true');
-  feedback.hidden = true;
-  feedback.textContent = '';
-  try {
-    const response = await fetch('/logout', { method:'POST', mode:'cors', credentials:'same-origin', headers:{ Accept:'application/json' } });
-    if (!response.ok) throw new Error('Sign-out failed');
-    location.replace(lang === 'es' ? '/login?lang=es&next=%2Fes%2F' : '/login');
-  } catch {
-    feedback.textContent = lang === 'es' ? 'No se pudo cerrar sesión. Inténtelo de nuevo.' : 'Could not sign out. Please try again.';
-    feedback.hidden = false;
-    button.disabled = false;
-    form.removeAttribute('aria-busy');
-  }
-}));
 function openDialog(dialog) { dialog.showModal(); syncMotion(); }
 $('#view-original').addEventListener('click',() => openDialog(originalDialog));
 $('#close-original').addEventListener('click',() => originalDialog.close());
