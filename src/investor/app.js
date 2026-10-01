@@ -167,6 +167,7 @@ function translateAria() {
 function setLanguage(next,updateRoute = true) {
   lang = next === 'es' ? 'es' : 'en'; document.documentElement.lang = lang;
   document.querySelectorAll('[data-en]').forEach(element => { element.textContent = element.dataset[lang]; });
+  document.querySelectorAll('[data-en-alt]').forEach(element => element.alt = element.getAttribute(`data-${lang}-alt`));
   document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.language === lang)));
   document.querySelectorAll('[data-path]').forEach(link => { link.href = resource(link.dataset.path); });
   document.title = lang === 'es' ? 'Dulcinea One | Inversión inmobiliaria en Medellín' : 'Dulcinea One | Real estate investment in Medellín';

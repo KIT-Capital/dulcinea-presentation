@@ -1,4 +1,4 @@
-/* Extra chapters for the scrolling website. The presentation keeps its own flow. */
+/* Shared lifestyle chapters; directories and supplementary films stay on the website. */
 body.is-presenting .website-only { display:none !important; }
 
 .story-index {
@@ -150,6 +150,33 @@ body.is-presenting .website-only { display:none !important; }
 .ownership-copy .line-link { width:260px; min-height:48px; margin-top:20px; }
 .ownership-copy > .footnote { max-width:405px; margin-top:24px; font-size:11px; line-height:1.55; color:#34484a; }
 
+/* Destination-first narrative, using the existing Dulcinea design system. */
+.lifestyle-benefits { margin:24px 0 0; }
+.lifestyle-benefits > div { padding:13px 0; border-top:1px solid #17282d38; }
+.lifestyle-benefits dt { color:var(--ink); font-size:16px; line-height:1.35; }
+.lifestyle-benefits dd { text-align:left; margin:5px 0 0; font-size:14px; line-height:1.5; color:#34484a; max-width:390px; }
+.oriente-story { padding:64px 4vw; background:var(--paper); scroll-margin-top:20px; }
+.oriente-heading { display:grid; grid-template-columns:1.2fr 1fr; gap:20px 6vw; align-items:end; margin-bottom:32px; }
+.oriente-heading > .micro { grid-column:1/-1; color:#45585c; }
+.oriente-heading h2 { font-size:clamp(45px,5.2vw,78px); }
+.oriente-heading > p:not(.micro) { max-width:430px; font-size:18px; line-height:1.55; padding-bottom:4px; color:#435457; }
+.oriente-grid { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:28px; align-items:start; }
+.oriente-landscape { margin:0; min-width:0; }
+.oriente-photo-frame { position:relative; aspect-ratio:16/9; overflow:hidden; background:#cad7d1; }
+/* Display the exterior panel of the supplied two-photo sheet, without altering the source. */
+.oriente-property-photo { position:absolute; bottom:0; left:0; width:100%; max-width:none; height:auto; transform-origin:50% 100%; animation:oriente-pan 24s ease-in-out infinite alternate; }
+@keyframes oriente-pan { from { transform:scale(1); } to { transform:scale(1.04) translateX(-.6%); } }
+.oriente-landscape figcaption { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; padding-top:13px; font-size:12px; line-height:1.5; color:#435457; }
+.oriente-context { min-width:0; }
+.oriente-film { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--ink); }
+.oriente-film video { display:block; width:100%; height:100%; object-fit:cover; }
+.oriente-film > span { position:absolute; bottom:12px; left:12px; max-width:calc(100% - 24px); padding:5px 8px; background:#17282de0; color:white; font-size:10px; line-height:1.5; }
+.oriente-copy h3 { margin:23px 0 12px; font-size:32px; line-height:1.1; letter-spacing:-.035em; }
+.oriente-copy p { max-width:440px; font-size:16px; line-height:1.55; color:#435457; }
+.oriente-copy .line-link { min-height:48px; margin-top:18px; max-width:100%; width:270px; font-size:13px; }
+.approach-selection { grid-template-columns:minmax(0,1fr); max-width:840px; margin:40px auto 0; }
+.approach-selection .approach-film { aspect-ratio:21/9; }
+
 .investor-resources { padding:64px 4vw; background:var(--paper); scroll-margin-top:20px; }
 .resources-heading { display:flex; align-items:baseline; flex-wrap:wrap; justify-content:space-between; gap:18px 32px; margin-bottom:34px; }
 .resources-heading .micro { color:#45585c; }
@@ -185,6 +212,13 @@ body.is-presenting .website-only { display:none !important; }
 }
 
 @media (max-width:760px) {
+  .oriente-story { padding:44px 4vw; }
+  .oriente-heading { grid-template-columns:minmax(0,1fr); gap:20px; margin-bottom:26px; }
+  .oriente-heading h2 { font-size:clamp(40px,9vw,58px); }
+  .oriente-heading > p:not(.micro) { font-size:16px; }
+  .oriente-grid { grid-template-columns:minmax(0,1fr); gap:32px; }
+  .oriente-copy h3 { font-size:30px; }
+  .approach-selection .approach-film { aspect-ratio:16/10; }
   .story-index { display:block; padding:20px 4vw 12px; }
   .story-index > .micro { display:block; padding:0; margin-bottom:10px; }
   .story-index > div { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 22px; }
@@ -250,6 +284,7 @@ body.is-presenting .website-only { display:none !important; }
 }
 
 @media (prefers-reduced-motion:reduce) {
+  .oriente-property-photo { animation:none; }
   .story-index a,
   .offer-glance > a > span:last-child,
   .home-film-media video,

@@ -39,6 +39,8 @@ export const publicAssetPaths=Object.freeze([
   "/assets/video/properties/montana.mp4",
   "/assets/video/properties/monte-sereno.mp4",
   "/assets/video/properties/san-lucas.mp4",
+  "/assets/video/stock/AdobeStock_1849343666-poster.jpg",
+  "/assets/video/stock/AdobeStock_1849343666.mp4",
   "/assets/video/stock/AdobeStock_693150796-poster.jpg",
   "/assets/video/stock/AdobeStock_693150796.mp4",
   "/assets/video/stock/AdobeStock_762119818-poster.jpg",

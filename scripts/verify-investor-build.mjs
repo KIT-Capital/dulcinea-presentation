@@ -150,8 +150,8 @@ for (const [pagePath, html] of pages) {
   assert.match(markup, /href=["']mailto:kit@kitcapital\.com["']/, `Missing Dov email: ${pagePath}`);
   for (const person of ['K. Dov Isaza Tuzman', 'Ricardo Cidale', 'Adriana Suárez']) assert.ok(textContent(markup).includes(person), `Missing team member ${person}: ${pagePath}`);
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
-  for(const chapter of ['destination','ownership','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
-  assert.deepEqual([...markup.matchAll(/data-preview-home="(\d)"/g)].map(match=>Number(match[1])),[0,1,2,3,4],`Every property film must be directly discoverable: ${pagePath}`);
+  for(const chapter of ['destination','ownership','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
+  assert.deepEqual([...markup.matchAll(/<article class="home-film-card"><a\b[^>]*data-preview-home="(\d)"/g)].map(match=>Number(match[1])),[0,1,2,3,4],`Every property film must be directly discoverable: ${pagePath}`);
   assert.ok(markup.indexOf('id="fund"') < markup.indexOf('id="team"'),'The offer should precede the team directory');
   assert.match(markup, /<details class="model" open>/,'Projected results should be visible without a click');
   assert.match(markup, /id="experience-hospitality"[^>]*loop/,'Hospitality film must loop independently');

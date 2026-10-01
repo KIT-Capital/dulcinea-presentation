@@ -1,5 +1,19 @@
 # Homepage story expansion
 
+## 1 October 2026 revision — lifestyle and El Oriente first
+
+This revision supersedes the sixteen-slide order described below. The existing Dulcinea design and the Radisson destination/hospitality sequence remain the reference lock. No new visual system is introduced.
+
+The scrolling story now runs: opening and subscription strip; lifestyle benefits; Medellín; El Oriente; Lola & Ber; the five homes; nightlife; investment approach; offer, kickers and returns; resources; team and specialists; contact and disclosures. The section index adds El Oriente, and lifestyle links lead to the expanded benefits section.
+
+The presentation has eighteen slides: cover; lifestyle; Medellín; El Oriente; Lola & Ber; five individual properties; investment approach; offer; kickers; returns; team; specialists; disclosures; contact. Shared sections keep wording consistent across the website and presentation. English and Colombian Spanish are authored together. Financial values and membership conditions are unchanged.
+
+El Oriente uses the original Monte Sereno garden photograph and the existing El Retiro town aerial. The rural landscape and the town are captioned separately. New Adobe Stock countryside candidates and geographic evidence are recorded in [el-oriente-footage.md](el-oriente-footage.md); they have not been licensed or installed.
+
+Quality checks: English/Spanish production build verification and all 33 server tests pass. New slides checked at notebook size, plus responsive phone and tablet layouts; country-property links select Monte Sereno in both site and presentation mode. Motion observes the existing pause/reduced-motion behavior. There are twelve distinct film aliases in the homepage build, with no duplicate file copy for the new El Retiro alias.
+
+## Previous homepage expansion
+
 Build target: the existing Dulcinea design, navigation and sixteen-slide presentation. Direct implementation of the user's request to restore substance and make more films visible on the scrolling homepage.
 
 Reference lock: existing Dulcinea typography, teal/Blue Topaz/old-gold roles, sharp media edges and concise language. Retain notebook-first proportions, no navigation/content overlap and the separate English/Spanish versions.

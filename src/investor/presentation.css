@@ -42,21 +42,57 @@ body.is-presenting .partners > div { font-size:8px; gap:9px }
 body.is-presenting .partners > div img { width:31px; height:31px }
 body.is-presenting .motion { top:84px; right:64px; width:38px; height:38px }
 
-/* Idea and lifestyle are two distinct slides. */
+/* The investment approach follows the homes and the lifestyle chapters. */
 body.is-presenting[data-presentation-step="idea"] .approach-films { display:none }
 body.is-presenting .intro-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:100px; margin-top:90px }
 body.is-presenting .intro h2 { font-size:88px }
 body.is-presenting .intro-copy { padding-top:12px; max-width:none }
 body.is-presenting .intro-copy p { font-size:26px; line-height:1.45 }
 body.is-presenting .intro-copy p + p { margin-top:28px; font-size:23px; line-height:1.5 }
-body.is-presenting[data-presentation-step="lifestyle"] .intro-grid,
-body.is-presenting[data-presentation-step="lifestyle"] .section-index { display:none }
-body.is-presenting[data-presentation-step="lifestyle"] .lifestyle-title { display:block; font-size:70px }
 body.is-presenting .approach-films { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:60px }
 body.is-presenting .approach-films figure + figure { margin-top:0 }
 body.is-presenting .approach-film { height:430px; aspect-ratio:auto }
 body.is-presenting .approach-films figcaption { font-size:21px; padding-top:22px; flex-wrap:wrap; gap:10px }
 body.is-presenting .approach-films figcaption .micro { font-size:12px }
+
+/* Shared lifestyle content gets a full slide before the investment mechanics. */
+body.is-presenting #main > #ownership.presentation-active { display:grid; grid-template-columns:600px minmax(0,1fr); align-items:stretch; gap:56px; padding:44px 60px }
+body.is-presenting #ownership .ownership-media { min-height:0; height:100%; aspect-ratio:auto }
+body.is-presenting #ownership .ownership-media .image-caption { font-size:12px; line-height:1.45 }
+body.is-presenting #ownership .ownership-copy { max-width:none; min-height:0; padding:0; display:flex; flex-direction:column; justify-content:center }
+body.is-presenting #ownership h2 { font-size:60px; line-height:1.04; max-width:none; margin:18px 0 }
+body.is-presenting #ownership .ownership-copy > p:not(.micro):not(.footnote) { max-width:none; font-size:22px; line-height:1.45; margin:0 }
+body.is-presenting #ownership .lifestyle-benefits { margin:22px 0 0; display:block }
+body.is-presenting #ownership .lifestyle-benefits > div { display:grid; grid-template-columns:155px minmax(0,1fr); gap:18px; padding:13px 0; border-top:1px solid #17282d38 }
+body.is-presenting #ownership .lifestyle-benefits dt { font-size:20px; line-height:1.35; font-weight:400 }
+body.is-presenting #ownership .lifestyle-benefits dd { margin:0; font-size:18px; line-height:1.45 }
+body.is-presenting #ownership .line-link { width:280px; min-height:44px; margin-top:10px; padding:11px 0; font-size:17px }
+body.is-presenting #ownership .ownership-copy > .footnote { max-width:none; margin-top:15px; font-size:14px; line-height:1.45 }
+
+/* Medellín and El Oriente have separate chapters and distinct imagery. */
+body.is-presenting #main > #destination.presentation-active { display:flex; flex-direction:column; justify-content:flex-end; padding:64px 80px }
+body.is-presenting #destination .story-film-copy { max-width:980px }
+body.is-presenting #destination h2 { font-size:88px; line-height:1.04; max-width:950px; margin:25px 0 }
+body.is-presenting #destination .story-film-copy > p:not(.micro) { max-width:670px; font-size:26px; line-height:1.45 }
+body.is-presenting #destination .line-link { font-size:18px; width:300px; margin-top:28px }
+body.is-presenting #destination .destination-labels { margin-top:40px; padding-top:22px; font-size:14px; gap:24px }
+body.is-presenting #main > #oriente.presentation-active { padding:46px 60px }
+body.is-presenting #oriente .oriente-heading { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:16px 65px; align-items:end; margin:0 0 30px }
+body.is-presenting #oriente .oriente-heading > .micro { grid-column:1 / -1; margin:0 }
+body.is-presenting #oriente h2 { font-size:60px; line-height:1.04; margin:0; max-width:none }
+body.is-presenting #oriente .oriente-heading > p:not(.micro) { font-size:22px; line-height:1.45; max-width:none; margin:0 }
+body.is-presenting #oriente .oriente-grid { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:32px; height:486px; align-items:stretch }
+body.is-presenting #oriente .oriente-landscape { display:flex; flex-direction:column; margin:0; height:100%; min-height:0 }
+body.is-presenting #oriente .oriente-photo-frame { flex:none; width:100%; height:auto; min-height:0; aspect-ratio:16/9; overflow:hidden }
+body.is-presenting #oriente .oriente-property-photo { display:block; width:100%; height:auto; min-height:0; aspect-ratio:auto; object-fit:initial }
+body.is-presenting #oriente .oriente-landscape figcaption { display:flex; justify-content:space-between; gap:18px; flex-shrink:0; min-height:32px; padding:10px 0 0; font-size:13px; line-height:1.4 }
+body.is-presenting #oriente .oriente-context { display:grid; grid-template-rows:218px minmax(0,1fr); gap:20px; min-height:0 }
+body.is-presenting #oriente .oriente-film { position:relative; height:218px; min-height:0; overflow:hidden; aspect-ratio:auto }
+body.is-presenting #oriente .oriente-film video { display:block; width:100%; height:100%; object-fit:cover }
+body.is-presenting #oriente .oriente-copy { padding:0; min-height:0 }
+body.is-presenting #oriente .oriente-copy h3 { margin:0 0 12px; font-size:32px; line-height:1.12; letter-spacing:-.03em }
+body.is-presenting #oriente .oriente-copy p { margin:0; font-size:20px; line-height:1.45 }
+body.is-presenting #oriente .oriente-copy .line-link { width:100%; margin-top:15px; padding:12px 0; font-size:17px }
 
 /* One property per slide, with working plans and original-image dialogs. */
 body.is-presenting #main > .homes { padding:44px 60px }

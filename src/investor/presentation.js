@@ -12,14 +12,16 @@
 
   const steps = [
     {id:'cover', selector:'#home', title:['Dulcinea One','Dulcinea One']},
-    {id:'idea', selector:'#approach', title:['The investment approach','La estrategia de inversión']},
-    {id:'lifestyle', selector:'#approach', title:['Life in Medellín','La vida en Medellín']},
+    {id:'lifestyle', selector:'#ownership', title:['Homes for more than a visit','Propiedades para disfrutar']},
+    {id:'city', selector:'#destination', title:['Life in Medellín','La vida en Medellín']},
+    {id:'oriente', selector:'#oriente', title:['El Oriente countryside','El campo del Oriente']},
+    {id:'hospitality', selector:'#experience', title:['Lola & Ber Hospitality','Lola & Ber Hospitality']},
     {id:'fontanar', selector:'#homes', home:0, title:['Fontanar 201','Fontanar 201']},
     {id:'san-lucas', selector:'#homes', home:1, title:['San Lucas 101','San Lucas 101']},
     {id:'aires', selector:'#homes', home:2, title:['Aires de Campestre','Aires de Campestre']},
     {id:'monte-sereno', selector:'#homes', home:3, title:['Casa Monte Sereno','Casa Monte Sereno']},
     {id:'montana', selector:'#homes', home:4, title:['Casa Montana','Casa Montana']},
-    {id:'hospitality', selector:'#experience', title:['Lola & Ber Hospitality','Lola & Ber Hospitality']},
+    {id:'idea', selector:'#approach', title:['The investment approach','La estrategia de inversión']},
     {id:'offer', selector:'#fund', title:['The offer + the ask','La oferta + la invitación']},
     {id:'kickers', selector:'#fund', title:['Three equity kickers','Tres beneficios de participación']},
     {id:'returns', selector:'#fund', title:['Projected returns','Retornos proyectados']},
@@ -370,10 +372,10 @@
   main.addEventListener('click',event => {
     if (!active || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target = event.target instanceof Element ? event.target : null;
-    const homeButton = target?.closest('[data-home],#prev-home,#next-home');
+    const homeButton = target?.closest('[data-home],[data-preview-home],#prev-home,#next-home');
     if (homeButton) {
       event.preventDefault(); event.stopImmediatePropagation();
-      const chosen = homeButton.hasAttribute('data-home') ? Number(homeButton.dataset.home) : (current + (homeButton.id === 'next-home' ? 1 : homes.length - 1)) % homes.length;
+      const chosen = homeButton.hasAttribute('data-preview-home') ? Number(homeButton.dataset.previewHome) : homeButton.hasAttribute('data-home') ? Number(homeButton.dataset.home) : (current + (homeButton.id === 'next-home' ? 1 : homes.length - 1)) % homes.length;
       goTo(steps.findIndex(step => step.home === chosen));
       return;
     }
