@@ -1,6 +1,6 @@
 # El Oriente footage
 
-Updated 1 October 2026 for the Dulcinea lifestyle opening. The user supplied two additional clips after the initial shortlist: city-sunset footage `417029984` and reservoir footage `501694199`. Both appear in the opening montage; the reservoir is the main visual in the El Oriente chapter and its presentation slide. These are area-context clips, not footage of Dulcinea's properties.
+Updated 1 October 2026 for the Dulcinea lifestyle opening. The user supplied two additional clips after the initial shortlist: city-sunset footage `417029984` and reservoir footage `501694199`. Both appear in the opening montage, which now begins with the reservoir and the two country homes. The reservoir fills the El Oriente chapter and slide 3, before Medellín; direct links select each country home. These are area-context clips, not footage of Dulcinea's properties.
 
 The user identifies the reservoir as El Oriente in the Medellín region. No reservoir name or more specific location is established, so it must not be labeled La Fe or Guatapé. Both supplied originals remain untouched outside the repository. Full-duration silent 720p24 MP4s and posters have canonical paths under `assets/video/stock/`; `assets/video/stock/oriente-provenance.json` records the private import evidence. Only the reservoir is added as a standalone media alias; the city sunset is served within the opening montage.
 

@@ -17,17 +17,17 @@ VIDEO = ROOT / "assets" / "video"
 FPS = 24
 FADE = 12 / FPS  # Restrained, frame-aligned half-second dissolves.
 SCENES = [
+    {"id": "501694199", "subject": "Reservoir shoreline in El Oriente, location confirmed by user", "source_path": "assets/video/stock/AdobeStock_501694199.mp4", "source_kind": "Actual supplied stock footage", "start_seconds": 5, "duration_seconds": 7.5},
+    {"id": "monte-sereno", "subject": "Monte Sereno garden lifestyle scene", "source_path": "assets/video/properties/monte-sereno.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 1, "duration_seconds": 5.5},
+    {"id": "montana", "subject": "Casa Montana evening terrace lifestyle scene", "source_path": "assets/video/properties/montana.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 2, "duration_seconds": 5.5},
     {"id": "695926335", "subject": "Green high-rise city district and mountain slopes", "source_path": "assets/video/stock/AdobeStock_695926335.mp4", "source_kind": "Actual supplied stock footage", "start_seconds": 2, "duration_seconds": 6.5},
     {"id": "693150796", "subject": "City towers and green streets", "source_path": "assets/video/stock/AdobeStock_693150796.mp4", "source_kind": "Actual supplied stock footage", "start_seconds": 0, "duration_seconds": 5.5},
     {"id": "fontanar", "subject": "Fontanar kitchen lifestyle scene", "source_path": "assets/video/properties/fontanar.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 1, "duration_seconds": 4.5},
     {"id": "san-lucas", "subject": "San Lucas living room lifestyle scene", "source_path": "assets/video/properties/san-lucas.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 1, "duration_seconds": 4.5},
     {"id": "city-photo-891890158", "subject": "Green city valley and mountain panorama", "source_path": "assets/video/stock-photo-city.mp4", "source_kind": "Camera movement over the supplied AdobeStock_891890158 photograph; not filmed aerial motion", "start_seconds": 0, "duration_seconds": 5.5},
     {"id": "1849343666", "subject": "Colonial town square with pedestrians", "source_path": "assets/video/stock/AdobeStock_1849343666.mp4", "source_kind": "Actual supplied stock footage", "start_seconds": 2, "duration_seconds": 4.5},
-    {"id": "501694199", "subject": "Reservoir shoreline in El Oriente, location confirmed by user", "source_path": "assets/video/stock/AdobeStock_501694199.mp4", "source_kind": "Actual supplied stock footage", "start_seconds": 5, "duration_seconds": 5.5},
     {"id": "aires", "subject": "Aires de Campestre living room lifestyle scene", "source_path": "assets/video/properties/aires.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 1, "duration_seconds": 4.5},
-    {"id": "monte-sereno", "subject": "Monte Sereno garden lifestyle scene", "source_path": "assets/video/properties/monte-sereno.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 1, "duration_seconds": 4.5},
     {"id": "417029984", "subject": "Sunset over a city valley and mountain slopes", "source_path": "assets/video/stock/AdobeStock_417029984.mp4", "source_kind": "Actual supplied stock footage", "start_seconds": 0, "duration_seconds": 5},
-    {"id": "montana", "subject": "Casa Montana evening terrace lifestyle scene", "source_path": "assets/video/properties/montana.mp4", "source_kind": "Camera movement over an AI lifestyle illustration; fictional adults are not filmed movement", "start_seconds": 2, "duration_seconds": 5.5},
 ]
 
 
@@ -88,9 +88,9 @@ def render_intro(ffmpeg, *, update_poster=True):
         "method": "An eleven-scene montage of five actual city/town, sunset and reservoir clips, a camera-move film made from a supplied city photograph, and existing camera-move films made from all five AI property lifestyle illustrations. All source films retain their original speed, framing and color; short circular dissolves connect them. No new image generation or simulated human movement.",
         "source_provenance": ["assets/video/stock/provenance.json", "assets/video/stock/feature-provenance.json", "assets/video/stock/oriente-provenance.json", "assets/video/latest-photos-provenance.json", "assets/video/properties/metadata/provenance.json", "assets/images/lifestyle/provenance.json"],
         "timeline": timeline,
-        "timeline_note": "Each section includes its outgoing half-second dissolve; the last dissolve returns to the opening city shot. Incoming clips begin during the preceding section's outgoing dissolve.",
+        "timeline_note": "Each section includes its outgoing half-second dissolve; the last dissolve returns to the opening reservoir shot. Incoming clips begin during the preceding section's outgoing dissolve.",
         "excluded_from_opening": ["AdobeStock_539938219 countryside woman footage", "AdobeStock_787505338 city walking footage"],
-        "loop_method": "Repeat the first city segment after the final dissolve, then trim at matching city camera positions.",
+        "loop_method": "Repeat the first reservoir segment after the final dissolve, then trim at matching camera positions.",
         "render_script": "scripts/render-introduction.py",
         "encoding_options": encoding,
     }

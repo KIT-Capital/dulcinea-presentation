@@ -62,19 +62,13 @@ body.is-presenting[data-presentation-layout="responsive"] #destination h2 { font
 body.is-presenting[data-presentation-layout="responsive"] #destination .story-film-copy > p:not(.micro) { font-size:20px; line-height:1.55; max-width:560px }
 body.is-presenting[data-presentation-layout="responsive"] #destination .line-link { width:100%; max-width:330px; font-size:18px; margin-top:26px }
 body.is-presenting[data-presentation-layout="responsive"] #destination .destination-labels { font-size:11px; line-height:1.6; margin-top:30px; padding-top:18px; gap:12px 24px }
-body.is-presenting[data-presentation-layout="responsive"] #main > #oriente.presentation-active { padding:32px 22px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-heading { grid-template-columns:minmax(0,1fr); gap:18px; margin-bottom:28px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente h2 { font-size:40px; line-height:1.08; max-width:760px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-heading > p:not(.micro) { font-size:18px; line-height:1.6; max-width:650px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-grid { height:auto; grid-template-columns:minmax(0,1fr); gap:28px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-landscape { height:auto }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-photo-frame { flex:none; width:100%; height:auto; min-height:0; aspect-ratio:16/9; overflow:hidden }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-landscape figcaption { min-height:0; font-size:12px; line-height:1.5; padding-top:12px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-context { grid-template-rows:auto auto; gap:22px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-film { height:auto; aspect-ratio:16/10 }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-copy h3 { font-size:30px; line-height:1.12 }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-copy p { font-size:18px; line-height:1.6; max-width:650px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-copy .line-link { width:100%; max-width:330px; min-height:44px; font-size:18px; margin-top:22px }
+body.is-presenting[data-presentation-layout="responsive"] #main > #oriente.presentation-active { padding:0 }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-cinema { height:auto; min-height:var(--presentation-height); padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px)) }
+body.is-presenting[data-presentation-layout="responsive"] #oriente h2 { font-size:clamp(40px,7.8vw,62px); line-height:1.06; margin:24px 0; max-width:760px }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-cinema-copy { font-size:18px; line-height:1.55; max-width:590px }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-homes { gap:8px 28px; margin-top:24px }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-homes .line-link { width:100%; max-width:330px; min-height:48px; margin:0; font-size:17px; padding:13px 0 }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-location { margin-top:24px; font-size:11px; line-height:1.5 }
 
 /* Property details stay readable beneath the film on phones. */
 body.is-presenting[data-presentation-layout="responsive"] .homes .section-heading { height:auto; margin-bottom:24px }
@@ -193,10 +187,9 @@ body.is-presenting[data-presentation-layout="responsive"] footer span:last-child
   body.is-presenting[data-presentation-layout="responsive"] #ownership .lifestyle-benefits dd { font-size:16px }
   body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active { padding:38px 36px }
   body.is-presenting[data-presentation-layout="responsive"] #destination h2 { font-size:64px }
-  body.is-presenting[data-presentation-layout="responsive"] #main > #oriente.presentation-active { padding:38px 36px }
-  body.is-presenting[data-presentation-layout="responsive"] #oriente h2 { font-size:48px }
-  body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-grid { grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:28px }
-  body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-photo-frame { flex:none; width:100%; height:auto; min-height:0; aspect-ratio:16/9; overflow:hidden }
+  body.is-presenting[data-presentation-layout="responsive"] #oriente h2 { font-size:64px }
+  body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-cinema-copy { font-size:21px }
+  body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-homes .line-link { width:270px; font-size:18px }
   body.is-presenting[data-presentation-layout="responsive"] .property-layout { grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); align-items:stretch }
   body.is-presenting[data-presentation-layout="responsive"] .property-visual { height:100%; min-height:430px }
   body.is-presenting[data-presentation-layout="responsive"] .property-info { padding:24px 0 0 26px }
@@ -295,8 +288,7 @@ body.is-presenting[data-presentation-layout="responsive"] {
 }
 body.is-presenting[data-presentation-layout="responsive"] #main > .presentation-active,
 body.is-presenting[data-presentation-layout="responsive"] #main > #ownership.presentation-active,
-body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active,
-body.is-presenting[data-presentation-layout="responsive"] #main > #oriente.presentation-active {
+body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active {
   padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px));
 }
 body.is-presenting[data-presentation-layout="responsive"] #main > .hero.presentation-active {

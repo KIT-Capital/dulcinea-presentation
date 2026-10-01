@@ -76,23 +76,15 @@ body.is-presenting #destination h2 { font-size:88px; line-height:1.04; max-width
 body.is-presenting #destination .story-film-copy > p:not(.micro) { max-width:670px; font-size:26px; line-height:1.45 }
 body.is-presenting #destination .line-link { font-size:18px; width:300px; margin-top:28px }
 body.is-presenting #destination .destination-labels { margin-top:40px; padding-top:22px; font-size:14px; gap:24px }
-body.is-presenting #main > #oriente.presentation-active { padding:46px 60px }
-body.is-presenting #oriente .oriente-heading { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:16px 65px; align-items:end; margin:0 0 30px }
-body.is-presenting #oriente .oriente-heading > .micro { grid-column:1 / -1; margin:0 }
-body.is-presenting #oriente h2 { font-size:60px; line-height:1.04; margin:0; max-width:none }
-body.is-presenting #oriente .oriente-heading > p:not(.micro) { font-size:22px; line-height:1.45; max-width:none; margin:0 }
-body.is-presenting #oriente .oriente-grid { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:32px; height:486px; align-items:stretch }
-body.is-presenting #oriente .oriente-landscape { display:flex; flex-direction:column; margin:0; height:100%; min-height:0 }
-body.is-presenting #oriente .oriente-photo-frame { flex:none; width:100%; height:auto; min-height:0; aspect-ratio:16/9; overflow:hidden }
-body.is-presenting #oriente .oriente-photo-frame video { display:block; width:100%; height:100%; min-height:0; object-fit:cover }
-body.is-presenting #oriente .oriente-landscape figcaption { display:flex; justify-content:space-between; gap:18px; flex-shrink:0; min-height:32px; padding:10px 0 0; font-size:13px; line-height:1.4 }
-body.is-presenting #oriente .oriente-context { display:grid; grid-template-rows:218px minmax(0,1fr); gap:20px; min-height:0 }
-body.is-presenting #oriente .oriente-film { position:relative; height:218px; min-height:0; overflow:hidden; aspect-ratio:auto }
-body.is-presenting #oriente .oriente-film video { display:block; width:100%; height:100%; object-fit:cover }
-body.is-presenting #oriente .oriente-copy { padding:0; min-height:0 }
-body.is-presenting #oriente .oriente-copy h3 { margin:0 0 12px; font-size:32px; line-height:1.12; letter-spacing:-.03em }
-body.is-presenting #oriente .oriente-copy p { margin:0; font-size:20px; line-height:1.45 }
-body.is-presenting #oriente .oriente-copy .line-link { width:100%; margin-top:15px; padding:12px 0; font-size:17px }
+body.is-presenting #main > #oriente.presentation-active { padding:0 }
+body.is-presenting #oriente .oriente-cinema { min-height:0; height:100%; padding:64px 80px; align-items:flex-end }
+body.is-presenting #oriente .oriente-cinema-content { max-width:1120px }
+body.is-presenting #oriente h2 { font-size:96px; line-height:1.02; margin:26px 0; max-width:none }
+body.is-presenting #oriente .oriente-cinema-copy { font-size:25px; line-height:1.45; max-width:700px }
+body.is-presenting #oriente .oriente-homes { gap:40px; margin-top:30px }
+body.is-presenting #oriente .oriente-homes .line-link { width:310px; min-height:54px; margin:0; padding:15px 0; font-size:20px }
+body.is-presenting #oriente .oriente-location { margin-top:30px; font-size:13px; line-height:1.5 }
+body.is-presenting #oriente .oriente-support { display:none }
 
 /* One property per slide, with working plans and original-image dialogs. */
 body.is-presenting #main > .homes { padding:44px 60px }

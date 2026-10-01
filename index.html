@@ -137,23 +137,15 @@ body.is-presenting #destination h2 { font-size:88px; line-height:1.04; max-width
 body.is-presenting #destination .story-film-copy > p:not(.micro) { max-width:670px; font-size:26px; line-height:1.45 }
 body.is-presenting #destination .line-link { font-size:18px; width:300px; margin-top:28px }
 body.is-presenting #destination .destination-labels { margin-top:40px; padding-top:22px; font-size:14px; gap:24px }
-body.is-presenting #main > #oriente.presentation-active { padding:46px 60px }
-body.is-presenting #oriente .oriente-heading { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:16px 65px; align-items:end; margin:0 0 30px }
-body.is-presenting #oriente .oriente-heading > .micro { grid-column:1 / -1; margin:0 }
-body.is-presenting #oriente h2 { font-size:60px; line-height:1.04; margin:0; max-width:none }
-body.is-presenting #oriente .oriente-heading > p:not(.micro) { font-size:22px; line-height:1.45; max-width:none; margin:0 }
-body.is-presenting #oriente .oriente-grid { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:32px; height:486px; align-items:stretch }
-body.is-presenting #oriente .oriente-landscape { display:flex; flex-direction:column; margin:0; height:100%; min-height:0 }
-body.is-presenting #oriente .oriente-photo-frame { flex:none; width:100%; height:auto; min-height:0; aspect-ratio:16/9; overflow:hidden }
-body.is-presenting #oriente .oriente-photo-frame video { display:block; width:100%; height:100%; min-height:0; object-fit:cover }
-body.is-presenting #oriente .oriente-landscape figcaption { display:flex; justify-content:space-between; gap:18px; flex-shrink:0; min-height:32px; padding:10px 0 0; font-size:13px; line-height:1.4 }
-body.is-presenting #oriente .oriente-context { display:grid; grid-template-rows:218px minmax(0,1fr); gap:20px; min-height:0 }
-body.is-presenting #oriente .oriente-film { position:relative; height:218px; min-height:0; overflow:hidden; aspect-ratio:auto }
-body.is-presenting #oriente .oriente-film video { display:block; width:100%; height:100%; object-fit:cover }
-body.is-presenting #oriente .oriente-copy { padding:0; min-height:0 }
-body.is-presenting #oriente .oriente-copy h3 { margin:0 0 12px; font-size:32px; line-height:1.12; letter-spacing:-.03em }
-body.is-presenting #oriente .oriente-copy p { margin:0; font-size:20px; line-height:1.45 }
-body.is-presenting #oriente .oriente-copy .line-link { width:100%; margin-top:15px; padding:12px 0; font-size:17px }
+body.is-presenting #main > #oriente.presentation-active { padding:0 }
+body.is-presenting #oriente .oriente-cinema { min-height:0; height:100%; padding:64px 80px; align-items:flex-end }
+body.is-presenting #oriente .oriente-cinema-content { max-width:1120px }
+body.is-presenting #oriente h2 { font-size:96px; line-height:1.02; margin:26px 0; max-width:none }
+body.is-presenting #oriente .oriente-cinema-copy { font-size:25px; line-height:1.45; max-width:700px }
+body.is-presenting #oriente .oriente-homes { gap:40px; margin-top:30px }
+body.is-presenting #oriente .oriente-homes .line-link { width:310px; min-height:54px; margin:0; padding:15px 0; font-size:20px }
+body.is-presenting #oriente .oriente-location { margin-top:30px; font-size:13px; line-height:1.5 }
+body.is-presenting #oriente .oriente-support { display:none }
 
 /* One property per slide, with working plans and original-image dialogs. */
 body.is-presenting #main > .homes { padding:44px 60px }
@@ -390,19 +382,13 @@ body.is-presenting[data-presentation-layout="responsive"] #destination h2 { font
 body.is-presenting[data-presentation-layout="responsive"] #destination .story-film-copy > p:not(.micro) { font-size:20px; line-height:1.55; max-width:560px }
 body.is-presenting[data-presentation-layout="responsive"] #destination .line-link { width:100%; max-width:330px; font-size:18px; margin-top:26px }
 body.is-presenting[data-presentation-layout="responsive"] #destination .destination-labels { font-size:11px; line-height:1.6; margin-top:30px; padding-top:18px; gap:12px 24px }
-body.is-presenting[data-presentation-layout="responsive"] #main > #oriente.presentation-active { padding:32px 22px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-heading { grid-template-columns:minmax(0,1fr); gap:18px; margin-bottom:28px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente h2 { font-size:40px; line-height:1.08; max-width:760px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-heading > p:not(.micro) { font-size:18px; line-height:1.6; max-width:650px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-grid { height:auto; grid-template-columns:minmax(0,1fr); gap:28px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-landscape { height:auto }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-photo-frame { flex:none; width:100%; height:auto; min-height:0; aspect-ratio:16/9; overflow:hidden }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-landscape figcaption { min-height:0; font-size:12px; line-height:1.5; padding-top:12px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-context { grid-template-rows:auto auto; gap:22px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-film { height:auto; aspect-ratio:16/10 }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-copy h3 { font-size:30px; line-height:1.12 }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-copy p { font-size:18px; line-height:1.6; max-width:650px }
-body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-copy .line-link { width:100%; max-width:330px; min-height:44px; font-size:18px; margin-top:22px }
+body.is-presenting[data-presentation-layout="responsive"] #main > #oriente.presentation-active { padding:0 }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-cinema { height:auto; min-height:var(--presentation-height); padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px)) }
+body.is-presenting[data-presentation-layout="responsive"] #oriente h2 { font-size:clamp(40px,7.8vw,62px); line-height:1.06; margin:24px 0; max-width:760px }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-cinema-copy { font-size:18px; line-height:1.55; max-width:590px }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-homes { gap:8px 28px; margin-top:24px }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-homes .line-link { width:100%; max-width:330px; min-height:48px; margin:0; font-size:17px; padding:13px 0 }
+body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-location { margin-top:24px; font-size:11px; line-height:1.5 }
 
 /* Property details stay readable beneath the film on phones. */
 body.is-presenting[data-presentation-layout="responsive"] .homes .section-heading { height:auto; margin-bottom:24px }
@@ -521,10 +507,9 @@ body.is-presenting[data-presentation-layout="responsive"] footer span:last-child
   body.is-presenting[data-presentation-layout="responsive"] #ownership .lifestyle-benefits dd { font-size:16px }
   body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active { padding:38px 36px }
   body.is-presenting[data-presentation-layout="responsive"] #destination h2 { font-size:64px }
-  body.is-presenting[data-presentation-layout="responsive"] #main > #oriente.presentation-active { padding:38px 36px }
-  body.is-presenting[data-presentation-layout="responsive"] #oriente h2 { font-size:48px }
-  body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-grid { grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:28px }
-  body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-photo-frame { flex:none; width:100%; height:auto; min-height:0; aspect-ratio:16/9; overflow:hidden }
+  body.is-presenting[data-presentation-layout="responsive"] #oriente h2 { font-size:64px }
+  body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-cinema-copy { font-size:21px }
+  body.is-presenting[data-presentation-layout="responsive"] #oriente .oriente-homes .line-link { width:270px; font-size:18px }
   body.is-presenting[data-presentation-layout="responsive"] .property-layout { grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); align-items:stretch }
   body.is-presenting[data-presentation-layout="responsive"] .property-visual { height:100%; min-height:430px }
   body.is-presenting[data-presentation-layout="responsive"] .property-info { padding:24px 0 0 26px }
@@ -623,8 +608,7 @@ body.is-presenting[data-presentation-layout="responsive"] {
 }
 body.is-presenting[data-presentation-layout="responsive"] #main > .presentation-active,
 body.is-presenting[data-presentation-layout="responsive"] #main > #ownership.presentation-active,
-body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active,
-body.is-presenting[data-presentation-layout="responsive"] #main > #oriente.presentation-active {
+body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active {
   padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px));
 }
 body.is-presenting[data-presentation-layout="responsive"] #main > .hero.presentation-active {
@@ -1064,23 +1048,27 @@ body.is-presenting .website-only { display:none !important; }
 .lifestyle-benefits > div { padding:13px 0; border-top:1px solid #17282d38; }
 .lifestyle-benefits dt { color:var(--ink); font-size:16px; line-height:1.35; }
 .lifestyle-benefits dd { text-align:left; margin:5px 0 0; font-size:14px; line-height:1.5; color:#34484a; max-width:390px; }
-.oriente-story { padding:64px 4vw; background:var(--paper); scroll-margin-top:20px; }
-.oriente-heading { display:grid; grid-template-columns:1.2fr 1fr; gap:20px 6vw; align-items:end; margin-bottom:32px; }
-.oriente-heading > .micro { grid-column:1/-1; color:#45585c; }
-.oriente-heading h2 { font-size:clamp(45px,5.2vw,78px); }
-.oriente-heading > p:not(.micro) { max-width:430px; font-size:18px; line-height:1.55; padding-bottom:4px; color:#435457; }
-.oriente-grid { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:28px; align-items:start; }
-.oriente-landscape { margin:0; min-width:0; }
-.oriente-photo-frame { position:relative; aspect-ratio:16/9; overflow:hidden; background:#cad7d1; }
-.oriente-photo-frame video { display:block; width:100%; height:100%; object-fit:cover; }
-.oriente-landscape figcaption { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; padding-top:13px; font-size:12px; line-height:1.5; color:#435457; }
-.oriente-context { min-width:0; }
-.oriente-film { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--ink); }
-.oriente-film video { display:block; width:100%; height:100%; object-fit:cover; }
-.oriente-film > span { position:absolute; bottom:12px; left:12px; max-width:calc(100% - 24px); padding:5px 8px; background:#17282de0; color:white; font-size:10px; line-height:1.5; }
-.oriente-copy h3 { margin:23px 0 12px; font-size:32px; line-height:1.1; letter-spacing:-.035em; }
-.oriente-copy p { max-width:440px; font-size:16px; line-height:1.55; color:#435457; }
-.oriente-copy .line-link { min-height:48px; margin-top:18px; max-width:100%; width:270px; font-size:13px; }
+.oriente-story { padding:0; background:var(--paper); scroll-margin-top:20px; }
+.oriente-cinema { position:relative; isolation:isolate; display:flex; align-items:flex-end; min-height:clamp(600px,calc(100svh - var(--header)),960px); padding:64px 4vw 54px; overflow:hidden; background:var(--ink); color:white; }
+.oriente-cinema > video { position:absolute; inset:0; z-index:-2; width:100%; height:100%; object-fit:cover; }
+.oriente-shade { position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,#07161bba 0%,#07161b65 52%,#07161b10 100%),linear-gradient(0deg,#07161b66,transparent 60%); }
+.oriente-cinema-content { width:100%; max-width:1000px; }
+.oriente-cinema-content > .micro { color:white; }
+.oriente-cinema h2 { margin:24px 0; max-width:1000px; font-size:clamp(54px,7.2vw,108px); line-height:1.02; letter-spacing:-.055em; }
+.oriente-cinema-copy { max-width:565px; font-size:20px; line-height:1.5; }
+.oriente-homes { display:flex; flex-wrap:wrap; gap:12px 36px; margin-top:28px; }
+.oriente-homes .line-link { width:265px; min-height:48px; max-width:100%; margin:0; padding:14px 0; font-size:15px; border-color:#ffffff80; }
+.oriente-homes .line-link:hover { border-color:var(--gold); }
+.oriente-location { margin-top:32px; font-size:11px; line-height:1.5; color:#e2e8e5; }
+.oriente-support { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); align-items:start; gap:5vw; padding:48px 4vw 64px; }
+.oriente-support figure { min-width:0; margin:0; }
+.oriente-garden-frame,.oriente-town-frame { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--ink); }
+/* The lower panel is the garden in the supplied two-photograph sheet. */
+.oriente-garden-frame img { position:absolute; bottom:0; left:0; width:100%; max-width:none; height:auto; transform-origin:50% 100%; animation:oriente-garden-pan 24s ease-in-out infinite alternate; }
+@keyframes oriente-garden-pan { from { transform:scale(1); } to { transform:scale(1.04) translateX(-.6%); } }
+.oriente-town-frame video { display:block; width:100%; height:100%; object-fit:cover; }
+.oriente-support figcaption { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; padding-top:13px; font-size:12px; line-height:1.5; color:#435457; }
+.oriente-around > p { max-width:440px; margin-top:24px; font-size:24px; line-height:1.4; letter-spacing:-.02em; }
 .approach-selection { grid-template-columns:minmax(0,1fr); max-width:840px; margin:40px auto 0; }
 .approach-selection .approach-film { aspect-ratio:21/9; }
 
@@ -1119,12 +1107,14 @@ body.is-presenting .website-only { display:none !important; }
 }
 
 @media (max-width:760px) {
-  .oriente-story { padding:44px 4vw; }
-  .oriente-heading { grid-template-columns:minmax(0,1fr); gap:20px; margin-bottom:26px; }
-  .oriente-heading h2 { font-size:clamp(40px,9vw,58px); }
-  .oriente-heading > p:not(.micro) { font-size:16px; }
-  .oriente-grid { grid-template-columns:minmax(0,1fr); gap:32px; }
-  .oriente-copy h3 { font-size:30px; }
+  .oriente-cinema { min-height:630px; padding:52px 22px 36px; }
+  .oriente-cinema h2 { font-size:clamp(41px,8.2vw,62px); margin:22px 0; }
+  .oriente-cinema-copy { font-size:18px; max-width:520px; }
+  .oriente-homes { gap:8px; margin-top:22px; }
+  .oriente-homes .line-link { width:100%; max-width:330px; font-size:15px; }
+  .oriente-location { margin-top:26px; font-size:10px; }
+  .oriente-support { grid-template-columns:minmax(0,1fr); gap:36px; padding:36px 22px 44px; }
+  .oriente-around > p { font-size:22px; margin-top:20px; }
   .approach-selection .approach-film { aspect-ratio:16/10; }
   .story-index { display:block; padding:20px 4vw 12px; }
   .story-index > .micro { display:block; padding:0; margin-bottom:10px; }
@@ -1191,6 +1181,7 @@ body.is-presenting .website-only { display:none !important; }
 }
 
 @media (prefers-reduced-motion:reduce) {
+  .oriente-garden-frame img { animation:none; }
   .story-index a,
   .offer-glance > a > span:last-child,
   .home-film-media video,
@@ -1225,7 +1216,7 @@ body.is-presenting .website-only { display:none !important; }
   <section class="hero film" id="home" aria-labelledby="hero-title">
     <video class="background-video" src="assets/video/dulcinea-introduction.mp4" poster="assets/video/dulcinea-introduction-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
     <div class="hero-top"><span class="micro">Medellín, Colombia</span><span class="micro" data-en="El Poblado + El Retiro" data-es="El Poblado + El Retiro">El Poblado + El Retiro</span></div>
-    <div class="hero-statement"><p data-en="Invest in Medellín.&#10;Make time to enjoy it." data-es="Invierta en Medellín.&#10;Disfrute de vivirlo.">Invest in Medellín.<br>Make time to enjoy it.</p><a class="line-link" href="#ownership"><span data-en="Discover Dulcinea One" data-es="Conozca Dulcinea One">Discover Dulcinea One</span><span aria-hidden="true">↓</span></a></div>
+    <div class="hero-statement"><p data-en="Invest in Medellín&#10;and El Oriente." data-es="Invierta en Medellín&#10;y el Oriente.">Invest in Medellín<br>and El Oriente.</p><a class="line-link" href="#ownership"><span data-en="Discover Dulcinea One" data-es="Conozca Dulcinea One">Discover Dulcinea One</span><span aria-hidden="true">↓</span></a></div>
     <div class="hero-bottom"><h1 id="hero-title">Dulcinea <span>One.</span></h1><div class="hero-baseline"><span class="micro" data-en="Our first fund. Five selected homes." data-es="Nuestro primer fondo. Cinco propiedades seleccionadas.">Our first fund. Five selected homes.</span><div class="partners"><img class="dulcinea-partner" src="brand/dulcinea/svg/dulcinea-mono-white.svg" alt="Dulcinea" width="113" height="30"><img src="brand/kit-capital/kit-capital.png" alt="KIT Capital" width="35" height="36"><div><img src="assets/images/investor-deck/image24.png" alt="" width="36" height="36"><span>LOLA &amp; BER<br>HOSPITALITY</span></div></div></div></div>
     <button class="motion" aria-label="Pause animations" title="Pause animations" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12M16 6v12"/></svg></button>
   </section>
@@ -1233,7 +1224,7 @@ body.is-presenting .website-only { display:none !important; }
 
   <nav class="story-index website-only" aria-label="Explore Dulcinea One" data-en-aria-label="Explore Dulcinea One" data-es-aria-label="Explore Dulcinea One">
     <span class="micro" data-en="Inside Dulcinea One" data-es="Conozca Dulcinea One">Inside Dulcinea One</span>
-    <div><a href="#ownership" data-en="The lifestyle" data-es="El estilo de vida">The lifestyle</a><a href="#destination">Medellín</a><a href="#oriente">El Oriente</a><a href="#experience">Lola &amp; Ber</a><a href="#homes" data-en="The homes" data-es="Las propiedades">The homes</a><a href="#fund" data-en="The offer" data-es="La oferta">The offer</a><a href="#resources" data-en="Investor resources" data-es="Para inversionistas">Investor resources</a></div>
+    <div><a href="#ownership" data-en="The lifestyle" data-es="El estilo de vida">The lifestyle</a><a href="#oriente">El Oriente</a><a href="#destination">Medellín</a><a href="#experience">Lola &amp; Ber</a><a href="#homes" data-en="The homes" data-es="Las propiedades">The homes</a><a href="#fund" data-en="The offer" data-es="La oferta">The offer</a><a href="#resources" data-en="Investor resources" data-es="Para inversionistas">Investor resources</a></div>
   </nav>
   <aside class="offer-glance website-only" aria-label="Fund subscription" data-en-aria-label="Fund subscription" data-es-aria-label="Suscripción del fondo">
     <p data-en="Invest in Dulcinea One." data-es="Invierta en Dulcinea One.">Invest in Dulcinea One.</p>
@@ -1261,15 +1252,37 @@ body.is-presenting .website-only { display:none !important; }
       <a class="line-link ink" href="#fund"><span data-en="Explore membership" data-es="Conozca la participación">Explore membership</span><span aria-hidden="true">↗</span></a><p class="footnote" data-en="Investor stays and lifestyle benefits follow the membership terms. Units do not convey title to a particular home." data-es="Las estadías y los beneficios de estilo de vida se rigen por las condiciones de membresía. Las unidades no otorgan título sobre una propiedad específica.">Investor stays and lifestyle benefits follow the membership terms. Units do not convey title to a particular home.</p></div>
   </section>
 
-  <section class="story-destination story-film film" id="destination" aria-labelledby="destination-title">
-    <video class="background-video" src="assets/video/medellin-location.mp4" poster="assets/video/medellin-location-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-    <div class="story-film-copy"><p class="micro" data-en="02 / El Poblado, Medellín" data-es="02 / El Poblado, Medellín">02 / El Poblado, Medellín</p><h2 id="destination-title" data-en="A home base&#10;for the city." data-es="Su base para&#10;vivir la ciudad.">A home base<br>for the city.</h2><p data-en="Meet friends for dinner. Explore the restaurants and music. Stay long enough to make Medellín part of your life." data-es="Cene con amigos. Conozca sus restaurantes y su música. Quédese el tiempo suficiente para que Medellín forme parte de su vida.">Meet friends for dinner. Explore the restaurants and music. Stay long enough to make Medellín part of your life.</p><a class="line-link" href="#homes" data-preview-home="0"><span data-en="Explore the city homes" data-es="Conozca las propiedades en la ciudad">Explore the city homes</span><span aria-hidden="true">↗</span></a></div>
-    <div class="destination-labels"><span data-en="Three selected properties in El Poblado" data-es="Tres propiedades seleccionadas en El Poblado">Three selected properties in El Poblado</span><span>Fontanar · San Lucas · Aires de Campestre</span></div>
+  <section class="oriente-story" id="oriente" aria-labelledby="oriente-title">
+    <div class="oriente-cinema">
+      <video id="oriente-reservoir" src="assets/video/stock/AdobeStock_501694199.mp4" poster="assets/video/stock/AdobeStock_501694199-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+      <div class="oriente-shade" aria-hidden="true"></div>
+      <div class="oriente-cinema-content">
+        <p class="micro" data-en="02 / El Retiro · Oriente Antioqueño" data-es="02 / El Retiro · Oriente Antioqueño">02 / El Retiro · Oriente Antioqueño</p>
+        <h2 id="oriente-title" data-en="Country homes.&#10;Close to Medellín." data-es="Casas de campo.&#10;Cerca de Medellín.">Country homes.<br>Close to Medellín.</h2>
+        <p class="oriente-cinema-copy" data-en="Gardens, terraces and time outdoors. Casa Monte Sereno and Casa Montana, in El Retiro." data-es="Jardines, terrazas y tiempo al aire libre. Casa Monte Sereno y Casa Montana, en El Retiro.">Gardens, terraces and time outdoors. Casa Monte Sereno and Casa Montana, in El Retiro.</p>
+        <nav class="oriente-homes" aria-label="Explore the country homes" data-en-aria-label="Explore the country homes" data-es-aria-label="Conozca las casas de campo">
+          <a class="line-link" href="#homes" data-preview-home="3"><span>Casa Monte Sereno</span><span aria-hidden="true">↗</span></a>
+          <a class="line-link" href="#homes" data-preview-home="4"><span>Casa Montana</span><span aria-hidden="true">↗</span></a>
+        </nav>
+        <p class="oriente-location" data-en="El Oriente · Reservoir landscape" data-es="Oriente antioqueño · Paisaje de embalse">El Oriente · Reservoir landscape</p>
+      </div>
+    </div>
+    <div class="oriente-support">
+      <figure class="oriente-garden">
+        <div class="oriente-garden-frame"><img src="assets/images/investor-deck/image47.png" alt="Garden and terrace at Casa Monte Sereno" data-en-alt="Garden and terrace at Casa Monte Sereno" data-es-alt="Jardín y terraza de Casa Monte Sereno" loading="lazy" width="647" height="800"></div>
+        <figcaption><span>Casa Monte Sereno</span><span data-en="Garden and terrace" data-es="Jardín y terraza">Garden and terrace</span></figcaption>
+      </figure>
+      <div class="oriente-around">
+        <figure class="oriente-town"><div class="oriente-town-frame"><video src="assets/video/stock/AdobeStock_1849343666.mp4" poster="assets/video/stock/AdobeStock_1849343666-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div><figcaption data-en="El Retiro town center" data-es="Centro de El Retiro">El Retiro town center</figcaption></figure>
+        <p data-en="Days outdoors, time in town, evenings at home." data-es="Días al aire libre, paseos por el pueblo y noches en casa.">Days outdoors, time in town, evenings at home.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="oriente-story section-pad" id="oriente" aria-labelledby="oriente-title">
-    <div class="oriente-heading"><p class="micro" data-en="03 / El Retiro · Oriente Antioqueño" data-es="03 / El Retiro · Oriente Antioqueño">03 / El Retiro · Oriente Antioqueño</p><h2 id="oriente-title" data-en="More space&#10;in El Oriente." data-es="Más espacio&#10;en el Oriente.">More space<br>in El Oriente.</h2><p data-en="Casa Monte Sereno and Casa Montana are country homes in El Retiro, in eastern Antioquia." data-es="Casa Monte Sereno y Casa Montana son casas de campo en El Retiro, en el Oriente antioqueño.">Casa Monte Sereno and Casa Montana are country homes in El Retiro, in eastern Antioquia.</p></div>
-    <div class="oriente-grid"><figure class="oriente-landscape"><div class="oriente-photo-frame"><video id="oriente-reservoir" src="assets/video/stock/AdobeStock_501694199.mp4" poster="assets/video/stock/AdobeStock_501694199-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div><figcaption><span data-en="El Oriente" data-es="Oriente antioqueño">El Oriente</span><span data-en="Reservoir landscape" data-es="Paisaje de embalse">Reservoir landscape</span></figcaption></figure><div class="oriente-context"><div class="oriente-film"><video src="assets/video/stock/AdobeStock_1849343666.mp4" poster="assets/video/stock/AdobeStock_1849343666-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span data-en="El Retiro town center" data-es="Centro de El Retiro">El Retiro town center</span></div><div class="oriente-copy"><h3 data-en="Time outside." data-es="Tiempo al aire libre.">Time outside.</h3><p data-en="Walks, time outdoors and evenings at home give El Oriente a different pace from El Poblado." data-es="Las caminatas, la vida al aire libre y las noches en casa le dan al Oriente un ritmo distinto al de El Poblado.">Walks, time outdoors and evenings at home give El Oriente a different pace from El Poblado.</p><a class="line-link ink" href="#homes" data-preview-home="3"><span data-en="Explore the country homes" data-es="Conozca las casas de campo">Explore the country homes</span><span aria-hidden="true">↗</span></a></div></div></div>
+  <section class="story-destination story-film film" id="destination" aria-labelledby="destination-title">
+    <video class="background-video" src="assets/video/medellin-location.mp4" poster="assets/video/medellin-location-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="story-film-copy"><p class="micro" data-en="03 / El Poblado, Medellín" data-es="03 / El Poblado, Medellín">03 / El Poblado, Medellín</p><h2 id="destination-title" data-en="A home base&#10;for the city." data-es="Su base para&#10;vivir la ciudad.">A home base<br>for the city.</h2><p data-en="Meet friends for dinner. Explore the restaurants and music. Stay long enough to make Medellín part of your life." data-es="Cene con amigos. Conozca sus restaurantes y su música. Quédese el tiempo suficiente para que Medellín forme parte de su vida.">Meet friends for dinner. Explore the restaurants and music. Stay long enough to make Medellín part of your life.</p><a class="line-link" href="#homes" data-preview-home="0"><span data-en="Explore the city homes" data-es="Conozca las propiedades en la ciudad">Explore the city homes</span><span aria-hidden="true">↗</span></a></div>
+    <div class="destination-labels"><span data-en="Three selected properties in El Poblado" data-es="Tres propiedades seleccionadas en El Poblado">Three selected properties in El Poblado</span><span>Fontanar · San Lucas · Aires de Campestre</span></div>
   </section>
 
   <section class="experience film" id="experience" aria-labelledby="experience-title">
@@ -1703,8 +1716,8 @@ migrateLegacyHash();
   const steps = [
     {id:'cover', selector:'#home', title:['Dulcinea One','Dulcinea One']},
     {id:'lifestyle', selector:'#ownership', title:['Homes for more than a visit','Propiedades para disfrutar']},
-    {id:'city', selector:'#destination', title:['Life in Medellín','La vida en Medellín']},
     {id:'oriente', selector:'#oriente', title:['El Oriente countryside','El campo del Oriente']},
+    {id:'city', selector:'#destination', title:['Life in Medellín','La vida en Medellín']},
     {id:'hospitality', selector:'#experience', title:['Lola & Ber Hospitality','Lola & Ber Hospitality']},
     {id:'fontanar', selector:'#homes', home:0, title:['Fontanar 201','Fontanar 201']},
     {id:'san-lucas', selector:'#homes', home:1, title:['San Lucas 101','San Lucas 101']},
