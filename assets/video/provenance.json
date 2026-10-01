@@ -21,10 +21,10 @@
   "videos": [
     {
       "file": "dulcinea-introduction.mp4",
-      "bytes": 19604676,
-      "sha256": "cb73def785c47755f3b96c6701c5dc1bb315d80845776eaa7edce047d929e192",
-      "duration_seconds": 41.0,
-      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 3822 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "bytes": 16877479,
+      "sha256": "85082045cc75243e4106024040ae732ccd864fbedf34727d28ccf7d088250883",
+      "duration_seconds": 50.5,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2671 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
       "audio_tracks": 0,
       "scenes": [
         {
@@ -82,6 +82,15 @@
           "source_sha256": "4dbc26061bb64d7bbfd51326db78c7643ac863f4b890e73a4dcf1c63b94285ee"
         },
         {
+          "id": "501694199",
+          "subject": "Reservoir shoreline in El Oriente, location confirmed by user",
+          "source_path": "assets/video/stock/AdobeStock_501694199.mp4",
+          "source_kind": "Actual supplied stock footage",
+          "start_seconds": 5,
+          "duration_seconds": 5.5,
+          "source_sha256": "70f652ccf8c23b939393e8ecb893f5bd37e68098ab37c84bebfcf3c6c14cb528"
+        },
+        {
           "id": "aires",
           "subject": "Aires de Campestre living room lifestyle scene",
           "source_path": "assets/video/properties/aires.mp4",
@@ -100,6 +109,15 @@
           "source_sha256": "8613aa411553e3183e26ee1f5ccdc135886f3034938f16990180047d8aea03ef"
         },
         {
+          "id": "417029984",
+          "subject": "Sunset over a city valley and mountain slopes",
+          "source_path": "assets/video/stock/AdobeStock_417029984.mp4",
+          "source_kind": "Actual supplied stock footage",
+          "start_seconds": 0,
+          "duration_seconds": 5,
+          "source_sha256": "007826f667d3ed5650de4f6b762eb920f806e298ab25ad532b000355cced66f6"
+        },
+        {
           "id": "montana",
           "subject": "Casa Montana evening terrace lifestyle scene",
           "source_path": "assets/video/properties/montana.mp4",
@@ -110,10 +128,11 @@
         }
       ],
       "crossfade_seconds": 0.5,
-      "method": "A nine-scene montage of three actual city/town aerial clips, a camera-move film made from a supplied city photograph, and existing camera-move films made from all five AI property lifestyle illustrations. All source films retain their original speed, framing and color; short circular dissolves connect them. No new image generation or simulated human movement.",
+      "method": "An eleven-scene montage of five actual city/town, sunset and reservoir clips, a camera-move film made from a supplied city photograph, and existing camera-move films made from all five AI property lifestyle illustrations. All source films retain their original speed, framing and color; short circular dissolves connect them. No new image generation or simulated human movement.",
       "source_provenance": [
         "assets/video/stock/provenance.json",
         "assets/video/stock/feature-provenance.json",
+        "assets/video/stock/oriente-provenance.json",
         "assets/video/latest-photos-provenance.json",
         "assets/video/properties/metadata/provenance.json",
         "assets/images/lifestyle/provenance.json"
@@ -162,25 +181,39 @@
           "outgoing_dissolve_end_seconds": 28.0
         },
         {
-          "id": "aires",
+          "id": "501694199",
           "section_start_seconds": 28.0,
-          "section_end_seconds": 32.0,
-          "outgoing_dissolve_start_seconds": 31.5,
-          "outgoing_dissolve_end_seconds": 32.0
+          "section_end_seconds": 33.0,
+          "outgoing_dissolve_start_seconds": 32.5,
+          "outgoing_dissolve_end_seconds": 33.0
+        },
+        {
+          "id": "aires",
+          "section_start_seconds": 33.0,
+          "section_end_seconds": 37.0,
+          "outgoing_dissolve_start_seconds": 36.5,
+          "outgoing_dissolve_end_seconds": 37.0
         },
         {
           "id": "monte-sereno",
-          "section_start_seconds": 32.0,
-          "section_end_seconds": 36.0,
-          "outgoing_dissolve_start_seconds": 35.5,
-          "outgoing_dissolve_end_seconds": 36.0
-        },
-        {
-          "id": "montana",
-          "section_start_seconds": 36.0,
+          "section_start_seconds": 37.0,
           "section_end_seconds": 41.0,
           "outgoing_dissolve_start_seconds": 40.5,
           "outgoing_dissolve_end_seconds": 41.0
+        },
+        {
+          "id": "417029984",
+          "section_start_seconds": 41.0,
+          "section_end_seconds": 45.5,
+          "outgoing_dissolve_start_seconds": 45.0,
+          "outgoing_dissolve_end_seconds": 45.5
+        },
+        {
+          "id": "montana",
+          "section_start_seconds": 45.5,
+          "section_end_seconds": 50.5,
+          "outgoing_dissolve_start_seconds": 50.0,
+          "outgoing_dissolve_end_seconds": 50.5
         }
       ],
       "timeline_note": "Each section includes its outgoing half-second dissolve; the last dissolve returns to the opening city shot. Incoming clips begin during the preceding section's outgoing dissolve.",
@@ -199,9 +232,9 @@
         "-crf",
         "22",
         "-maxrate",
-        "7M",
+        "2788k",
         "-bufsize",
-        "14M",
+        "5576k",
         "-profile:v",
         "high",
         "-level",

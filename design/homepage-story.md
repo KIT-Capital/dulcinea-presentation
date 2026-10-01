@@ -8,9 +8,11 @@ The scrolling story now runs: opening and subscription strip; lifestyle benefits
 
 The presentation has eighteen slides: cover; lifestyle; Medellín; El Oriente; Lola & Ber; five individual properties; investment approach; offer; kickers; returns; team; specialists; disclosures; contact. Shared sections keep wording consistent across the website and presentation. English and Colombian Spanish are authored together. Financial values and membership conditions are unchanged.
 
-El Oriente uses the original Monte Sereno garden photograph and the existing El Retiro town aerial. The rural landscape and the town are captioned separately. New Adobe Stock countryside candidates and geographic evidence are recorded in [el-oriente-footage.md](el-oriente-footage.md); they have not been licensed or installed.
+El Oriente uses newly supplied reservoir footage `501694199` as its main visual, with the existing El Retiro town aerial alongside it. The user identifies the reservoir as El Oriente in the Medellín region; no reservoir name is established. The main visual is regional context, not a claim about the homes' views or location beside the water. The original Monte Sereno garden photograph remains available through the property viewer.
 
-Quality checks: English/Spanish production build verification and all 33 server tests pass. New slides checked at notebook size, plus responsive phone and tablet layouts; country-property links select Monte Sereno in both site and presentation mode. Motion observes the existing pause/reduced-motion behavior. There are twelve distinct film aliases in the homepage build, with no duplicate file copy for the new El Retiro alias.
+The opening montage adds the reservoir and newly supplied city-sunset footage `417029984`. Both originals remain unchanged; canonical full-duration, silent 720p24 MP4s and posters are retained, with private evidence in `assets/video/stock/oriente-provenance.json`. The reservoir is the only new standalone video alias. The current media selection comprises thirteen distinct hosted MP4s using eleven supplied stock IDs, including excerpts within edited films. The Adobe countryside recommendations and geographic evidence in [el-oriente-footage.md](el-oriente-footage.md) remain separate; those recommended clips have not been acquired or installed.
+
+Prior validation, before these two clips were added: English/Spanish build verification and all 33 server tests passed; notebook, phone and tablet layouts and country-property links were checked. That earlier build had twelve distinct hosted films. Those results do not establish validation of the new media update. Recheck the opening and El Oriente visuals in both languages and presentation modes, viewport and reduced-motion playback, asset routing and duplicate-file checks before release.
 
 ## Previous homepage expansion
 
@@ -32,7 +34,7 @@ Research: Radisson Resort Maldives (https://radissonresortmaldives.com/) separat
 
 Use existing optimized films and original posters. No new generated imagery, financial projections, booking rights or title-to-a-home promises. Lifestyle benefits remain subject to membership terms. New overview chapters are homepage-only; property details and all original presentation slides remain available.
 
-## Validation
+## Historical validation — previous homepage expansion
 
 Checked in the local Cloudflare Worker at 1366 × 768 and 390 × 844. English and Spanish homepage chapters render without horizontal overflow. All eleven distinct films appear in the scrolling page. Visible films play; offscreen films and all films behind an open floorplan dialog pause. Property-film links select the corresponding detailed home, including Casa Montana's intentionally absent floorplan action. Spanish resource links resolve to Spanish pages.
 

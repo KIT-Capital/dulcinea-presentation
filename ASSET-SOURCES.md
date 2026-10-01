@@ -107,7 +107,24 @@ The user confirmed use of these four plan groups after the unit-label and area d
 
 ## Supplied Adobe Stock footage
 
-The Open Graph share card uses the unchanged user-supplied panoramic city photograph `assets/images/stock/AdobeStock_891890158-web.jpg` as its image and the existing optimized aerial clip `assets/video/stock/AdobeStock_693150796.mp4` as optional video. Those two exact files are public for link-preview crawlers; investor pages and all other property and source media remain behind the password gate. Social platforms may display only the still image.
+The current presentation uses eleven distinct supplied stock IDs, directly or within edited films, and four supplied stock photographs. Thirteen distinct MP4 files are selected for the hosted build. Source MOV/MP4 variants and repeated uploads count as the same stock asset; canonical optimized files are reused rather than duplicated under multiple aliases.
+
+The Open Graph share card uses the user-supplied panoramic city photograph `assets/images/stock/AdobeStock_891890158-web.jpg` and the existing optimized aerial clip `assets/video/stock/AdobeStock_693150796.mp4` as optional video. Social platforms may display only the still image. The website and its selected media are public; the password gate applies to formal financial statements. Company/legal documents, financial source files and provenance are excluded from the hosted build.
+
+### 1 October 2026 additions — city sunset and El Oriente reservoir
+
+| Supplied filename | Observed subject | Placement |
+| --- | --- | --- |
+| `AdobeStock_417029984 (1).mp4` | City at sunset | Opening montage |
+| `AdobeStock_501694199.mp4` | Reservoir and surrounding landscape | Opening montage; main El Oriente visual in the homepage and presentation slide |
+
+The user identifies the second clip as a reservoir in El Oriente, in the Medellín region. No reservoir name is established. Its caption must not imply that it depicts a Dulcinea property, a view from a selected home, or a specific reservoir such as La Fe or Guatapé.
+
+Both source files remain unchanged outside the repository. Each has one canonical silent, full-duration H.264 1280 × 720, 24 fps MP4 and a poster under `assets/video/stock/`, using the stock ID without the source's duplicate-download suffix. The city sunset is used within the opening edit; only the reservoir receives an additional standalone media alias. The existing El Retiro town aerial remains beside the reservoir. The original Monte Sereno photograph replaced in that chapter remains in the property viewer.
+
+`assets/video/stock/oriente-provenance.json` records private source and output evidence. The initial Adobe recommendations in `design/el-oriente-footage.md` remain unacquired and are not part of the app. Validation of this update is recorded separately after the media and build checks; earlier import checks below apply only to their stated historical versions.
+
+### Historical imports — initial and subsequent MOV files
 
 The user initially supplied four MOV files from the Dulcinea stock-video folder. Those originals remain unchanged in their supplied location; the large MOV files are not copied into this repository. Optimized individual versions and posters are retained under `assets/video/stock/`.
 
@@ -132,7 +149,9 @@ The user later supplied three more MOV files. Two are unique; the third is an ex
 
 The two unique files have optimized MP4 versions and posters in the same stock folder; both appear in the after-dark sequence. Together with the city, town, pasture and chef clips, these six supplied stock videos are used. The two subsequent unique imports are documented below. The two later unique clips contain no close-up people. Road location is not inferred from the imagery. Source hashes, duplicate evidence, output metadata, and exact encoding options are recorded in `assets/video/stock/additional-provenance.json`.
 
-## Edited stock background loops
+## Historical stock background edits
+
+This section records the earlier 41-second opening and 14-second hospitality edit. The current opening also includes the city-sunset and reservoir clips described above; current edit timing and source hashes belong in `assets/video/provenance.json`.
 
 The introduction combines footage from the supplied Adobe Stock clips with the five animated AI property illustrations. The hospitality loop uses the supplied chef footage. They replace the earlier introduction and hospitality animations made from deck still images. The after-dark sequence combines filmed stock footage with the nightlife photographic animation. Property animations and the photographic part of the nightlife sequence remain camera motion across still images.
 
@@ -141,7 +160,7 @@ The introduction combines footage from the supplied Adobe Stock clips with the f
 | `assets/video/dulcinea-introduction.mp4` | 41 seconds | New aerial, retained city, Fontanar, San Lucas, city panorama, town, Aires, Monte Sereno, Montana |
 | `assets/video/hospitality-people.mp4` | 14 seconds | Chefs preparing food |
 
-The introduction uses half-second circular dissolves; the hospitality loop uses a one-second circular dissolve. Both preserve their source playback speeds, including the gentle camera movement in the property films. Matching `-poster.jpg` files provide still fallbacks. Individual optimized city and town clips are also available for location sections. MP4 files referenced by the presentation are embedded directly into `index.html` for offline playback.
+The earlier introduction uses half-second circular dissolves; the hospitality loop uses a one-second circular dissolve. Both preserve their source playback speeds, including the gentle camera movement in the property films. Matching `-poster.jpg` files provide still fallbacks. Individual optimized city and town clips are also available for location sections. The current build references separate canonical MP4 files; a portable clone must retain those media files beside the HTML.
 
 `scripts/render-stock-videos.py` reproduces the optimization and edits using FFmpeg; it calls `scripts/render-introduction.py` for the expanded introduction. `assets/video/stock/provenance.json` records original and optimized file hashes and metadata; `assets/video/provenance.json` records the edited loops, their sources, encoding, and validation. Rendering tools are optional and are not required to run the Node.js HTML builder. The older `scripts/render-videos.py` remains as a superseded workflow for still-image animation.
 
@@ -212,4 +231,4 @@ The later supplied `AdobeStock_762119818.mp4` shows an agent with papers walking
 
 A short, silent H.264 loop and matching poster appear in Buying well, beside the acquisition criteria. The full width of the scene is retained to keep all three adults visible. This illustrative viewing replaces the bathroom still in that chapter; it does not depict a verified Dulcinea property or team member. The original 174 MB source stays unchanged in the supplied stock-video folder.
 
-`scripts/render-property-viewing.py` reproduces the web edit. Source/output hashes, exact timing, encoding and validation are recorded in `assets/video/stock/property-viewing-provenance.json`. This brings the presentation to nine unique supplied stock clips, all served as MP4.
+`scripts/render-property-viewing.py` reproduces the web edit. Source/output hashes, exact timing, encoding and validation are recorded in `assets/video/stock/property-viewing-provenance.json`. This import brought the presentation to nine unique supplied stock clips at that time. The city-sunset and reservoir additions above bring the current source total to eleven.

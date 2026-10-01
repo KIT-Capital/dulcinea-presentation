@@ -18,13 +18,13 @@ The visual direction follows the approved Aker and KOBU references recorded in `
 
 The notebook-first gallery contains all five selected homes, named selectors, original imagery, and five camera-move films made from AI lifestyle illustrations. Large property visuals sit alongside concise facts, area, acquisition status and drawing links. The same design and actions work in each property's individual presentation slide. The illustrations remain labeled. Nine plan-only drawings cover Fontanar, San Lucas, Aires and Monte Sereno; Casa Montana has no supplied plan. The original PDF is available from the viewer. The team uses the later, unchanged photographs supplied for Dov, Ricardo and Adriana.
 
-All nine distinct supplied stock videos and all four supplied stock photographs are used on screen, directly or within edited films:
+All eleven distinct supplied stock videos and all four supplied stock photographs are used on screen, directly or within edited films:
 
 | Placement | Supplied stock assets |
 | --- | --- |
-| Opening montage | Videos `695926335`, `693150796`, `1849343666`; city photo `891890158`; all five property films |
+| Opening montage | Videos `695926335`, `693150796`, `1849343666`, `417029984` and `501694199`; city photo `891890158`; all five property films |
 | Medellín lifestyle film | Videos `693150796` and `787505338` |
-| El Oriente chapter | Video `1849343666`, an El Retiro town aerial; original Monte Sereno garden photograph |
+| El Oriente chapter | Reservoir video `501694199` as the main visual; video `1849343666`, an El Retiro town aerial, alongside it |
 | Hospitality film | Videos `80490822` and `539938219` |
 | Nightlife film | Videos `727024520` and `807462744`; photos `259715040`, `70649459` and `99551296` |
 | Property viewing | Video `762119818` |
@@ -34,7 +34,9 @@ The walking woman and countryside woman remain in separate films and sections, o
 
 Videos are silent and play while visible. Motion pauses when the page is hidden or a dialog is open. Reduced-motion preferences are respected; the icon control can pause animation. Camera movement over photographs does not simulate human movement. Floorplans remain still for inspection.
 
-All twelve distinct presentation films are discoverable by scrolling the homepage. Property-film links select the corresponding home in the detailed viewer, including its status, original imagery and available plans. Hospitality and nightlife loop in separate chapters. The eighteen presentation steps follow the lifestyle-first opening and retain all five homes. The homepage reference decisions are recorded in `design/homepage-story.md`; additional El Oriente footage is shortlisted in `design/el-oriente-footage.md` and has not been acquired or added.
+All thirteen distinct hosted films are discoverable by scrolling the homepage. Property-film links select the corresponding home in the detailed viewer, including its status, original imagery and available plans. Hospitality and nightlife loop in separate chapters. The eighteen presentation steps follow the lifestyle-first opening and retain all five homes. The new city-sunset and reservoir clips appear in the opening montage; the reservoir also appears in the El Oriente chapter and its presentation slide. The user identifies the reservoir as El Oriente, without naming it. The original Monte Sereno photograph remains in the property viewer.
+
+Both newly supplied originals remain unchanged outside the repository. Canonical, silent, full-duration 720p24 MP4s and posters are retained under `assets/video/stock/`; private import evidence is recorded in `assets/video/stock/oriente-provenance.json`. Only the reservoir needs an additional standalone media alias: the city-sunset footage is served within the opening edit. The homepage reference decisions are recorded in `design/homepage-story.md`. The separate Adobe recommendations in `design/el-oriente-footage.md` remain unacquired and are not included in the app.
 
 The property floorplan viewer prioritizes notebook screens, with direct sheet selection, fit-to-window and zoom controls. Nine plan-only drawings cover Fontanar, San Lucas, Aires and Monte Sereno, including Monte Sereno's site and roof plans. The original PDF remains available for download; no plan is assigned to Casa Montana. The supplied PNGs are encoded losslessly at their original resolution. Fontanar uses the original PDF image's transparency mask on white to correct the PNG export's black borders. Room geometry, labels and dimensions are preserved; no generative reconstruction or invented detail is used. Asset hashes and the earlier source discrepancies remain in `content/floorplans.json`.
 
@@ -122,7 +124,7 @@ The build gate checks packaged assets, language routes, navigation, inline scrip
 
 Optimized files are included. Python and FFmpeg are needed only to regenerate media; original user files remain unchanged. Dedicated renderers include:
 
-- `scripts/render-introduction.py`: city/town, city photograph and property montage.
+- `scripts/render-introduction.py`: city/town, city sunset, El Oriente reservoir, city photograph and property montage.
 - `scripts/render-location.py` and `scripts/render-hospitality.py`: separate city-walking and hospitality/countryside films.
 - `scripts/render-nightlife.py`, `scripts/render-latest-photos.py` and `scripts/render-after-dark.py`: photographic camera moves and the combined nightlife film.
 - `scripts/render-property-videos.py` and `scripts/render-property-viewing.py`: property illustration loops and the apartment-viewing excerpt.

@@ -163,9 +163,7 @@ body.is-presenting .website-only { display:none !important; }
 .oriente-grid { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:28px; align-items:start; }
 .oriente-landscape { margin:0; min-width:0; }
 .oriente-photo-frame { position:relative; aspect-ratio:16/9; overflow:hidden; background:#cad7d1; }
-/* Display the exterior panel of the supplied two-photo sheet, without altering the source. */
-.oriente-property-photo { position:absolute; bottom:0; left:0; width:100%; max-width:none; height:auto; transform-origin:50% 100%; animation:oriente-pan 24s ease-in-out infinite alternate; }
-@keyframes oriente-pan { from { transform:scale(1); } to { transform:scale(1.04) translateX(-.6%); } }
+.oriente-photo-frame video { display:block; width:100%; height:100%; object-fit:cover; }
 .oriente-landscape figcaption { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; padding-top:13px; font-size:12px; line-height:1.5; color:#435457; }
 .oriente-context { min-width:0; }
 .oriente-film { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--ink); }
@@ -284,7 +282,6 @@ body.is-presenting .website-only { display:none !important; }
 }
 
 @media (prefers-reduced-motion:reduce) {
-  .oriente-property-photo { animation:none; }
   .story-index a,
   .offer-glance > a > span:last-child,
   .home-film-media video,
