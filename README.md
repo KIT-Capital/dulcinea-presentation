@@ -23,9 +23,9 @@ All eleven distinct supplied stock videos and all four supplied stock photograph
 | Placement | Supplied stock assets |
 | --- | --- |
 | Opening montage | Videos `695926335`, `693150796`, `1849343666`, `417029984` and `501694199`; city photo `891890158`; all five property films |
-| Medellín lifestyle film | Videos `693150796` and `787505338` |
-| El Oriente chapter | Full-width reservoir video `501694199`; original Monte Sereno garden photo and town aerial `1849343666` in a website-only supporting row |
-| Hospitality film | Videos `80490822` and `539938219` |
+| Medellín lifestyle film | City aerial `693150796`, dining/kitchen `80490822` and city walking `787505338` |
+| El Oriente chapter | Reservoir `501694199` and countryside woman `539938219` in the main film, on the website and presentation slide; original Monte Sereno garden photo and town aerial `1849343666` in a website-only supporting row |
+| Lola & Ber film | Supplied evening photograph `259715040` with a slow looping camera move; no kitchen or countryside footage |
 | Nightlife film | Videos `727024520` and `807462744`; photos `259715040`, `70649459` and `99551296` |
 | Property viewing | Video `762119818` |
 | Closing aerial | Video `693150796` |
@@ -125,7 +125,7 @@ The build gate checks packaged assets, language routes, navigation, inline scrip
 Optimized files are included. Python and FFmpeg are needed only to regenerate media; original user files remain unchanged. Dedicated renderers include:
 
 - `scripts/render-introduction.py`: city/town, city sunset, El Oriente reservoir, city photograph and property montage.
-- `scripts/render-location.py` and `scripts/render-hospitality.py`: separate city-walking and hospitality/countryside films.
+- `scripts/render-location.py`, `scripts/render-oriente.py` and `scripts/render-hospitality.py`: separate city dining/walking, countryside and Lola & Ber evening films.
 - `scripts/render-nightlife.py`, `scripts/render-latest-photos.py` and `scripts/render-after-dark.py`: photographic camera moves and the combined nightlife film.
 - `scripts/render-property-videos.py` and `scripts/render-property-viewing.py`: property illustration loops and the apartment-viewing excerpt.
 

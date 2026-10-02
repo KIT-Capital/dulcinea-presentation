@@ -1,0 +1,114 @@
+{
+  "file": "oriente-country.mp4",
+  "bytes": 5959425,
+  "sha256": "a2ba0f45ef1f7ce32948c2fb14c96a90857b81863beae9e17b6feb8341df08ac",
+  "duration_seconds": 24.0,
+  "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1983 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+  "audio_tracks": 0,
+  "poster": "assets/video/oriente-country-poster.jpg",
+  "poster_sha256": "e2b1e22baad20a1ae44192d36cc6f4d87fe6d1ad32c1cc78f35affe797a80c43",
+  "method": "Supplied reservoir and countryside footage at original speed and framing with 0.75-second dissolves. Landscape footage separates the countryside woman from the city-walking footage in the following chapter. No generated imagery or synthetic human movement.",
+  "sources": [
+    {
+      "id": "501694199",
+      "subject": "El Oriente reservoir aerial",
+      "path": "assets/video/stock/AdobeStock_501694199.mp4",
+      "source_start_seconds": 0,
+      "source_duration_seconds": 8.75,
+      "sha256": "70f652ccf8c23b939393e8ecb893f5bd37e68098ab37c84bebfcf3c6c14cb528"
+    },
+    {
+      "id": "539938219",
+      "subject": "Adult woman outdoors in a green pasture",
+      "path": "assets/video/stock/AdobeStock_539938219.mp4",
+      "source_start_seconds": 0,
+      "source_duration_seconds": 5.5,
+      "sha256": "53601cf0531b444e08ece51269f0672c8c3f48cfa98d4185db4caab4625ca0b9"
+    },
+    {
+      "id": "501694199",
+      "subject": "Reservoir and green countryside",
+      "path": "assets/video/stock/AdobeStock_501694199.mp4",
+      "source_start_seconds": 12,
+      "source_duration_seconds": 12,
+      "sha256": "70f652ccf8c23b939393e8ecb893f5bd37e68098ab37c84bebfcf3c6c14cb528"
+    }
+  ],
+  "timeline": [
+    {
+      "start_seconds": 0,
+      "end_seconds": 7.125,
+      "content": "El Oriente reservoir aerial"
+    },
+    {
+      "start_seconds": 7.125,
+      "end_seconds": 7.875,
+      "content": "Reservoir-to-pasture dissolve"
+    },
+    {
+      "start_seconds": 7.875,
+      "end_seconds": 11.875,
+      "content": "Woman outdoors in a pasture"
+    },
+    {
+      "start_seconds": 11.875,
+      "end_seconds": 12.625,
+      "content": "Pasture-to-reservoir dissolve"
+    },
+    {
+      "start_seconds": 12.625,
+      "end_seconds": 23.125,
+      "content": "Reservoir and green countryside"
+    },
+    {
+      "start_seconds": 23.125,
+      "end_seconds": 23.875,
+      "content": "Dissolve back to opening aerial position"
+    },
+    {
+      "start_seconds": 23.875,
+      "end_seconds": 24,
+      "content": "Opening aerial with dissolve fully complete"
+    }
+  ],
+  "crossfade_seconds": 0.75,
+  "loop_method": "Repeat the opening source after the last dissolve, trimming both endpoints at matching camera positions.",
+  "location_note": "The user identifies the reservoir footage as El Oriente. The pasture clip's filming location is unverified. These scenes do not depict or establish views from the portfolio homes.",
+  "render_script": "scripts/render-oriente.py",
+  "encoding_options": [
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "slow",
+    "-crf",
+    "23",
+    "-maxrate",
+    "6M",
+    "-bufsize",
+    "12M",
+    "-profile:v",
+    "high",
+    "-level",
+    "3.1",
+    "-pix_fmt",
+    "yuv420p",
+    "-color_range",
+    "tv",
+    "-colorspace",
+    "bt709",
+    "-color_primaries",
+    "bt709",
+    "-color_trc",
+    "bt709",
+    "-r",
+    "24",
+    "-g",
+    "48",
+    "-movflags",
+    "+faststart",
+    "-threads",
+    "4"
+  ],
+  "validation": "Full stream decoded; silent H.264 1280x720 at 24 fps, 24 seconds, faststart, original source hashes unchanged."
+}

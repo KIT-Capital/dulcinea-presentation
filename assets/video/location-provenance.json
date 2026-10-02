@@ -1,13 +1,13 @@
 {
   "file": "assets/video/medellin-location.mp4",
-  "bytes": 6009522,
-  "sha256": "d42db0fb10e746ce5c6710586c3d171194a2561fee53969d0afa7e3c1c457518",
-  "duration_seconds": 12.0,
-  "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 4003 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+  "bytes": 7008282,
+  "sha256": "5465fa84d85e0282559b540725759e14886c4c6a64b15820f2f1c4fbf7e998ef",
+  "duration_seconds": 18.0,
+  "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 3112 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
   "audio_tracks": 0,
   "poster": "assets/video/medellin-location-poster.jpg",
-  "poster_sha256": "762a7c7703211ec532d5b7d5dc04d732e0dd2a8ca63d3ac9e87b9a5ef636a3b7",
-  "method": "City aerial and city sidewalk footage at their original speed, framing and color, joined with restrained dissolves. The countryside scene is used separately in the Lola & Ber hospitality chapter. No generated imagery or synthetic human movement.",
+  "poster_sha256": "8ac214a5c9bfaaec1ba4dfbb9ce799fb2e7907e719cde8b7d246b95cd93c13d4",
+  "method": "City aerial, dining preparation and city sidewalk footage at their original speed, framing and color, joined with restrained dissolves. This film contains no countryside footage. No generated imagery or synthetic human movement. The dining footage illustrates city experiences and does not identify a restaurant, shooting location or Lola & Ber service.",
   "sources": [
     {
       "id": "693150796",
@@ -16,6 +16,14 @@
       "source_start_seconds": 0,
       "source_duration_seconds": 4.5,
       "sha256": "b9b7e410f4a4c3fd19865f7dbb584c7b4d30455b8bbf9d71bce9c071e3349db2"
+    },
+    {
+      "id": "80490822",
+      "subject": "Chefs preparing and plating food in a professional kitchen",
+      "path": "assets/video/stock/AdobeStock_80490822.mp4",
+      "source_start_seconds": 2,
+      "source_duration_seconds": 6.5,
+      "sha256": "02ca107f00a372198ee11c26e5f4c85a7e97a6657cc96877cb94b891c68a3e39"
     },
     {
       "id": "787505338",
@@ -41,37 +49,60 @@
   "timeline": [
     {
       "start_seconds": 0,
-      "end_seconds": 3.5,
+      "end_seconds": 3.375,
       "content": "City aerial"
     },
     {
-      "start_seconds": 3.5,
-      "end_seconds": 4,
-      "content": "City-to-sidewalk dissolve"
+      "start_seconds": 3.375,
+      "end_seconds": 3.875,
+      "content": "City-to-dining dissolve"
     },
     {
-      "start_seconds": 4,
-      "end_seconds": 7.5,
+      "start_seconds": 3.875,
+      "end_seconds": 9.375,
+      "content": "Chefs preparing and plating food"
+    },
+    {
+      "start_seconds": 9.375,
+      "end_seconds": 9.875,
+      "content": "Dining-to-sidewalk dissolve"
+    },
+    {
+      "start_seconds": 9.875,
+      "end_seconds": 13.375,
       "content": "City sidewalk lifestyle"
     },
     {
-      "start_seconds": 7.5,
-      "end_seconds": 8,
+      "start_seconds": 13.375,
+      "end_seconds": 13.875,
       "content": "Sidewalk-to-city dissolve"
     },
     {
-      "start_seconds": 8,
-      "end_seconds": 11.5,
-      "content": "Medell\u00edn city aerial"
+      "start_seconds": 13.875,
+      "end_seconds": 17.375,
+      "content": "City aerial"
     },
     {
-      "start_seconds": 11.5,
-      "end_seconds": 12,
+      "start_seconds": 17.375,
+      "end_seconds": 17.875,
       "content": "Aerial dissolve, returning to the opening camera position"
+    },
+    {
+      "start_seconds": 17.875,
+      "end_seconds": 18.0,
+      "content": "Opening city aerial, completing the seamless loop"
     }
   ],
   "crossfade_seconds": 0.5,
-  "location_note": "ENVIGADO is visible on a bus in the sidewalk source; exact shooting locations are not independently verified. Stock people are illustrative, not Dulcinea team members.",
+  "untrimmed_crossfade_offsets_seconds": [
+    4.0,
+    10.0,
+    14.0,
+    18.0
+  ],
+  "loop_trim_start_seconds": 0.625,
+  "loop_guard_frames": 3,
+  "location_note": "ENVIGADO is visible on a bus in the sidewalk source; exact shooting locations are not independently verified. Stock people are illustrative, not Dulcinea team members or identified Lola & Ber personnel. No property dining-service claim is implied.",
   "render_script": "scripts/render-location.py",
   "encoding_options": [
     "-an",
@@ -82,9 +113,9 @@
     "-crf",
     "22",
     "-maxrate",
-    "7M",
+    "4M",
     "-bufsize",
-    "14M",
+    "8M",
     "-profile:v",
     "high",
     "-level",
@@ -108,5 +139,5 @@
     "-threads",
     "4"
   ],
-  "validation": "Complete output decoded successfully; verified silent H.264 1280x720 at 24 fps, 12 seconds, faststart and below 10 MB."
+  "validation": "Complete output decoded successfully; verified silent H.264 1280x720 at 24 fps, 18 seconds, faststart and below 10 MB. All source SHA-256 hashes match their pre-render values."
 }

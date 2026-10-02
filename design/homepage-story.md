@@ -1,5 +1,18 @@
 # Homepage story expansion
 
+## 2 October 2026 media correction
+
+Build target: retain the approved website and 19-slide presentation, including their typography, layout and motion controls. This is a media-context correction requested by the user, not a new visual direction.
+
+| Decision | Source | Role |
+| --- | --- | --- |
+| Place the pasture woman in El Oriente | User: country and green-home context | Main countryside film in both website and presentation; reservoir aerials frame the scene. The pasture shooting location is unverified. |
+| Keep chef footage in the Medellín chapter | User: use all stock; no restaurant association for Lola & Ber | City dining context only, with city aerials and the separate walking clip. |
+| Use supplied evening photography for Lola & Ber | User: sex-positive adult brand | Slow camera movement over the supplied adult evening image. No kitchen, pasture or city-walking footage in this film. |
+| Separate the two women | Earlier user sequencing request | Separate films, with reservoir and city aerial footage before and after their appearances. Neither appears in the opening or closing. |
+
+Both languages use the same revised films. Stock originals remain unchanged; edited films and internal provenance replace the prior compositions. No additional media licenses, external services or invented brand benefits are introduced.
+
 ## 1 October 2026 revision — lifestyle and El Oriente first
 
 This revision supersedes the sixteen-slide order described below. The existing Dulcinea design and the Radisson destination/hospitality sequence remain the reference lock. No new visual system is introduced.
