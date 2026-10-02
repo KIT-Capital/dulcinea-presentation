@@ -37,6 +37,7 @@ assert(sourceArgument!==-1&&process.argv[sourceArgument+1],'Pass --source with t
 const snapshot=await readFile(path.resolve(process.argv[sourceArgument+1]));
 assert.equal(createHash('sha256').update(snapshot).digest('hex'),data.source.sha256);
 const summary=JSON.parse(await readFile(path.join(root,'content/model-summary.json'),'utf8'));
+const terms=JSON.parse(await readFile(path.join(root,'content/investor-terms.json'),'utf8'));
 assert.equal(summary.provenance.sha256,data.source.sha256,'All financial source records must use the same workbook');
 for(const locale of ['','es/']){
  const html=await readFile(path.join(root,`dist/private-site/${locale}financial-statements.html`),'utf8');
@@ -56,8 +57,8 @@ for(const locale of ['','es/']){
  assert(home.includes(`<strong>${irr}</strong>`),'Homepage/presentation investor IRR differs from model');
  assert(home.includes(`<strong>${multiple}</strong>`),'Homepage/presentation multiple differs from model');
  const criteria=await readFile(path.join(root,`dist/private-site/${locale}investment-criteria.html`),'utf8');
- const hurdle=(summary.criteria.minimumDealIrr.value*100).toFixed(0);
- assert(criteria.includes(locale?`TIR del ${hurdle}% por operación`:`${hurdle}% deal-level IRR`),'Criteria hurdle differs from model');
+ const hurdle=(terms.criteria.minimumInvestorIrr*100).toFixed(0);
+ assert(criteria.includes(locale?`TIR del ${hurdle}% para el inversionista`:`${hurdle}% investor IRR`),'Criteria differs from the approved investor hurdle');
  assert(!criteria.includes('15% investor IRR')&&!criteria.includes('TIR del 15% para el inversionista'),'Stale investor-level screening hurdle');
  assert(!criteria.includes('data-source='),'Criteria page exposes internal source references');
 }

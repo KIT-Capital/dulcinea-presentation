@@ -109,14 +109,6 @@ body.is-presenting[data-presentation-layout="responsive"] .fund-bottom { flex-di
 body.is-presenting[data-presentation-layout="responsive"] .fund-bottom p { font-size:22px; line-height:1.4 }
 body.is-presenting[data-presentation-layout="responsive"] .fund-bottom .fund-small { font-size:18px; line-height:1.5; max-width:100%; margin-top:12px }
 body.is-presenting[data-presentation-layout="responsive"] .button-dark { font-size:18px; padding:18px 22px; gap:24px; min-height:56px }
-body.is-presenting[data-presentation-layout="responsive"] #fund > .kickers { height:auto; min-height:0 }
-body.is-presenting[data-presentation-layout="responsive"] .kickers h3 { font-size:40px; line-height:1.1; margin:0 0 32px; max-width:100% }
-body.is-presenting[data-presentation-layout="responsive"] .kicker-strip { grid-template-columns:minmax(0,1fr); gap:8px }
-body.is-presenting[data-presentation-layout="responsive"] .kicker-strip > div { gap:12px; padding:24px 0 }
-body.is-presenting[data-presentation-layout="responsive"] .kicker-strip strong { font-size:44px; line-height:1.08 }
-body.is-presenting[data-presentation-layout="responsive"] .kicker-strip span { font-size:22px; line-height:1.35 }
-body.is-presenting[data-presentation-layout="responsive"] .kicker-strip p { font-size:18px; line-height:1.5 }
-body.is-presenting[data-presentation-layout="responsive"] .kickers .footnote { font-size:14px; line-height:1.65; margin-top:26px; max-width:100% }
 body.is-presenting[data-presentation-layout="responsive"] #fund > .model summary { font-size:36px; line-height:1.15; padding:0 0 26px; max-width:100%; white-space:normal }
 body.is-presenting[data-presentation-layout="responsive"] .projection { grid-template-columns:minmax(0,1fr); gap:0; margin:0 0 28px }
 body.is-presenting[data-presentation-layout="responsive"] .projection div { display:flex; flex-direction:column; gap:10px; padding:22px 0; border-top:1px solid #17282d35 }
@@ -203,8 +195,6 @@ body.is-presenting[data-presentation-layout="responsive"] footer span:last-child
   body.is-presenting[data-presentation-layout="responsive"] .capital strong { font-size:72px }
   body.is-presenting[data-presentation-layout="responsive"] .capital .micro { max-width:100% }
   body.is-presenting[data-presentation-layout="responsive"] .fund-bottom { flex-direction:row; align-items:center; gap:32px }
-  body.is-presenting[data-presentation-layout="responsive"] .kicker-strip { grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px }
-  body.is-presenting[data-presentation-layout="responsive"] .kicker-strip strong { font-size:40px }
   body.is-presenting[data-presentation-layout="responsive"] .projection { grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin:22px 0 34px }
   body.is-presenting[data-presentation-layout="responsive"] .projection strong { font-size:72px }
   body.is-presenting[data-presentation-layout="responsive"] .document-links { flex-direction:row; flex-wrap:wrap; gap:12px 24px }
@@ -300,6 +290,42 @@ body.is-presenting[data-presentation-layout="responsive"] .motion {
 }
 body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items .presentation-menu-label { min-width:0; overflow-wrap:anywhere }
 body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items .presentation-menu-number { flex-shrink:0 }
+
+/* Benefits and booking terms use the same scrollable, single-slide layout on touch devices. */
+body.is-presenting[data-presentation-layout="responsive"] #main > #member-benefits.presentation-active { padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px)) }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits h2 { font-size:40px; line-height:1.1; margin:14px 0 20px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefits-heading > p:last-child { font-size:18px; line-height:1.55; max-width:660px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:minmax(0,1fr); gap:30px; margin-top:30px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article { padding-top:20px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-number { font-size:65px; margin:16px 0; line-height:1.1 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-word { font-size:49px; line-height:1.1 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid h3 { font-size:25px; margin-bottom:13px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p:not(.micro) { font-size:18px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p.member-benefit-detail { margin-top:12px; font-size:16px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefits-bottom { display:block; margin-top:26px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefits-bottom .footnote { font-size:13px; line-height:1.6; max-width:100% }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefits-bottom .line-link { margin-top:20px; width:100%; max-width:330px; min-width:0 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-heading h2 { font-size:39px; line-height:1.1; margin:14px 0 20px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-heading > p:not(.micro) { font-size:18px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-facts { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 18px; margin:28px 0 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-facts strong { font-size:34px; line-height:1.15 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-facts span { font-size:14px; line-height:1.4; max-width:100% }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-rules { grid-template-columns:minmax(0,1fr); gap:24px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-rules h3 { font-size:23px; line-height:1.3; margin-bottom:12px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-rules p { font-size:18px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-content > .footnote { font-size:13px; line-height:1.6; margin-top:24px }
+@media(min-width:700px) {
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits h2,
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-heading h2 { font-size:48px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:25px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid h3 { font-size:22px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p:not(.micro) { font-size:17px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p.member-benefit-detail { font-size:15px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-word { font-size:42px; line-height:1.7 }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-facts { grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-facts strong { font-size:36px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-rules { grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px 30px }
+}
 @media(max-width:420px) {
   body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items { grid-template-columns:minmax(0,1fr) }
   body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items button { min-height:48px; font-size:14px }

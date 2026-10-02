@@ -1,6 +1,61 @@
 /* Shared lifestyle chapters; directories and supplementary films stay on the website. */
 body.is-presenting .website-only { display:none !important; }
 
+/* Member benefits appear before the two destinations. Booking detail stays optional on the website. */
+.member-benefits { background:#e9edf1; }
+.member-benefits-heading { display:grid; grid-template-columns:1.3fr 1fr; align-items:end; gap:18px 5vw; }
+.member-benefits-heading > .micro { grid-column:1 / -1; color:#45585c; }
+.member-benefits-heading h2 { font-size:clamp(38px,5vw,72px); }
+.member-benefits-heading > p:last-child { max-width:440px; font-size:19px; line-height:1.5; }
+.member-benefit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4vw; margin-top:48px; }
+.member-benefit-grid > article { min-width:0; padding-top:22px; border-top:3px solid var(--blue); }
+.member-benefit-grid > article:nth-child(2) { border-color:var(--violet); }
+.member-benefit-grid > article:nth-child(3) { border-color:var(--old-gold); }
+.member-benefit-number { display:block; margin:20px 0 18px; font-size:clamp(64px,7vw,100px); line-height:1; letter-spacing:-.055em; font-weight:400; }
+.member-benefit-number.member-benefit-word { font-size:clamp(43px,5.6vw,78px); line-height:1.28; }
+.member-benefit-grid h3 { margin-bottom:18px; font-size:24px; line-height:1.2; letter-spacing:-.035em; }
+.member-benefit-grid p:not(.micro) { font-size:16px; line-height:1.55; }
+.member-benefit-grid p.member-benefit-detail { margin-top:14px; color:#42565a; font-size:14px; }
+.member-benefits-bottom { display:flex; align-items:flex-end; justify-content:space-between; gap:32px; margin-top:28px; }
+.member-benefits-bottom .footnote { max-width:840px; margin:0; font-size:12px; }
+.owner-use { margin-top:36px; border-block:1px solid #17282d55; scroll-margin-top:calc(var(--header) + 20px); }
+.owner-use > summary { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:70px; padding:20px 0; cursor:pointer; list-style:none; font-size:20px; }
+.owner-use > summary::-webkit-details-marker { display:none; }
+.owner-use[open] > summary .plus { transform:rotate(45deg); }
+.owner-use-content { padding:12px 0 30px; }
+.owner-use-heading > p:not(.micro) { font-size:18px; line-height:1.5; }
+.owner-use-facts { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:26px; margin:30px 0; }
+.owner-use-facts > div { display:flex; flex-direction:column; gap:10px; }
+.owner-use-facts strong { font-size:clamp(30px,3.5vw,48px); font-weight:400; letter-spacing:-.035em; line-height:1.1; }
+.owner-use-facts span { max-width:190px; font-size:13px; line-height:1.4; color:#42565a; }
+.owner-use-rules { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px 5vw; }
+.owner-use-rules article { border-top:1px solid #17282d35; padding-top:18px; }
+.owner-use-rules h3 { font-size:22px; letter-spacing:-.025em; margin:0 0 12px; }
+.owner-use-rules p { font-size:16px; line-height:1.55; max-width:640px; }
+.owner-use-content > .footnote { margin-top:26px; font-size:12px; }
+@media(max-width:950px) {
+  .member-benefits-heading { grid-template-columns:1fr; }
+  .member-benefits-heading > p:last-child { max-width:640px; }
+  .member-benefit-grid { gap:25px; }
+  .member-benefit-grid h3 { font-size:21px; }
+  .member-benefit-grid p:not(.micro) { font-size:15px; }
+}
+@media(max-width:650px) {
+  .member-benefits { padding:44px 5vw; }
+  .member-benefits-heading > p:last-child { font-size:17px; }
+  .member-benefit-grid { grid-template-columns:1fr; gap:32px; margin-top:34px; }
+  .member-benefit-number { margin:15px 0; font-size:64px; }
+  .member-benefit-number.member-benefit-word { font-size:48px; line-height:1.1; }
+  .member-benefit-grid h3 { margin-bottom:12px; font-size:24px; }
+  .member-benefit-grid p:not(.micro) { font-size:16px; }
+  .member-benefit-grid p.member-benefit-detail { margin-top:10px; font-size:14px; }
+  .member-benefits-bottom { margin-top:25px; }
+  .owner-use-facts { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+  .owner-use-facts strong { font-size:34px; }
+  .owner-use-rules { grid-template-columns:1fr; gap:24px; }
+  .owner-use-rules h3 { font-size:21px; }
+}
+
 .story-index {
   display:flex;
   align-items:center;

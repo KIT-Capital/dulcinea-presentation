@@ -101,6 +101,7 @@ for (const [pagePath, html] of pages) {
   assert.match(html, new RegExp(`<html\\s+lang=["']${language}["']`), `Wrong language: ${pagePath}`);
   assert.doesNotMatch(html, /Design preview|Vista previa|\{\{[A-Z_0-9]+\}\}|\/\*__[A-Z_]+__\*\//i, `Preview text or unexpanded marker: ${pagePath}`);
   const markup = withoutScripts(html);
+  assert.doesNotMatch(decode(markup) + textContent(markup), /buy[\s\u00ad\u200b\u2010-\u2015-]*box/i, `Use acquisition criteria instead of the retired label: ${pagePath}`);
   const forms = [...markup.matchAll(/<form\b[^>]*>/gi)].map(match => attributes(match[0]));
   const hasSignout = forms.some(form => form.action === '/logout' && form.method?.toLowerCase() === 'post');
   assert.equal(hasSignout, pagePath.endsWith('/financial-statements.html'), `Sign-out belongs only in financial statements: ${pagePath}`);
@@ -150,7 +151,10 @@ for (const [pagePath, html] of pages) {
   assert.match(markup, /href=["']mailto:kit@kitcapital\.com["']/, `Missing Dov email: ${pagePath}`);
   for (const person of ['K. Dov Isaza Tuzman', 'Ricardo Cidale', 'Adriana Suárez']) assert.ok(textContent(markup).includes(person), `Missing team member ${person}: ${pagePath}`);
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
-  for(const chapter of ['destination','ownership','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
+  for(const chapter of ['destination','ownership','member-benefits','owner-use','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
+  assert.ok(markup.indexOf('id="ownership"') < markup.indexOf('id="member-benefits"') && markup.indexOf('id="member-benefits"') < markup.indexOf('id="oriente"'), 'Member benefits belong after lifestyle and before destinations');
+  assert.match(markup, /<details class="owner-use" id="owner-use">/, 'Owner booking rules should be expandable on the website');
+  assert.doesNotMatch(markup, /Three equity kickers|Tres beneficios de participación adicionales/, 'The old equity-only overview must be replaced');
   assert.deepEqual([...markup.matchAll(/<article class="home-film-card"><a\b[^>]*data-preview-home="(\d)"/g)].map(match=>Number(match[1])),[0,1,2,3,4],`Every property film must be directly discoverable: ${pagePath}`);
   assert.ok(markup.indexOf('id="fund"') < markup.indexOf('id="team"'),'The offer should precede the team directory');
   assert.match(markup, /<details class="model" open>/,'Projected results should be visible without a click');
@@ -174,8 +178,8 @@ for (const [pagePath, html] of pages) {
   const text = textContent(markup);
   assert.match(markup, /class="legal-notice"/, `Missing homepage disclosure: ${pagePath}`);
   for (const phrase of language === 'en'
-    ? ['Our first fund.', 'Lola & Ber Hospitality', '30% already committed.', 'Three equity kickers.', 'Delaware LLC']
-    : ['Nuestro primer fondo.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Tres beneficios de participación adicionales.', 'LLC de Delaware']) {
+    ? ['Our first fund.', 'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake', 'Each home in service adds 73 nights.', 'Cancel 30 days ahead.', 'Winners sit out the next draw.', 'Delaware LLC']
+    : ['Nuestro primer fondo.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Beneficios de membresía', 'Participación colectiva', 'Cada propiedad en servicio aporta 73 noches.', 'Cancele con 30 días de anticipación.', 'Los ganadores no participan en el siguiente sorteo.', 'LLC de Delaware']) {
     assert.ok(text.includes(phrase), `Missing visible ${language} investor content: ${phrase}`);
   }
 }

@@ -13,6 +13,8 @@
   const steps = [
     {id:'cover', selector:'#home', title:['Dulcinea One','Dulcinea One']},
     {id:'lifestyle', selector:'#ownership', title:['Homes for more than a visit','Propiedades para disfrutar']},
+    {id:'benefits', selector:'#member-benefits', title:['Member benefits','Beneficios de membresía']},
+    {id:'owner-use', selector:'#member-benefits', anchor:'#owner-use', title:['Owner use','Uso de las propiedades']},
     {id:'oriente', selector:'#oriente', title:['El Oriente countryside','El campo del Oriente']},
     {id:'city', selector:'#destination', title:['Life in Medellín','La vida en Medellín']},
     {id:'hospitality', selector:'#experience', title:['Lola & Ber Hospitality','Lola & Ber Hospitality']},
@@ -23,7 +25,6 @@
     {id:'montana', selector:'#homes', home:4, title:['Casa Montana','Casa Montana']},
     {id:'idea', selector:'#approach', title:['The investment approach','La estrategia de inversión']},
     {id:'offer', selector:'#fund', title:['The offer + the ask','La oferta + la invitación']},
-    {id:'kickers', selector:'#fund', title:['Three equity kickers','Tres beneficios de participación']},
     {id:'returns', selector:'#fund', title:['Projected returns','Retornos proyectados']},
     {id:'team', selector:'#team', title:['The core team','El equipo principal']},
     {id:'specialists', selector:'#specialists', title:['Local specialists','Especialistas locales']},
@@ -178,6 +179,7 @@
       renderHome(changed);
     }
     if (step.id === 'returns') document.querySelector('#fund > details.model').open = true;
+    if (step.id === 'owner-use') document.querySelector('#owner-use').open = true;
     if (updateRoute) writeHash(`present-${index + 1}`);
     updateControls();
     fitCanvas();
@@ -233,6 +235,7 @@
       else item.setAttribute('aria-hidden',state.hidden);
     });
     detailsState.forEach((wasOpen,details) => { details.open = wasOpen; });
+    if (destinationId === 'owner-use') section.open = true;
     controls.hidden = true;
     if (ownsFullscreen && document.fullscreenElement) document.exitFullscreen().catch(() => {});
     ownsFullscreen = false;
@@ -328,7 +331,10 @@
     if (requested !== null) {
       if (active) goTo(requested,false);
       else start(requested,false);
-    } else if (active) exit(false,false);
+    } else {
+      if (active) exit(false,false);
+      if (location.hash === '#owner-use') document.querySelector('#owner-use').open = true;
+    }
   }
   window.addEventListener('hashchange',syncRoute);
   window.addEventListener('popstate',syncRoute);
@@ -379,13 +385,13 @@
       goTo(steps.findIndex(step => step.home === chosen));
       return;
     }
-    const summary = target?.closest('#fund > details.model > summary');
+    const summary = target?.closest('#fund > details.model > summary, #owner-use > summary');
     if (summary) { event.preventDefault(); return; }
     const link = target?.closest('a[href]');
     if (!link || link.target === '_blank') return;
     const url = new URL(link.href,location.href);
     if (url.origin !== location.origin || url.pathname !== location.pathname) return;
-    const requested = steps.findIndex(step => step.selector === url.hash);
+    const requested = steps.findIndex(step => (step.anchor || step.selector) === url.hash);
     if (requested < 0) return;
     event.preventDefault();
     goTo(requested);

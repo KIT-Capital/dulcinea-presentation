@@ -126,8 +126,8 @@ test('the dedicated login remains localized with social metadata and a public we
   const { env, assetRequests } = fixture();
   let englishStyles;
   for (const [language, locale, alternate, image, title, accessTitle] of [
-    ['en', 'en_US', 'es_CO', 'dulcinea-one-medellin-v2.jpg', 'Dulcinea One | Five homes. One portfolio.', 'Private financial statements'],
-    ['es', 'es_CO', 'en_US', 'dulcinea-one-medellin-es-v2.jpg', 'Dulcinea One | Cinco propiedades. Un portafolio.', 'Estados financieros privados'],
+    ['en', 'en_US', 'es_CO', 'dulcinea-one-medellin-v2.jpg', 'Dulcinea One | Homes in Medellín and El Oriente', 'Private financial statements'],
+    ['es', 'es_CO', 'en_US', 'dulcinea-one-medellin-es-v2.jpg', 'Dulcinea One | Propiedades en Medellín y el Oriente', 'Estados financieros privados'],
   ]) {
     const prefix = language === 'es' ? '/es' : '';
     const response = await worker.fetch(request(`/login?lang=${language}`), env);

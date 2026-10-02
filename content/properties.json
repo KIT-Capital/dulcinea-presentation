@@ -8,7 +8,7 @@
     "purchase": "$445K",
     "allin": "$747K",
     "works": "Six months; $291K budget",
-    "rent": "19 modeled rental months; approximately $24K stabilized annual property NOI",
+    "rent": "19 modeled rental months; approximately $14K stabilized annual property NOI",
     "status": "Negotiated; compraventa drafted",
     "exit": "4Q26 to 1Q29; 25-month hold",
     "value": "$1.27M",
@@ -22,14 +22,17 @@
     "rentalMonths": 19,
     "rentalMonthsSource": "Properties!U8-T8; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 09.xlsx",
+      "model": "Dulcinea Model 10.xlsx",
       "cells": "Properties!C8:X8",
-      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "deck": "Dulcinea - Investor Presentation 032.pptx",
       "slide": 14,
-      "status": "Source-reported property status; not independently refreshed",
-      "sha256": "9c6f9654d3cf02b83fbe71902619eb5fd5a7a83bd5dc1247aaae80635cdf8fb9"
+      "status": "Latest investor-deck status; model labels retained separately in model-summary.json",
+      "sha256": "6943e850555794c314adc213e3e117bf237ebcbff8e6e09350cbb5a1edff1365",
+      "operatingCells": "Properties!T8:Y8"
     },
-    "sourceNote": "All-in cost is below the stated $750K acquisition target."
+    "sourceNote": "All-in cost is below the stated $750K acquisition target.",
+    "stabilizedAnnualNoiUsd": 13635.264005320532,
+    "stabilizedAnnualRentalRevenueUsd": 41544.728320312504
   },
   {
     "name": "Aires de Campestre",
@@ -40,8 +43,8 @@
     "purchase": "$667K",
     "allin": "$1.17M",
     "works": "Six months; $485K budget",
-    "rent": "22 modeled rental months; approximately $19K stabilized annual property NOI",
-    "status": "Signed; closing 4Q26",
+    "rent": "22 modeled rental months; approximately $7.4K stabilized annual property NOI",
+    "status": "Closed 3Q26",
     "exit": "4Q26 to 1Q29; 28-month hold",
     "value": "$2.02M",
     "uplift": "1.73×",
@@ -54,13 +57,16 @@
     "rentalMonths": 22,
     "rentalMonthsSource": "Properties!U6-T6; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 09.xlsx",
+      "model": "Dulcinea Model 10.xlsx",
       "cells": "Properties!C6:X6",
-      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "deck": "Dulcinea - Investor Presentation 032.pptx",
       "slide": 15,
-      "status": "Source-reported property status; not independently refreshed",
-      "sha256": "9c6f9654d3cf02b83fbe71902619eb5fd5a7a83bd5dc1247aaae80635cdf8fb9"
-    }
+      "status": "Latest investor-deck status; model labels retained separately in model-summary.json",
+      "sha256": "6943e850555794c314adc213e3e117bf237ebcbff8e6e09350cbb5a1edff1365",
+      "operatingCells": "Properties!T6:Y6"
+    },
+    "stabilizedAnnualNoiUsd": 7367.852925098925,
+    "stabilizedAnnualRentalRevenueUsd": 44868.306585937506
   },
   {
     "name": "Fontanar 201",
@@ -71,8 +77,8 @@
     "purchase": "$1.02M",
     "allin": "$1.29M",
     "works": "Six months; $246K budget",
-    "rent": "24 modeled rental months; approximately $17K stabilized annual property NOI",
-    "status": "Signed; closing 4Q26",
+    "rent": "24 modeled rental months; approximately $5.3K stabilized annual property NOI",
+    "status": "Closed 3Q26",
     "exit": "4Q26 to 2Q29; 30-month hold",
     "value": "$2.26M",
     "uplift": "1.75×",
@@ -85,13 +91,16 @@
     "rentalMonths": 24,
     "rentalMonthsSource": "Properties!U7-T7; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 09.xlsx",
+      "model": "Dulcinea Model 10.xlsx",
       "cells": "Properties!C7:X7",
-      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "deck": "Dulcinea - Investor Presentation 032.pptx",
       "slide": 16,
-      "status": "Source-reported property status; not independently refreshed",
-      "sha256": "9c6f9654d3cf02b83fbe71902619eb5fd5a7a83bd5dc1247aaae80635cdf8fb9"
-    }
+      "status": "Latest investor-deck status; model labels retained separately in model-summary.json",
+      "sha256": "6943e850555794c314adc213e3e117bf237ebcbff8e6e09350cbb5a1edff1365",
+      "operatingCells": "Properties!T7:Y7"
+    },
+    "stabilizedAnnualNoiUsd": 5341.275255196013,
+    "stabilizedAnnualRentalRevenueUsd": 44868.306585937506
   },
   {
     "name": "Casa Monte Sereno",
@@ -102,7 +111,7 @@
     "purchase": "$1.29M",
     "allin": "$1.65M",
     "works": "Six months; $324K budget",
-    "rent": "26 modeled rental months; approximately $13K stabilized annual property NOI",
+    "rent": "26 modeled rental months; approximately $1.2K stabilized annual property NOI",
     "status": "Negotiated; finalizing modifications",
     "exit": "1Q27 to 4Q29; 32-month hold",
     "value": "$2.83M",
@@ -116,13 +125,16 @@
     "rentalMonths": 26,
     "rentalMonthsSource": "Properties!U10-T10; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 09.xlsx",
+      "model": "Dulcinea Model 10.xlsx",
       "cells": "Properties!C10:X10",
-      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "deck": "Dulcinea - Investor Presentation 032.pptx",
       "slide": 17,
-      "status": "Source-reported property status; not independently refreshed",
-      "sha256": "9c6f9654d3cf02b83fbe71902619eb5fd5a7a83bd5dc1247aaae80635cdf8fb9"
-    }
+      "status": "Latest investor-deck status; model labels retained separately in model-summary.json",
+      "sha256": "6943e850555794c314adc213e3e117bf237ebcbff8e6e09350cbb5a1edff1365",
+      "operatingCells": "Properties!T10:Y10"
+    },
+    "stabilizedAnnualNoiUsd": 1236.5553702821799,
+    "stabilizedAnnualRentalRevenueUsd": 45274.96012500001
   },
   {
     "name": "Casa Montana",
@@ -133,7 +145,7 @@
     "purchase": "$1.14M",
     "allin": "$1.71M",
     "works": "Six months; $550K budget",
-    "rent": "29 modeled rental months; approximately $24K stabilized annual property NOI",
+    "rent": "29 modeled rental months; approximately $10K stabilized annual property NOI",
     "status": "Negotiated; works being budgeted",
     "exit": "2Q27 to 2Q30; 35-month hold",
     "value": "$3.00M",
@@ -147,13 +159,16 @@
     "rentalMonths": 29,
     "rentalMonthsSource": "Properties!U9-T9; rental period excludes sale month",
     "source": {
-      "model": "Dulcinea Model 09.xlsx",
+      "model": "Dulcinea Model 10.xlsx",
       "cells": "Properties!C9:X9",
-      "deck": "Dulcinea - Investor Presentation 027.pptx",
+      "deck": "Dulcinea - Investor Presentation 032.pptx",
       "slide": 18,
-      "status": "Source-reported property status; not independently refreshed",
-      "sha256": "9c6f9654d3cf02b83fbe71902619eb5fd5a7a83bd5dc1247aaae80635cdf8fb9"
+      "status": "Latest investor-deck status; model labels retained separately in model-summary.json",
+      "sha256": "6943e850555794c314adc213e3e117bf237ebcbff8e6e09350cbb5a1edff1365",
+      "operatingCells": "Properties!T9:Y9"
     },
-    "sourceNote": "Model six-month works assumption supersedes the deck’s nine months."
+    "sourceNote": "User confirmed six-month Model 10 works on 2026-10-02; supersedes the deck nine-month statement.",
+    "stabilizedAnnualNoiUsd": 10276.09841313512,
+    "stabilizedAnnualRentalRevenueUsd": 54845.84952857143
   }
 ]

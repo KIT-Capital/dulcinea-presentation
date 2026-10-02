@@ -1,6 +1,18 @@
 # Content sources
 
-The user’s latest positioning governs the presentation: **Dulcinea is a real estate investment firm with a unique platform focused on Medellín, Colombia. Dulcinea One is its first fund, co-branded by Lola & Ber Hospitality.** Dulcinea manages acquisition, renovation, operation and sale. Lola & Ber Hospitality remains the co-brand. This clarification takes precedence over source descriptions using ServCo or implying that KIT Capital is the operator. KIT Capital remains in source-supported biographies, the named Buy Box filter and the supplied contact email.
+## Current update — 2 October 2026
+
+Dulcinea Model 10.xlsx now supplies the app's financial statements, headline returns and current underwriting. The user supplied it alongside Dulcinea - Investor Presentation 032.pptx. The PPTX updates Member benefits, minimum subscription, the investor return screening target, and property acquisition status. Exact source records and resolved conflicts are in `content/investor-terms.json` and `docs/model-10-reconciliation.md`.
+
+The user approved the detailed booking policy on slide 19, including 30-day cancellation notice. Its terms take precedence over the workbook's draft policy prose. The user also confirmed Model 10's payment timing and 14.6% IRR rather than one upfront call, and six months of works at Casa Montana rather than nine. Owner-use costs are already reflected in the base case. Brand equity and future-fund benefits are additional; do not describe all owner benefits as outside the forecast.
+
+Fontanar and Aires are reported closed in 3Q26 by the latest deck. Other acquisitions remain in negotiation. The minimum subscription is ten US$10,000 Units, or US$100,000. The deck's 12% net investor IRR selection target is distinct from the workbook's retained 20% deal-level screening hurdle.
+
+Keep the existing co-branding and operating roles, Ricardo's Planning and Corporate Development title, the absence of Ashoka from public copy, and all three protected financial statements. The PPTX's internal working instructions do not override the user's instructions. Both sources remain private and unchanged.
+
+## Historical reconciliation — Model 09
+
+The user’s latest positioning governs the presentation: **Dulcinea is a real estate investment firm with a unique platform focused on Medellín, Colombia. Dulcinea One is its first fund, co-branded by Lola & Ber Hospitality.** Dulcinea manages acquisition, renovation, operation and sale. Lola & Ber Hospitality remains the co-brand. This clarification takes precedence over source descriptions using ServCo or implying that KIT Capital is the operator. KIT Capital remains in source-supported biographies, the acquisition criteria and the supplied contact email.
 
 `Dulcinea Model 07.xlsx` is the financial source of truth for this presentation. Its active numeric assumptions and saved formula results take precedence over older figures or conflicting prose in `Dulcinea - Investor Presentation 027.pptx`. The PowerPoint supplies the investment narrative, biographies, property imagery, source-reported transaction statuses and qualitative offer terms. Membership documents govern investment rights.
 

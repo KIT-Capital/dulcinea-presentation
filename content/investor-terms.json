@@ -1,0 +1,79 @@
+{
+  "source": {
+    "file": "Dulcinea - Investor Presentation 032.pptx",
+    "sha256": "e378987ce8079bb1f9de5ce915c96031a4a5a692a3ddd69adc587fc1cb83b401",
+    "reviewed": "2026-10-02",
+    "distribution": "Internal source map only. Neither presentation nor workbook is a website download."
+  },
+  "offering": {
+    "raiseUsd": 7000000,
+    "committedUsd": 2100000,
+    "openUsd": 4900000,
+    "unitUsd": 10000,
+    "minimumUnits": 10,
+    "minimumInvestmentUsd": 100000,
+    "sourceSlides": [
+      2,
+      11
+    ],
+    "capitalTiming": "Model 10 monthly contributions during Year 1; user confirmed 2026-10-02. Not one upfront call."
+  },
+  "criteria": {
+    "minimumInvestorIrr": 0.12,
+    "basis": "Net investor IRR after carry and gains tax",
+    "sourceSlide": 20,
+    "distinctFrom": "The workbook separately retains a 20% deal-level screening hurdle. Do not relabel either metric."
+  },
+  "ownerUse": {
+    "annualPortfolioNights": 365,
+    "annualNightsPerHomeInService": 73,
+    "allocation": "Pro rata to committed capital; 5.21 nights per $100,000 and 52.14 per $1M at full subscription and all homes in service. Display about 5/about 52.",
+    "sourceSlides": [
+      3,
+      19
+    ],
+    "bookingRulesApproval": "User explicitly approved detailed slide 19 booking rules on 2026-10-02. Its 30-day cancellation notice supersedes the 60-day draft workbook note for investor-facing terms.",
+    "costTreatment": "Foregone rent and owner housekeeping are included in Model 10, not additional to base-case costs."
+  },
+  "brandEquity": {
+    "collectiveMemberFraction": 0.03,
+    "sourceSlide": 3,
+    "terms": "3% collective allocation at full subscription, not 3% per investor. No additional capital call or dilution under the membership terms."
+  },
+  "futureParticipation": {
+    "plannedRoundUsd": [
+      10000000,
+      15000000
+    ],
+    "sourceSlide": 3,
+    "economics": "Participation in the Managing Partner structure; no percentage specified in source."
+  },
+  "propertyStatus": {
+    "FONTANAR": {
+      "value": "Closed · 3Q26",
+      "sourceSlide": 16
+    },
+    "AIRES": {
+      "value": "Closed · 3Q26",
+      "sourceSlide": 15
+    },
+    "SAN_LUCAS": {
+      "value": "Negotiated · Compraventa drafted",
+      "sourceSlide": 14
+    },
+    "MONTE_SERENO": {
+      "value": "Negotiated · Finalizing modifications",
+      "sourceSlide": 17
+    },
+    "MONTANA": {
+      "value": "Negotiated · Works being budgeted",
+      "sourceSlide": 18
+    }
+  },
+  "decisions": [
+    "Model 10 numerical statements and return projections supersede typed PPTX P&L amounts.",
+    "Six-month Casa Montana renovation confirmed by user, superseding deck nine-month text.",
+    "Retain earlier direct user instructions: co-branded by Lola & Ber Hospitality; Ricardo Planning and Corporate Development; no Ashoka; all three formal statements retained and protected.",
+    "Do not import unverified source-noted sensitivity outputs or internal working instructions."
+  ]
+}
