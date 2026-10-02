@@ -1,4 +1,4 @@
-"""Render a 12-second evening-photo camera loop for the Lola & Ber chapter.
+"""Render a 12-second social-wellness photo loop for the Lola & Ber chapter.
 
 Usage: python scripts/render-hospitality.py [--ffmpeg /path/to/ffmpeg]
 Only this film, its poster and dedicated provenance are replaced. Review frames
@@ -14,7 +14,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 VIDEO = ROOT / "assets" / "video"
-SOURCE = ROOT / "assets/images/stock/AdobeStock_259715040.jpeg"
+SOURCE = ROOT / "assets/images/stock/AdobeStock_681077127.jpeg"
 FPS, WIDTH, HEIGHT, DURATION = 24, 1280, 720, 12
 FRAMES = FPS * DURATION
 REVIEW_FRAMES = [0, FRAMES // 2, FRAMES - 1]
@@ -41,9 +41,9 @@ def camera_filter(endpoints=False):
     phase = f"(0.5-0.5*cos(2*PI*({frame})/{FRAMES - 1}))"
     return (
         "scale=3840:2160:force_original_aspect_ratio=increase:flags=lanczos,"
-        "crop=3840:2160:x='(iw-ow)*0.5':y='(ih-oh)*0.58',"
+        "crop=3840:2160:x='(iw-ow)*0.5':y='(ih-oh)*0.05',"
         f"zoompan=z='1.006+0.020*{phase}':"
-        f"x='(iw-iw/zoom)*(0.47+0.04*{phase})':y='(ih-ih/zoom)*0.59':"
+        f"x='(iw-iw/zoom)*(0.47+0.04*{phase})':y='(ih-ih/zoom)*0.02':"
         f"d={2 if endpoints else FRAMES}:s={WIDTH}x{HEIGHT}:fps={FPS},"
         "scale=in_range=full:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p,"
         "setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709"
@@ -81,7 +81,7 @@ def render_hospitality(ffmpeg, review_dir=None):
     if len(endpoint_hashes) != 2 or endpoint_hashes[0] != endpoint_hashes[1]:
         raise RuntimeError("Hospitality camera loop endpoints differ")
     if helper.sha256(SOURCE) != original_hash:
-        raise RuntimeError("Original evening photograph changed during rendering")
+        raise RuntimeError("Original social-wellness photograph changed during rendering")
     helper.poster(ffmpeg, output, poster)
 
     if review_dir is not None:
@@ -101,19 +101,24 @@ def render_hospitality(ffmpeg, review_dir=None):
     provenance = {
         "file": output.name, **metadata,
         "poster": poster.relative_to(ROOT).as_posix(), "poster_sha256": helper.sha256(poster),
-        "method": "Restrained Ken Burns camera motion across the supplied evening photograph. The people remain still; no generated imagery, synthetic human movement or optical-flow interpolation.",
-        "sources": [{"id": "259715040", "subject": "Adult evening photograph with seated and standing figures, legs and shoes",
+        "method": "Restrained Ken Burns camera motion across the supplied photograph of adults socializing in robes. A top-biased 16:9 crop preserves the visible heads. The people remain still; no generated imagery, synthetic human movement or optical-flow interpolation.",
+        "sources": [{"id": "681077127", "subject": "Adults smiling and socializing indoors in white robes",
                      "path": SOURCE.relative_to(ROOT).as_posix(), "sha256": original_hash,
-                     "source_unchanged": True}],
-        "source_provenance": ["assets/video/latest-photos-provenance.json"],
+                     "original_filename": "AdobeStock_681077127.jpeg",
+                     "source_bytes": SOURCE.stat().st_size,
+                     "source_dimensions": [5495, 3663],
+                     "source_unchanged": True,
+                     "canonical_copy": "Byte-for-byte copy of the user-supplied original; SHA-256 verified on import."}],
+        "source_provenance": ["assets/images/stock/AdobeStock_681077127.jpeg"],
         "timeline": [{"start_seconds": 0, "end_seconds": DURATION,
-                      "content": "Evening photograph, with a slow camera push and pan returning to the opening framing"}],
+                      "content": "Adults socializing in robes, with a slow camera push and pan returning to the opening framing"}],
         "camera_filter": camera_filter(),
-        "camera": {"base_frame": [3840, 2160], "base_crop_fraction": [0.5, 0.58],
+        "camera": {"base_frame": [3840, 2160], "base_crop_fraction": [0.5, 0.05],
+                   "zoom_vertical_crop_fraction": 0.02,
                    "zoom_min": 1.006, "zoom_max": 1.026,
                    "path": "Cosine round trip with matching camera endpoints and zero endpoint velocity."},
         "loop_method": "One cosine round trip over 288 frames; the uncompressed first and last camera frames have identical hashes.",
-        "location_note": "Illustrative user-supplied evening photograph, not a verified Lola & Ber event, property or team photograph.",
+        "location_note": "Illustrative user-supplied stock photograph selected for the Lola & Ber chapter; it does not identify actual guests, personnel, services or a property location.",
         "render_script": "scripts/render-hospitality.py", "encoding_options": encoding,
         "validation": {"full_stream_decode": "pass", "decoded_frames": decoded_frames,
                        "duration_seconds": DURATION, "fast_start": True, "under_4_MB": True,
@@ -127,7 +132,7 @@ def render_hospitality(ffmpeg, review_dir=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ffmpeg")
-    parser.add_argument("--review-dir", type=Path, default=ROOT.parent / "media-context-review")
+    parser.add_argument("--review-dir", type=Path, default=ROOT.parent / "lola-brand-review")
     args = parser.parse_args()
     ffmpeg = load_helper("ffmpeg_locator", "render-videos.py").find_ffmpeg(args.ffmpeg)
     provenance = render_hospitality(ffmpeg, args.review_dir)

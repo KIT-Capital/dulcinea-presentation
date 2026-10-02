@@ -91,10 +91,12 @@ body.is-presenting[data-presentation-layout="responsive"] .homes .footnote { fon
 body.is-presenting[data-presentation-layout="responsive"] #main > .experience.presentation-active { align-items:center; min-height:var(--presentation-height) }
 body.is-presenting[data-presentation-layout="responsive"] .experience-content { width:100%; max-width:650px }
 body.is-presenting[data-presentation-layout="responsive"] .experience-content > .micro { font-size:11px; line-height:1.6 }
-body.is-presenting[data-presentation-layout="responsive"] .experience h2 { font-size:44px; margin:28px 0 }
+body.is-presenting[data-presentation-layout="responsive"] .experience h2 { font-size:clamp(29px,7vw,44px); margin:24px 0 12px }
 body.is-presenting[data-presentation-layout="responsive"] .experience-content > p:not(.micro),
 body.is-presenting[data-presentation-layout="responsive"] .experience-content > p.co-brand-copy { font-size:18px; line-height:1.6; max-width:100% }
 body.is-presenting[data-presentation-layout="responsive"] .experience-content > p.co-brand-copy { margin-top:24px }
+body.is-presenting[data-presentation-layout="responsive"] .experience-content > p.brand-tagline { font-size:26px; margin:0 0 24px }
+body.is-presenting[data-presentation-layout="responsive"] .experience-content > p.brand-values { font-size:18px; margin-top:20px }
 body.is-presenting[data-presentation-layout="responsive"] .experience-note { font-size:14px; line-height:1.6; margin-top:28px }
 
 /* Offer, optional benefits and projected returns remain separate slides. */

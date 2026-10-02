@@ -26,3 +26,19 @@
 
 .team-bio{margin-top:16px;font-size:16px;line-height:1.65;color:#425559;max-width:430px}.specialist-link{width:330px;margin-top:36px}.specialists-section{background:#e8f1f2}.specialists-section .section-heading>.line-link{width:270px;flex-shrink:0;margin-top:0}.specialists{margin:0;counter-reset:specialist}.specialists div{display:grid;grid-template-columns:32px minmax(200px,.85fr) minmax(0,1.15fr);align-items:center;gap:28px;padding:30px 0;border-top:1px solid #17282d35}.specialists div:before{counter-increment:specialist;content:'0' counter(specialist);font:12px 'Courier New',monospace;color:#52635f}.specialists dt{font-size:17px;line-height:1.5}.specialists dd{font-size:25px;line-height:1.35;letter-spacing:-.025em;text-align:left;max-width:none}
 @media(max-width:760px){.team-bio{font-size:16px;max-width:none;margin-top:14px}.specialists-section .section-heading>.line-link{margin-top:26px}.specialists div{grid-template-columns:24px 1fr;gap:10px 16px;padding:25px 0}.specialists div:before{grid-row:span 2;align-self:start;line-height:1.8}.specialists dt{font-size:13px}.specialists dd{font-size:22px;grid-column:2;text-align:left}}
+
+/* Lola & Ber uses its own supplied wordmark and palette within this chapter. */
+.experience{color:#fff9f5;background:#24713f;align-items:center}
+.experience:after{background:linear-gradient(90deg,rgba(18,54,31,.97) 0%,rgba(18,54,31,.88) 31%,rgba(18,54,31,.32) 60%,rgba(18,54,31,.02) 100%)}
+.experience h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(39px,5.2vw,78px);font-weight:400;text-transform:uppercase;letter-spacing:.08em;line-height:1.14;margin:28px 0 12px;white-space:nowrap}
+.experience-content>p.brand-tagline{font-family:Georgia,'Times New Roman',serif;font-size:25px;line-height:1.25;margin:0 0 28px;color:#fff9f5}
+.experience-content>p:not(.micro){max-width:420px}
+.experience-content>p.brand-values{font-size:17px;line-height:1.5;margin-top:20px;color:#fff9f5}
+.experience-content>p.co-brand-copy{color:#fff9f5}
+.experience-note{line-height:1.6;margin-top:24px;max-width:420px;color:#e5eee5}
+@media(max-width:760px){
+  .experience{min-height:760px;padding-top:42px;padding-bottom:42px}
+  .experience:after{background:linear-gradient(90deg,rgba(18,54,31,.95),rgba(18,54,31,.75))}
+  .experience h2{font-size:clamp(29px,7.5vw,52px)}
+  .experience-content>p.brand-values{font-size:15px}
+}

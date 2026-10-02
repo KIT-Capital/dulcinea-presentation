@@ -143,7 +143,7 @@ def main():
     ]
     provenance = {
         "source": "Adobe Stock MOV files supplied by the user; full-resolution originals remain in the supplied location, unchanged.",
-        "method": "Supplied stock footage and photographs edited locally with FFmpeg. The opening uses aerials and property imagery; Lola & Ber uses a camera move over the supplied evening photograph.",
+        "method": "Supplied stock footage and photographs edited locally with FFmpeg. The opening uses aerials and property imagery; Lola & Ber uses a camera move over the supplied photograph of adults socializing in robes.",
         "rights": "Files supplied by the user; no additional stock purchase or independent license verification performed.",
         "location_note": "Geographic locations are not independently verified from the footage. It illustrates setting and hospitality, not portfolio ownership.",
         "source_metadata": "assets/video/stock/provenance.json", "render_script": "scripts/render-stock-videos.py",

@@ -1,6 +1,6 @@
 {
   "source": "Adobe Stock MOV files supplied by the user; full-resolution originals remain in the supplied location, unchanged.",
-  "method": "Supplied stock footage and photographs edited locally with FFmpeg. The opening uses aerials and property imagery; Lola & Ber uses a camera move over the supplied evening photograph.",
+  "method": "Supplied stock footage and photographs edited locally with FFmpeg. The opening uses aerials and property imagery; Lola & Ber uses a camera move over the supplied photograph of adults socializing in robes.",
   "rights": "Files supplied by the user; no additional stock purchase or independent license verification performed.",
   "location_note": "Geographic locations are not independently verified from the footage. It illustrates setting and hospitality, not portfolio ownership.",
   "source_metadata": "assets/video/stock/provenance.json",
@@ -261,34 +261,41 @@
     },
     {
       "file": "hospitality-people.mp4",
-      "bytes": 578398,
-      "sha256": "06459de0182adb4e555a11a0eb10842ed7f50db973ccc4a737b16cf0fd167226",
+      "bytes": 1172630,
+      "sha256": "b61c5e9d189b833303114fa43a2b921c6335fb786c2bf592dd663bc189002374",
       "duration_seconds": 12.0,
-      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 382 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 778 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
       "audio_tracks": 0,
       "poster": "assets/video/hospitality-people-poster.jpg",
-      "poster_sha256": "b783455a664dd39b19a7017bb3b3964683b35d25d387a7ae5780ebbc72b5b6c9",
-      "method": "Restrained Ken Burns camera motion across the supplied evening photograph. The people remain still; no generated imagery, synthetic human movement or optical-flow interpolation.",
+      "poster_sha256": "d891ad5b82ae052e7f63acbd328c9c3eb27fbc0699b72d89a23101c8d2f79a44",
+      "method": "Restrained Ken Burns camera motion across the supplied photograph of adults socializing in robes. A top-biased 16:9 crop preserves the visible heads. The people remain still; no generated imagery, synthetic human movement or optical-flow interpolation.",
       "sources": [
         {
-          "id": "259715040",
-          "subject": "Adult evening photograph with seated and standing figures, legs and shoes",
-          "path": "assets/images/stock/AdobeStock_259715040.jpeg",
-          "sha256": "9e4a8c20858292791812815e258bc96a18e110d90c38b1ca362bdb59624d609f",
-          "source_unchanged": true
+          "id": "681077127",
+          "subject": "Adults smiling and socializing indoors in white robes",
+          "path": "assets/images/stock/AdobeStock_681077127.jpeg",
+          "sha256": "ae430340b0fd64c284bb6af6b501fa9b25813210d8d09ff6cd787ae85f78ef2c",
+          "original_filename": "AdobeStock_681077127.jpeg",
+          "source_bytes": 6495730,
+          "source_dimensions": [
+            5495,
+            3663
+          ],
+          "source_unchanged": true,
+          "canonical_copy": "Byte-for-byte copy of the user-supplied original; SHA-256 verified on import."
         }
       ],
       "source_provenance": [
-        "assets/video/latest-photos-provenance.json"
+        "assets/images/stock/AdobeStock_681077127.jpeg"
       ],
       "timeline": [
         {
           "start_seconds": 0,
           "end_seconds": 12,
-          "content": "Evening photograph, with a slow camera push and pan returning to the opening framing"
+          "content": "Adults socializing in robes, with a slow camera push and pan returning to the opening framing"
         }
       ],
-      "camera_filter": "scale=3840:2160:force_original_aspect_ratio=increase:flags=lanczos,crop=3840:2160:x='(iw-ow)*0.5':y='(ih-oh)*0.58',zoompan=z='1.006+0.020*(0.5-0.5*cos(2*PI*(on)/287))':x='(iw-iw/zoom)*(0.47+0.04*(0.5-0.5*cos(2*PI*(on)/287)))':y='(ih-ih/zoom)*0.59':d=288:s=1280x720:fps=24,scale=in_range=full:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p,setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709",
+      "camera_filter": "scale=3840:2160:force_original_aspect_ratio=increase:flags=lanczos,crop=3840:2160:x='(iw-ow)*0.5':y='(ih-oh)*0.05',zoompan=z='1.006+0.020*(0.5-0.5*cos(2*PI*(on)/287))':x='(iw-iw/zoom)*(0.47+0.04*(0.5-0.5*cos(2*PI*(on)/287)))':y='(ih-ih/zoom)*0.02':d=288:s=1280x720:fps=24,scale=in_range=full:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p,setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709",
       "camera": {
         "base_frame": [
           3840,
@@ -296,14 +303,15 @@
         ],
         "base_crop_fraction": [
           0.5,
-          0.58
+          0.05
         ],
+        "zoom_vertical_crop_fraction": 0.02,
         "zoom_min": 1.006,
         "zoom_max": 1.026,
         "path": "Cosine round trip with matching camera endpoints and zero endpoint velocity."
       },
       "loop_method": "One cosine round trip over 288 frames; the uncompressed first and last camera frames have identical hashes.",
-      "location_note": "Illustrative user-supplied evening photograph, not a verified Lola & Ber event, property or team photograph.",
+      "location_note": "Illustrative user-supplied stock photograph selected for the Lola & Ber chapter; it does not identify actual guests, personnel, services or a property location.",
       "render_script": "scripts/render-hospitality.py",
       "encoding_options": [
         "-an",
@@ -348,19 +356,12 @@
         "under_4_MB": true,
         "source_hash_unchanged": true,
         "loop_endpoints_identical_before_encoding": true,
-        "endpoint_frame_md5": "f3bc3d2c0dea01ebf51669b334c10bdd",
+        "endpoint_frame_md5": "b1f45336f77342ebce3aff19e68749b3",
         "review_frame_indices": [
           0,
           144,
           287
-        ],
-        "visual_review": "Start, midpoint and final decoded frames visually inspected. The visible shoes and seated/standing arrangement remain in frame, without black bars, warped anatomy or synthetic human movement.",
-        "encoded_endpoint_mean_absolute_error_rgb_255": [
-          1.0599153645833332,
-          0.7934700520833333,
-          1.0705870225694445
-        ],
-        "encoded_endpoint_ssim": 0.984712
+        ]
       }
     }
   ],

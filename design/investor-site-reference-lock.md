@@ -52,3 +52,8 @@ Reference research through Refero: KOBU (`2b86e8de-b21d-40d0-894a-f9d3a177a193`)
 Reject: anonymous number-only navigation, oversized repeated collection headlines on slides, cropped original collages, approval-style status stamps, extra pan effects layered over the existing camera-move films, and fabricated property details.
 
 Run the financial and investor-build verification scripts after building. Review desktop and mobile layouts, header clearance, property selection, four plan groups, language switching, resource links, stock-media sequences and reduced-motion behavior. Verify protected login/logout and deployed routes separately. Source promotion, a screenshot or a successful build is not proof that production has been updated.
+
+
+## Lola & Ber chapter update — 2 October 2026
+
+The user-supplied Lola & Ber Brand Guideline 01 is the reference for the brand chapter in both the website and presentation. Use its spaced Georgia/serif wordmark treatment, Warm Cream and Rich Green, the exact English tagline, and concise bilingual copy about sex-positive adults, consent, respect, privacy and optional connection. Hospitality names the division, not the brand category. The selected social photograph is AdobeStock_681077127, with a subtle looping Ken Burns move. Preserve the broader Dulcinea visual system and the existing navigation.

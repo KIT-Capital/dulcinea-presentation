@@ -17,7 +17,7 @@
     {id:'owner-use', selector:'#member-benefits', anchor:'#owner-use', title:['Owner use','Uso de las propiedades']},
     {id:'oriente', selector:'#oriente', title:['El Oriente countryside','El campo del Oriente']},
     {id:'city', selector:'#destination', title:['Life in Medellín','La vida en Medellín']},
-    {id:'hospitality', selector:'#experience', title:['Lola & Ber Hospitality','Lola & Ber Hospitality']},
+    {id:'hospitality', selector:'#experience', title:['Lola & Ber','Lola & Ber']},
     {id:'fontanar', selector:'#homes', home:0, title:['Fontanar 201','Fontanar 201']},
     {id:'san-lucas', selector:'#homes', home:1, title:['San Lucas 101','San Lucas 101']},
     {id:'aires', selector:'#homes', home:2, title:['Aires de Campestre','Aires de Campestre']},

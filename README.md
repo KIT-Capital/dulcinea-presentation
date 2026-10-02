@@ -1,6 +1,6 @@
 # Dulcinea One
 
-Dulcinea is a real estate investment firm focused on Medellín, Colombia. This investor website presents Dulcinea One, its first fund, co-branded by Lola & Ber Hospitality. Dulcinea manages acquisition, renovation, operation and sale. Investors acquire fund membership units in a Delaware LLC.
+Dulcinea is a real estate investment firm focused on Medellín, Colombia. This investor website presents Dulcinea One, its first fund, with Lola & Ber as the co-brand. Lola & Ber Hospitality is the division for the properties. Dulcinea manages acquisition, renovation, operation and sale. Investors acquire fund membership units in a Delaware LLC.
 
 The opening introduces countryside weekends in El Oriente, city experiences in Medellín and Lola & Ber hospitality. Early Member benefits explain the shared annual allowance of 365 nights once all five homes are in service. All five property films, the investment approach, offer and projected returns follow. Member benefits appear near the opening with approved booking rules. A visible subscription summary, chapter index and resource directory supplement the existing navigation. The offer shows a $7M raise, $2.1M committed and $4.9M open. Detailed projections and acquisition criteria remain separate resources. Figures and acquisition statuses reflect the supplied materials, not independently verified current subscriptions or completed closings.
 
@@ -8,7 +8,7 @@ English is the default; compact American and Colombian flag controls switch betw
 
 ## Present live
 
-Choose **Present** in the navigation bar, or open `/#present-1`, for a 19-slide presentation of the same current content. Desktop slides use a 16:9 canvas. Phones and tablets adapt each slide to the screen with readable text, touch navigation and scrolling within longer slides. The sequence opens with lifestyle, Member benefits, Owner use, El Oriente, Medellín and hospitality, then includes one slide per property and separate slides for the approach, offer, returns, core team and local specialists. Core-team biographies appear with their portraits in both views. The specialists have their own slide, website section and linked resource page. Videos, original imagery and floorplans remain interactive. Presentation controls sit below the slide.
+Choose **Present** in the navigation bar, or open `/#present-1`, for a 19-slide presentation of the same current content. Desktop slides use a 16:9 canvas. Phones and tablets adapt each slide to the screen with readable text, touch navigation and scrolling within longer slides. The sequence opens with lifestyle, Member benefits, Owner use, El Oriente, Medellín and the Lola & Ber brand, then includes one slide per property and separate slides for the approach, offer, returns, core team and local specialists. Core-team biographies appear with their portraits in both views. The specialists have their own slide, website section and linked resource page. Videos, original imagery and floorplans remain interactive. Presentation controls sit below the slide.
 
 Use the arrow or Page Up/Down keys to move, Home/End to jump to the beginning/end, the slide counter to choose a slide, and F for full screen. Escape or **Back to website** returns to the scrolling page. **Explore website** opens links to the homepage, properties, fund, team, specialists and investor documents; these links are also on the closing slide. Section links leave slide mode and focus the corresponding website heading. The flag button changes language without losing the current slide. Full screen requires a supported browser; slide mode also works inside a normal browser window. Portrait and landscape work on phones and tablets; rotating keeps the current slide. Swipe horizontally or use the arrow buttons to change slides. Scroll vertically to read longer slides; Page Up/Down and Space scroll their content before advancing. Controls reserve their own space, including device safe areas. Native fullscreen appears only when supported; it is not required to present. The same source content feeds both views.
 
@@ -18,14 +18,14 @@ The visual direction follows the approved Aker and KOBU references recorded in `
 
 The notebook-first gallery contains all five selected homes, named selectors, original imagery, and five camera-move films made from AI lifestyle illustrations. Large property visuals sit alongside concise facts, area, acquisition status and drawing links. The same design and actions work in each property's individual presentation slide. The illustrations remain labeled. Nine plan-only drawings cover Fontanar, San Lucas, Aires and Monte Sereno; Casa Montana has no supplied plan. The original PDF is available from the viewer. The team uses the later, unchanged photographs supplied for Dov, Ricardo and Adriana.
 
-All eleven distinct supplied stock videos and all four supplied stock photographs are used on screen, directly or within edited films:
+All eleven distinct supplied stock videos and all five supplied stock photographs are used on screen, directly or within edited films:
 
 | Placement | Supplied stock assets |
 | --- | --- |
 | Opening montage | Videos `695926335`, `693150796`, `1849343666`, `417029984` and `501694199`; city photo `891890158`; all five property films |
 | Medellín lifestyle film | City aerial `693150796`, dining/kitchen `80490822` and city walking `787505338` |
 | El Oriente chapter | Reservoir `501694199` and countryside woman `539938219` in the main film, on the website and presentation slide; original Monte Sereno garden photo and town aerial `1849343666` in a website-only supporting row |
-| Lola & Ber film | Supplied evening photograph `259715040` with a slow looping camera move; no kitchen or countryside footage |
+| Lola & Ber film | Supplied social photograph `681077127` with a slow looping camera move; no kitchen or countryside footage |
 | Nightlife film | Videos `727024520` and `807462744`; photos `259715040`, `70649459` and `99551296` |
 | Property viewing | Video `762119818` |
 | Closing aerial | Video `693150796` |
@@ -125,7 +125,7 @@ The build gate checks packaged assets, language routes, navigation, inline scrip
 Optimized files are included. Python and FFmpeg are needed only to regenerate media; original user files remain unchanged. Dedicated renderers include:
 
 - `scripts/render-introduction.py`: city/town, city sunset, El Oriente reservoir, city photograph and property montage.
-- `scripts/render-location.py`, `scripts/render-oriente.py` and `scripts/render-hospitality.py`: separate city dining/walking, countryside and Lola & Ber evening films.
+- `scripts/render-location.py`, `scripts/render-oriente.py` and `scripts/render-hospitality.py`: separate city dining/walking, countryside and Lola & Ber social films.
 - `scripts/render-nightlife.py`, `scripts/render-latest-photos.py` and `scripts/render-after-dark.py`: photographic camera moves and the combined nightlife film.
 - `scripts/render-property-videos.py` and `scripts/render-property-viewing.py`: property illustration loops and the apartment-viewing excerpt.
 

@@ -13,8 +13,8 @@ export function socialMetadata(language = 'en') {
   return {
     title: es ? 'Dulcinea One | Propiedades en Medellín y el Oriente' : 'Dulcinea One | Homes in Medellín and El Oriente',
     description: es
-      ? 'El primer fondo inmobiliario de Dulcinea en Medellín, Colombia. Cinco propiedades en El Poblado y el Oriente, con estadías para miembros y la marca compartida de Lola & Ber Hospitality.'
-      : 'Dulcinea’s first real estate fund in Medellín, Colombia. Five homes in El Poblado and El Oriente, with member stays and co-branding by Lola & Ber Hospitality.',
+      ? 'El primer fondo inmobiliario de Dulcinea en Medellín, Colombia. Cinco propiedades en El Poblado y el Oriente, con estadías para miembros y la marca compartida de Lola & Ber.'
+      : 'Dulcinea’s first real estate fund in Medellín, Colombia. Five homes in El Poblado and El Oriente, with member stays and co-branding by Lola & Ber.',
     imageAlt: es
       ? 'Dulcinea One: cinco propiedades, un portafolio, con Medellín y sus montañas de fondo.'
       : 'Dulcinea One: five homes, one portfolio, with Medellín and its mountains in the background.',
