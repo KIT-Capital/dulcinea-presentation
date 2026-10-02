@@ -1,5 +1,6 @@
 // One source for the website section, presentation slide and specialists page.
 const specialists = [
+  { role:['Lola & Ber · Brand implementation','Lola & Ber · Implementación de marca'], name:'Natalia Carvajal' },
   { role:['Architecture · Design and works','Arquitectura · Diseño y obras'], name:'Marcela Vélez & María Antonia Uribe' },
   { role:['Works oversight','Interventoría'], name:'John Mario Piedrahita' },
   { role:['Legal · Title and closing','Legal · Títulos y cierre'], name:'Juan Carlos Pérez' },
