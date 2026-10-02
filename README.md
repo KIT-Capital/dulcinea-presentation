@@ -25,7 +25,7 @@ All eleven distinct supplied stock videos and all five supplied stock photograph
 | Opening montage | Videos `695926335`, `693150796`, `1849343666`, `417029984` and `501694199`; city photo `891890158`; all five property films |
 | Medellín lifestyle film | City aerial `693150796`, dining/kitchen `80490822` and city walking `787505338` |
 | El Oriente chapter | Reservoir `501694199` and countryside woman `539938219` in the main film, on the website and presentation slide; original Monte Sereno garden photo and town aerial `1849343666` in a website-only supporting row |
-| Lola & Ber film | Supplied social photograph `681077127` with a slow looping camera move; no kitchen or countryside footage |
+| Lola & Ber film | Supplied social photograph `681077127`, a close embrace and kiss, and women holding hands; a 22-second silent edit with dissolves. Male running clip deferred. |
 | Nightlife film | Videos `727024520` and `807462744`; photos `259715040`, `70649459` and `99551296` |
 | Property viewing | Video `762119818` |
 | Closing aerial | Video `693150796` |

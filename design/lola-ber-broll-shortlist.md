@@ -1,8 +1,8 @@
 # Lola & Ber: free B-roll shortlist
 
-Reviewed 2 October 2026. Research candidates only; none downloaded or added to the website. The user requested sex-positive brand footage. Direction: adult attraction, inclusive connection, relaxed social life and choice. These are illustrative scenes, not testimonials or evidence of guests, brand affiliations, fund property locations or model identities.
+Updated 2 October 2026. The user selected Couple kissing and hugging and Women holding hands for the Lola & Ber film. Both clean 720p files were acquired through Coverr's free download interface. Their originals remain outside the repository; the edited brand film is the delivered asset. The user requested sex-positive brand footage. Direction: adult attraction, inclusive connection, relaxed social life and choice. These are illustrative scenes, not testimonials or evidence of guests, brand affiliations, fund property locations or model identities.
 
-## Preferred free landscape clips
+## Selected and researched landscape clips
 
 | Clip | Publisher metadata | Use in a short brand edit |
 | --- | --- | --- |
@@ -10,13 +10,13 @@ Reviewed 2 October 2026. Research candidates only; none downloaded or added to t
 | [Women holding hands](https://coverr.co/videos/women-holding-hands-tr7kbqumzc) | Coverr; 15.2 seconds; 25 fps; 16:9; Free Commercial Rights | Inclusive affection, framed as a close human detail. |
 | [Couple kissing](https://coverr.co/videos/couple-kissing-yyluxfeak3) | Coverr; 17.1 seconds; 24 fps; 16:9; Free Commercial Rights | Slow-motion embrace and attraction. |
 | [Women holding hands outdoors](https://coverr.co/videos/women-holding-hands-outdoors-l8fycl8am5) | Coverr; 12.4 seconds; 50 fps; 16:9; Free Commercial Rights | Connection against a green outdoor backdrop. |
-| [Couple running together on the beach](https://coverr.co/videos/a-gay-couple-running-on-the-beach-and-holding-hands-wyql7ngj2z) | Coverr; 11.3 seconds; 24 fps; 16:9; Free Commercial Rights | Playful male couple. General brand sequence only; coastal setting must not imply Medellin. |
+| [Couple running together on the beach](https://coverr.co/videos/a-gay-couple-running-on-the-beach-and-holding-hands-wyql7ngj2z) | Coverr+ premium; 11.3 seconds; 24 fps; 16:9 | **Deferred at the user's request.** Keep this link for later. The original indexed free label was incorrect: actual download opens a Coverr+ paywall and the preview is watermarked. No premium file acquired or used. |
 
-The first two plus the user's social photograph are the strongest initial combination. Keep shots brief, alternate social connection with quiet space, and avoid repetitive kisses or a montage made exclusively of conventional couples. The supplied robe photograph can carry the broader social dimension without inventing the participants' relationships.
+The first two plus the user's social photograph are the approved combination. The running-couple clip and all alternatives remain unused. Keep shots brief, alternate social connection with quiet space, and avoid repetitive kisses or a montage made exclusively of conventional couples. The supplied robe photograph can carry the broader social dimension without inventing the participants' relationships.
 
 ## License evidence and limits
 
-[Coverr License](https://coverr.co/license) permits free commercial use, editing and use without attribution. [Coverr Terms](https://coverr.co/terms) and the license do not expressly prohibit a sex-positive brand context. The Terms' section 5.2 explicit-content provision is about contributor uploads. Coverr states it obtains model releases but does not provide them to users or guarantee their scope for every use. Do not imply a model endorses Lola & Ber or is a member. Check the final edit against the license and any visible marks/property rights when acquiring the selected clips. Creator names and download-specific resolution were not exposed in the retrieved metadata. The first clip was opened and played in the browser; the remaining metadata was checked on the provider's current indexed pages, with fresh page fetches intermittently failing.
+[Coverr License](https://coverr.co/license) permits free commercial use, editing and use without attribution. [Coverr Terms](https://coverr.co/terms) and the license do not expressly prohibit a sex-positive brand context. The Terms' section 5.2 explicit-content provision is about contributor uploads. Coverr states it obtains model releases but does not provide them to users or guarantee their scope for every use. Do not imply a model endorses Lola & Ber or is a member. Check the final edit against the license and any visible marks/property rights when acquiring the selected clips. The two selected clips were opened, played and acquired in the browser at 1280 × 720. Source hashes, exact media URLs, edit intervals and license links are recorded in assets/video/hospitality-provenance.json. No account, paid subscription or purchase was required for these two clips.
 
 ## Optional alternatives
 
