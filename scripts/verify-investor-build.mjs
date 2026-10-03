@@ -167,6 +167,11 @@ for (const [pagePath, html] of pages) {
   const coreProfiles = [...teamSection.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map(match=>match[0]);
   assert.deepEqual(coreProfiles.map(profile=>textContent(profile.match(/<h3\b[^>]*>[\s\S]*?<\/h3>/)?.[0] || '').trim()), ['K. Dov Isaza Tuzman', 'Ricardo Cidale', 'Adriana Suárez', 'Natalia Carvajal'], `Core team order and membership: ${pagePath}`);
   assert.equal(story.main.find(step=>step.id==='team')?.selector, '#team', 'Presentation must reuse the complete core team section');
+  const expectedRoles = language==='es'
+    ? ['Fundador y Socio Director','Director de Desarrollo Corporativo','Directora de Desarrollo de Negocios','Directora de Marketing']
+    : ['Founder and Managing Partner','Director of Corporate Development','Director of Business Development','Director of Marketing'];
+  assert.deepEqual(coreProfiles.map(profile=>textContent(profile.match(/<p class="micro"[^>]*>[\s\S]*?<\/p>/)?.[0] || '').trim()), expectedRoles, `Current user-approved core team titles: ${pagePath}`);
+  assert.deepEqual(coreProfiles.map(profile=>textContent(profile.match(/<p class="team-affiliation"[^>]*>[\s\S]*?<\/p>/)?.[0] || '').trim()), ['KIT Capital','KIT Capital',language==='es' ? 'KIT Capital y Dulcinea' : 'KIT Capital and Dulcinea',language==='es' ? 'KIT Capital y Dulcinea' : 'KIT Capital and Dulcinea'], `Core team affiliations: ${pagePath}`);
   const nataliaPortrait = attributes(coreProfiles[3].match(/<img\b[^>]*>/)?.[0] || '');
   assert.ok(nataliaPortrait.src && map['natalia.png'], `Missing Natalia portrait or approved media alias: ${pagePath}`);
   assert.equal(nataliaPortrait.src, map['natalia.png'], `Natalia portrait must use its approved media alias: ${pagePath}`);

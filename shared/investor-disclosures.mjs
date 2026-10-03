@@ -26,8 +26,8 @@ export const disclosures = {
   ],
   issuerTitle: ['Issuer and management', 'Emisora y administración'],
   issuer: [
-    'Dulcinea Investments, LLC is a Delaware limited liability company formed on February 4, 2026, and the issuer of the investment presented as Dulcinea One. Its Managing Member is KIT Capital LLC, whose Managing Director is K. Dov Isaza Tuzman. Dulcinea is a real estate investment firm; it oversees its own investments and does not offer brokerage or third-party property-management services.',
-    'Dulcinea Investments, LLC es una sociedad de responsabilidad limitada constituida en Delaware el 4 de febrero de 2026 y la emisora de la inversión presentada como Dulcinea One. Su socio administrador es KIT Capital LLC, cuyo director general es K. Dov Isaza Tuzman. Dulcinea es una firma de inversión inmobiliaria; supervisa sus propias inversiones y no ofrece servicios de corretaje ni de administración de inmuebles para terceros.',
+    'Dulcinea Investments, LLC is a Delaware limited liability company formed on February 4, 2026, and the issuer of the investment presented as Dulcinea One. Its Managing Member is KIT Capital LLC, whose Founder and Managing Partner is K. Dov Isaza Tuzman. Dulcinea is a real estate investment firm; it oversees its own investments and does not offer brokerage or third-party property-management services.',
+    'Dulcinea Investments, LLC es una sociedad de responsabilidad limitada constituida en Delaware el 4 de febrero de 2026 y la emisora de la inversión presentada como Dulcinea One. Su socio administrador es KIT Capital LLC, cuyo fundador y socio director es K. Dov Isaza Tuzman. Dulcinea es una firma de inversión inmobiliaria; supervisa sus propias inversiones y no ofrece servicios de corretaje ni de administración de inmuebles para terceros.',
   ],
   colombiaTitle: ['Colombian structure', 'Estructura en Colombia'],
   colombia: [

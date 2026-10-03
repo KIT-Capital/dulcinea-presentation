@@ -33,8 +33,9 @@ body:not(.is-presenting) .team-portraits .micro { font-size:13px; line-height:1.
 body:not(.is-presenting) .team-portraits { grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px; }
 /* Shared rows align names and biographies even when a role wraps. */
 body:not(.is-presenting) .team-portraits { row-gap:0; }
-body:not(.is-presenting) .team-portraits article { display:grid; grid-template-rows:subgrid; grid-row:span 4; }
-body:not(.is-presenting) .team-profile { display:grid; grid-template-rows:subgrid; grid-row:span 3; }
+body:not(.is-presenting) .team-portraits article { display:grid; grid-template-rows:subgrid; grid-row:span 5; }
+body:not(.is-presenting) .team-profile { display:grid; grid-template-rows:subgrid; grid-row:span 4; }
+.team-affiliation { margin-top:3px; font-size:16px; line-height:1.5; color:#52635f; }
 body:not(.is-presenting) .team-photo { aspect-ratio:1/1; }
 .team-profile { min-width:0; }
 body:not(.is-presenting) .team-portraits article:nth-child(3) img { object-position:50% 12%; }
@@ -95,6 +96,7 @@ body.is-presenting[data-presentation-layout="canvas"] .team-portraits { grid-tem
 body.is-presenting[data-presentation-layout="canvas"] .team-portraits article { display:grid; grid-template-columns:144px minmax(0,1fr); align-items:start; gap:20px; border-top:1px solid #17282d30; padding-top:16px; }
 body.is-presenting[data-presentation-layout="canvas"] .team-photo { width:144px; height:200px; }
 body.is-presenting[data-presentation-layout="canvas"] .team-portraits .micro { margin-top:0; min-height:22px; line-height:1.35; letter-spacing:.04em; }
+body.is-presenting[data-presentation-layout="canvas"] .team-affiliation { font-size:18px; line-height:1.35; }
 body.is-presenting[data-presentation-layout="canvas"] .team-portraits h3 { margin-top:10px; line-height:1.15; }
 body.is-presenting[data-presentation-layout="canvas"] .team-bio { margin-top:14px; line-height:1.35; max-width:none; }
 body.is-presenting[data-presentation-layout="canvas"] .specialists dt { font-size:25px; }
