@@ -61,6 +61,14 @@ All financial tables round USD to whole dollars and margins to one decimal. Zero
 
 ## Source differences retained explicitly
 
+### Core-team biography update (3 October 2026)
+
+The four core profiles now contain 30 words each in English and 33 each in Spanish. Dov, Ricardo and Adriana's experience and educational background were checked against pages 28–29 of the user-supplied `Obra Pia (Delano Cartagena) Colliers OM 4Q26.pdf`. Ricardo's previously displayed $1.5B transaction claim was removed: this source attributes that figure to firm market value and another team member's work, rather than Ricardo's transaction volume. Existing user-approved Dulcinea role labels take precedence over the roles in the Obra Pia deck.
+
+Natalia remains Director of Marketing at KIT Capital and Dulcinea, as instructed by the user. Her user-confirmed professional background and Javeriana education are retained without naming former employers. Jorge Valiente's accounting biography was added from page 29 to the shared specialist content. The deck's lawyer is Juan Carlos Sarmiento, whereas Dulcinea currently lists Juan Carlos Pérez; these identities have not been merged. No biography was inferred for the unmatched architects or works specialist.
+
+The source PDF, extracted text and page renders remain outside the repository and deployed site. Website and presentation reuse the same profiles in both languages; the source document is not offered for download.
+
 - **Property status:** the property pages and model identify Aires and Fontanar as signed for September 2026 closing; the other three are negotiated (`Properties!C6:C10`, `H6:H10`; deck slides 14–18). Earlier deck summaries conflict. Displayed statuses follow the property records and are not independently refreshed. Forward model acquisition months are not evidence of completed closings.
 - **Targets versus active underwriting:** the Buy Box keeps a $300–$1,000 nightly target, but active ADRs are $250–$340 (`The Buy Box!D15`; `Input!J80:J84`). The model uses a 28-night minimum and $9,500 cap for the first minimum stay (`Input!C170:C172`). San Lucas's $747,370.55 all-in cost is below the $750K target (`Properties!P8`). The model's “Yes” checks test only location, discount, hold and positive cost (`The Buy Box!J22:J26`), not every criterion or completed diligence.
 - **Entry-discount basis:** the 30% modeled discount compares all-in basis with improved comparable value; it is not a 30% discount on the purchase-price column. The deck's rounded price-per-m² table was checked internally and is consistent with that basis; it is not rendered on the site (`Properties!M6:P10`, `W6:W10`; `Input!I80:I84`; deck slide 7).

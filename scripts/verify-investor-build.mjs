@@ -171,7 +171,9 @@ for (const [pagePath, html] of pages) {
   assert.ok(nataliaPortrait.src && map['natalia.png'], `Missing Natalia portrait or approved media alias: ${pagePath}`);
   assert.equal(nataliaPortrait.src, map['natalia.png'], `Natalia portrait must use its approved media alias: ${pagePath}`);
   assert.equal(nataliaPortrait.alt, 'Natalia Carvajal', `Natalia portrait description: ${pagePath}`);
-  assert.ok(textContent(coreProfiles[3]).includes(language==='es' ? 'Lola & Ber · Implementación de marca' : 'Lola & Ber · Brand implementation'), `Missing localized Natalia role: ${pagePath}`);
+  assert.ok(textContent(coreProfiles[3]).includes(language==='es' ? 'Directora de Marketing' : 'Director of Marketing'), `Missing localized Natalia role: ${pagePath}`);
+  const coreBios = coreProfiles.map(profile=>textContent(profile.match(/<p\b[^>]*class="team-bio"[^>]*>[\s\S]*?<\/p>/)?.[0] || '').trim());
+  assert.ok(coreBios.every(bio=>bio.split(/\s+/).length === (language==='es' ? 33 : 30)), `Core biographies must have uniform reading length: ${pagePath}`);
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
   for(const chapter of ['destination','ownership','member-benefits','owner-use','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
   const chapterOrder=['ownership','oriente','destination','after-dark','experience','member-benefits','homes','approach','returns','fund','resources','team','specialists','contact'];

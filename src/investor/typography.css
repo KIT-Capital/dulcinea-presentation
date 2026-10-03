@@ -31,11 +31,16 @@ body:not(.is-presenting) .member-benefit-grid p.member-benefit-detail { font-siz
 body:not(.is-presenting) :is(.owner-use-facts span,.returns .projection span,.raise-status,.fund-bottom .fund-small,.contact-person>span span,.contact-email) { font-size:16px; line-height:1.5; }
 body:not(.is-presenting) .team-portraits .micro { font-size:13px; line-height:1.5; letter-spacing:.045em; min-height:39px; }
 body:not(.is-presenting) .team-portraits { grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px; }
+/* Shared rows align names and biographies even when a role wraps. */
+body:not(.is-presenting) .team-portraits { row-gap:0; }
+body:not(.is-presenting) .team-portraits article { display:grid; grid-template-rows:subgrid; grid-row:span 4; }
+body:not(.is-presenting) .team-profile { display:grid; grid-template-rows:subgrid; grid-row:span 3; }
 body:not(.is-presenting) .team-photo { aspect-ratio:1/1; }
 .team-profile { min-width:0; }
 body:not(.is-presenting) .team-portraits article:nth-child(3) img { object-position:50% 12%; }
 body:not(.is-presenting) .specialists dt { font-size:18px; color:#34484a; }
 body:not(.is-presenting) .specialists dd { font-size:28px; font-weight:600; }
+.specialist-bio { margin-top:12px; font-size:20px; line-height:1.5; letter-spacing:0; font-weight:400; }
 body:not(.is-presenting) .contact-person strong { font-size:24px; font-weight:600; }
 body:not(.is-presenting) .resource-directory>a { gap:16px 12px; }
 
@@ -84,21 +89,24 @@ body.is-presenting[data-presentation-layout="canvas"] .team-portraits h3 { font-
 body.is-presenting[data-presentation-layout="canvas"] .team-portraits .micro { font-size:16px; min-height:40px; }
 body.is-presenting[data-presentation-layout="canvas"] .team-bio { font-size:24px; line-height:1.4; }
 /* Four profiles share one slide without reducing the biography type size. */
-body.is-presenting[data-presentation-layout="canvas"] #main>.team.presentation-active { padding:48px 60px; }
-body.is-presenting[data-presentation-layout="canvas"] .team .section-heading { margin-bottom:30px; }
-body.is-presenting[data-presentation-layout="canvas"] .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 44px; }
-body.is-presenting[data-presentation-layout="canvas"] .team-portraits article { display:grid; grid-template-columns:180px minmax(0,1fr); align-items:start; gap:24px; border-top:1px solid #17282d30; padding-top:24px; }
-body.is-presenting[data-presentation-layout="canvas"] .team-photo { width:180px; height:220px; }
-body.is-presenting[data-presentation-layout="canvas"] .team-portraits .micro { margin-top:0; min-height:0; line-height:1.35; letter-spacing:.04em; }
+body.is-presenting[data-presentation-layout="canvas"] #main>.team.presentation-active { padding:36px 48px; }
+body.is-presenting[data-presentation-layout="canvas"] .team .section-heading { margin-bottom:24px; }
+body.is-presenting[data-presentation-layout="canvas"] .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 32px; }
+body.is-presenting[data-presentation-layout="canvas"] .team-portraits article { display:grid; grid-template-columns:144px minmax(0,1fr); align-items:start; gap:20px; border-top:1px solid #17282d30; padding-top:16px; }
+body.is-presenting[data-presentation-layout="canvas"] .team-photo { width:144px; height:200px; }
+body.is-presenting[data-presentation-layout="canvas"] .team-portraits .micro { margin-top:0; min-height:22px; line-height:1.35; letter-spacing:.04em; }
 body.is-presenting[data-presentation-layout="canvas"] .team-portraits h3 { margin-top:10px; line-height:1.15; }
-body.is-presenting[data-presentation-layout="canvas"] .team-bio { margin-top:14px; line-height:1.35; }
+body.is-presenting[data-presentation-layout="canvas"] .team-bio { margin-top:14px; line-height:1.35; max-width:none; }
 body.is-presenting[data-presentation-layout="canvas"] .specialists dt { font-size:25px; }
 body.is-presenting[data-presentation-layout="canvas"] .specialists dd { font-size:32px; font-weight:600; }
+body.is-presenting[data-presentation-layout="canvas"] .specialist-bio { font-size:24px; line-height:1.35; }
 body.is-presenting[data-presentation-layout="canvas"] :is(.fund-bottom .fund-small,.raise-status,.button-dark,.document-links,.experience-content>p.co-brand-copy) { font-size:23px; }
 #presentation-controls :is(button,.presentation-title) { font-size:14px; }
 
 @media(max-width:1000px) {
   body:not(.is-presenting) .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px 28px; }
+  body:not(.is-presenting) .team-portraits { row-gap:0; }
+  body:not(.is-presenting) .team-portraits article { padding-bottom:40px; }
   body:not(.is-presenting) .header { flex-wrap:wrap; gap:10px 18px; }
   body:not(.is-presenting) .primary { order:5; flex:1 0 100%; justify-content:space-between; margin:0; }
   body:not(.is-presenting) .present-launch { margin-left:auto; }
@@ -114,6 +122,7 @@ body.is-presenting[data-presentation-layout="canvas"] :is(.fund-bottom .fund-sma
   body:not(.is-presenting) #homes .property-preview-location { font-size:11px; }
   body:not(.is-presenting) .story-index a { font-size:14px; }
   body:not(.is-presenting) .specialists dd { font-size:25px; }
+  .specialist-bio { font-size:18px; }
 }
 body.is-presenting[data-presentation-layout="responsive"] #ownership .lifestyle-benefits dt { font-size:26px; font-weight:600; }
 body.is-presenting[data-presentation-layout="responsive"] #ownership .lifestyle-benefits dd { font-size:20px; }
