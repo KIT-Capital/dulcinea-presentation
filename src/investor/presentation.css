@@ -70,7 +70,9 @@ body.is-presenting #ownership .line-link { width:280px; min-height:44px; margin-
 body.is-presenting #ownership .ownership-copy > .footnote { max-width:none; margin-top:15px; font-size:14px; line-height:1.45 }
 
 /* Medellín and El Oriente have separate chapters and distinct imagery. */
-body.is-presenting #main > #destination.presentation-active { display:flex; flex-direction:column; justify-content:flex-end; padding:64px 80px }
+body.is-presenting #main > #destination.presentation-active { display:block; padding:0 }
+body.is-presenting #destination .city-cinema { display:flex; flex-direction:column; justify-content:flex-end; width:100%; height:100%; min-height:0; padding:64px 80px }
+body.is-presenting #destination #after-dark { display:none }
 body.is-presenting #destination .story-film-copy { max-width:980px }
 body.is-presenting #destination h2 { font-size:88px; line-height:1.04; max-width:950px; margin:25px 0 }
 body.is-presenting #destination .story-film-copy > p:not(.micro) { max-width:670px; font-size:26px; line-height:1.45 }
@@ -130,21 +132,28 @@ body.is-presenting .contact-email { font-size:17px; margin-top:24px }
 body.is-presenting footer { margin-top:32px; padding-top:22px; font-size:13px; gap:25px; flex-wrap:nowrap }
 body.is-presenting footer span:last-child { width:auto }
 
-/* The early benefits overview and the approved booking rules each have a slide. */
-body.is-presenting #main > #member-benefits.presentation-active { padding:48px 68px; background:#e9edf1 }
+/* Owner use leads the main benefits slide; booking is an optional appendix. */
+body.is-presenting #main > #member-benefits.presentation-active { padding:40px 64px; background:#e9edf1 }
 body.is-presenting #member-benefits .member-benefits-heading { display:block }
-body.is-presenting #member-benefits h2 { font-size:66px; margin:15px 0 20px }
-body.is-presenting #member-benefits .member-benefits-heading > p:last-child { max-width:1090px; font-size:24px; line-height:1.4 }
-body.is-presenting #member-benefits .member-benefit-grid { gap:38px; margin-top:32px }
-body.is-presenting #member-benefits .member-benefit-grid > article { padding-top:20px }
-body.is-presenting #member-benefits .member-benefit-number { font-size:94px; margin:21px 0 18px }
-body.is-presenting #member-benefits .member-benefit-word { font-size:72px; line-height:1.3 }
-body.is-presenting #member-benefits .member-benefit-grid h3 { font-size:27px; line-height:1.25; margin-bottom:18px }
-body.is-presenting #member-benefits .member-benefit-grid p:not(.micro) { font-size:22px; line-height:1.45 }
-body.is-presenting #member-benefits .member-benefit-grid p.member-benefit-detail { margin-top:18px; font-size:19px; line-height:1.45 }
-body.is-presenting #member-benefits .member-benefits-bottom { margin-top:32px; gap:42px }
-body.is-presenting #member-benefits .member-benefits-bottom .footnote { font-size:15px; line-height:1.5; max-width:875px }
-body.is-presenting #member-benefits .member-benefits-bottom .line-link { display:flex; min-width:240px; width:240px; font-size:18px; margin:0; }
+body.is-presenting #member-benefits h2 { font-size:56px; margin:12px 0 15px }
+body.is-presenting #member-benefits .member-benefits-heading > p:last-child { max-width:1090px; font-size:22px; line-height:1.4 }
+body.is-presenting #member-benefits .member-benefit-grid { display:grid; grid-template-columns:1.05fr 1fr; grid-template-rows:auto auto; gap:22px 54px; margin-top:26px }
+body.is-presenting #member-benefits .member-benefit-grid > article { padding-top:16px }
+body.is-presenting #member-benefits .member-benefit-primary { grid-row:1 / 3; grid-column:1; padding-right:22px }
+body.is-presenting #member-benefits .member-benefit-grid > article:not(.member-benefit-primary) { grid-column:2 }
+body.is-presenting #member-benefits .member-benefit-number { font-size:52px; margin:10px 0; line-height:1 }
+body.is-presenting #member-benefits .member-benefit-primary .member-benefit-number { font-size:108px; margin:18px 0 }
+body.is-presenting #member-benefits .member-benefit-number small { display:block; font-size:15px; line-height:1.4; margin-bottom:6px; letter-spacing:0 }
+body.is-presenting #member-benefits .member-benefit-grid > article:not(.member-benefit-primary) .member-benefit-number { float:right; margin:6px 0 8px 20px }
+body.is-presenting #member-benefits .member-benefit-grid h3 { font-size:25px; line-height:1.2; margin:12px 0 }
+body.is-presenting #member-benefits .member-benefit-primary h3 { font-size:29px; margin:17px 0 }
+body.is-presenting #member-benefits .member-benefit-grid p:not(.micro) { font-size:18px; line-height:1.4 }
+body.is-presenting #member-benefits .member-benefit-primary p:not(.micro) { font-size:22px; line-height:1.4 }
+body.is-presenting #member-benefits .member-benefit-grid p.member-benefit-detail { margin-top:12px; font-size:16px; line-height:1.4 }
+body.is-presenting #member-benefits .member-benefit-primary p.member-benefit-detail { font-size:19px }
+body.is-presenting #member-benefits .member-benefits-bottom { margin-top:24px; gap:36px; align-items:center }
+body.is-presenting #member-benefits .member-benefits-bottom .footnote { font-size:13px; line-height:1.45; max-width:850px }
+body.is-presenting #member-benefits .member-benefits-bottom .line-link { display:flex; min-width:225px; width:225px; font-size:18px; margin:0; }
 body.is-presenting[data-presentation-step="benefits"] #owner-use { display:none }
 body.is-presenting[data-presentation-step="owner-use"] .member-benefits-overview { display:none }
 body.is-presenting #member-benefits .owner-use { margin:0; border:0 }
@@ -161,9 +170,9 @@ body.is-presenting #member-benefits .owner-use-rules article { padding-top:16px 
 body.is-presenting #member-benefits .owner-use-rules h3 { font-size:25px; margin-bottom:11px }
 body.is-presenting #member-benefits .owner-use-rules p { font-size:20px; line-height:1.4; max-width:none }
 body.is-presenting #member-benefits .owner-use-content > .footnote { margin-top:22px; font-size:14px; line-height:1.5; max-width:none }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits { overflow-y:auto; overscroll-behavior:contain }
 
 /* The offer and returns each have room of their own. */
-body.is-presenting #fund > .model { display:none }
 body.is-presenting .fund-summary { font-size:24px; line-height:1.5; max-width:500px; margin:0 }
 body.is-presenting .capital { display:grid; grid-template-columns:1fr 1fr 1.1fr; padding:34px 0 28px; gap:36px }
 body.is-presenting .capital > div { display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:0; border:0; gap:16px }
@@ -174,17 +183,17 @@ body.is-presenting .fund-bottom { flex-direction:row; align-items:center; gap:50
 body.is-presenting .fund-bottom p { font-size:27px }
 body.is-presenting .fund-bottom .fund-small { font-size:18px; max-width:780px; margin-top:10px }
 body.is-presenting .button-dark { padding:22px 26px; font-size:18px; gap:48px; flex-shrink:0 }
-body.is-presenting[data-presentation-step="returns"] #fund > :not(.model) { display:none }
-body.is-presenting[data-presentation-step="returns"] #fund > .model { display:block; border:0 }
-body.is-presenting[data-presentation-step="returns"] #fund > .model summary { font-size:58px; letter-spacing:-.04em; line-height:1.1; padding:8px 0 32px; max-width:1180px; pointer-events:none }
+body.is-presenting #returns .returns-heading h2 { font-size:64px; margin:20px 0 22px }
+body.is-presenting #returns .returns-heading > p:last-child { font-size:23px; line-height:1.5; max-width:1100px }
+body.is-presenting #returns > .line-link { width:310px; font-size:18px; margin-top:30px }
 body.is-presenting .model .plus { display:none }
 body.is-presenting .model-content { padding:0 }
-body.is-presenting .projection { display:grid; grid-template-columns:1.1fr 1.1fr 1fr; gap:60px; margin:74px 0 60px }
+body.is-presenting .projection { display:grid; grid-template-columns:1.1fr 1.1fr 1fr; gap:60px; margin:55px 0 42px }
 body.is-presenting .projection div { gap:20px }
 body.is-presenting .projection strong { font-size:114px }
 body.is-presenting .projection span { font-size:22px; line-height:1.4; max-width:none }
 body.is-presenting .model-content .footnote { font-size:18px; max-width:1130px }
-body.is-presenting .document-links { display:flex; flex-direction:row; gap:35px; flex-wrap:wrap; margin-top:58px; font-size:18px }
+body.is-presenting .document-links { display:flex; flex-direction:row; gap:35px; flex-wrap:wrap; margin-top:35px; font-size:18px }
 
 /* Team portraits are not cropped or recolored differently between modes. */
 body.is-presenting .team .section-index, body.is-presenting .team .specialist-link { display:none }
@@ -232,6 +241,8 @@ body.is-presenting .legal-notice a { font-size:16px; margin-top:28px }
 #presentation-menu-items { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px }
 #presentation-menu-items button { display:flex; align-items:center; gap:14px; min-height:58px; padding:12px 14px; text-align:left; background:transparent; border:1px solid #17282d25; border-radius:2px; font-size:14px; line-height:1.25 }
 #presentation-menu-items button:hover { background:#78bdd426 }
+#presentation-menu-items .presentation-appendix-heading { grid-column:1 / -1; margin:18px 0 0; padding-top:18px; border-top:1px solid #17282d30; font-size:13px; line-height:1.5; color:#52635f }
+#presentation-controls #presentation-appendix-return { border-color:#ffffff45; white-space:normal; font-size:13px; line-height:1.3; max-width:250px }
 #presentation-menu-items .is-current { background:var(--ink); color:white; border-color:var(--ink) }
 .presentation-menu-number { font:12px 'Courier New',monospace; opacity:.6 }
 .presentation-help { color:#52635f; font-size:12px; line-height:1.6; margin-top:22px }
@@ -260,6 +271,12 @@ body.is-presenting .presentation-closing-navigation a:hover { color:var(--gold) 
 body.is-presenting .presentation-resource-links { margin-top:28px }
 body.is-presenting .presentation-resource-links a { font-size:18px; padding:14px 0 }
 body.is-presenting .presentation-closing-navigation a span:last-child { flex-shrink:0; color:var(--gold); font-size:21px }
+/* Keep the full closing directory above the footer on the fixed 16:9 canvas. */
+body.is-presenting[data-presentation-layout="canvas"] .presentation-closing-navigation { top:96px; width:480px }
+body.is-presenting[data-presentation-layout="canvas"] .presentation-closing-navigation h3 { margin:12px 0 18px }
+body.is-presenting[data-presentation-layout="canvas"] .presentation-section-links a { padding:11px 0 }
+body.is-presenting[data-presentation-layout="canvas"] .presentation-resource-links { margin-top:18px }
+body.is-presenting[data-presentation-layout="canvas"] .presentation-resource-links a { padding:10px 0 }
 @media(max-width:1000px) { #presentation-title { display:none } #presentation-controls { gap:10px } #presentation-website { margin-right:auto } }
 @media(max-width:760px) {
   #presentation-controls { display:grid; grid-template-columns:minmax(0,1fr) auto auto; grid-template-rows:42px 42px; height:104px; padding:8px 12px; gap:2px 6px }
@@ -267,6 +284,8 @@ body.is-presenting .presentation-closing-navigation a span:last-child { flex-shr
   #presentation-exit { grid-row:1; grid-column:1; margin:0; justify-self:start; padding-left:0!important }
   #presentation-controls #presentation-exit span { font-size:12px }
   #presentation-controls #presentation-website { grid-row:1; grid-column:2 / 4; margin:0; justify-self:end; min-width:0; gap:5px; padding:8px; font-size:12px }
+  body.presentation-appendix #presentation-controls #presentation-website { display:none }
+  #presentation-controls #presentation-appendix-return { grid-row:1; grid-column:2 / 4; justify-self:end; padding:8px; font-size:12px }
   #presentation-website svg { width:16px }
   .presentation-paging { grid-row:2; grid-column:1; gap:3px; justify-self:start }
   #presentation-controls #presentation-language { grid-row:2; grid-column:2; padding-left:10px!important }

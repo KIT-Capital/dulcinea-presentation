@@ -147,7 +147,9 @@ body.is-presenting #ownership .line-link { width:280px; min-height:44px; margin-
 body.is-presenting #ownership .ownership-copy > .footnote { max-width:none; margin-top:15px; font-size:14px; line-height:1.45 }
 
 /* Medellín and El Oriente have separate chapters and distinct imagery. */
-body.is-presenting #main > #destination.presentation-active { display:flex; flex-direction:column; justify-content:flex-end; padding:64px 80px }
+body.is-presenting #main > #destination.presentation-active { display:block; padding:0 }
+body.is-presenting #destination .city-cinema { display:flex; flex-direction:column; justify-content:flex-end; width:100%; height:100%; min-height:0; padding:64px 80px }
+body.is-presenting #destination #after-dark { display:none }
 body.is-presenting #destination .story-film-copy { max-width:980px }
 body.is-presenting #destination h2 { font-size:88px; line-height:1.04; max-width:950px; margin:25px 0 }
 body.is-presenting #destination .story-film-copy > p:not(.micro) { max-width:670px; font-size:26px; line-height:1.45 }
@@ -207,21 +209,28 @@ body.is-presenting .contact-email { font-size:17px; margin-top:24px }
 body.is-presenting footer { margin-top:32px; padding-top:22px; font-size:13px; gap:25px; flex-wrap:nowrap }
 body.is-presenting footer span:last-child { width:auto }
 
-/* The early benefits overview and the approved booking rules each have a slide. */
-body.is-presenting #main > #member-benefits.presentation-active { padding:48px 68px; background:#e9edf1 }
+/* Owner use leads the main benefits slide; booking is an optional appendix. */
+body.is-presenting #main > #member-benefits.presentation-active { padding:40px 64px; background:#e9edf1 }
 body.is-presenting #member-benefits .member-benefits-heading { display:block }
-body.is-presenting #member-benefits h2 { font-size:66px; margin:15px 0 20px }
-body.is-presenting #member-benefits .member-benefits-heading > p:last-child { max-width:1090px; font-size:24px; line-height:1.4 }
-body.is-presenting #member-benefits .member-benefit-grid { gap:38px; margin-top:32px }
-body.is-presenting #member-benefits .member-benefit-grid > article { padding-top:20px }
-body.is-presenting #member-benefits .member-benefit-number { font-size:94px; margin:21px 0 18px }
-body.is-presenting #member-benefits .member-benefit-word { font-size:72px; line-height:1.3 }
-body.is-presenting #member-benefits .member-benefit-grid h3 { font-size:27px; line-height:1.25; margin-bottom:18px }
-body.is-presenting #member-benefits .member-benefit-grid p:not(.micro) { font-size:22px; line-height:1.45 }
-body.is-presenting #member-benefits .member-benefit-grid p.member-benefit-detail { margin-top:18px; font-size:19px; line-height:1.45 }
-body.is-presenting #member-benefits .member-benefits-bottom { margin-top:32px; gap:42px }
-body.is-presenting #member-benefits .member-benefits-bottom .footnote { font-size:15px; line-height:1.5; max-width:875px }
-body.is-presenting #member-benefits .member-benefits-bottom .line-link { display:flex; min-width:240px; width:240px; font-size:18px; margin:0; }
+body.is-presenting #member-benefits h2 { font-size:56px; margin:12px 0 15px }
+body.is-presenting #member-benefits .member-benefits-heading > p:last-child { max-width:1090px; font-size:22px; line-height:1.4 }
+body.is-presenting #member-benefits .member-benefit-grid { display:grid; grid-template-columns:1.05fr 1fr; grid-template-rows:auto auto; gap:22px 54px; margin-top:26px }
+body.is-presenting #member-benefits .member-benefit-grid > article { padding-top:16px }
+body.is-presenting #member-benefits .member-benefit-primary { grid-row:1 / 3; grid-column:1; padding-right:22px }
+body.is-presenting #member-benefits .member-benefit-grid > article:not(.member-benefit-primary) { grid-column:2 }
+body.is-presenting #member-benefits .member-benefit-number { font-size:52px; margin:10px 0; line-height:1 }
+body.is-presenting #member-benefits .member-benefit-primary .member-benefit-number { font-size:108px; margin:18px 0 }
+body.is-presenting #member-benefits .member-benefit-number small { display:block; font-size:15px; line-height:1.4; margin-bottom:6px; letter-spacing:0 }
+body.is-presenting #member-benefits .member-benefit-grid > article:not(.member-benefit-primary) .member-benefit-number { float:right; margin:6px 0 8px 20px }
+body.is-presenting #member-benefits .member-benefit-grid h3 { font-size:25px; line-height:1.2; margin:12px 0 }
+body.is-presenting #member-benefits .member-benefit-primary h3 { font-size:29px; margin:17px 0 }
+body.is-presenting #member-benefits .member-benefit-grid p:not(.micro) { font-size:18px; line-height:1.4 }
+body.is-presenting #member-benefits .member-benefit-primary p:not(.micro) { font-size:22px; line-height:1.4 }
+body.is-presenting #member-benefits .member-benefit-grid p.member-benefit-detail { margin-top:12px; font-size:16px; line-height:1.4 }
+body.is-presenting #member-benefits .member-benefit-primary p.member-benefit-detail { font-size:19px }
+body.is-presenting #member-benefits .member-benefits-bottom { margin-top:24px; gap:36px; align-items:center }
+body.is-presenting #member-benefits .member-benefits-bottom .footnote { font-size:13px; line-height:1.45; max-width:850px }
+body.is-presenting #member-benefits .member-benefits-bottom .line-link { display:flex; min-width:225px; width:225px; font-size:18px; margin:0; }
 body.is-presenting[data-presentation-step="benefits"] #owner-use { display:none }
 body.is-presenting[data-presentation-step="owner-use"] .member-benefits-overview { display:none }
 body.is-presenting #member-benefits .owner-use { margin:0; border:0 }
@@ -238,9 +247,9 @@ body.is-presenting #member-benefits .owner-use-rules article { padding-top:16px 
 body.is-presenting #member-benefits .owner-use-rules h3 { font-size:25px; margin-bottom:11px }
 body.is-presenting #member-benefits .owner-use-rules p { font-size:20px; line-height:1.4; max-width:none }
 body.is-presenting #member-benefits .owner-use-content > .footnote { margin-top:22px; font-size:14px; line-height:1.5; max-width:none }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits { overflow-y:auto; overscroll-behavior:contain }
 
 /* The offer and returns each have room of their own. */
-body.is-presenting #fund > .model { display:none }
 body.is-presenting .fund-summary { font-size:24px; line-height:1.5; max-width:500px; margin:0 }
 body.is-presenting .capital { display:grid; grid-template-columns:1fr 1fr 1.1fr; padding:34px 0 28px; gap:36px }
 body.is-presenting .capital > div { display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:0; border:0; gap:16px }
@@ -251,17 +260,17 @@ body.is-presenting .fund-bottom { flex-direction:row; align-items:center; gap:50
 body.is-presenting .fund-bottom p { font-size:27px }
 body.is-presenting .fund-bottom .fund-small { font-size:18px; max-width:780px; margin-top:10px }
 body.is-presenting .button-dark { padding:22px 26px; font-size:18px; gap:48px; flex-shrink:0 }
-body.is-presenting[data-presentation-step="returns"] #fund > :not(.model) { display:none }
-body.is-presenting[data-presentation-step="returns"] #fund > .model { display:block; border:0 }
-body.is-presenting[data-presentation-step="returns"] #fund > .model summary { font-size:58px; letter-spacing:-.04em; line-height:1.1; padding:8px 0 32px; max-width:1180px; pointer-events:none }
+body.is-presenting #returns .returns-heading h2 { font-size:64px; margin:20px 0 22px }
+body.is-presenting #returns .returns-heading > p:last-child { font-size:23px; line-height:1.5; max-width:1100px }
+body.is-presenting #returns > .line-link { width:310px; font-size:18px; margin-top:30px }
 body.is-presenting .model .plus { display:none }
 body.is-presenting .model-content { padding:0 }
-body.is-presenting .projection { display:grid; grid-template-columns:1.1fr 1.1fr 1fr; gap:60px; margin:74px 0 60px }
+body.is-presenting .projection { display:grid; grid-template-columns:1.1fr 1.1fr 1fr; gap:60px; margin:55px 0 42px }
 body.is-presenting .projection div { gap:20px }
 body.is-presenting .projection strong { font-size:114px }
 body.is-presenting .projection span { font-size:22px; line-height:1.4; max-width:none }
 body.is-presenting .model-content .footnote { font-size:18px; max-width:1130px }
-body.is-presenting .document-links { display:flex; flex-direction:row; gap:35px; flex-wrap:wrap; margin-top:58px; font-size:18px }
+body.is-presenting .document-links { display:flex; flex-direction:row; gap:35px; flex-wrap:wrap; margin-top:35px; font-size:18px }
 
 /* Team portraits are not cropped or recolored differently between modes. */
 body.is-presenting .team .section-index, body.is-presenting .team .specialist-link { display:none }
@@ -309,6 +318,8 @@ body.is-presenting .legal-notice a { font-size:16px; margin-top:28px }
 #presentation-menu-items { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px }
 #presentation-menu-items button { display:flex; align-items:center; gap:14px; min-height:58px; padding:12px 14px; text-align:left; background:transparent; border:1px solid #17282d25; border-radius:2px; font-size:14px; line-height:1.25 }
 #presentation-menu-items button:hover { background:#78bdd426 }
+#presentation-menu-items .presentation-appendix-heading { grid-column:1 / -1; margin:18px 0 0; padding-top:18px; border-top:1px solid #17282d30; font-size:13px; line-height:1.5; color:#52635f }
+#presentation-controls #presentation-appendix-return { border-color:#ffffff45; white-space:normal; font-size:13px; line-height:1.3; max-width:250px }
 #presentation-menu-items .is-current { background:var(--ink); color:white; border-color:var(--ink) }
 .presentation-menu-number { font:12px 'Courier New',monospace; opacity:.6 }
 .presentation-help { color:#52635f; font-size:12px; line-height:1.6; margin-top:22px }
@@ -337,6 +348,12 @@ body.is-presenting .presentation-closing-navigation a:hover { color:var(--gold) 
 body.is-presenting .presentation-resource-links { margin-top:28px }
 body.is-presenting .presentation-resource-links a { font-size:18px; padding:14px 0 }
 body.is-presenting .presentation-closing-navigation a span:last-child { flex-shrink:0; color:var(--gold); font-size:21px }
+/* Keep the full closing directory above the footer on the fixed 16:9 canvas. */
+body.is-presenting[data-presentation-layout="canvas"] .presentation-closing-navigation { top:96px; width:480px }
+body.is-presenting[data-presentation-layout="canvas"] .presentation-closing-navigation h3 { margin:12px 0 18px }
+body.is-presenting[data-presentation-layout="canvas"] .presentation-section-links a { padding:11px 0 }
+body.is-presenting[data-presentation-layout="canvas"] .presentation-resource-links { margin-top:18px }
+body.is-presenting[data-presentation-layout="canvas"] .presentation-resource-links a { padding:10px 0 }
 @media(max-width:1000px) { #presentation-title { display:none } #presentation-controls { gap:10px } #presentation-website { margin-right:auto } }
 @media(max-width:760px) {
   #presentation-controls { display:grid; grid-template-columns:minmax(0,1fr) auto auto; grid-template-rows:42px 42px; height:104px; padding:8px 12px; gap:2px 6px }
@@ -344,6 +361,8 @@ body.is-presenting .presentation-closing-navigation a span:last-child { flex-shr
   #presentation-exit { grid-row:1; grid-column:1; margin:0; justify-self:start; padding-left:0!important }
   #presentation-controls #presentation-exit span { font-size:12px }
   #presentation-controls #presentation-website { grid-row:1; grid-column:2 / 4; margin:0; justify-self:end; min-width:0; gap:5px; padding:8px; font-size:12px }
+  body.presentation-appendix #presentation-controls #presentation-website { display:none }
+  #presentation-controls #presentation-appendix-return { grid-row:1; grid-column:2 / 4; justify-self:end; padding:8px; font-size:12px }
   #presentation-website svg { width:16px }
   .presentation-paging { grid-row:2; grid-column:1; gap:3px; justify-self:start }
   #presentation-controls #presentation-language { grid-row:2; grid-column:2; padding-left:10px!important }
@@ -471,7 +490,9 @@ body.is-presenting[data-presentation-layout="responsive"] .fund-bottom { flex-di
 body.is-presenting[data-presentation-layout="responsive"] .fund-bottom p { font-size:22px; line-height:1.4 }
 body.is-presenting[data-presentation-layout="responsive"] .fund-bottom .fund-small { font-size:18px; line-height:1.5; max-width:100%; margin-top:12px }
 body.is-presenting[data-presentation-layout="responsive"] .button-dark { font-size:18px; padding:18px 22px; gap:24px; min-height:56px }
-body.is-presenting[data-presentation-layout="responsive"] #fund > .model summary { font-size:36px; line-height:1.15; padding:0 0 26px; max-width:100%; white-space:normal }
+body.is-presenting[data-presentation-layout="responsive"] #returns .returns-heading h2 { font-size:40px; line-height:1.15; margin:20px 0; max-width:100%; white-space:normal }
+body.is-presenting[data-presentation-layout="responsive"] #returns .returns-heading > p:last-child { font-size:18px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] #returns > .line-link { width:100%; max-width:330px; font-size:18px; margin-top:25px }
 body.is-presenting[data-presentation-layout="responsive"] .projection { grid-template-columns:minmax(0,1fr); gap:0; margin:0 0 28px }
 body.is-presenting[data-presentation-layout="responsive"] .projection div { display:flex; flex-direction:column; gap:10px; padding:22px 0; border-top:1px solid #17282d35 }
 body.is-presenting[data-presentation-layout="responsive"] .projection strong { font-size:66px; line-height:1.05 }
@@ -657,9 +678,13 @@ body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-ite
 body.is-presenting[data-presentation-layout="responsive"] #main > #member-benefits.presentation-active { padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px)) }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits h2 { font-size:40px; line-height:1.1; margin:14px 0 20px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefits-heading > p:last-child { font-size:18px; line-height:1.55; max-width:660px }
-body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:minmax(0,1fr); gap:30px; margin-top:30px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:minmax(0,1fr); grid-template-rows:none; gap:30px; margin-top:30px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article { grid-column:auto; grid-row:auto; padding-right:0 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article { padding-top:20px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-number { font-size:65px; margin:16px 0; line-height:1.1 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary .member-benefit-number { font-size:90px; margin:20px 0 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary p:not(.micro) { font-size:19px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary p.member-benefit-detail { font-size:17px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-word { font-size:49px; line-height:1.1 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid h3 { font-size:25px; margin-bottom:13px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p:not(.micro) { font-size:18px; line-height:1.5 }
@@ -679,7 +704,9 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
 @media(min-width:700px) {
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits h2,
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-heading h2 { font-size:48px }
-  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:25px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px 36px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary { grid-column:1; grid-row:1 / 3; padding-right:0 }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article:not(.member-benefit-primary) { grid-column:2 }
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid h3 { font-size:22px }
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p:not(.micro) { font-size:17px }
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p.member-benefit-detail { font-size:15px }
@@ -692,6 +719,13 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
   body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items { grid-template-columns:minmax(0,1fr) }
   body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items button { min-height:48px; font-size:14px }
 }
+
+/* The city film is nested so after-dark remains available on the website. */
+body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active { padding:0; min-height:var(--presentation-height) }
+body.is-presenting[data-presentation-layout="responsive"] #destination .city-cinema { height:auto; min-height:var(--presentation-height); padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px)) }
+@media(max-height:600px) and (orientation:landscape) and (min-width:380px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls #presentation-appendix-return { max-width:150px; margin-right:auto; font-size:11px; padding:5px; line-height:1.2 }
+}
 </style>
   <style>/* The collection: architectural imagery, a quiet fact panel and direct plans. */
 #homes { padding:26px 4vw 28px; scroll-margin-top:0 }
@@ -700,13 +734,20 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
 #homes .section-heading .section-index { flex:none; margin:0; gap:12px; font-size:9px; letter-spacing:.1em }
 #homes .section-heading h2 { font-size:clamp(32px,3vw,42px); line-height:1.08; letter-spacing:-.045em; white-space:normal }
 #homes .section-aside { flex:none; max-width:290px; font-size:12px; line-height:1.5; margin:0; color:#53635d }
-#homes > .property-tabs { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0; width:100%; margin:0 0 12px; border-top:1px solid #17282d35; border-bottom:1px solid #17282d35 }
-#homes .property-tabs button { display:flex; align-items:center; gap:10px; min-width:0; min-height:52px; padding:10px 12px; border:0; border-bottom:2px solid transparent; background:transparent; color:#53635d; text-align:left; transition:background .18s ease,color .18s ease,border-color .18s ease }
-#homes .property-tabs button + button { border-left:1px solid #17282d18 }
-#homes .property-tabs button:hover { background:#e9eeea; color:var(--ink) }
-#homes .property-tabs button[aria-pressed=true] { background:#e9eeea; border-bottom-color:var(--old-gold); color:var(--ink); font-weight:400 }
-#homes .property-tab-number { flex:none; font:10px/1.2 'Courier New',monospace; color:#65736b }
-#homes .property-tab-name { font:13px/1.35 Arial,Helvetica,sans-serif; letter-spacing:-.015em }
+#homes > .property-previews { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; margin:0 0 16px }
+#homes .property-preview { position:relative; display:flex; flex-direction:column; min-width:0; min-height:44px; padding-bottom:8px; border-bottom:2px solid transparent; color:#53635d; scroll-margin-top:16px; transition:border-color .18s ease,color .18s ease }
+#homes .property-preview-media { position:relative; display:block; height:clamp(66px,6.5vw,96px); overflow:hidden; background:#cad2c9 }
+#homes .property-preview-media video,#homes .property-preview-media img { display:block; width:100%; height:100%; object-fit:cover }
+#homes .property-preview-name { display:block; margin-top:7px; font-size:14px; line-height:1.25; letter-spacing:-.02em; color:var(--ink) }
+#homes .property-preview-location { display:block; margin-top:3px; font-size:11px; line-height:1.3 }
+#homes .property-preview-state { position:absolute; top:7px; left:7px; padding:4px 6px; color:var(--ink); background:var(--paper); font-size:10px; line-height:1.2 }
+#homes .property-preview-state[hidden] { display:none }
+#homes .property-preview[aria-current=true],#homes .property-preview[aria-pressed=true] { border-bottom-color:var(--old-gold); color:var(--ink) }
+#homes .property-preview[aria-current=true] .property-preview-name,#homes .property-preview[aria-pressed=true] .property-preview-name { text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px }
+#homes .property-preview:hover { color:var(--ink); border-bottom-color:#17282d55 }
+#homes .property-preview:focus-visible { outline:3px solid var(--ink); outline-offset:3px }
+#homes .property-selection-status { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0 }
+#homes #property-detail { scroll-margin-top:16px }
 #homes .property-layout { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); min-height:0; height:auto; border:0; background:#f8f9f5; align-items:stretch }
 #homes .property-visual { min-width:0; min-height:0; height:auto; aspect-ratio:16/9; background:#c9d4cc }
 #homes .property-visual video { object-fit:cover }
@@ -746,6 +787,13 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
   #homes { padding-top:20px; padding-bottom:20px }
   #homes > .section-heading { margin-bottom:13px }
   #homes .section-heading h2 { font-size:36px }
+  #homes > .property-previews { gap:10px; margin-bottom:12px }
+  #homes .property-preview { padding-bottom:6px }
+  #homes .property-preview-media { height:60px }
+  #homes .property-preview-name { margin-top:5px; font-size:13px }
+  #homes .property-preview-location { margin-top:2px; font-size:10px }
+  #homes .property-layout { grid-template-columns:minmax(0,1.9fr) minmax(340px,1fr); height:clamp(390px,calc(100svh - var(--header) - 236px),430px) }
+  #homes .property-visual { height:100%; aspect-ratio:auto }
   #homes .property-info { padding:12px 20px 13px; gap:9px }
   #homes .property-info h3 { font-size:35px; margin-top:7px; margin-bottom:8px }
   #homes .property-facts { margin-top:12px; padding-top:10px; gap:12px }
@@ -759,8 +807,10 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
   #homes .section-heading .section-index { margin-bottom:8px }
   #homes .section-heading h2 { font-size:34px }
   #homes .section-aside { max-width:220px; font-size:11px }
-  #homes .property-tabs button { gap:7px; padding:9px 8px; min-height:55px }
-  #homes .property-tab-name { font-size:11px }
+  #homes > .property-previews { gap:8px }
+  #homes .property-preview-media { height:66px }
+  #homes .property-preview-name { font-size:12px }
+  #homes .property-preview-location { font-size:10px }
   #homes .property-layout { grid-template-columns:minmax(0,1.35fr) minmax(290px,1fr) }
   #homes .property-visual { aspect-ratio:auto; min-height:440px }
   #homes .property-info { padding:15px 18px; gap:10px }
@@ -775,9 +825,11 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
   #homes .section-heading .section-index { margin-bottom:10px; font-size:10px }
   #homes .section-heading h2 { font-size:35px; line-height:1.05; max-width:350px }
   #homes .section-aside { margin-top:12px; max-width:none; font-size:13px }
-  #homes > .property-tabs { display:flex; gap:0; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; margin-bottom:14px }
-  #homes .property-tabs button { flex:0 0 160px; min-height:58px; padding:10px 12px; gap:10px }
-  #homes .property-tab-name { font-size:12px }
+  #homes > .property-previews { display:flex; gap:12px; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; scroll-snap-type:x proximity; padding:4px 3px 8px; margin:0 -3px 14px }
+  #homes .property-preview { flex:0 0 148px; scroll-snap-align:start }
+  #homes .property-preview-media { height:83px }
+  #homes .property-preview-name { font-size:13px }
+  #homes .property-preview-location { font-size:11px }
   #homes .property-layout { grid-template-columns:minmax(0,1fr); height:auto }
   #homes .property-visual { aspect-ratio:16/9; min-height:0; height:auto }
   #homes .image-caption { left:11px; bottom:11px; max-width:calc(100% - 22px); font-size:8px }
@@ -801,7 +853,7 @@ body.is-presenting #homes > .section-heading > div { display:block }
 body.is-presenting #homes .section-heading .section-index { display:flex; margin:0; font-size:13px; letter-spacing:.1em; line-height:1.5 }
 body.is-presenting #homes .section-heading h2 { display:none }
 body.is-presenting #homes .section-aside { max-width:none; margin:0; font-size:15px; line-height:1.4; white-space:pre-line; text-align:right }
-body.is-presenting #homes > .property-tabs { display:none }
+body.is-presenting #homes > .property-previews { display:none }
 body.is-presenting #homes .property-layout { grid-template-columns:920px minmax(0,1fr); height:518px; min-height:0 }
 body.is-presenting #homes .property-visual { height:518px; min-height:0; aspect-ratio:16/9 }
 body.is-presenting #homes .property-info { padding:22px 26px 15px; gap:14px }
@@ -863,7 +915,7 @@ body.is-presenting[data-presentation-layout="responsive"] #homes > .footnote { f
   body.is-presenting[data-presentation-layout="responsive"] #homes .property-area-row dd { font-size:36px }
 }
 @media(prefers-reduced-motion:reduce) {
-  #homes button { transition:none }
+  #homes button,#homes .property-preview { transition:none }
 }
 
 /* Original collages need a quiet viewer, not the slide's display typography. */
@@ -962,13 +1014,13 @@ body.is-presenting[data-presentation-layout="responsive"] #plans-dialog { overfl
   <style>/* Shared lifestyle chapters; directories and supplementary films stay on the website. */
 body.is-presenting .website-only { display:none !important; }
 
-/* Member benefits appear before the two destinations. Booking detail stays optional on the website. */
+/* Member use follows the destinations and brand; booking detail is optional. */
 .member-benefits { background:#e9edf1; }
 .member-benefits-heading { display:grid; grid-template-columns:1.3fr 1fr; align-items:end; gap:18px 5vw; }
 .member-benefits-heading > .micro { grid-column:1 / -1; color:#45585c; }
 .member-benefits-heading h2 { font-size:clamp(38px,5vw,72px); }
 .member-benefits-heading > p:last-child { max-width:440px; font-size:19px; line-height:1.5; }
-.member-benefit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4vw; margin-top:48px; }
+.member-benefit-grid { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:26px 6vw; margin-top:40px; }
 .member-benefit-grid > article { min-width:0; padding-top:22px; border-top:3px solid var(--blue); }
 .member-benefit-grid > article:nth-child(2) { border-color:var(--violet); }
 .member-benefit-grid > article:nth-child(3) { border-color:var(--old-gold); }
@@ -977,6 +1029,13 @@ body.is-presenting .website-only { display:none !important; }
 .member-benefit-grid h3 { margin-bottom:18px; font-size:24px; line-height:1.2; letter-spacing:-.035em; }
 .member-benefit-grid p:not(.micro) { font-size:16px; line-height:1.55; }
 .member-benefit-grid p.member-benefit-detail { margin-top:14px; color:#42565a; font-size:14px; }
+.member-benefit-primary { grid-row:span 2; }
+.member-benefit-number small { display:block; margin-bottom:10px; font-size:14px; letter-spacing:0; line-height:1.3; }
+.member-benefit-grid > article:not(.member-benefit-primary) { position:relative; padding-right:0; }
+.member-benefit-grid > article:not(.member-benefit-primary) .member-benefit-number { float:right; margin:0 0 12px 20px; font-size:48px; color:var(--ink); }
+.member-benefit-grid > article:not(.member-benefit-primary) h3 { margin:12px 0; font-size:24px; }
+.member-benefit-grid > article:not(.member-benefit-primary) p:not(.micro) { font-size:14px; line-height:1.5; }
+.member-benefit-primary > p:not(.micro) { max-width:440px; }
 .member-benefits-bottom { display:flex; align-items:flex-end; justify-content:space-between; gap:32px; margin-top:28px; }
 .member-benefits-bottom .footnote { max-width:840px; margin:0; font-size:12px; }
 .owner-use { margin-top:36px; border-block:1px solid #17282d55; scroll-margin-top:calc(var(--header) + 20px); }
@@ -1005,6 +1064,7 @@ body.is-presenting .website-only { display:none !important; }
   .member-benefits { padding:44px 5vw; }
   .member-benefits-heading > p:last-child { font-size:17px; }
   .member-benefit-grid { grid-template-columns:1fr; gap:32px; margin-top:34px; }
+  .member-benefit-primary { grid-row:auto; }
   .member-benefit-number { margin:15px 0; font-size:64px; }
   .member-benefit-number.member-benefit-word { font-size:48px; line-height:1.1; }
   .member-benefit-grid h3 { margin-bottom:12px; font-size:24px; }
@@ -1115,6 +1175,41 @@ body.is-presenting .website-only { display:none !important; }
 .story-nightlife .story-film-copy { max-width:950px; }
 .story-nightlife .story-film-copy h2 { font-size:clamp(46px,5.6vw,84px); max-width:950px; }
 .story-nightlife .story-film-copy > p:not(.micro) { max-width:390px; }
+
+/* Medellín is one chapter, with a shorter evening frame below the city film. */
+.story-destination { scroll-margin-top:calc(var(--header) + 16px); background:var(--ink); }
+.city-cinema { min-height:clamp(500px,74svh,700px); }
+.story-destination .story-nightlife { min-height:380px; padding-block:48px; margin:0 4vw 0; border-top:1px solid #ffffff40; }
+.story-destination .story-nightlife .story-film-copy h2 { font-size:clamp(36px,4vw,60px); }
+.story-destination .story-nightlife .line-link { margin-top:18px; }
+
+/* The economics are visible by default, before the subscription terms. */
+.returns { background:var(--paper); scroll-margin-top:calc(var(--header) + 16px); }
+.returns-heading { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:18px 8vw; align-items:end; }
+.returns-heading > .micro { grid-column:1/-1; color:#45585c; }
+.returns-heading h2 { font-size:clamp(42px,5vw,76px); }
+.returns-heading > p:last-child { max-width:390px; font-size:18px; line-height:1.5; }
+.returns .model-content { margin-top:38px; padding:30px 0 0; border-top:1px solid #17282d55; }
+.returns .projection { display:grid; grid-template-columns:1.1fr 1fr .65fr; gap:40px; margin:0 0 30px; }
+.returns .projection strong { font-size:clamp(56px,7.4vw,110px); line-height:1.12; }
+.returns .projection span { font-size:13px; line-height:1.4; }
+.returns .document-links { margin-top:30px; gap:20px 34px; }
+.returns > .line-link { margin-top:35px; }
+.fund-bottom { margin-bottom:0; }
+body:not(.is-presenting) .hero-baseline > .micro { max-width:530px; line-height:1.5; }
+@media(max-width:760px) {
+  .city-cinema { min-height:610px; }
+  .story-destination .story-nightlife { min-height:370px; margin-inline:0; padding:38px 22px; }
+  .returns-heading { grid-template-columns:1fr; gap:18px; }
+  .returns-heading h2 { font-size:42px; }
+  .returns-heading > p:last-child { font-size:16px; }
+  .returns .projection { gap:20px; grid-template-columns:1fr 1fr .6fr; }
+  .returns .projection strong { font-size:clamp(30px,8.6vw,56px); }
+  .returns .projection span { max-width:100px; font-size:11px; }
+  .returns .model-content { margin-top:28px; padding-top:25px; }
+  .returns .document-links { gap:14px; }
+  body:not(.is-presenting) .hero-baseline > .micro { max-width:165px; }
+}
 
 .home-film-collection { margin-top:60px; padding-top:32px; border-top:1px solid #17282d30; scroll-margin-top:24px; }
 .film-collection-heading { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); align-items:end; gap:28px 8vw; margin-bottom:30px; }
@@ -1340,14 +1435,14 @@ body.is-presenting .website-only { display:none !important; }
     <video class="background-video" src="assets/video/dulcinea-introduction.mp4" poster="assets/video/dulcinea-introduction-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
     <div class="hero-top"><span class="micro">Medellín, Colombia</span><span class="micro" data-en="El Poblado + El Retiro" data-es="El Poblado + El Retiro">El Poblado + El Retiro</span></div>
     <div class="hero-statement"><p data-en="Invest in Medellín&#10;and El Oriente." data-es="Invierta en Medellín&#10;y el Oriente.">Invest in Medellín<br>and El Oriente.</p><a class="line-link" href="#ownership"><span data-en="Discover Dulcinea One" data-es="Conozca Dulcinea One">Discover Dulcinea One</span><span aria-hidden="true">↓</span></a></div>
-    <div class="hero-bottom"><h1 id="hero-title">Dulcinea <span>One.</span></h1><div class="hero-baseline"><span class="micro" data-en="Our first fund. Five selected homes." data-es="Nuestro primer fondo. Cinco propiedades seleccionadas.">Our first fund. Five selected homes.</span><div class="partners"><img class="dulcinea-partner" src="brand/dulcinea/svg/dulcinea-mono-white.svg" alt="Dulcinea" width="113" height="30"><img src="brand/kit-capital/kit-capital.png" alt="KIT Capital" width="35" height="36"><div><img src="assets/images/investor-deck/image24.png" alt="" width="36" height="36"><span>LOLA &amp; BER<br>HOSPITALITY</span></div></div></div></div>
+    <div class="hero-bottom"><h1 id="hero-title">Dulcinea <span>One.</span></h1><div class="hero-baseline"><span class="micro" data-en="A real estate fund with member use of five selected homes." data-es="Un fondo inmobiliario con uso de cinco propiedades seleccionadas para sus miembros.">A real estate fund with member use of five selected homes.</span><div class="partners"><img class="dulcinea-partner" src="brand/dulcinea/svg/dulcinea-mono-white.svg" alt="Dulcinea" width="113" height="30"><img src="brand/kit-capital/kit-capital.png" alt="KIT Capital" width="35" height="36"><div><img src="assets/images/investor-deck/image24.png" alt="" width="36" height="36"><span>LOLA &amp; BER<br>HOSPITALITY</span></div></div></div></div>
     <button class="motion" aria-label="Pause animations" title="Pause animations" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12M16 6v12"/></svg></button>
   </section>
 
 
   <nav class="story-index website-only" aria-label="Explore Dulcinea One" data-en-aria-label="Explore Dulcinea One" data-es-aria-label="Explore Dulcinea One">
     <span class="micro" data-en="Inside Dulcinea One" data-es="Conozca Dulcinea One">Inside Dulcinea One</span>
-    <div><a href="#ownership" data-en="The lifestyle" data-es="El estilo de vida">The lifestyle</a><a href="#member-benefits" data-en="Member benefits" data-es="Beneficios">Member benefits</a><a href="#oriente">El Oriente</a><a href="#destination">Medellín</a><a href="#experience">Lola &amp; Ber</a><a href="#homes" data-en="The homes" data-es="Las propiedades">The homes</a><a href="#fund" data-en="The offer" data-es="La oferta">The offer</a><a href="#resources" data-en="Investor resources" data-es="Para inversionistas">Investor resources</a></div>
+    <div><a href="#ownership" data-en="The lifestyle" data-es="El estilo de vida">The lifestyle</a><a href="#oriente">El Oriente</a><a href="#destination">Medellín</a><a href="#experience">Lola &amp; Ber</a><a href="#member-benefits" data-en="Member benefits" data-es="Beneficios">Member benefits</a><a href="#homes" data-en="The homes" data-es="Las propiedades">The homes</a><a href="#returns" data-en="Returns" data-es="Retornos">Returns</a><a href="#fund" data-en="The offer" data-es="La oferta">The offer</a><a href="#resources" data-en="Investor resources" data-es="Para inversionistas">Investor resources</a></div>
   </nav>
   <aside class="offer-glance website-only" aria-label="Fund subscription" data-en-aria-label="Fund subscription" data-es-aria-label="Suscripción del fondo">
     <p data-en="Invest in Dulcinea One." data-es="Invierta en Dulcinea One.">Invest in Dulcinea One.</p>
@@ -1355,63 +1450,25 @@ body.is-presenting .website-only { display:none !important; }
     <a href="#fund"><span data-en="$4.9M open · See the offer" data-es="US$4,9M disponibles · Ver la oferta">$4.9M open · See the offer</span><span aria-hidden="true">↗</span></a>
   </aside>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   <section class="ownership-story section-pad" id="ownership" aria-labelledby="ownership-title">
     <div class="ownership-media"><video src="assets/video/properties/monte-sereno.mp4" poster="assets/images/lifestyle/monte-sereno.webp" muted loop playsinline preload="none" aria-hidden="true"></video><span class="image-caption" data-en="AI lifestyle visualization" data-es="Visualización de estilo de vida con IA">AI lifestyle visualization</span></div>
-    <div class="ownership-copy"><p class="micro" data-en="01 / The lifestyle" data-es="01 / El estilo de vida">01 / The lifestyle</p><h2 id="ownership-title" data-en="Spend more time&#10;in Medellín." data-es="Más tiempo&#10;para disfrutar Medellín.">Spend more time<br>in Medellín.</h2><p data-en="A home base for time with friends, dinners in the city and weekends in the country." data-es="Un lugar para compartir con amigos, salir a cenar en la ciudad y pasar fines de semana en el campo.">A home base for time with friends, dinners in the city and weekends in the country.</p>
+    <div class="ownership-copy"><p class="micro" data-en="The lifestyle" data-es="El estilo de vida">The lifestyle</p><h2 id="ownership-title" data-en="Spend more time&#10;in Medellín." data-es="Más tiempo&#10;para disfrutar Medellín.">Spend more time<br>in Medellín.</h2><p data-en="A home base for time with friends, dinners in the city and weekends in the country." data-es="Un lugar para compartir con amigos, salir a cenar en la ciudad y pasar fines de semana en el campo.">A home base for time with friends, dinners in the city and weekends in the country.</p>
       <dl class="lifestyle-benefits"><div><dt data-en="Space to settle in" data-es="Espacio para quedarse">Space to settle in</dt><dd data-en="Plan a longer stay, with room for everyday life." data-es="Planee una estadía más larga, con espacio para la vida cotidiana.">Plan a longer stay, with room for everyday life.</dd></div><div><dt data-en="City and countryside" data-es="Ciudad y campo">City and countryside</dt><dd data-en="Choose the pace of El Poblado or the space of El Retiro." data-es="Elija el ritmo de El Poblado o la amplitud de El Retiro.">Choose the pace of El Poblado or the space of El Retiro.</dd></div><div><dt data-en="Less to manage" data-es="Menos de qué ocuparse">Less to manage</dt><dd data-en="Dulcinea handles renovation, rentals and resale." data-es="Dulcinea se encarga de la renovación, los arriendos y la venta.">Dulcinea handles renovation, rentals and resale.</dd></div></dl>
-      <a class="line-link ink" href="#member-benefits"><span data-en="See member benefits" data-es="Ver beneficios de membresía">See member benefits</span><span aria-hidden="true">↗</span></a><p class="footnote" data-en="Investor stays and lifestyle benefits follow the membership terms. Units do not convey title to a particular home." data-es="Las estadías y los beneficios de estilo de vida se rigen por las condiciones de membresía. Las unidades no otorgan título sobre una propiedad específica.">Investor stays and lifestyle benefits follow the membership terms. Units do not convey title to a particular home.</p></div>
+      <a class="line-link ink" href="#oriente"><span data-en="Explore El Oriente" data-es="Conozca el Oriente">Explore El Oriente</span><span aria-hidden="true">↓</span></a><p class="footnote" data-en="Investor stays and lifestyle benefits follow the membership terms. Units do not convey title to a particular home." data-es="Las estadías y los beneficios de estilo de vida se rigen por las condiciones de membresía. Las unidades no otorgan título sobre una propiedad específica.">Investor stays and lifestyle benefits follow the membership terms. Units do not convey title to a particular home.</p></div>
   </section>
 
-  <section class="member-benefits section-pad" id="member-benefits" aria-labelledby="member-benefits-title">
-    <div class="member-benefits-overview">
-      <div class="member-benefits-heading"><p class="micro" data-en="With your Units" data-es="Con sus unidades">With your Units</p><h2 id="member-benefits-title" data-en="Member benefits" data-es="Beneficios de membresía">Member benefits</h2><p data-en="You can stay in the homes and participate in Lola &amp; Ber and future Dulcinea funds." data-es="Puede hospedarse en las propiedades y participar en Lola &amp; Ber y en futuros fondos de Dulcinea.">You can stay in the homes and participate in Lola &amp; Ber and future Dulcinea funds.</p></div>
-      <div class="member-benefit-grid">
-        <article><p class="micro" data-en="Owner use" data-es="Uso de las propiedades">Owner use</p><strong class="member-benefit-number">365</strong><h3 data-en="Shared nights a year" data-es="Noches compartidas al año">Shared nights a year</h3><p data-en="Members share the pool across five homes. Each home in service adds 73 nights." data-es="Los miembros comparten la bolsa entre cinco propiedades. Cada propiedad en servicio aporta 73 noches.">Members share the pool across five homes. Each home in service adds 73 nights.</p><p class="member-benefit-detail" data-en="About 5 nights per US$100,000 or 52 per US$1M, pro rata at full subscription." data-es="Unas 5 noches por US$100.000 o 52 por US$1 millón, a prorrata con la suscripción completa.">About 5 nights per US$100,000 or 52 per US$1M, pro rata at full subscription.</p></article>
-        <article><p class="micro" data-en="Lola &amp; Ber" data-es="Lola &amp; Ber">Lola &amp; Ber</p><strong class="member-benefit-number">3%</strong><h3 data-en="Members’ collective stake" data-es="Participación colectiva">Members’ collective stake</h3><p data-en="Members collectively receive 3% of Lola &amp; Ber at full subscription." data-es="Los miembros reciben colectivamente el 3% de Lola &amp; Ber al completarse la suscripción.">Members collectively receive 3% of Lola &amp; Ber at full subscription.</p><p class="member-benefit-detail" data-en="No additional capital call or dilution, subject to the membership terms." data-es="Sin aportes adicionales ni dilución, sujeto a las condiciones de membresía.">No additional capital call or dilution, subject to the membership terms.</p></article>
-        <article><p class="micro" data-en="Future Dulcinea funds" data-es="Futuros fondos de Dulcinea">Future Dulcinea funds</p><strong class="member-benefit-number member-benefit-word" data-en="Priority" data-es="Prioridad">Priority</strong><h3 data-en="A share of future economics" data-es="Participación en futuros resultados">A share of future economics</h3><p data-en="Participate in future fund economics through the Managing Partner structure." data-es="Participe en los resultados de futuros fondos mediante la estructura del socio gestor.">Participate in future fund economics through the Managing Partner structure.</p><p class="member-benefit-detail" data-en="Pro-rata participation in the planned US$10M and US$15M rounds, under the membership terms." data-es="Participación a prorrata en las rondas previstas de US$10 millones y US$15 millones, según las condiciones de membresía.">Pro-rata participation in the planned US$10M and US$15M rounds, under the membership terms.</p></article>
-      </div>
-      <div class="member-benefits-bottom"><p class="footnote" data-en="Owner-use costs are included in the base case. Brand equity and future-fund participation are additional benefits. Membership documents govern." data-es="El costo del uso por los miembros está incluido en el caso base. La participación en la marca y en futuros fondos son beneficios adicionales. Rigen los documentos de membresía.">Owner-use costs are included in the base case. Brand equity and future-fund participation are additional benefits. Membership documents govern.</p><a class="line-link ink presentation-only" href="#owner-use"><span data-en="How booking works" data-es="Cómo reservar">How booking works</span><span aria-hidden="true">↗</span></a></div>
-    </div>
-    <details class="owner-use" id="owner-use">
-      <summary><span data-en="Owner use and booking" data-es="Uso y reservas">Owner use and booking</span><span class="plus" aria-hidden="true">+</span></summary>
-      <div class="owner-use-content">
-        <div class="owner-use-heading"><p class="micro presentation-only" data-en="Member benefits" data-es="Beneficios de membresía">Member benefits</p><h2 class="presentation-only" data-en="Owner use" data-es="Uso de las propiedades">Owner use</h2><p data-en="Members book from the annual pool as each home opens." data-es="Los miembros reservan de la bolsa anual a medida que cada propiedad entra en servicio.">Members book from the annual pool as each home opens.</p></div>
-        <div class="owner-use-facts"><div><strong>365</strong><span data-en="shared nights a year" data-es="noches compartidas al año">shared nights a year</span></div><div><strong>73</strong><span data-en="per home in service" data-es="por propiedad en servicio">per home in service</span></div><div><strong data-en="~5 nights" data-es="~5 noches">~5 nights</strong><span data-en="per US$100,000 at full subscription" data-es="por US$100.000 con suscripción completa">per US$100,000 at full subscription</span></div><div><strong data-en="12 months" data-es="12 meses">12 months</strong><span data-en="ahead for peak bookings" data-es="de anticipación en temporada alta">ahead for peak bookings</span></div></div>
-        <div class="owner-use-rules">
-          <article><h3 data-en="Any home, any open date" data-es="Cualquier propiedad y fecha disponible">Any home, any open date</h3><p data-en="Book any home in service for at least two nights. Swaps within 48 hours. Cancel 30 days ahead." data-es="Reserve cualquier propiedad en servicio. Estadía mínima: dos noches. Cambios dentro de 48 horas. Cancele con 30 días de anticipación.">Book any home in service for at least two nights. Swaps within 48 hours. Cancel 30 days ahead.</p></article>
-          <article><h3 data-en="Peak months" data-es="Temporada alta">Peak months</h3><p data-en="December, January, July and August open for booking 12 months ahead. Bookings close 6 months ahead. Each Member is limited to a quarter of a home’s peak nights." data-es="Diciembre, enero, julio y agosto abren reservas con 12 meses de anticipación y cierran con 6. Ningún miembro ocupa más de una cuarta parte de las noches de temporada alta de una propiedad.">December, January, July and August open for booking 12 months ahead. Bookings close 6 months ahead. Each Member is limited to a quarter of a home’s peak nights.</p></article>
-          <article><h3 data-en="Special dates" data-es="Fechas especiales">Special dates</h3><p data-en="Christmas to New Year, Semana Santa and Feria de las Flores: one stay per home, three nights minimum. A draw weighted by Units allocates stays. Winners sit out the next draw." data-es="Navidad a Año Nuevo, Semana Santa y Feria de las Flores: una estadía por propiedad, mínimo tres noches. Un sorteo ponderado por unidades asigna las estadías. Los ganadores no participan en el siguiente sorteo.">Christmas to New Year, Semana Santa and Feria de las Flores: one stay per home, three nights minimum. A draw weighted by Units allocates stays. Winners sit out the next draw.</p></article>
-          <article><h3 data-en="Guests come first" data-es="Prioridad para huéspedes de pago">Guests come first</h3><p data-en="An owner stay never displaces a paying guest. Owner nights cost the fund about $142K in rent over its life, already included in the base case." data-es="Una estadía de un miembro nunca desplaza a un huésped de pago. Las noches de miembros cuestan al fondo unos US$142.000 en arriendos durante su vigencia, ya incluidos en el caso base.">An owner stay never displaces a paying guest. Owner nights cost the fund about $142K in rent over its life, already included in the base case.</p></article>
-        </div>
-        <p class="footnote" data-en="Nights are allocated pro rata to commitment: about 52 per $1M at full subscription. Membership documents govern availability and all rights." data-es="Las noches se asignan a prorrata del compromiso: unas 52 por US$1 millón con suscripción completa. Los documentos de membresía rigen la disponibilidad y todos los derechos.">Nights are allocated pro rata to commitment: about 52 per $1M at full subscription. Membership documents govern availability and all rights.</p>
-      </div>
-    </details>
-  </section>
 
   <section class="oriente-story" id="oriente" aria-labelledby="oriente-title">
     <div class="oriente-cinema">
       <video id="oriente-country" src="assets/video/oriente-country.mp4" poster="assets/video/oriente-country-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
       <div class="oriente-shade" aria-hidden="true"></div>
       <div class="oriente-cinema-content">
-        <p class="micro" data-en="02 / El Retiro · Oriente Antioqueño" data-es="02 / El Retiro · Oriente Antioqueño">02 / El Retiro · Oriente Antioqueño</p>
+        <p class="micro" data-en="El Retiro · Oriente Antioqueño" data-es="El Retiro · Oriente Antioqueño">El Retiro · Oriente Antioqueño</p>
         <h2 id="oriente-title" data-en="Country homes.&#10;Close to Medellín." data-es="Casas de campo.&#10;Cerca de Medellín.">Country homes.<br>Close to Medellín.</h2>
         <p class="oriente-cinema-copy" data-en="Gardens, terraces and time outdoors. Casa Monte Sereno and Casa Montana, in El Retiro." data-es="Jardines, terrazas y tiempo al aire libre. Casa Monte Sereno y Casa Montana, en El Retiro.">Gardens, terraces and time outdoors. Casa Monte Sereno and Casa Montana, in El Retiro.</p>
         <nav class="oriente-homes" aria-label="Explore the country homes" data-en-aria-label="Explore the country homes" data-es-aria-label="Conozca las casas de campo">
-          <a class="line-link" href="#homes" data-preview-home="3"><span>Casa Monte Sereno</span><span aria-hidden="true">↗</span></a>
-          <a class="line-link" href="#homes" data-preview-home="4"><span>Casa Montana</span><span aria-hidden="true">↗</span></a>
+          <a class="line-link" href="#property-monte-sereno" data-preview-home="3"><span>Casa Monte Sereno</span><span aria-hidden="true">↗</span></a>
+          <a class="line-link" href="#property-montana" data-preview-home="4"><span>Casa Montana</span><span aria-hidden="true">↗</span></a>
         </nav>
         <p class="oriente-location" data-en="Time outdoors" data-es="Tiempo al aire libre">Time outdoors</p>
       </div>
@@ -1428,16 +1485,22 @@ body.is-presenting .website-only { display:none !important; }
     </div>
   </section>
 
-  <section class="story-destination story-film film" id="destination" aria-labelledby="destination-title">
+  <section class="story-destination" id="destination" aria-labelledby="destination-title">
+    <div class="city-cinema story-film film">
     <video class="background-video" src="assets/video/medellin-location.mp4" poster="assets/video/medellin-location-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-    <div class="story-film-copy"><p class="micro" data-en="03 / El Poblado, Medellín" data-es="03 / El Poblado, Medellín">03 / El Poblado, Medellín</p><h2 id="destination-title" data-en="A home base&#10;for the city." data-es="Su base para&#10;vivir la ciudad.">A home base<br>for the city.</h2><p data-en="Meet friends for dinner. Explore the restaurants and music. Stay long enough to make Medellín part of your life." data-es="Cene con amigos. Conozca sus restaurantes y su música. Quédese el tiempo suficiente para que Medellín forme parte de su vida.">Meet friends for dinner. Explore the restaurants and music. Stay long enough to make Medellín part of your life.</p><a class="line-link" href="#homes" data-preview-home="0"><span data-en="Explore the city homes" data-es="Conozca las propiedades en la ciudad">Explore the city homes</span><span aria-hidden="true">↗</span></a></div>
+    <div class="story-film-copy"><p class="micro" data-en="El Poblado, Medellín" data-es="El Poblado, Medellín">El Poblado, Medellín</p><h2 id="destination-title" data-en="A home base&#10;for the city." data-es="Su base para&#10;vivir la ciudad.">A home base<br>for the city.</h2><p data-en="Meet friends for dinner. Explore the restaurants and music. Stay long enough to make Medellín part of your life." data-es="Cene con amigos. Conozca sus restaurantes y su música. Quédese el tiempo suficiente para que Medellín forme parte de su vida.">Meet friends for dinner. Explore the restaurants and music. Stay long enough to make Medellín part of your life.</p><a class="line-link" href="#property-fontanar" data-preview-home="0"><span data-en="Explore the city homes" data-es="Conozca las propiedades en la ciudad">Explore the city homes</span><span aria-hidden="true">↗</span></a></div>
     <div class="destination-labels"><span data-en="Three selected properties in El Poblado" data-es="Tres propiedades seleccionadas en El Poblado">Three selected properties in El Poblado</span><span>Fontanar · San Lucas · Aires de Campestre</span></div>
+    </div>
+  <section class="story-nightlife story-film film website-only" id="after-dark" aria-labelledby="nightlife-title">
+    <video class="background-video" id="experience-nightlife" src="assets/video/medellin-after-dark.mp4" poster="assets/video/medellin-nightlife-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="story-film-copy"><p class="micro" data-en="Nightlife" data-es="Vida nocturna">Nightlife</p><h2 id="nightlife-title" data-en="Medellín after dark." data-es="Medellín de noche.">Medellín after dark.</h2><p data-en="Restaurants, music and clubs." data-es="Restaurantes, música y discotecas.">Restaurants, music and clubs.</p><a class="line-link" href="#fund"><span data-en="Be part of Dulcinea One" data-es="Sea parte de Dulcinea One">Be part of Dulcinea One</span><span aria-hidden="true">↗</span></a></div>
+  </section>
   </section>
 
   <section class="experience film" id="experience" aria-labelledby="experience-title">
     <video class="background-video" id="experience-hospitality" src="assets/video/hospitality-people.mp4" poster="assets/video/hospitality-people-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
     <div class="experience-content">
-      <p class="micro" data-en="04 / The brand" data-es="04 / La marca">04 / The brand</p>
+      <p class="micro" data-en="The brand" data-es="La marca">The brand</p>
       <h2 id="experience-title">Lola &amp; Ber</h2>
       <p class="brand-tagline" lang="en">Freedom, by design.</p>
       <p data-en="Born from retreats and community, Lola &amp; Ber is a sex-positive brand for open-minded adults." data-es="Lola &amp; Ber nació de retiros y comunidad. Es una marca para adultos de mente abierta, con una visión positiva de la sexualidad.">Born from retreats and community, Lola &amp; Ber is a sex-positive brand for open-minded adults.</p>
@@ -1448,52 +1511,65 @@ body.is-presenting .website-only { display:none !important; }
     </div>
   </section>
 
-  <section class="homes section-pad" id="homes" aria-labelledby="homes-title">
-    <div class="section-heading"><div><p class="micro section-index"><span>05 /</span> <span data-en="The collection" data-es="La colección">The collection</span></p><h2 id="homes-title" data-en="The homes" data-es="Las propiedades">The homes</h2></div><p class="section-aside" data-en="El Poblado & El Oriente&#10;Selected for Dulcinea One." data-es="El Poblado y el Oriente&#10;Seleccionadas para Dulcinea One.">El Poblado & El Oriente<br>Selected for Dulcinea One.</p></div>
-    <div class="property-tabs" role="group" aria-label="Select a property">
-      <button data-home="0" aria-pressed="true"><span class="property-tab-number">01</span><span class="property-tab-name">Fontanar 201</span></button>
-      <button data-home="1" aria-pressed="false"><span class="property-tab-number">02</span><span class="property-tab-name">San Lucas 101</span></button>
-      <button data-home="2" aria-pressed="false"><span class="property-tab-number">03</span><span class="property-tab-name">Aires de Campestre</span></button>
-      <button data-home="3" aria-pressed="false"><span class="property-tab-number">04</span><span class="property-tab-name">Casa Monte Sereno</span></button>
-      <button data-home="4" aria-pressed="false"><span class="property-tab-number">05</span><span class="property-tab-name">Casa Montana</span></button>
+  <section class="member-benefits section-pad" id="member-benefits" aria-labelledby="member-benefits-title">
+    <div class="member-benefits-overview">
+      <div class="member-benefits-heading"><p class="micro" data-en="Member benefits" data-es="Beneficios de membresía">Member benefits</p><h2 id="member-benefits-title" data-en="Member benefits" data-es="Beneficios de membresía">Member benefits</h2><p data-en="Your investment includes home use, a collective stake in Lola &amp; Ber and conditional participation in future funds." data-es="Su inversión incluye uso de las propiedades, participación colectiva en Lola &amp; Ber y participación condicionada en futuros fondos.">Your investment includes home use, a collective stake in Lola &amp; Ber and conditional participation in future funds.</p></div>
+      <div class="member-benefit-grid">
+        <article class="member-benefit-primary"><p class="micro" data-en="Owner use" data-es="Uso de las propiedades">Owner use</p><strong class="member-benefit-number"><small data-en="Up to" data-es="Hasta">Up to</small>365</strong><h3 data-en="Shared nights a year" data-es="Noches compartidas al año">Shared nights a year</h3><p data-en="The pool reaches 365 nights when all five homes operate. Each active home adds 73 nights." data-es="La bolsa llega a 365 noches cuando operan las cinco propiedades. Cada propiedad activa aporta 73 noches.">The pool reaches 365 nights when all five homes operate. Each active home adds 73 nights.</p><p class="member-benefit-detail" data-en="About 5 nights per US$100,000 or 52 per US$1M, pro rata at full subscription." data-es="Unas 5 noches por US$100.000 o 52 por US$1 millón, a prorrata con la suscripción completa.">About 5 nights per US$100,000 or 52 per US$1M, pro rata at full subscription.</p></article>
+        <article><p class="micro" data-en="Lola &amp; Ber" data-es="Lola &amp; Ber">Lola &amp; Ber</p><strong class="member-benefit-number">3%</strong><h3 data-en="Members’ collective stake" data-es="Participación colectiva">Members’ collective stake</h3><p data-en="Members collectively receive 3% of Lola &amp; Ber at full subscription." data-es="Los miembros reciben colectivamente el 3% de Lola &amp; Ber al completarse la suscripción.">Members collectively receive 3% of Lola &amp; Ber at full subscription.</p><p class="member-benefit-detail" data-en="No additional capital call or dilution, subject to the membership terms." data-es="Sin aportes adicionales ni dilución, sujeto a las condiciones de membresía.">No additional capital call or dilution, subject to the membership terms.</p></article>
+        <article><p class="micro" data-en="Future Dulcinea funds" data-es="Futuros fondos de Dulcinea">Future Dulcinea funds</p><h3 data-en="A share of future economics" data-es="Participación en futuros resultados">A share of future economics</h3><p data-en="Participate in future fund economics through the Managing Partner structure." data-es="Participe en los resultados de futuros fondos mediante la estructura del socio gestor.">Participate in future fund economics through the Managing Partner structure.</p><p class="member-benefit-detail" data-en="Pro-rata participation in planned US$10M and US$15M rounds, subject to membership terms. Future funds are not guaranteed." data-es="Participación a prorrata en rondas previstas de US$10 millones y US$15 millones, sujeta a las condiciones de membresía. No se garantizan futuros fondos.">Pro-rata participation in planned US$10M and US$15M rounds, subject to membership terms. Future funds are not guaranteed.</p></article>
+      </div>
+      <div class="member-benefits-bottom"><p class="footnote" data-en="Owner-use costs are included in the base case. Membership gives no title to an individual home. Use and participation follow membership terms." data-es="El costo del uso está incluido en el caso base. La membresía no otorga título sobre una propiedad individual. El uso y la participación se rigen por las condiciones de membresía.">Owner-use costs are included in the base case. Membership gives no title to an individual home. Use and participation follow membership terms.</p><a class="line-link ink presentation-only" href="#owner-use"><span data-en="How booking works" data-es="Cómo reservar">How booking works</span><span aria-hidden="true">↗</span></a></div>
     </div>
-    <div class="property-layout">
-      <div class="property-visual"><video id="property-video" src="assets/video/properties/fontanar.mp4" poster="assets/images/lifestyle/fontanar.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video><span class="image-caption" data-en="AI lifestyle visualization" data-es="Visualización de estilo de vida con IA">AI lifestyle visualization</span></div>
+    <details class="owner-use" id="owner-use">
+      <summary><span data-en="Owner use and booking" data-es="Uso y reservas">Owner use and booking</span><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="owner-use-content">
+        <div class="owner-use-heading"><p class="micro presentation-only" data-en="Member benefits" data-es="Beneficios de membresía">Member benefits</p><h2 class="presentation-only" data-en="Owner use" data-es="Uso de las propiedades">Owner use</h2><p data-en="Members book from the annual pool as each home opens." data-es="Los miembros reservan de la bolsa anual a medida que cada propiedad entra en servicio.">Members book from the annual pool as each home opens.</p></div>
+        <div class="owner-use-facts"><div><strong>365</strong><span data-en="shared nights a year, with five active homes" data-es="noches compartidas al año, con cinco propiedades activas">shared nights a year, with five active homes</span></div><div><strong>73</strong><span data-en="per home in service" data-es="por propiedad en servicio">per home in service</span></div><div><strong data-en="~5 nights" data-es="~5 noches">~5 nights</strong><span data-en="per US$100,000 at full subscription" data-es="por US$100.000 con suscripción completa">per US$100,000 at full subscription</span></div><div><strong data-en="12 months" data-es="12 meses">12 months</strong><span data-en="ahead for peak bookings" data-es="de anticipación en temporada alta">ahead for peak bookings</span></div></div>
+        <div class="owner-use-rules">
+          <article><h3 data-en="Any home, any open date" data-es="Cualquier propiedad y fecha disponible">Any home, any open date</h3><p data-en="Book any home in service for at least two nights. Swaps within 48 hours. Cancel 30 days ahead." data-es="Reserve cualquier propiedad en servicio. Estadía mínima: dos noches. Cambios dentro de 48 horas. Cancele con 30 días de anticipación.">Book any home in service for at least two nights. Swaps within 48 hours. Cancel 30 days ahead.</p></article>
+          <article><h3 data-en="Peak months" data-es="Temporada alta">Peak months</h3><p data-en="December, January, July and August open for booking 12 months ahead. Bookings close 6 months ahead. Each Member is limited to a quarter of a home’s peak nights." data-es="Diciembre, enero, julio y agosto abren reservas con 12 meses de anticipación y cierran con 6. Ningún miembro ocupa más de una cuarta parte de las noches de temporada alta de una propiedad.">December, January, July and August open for booking 12 months ahead. Bookings close 6 months ahead. Each Member is limited to a quarter of a home’s peak nights.</p></article>
+          <article><h3 data-en="Special dates" data-es="Fechas especiales">Special dates</h3><p data-en="Christmas to New Year, Semana Santa and Feria de las Flores: one stay per home, three nights minimum. A draw weighted by Units allocates stays. Winners sit out the next draw." data-es="Navidad a Año Nuevo, Semana Santa y Feria de las Flores: una estadía por propiedad, mínimo tres noches. Un sorteo ponderado por unidades asigna las estadías. Los ganadores no participan en el siguiente sorteo.">Christmas to New Year, Semana Santa and Feria de las Flores: one stay per home, three nights minimum. A draw weighted by Units allocates stays. Winners sit out the next draw.</p></article>
+          <article><h3 data-en="Guests come first" data-es="Prioridad para huéspedes de pago">Guests come first</h3><p data-en="An owner stay never displaces a paying guest. Owner nights cost the fund about $142K in rent over its life, already included in the base case." data-es="Una estadía de un miembro nunca desplaza a un huésped de pago. Las noches de miembros cuestan al fondo unos US$142.000 en arriendos durante su vigencia, ya incluidos en el caso base.">An owner stay never displaces a paying guest. Owner nights cost the fund about $142K in rent over its life, already included in the base case.</p></article>
+        </div>
+        <p class="footnote" data-en="Nights are allocated pro rata to commitment: about 52 per $1M at full subscription. Membership documents govern availability and all rights." data-es="Las noches se asignan a prorrata del compromiso: unas 52 por US$1 millón con suscripción completa. Los documentos de membresía rigen la disponibilidad y todos los derechos.">Nights are allocated pro rata to commitment: about 52 per $1M at full subscription. Membership documents govern availability and all rights.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="homes section-pad" id="homes" aria-labelledby="homes-title">
+    <div class="section-heading"><div><p class="micro section-index"><span data-en="The collection" data-es="La colección">The collection</span></p><h2 id="homes-title" data-en="The homes" data-es="Las propiedades">The homes</h2></div><p class="section-aside" data-en="El Poblado & El Oriente&#10;Selected for Dulcinea One." data-es="El Poblado y el Oriente&#10;Seleccionadas para Dulcinea One.">El Poblado & El Oriente<br>Selected for Dulcinea One.</p></div>
+    <div class="property-previews website-only" id="home-films" role="group" aria-label="Select a property" data-en-aria-label="Select a property" data-es-aria-label="Seleccione una propiedad">
+      <a class="property-preview" id="property-monte-sereno" href="#property-monte-sereno" data-preview-home="3" aria-label="Explore Casa Monte Sereno" data-en-aria-label="Explore Casa Monte Sereno" data-es-aria-label="Conozca Casa Monte Sereno"><span class="property-preview-media"><video src="assets/video/properties/monte-sereno.mp4" poster="assets/images/lifestyle/monte-sereno.webp" muted playsinline preload="none" aria-hidden="true"></video><span aria-hidden="true">↗</span></span><span class="property-preview-location micro">El Retiro · 420 m²</span><span class="property-preview-name">Casa Monte Sereno</span></a>
+      <a class="property-preview" id="property-montana" href="#property-montana" data-preview-home="4" aria-label="Explore Casa Montana" data-en-aria-label="Explore Casa Montana" data-es-aria-label="Conozca Casa Montana"><span class="property-preview-media"><video src="assets/video/properties/montana.mp4" poster="assets/images/lifestyle/montana.webp" muted playsinline preload="none" aria-hidden="true"></video><span aria-hidden="true">↗</span></span><span class="property-preview-location micro">El Retiro · 591 m²</span><span class="property-preview-name">Casa Montana</span></a>
+      <a class="property-preview" id="property-fontanar" href="#property-fontanar" data-preview-home="0" aria-label="Explore Fontanar 201" data-en-aria-label="Explore Fontanar 201" data-es-aria-label="Conozca Fontanar 201"><span class="property-preview-media"><video src="assets/video/properties/fontanar.mp4" poster="assets/images/lifestyle/fontanar.jpg" muted playsinline preload="none" aria-hidden="true"></video><span aria-hidden="true">↗</span></span><span class="property-preview-location micro">El Poblado · 389 m²</span><span class="property-preview-name">Fontanar 201</span></a>
+      <a class="property-preview" id="property-san-lucas" href="#property-san-lucas" data-preview-home="1" aria-label="Explore San Lucas 101" data-en-aria-label="Explore San Lucas 101" data-es-aria-label="Conozca San Lucas 101"><span class="property-preview-media"><video src="assets/video/properties/san-lucas.mp4" poster="assets/images/lifestyle/san-lucas.webp" muted playsinline preload="none" aria-hidden="true"></video><span aria-hidden="true">↗</span></span><span class="property-preview-location micro">El Poblado · 325 m²</span><span class="property-preview-name">San Lucas 101</span></a>
+      <a class="property-preview" id="property-aires" href="#property-aires" data-preview-home="2" aria-label="Explore Aires de Campestre" data-en-aria-label="Explore Aires de Campestre" data-es-aria-label="Conozca Aires de Campestre"><span class="property-preview-media"><video src="assets/video/properties/aires.mp4" poster="assets/images/lifestyle/aires.jpg" muted playsinline preload="none" aria-hidden="true"></video><span aria-hidden="true">↗</span></span><span class="property-preview-location micro">El Poblado · 489 m²</span><span class="property-preview-name">Aires de Campestre</span></a>
+    </div>
+    <div class="property-layout" id="property-detail" tabindex="-1" aria-labelledby="property-name">
+      <div class="property-visual"><video id="property-video" src="assets/video/properties/monte-sereno.mp4" poster="assets/images/lifestyle/monte-sereno.webp" muted loop playsinline preload="metadata" aria-hidden="true"></video><span class="image-caption" data-en="AI lifestyle visualization" data-es="Visualización de estilo de vida con IA">AI lifestyle visualization</span></div>
       <div class="property-info">
-        <div class="property-count"><span id="property-count">01 / 05</span><span class="property-controls"><button id="prev-home" aria-label="Previous property">←</button><button id="next-home" aria-label="Next property">→</button></span></div>
+        <div class="property-count"><span id="property-count">05</span><span class="property-controls"><button id="prev-home" aria-label="Previous property">←</button><button id="next-home" aria-label="Next property">→</button></span></div>
         <div class="property-details" aria-live="polite">
-          <div class="property-location-row micro"><span id="property-location">El Poblado</span><span id="property-type">Penthouse</span></div>
-          <h3 id="property-name">Fontanar 201</h3><p class="property-description" id="property-description">A two-level penthouse in El Poblado.</p>
-          <dl class="property-facts"><div class="property-area-row"><dt data-en="Area" data-es="Área">Area</dt><dd id="property-area">389 m²</dd></div><div class="property-status-row"><dt data-en="Acquisition status¹" data-es="Estado de adquisición¹">Acquisition status¹</dt><dd id="property-status">Closed · 3Q26</dd></div></dl>
+          <div class="property-location-row micro"><span id="property-location">El Retiro</span><span id="property-type">House</span></div>
+          <h3 id="property-name">Casa Monte Sereno</h3><p class="property-description" id="property-description">A country house with gardens and terraces in El Retiro.</p>
+          <dl class="property-facts"><div class="property-area-row"><dt data-en="Area" data-es="Área">Area</dt><dd id="property-area">420 m²</dd></div><div class="property-status-row"><dt data-en="Acquisition status¹" data-es="Estado de adquisición¹">Acquisition status¹</dt><dd id="property-status">In negotiation</dd></div></dl>
         </div>
         <div class="property-actions">
-          <button type="button" class="floorplan-link" id="view-plans"><span id="property-plan-label" data-en="View floorplans" data-es="Ver planos">View floorplans</span><span id="property-plan-count">02</span><span aria-hidden="true">↗</span></button>
+          <button type="button" class="floorplan-link" id="view-plans"><span id="property-plan-label" data-en="View floorplans" data-es="Ver planos">View floorplans</span><span id="property-plan-count">03</span><span aria-hidden="true">↗</span></button>
           <button type="button" class="original" id="view-original"><span data-en="Original imagery" data-es="Imagen original">Original imagery</span><span aria-hidden="true">↗</span></button>
         </div>
       </div>
     </div>
     <p class="footnote" data-en="¹ Acquisition status as of 4Q26. Remaining acquisitions are subject to closing. People and furnishings in visualizations are illustrative." data-es="¹ Estado de adquisición a 4T26. Las adquisiciones pendientes están sujetas al cierre. Las personas y el mobiliario de las visualizaciones son ilustrativos.">¹ Acquisition status as of 4Q26. Remaining acquisitions are subject to closing. People and furnishings in visualizations are illustrative.</p>
-    <div class="home-film-collection website-only" id="home-films">
-      <div class="film-collection-heading"><div><p class="micro" data-en="The five properties" data-es="Las cinco propiedades">The five properties</p><h3 data-en="See each property." data-es="Conozca cada propiedad.">See each property.</h3></div><p data-en="Select a property for details, original photos and available floorplans." data-es="Seleccione una propiedad para ver los detalles, las fotos originales y los planos disponibles.">Select a property for details, original photos and available floorplans.</p></div>
-      <div class="home-film-grid">
-        <article class="home-film-card"><a href="#homes" data-preview-home="0" aria-label="Explore Fontanar 201" data-en-aria-label="Explore Fontanar 201" data-es-aria-label="Conozca Fontanar 201"><div class="home-film-media"><video src="assets/video/properties/fontanar.mp4" poster="assets/images/lifestyle/fontanar.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="home-film-number">01</span><span class="home-film-action" aria-hidden="true">↗</span></div><div class="home-film-caption"><div><p class="micro">El Poblado · 389 m²</p><h4>Fontanar 201</h4><p data-en="Two-level penthouse." data-es="Penthouse de dos niveles.">Two-level penthouse.</p></div><span data-en="View home" data-es="Ver propiedad">View home</span></div></a></article>
-        <article class="home-film-card"><a href="#homes" data-preview-home="1" aria-label="Explore San Lucas 101" data-en-aria-label="Explore San Lucas 101" data-es-aria-label="Conozca San Lucas 101"><div class="home-film-media"><video src="assets/video/properties/san-lucas.mp4" poster="assets/images/lifestyle/san-lucas.webp" muted loop playsinline preload="none" aria-hidden="true"></video><span class="home-film-number">02</span><span class="home-film-action" aria-hidden="true">↗</span></div><div class="home-film-caption"><div><p class="micro">El Poblado · 325 m²</p><h4>San Lucas 101</h4><p data-en="Apartment in El Poblado." data-es="Apartamento en El Poblado.">Apartment in El Poblado.</p></div><span data-en="View home" data-es="Ver propiedad">View home</span></div></a></article>
-        <article class="home-film-card"><a href="#homes" data-preview-home="2" aria-label="Explore Aires de Campestre" data-en-aria-label="Explore Aires de Campestre" data-es-aria-label="Conozca Aires de Campestre"><div class="home-film-media"><video src="assets/video/properties/aires.mp4" poster="assets/images/lifestyle/aires.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="home-film-number">03</span><span class="home-film-action" aria-hidden="true">↗</span></div><div class="home-film-caption"><div><p class="micro">El Poblado · 489 m²</p><h4>Aires de Campestre</h4><p data-en="Two-level penthouse." data-es="Penthouse de dos niveles.">Two-level penthouse.</p></div><span data-en="View home" data-es="Ver propiedad">View home</span></div></a></article>
-        <article class="home-film-card"><a href="#homes" data-preview-home="3" aria-label="Explore Casa Monte Sereno" data-en-aria-label="Explore Casa Monte Sereno" data-es-aria-label="Conozca Casa Monte Sereno"><div class="home-film-media"><video src="assets/video/properties/monte-sereno.mp4" poster="assets/images/lifestyle/monte-sereno.webp" muted loop playsinline preload="none" aria-hidden="true"></video><span class="home-film-number">04</span><span class="home-film-action" aria-hidden="true">↗</span></div><div class="home-film-caption"><div><p class="micro">El Retiro · 420 m²</p><h4>Casa Monte Sereno</h4><p data-en="House on a 2,940 m² lot." data-es="Casa en un lote de 2.940 m².">House on a 2,940 m² lot.</p></div><span data-en="View home" data-es="Ver propiedad">View home</span></div></a></article>
-        <article class="home-film-card"><a href="#homes" data-preview-home="4" aria-label="Explore Casa Montana" data-en-aria-label="Explore Casa Montana" data-es-aria-label="Conozca Casa Montana"><div class="home-film-media"><video src="assets/video/properties/montana.mp4" poster="assets/images/lifestyle/montana.webp" muted loop playsinline preload="none" aria-hidden="true"></video><span class="home-film-number">05</span><span class="home-film-action" aria-hidden="true">↗</span></div><div class="home-film-caption"><div><p class="micro">El Retiro · 591 m²</p><h4>Casa Montana</h4><p data-en="Country house in El Retiro." data-es="Casa de campo en El Retiro.">Country house in El Retiro.</p></div><span data-en="View home" data-es="Ver propiedad">View home</span></div></a></article>
-      </div><p class="footnote" data-en="AI lifestyle visualizations. Remaining acquisitions are subject to closing." data-es="Visualizaciones de estilo de vida con IA. Las adquisiciones pendientes están sujetas al cierre.">AI lifestyle visualizations. Remaining acquisitions are subject to closing.</p>
-    </div>
+
 
   </section>
 
-  <section class="story-nightlife story-film film website-only" id="after-dark" aria-labelledby="nightlife-title">
-    <video class="background-video" id="experience-nightlife" src="assets/video/medellin-after-dark.mp4" poster="assets/video/medellin-nightlife-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-    <div class="story-film-copy"><p class="micro" data-en="06 / Nightlife" data-es="06 / Vida nocturna">06 / Nightlife</p><h2 id="nightlife-title" data-en="Medellín after dark." data-es="Medellín de noche.">Medellín after dark.</h2><p data-en="Restaurants, music and clubs." data-es="Restaurantes, música y discotecas.">Restaurants, music and clubs.</p><a class="line-link" href="#fund"><span data-en="Be part of Dulcinea One" data-es="Sea parte de Dulcinea One">Be part of Dulcinea One</span><span aria-hidden="true">↗</span></a></div>
-  </section>
 
   <section class="intro section-pad" id="approach">
-    <p class="micro section-index"><span>07 /</span> <span data-en="The idea" data-es="La idea">The idea</span></p>
-    <div class="intro-grid"><h2 data-en="How Dulcinea operates" data-es="Cómo opera Dulcinea">How Dulcinea operates</h2><div class="intro-copy"><p data-en="Dulcinea is a real estate investment firm focused on Medellín, Colombia." data-es="Dulcinea es una firma de inversión inmobiliaria enfocada en Medellín, Colombia.">Dulcinea is a real estate investment firm focused on Medellín, Colombia.</p><p data-en="Dulcinea One is our first fund. We acquire, improve, operate and sell the homes. You invest in the portfolio." data-es="Dulcinea One es nuestro primer fondo. Adquirimos, mejoramos, operamos y vendemos las propiedades. Usted invierte en el portafolio.">Dulcinea One is our first fund. We acquire, improve, operate and sell the homes. You invest in the portfolio.</p><a class="line-link ink" href="#fund"><span data-en="See the investment" data-es="Conozca la inversión">See the investment</span><span>↗</span></a></div></div>
+    <p class="micro section-index"><span data-en="The idea" data-es="La idea">The idea</span></p>
+    <div class="intro-grid"><h2 data-en="How Dulcinea operates" data-es="Cómo opera Dulcinea">How Dulcinea operates</h2><div class="intro-copy"><p data-en="Dulcinea is a real estate investment firm focused on Medellín, Colombia." data-es="Dulcinea es una firma de inversión inmobiliaria enfocada en Medellín, Colombia.">Dulcinea is a real estate investment firm focused on Medellín, Colombia.</p><p data-en="Dulcinea One is our first fund. We acquire, improve, operate and sell the homes. You invest in the portfolio." data-es="Dulcinea One es nuestro primer fondo. Adquirimos, mejoramos, operamos y vendemos las propiedades. Usted invierte en el portafolio.">Dulcinea One is our first fund. We acquire, improve, operate and sell the homes. You invest in the portfolio.</p><p class="approach-status" data-en="Fontanar and Aires are closed. Three acquisitions remain in negotiation. Local specialists support design, legal work and accounting." data-es="Fontanar y Aires están cerrados. Tres adquisiciones siguen en negociación. Especialistas locales apoyan el diseño, los asuntos legales y la contabilidad.">Fontanar and Aires are closed. Three acquisitions remain in negotiation. Local specialists support design, legal work and accounting.</p><a class="line-link ink" href="#returns"><span data-en="See the investment" data-es="Conozca la inversión">See the investment</span><span>↗</span></a></div></div>
 
     <div class="strategy-steps website-only" aria-label="The investment plan" data-en-aria-label="The investment plan" data-es-aria-label="El plan de inversión">
       <article><span class="micro">01</span><h3 data-en="Buy." data-es="Comprar.">Buy.</h3><p data-en="Target a discount to renovated value." data-es="Buscar un descuento frente al valor renovado.">Target a discount to renovated value.</p></article>
@@ -1504,23 +1580,29 @@ body.is-presenting .website-only { display:none !important; }
     <div class="approach-films approach-selection"><figure><div class="approach-film"><video src="assets/video/stock/AdobeStock_762119818.mp4" poster="assets/video/stock/AdobeStock_762119818-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div><figcaption><span data-en="Property visits before acquisition." data-es="Visitas a las propiedades antes de comprar.">Property visits before acquisition.</span><span class="micro" data-en="Property selection" data-es="Selección de propiedades">Property selection</span></figcaption></figure></div>
   </section>
 
+  <section class="returns section-pad" id="returns" aria-labelledby="returns-title">
+    <div class="returns-heading"><p class="micro" data-en="The projections" data-es="Las proyecciones">The projections</p><h2 id="returns-title" data-en="Projected returns" data-es="Retornos proyectados">Projected returns</h2><p data-en="The base case includes rental income, property sales and member use." data-es="El caso base incluye arriendos, ventas de propiedades y uso por los miembros.">The base case includes rental income, property sales and member use.</p></div>
+    <div class="model-content"><div class="projection"><div><strong>14.6%</strong><span data-en="Projected investor IRR" data-es="TIR proyectada del inversionista">Projected investor IRR</span></div><div><strong>1.40×</strong><span data-en="Projected capital multiple" data-es="Múltiplo de capital proyectado">Projected capital multiple</span></div><div><strong>4</strong><span data-en="Projected years" data-es="Años proyectados">Projected years</span></div></div><p class="footnote" data-en="Projected on called capital, after tax and carry. Returns are not guaranteed. Proposed 20% carry follows the return of contributed capital." data-es="Proyecciones sobre el capital llamado, después de impuestos y carry. Los retornos no están garantizados. El carry propuesto del 20% aplica después de devolver el capital aportado.">Projected on called capital, after tax and carry. Returns are not guaranteed. Proposed 20% carry follows the return of contributed capital.</p><div class="document-links"><a data-path="financial-statements.html#income-statement" href="financial-statements.html#income-statement" target="_blank" rel="noopener" data-en="Income statement ↗" data-es="Estado de resultados ↗">Income statement ↗</a><a data-path="financial-statements.html#cash-flow-statement" href="financial-statements.html#cash-flow-statement" target="_blank" rel="noopener" data-en="Cash flows ↗" data-es="Flujos de efectivo ↗">Cash flows ↗</a><a data-path="financial-statements.html#balance-sheet" href="financial-statements.html#balance-sheet" target="_blank" rel="noopener" data-en="Balance sheet ↗" data-es="Balance general ↗">Balance sheet ↗</a><a data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener" data-en="Acquisition criteria ↗" data-es="Criterios de adquisición ↗">Acquisition criteria ↗</a></div></div>
+    <a class="line-link ink" href="#fund"><span data-en="See the offer" data-es="Ver la oferta">See the offer</span><span aria-hidden="true">↓</span></a>
+  </section>
+
   <section class="fund section-pad" id="fund" aria-labelledby="fund-title">
-    <div class="section-heading"><div><p class="micro section-index"><span>08 /</span> <span data-en="The offer + the ask" data-es="La oferta + la invitación">The offer + the ask</span></p><h2 id="fund-title" data-en="The offer" data-es="La oferta">The offer</h2></div><p class="fund-summary" data-en="Membership units in a Delaware LLC fund.&#10;Five homes. No debt.&#10;Capital paid in installments during Year 1, including a fund-life reserve." data-es="Unidades de participación en un fondo LLC de Delaware.&#10;Cinco propiedades. Sin deuda.&#10;Aportes durante el primer año, incluida una reserva para la vida del fondo.">Membership units in a Delaware LLC fund.<br>Five homes. No debt.<br>Capital paid in installments during Year 1, including a fund-life reserve.</p></div>
+    <div class="section-heading"><div><p class="micro section-index"><span data-en="The offer + the ask" data-es="La oferta + la invitación">The offer + the ask</span></p><h2 id="fund-title" data-en="The offer" data-es="La oferta">The offer</h2></div><p class="fund-summary" data-en="Membership units in a Delaware LLC fund.&#10;Five homes. No debt.&#10;Capital paid in installments during Year 1, including a fund-life reserve." data-es="Unidades de participación en un fondo LLC de Delaware.&#10;Cinco propiedades. Sin deuda.&#10;Aportes durante el primer año, incluida una reserva para la vida del fondo.">Membership units in a Delaware LLC fund.<br>Five homes. No debt.<br>Capital paid in installments during Year 1, including a fund-life reserve.</p></div>
     <div class="capital"><div><span class="micro" data-en="Total raise" data-es="Capital objetivo">Total raise</span><strong>$7M</strong></div><div><span class="micro" data-en="Committed" data-es="Comprometido">Committed</span><strong>$2.1M</strong></div><div><span class="micro" data-en="Open to investors" data-es="Disponible para invertir">Open to investors</span><strong>$4.9M</strong></div></div>
     <div class="raise-bar" role="img" aria-label="30 percent of the target raise committed"><span></span></div>
     <p class="raise-status" data-en="30% already committed." data-es="30% ya comprometido.">30% already committed.</p>
     <div class="fund-bottom"><div><p data-en="US$4.9M remains available. Two homes are closed; three are in negotiation." data-es="Quedan US$4,9M disponibles. Dos adquisiciones están cerradas; tres siguen en negociación.">US$4.9M remains available. Two homes are closed; three are in negotiation.</p><p class="fund-small" data-en="US$10,000 per Unit. Minimum US$100,000 (10 Units). Accredited investors only." data-es="US$10.000 por unidad. Mínimo US$100.000 (10 unidades). Solo inversionistas acreditados.">US$10,000 per Unit. Minimum US$100,000 (10 Units). Accredited investors only.</p></div><a class="button-dark" href="#contact"><span data-en="Talk to us" data-es="Hable con nosotros">Talk to us</span><span aria-hidden="true">↗</span></a></div>
 
-    <details class="model" open><summary><span data-en="Projected returns + financials" data-es="Retornos proyectados + finanzas">Projected returns + financials</span><span class="plus">+</span></summary><div class="model-content"><div class="projection"><div><strong>14.6%</strong><span data-en="Projected investor IRR" data-es="TIR proyectada del inversionista">Projected investor IRR</span></div><div><strong>1.40×</strong><span data-en="Projected capital multiple" data-es="Múltiplo de capital proyectado">Projected capital multiple</span></div><div><strong>4</strong><span data-en="Projected years" data-es="Años proyectados">Projected years</span></div></div><p class="footnote" data-en="Projected on called capital, after tax and carry. Returns are not guaranteed. Proposed 20% carry follows the return of contributed capital." data-es="Proyecciones sobre el capital llamado, después de impuestos y carry. Los retornos no están garantizados. El carry propuesto del 20% aplica después de devolver el capital aportado.">Projected on called capital, after tax and carry. Returns are not guaranteed. Proposed 20% carry follows the return of contributed capital.</p><div class="document-links"><a data-path="financial-statements.html#income-statement" href="financial-statements.html#income-statement" target="_blank" rel="noopener" data-en="Income statement ↗" data-es="Estado de resultados ↗">Income statement ↗</a><a data-path="financial-statements.html#cash-flow-statement" href="financial-statements.html#cash-flow-statement" target="_blank" rel="noopener" data-en="Cash flows ↗" data-es="Flujos de efectivo ↗">Cash flows ↗</a><a data-path="financial-statements.html#balance-sheet" href="financial-statements.html#balance-sheet" target="_blank" rel="noopener" data-en="Balance sheet ↗" data-es="Balance general ↗">Balance sheet ↗</a><a data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener" data-en="Acquisition criteria ↗" data-es="Criterios de adquisición ↗">Acquisition criteria ↗</a></div></div></details>
+
   </section>
 
   <section class="investor-resources section-pad website-only" id="resources" aria-labelledby="resources-title">
     <div class="resources-heading"><p class="micro" data-en="Investor information" data-es="Información para inversionistas">Investor information</p><h2 id="resources-title" data-en="Review the investment." data-es="Revise la inversión.">Review the investment.</h2></div>
-    <div class="resource-directory"><a data-path="financial-statements.html" href="financial-statements.html" target="_blank" rel="noopener"><span class="micro" data-en="01 / The numbers" data-es="01 / Las cifras">01 / The numbers</span><h3 data-en="Pro forma financials" data-es="Finanzas pro forma">Pro forma financials</h3><p data-en="Income, cash flows and balance sheet. Password required." data-es="Resultados, flujos de efectivo y balance general. Requiere contraseña.">Income, cash flows and balance sheet. Password required.</p><span aria-hidden="true">↗</span></a><a data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener"><span class="micro" data-en="02 / Property selection" data-es="02 / Selección de propiedades">02 / Property selection</span><h3 data-en="Acquisition criteria" data-es="Criterios de adquisición">Acquisition criteria</h3><p data-en="How we evaluate properties." data-es="Cómo evaluamos las propiedades.">How we evaluate properties.</p><span aria-hidden="true">↗</span></a><a href="#team"><span class="micro" data-en="03 / The people" data-es="03 / Las personas">03 / The people</span><h3 data-en="Meet Dulcinea" data-es="Conozca a Dulcinea">Meet Dulcinea</h3><p data-en="The team behind the portfolio." data-es="El equipo detrás del portafolio.">The team behind the portfolio.</p><span aria-hidden="true">↓</span></a></div>
+    <div class="resource-directory"><a data-path="financial-statements.html" href="financial-statements.html" target="_blank" rel="noopener"><span class="micro" data-en="The numbers" data-es="Las cifras">The numbers</span><h3 data-en="Pro forma financials" data-es="Finanzas pro forma">Pro forma financials</h3><p data-en="Income, cash flows and balance sheet. Password required." data-es="Resultados, flujos de efectivo y balance general. Requiere contraseña.">Income, cash flows and balance sheet. Password required.</p><span aria-hidden="true">↗</span></a><a data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener"><span class="micro" data-en="Property selection" data-es="Selección de propiedades">Property selection</span><h3 data-en="Acquisition criteria" data-es="Criterios de adquisición">Acquisition criteria</h3><p data-en="How we evaluate properties." data-es="Cómo evaluamos las propiedades.">How we evaluate properties.</p><span aria-hidden="true">↗</span></a><a href="#team"><span class="micro" data-en="The people" data-es="Las personas">The people</span><h3 data-en="Meet Dulcinea" data-es="Conozca a Dulcinea">Meet Dulcinea</h3><p data-en="The team behind the portfolio." data-es="El equipo detrás del portafolio.">The team behind the portfolio.</p><span aria-hidden="true">↓</span></a></div>
   </section>
 
   <section class="team section-pad" id="team" aria-labelledby="team-title">
-    <div class="section-heading"><div><p class="micro section-index"><span>09 /</span><span data-en="The team" data-es="El equipo">The team</span></p><h2 id="team-title" data-en="The Dulcinea team." data-es="El equipo de Dulcinea.">The Dulcinea team.</h2></div></div>
+    <div class="section-heading"><div><p class="micro section-index"><span data-en="The team" data-es="El equipo">The team</span></p><h2 id="team-title" data-en="The Dulcinea team." data-es="El equipo de Dulcinea.">The Dulcinea team.</h2></div></div>
     <div class="team-portraits">
       <article><div class="team-photo"><img src="assets/images/team/dov-supplied.png" alt="K. Dov Isaza Tuzman" width="423" height="400" loading="lazy"></div><p class="micro" data-en="Managing Director" data-es="Director General">Managing Director</p><h3>K. Dov Isaza Tuzman</h3><p class="team-bio" data-en="Founder of KIT Capital. Two NASDAQ/TSE listings and several private exits. Ex-Goldman Sachs. Harvard BA and MA." data-es="Fundador de KIT Capital. Dos salidas a bolsa en NASDAQ/TSE y varias ventas privadas. Ex-Goldman Sachs. Licenciatura y maestría de Harvard.">Founder of KIT Capital. Two NASDAQ/TSE listings and several private exits. Ex-Goldman Sachs. Harvard BA and MA.</p></article>
       <article><div class="team-photo"><img src="assets/images/team/ricardo-supplied.jpg" alt="Ricardo Cidale" width="2092" height="2092" loading="lazy"></div><p class="micro" data-en="Planning and Corporate Development" data-es="Planificación y Desarrollo Corporativo">Planning and Corporate Development</p><h3>Ricardo Cidale</h3><p class="team-bio" data-en="30 years operating and restructuring businesses, including HP, Dell and RealNetworks. Led M&amp;A on $1.5B of transactions." data-es="30 años operando y reestructurando empresas, incluidas HP, Dell y RealNetworks. Lideró fusiones y adquisiciones por US$1.500 millones.">30 years operating and restructuring businesses, including HP, Dell and RealNetworks. Led M&amp;A on $1.5B of transactions.</p></article>
@@ -1530,20 +1612,19 @@ body.is-presenting .website-only { display:none !important; }
   </section>
 
   <section class="specialists-section section-pad" id="specialists" aria-labelledby="specialists-title">
-    <div class="section-heading"><div><p class="micro section-index"><span>10 /</span><span data-en="The local team" data-es="El equipo local">The local team</span></p><h2 id="specialists-title" data-en="Local specialists." data-es="Especialistas locales.">Local specialists.</h2></div><a class="line-link ink" data-path="specialists.html" href="specialists.html" target="_blank" rel="noopener"><span data-en="Open specialists page" data-es="Abrir página de especialistas">Open specialists page</span><span aria-hidden="true">↗</span></a></div>
+    <div class="section-heading"><div><p class="micro section-index"><span data-en="The local team" data-es="El equipo local">The local team</span></p><h2 id="specialists-title" data-en="Local specialists." data-es="Especialistas locales.">Local specialists.</h2></div><a class="line-link ink" data-path="specialists.html" href="specialists.html" target="_blank" rel="noopener"><span data-en="Open specialists page" data-es="Abrir página de especialistas">Open specialists page</span><span aria-hidden="true">↗</span></a></div>
     <dl class="specialists"><div><dt data-en="Lola &amp; Ber · Brand implementation" data-es="Lola &amp; Ber · Implementación de marca">Lola &amp; Ber · Brand implementation</dt><dd>Natalia Carvajal</dd></div><div><dt data-en="Architecture · Design and works" data-es="Arquitectura · Diseño y obras">Architecture · Design and works</dt><dd>Marcela Vélez &amp; María Antonia Uribe</dd></div><div><dt data-en="Works oversight" data-es="Interventoría">Works oversight</dt><dd>John Mario Piedrahita</dd></div><div><dt data-en="Legal · Title and closing" data-es="Legal · Títulos y cierre">Legal · Title and closing</dt><dd>Juan Carlos Pérez</dd></div><div><dt data-en="Accounting and tax" data-es="Contabilidad e impuestos">Accounting and tax</dt><dd>Jorge Valiente</dd></div></dl>
   </section>
 
-
-
-  <section class="contact film" id="contact" aria-labelledby="contact-title"><video class="background-video" src="assets/video/stock/AdobeStock_693150796.mp4" poster="assets/video/stock/AdobeStock_693150796-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="contact-content"><p class="micro" data-en="11 / The next step" data-es="11 / El siguiente paso">11 / The next step</p><h2 id="contact-title" data-en="Let's talk&#10;Dulcinea One." data-es="Hablemos de&#10;Dulcinea One.">Let's talk<br>Dulcinea One.</h2><a class="contact-person" href="https://wa.me/19174284062" target="_blank" rel="noopener"><img src="assets/images/team/dov-supplied.png" alt="K. Dov Isaza Tuzman" width="64" height="64"><span><strong>Dov Tuzman</strong><span data-en="Managing Director" data-es="Director General">Managing Director</span></span><span class="contact-arrow" aria-hidden="true">↗</span></a><a class="line-link" href="https://wa.me/19174284062" target="_blank" rel="noopener"><span data-en="Connect on WhatsApp" data-es="Conectar por WhatsApp">Connect on WhatsApp</span><span>↗</span></a><a class="contact-email" href="mailto:kit@kitcapital.com">kit@kitcapital.com</a></div>
+  <section class="contact film" id="contact" aria-labelledby="contact-title"><video class="background-video" src="assets/video/stock/AdobeStock_693150796.mp4" poster="assets/video/stock/AdobeStock_693150796-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="contact-content"><p class="micro" data-en="The next step" data-es="El siguiente paso">The next step</p><h2 id="contact-title" data-en="Let's talk&#10;Dulcinea One." data-es="Hablemos de&#10;Dulcinea One.">Let's talk<br>Dulcinea One.</h2><a class="contact-person" href="https://wa.me/19174284062" target="_blank" rel="noopener"><img src="assets/images/team/dov-supplied.png" alt="K. Dov Isaza Tuzman" width="64" height="64"><span><strong>Dov Tuzman</strong><span data-en="Managing Director" data-es="Director General">Managing Director</span></span><span class="contact-arrow" aria-hidden="true">↗</span></a><a class="line-link" href="https://wa.me/19174284062" target="_blank" rel="noopener"><span data-en="Connect on WhatsApp" data-es="Conectar por WhatsApp">Connect on WhatsApp</span><span>↗</span></a><a class="contact-email" href="mailto:kit@kitcapital.com">kit@kitcapital.com</a></div>
     <nav class="presentation-only presentation-closing-navigation" aria-labelledby="presentation-closing-title">
       <p class="micro" data-en="Continue on the website" data-es="Continúe en el sitio web">Continue on the website</p>
       <h3 id="presentation-closing-title" data-en="Explore Dulcinea One." data-es="Explore Dulcinea One.">Explore Dulcinea One.</h3>
       <div class="presentation-section-links">
         <a href="#home" data-website-section="home"><span data-en="Home" data-es="Inicio">Home</span><span aria-hidden="true">↗</span></a>
         <a href="#homes" data-website-section="homes"><span data-en="The homes" data-es="Las propiedades">The homes</span><span aria-hidden="true">↗</span></a>
-        <a href="#fund" data-website-section="fund"><span data-en="The fund" data-es="El fondo">The fund</span><span aria-hidden="true">↗</span></a>
+        <a href="#returns" data-website-section="returns"><span data-en="Projected returns" data-es="Retornos proyectados">Projected returns</span><span aria-hidden="true">↗</span></a>
+    <a href="#fund" data-website-section="fund"><span data-en="The fund" data-es="El fondo">The fund</span><span aria-hidden="true">↗</span></a>
         <a href="#ownership" data-website-section="ownership"><span data-en="The lifestyle" data-es="El estilo de vida">The lifestyle</span><span aria-hidden="true">↗</span></a>
     <a href="#member-benefits" data-website-section="member-benefits"><span data-en="Member benefits" data-es="Beneficios de membresía">Member benefits</span><span aria-hidden="true">↗</span></a>
     <a href="#owner-use" data-website-section="owner-use"><span data-en="Owner use" data-es="Uso y reservas">Owner use</span><span aria-hidden="true">↗</span></a>
@@ -1573,6 +1654,7 @@ body.is-presenting .website-only { display:none !important; }
   <nav class="presentation-website-sections" aria-label="Website sections" data-en-aria-label="Website sections" data-es-aria-label="Secciones del sitio web">
     <a href="#home" data-website-section="home"><span data-en="Home" data-es="Inicio">Home</span><span aria-hidden="true">↗</span></a>
     <a href="#homes" data-website-section="homes"><span data-en="The homes" data-es="Las propiedades">The homes</span><span aria-hidden="true">↗</span></a>
+    <a href="#returns" data-website-section="returns"><span data-en="Projected returns" data-es="Retornos proyectados">Projected returns</span><span aria-hidden="true">↗</span></a>
     <a href="#fund" data-website-section="fund"><span data-en="The fund" data-es="El fondo">The fund</span><span aria-hidden="true">↗</span></a>
     <a href="#ownership" data-website-section="ownership"><span data-en="The lifestyle" data-es="El estilo de vida">The lifestyle</span><span aria-hidden="true">↗</span></a>
     <a href="#member-benefits" data-website-section="member-benefits"><span data-en="Member benefits" data-es="Beneficios de membresía">Member benefits</span><span aria-hidden="true">↗</span></a>
@@ -1596,7 +1678,7 @@ body.is-presenting .website-only { display:none !important; }
   <div id="plan-viewport" tabindex="0" role="region" aria-label="Drawing. Zoom to inspect, then scroll to move around." data-en-aria-label="Drawing. Zoom to inspect, then scroll to move around." data-es-aria-label="Plano. Amplíe para ver los detalles y desplácese para recorrerlo."><div id="plan-canvas"><img id="plan-image" alt="Fontanar 201 · Floor 1" draggable="false" decoding="async"></div><p id="plan-error" role="status" hidden data-en="This drawing could not load. Open the original PDF below." data-es="No se pudo cargar el plano. Abra el PDF original abajo.">This drawing could not load. Open the original PDF below.</p></div>
   <div class="plans-toolbar"><div class="plan-paging"><button type="button" id="prev-plan" aria-label="Previous floorplan" data-en-aria-label="Previous floorplan" data-es-aria-label="Plano anterior">←</button><span id="plan-count" aria-live="polite">1 / 2</span><button type="button" id="next-plan" aria-label="Next floorplan" data-en-aria-label="Next floorplan" data-es-aria-label="Siguiente plano">→</button></div><p id="plan-caption" class="sr-only"></p><div class="plan-downloads"><a id="plan-open" target="_blank" rel="noopener" data-en="Open drawing ↗" data-es="Abrir plano ↗">Open drawing ↗</a><a href="source-packages/PLANOS PROPIEDADES DULCINEA.pdf" download="Dulcinea-Floorplans.pdf" data-en="Original PDF ↓" data-es="PDF original ↓">Original PDF ↓</a></div></div>
 </dialog>
-<script>window.DULCINEA_WEB=false;window.DULCINEA_ASSETS={"logo.svg":"brand/dulcinea-one/svg/dulcinea-one-white-gold.svg","dulcinea.svg":"brand/dulcinea/svg/dulcinea-mono-white.svg","symbol.svg":"brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg","kit.png":"brand/kit-capital/kit-capital.png","lola.png":"assets/images/investor-deck/image24.png","introduction.mp4":"assets/video/dulcinea-introduction.mp4","introduction.jpg":"assets/video/dulcinea-introduction-poster.jpg","medellin.mp4":"assets/video/stock/AdobeStock_693150796.mp4","medellin.jpg":"assets/video/stock/AdobeStock_693150796-poster.jpg","nightlife.mp4":"assets/video/medellin-after-dark.mp4","nightlife.jpg":"assets/video/medellin-nightlife-poster.jpg","location.mp4":"assets/video/medellin-location.mp4","location.jpg":"assets/video/medellin-location-poster.jpg","hospitality.mp4":"assets/video/hospitality-people.mp4","hospitality.jpg":"assets/video/hospitality-people-poster.jpg","viewing.mp4":"assets/video/stock/AdobeStock_762119818.mp4","viewing.jpg":"assets/video/stock/AdobeStock_762119818-poster.jpg","dov.png":"assets/images/team/dov-supplied.png","ricardo.jpg":"assets/images/team/ricardo-supplied.jpg","adriana.jpg":"assets/images/team/adriana-supplied.jpeg","san-lucas-original.png":"assets/images/investor-deck/image44.png","aires-original.png":"assets/images/investor-deck/image45.png","fontanar-original.jpeg":"assets/images/investor-deck/image46.jpeg","monte-sereno-original.png":"assets/images/investor-deck/image47.png","montana-original.png":"assets/images/investor-deck/image48.png","fontanar.mp4":"assets/video/properties/fontanar.mp4","fontanar.jpg":"assets/images/lifestyle/fontanar.jpg","san-lucas.mp4":"assets/video/properties/san-lucas.mp4","san-lucas.webp":"assets/images/lifestyle/san-lucas.webp","aires.mp4":"assets/video/properties/aires.mp4","aires.jpg":"assets/images/lifestyle/aires.jpg","monte-sereno.mp4":"assets/video/properties/monte-sereno.mp4","monte-sereno.webp":"assets/images/lifestyle/monte-sereno.webp","montana.mp4":"assets/video/properties/montana.mp4","montana.webp":"assets/images/lifestyle/montana.webp","floorplans.pdf":"source-packages/PLANOS PROPIEDADES DULCINEA.pdf","el-retiro.mp4":"assets/video/stock/AdobeStock_1849343666.mp4","el-retiro.jpg":"assets/video/stock/AdobeStock_1849343666-poster.jpg","oriente-country.mp4":"assets/video/oriente-country.mp4","oriente-country.jpg":"assets/video/oriente-country-poster.jpg","plan-1.webp":"assets/images/floorplans/page-01-fontanar-floor-1.webp","plan-2.webp":"assets/images/floorplans/page-02-fontanar-floor-2.webp","plan-3.webp":"assets/images/floorplans/page-03-monte-sereno-site.webp","plan-4.webp":"assets/images/floorplans/page-04-monte-sereno-floor-1.webp","plan-5.webp":"assets/images/floorplans/page-05-monte-sereno-roof.webp","plan-6.webp":"assets/images/floorplans/page-06-aires-del-campestre-floor-1.webp","plan-7.webp":"assets/images/floorplans/page-07-aires-del-campestre-floor-2.webp","plan-8.webp":"assets/images/floorplans/page-08-san-lucas-floor-1.webp","plan-9.webp":"assets/images/floorplans/page-09-san-lucas-floor-2.webp"};
+<script>window.DULCINEA_WEB=false;window.DULCINEA_ASSETS={"logo.svg":"brand/dulcinea-one/svg/dulcinea-one-white-gold.svg","dulcinea.svg":"brand/dulcinea/svg/dulcinea-mono-white.svg","symbol.svg":"brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg","kit.png":"brand/kit-capital/kit-capital.png","lola.png":"assets/images/investor-deck/image24.png","introduction.mp4":"assets/video/dulcinea-introduction.mp4","introduction.jpg":"assets/video/dulcinea-introduction-poster.jpg","medellin.mp4":"assets/video/stock/AdobeStock_693150796.mp4","medellin.jpg":"assets/video/stock/AdobeStock_693150796-poster.jpg","nightlife.mp4":"assets/video/medellin-after-dark.mp4","nightlife.jpg":"assets/video/medellin-nightlife-poster.jpg","location.mp4":"assets/video/medellin-location.mp4","location.jpg":"assets/video/medellin-location-poster.jpg","hospitality.mp4":"assets/video/hospitality-people.mp4","hospitality.jpg":"assets/video/hospitality-people-poster.jpg","viewing.mp4":"assets/video/stock/AdobeStock_762119818.mp4","viewing.jpg":"assets/video/stock/AdobeStock_762119818-poster.jpg","dov.png":"assets/images/team/dov-supplied.png","ricardo.jpg":"assets/images/team/ricardo-supplied.jpg","adriana.jpg":"assets/images/team/adriana-supplied.jpeg","san-lucas-original.png":"assets/images/investor-deck/image44.png","aires-original.png":"assets/images/investor-deck/image45.png","fontanar-original.jpeg":"assets/images/investor-deck/image46.jpeg","monte-sereno-original.png":"assets/images/investor-deck/image47.png","montana-original.png":"assets/images/investor-deck/image48.png","fontanar.mp4":"assets/video/properties/fontanar.mp4","fontanar.jpg":"assets/images/lifestyle/fontanar.jpg","san-lucas.mp4":"assets/video/properties/san-lucas.mp4","san-lucas.webp":"assets/images/lifestyle/san-lucas.webp","aires.mp4":"assets/video/properties/aires.mp4","aires.jpg":"assets/images/lifestyle/aires.jpg","monte-sereno.mp4":"assets/video/properties/monte-sereno.mp4","monte-sereno.webp":"assets/images/lifestyle/monte-sereno.webp","montana.mp4":"assets/video/properties/montana.mp4","montana.webp":"assets/images/lifestyle/montana.webp","floorplans.pdf":"source-packages/PLANOS PROPIEDADES DULCINEA.pdf","el-retiro.mp4":"assets/video/stock/AdobeStock_1849343666.mp4","el-retiro.jpg":"assets/video/stock/AdobeStock_1849343666-poster.jpg","oriente-country.mp4":"assets/video/oriente-country.mp4","oriente-country.jpg":"assets/video/oriente-country-poster.jpg","plan-1.webp":"assets/images/floorplans/page-01-fontanar-floor-1.webp","plan-2.webp":"assets/images/floorplans/page-02-fontanar-floor-2.webp","plan-3.webp":"assets/images/floorplans/page-03-monte-sereno-site.webp","plan-4.webp":"assets/images/floorplans/page-04-monte-sereno-floor-1.webp","plan-5.webp":"assets/images/floorplans/page-05-monte-sereno-roof.webp","plan-6.webp":"assets/images/floorplans/page-06-aires-del-campestre-floor-1.webp","plan-7.webp":"assets/images/floorplans/page-07-aires-del-campestre-floor-2.webp","plan-8.webp":"assets/images/floorplans/page-08-san-lucas-floor-1.webp","plan-9.webp":"assets/images/floorplans/page-09-san-lucas-floor-2.webp"};window.DULCINEA_STORY={"version":1,"main":[{"id":"cover","selector":"#home","title":["Dulcinea One","Dulcinea One"]},{"id":"lifestyle","selector":"#ownership","title":["The lifestyle","El estilo de vida"]},{"id":"oriente","selector":"#oriente","title":["El Oriente countryside","El campo del Oriente"]},{"id":"city","selector":"#destination","title":["Life in Medellín","La vida en Medellín"]},{"id":"hospitality","selector":"#experience","title":["Lola & Ber","Lola & Ber"]},{"id":"benefits","selector":"#member-benefits","title":["Member benefits","Beneficios de membresía"]},{"id":"monte-sereno","selector":"#homes","propertyKey":"monte-sereno","title":["Casa Monte Sereno","Casa Monte Sereno"]},{"id":"montana","selector":"#homes","propertyKey":"montana","title":["Casa Montana","Casa Montana"]},{"id":"fontanar","selector":"#homes","propertyKey":"fontanar","title":["Fontanar 201","Fontanar 201"]},{"id":"san-lucas","selector":"#homes","propertyKey":"san-lucas","title":["San Lucas 101","San Lucas 101"]},{"id":"aires","selector":"#homes","propertyKey":"aires","title":["Aires de Campestre","Aires de Campestre"]},{"id":"idea","selector":"#approach","title":["The investment approach","La estrategia de inversión"]},{"id":"returns","selector":"#returns","title":["Projected returns","Retornos proyectados"]},{"id":"offer","selector":"#fund","title":["The offer","La oferta"]},{"id":"team","selector":"#team","title":["The core team","El equipo principal"]},{"id":"specialists","selector":"#specialists","title":["Local specialists","Especialistas locales"]},{"id":"disclaimer","selector":"#main .legal-notice","title":["Important disclosures","Información importante"]},{"id":"contact","selector":"#contact","title":["Talk to us","Hable con nosotros"]}],"appendices":[{"id":"owner-use","selector":"#member-benefits","anchor":"#owner-use","returnTo":"benefits","title":["Owner use and booking","Uso y reservas"]}],"legacyNumeric":{"1":"cover","2":"lifestyle","3":"benefits","4":"owner-use","5":"oriente","6":"city","7":"hospitality","8":"fontanar","9":"san-lucas","10":"aires","11":"monte-sereno","12":"montana","13":"idea","14":"offer","15":"returns","16":"team","17":"specialists","18":"disclaimer","19":"contact"}};
 const homes = [
   {name:'Fontanar 201',key:'fontanar',image:'fontanar.jpg',original:'fontanar-original.jpeg',plans:[1,2],location:'El Poblado',type:['Penthouse','Penthouse'],area:'389 m²',description:['A two-level penthouse in El Poblado.','Un penthouse de dos niveles en El Poblado.'],status:['Closed · 3Q26','Cerrado · 3T26']},
   {name:'San Lucas 101',key:'san-lucas',image:'san-lucas.webp',original:'san-lucas-original.png',plans:[8,9],location:'El Poblado',type:['Apartment','Apartamento'],area:'325 m²',description:['An apartment in El Poblado.','Un apartamento en El Poblado.'],status:['Negotiated · Compraventa drafted','Negociado · Compraventa redactada']},
@@ -1604,6 +1686,8 @@ const homes = [
   {name:'Casa Monte Sereno',key:'monte-sereno',image:'monte-sereno.webp',original:'monte-sereno-original.png',plans:[3,4,5],location:'El Retiro',type:['House','Casa'],area:'420 m²',description:['A country house on a 2,940 m² lot.','Una casa de campo en un lote de 2.940 m².'],status:['Negotiated · Finalizing modifications','Negociado · Ajustando modificaciones']},
   {name:'Casa Montana',key:'montana',image:'montana.webp',original:'montana-original.png',plans:[],location:'El Retiro',type:['House','Casa'],area:'591 m²',description:['A country house in El Retiro.','Una casa de campo en El Retiro.'],status:['Negotiated · Works being budgeted','Negociado · Obras en presupuesto']}
 ];
+const configuredHomeOrder = (window.DULCINEA_STORY?.main || []).filter(step => step.propertyKey).map(step => homes.findIndex(home => home.key === step.propertyKey));
+const homeOrder = configuredHomeOrder.length === homes.length && new Set(configuredHomeOrder).size === homes.length && configuredHomeOrder.every(index => index >= 0) ? configuredHomeOrder : [3,4,0,1,2];
 const $ = selector => document.querySelector(selector);
 const isWeb = window.DULCINEA_WEB !== false;
 const initialSpanishPath = /\/es(?:\/|$)/.test(location.pathname);
@@ -1611,10 +1695,12 @@ const portableRoot = new URL(initialSpanishPath ? '../' : './',location.href);
 const assetMap = Object.fromEntries(Object.entries(window.DULCINEA_ASSETS || {}).map(([name,url]) => [name,new URL(url,location.href).href]));
 const asset = name => assetMap[name] || `/media/${name}`;
 const resource = path => isWeb ? `/${lang === 'es' ? 'es/' : ''}${path}` : new URL(`${lang === 'es' ? 'es/' : ''}${path}`,portableRoot).href;
-let lang = 'en', current = 0, planIndex = 0;
+let lang = 'en', current = homeOrder[0], planIndex = 0, currentMediaKey = null;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 let paused = reduce.matches;
 const videos = [...document.querySelectorAll('video')];
+const previewVideos = new Set(document.querySelectorAll('[data-preview-home] video'));
+previewVideos.forEach(video => { video.autoplay = false; video.removeAttribute('autoplay'); video.preload = 'none'; video.pause(); });
 const visibleVideos = new Set();
 const motion = $('.motion');
 const originalDialog = $('#original-dialog');
@@ -1630,7 +1716,7 @@ const dialogs = [...document.querySelectorAll('dialog')];
 const propertyVideo = $('#property-video');
 function canAnimate() { return !paused && !document.hidden && !dialogs.some(dialog => dialog.open); }
 function syncVideo(video) {
-  if (canAnimate() && visibleVideos.has(video)) video.play().catch(() => {});
+  if (!previewVideos.has(video) && canAnimate() && visibleVideos.has(video) && !video.closest('[inert]') && video.getClientRects().length) video.play().catch(() => {});
   else video.pause();
 }
 function syncMotion() { document.body.classList.toggle('is-paused',!canAnimate()); videos.forEach(syncVideo); }
@@ -1641,7 +1727,7 @@ const observer = new IntersectionObserver(entries => {
     syncVideo(entry.target);
   });
 },{threshold:.15});
-videos.forEach(video => observer.observe(video));
+videos.filter(video => !previewVideos.has(video)).forEach(video => observer.observe(video));
 function motionState() {
   const label = lang === 'es' ? (paused ? 'Reanudar animaciones' : 'Pausar animaciones') : (paused ? 'Resume animations' : 'Pause animations');
   motion?.setAttribute('aria-pressed',String(paused)); motion?.setAttribute('aria-label',label);
@@ -1654,6 +1740,48 @@ reduce.addEventListener('change',event => { paused = event.matches; motionState(
 document.addEventListener('visibilitychange',syncMotion);
 // Hospitality and nightlife now have separate, viewport-controlled film chapters.
 function homeLabel(index) { return `${lang === 'es' ? 'Ver' : 'View'} ${homes[index].name}`; }
+function homeIndex(value) { return typeof value === 'number' ? (Number.isInteger(value) && homes[value] ? value : -1) : homes.findIndex(home => home.key === value); }
+function homeHref(value = current) { const index = homeIndex(value); return index < 0 ? '#homes' : `#property-${homes[index].key}`; }
+const propertyAnnouncement = document.createElement('p');
+propertyAnnouncement.className = 'property-selection-status';
+propertyAnnouncement.setAttribute('role','status');
+propertyAnnouncement.setAttribute('aria-live','polite');
+propertyAnnouncement.setAttribute('aria-atomic','true');
+$('#homes').append(propertyAnnouncement);
+function revealHome(focus = false,instant = false) {
+  requestAnimationFrame(() => {
+    if (document.body.classList.contains('is-presenting')) return;
+    const detail = $('#property-detail') || $('.property-layout');
+    const headerHeight = $('.header')?.getBoundingClientRect().height || 0;
+    window.scrollTo({top:Math.max(0,window.scrollY + detail.getBoundingClientRect().top - headerHeight - 12),behavior:instant || reduce.matches ? 'instant' : 'smooth'});
+    if (focus) {
+      const heading = $('#property-name');
+      heading.setAttribute('tabindex','-1'); heading.focus({preventScroll:true});
+    }
+  });
+}
+function selectHome(value,{writeRoute = false,scroll = false,focus = false} = {}) {
+  const index = homeIndex(value);
+  if (index < 0) return false;
+  const changed = index !== current;
+  current = index; renderHome();
+  if (writeRoute && location.hash !== homeHref()) {
+    const url = new URL(location.href); url.hash = homeHref();
+    history[writeRoute === 'replace' ? 'replaceState' : 'pushState'](history.state,'',url);
+  }
+  if (changed) propertyAnnouncement.textContent = lang === 'es' ? `${homes[current].name} seleccionada. ${homeOrder.indexOf(current) + 1} de ${homes.length}.` : `${homes[current].name} selected. ${homeOrder.indexOf(current) + 1} of ${homes.length}.`;
+  if (scroll || focus) revealHome(focus,scroll === 'instant');
+  return true;
+}
+function followPropertyRoute({scroll = 'instant',focus = false} = {}) {
+  if (document.body.classList.contains('is-presenting') || !location.hash.startsWith('#property-')) return false;
+  const key = location.hash.slice('#property-'.length);
+  if (selectHome(key,{scroll,focus})) return true;
+  const url = new URL(location.href); url.hash = 'homes'; history.replaceState(history.state,'',url);
+  if (scroll) requestAnimationFrame(() => $('#homes').scrollIntoView({behavior:'instant',block:'start'}));
+  return false;
+}
+window.DulcineaProperties = {get key() { return homes[current].key; },get index() { return current; },select:selectHome,href:homeHref,followRoute:followPropertyRoute};
 function layoutPlan(preservePosition = true) {
   if (!plansDialog?.open || !planImage?.complete || !planImage.naturalWidth || planImage.hidden) return;
   const width = planViewport.clientWidth, height = planViewport.clientHeight;
@@ -1721,14 +1849,30 @@ function renderHome(changeMedia = true) {
   $('#property-name').textContent = home.name; $('#property-location').textContent = home.location;
   $('#property-type').textContent = home.type[i]; $('#property-description').textContent = home.description[i];
   $('#property-area').textContent = home.area; $('#property-status').textContent = home.status[i];
-  $('#property-count').textContent = `0${current + 1} / 05`;
+  $('#property-count').textContent = `${String(homeOrder.indexOf(current) + 1).padStart(2,'0')} / ${String(homes.length).padStart(2,'0')}`;
   $('#property-plan-count').textContent = String(home.plans.length).padStart(2,'0');
   $('.property-layout').dataset.property = home.key;
-  document.querySelectorAll('[data-home]').forEach((button,index) => {
-    button.setAttribute('aria-pressed',String(index === current)); button.setAttribute('aria-label',homeLabel(index));
+  document.querySelectorAll('[data-home],[data-preview-home]').forEach(control => {
+    const index = Number(control.dataset.previewHome ?? control.dataset.home);
+    if (!Number.isInteger(index) || !homes[index]) return;
+    const selected = index === current;
+    control.setAttribute('aria-label',homeLabel(index));
+    control.setAttribute('aria-controls','property-detail');
+    if (control.tagName === 'A') {
+      control.href = homeHref(index);
+      if (selected) control.setAttribute('aria-current','true');
+      else control.removeAttribute('aria-current');
+    } else control.setAttribute('aria-pressed',String(selected));
+    if (control.matches('.property-preview')) {
+      let state = control.querySelector('.property-preview-state');
+      if (!state) { state = document.createElement('span'); state.className = 'property-preview-state'; control.append(state); }
+      state.textContent = lang === 'es' ? 'Seleccionada' : 'Selected';
+      state.hidden = !selected;
+    }
   });
-  if (changeMedia) {
+  if (changeMedia && currentMediaKey !== home.key) {
     planIndex = 0; propertyVideo.pause(); propertyVideo.poster = asset(home.image); propertyVideo.src = asset(`${home.key}.mp4`);
+    currentMediaKey = home.key; propertyVideo.dataset.property = home.key;
     propertyVideo.load(); syncVideo(propertyVideo);
   }
   $('#original-title').textContent = home.name; $('#original-image').src = asset(home.original);
@@ -1736,25 +1880,25 @@ function renderHome(changeMedia = true) {
   if ($('#view-plans')) $('#view-plans').hidden = home.plans.length === 0;
   if (plansDialog?.open) renderPlan();
 }
-$('#next-home').addEventListener('click',() => { current = (current + 1) % homes.length; renderHome(); });
-$('#prev-home').addEventListener('click',() => { current = (current + homes.length - 1) % homes.length; renderHome(); });
-document.querySelectorAll('[data-home]').forEach(button => button.addEventListener('click',() => { current = Number(button.dataset.home); renderHome(); }));
+function stepHome(direction) { selectHome(homeOrder[(homeOrder.indexOf(current) + direction + homeOrder.length) % homeOrder.length],{writeRoute:true}); }
+$('#next-home').addEventListener('click',() => stepHome(1));
+$('#prev-home').addEventListener('click',() => stepHome(-1));
+document.querySelectorAll('[data-home]:not([data-preview-home])').forEach(button => button.addEventListener('click',event => {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault(); selectHome(Number(button.dataset.home),{writeRoute:true,scroll:true,focus:true});
+}));
 // Film previews lead to the existing detailed viewer, including plans and status.
 document.querySelectorAll('[data-preview-home]').forEach(link => link.addEventListener('click',event => {
   if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
   const index = Number(link.dataset.previewHome);
   if (!Number.isInteger(index) || !homes[index]) return;
-  current = index; renderHome();
-  const url = new URL(location.href); url.hash = 'homes'; history.replaceState(history.state,'',url);
-  $('#homes').scrollIntoView({behavior:reduce.matches ? 'instant' : 'smooth',block:'start'});
-  const heading = $('#property-name');
-  heading.setAttribute('tabindex','-1'); heading.focus({preventScroll:true});
+  selectHome(index,{writeRoute:true,scroll:true,focus:true});
 }));
 function translateAria() {
   const labels = {
     '.primary':['Main navigation','Navegación principal'], '.language':['Language','Idioma'],
-    '.property-tabs':['Select a property','Seleccionar propiedad'], '.brand':['Dulcinea One — Home','Dulcinea One — Inicio'],
+    '.property-tabs':['Select a property','Seleccionar propiedad'], '.property-previews':['Select a property','Seleccionar propiedad'], '.brand':['Dulcinea One — Home','Dulcinea One — Inicio'],
     '#prev-home':['Previous property','Propiedad anterior'], '#next-home':['Next property','Siguiente propiedad'],
     '#close-original':['Close original imagery','Cerrar imagen original'], '#view-plans':['View floorplans','Ver planos'],
     '#prev-plan':['Previous floorplan','Plano anterior'], '#next-plan':['Next floorplan','Siguiente plano'], '#close-plans':['Close floorplans','Cerrar planos'],
@@ -1851,17 +1995,18 @@ const legacyHomes = {10:1,11:2,12:0,13:3,14:4};
 function migrateLegacyHash() {
   const match = /^#slide-(\d+)$/.exec(location.hash);
   if (!match) return;
-  const slide = Number(match[1]), anchor = legacyAnchors[slide - 1];
+  const slide = Number(match[1]); let anchor = legacyAnchors[slide - 1];
   if (!anchor) return;
-  if (Object.hasOwn(legacyHomes,slide)) { current = legacyHomes[slide]; renderHome(); }
+  if (Object.hasOwn(legacyHomes,slide)) { selectHome(legacyHomes[slide]); anchor = homeHref().slice(1); }
   const url = new URL(location.href); url.hash = anchor; history.replaceState(history.state,'',url);
-  requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({behavior:'instant'}));
+  if (!anchor.startsWith('property-')) requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({behavior:'instant'}));
 }
-window.addEventListener('hashchange',migrateLegacyHash);
-window.addEventListener('popstate',() => { setLanguage(/\/es(?:\/|$)/.test(location.pathname) ? 'es' : 'en',false); migrateLegacyHash(); });
+window.addEventListener('hashchange',() => { migrateLegacyHash(); followPropertyRoute(); });
+window.addEventListener('popstate',() => { setLanguage(/\/es(?:\/|$)/.test(location.pathname) ? 'es' : 'en',false); migrateLegacyHash(); followPropertyRoute(); });
 const requestedLanguage = new URLSearchParams(location.search).get('lang');
 setLanguage(requestedLanguage === 'es' || (requestedLanguage !== 'en' && initialSpanishPath) ? 'es' : 'en');
 migrateLegacyHash();
+if (!followPropertyRoute()) renderHome();
 </script>
 <script>// Live presentation view of the current investor story, using the same content
 // and media as the scrolling site. Arrows, Page Up/Down and Space change slides;
@@ -1875,38 +2020,39 @@ migrateLegacyHash();
   const websiteButton = document.querySelector('#presentation-website');
   if (!main || !controls || !startButton || !menu) return;
 
-  const steps = [
-    {id:'cover', selector:'#home', title:['Dulcinea One','Dulcinea One']},
-    {id:'lifestyle', selector:'#ownership', title:['Homes for more than a visit','Propiedades para disfrutar']},
-    {id:'benefits', selector:'#member-benefits', title:['Member benefits','Beneficios de membresía']},
-    {id:'owner-use', selector:'#member-benefits', anchor:'#owner-use', title:['Owner use','Uso de las propiedades']},
-    {id:'oriente', selector:'#oriente', title:['El Oriente countryside','El campo del Oriente']},
-    {id:'city', selector:'#destination', title:['Life in Medellín','La vida en Medellín']},
-    {id:'hospitality', selector:'#experience', title:['Lola & Ber','Lola & Ber']},
-    {id:'fontanar', selector:'#homes', home:0, title:['Fontanar 201','Fontanar 201']},
-    {id:'san-lucas', selector:'#homes', home:1, title:['San Lucas 101','San Lucas 101']},
-    {id:'aires', selector:'#homes', home:2, title:['Aires de Campestre','Aires de Campestre']},
-    {id:'monte-sereno', selector:'#homes', home:3, title:['Casa Monte Sereno','Casa Monte Sereno']},
-    {id:'montana', selector:'#homes', home:4, title:['Casa Montana','Casa Montana']},
-    {id:'idea', selector:'#approach', title:['The investment approach','La estrategia de inversión']},
-    {id:'offer', selector:'#fund', title:['The offer + the ask','La oferta + la invitación']},
-    {id:'returns', selector:'#fund', title:['Projected returns','Retornos proyectados']},
-    {id:'team', selector:'#team', title:['The core team','El equipo principal']},
-    {id:'specialists', selector:'#specialists', title:['Local specialists','Especialistas locales']},
-    {id:'disclaimer', selector:'#main .legal-notice', title:['Important disclosures','Información importante']},
-    {id:'contact', selector:'#contact', title:['Talk to us','Hable con nosotros']}
-  ];
+  const story = window.DULCINEA_STORY;
+  if (!Array.isArray(story?.main) || !story.main.length || !Array.isArray(story.appendices)) return;
+  const steps = story.main;
+  const appendices = story.appendices;
+  const allSteps = [...steps,...appendices];
+  const byId = new Map(allSteps.map(step => [step.id,step]));
+  const mainIndex = new Map(steps.map((step,number) => [step.id,number]));
+  const propertySteps = steps.filter(step => step.propertyKey);
   const sections = [...main.children];
+  if (allSteps.some(step => !sections.includes(document.querySelector(step.selector)))) {
+    startButton.disabled = true;
+    console.warn('Presentation targets must be direct children of #main.');
+    return;
+  }
   const previousButton = document.querySelector('#presentation-previous');
   const nextButton = document.querySelector('#presentation-next');
   const fullscreenButton = document.querySelector('#presentation-fullscreen');
   const languageButton = document.querySelector('#presentation-language');
   const status = document.querySelector('#presentation-status');
   const menuItems = document.querySelector('#presentation-menu-items');
+  const appendixButton = document.createElement('button');
+  appendixButton.type = 'button';
+  appendixButton.id = 'presentation-appendix-return';
+  appendixButton.hidden = true;
+  controls.insertBefore(appendixButton,document.querySelector('#presentation-title'));
   const sectionState = new Map();
   const detailsState = new Map();
   let active = false;
   let index = 0;
+  let activeId = steps[0].id;
+  let appendixReturn = null;
+  let returnFocus = null;
+  let returnLanguage = null;
   let opener = null;
   let ownsFullscreen = false;
   let resizeFrame = 0;
@@ -1916,12 +2062,16 @@ migrateLegacyHash();
   const spanish = () => document.documentElement.lang === 'es';
   const translated = values => values[spanish() ? 1 : 0];
   const hasOpenDialog = () => Boolean(document.querySelector('dialog[open]'));
-  const stepTitle = number => translated(steps[number].title);
+  const stepTitle = id => translated(byId.get(id).title);
+  const inAppendix = () => !mainIndex.has(activeId);
   const clamp = number => Math.max(0,Math.min(steps.length - 1,Math.trunc(Number(number) || 0)));
-  const routeIndex = () => {
-    const match = /^#present-(\d+)$/.exec(location.hash);
-    return match ? clamp(Number(match[1]) - 1) : null;
+  const routeId = (hash = location.hash) => {
+    const match = /^#present-(.*)$/.exec(hash);
+    if (!match) return null;
+    const subject = /^\d+$/.test(match[1]) ? story.legacyNumeric[match[1]] : match[1];
+    return byId.has(subject) ? subject : steps[0].id;
   };
+  const targetId = target => typeof target === 'number' ? steps[clamp(target)].id : (byId.has(target) ? target : steps[0].id);
   function label(button, values) {
     if (!button) return;
     const text = translated(values);
@@ -1931,11 +2081,14 @@ migrateLegacyHash();
   function announce(message) {
     if (status) status.textContent = message;
   }
-  function writeHash(hash, push = false) {
+  function writeHash(hash, push = false, appendixContext = null) {
     const url = new URL(location.href);
     url.hash = hash;
     try {
-      history[push ? 'pushState' : 'replaceState'](history.state,'',url);
+      const state = {...history.state};
+      if (appendixContext) state.dulcineaAppendix = appendixContext;
+      else delete state.dulcineaAppendix;
+      history[push ? 'pushState' : 'replaceState'](state,'',url);
     } catch { /* Local file previews can still present without a history update. */ }
   }
   function fitCanvas() {
@@ -1982,11 +2135,15 @@ migrateLegacyHash();
     });
   }
   function updateControls() {
-    const count = `${String(index + 1).padStart(2,'0')} / ${String(steps.length).padStart(2,'0')}`;
+    const appendix = inAppendix();
+    const count = appendix ? translated(['Appendix','Anexo']) : `${String(index + 1).padStart(2,'0')} / ${String(steps.length).padStart(2,'0')}`;
     document.querySelector('#presentation-count').textContent = count;
-    document.querySelector('#presentation-title').textContent = stepTitle(index);
-    previousButton.disabled = index === 0;
-    nextButton.disabled = index === steps.length - 1;
+    document.querySelector('#presentation-title').textContent = stepTitle(activeId);
+    previousButton.disabled = appendix || index === 0;
+    nextButton.disabled = appendix || index === steps.length - 1;
+    appendixButton.hidden = !appendix;
+    appendixButton.textContent = translated(['← Back to presentation','← Volver a la presentación']);
+    label(appendixButton,['Back to presentation','Volver a la presentación']);
     label(previousButton,['Previous slide','Diapositiva anterior']);
     label(nextButton,['Next slide','Siguiente diapositiva']);
     label(document.querySelector('#presentation-overview'),['All slides','Todas las diapositivas']);
@@ -2010,51 +2167,59 @@ migrateLegacyHash();
       abbreviation.textContent = targetLanguage.toUpperCase();
       languageButton.append(abbreviation);
     }
-    menuItems.querySelectorAll('[data-presentation-index]').forEach(button => {
-      const number = Number(button.dataset.presentationIndex);
-      button.querySelector('.presentation-menu-label').textContent = stepTitle(number);
-      button.classList.toggle('is-current',number === index);
-      if (number === index) button.setAttribute('aria-current','step');
+    menuItems.querySelectorAll('[data-presentation-id]').forEach(button => {
+      const id = button.dataset.presentationId;
+      button.querySelector('.presentation-menu-label').textContent = stepTitle(id);
+      button.classList.toggle('is-current',id === activeId);
+      if (id === activeId) button.setAttribute('aria-current','step');
       else button.removeAttribute('aria-current');
     });
+    menuItems.querySelector('.presentation-appendix-heading').textContent = translated(['Optional detail','Detalle opcional']);
   }
-  function goTo(number, updateRoute = true) {
-    if (!active) return start(number);
+  function goTo(target, updateRoute = true) {
+    if (!active) return start(target,updateRoute);
     status?.classList.remove('presentation-feedback');
-    const nextIndex = clamp(number);
-    const resetScroll = nextIndex !== index || !document.body.dataset.presentationStep;
-    index = nextIndex;
-    const step = steps[index];
+    const id = targetId(target);
+    const step = byId.get(id);
     const section = document.querySelector(step.selector);
-    if (!section) return;
+    if (!sections.includes(section)) return;
+    const resetScroll = id !== activeId || !document.body.dataset.presentationStep;
+    const openingAppendix = !mainIndex.has(id) && (id !== activeId || !document.body.dataset.presentationStep);
+    if (openingAppendix) {
+      const saved = history.state?.dulcineaAppendix?.returnTo;
+      const caller = updateRoute && mainIndex.has(activeId) ? activeId : (mainIndex.has(saved) ? saved : step.returnTo);
+      appendixReturn = {id:caller,element:document.activeElement,locale:document.documentElement.lang};
+    }
+    activeId = id;
+    if (mainIndex.has(id)) index = mainIndex.get(id);
+    else index = mainIndex.get(appendixReturn?.id || step.returnTo);
     if (menu.open) menu.close();
     if (websiteMenu?.open) websiteMenu.close();
     const focusedSection = sections.find(item => item.contains(document.activeElement));
     if (focusedSection && focusedSection !== section) controls.focus({preventScroll:true});
     document.body.dataset.presentationStep = step.id;
+    document.body.classList.toggle('presentation-appendix',inAppendix());
     sections.forEach(item => {
       const selected = item === section;
       item.classList.toggle('presentation-active',selected);
       item.inert = !selected;
       item.setAttribute('aria-hidden',String(!selected));
     });
-    if (typeof step.home === 'number') {
-      const changed = current !== step.home;
-      current = step.home;
-      renderHome(changed);
-    }
-    if (step.id === 'returns') document.querySelector('#fund > details.model').open = true;
-    if (step.id === 'owner-use') document.querySelector('#owner-use').open = true;
-    if (updateRoute) writeHash(`present-${index + 1}`);
+    if (step.propertyKey) window.DulcineaProperties.select(step.propertyKey,{writeRoute:false,scroll:false,focus:false});
+    if (step.id === 'returns') section.querySelector('details.model')?.setAttribute('open','');
+    if (step.anchor) document.querySelector(step.anchor)?.setAttribute('open','');
+    if (updateRoute) writeHash(`present-${id}`,openingAppendix,inAppendix() ? (openingAppendix ? {returnTo:appendixReturn.id,pushed:true} : history.state?.dulcineaAppendix || null) : null);
     updateControls();
+    if (openingAppendix) appendixButton.focus({preventScroll:true});
+    if (!inAppendix() && document.activeElement === appendixButton) controls.focus({preventScroll:true});
     fitCanvas();
     if (resetScroll) main.scrollTo({top:0,left:0,behavior:'instant'});
     refreshMedia();
-    announce(`${translated(['Slide','Diapositiva'])} ${index + 1} ${translated(['of','de'])} ${steps.length}: ${stepTitle(index)}`);
-    window.dispatchEvent(new CustomEvent('dulcinea:presentation-slide',{detail:{index,id:step.id,count:steps.length}}));
+    announce(inAppendix() ? `${translated(['Appendix','Anexo'])}: ${stepTitle(id)}` : `${translated(['Slide','Diapositiva'])} ${index + 1} ${translated(['of','de'])} ${steps.length}: ${stepTitle(id)}`);
+    window.dispatchEvent(new CustomEvent('dulcinea:presentation-slide',{detail:{index:inAppendix() ? null : index,id:step.id,count:steps.length,appendix:inAppendix()}}));
   }
-  function start(number = 0, updateRoute = true) {
-    if (active) { goTo(number,updateRoute); return; }
+  function start(target = 0, updateRoute = true) {
+    if (active) { goTo(target,updateRoute); return; }
     if (hasOpenDialog()) return;
     opener = document.activeElement;
     sectionState.clear();
@@ -2064,14 +2229,40 @@ migrateLegacyHash();
     active = true;
     controls.hidden = false;
     document.body.classList.add('is-presenting');
-    if (updateRoute) writeHash(`present-${clamp(number) + 1}`,true);
-    goTo(number,false);
+    activeId = targetId(target);
+    if (updateRoute) writeHash(`present-${activeId}`,true);
+    goTo(activeId,false);
     controls.focus({preventScroll:true});
+  }
+  function returnFromAppendix() {
+    if (!active || !inAppendix()) return;
+    const destination = appendixReturn?.id || byId.get(activeId).returnTo;
+    returnFocus = appendixReturn?.element;
+    if (history.state?.dulcineaAppendix?.pushed && history.state.dulcineaAppendix.returnTo === destination) {
+      returnLanguage = document.documentElement.lang;
+      history.back();
+    } else {
+      goTo(destination);
+      restoreAppendixFocus();
+    }
+  }
+  function restoreAppendixFocus() {
+    if (!returnFocus || inAppendix()) return;
+    const element = returnFocus;
+    returnFocus = null;
+    requestAnimationFrame(() => {
+      if (!active) return;
+      const visible = element.isConnected && element.getClientRects().length && !element.closest('[inert]');
+      (visible ? element : controls).focus({preventScroll:true});
+    });
   }
   function focusWebsiteSection(section) {
     if (!section) return;
     const headingId = section.getAttribute('aria-labelledby')?.split(/\s+/)[0];
-    const heading = (headingId && document.getElementById(headingId)) || section.querySelector('h1,h2,h3') || section;
+    const labelledHeading = headingId && document.getElementById(headingId);
+    const heading = section.querySelector(':scope > summary') ||
+      (labelledHeading?.getClientRects().length ? labelledHeading : null) ||
+      [...section.querySelectorAll('h1,h2,h3')].find(item => item.getClientRects().length) || section;
     const previousTabIndex = heading.getAttribute('tabindex');
     heading.setAttribute('tabindex','-1');
     heading.focus({preventScroll:true});
@@ -2082,13 +2273,17 @@ migrateLegacyHash();
   }
   function exit(updateRoute = true, restoreFocus = true, destinationId = null) {
     if (!active) return;
-    const section = (destinationId && document.getElementById(destinationId)) || document.querySelector(steps[index].selector);
+    const step = byId.get(activeId);
+    const propertyKey = destinationId?.startsWith('property-') ? destinationId.slice(9) : (!destinationId || destinationId === 'homes') ? window.DulcineaProperties.key : null;
+    const leavingProperty = Boolean(propertyKey && (step.propertyKey || destinationId === 'homes' || destinationId?.startsWith('property-')));
+    const target = destinationId || (leavingProperty ? `property-${propertyKey}` : step.anchor?.slice(1));
+    const section = (target && document.getElementById(target)) || document.querySelector(step.selector);
     if (menu.open) menu.close();
     if (websiteMenu?.open) websiteMenu.close();
     active = false;
     status?.classList.remove('presentation-feedback');
     touch = null;
-    document.body.classList.remove('is-presenting');
+    document.body.classList.remove('is-presenting','presentation-appendix');
     delete document.body.dataset.presentationStep;
     delete document.body.dataset.presentationLayout;
     ['--presentation-scale','--presentation-left','--presentation-top','--presentation-height','--presentation-width'].forEach(name => document.body.style.removeProperty(name));
@@ -2100,17 +2295,23 @@ migrateLegacyHash();
       else item.setAttribute('aria-hidden',state.hidden);
     });
     detailsState.forEach((wasOpen,details) => { details.open = wasOpen; });
-    if (destinationId === 'owner-use') section.open = true;
+    if (target === 'owner-use') document.querySelector('#owner-use').open = true;
     controls.hidden = true;
     if (ownsFullscreen && document.fullscreenElement) document.exitFullscreen().catch(() => {});
     ownsFullscreen = false;
-    const sectionHash = section?.id || section?.querySelector('[id]')?.id || 'home';
+    const sectionHash = leavingProperty ? `property-${propertyKey}` : section?.id || section?.querySelector('[id]')?.id || 'home';
     if (updateRoute) writeHash(sectionHash);
     const destination = updateRoute ? section : document.getElementById(location.hash.slice(1));
     requestAnimationFrame(() => {
       if (active) return;
-      destination?.scrollIntoView({behavior:'instant',block:'start'});
-      if (restoreFocus) {
+      if (updateRoute && leavingProperty) {
+        window.DulcineaProperties.select(propertyKey,{writeRoute:false,scroll:true,focus:restoreFocus});
+      } else if (!updateRoute && location.hash.startsWith('#property-')) {
+        window.DulcineaProperties.followRoute();
+      } else {
+        destination?.scrollIntoView({behavior:'instant',block:'start'});
+      }
+      if (restoreFocus && !leavingProperty) {
         if (destination) focusWebsiteSection(destination);
         else (opener?.isConnected ? opener : startButton).focus({preventScroll:true});
       }
@@ -2139,7 +2340,7 @@ migrateLegacyHash();
   function showOverview() {
     if (!active || hasOpenDialog()) return;
     menu.showModal();
-    menuItems.querySelector(`[data-presentation-index="${index}"]`)?.focus();
+    menuItems.querySelector(`[data-presentation-id="${activeId}"]`)?.focus();
     syncMotion();
   }
   function showWebsiteMenu() {
@@ -2149,28 +2350,35 @@ migrateLegacyHash();
     websiteMenu.querySelector('[data-website-section]')?.focus();
     syncMotion();
   }
-  steps.forEach((step,number) => {
+  function addMenuStep(step,number = null) {
     const button = document.createElement('button');
     button.type = 'button';
-    button.dataset.presentationIndex = String(number);
+    button.dataset.presentationId = step.id;
+    if (number !== null) button.dataset.presentationIndex = String(number);
     const counter = document.createElement('span');
     counter.className = 'presentation-menu-number';
-    counter.textContent = String(number + 1).padStart(2,'0');
+    counter.textContent = number === null ? '+' : String(number + 1).padStart(2,'0');
     const title = document.createElement('span');
     title.className = 'presentation-menu-label';
-    title.textContent = stepTitle(number);
+    title.textContent = stepTitle(step.id);
     button.append(counter,title);
     button.addEventListener('click',() => {
-      goTo(number);
+      goTo(step.id);
       controls.focus({preventScroll:true});
     });
     menuItems.append(button);
-  });
+  }
+  steps.forEach(addMenuStep);
+  const appendixHeading = document.createElement('p');
+  appendixHeading.className = 'presentation-appendix-heading';
+  menuItems.append(appendixHeading);
+  appendices.forEach(step => addMenuStep(step));
   controls.tabIndex = -1;
   main.tabIndex = -1;
   startButton.addEventListener('click',() => start());
-  previousButton.addEventListener('click',() => goTo(index - 1));
-  nextButton.addEventListener('click',() => goTo(index + 1));
+  previousButton.addEventListener('click',() => { if (!inAppendix()) goTo(index - 1); });
+  nextButton.addEventListener('click',() => { if (!inAppendix()) goTo(index + 1); });
+  appendixButton.addEventListener('click',returnFromAppendix);
   document.querySelector('#presentation-exit').addEventListener('click',() => exit());
   document.querySelector('#presentation-overview').addEventListener('click',showOverview);
   document.querySelector('#presentation-menu-close').addEventListener('click',() => menu.close());
@@ -2186,22 +2394,45 @@ migrateLegacyHash();
     websiteButton?.setAttribute('aria-expanded','false');
     if (active) websiteButton?.focus({preventScroll:true});
   });
-  document.addEventListener('dulcinea:language',updateControls);
+  document.addEventListener('dulcinea:language',() => {
+    // On popstate app.js may apply the caller entry's older language before
+    // this controller runs. Save locale changes only while the URL still
+    // identifies the appendix, not during that return navigation.
+    if (active && inAppendix() && routeId() === activeId && appendixReturn) appendixReturn.locale = document.documentElement.lang;
+    updateControls(); scheduleFit();
+  });
   window.addEventListener('resize',scheduleFit);
   window.visualViewport?.addEventListener('resize',scheduleFit);
   if ('ResizeObserver' in window) new ResizeObserver(() => { if (active) scheduleFit(); }).observe(controls);
   document.addEventListener('fullscreenchange',() => { updateControls(); scheduleFit(); });
   function syncRoute() {
-    const requested = routeIndex();
+    if (returnLanguage) {
+      const language = returnLanguage;
+      returnLanguage = null;
+      setLanguage(language);
+    }
+    const requested = routeId();
     if (requested !== null) {
+      // Browser navigation wins over an open viewer; ordinary dialog keyboard
+      // handling still has priority until a route actually changes.
+      document.querySelectorAll('dialog[open]').forEach(dialog => dialog.close());
       if (active) goTo(requested,false);
       else start(requested,false);
+      if (location.hash !== `#present-${requested}`) writeHash(`present-${requested}`,false,history.state?.dulcineaAppendix || null);
+      restoreAppendixFocus();
     } else {
       if (active) exit(false,false);
       if (location.hash === '#owner-use') document.querySelector('#owner-use').open = true;
     }
   }
   window.addEventListener('hashchange',syncRoute);
+  // Retain the saved appendix locale regardless of popstate listener order.
+  window.addEventListener('popstate',() => {
+    if (active && inAppendix() && mainIndex.has(routeId())) {
+      returnLanguage ||= appendixReturn?.locale || document.documentElement.lang;
+      returnFocus = appendixReturn?.element;
+    }
+  },true);
   window.addEventListener('popstate',syncRoute);
   // These destinations deliberately return to the scrolling site; ordinary
   // in-slide anchor links continue to navigate the presentation itself.
@@ -2217,23 +2448,26 @@ migrateLegacyHash();
     if (!active || hasOpenDialog() || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
     const target = event.target instanceof Element ? event.target : null;
     if (target?.closest('input,textarea,select,[contenteditable="true"]')) return;
-    if (event.key === 'Escape') { event.preventDefault(); exit(); return; }
+    if (event.key === 'Escape') { event.preventDefault(); if (inAppendix()) returnFromAppendix(); else exit(); return; }
     if (event.key.toLowerCase() === 'f') { event.preventDefault(); toggleFullscreen(); return; }
     const interactive = target?.closest('a,button,summary,[role="button"]');
     const readingKey = event.key === 'PageDown' || event.key === 'PageUp' || ((event.key === ' ' || event.code === 'Space') && !interactive);
-    if (document.body.dataset.presentationLayout === 'responsive' && readingKey) {
+    if ((document.body.dataset.presentationLayout === 'responsive' || inAppendix()) && readingKey) {
       const direction = event.key === 'PageUp' || (event.shiftKey && (event.key === ' ' || event.code === 'Space')) ? -1 : 1;
-      const remaining = direction > 0 ? main.scrollHeight - main.clientHeight - main.scrollTop : main.scrollTop;
+      const scrollRegion = document.body.dataset.presentationLayout === 'canvas' && inAppendix() ? document.querySelector(byId.get(activeId).selector) : main;
+      const remaining = direction > 0 ? scrollRegion.scrollHeight - scrollRegion.clientHeight - scrollRegion.scrollTop : scrollRegion.scrollTop;
       if (remaining > 2) {
         event.preventDefault();
-        main.scrollBy({top:direction * main.clientHeight * .8,behavior:'instant'});
+        scrollRegion.scrollBy({top:direction * scrollRegion.clientHeight * .8,behavior:'instant'});
         return;
       }
     }
     let destination = null;
-    if (event.key === 'ArrowRight' || event.key === 'PageDown') destination = index + 1;
-    if (event.key === 'ArrowLeft' || event.key === 'PageUp') destination = index - 1;
-    if ((event.key === ' ' || event.code === 'Space') && !interactive) destination = index + (event.shiftKey ? -1 : 1);
+    if (!inAppendix()) {
+      if (event.key === 'ArrowRight' || event.key === 'PageDown') destination = index + 1;
+      if (event.key === 'ArrowLeft' || event.key === 'PageUp') destination = index - 1;
+      if ((event.key === ' ' || event.code === 'Space') && !interactive) destination = index + (event.shiftKey ? -1 : 1);
+    }
     if (event.key === 'Home') destination = 0;
     if (event.key === 'End') destination = steps.length - 1;
     if (destination === null) return;
@@ -2246,18 +2480,25 @@ migrateLegacyHash();
     const homeButton = target?.closest('[data-home],[data-preview-home],#prev-home,#next-home');
     if (homeButton) {
       event.preventDefault(); event.stopImmediatePropagation();
-      const chosen = homeButton.hasAttribute('data-preview-home') ? Number(homeButton.dataset.previewHome) : homeButton.hasAttribute('data-home') ? Number(homeButton.dataset.home) : (current + (homeButton.id === 'next-home' ? 1 : homes.length - 1)) % homes.length;
-      goTo(steps.findIndex(step => step.home === chosen));
+      let chosen;
+      if (homeButton.hasAttribute('data-preview-home') || homeButton.hasAttribute('data-home')) {
+        const sourceIndex = Number(homeButton.dataset.previewHome ?? homeButton.dataset.home);
+        chosen = propertySteps.find(step => step.propertyKey === homes[sourceIndex]?.key);
+      } else {
+        const position = propertySteps.findIndex(step => step.propertyKey === window.DulcineaProperties.key);
+        chosen = propertySteps[(position + (homeButton.id === 'next-home' ? 1 : propertySteps.length - 1)) % propertySteps.length];
+      }
+      if (chosen) goTo(chosen.id);
       return;
     }
-    const summary = target?.closest('#fund > details.model > summary, #owner-use > summary');
+    const summary = target?.closest('#returns > details.model > summary, #owner-use > summary');
     if (summary) { event.preventDefault(); return; }
     const link = target?.closest('a[href]');
     if (!link || link.target === '_blank') return;
     const url = new URL(link.href,location.href);
     if (url.origin !== location.origin || url.pathname !== location.pathname) return;
-    const requested = steps.findIndex(step => (step.anchor || step.selector) === url.hash);
-    if (requested < 0) return;
+    const requested = routeId(url.hash) || allSteps.find(step => (step.anchor || step.selector) === url.hash || (step.propertyKey && `#property-${step.propertyKey}` === url.hash))?.id;
+    if (!requested) return;
     event.preventDefault();
     goTo(requested);
   },true);
@@ -2280,15 +2521,18 @@ migrateLegacyHash();
     const elapsed = Date.now() - touch.time;
     const scrolled = Math.abs(main.scrollTop - touch.scrollTop) > 12;
     touch = null;
-    if (!scrolled && elapsed < 900 && Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) goTo(index + (deltaX < 0 ? 1 : -1));
+    if (!inAppendix() && !scrolled && elapsed < 900 && Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) goTo(index + (deltaX < 0 ? 1 : -1));
   },{passive:true});
   main.addEventListener('touchcancel',() => { touch = null; },{passive:true});
   window.DulcineaPresentation = Object.freeze({
     get active() { return active; },
-    get index() { return index; },
+    get index() { return inAppendix() ? null : index; },
+    get id() { return activeId; },
+    get appendix() { return inAppendix(); },
     get count() { return steps.length; },
-    start, goTo, exit,
-    get slides() { return steps.map((step,number) => ({index:number,id:step.id,title:stepTitle(number)})); }
+    start, goTo, exit, returnFromAppendix,
+    get slides() { return steps.map((step,number) => ({index:number,id:step.id,title:stepTitle(step.id)})); },
+    get appendices() { return appendices.map(step => ({id:step.id,title:stepTitle(step.id)})); }
   });
   updateControls();
   syncRoute();

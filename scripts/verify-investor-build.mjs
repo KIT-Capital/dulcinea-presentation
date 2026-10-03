@@ -17,6 +17,12 @@ const limit = 25 * 1024 * 1024;
 const files = new Map();
 const pages = new Map();
 const read = name => readFile(path.join(root, name), 'utf8');
+const story = JSON.parse(await read('content/presentation-story.json'));
+const expectedOrder = ['cover','lifestyle','oriente','city','hospitality','benefits','monte-sereno','montana','fontanar','san-lucas','aires','idea','returns','offer','team','specialists','disclaimer','contact'];
+assert.deepEqual(story.main.map(step=>step.id), expectedOrder, 'Main presentation order');
+assert.deepEqual(story.appendices.map(step=>step.id), ['owner-use'], 'Booking is optional detail');
+assert.deepEqual(Object.values(story.legacyNumeric), ['cover','lifestyle','benefits','owner-use','oriente','city','hospitality','fontanar','san-lucas','aires','monte-sereno','montana','idea','offer','returns','team','specialists','disclaimer','contact'], 'Published numeric links must retain their subjects');
+const presentationAnchors = new Set([...story.main,...story.appendices].map(step=>`present-${step.id}`).concat(Object.keys(story.legacyNumeric).map(key=>`present-${key}`)));
 const decode = text => text.replace(/&#(x[\da-f]+|\d+);/gi, (_, value) =>
   String.fromCodePoint(value[0].toLowerCase() === 'x' ? parseInt(value.slice(1), 16) : Number(value)))
   .replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>');
@@ -53,7 +59,7 @@ function resolveBuiltURL(reference, base, label) {
   if (url.hash && pages.has(target)) {
     const anchor = decodeURIComponent(url.hash.slice(1));
     const ids = new Set([...withoutScripts(pages.get(target)).matchAll(/\bid=(["'])(.*?)\1/g)].map(match => decode(match[2])));
-    assert.ok(ids.has(anchor), `Missing section: ${label} -> ${target}${url.hash}`);
+    assert.ok(ids.has(anchor) || (target.endsWith('/index.html') && presentationAnchors.has(anchor)), `Missing section: ${label} -> ${target}${url.hash}`);
   }
   return url;
 }
@@ -100,6 +106,7 @@ for (const [pagePath, html] of pages) {
   const language = pagePath.startsWith('/es/') ? 'es' : 'en';
   assert.match(html, new RegExp(`<html\\s+lang=["']${language}["']`), `Wrong language: ${pagePath}`);
   assert.doesNotMatch(html, /Design preview|Vista previa|\{\{[A-Z_0-9]+\}\}|\/\*__[A-Z_]+__\*\//i, `Preview text or unexpanded marker: ${pagePath}`);
+  assert.doesNotMatch(html, /\uFFFD/, `Invalid text encoding: ${pagePath}`);
   const markup = withoutScripts(html);
   assert.doesNotMatch(decode(markup) + textContent(markup), /buy[\s\u00ad\u200b\u2010-\u2015-]*box/i, `Use acquisition criteria instead of the retired label: ${pagePath}`);
   const forms = [...markup.matchAll(/<form\b[^>]*>/gi)].map(match => attributes(match[0]));
@@ -123,7 +130,10 @@ for (const [pagePath, html] of pages) {
     compiledScripts++;
   }
 
-  if (!pagePath.endsWith('/index.html')) continue;
+  if (!pagePath.endsWith('/index.html')) {
+    assert.equal((markup.match(/class="locale-switch(?:\s[^"]*)?"/g)||[]).length,1, `Exactly one resource language switch: ${pagePath}`);
+    continue;
+  }
   const card = socialMetadata(language);
   const socialTags = [...markup.matchAll(/<meta\b[^>]*>/gi)].map(match => attributes(match[0]));
   const socialValue = key => {
@@ -146,18 +156,25 @@ for (const [pagePath, html] of pages) {
   assert.ok(injected, `Missing injected media map: ${pagePath}`);
   const map = JSON.parse(injected[1]);
   assert.deepEqual(map, expectedMap, `Media alias map diverges from sources: ${pagePath}`);
+  const injectedStory=html.match(/window\.DULCINEA_STORY\s*=\s*(\{[^\n]*?\})\s*;/);
+  assert.ok(injectedStory, `Missing presentation story: ${pagePath}`);
+  assert.deepEqual(JSON.parse(injectedStory[1]),story,`Presentation metadata diverges from source: ${pagePath}`);
   for (const [alias, url] of Object.entries(map)) resolveBuiltURL(url, pagePath, `${pagePath} media alias ${alias}`);
   assert.match(markup, /href=["']https:\/\/wa\.me\/19174284062["']/, `Missing Dov WhatsApp: ${pagePath}`);
   assert.match(markup, /href=["']mailto:kit@kitcapital\.com["']/, `Missing Dov email: ${pagePath}`);
   for (const person of ['K. Dov Isaza Tuzman', 'Ricardo Cidale', 'Adriana Suárez']) assert.ok(textContent(markup).includes(person), `Missing team member ${person}: ${pagePath}`);
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
   for(const chapter of ['destination','ownership','member-benefits','owner-use','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
-  assert.ok(markup.indexOf('id="ownership"') < markup.indexOf('id="member-benefits"') && markup.indexOf('id="member-benefits"') < markup.indexOf('id="oriente"'), 'Member benefits belong after lifestyle and before destinations');
+  const chapterOrder=['ownership','oriente','destination','after-dark','experience','member-benefits','homes','approach','returns','fund','resources','team','specialists','contact'];
+  for(let i=1;i<chapterOrder.length;i++) assert.ok(markup.indexOf(`id="${chapterOrder[i-1]}"`) < markup.indexOf(`id="${chapterOrder[i]}"`), `Homepage chapter order: ${chapterOrder[i-1]} before ${chapterOrder[i]}`);
   assert.match(markup, /<details class="owner-use" id="owner-use">/, 'Owner booking rules should be expandable on the website');
   assert.doesNotMatch(markup, /Three equity kickers|Tres beneficios de participación adicionales/, 'The old equity-only overview must be replaced');
-  assert.deepEqual([...markup.matchAll(/<article class="home-film-card"><a\b[^>]*data-preview-home="(\d)"/g)].map(match=>Number(match[1])),[0,1,2,3,4],`Every property film must be directly discoverable: ${pagePath}`);
+  assert.deepEqual([...markup.matchAll(/<a class="property-preview"[^>]*data-preview-home="(\d)"/g)].map(match=>Number(match[1])),[3,4,0,1,2],`Five country-first property selectors: ${pagePath}`);
+  assert.doesNotMatch(markup, /class="property-tabs"|class="home-film-grid"/, 'Avoid duplicate property browsing');
+  for(const step of story.main.filter(step=>step.propertyKey))assert.ok(markup.includes(`id="property-${step.propertyKey}"`),`Missing durable property URL: ${step.propertyKey}`);
   assert.ok(markup.indexOf('id="fund"') < markup.indexOf('id="team"'),'The offer should precede the team directory');
-  assert.match(markup, /<details class="model" open>/,'Projected results should be visible without a click');
+  assert.match(markup, /<section class="returns section-pad" id="returns"/,'Projected results should be a visible section');
+  assert.doesNotMatch(markup, /<details class="model"/,'Returns must not depend on the offer accordion');
   assert.match(markup, /id="experience-hospitality"[^>]*loop/,'Hospitality film must loop independently');
   assert.match(markup, /id="experience-nightlife"[^>]*loop/,'Nightlife film must loop independently');
   assert.doesNotMatch(html, /#experience-hospitality\s*\{\s*opacity:\s*0/, 'Hospitality video must remain visible');
@@ -178,8 +195,8 @@ for (const [pagePath, html] of pages) {
   const text = textContent(markup);
   assert.match(markup, /class="legal-notice"/, `Missing homepage disclosure: ${pagePath}`);
   for (const phrase of language === 'en'
-    ? ['Our first fund.', 'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake', 'Each home in service adds 73 nights.', 'Cancel 30 days ahead.', 'Winners sit out the next draw.', 'Delaware LLC']
-    : ['Nuestro primer fondo.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Beneficios de membresía', 'Participación colectiva', 'Cada propiedad en servicio aporta 73 noches.', 'Cancele con 30 días de anticipación.', 'Los ganadores no participan en el siguiente sorteo.', 'LLC de Delaware']) {
+    ? ['Dulcinea One is our first fund.', 'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake', 'Each active home adds 73 nights.', 'Cancel 30 days ahead.', 'Winners sit out the next draw.', 'Delaware LLC']
+    : ['Dulcinea One es nuestro primer fondo.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Beneficios de membresía', 'Participación colectiva', 'Cada propiedad activa aporta 73 noches.', 'Cancele con 30 días de anticipación.', 'Los ganadores no participan en el siguiente sorteo.', 'LLC de Delaware']) {
     assert.ok(text.includes(phrase), `Missing visible ${language} investor content: ${phrase}`);
   }
 }
@@ -193,7 +210,7 @@ for (const prefix of ['', '/es']) {
   assert.match(textContent(disclaimer), prefix ? /portafolio en su conjunto/ : /portfolio as a whole/);
   assert.match(textContent(disclaimer), prefix ? /no auditadas/ : /unaudited/);
   assert.match(textContent(specialists), prefix ? /Especialistas locales/ : /Local specialists/);
-  assert.ok(specialists.includes('dulcinea-one-black-gold.svg'), 'Specialists page needs the dark logo on its light background');
+  assert.ok(specialists.includes('dulcinea-one-white-gold.svg') && specialists.includes('class="resource-navigation"'), 'Resource navigation needs the light logo on its dark background');
   assert.ok(specialists.includes(`href="${prefix}/#specialists"`), 'Missing localized specialists return link');
   assert.ok(specialists.includes(`href="${prefix}/#team"`), 'Missing localized core-team return link');
   const specialistBlock=html=>html.match(/<dl class="specialists">[\s\S]*?<\/dl>/)?.[0];

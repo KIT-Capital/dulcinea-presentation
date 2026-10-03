@@ -5,6 +5,8 @@ const homes = [
   {name:'Casa Monte Sereno',key:'monte-sereno',image:'monte-sereno.webp',original:'monte-sereno-original.png',plans:[3,4,5],location:'El Retiro',type:['House','Casa'],area:'420 m²',description:['A country house on a 2,940 m² lot.','Una casa de campo en un lote de 2.940 m².'],status:['Negotiated · Finalizing modifications','Negociado · Ajustando modificaciones']},
   {name:'Casa Montana',key:'montana',image:'montana.webp',original:'montana-original.png',plans:[],location:'El Retiro',type:['House','Casa'],area:'591 m²',description:['A country house in El Retiro.','Una casa de campo en El Retiro.'],status:['Negotiated · Works being budgeted','Negociado · Obras en presupuesto']}
 ];
+const configuredHomeOrder = (window.DULCINEA_STORY?.main || []).filter(step => step.propertyKey).map(step => homes.findIndex(home => home.key === step.propertyKey));
+const homeOrder = configuredHomeOrder.length === homes.length && new Set(configuredHomeOrder).size === homes.length && configuredHomeOrder.every(index => index >= 0) ? configuredHomeOrder : [3,4,0,1,2];
 const $ = selector => document.querySelector(selector);
 const isWeb = window.DULCINEA_WEB !== false;
 const initialSpanishPath = /\/es(?:\/|$)/.test(location.pathname);
@@ -12,10 +14,12 @@ const portableRoot = new URL(initialSpanishPath ? '../' : './',location.href);
 const assetMap = Object.fromEntries(Object.entries(window.DULCINEA_ASSETS || {}).map(([name,url]) => [name,new URL(url,location.href).href]));
 const asset = name => assetMap[name] || `/media/${name}`;
 const resource = path => isWeb ? `/${lang === 'es' ? 'es/' : ''}${path}` : new URL(`${lang === 'es' ? 'es/' : ''}${path}`,portableRoot).href;
-let lang = 'en', current = 0, planIndex = 0;
+let lang = 'en', current = homeOrder[0], planIndex = 0, currentMediaKey = null;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 let paused = reduce.matches;
 const videos = [...document.querySelectorAll('video')];
+const previewVideos = new Set(document.querySelectorAll('[data-preview-home] video'));
+previewVideos.forEach(video => { video.autoplay = false; video.removeAttribute('autoplay'); video.preload = 'none'; video.pause(); });
 const visibleVideos = new Set();
 const motion = $('.motion');
 const originalDialog = $('#original-dialog');
@@ -31,7 +35,7 @@ const dialogs = [...document.querySelectorAll('dialog')];
 const propertyVideo = $('#property-video');
 function canAnimate() { return !paused && !document.hidden && !dialogs.some(dialog => dialog.open); }
 function syncVideo(video) {
-  if (canAnimate() && visibleVideos.has(video)) video.play().catch(() => {});
+  if (!previewVideos.has(video) && canAnimate() && visibleVideos.has(video) && !video.closest('[inert]') && video.getClientRects().length) video.play().catch(() => {});
   else video.pause();
 }
 function syncMotion() { document.body.classList.toggle('is-paused',!canAnimate()); videos.forEach(syncVideo); }
@@ -42,7 +46,7 @@ const observer = new IntersectionObserver(entries => {
     syncVideo(entry.target);
   });
 },{threshold:.15});
-videos.forEach(video => observer.observe(video));
+videos.filter(video => !previewVideos.has(video)).forEach(video => observer.observe(video));
 function motionState() {
   const label = lang === 'es' ? (paused ? 'Reanudar animaciones' : 'Pausar animaciones') : (paused ? 'Resume animations' : 'Pause animations');
   motion?.setAttribute('aria-pressed',String(paused)); motion?.setAttribute('aria-label',label);
@@ -55,6 +59,48 @@ reduce.addEventListener('change',event => { paused = event.matches; motionState(
 document.addEventListener('visibilitychange',syncMotion);
 // Hospitality and nightlife now have separate, viewport-controlled film chapters.
 function homeLabel(index) { return `${lang === 'es' ? 'Ver' : 'View'} ${homes[index].name}`; }
+function homeIndex(value) { return typeof value === 'number' ? (Number.isInteger(value) && homes[value] ? value : -1) : homes.findIndex(home => home.key === value); }
+function homeHref(value = current) { const index = homeIndex(value); return index < 0 ? '#homes' : `#property-${homes[index].key}`; }
+const propertyAnnouncement = document.createElement('p');
+propertyAnnouncement.className = 'property-selection-status';
+propertyAnnouncement.setAttribute('role','status');
+propertyAnnouncement.setAttribute('aria-live','polite');
+propertyAnnouncement.setAttribute('aria-atomic','true');
+$('#homes').append(propertyAnnouncement);
+function revealHome(focus = false,instant = false) {
+  requestAnimationFrame(() => {
+    if (document.body.classList.contains('is-presenting')) return;
+    const detail = $('#property-detail') || $('.property-layout');
+    const headerHeight = $('.header')?.getBoundingClientRect().height || 0;
+    window.scrollTo({top:Math.max(0,window.scrollY + detail.getBoundingClientRect().top - headerHeight - 12),behavior:instant || reduce.matches ? 'instant' : 'smooth'});
+    if (focus) {
+      const heading = $('#property-name');
+      heading.setAttribute('tabindex','-1'); heading.focus({preventScroll:true});
+    }
+  });
+}
+function selectHome(value,{writeRoute = false,scroll = false,focus = false} = {}) {
+  const index = homeIndex(value);
+  if (index < 0) return false;
+  const changed = index !== current;
+  current = index; renderHome();
+  if (writeRoute && location.hash !== homeHref()) {
+    const url = new URL(location.href); url.hash = homeHref();
+    history[writeRoute === 'replace' ? 'replaceState' : 'pushState'](history.state,'',url);
+  }
+  if (changed) propertyAnnouncement.textContent = lang === 'es' ? `${homes[current].name} seleccionada. ${homeOrder.indexOf(current) + 1} de ${homes.length}.` : `${homes[current].name} selected. ${homeOrder.indexOf(current) + 1} of ${homes.length}.`;
+  if (scroll || focus) revealHome(focus,scroll === 'instant');
+  return true;
+}
+function followPropertyRoute({scroll = 'instant',focus = false} = {}) {
+  if (document.body.classList.contains('is-presenting') || !location.hash.startsWith('#property-')) return false;
+  const key = location.hash.slice('#property-'.length);
+  if (selectHome(key,{scroll,focus})) return true;
+  const url = new URL(location.href); url.hash = 'homes'; history.replaceState(history.state,'',url);
+  if (scroll) requestAnimationFrame(() => $('#homes').scrollIntoView({behavior:'instant',block:'start'}));
+  return false;
+}
+window.DulcineaProperties = {get key() { return homes[current].key; },get index() { return current; },select:selectHome,href:homeHref,followRoute:followPropertyRoute};
 function layoutPlan(preservePosition = true) {
   if (!plansDialog?.open || !planImage?.complete || !planImage.naturalWidth || planImage.hidden) return;
   const width = planViewport.clientWidth, height = planViewport.clientHeight;
@@ -122,14 +168,30 @@ function renderHome(changeMedia = true) {
   $('#property-name').textContent = home.name; $('#property-location').textContent = home.location;
   $('#property-type').textContent = home.type[i]; $('#property-description').textContent = home.description[i];
   $('#property-area').textContent = home.area; $('#property-status').textContent = home.status[i];
-  $('#property-count').textContent = `0${current + 1} / 05`;
+  $('#property-count').textContent = `${String(homeOrder.indexOf(current) + 1).padStart(2,'0')} / ${String(homes.length).padStart(2,'0')}`;
   $('#property-plan-count').textContent = String(home.plans.length).padStart(2,'0');
   $('.property-layout').dataset.property = home.key;
-  document.querySelectorAll('[data-home]').forEach((button,index) => {
-    button.setAttribute('aria-pressed',String(index === current)); button.setAttribute('aria-label',homeLabel(index));
+  document.querySelectorAll('[data-home],[data-preview-home]').forEach(control => {
+    const index = Number(control.dataset.previewHome ?? control.dataset.home);
+    if (!Number.isInteger(index) || !homes[index]) return;
+    const selected = index === current;
+    control.setAttribute('aria-label',homeLabel(index));
+    control.setAttribute('aria-controls','property-detail');
+    if (control.tagName === 'A') {
+      control.href = homeHref(index);
+      if (selected) control.setAttribute('aria-current','true');
+      else control.removeAttribute('aria-current');
+    } else control.setAttribute('aria-pressed',String(selected));
+    if (control.matches('.property-preview')) {
+      let state = control.querySelector('.property-preview-state');
+      if (!state) { state = document.createElement('span'); state.className = 'property-preview-state'; control.append(state); }
+      state.textContent = lang === 'es' ? 'Seleccionada' : 'Selected';
+      state.hidden = !selected;
+    }
   });
-  if (changeMedia) {
+  if (changeMedia && currentMediaKey !== home.key) {
     planIndex = 0; propertyVideo.pause(); propertyVideo.poster = asset(home.image); propertyVideo.src = asset(`${home.key}.mp4`);
+    currentMediaKey = home.key; propertyVideo.dataset.property = home.key;
     propertyVideo.load(); syncVideo(propertyVideo);
   }
   $('#original-title').textContent = home.name; $('#original-image').src = asset(home.original);
@@ -137,25 +199,25 @@ function renderHome(changeMedia = true) {
   if ($('#view-plans')) $('#view-plans').hidden = home.plans.length === 0;
   if (plansDialog?.open) renderPlan();
 }
-$('#next-home').addEventListener('click',() => { current = (current + 1) % homes.length; renderHome(); });
-$('#prev-home').addEventListener('click',() => { current = (current + homes.length - 1) % homes.length; renderHome(); });
-document.querySelectorAll('[data-home]').forEach(button => button.addEventListener('click',() => { current = Number(button.dataset.home); renderHome(); }));
+function stepHome(direction) { selectHome(homeOrder[(homeOrder.indexOf(current) + direction + homeOrder.length) % homeOrder.length],{writeRoute:true}); }
+$('#next-home').addEventListener('click',() => stepHome(1));
+$('#prev-home').addEventListener('click',() => stepHome(-1));
+document.querySelectorAll('[data-home]:not([data-preview-home])').forEach(button => button.addEventListener('click',event => {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault(); selectHome(Number(button.dataset.home),{writeRoute:true,scroll:true,focus:true});
+}));
 // Film previews lead to the existing detailed viewer, including plans and status.
 document.querySelectorAll('[data-preview-home]').forEach(link => link.addEventListener('click',event => {
   if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
   const index = Number(link.dataset.previewHome);
   if (!Number.isInteger(index) || !homes[index]) return;
-  current = index; renderHome();
-  const url = new URL(location.href); url.hash = 'homes'; history.replaceState(history.state,'',url);
-  $('#homes').scrollIntoView({behavior:reduce.matches ? 'instant' : 'smooth',block:'start'});
-  const heading = $('#property-name');
-  heading.setAttribute('tabindex','-1'); heading.focus({preventScroll:true});
+  selectHome(index,{writeRoute:true,scroll:true,focus:true});
 }));
 function translateAria() {
   const labels = {
     '.primary':['Main navigation','Navegación principal'], '.language':['Language','Idioma'],
-    '.property-tabs':['Select a property','Seleccionar propiedad'], '.brand':['Dulcinea One — Home','Dulcinea One — Inicio'],
+    '.property-tabs':['Select a property','Seleccionar propiedad'], '.property-previews':['Select a property','Seleccionar propiedad'], '.brand':['Dulcinea One — Home','Dulcinea One — Inicio'],
     '#prev-home':['Previous property','Propiedad anterior'], '#next-home':['Next property','Siguiente propiedad'],
     '#close-original':['Close original imagery','Cerrar imagen original'], '#view-plans':['View floorplans','Ver planos'],
     '#prev-plan':['Previous floorplan','Plano anterior'], '#next-plan':['Next floorplan','Siguiente plano'], '#close-plans':['Close floorplans','Cerrar planos'],
@@ -252,14 +314,15 @@ const legacyHomes = {10:1,11:2,12:0,13:3,14:4};
 function migrateLegacyHash() {
   const match = /^#slide-(\d+)$/.exec(location.hash);
   if (!match) return;
-  const slide = Number(match[1]), anchor = legacyAnchors[slide - 1];
+  const slide = Number(match[1]); let anchor = legacyAnchors[slide - 1];
   if (!anchor) return;
-  if (Object.hasOwn(legacyHomes,slide)) { current = legacyHomes[slide]; renderHome(); }
+  if (Object.hasOwn(legacyHomes,slide)) { selectHome(legacyHomes[slide]); anchor = homeHref().slice(1); }
   const url = new URL(location.href); url.hash = anchor; history.replaceState(history.state,'',url);
-  requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({behavior:'instant'}));
+  if (!anchor.startsWith('property-')) requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({behavior:'instant'}));
 }
-window.addEventListener('hashchange',migrateLegacyHash);
-window.addEventListener('popstate',() => { setLanguage(/\/es(?:\/|$)/.test(location.pathname) ? 'es' : 'en',false); migrateLegacyHash(); });
+window.addEventListener('hashchange',() => { migrateLegacyHash(); followPropertyRoute(); });
+window.addEventListener('popstate',() => { setLanguage(/\/es(?:\/|$)/.test(location.pathname) ? 'es' : 'en',false); migrateLegacyHash(); followPropertyRoute(); });
 const requestedLanguage = new URLSearchParams(location.search).get('lang');
 setLanguage(requestedLanguage === 'es' || (requestedLanguage !== 'en' && initialSpanishPath) ? 'es' : 'en');
 migrateLegacyHash();
+if (!followPropertyRoute()) renderHome();

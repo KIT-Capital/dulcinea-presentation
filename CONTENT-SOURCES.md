@@ -2,6 +2,10 @@
 
 ## Current update — 2 October 2026
 
+The user approved execution of the lifestyle-led storyline in `docs/plans/2026-10-02-001-refactor-lifestyle-storyline-plan.md`. `content/presentation-story.json` defines 18 main slides: cover; lifestyle; El Oriente; Medellín; Lola & Ber; Member benefits; Monte Sereno; Montana; Fontanar; San Lucas; Aires; investment approach; projected returns; offer; core team; specialists; disclosures; Contact. Booking policy is optional appendix detail, excluded from the main counter and normal Next/Previous/End traversal. This changes presentation order and access paths, not the approved benefits or underwriting. Local build, browser and regression checks passed; see `docs/validation-2026-10-02-storyline.md`. Publication and live-release verification remain pending.
+
+Canonical presentation destinations use subjects (`#present-oriente`, `#present-owner-use`), while the 19 old numeric presentation links retain their previously published subject meanings. Property previews use durable `#property-…` destinations in country-first display order without changing data-record identity. The single detail panel retains the original photos and nine drawings. Only its selected film plays within the collection; the other previews show posters. Public returns at `#returns` precede the offer at `#fund`. The after-dark website panel is nested in Medellín, separate from the Lola & Ber brand chapter. Shared resource navigation uses explicit template markers and preserves the financial-only password boundary.
+
 The Lola & Ber section and presentation slide use slide 4 of `Dulcinea - Investor Presentation 032.pptx`: the brand's roots in retreats and events, its sex-positive/open-minded adult audience, and the optional “by Lola & Ber” endorsement while each home retains its name. The user's 2 October clarification establishes Lola & Ber as the brand and Lola & Ber Hospitality as its division for the properties. Keep the division name separate from the brand description. Do not repeat the deck's unsupported categorical Airbnb comparison or claim verified bookings. The 3% collective brand participation remains in Member benefits, with its existing conditions. The uploaded PPTX stays private and unchanged.
 
 The supplied `Lola & Ber — Brand Guideline 01 by NC.pptx` refines this chapter: the exact tagline “Freedom, by design.”, consent/respect/privacy, optional connection, a spaced serif wordmark, Warm Cream (#FFF9F5) and Rich Green (#24713F). The wordmark is styled native text, following the guideline. This treatment is limited to the Lola & Ber chapter; the Dulcinea palette remains unchanged. Brand copy is available in English and Spanish; the official English tagline is preserved. The source deck remains outside the public build.
@@ -17,6 +21,8 @@ Fontanar and Aires are reported closed in 3Q26 by the latest deck. Other acquisi
 Keep the existing co-branding and operating roles, Ricardo's Planning and Corporate Development title, the absence of Ashoka from public copy, and all three protected financial statements. The PPTX's internal working instructions do not override the user's instructions. Both sources remain private and unchanged.
 
 ## Historical reconciliation — Model 09
+
+The records below preserve earlier Model 07/09 reconciliation and presentation evidence. Their numeric conclusions, slide counts and media placements are historical; the current Model 10 section above, `docs/model-10-reconciliation.md` and the approved 2 October storyline govern the active app. No historical financial records were recalculated for the storyline revision.
 
 The user’s latest positioning governs the presentation: **Dulcinea is a real estate investment firm with a unique platform focused on Medellín, Colombia. Dulcinea One is its first fund, co-branded by Lola & Ber Hospitality.** Dulcinea manages acquisition, renovation, operation and sale. Lola & Ber Hospitality remains the co-brand. This clarification takes precedence over source descriptions using ServCo or implying that KIT Capital is the operator. KIT Capital remains in source-supported biographies, the acquisition criteria and the supplied contact email.
 
@@ -60,7 +66,9 @@ All financial tables round USD to whole dollars and margins to one decimal. Zero
 - **Entry-discount basis:** the 30% modeled discount compares all-in basis with improved comparable value; it is not a 30% discount on the purchase-price column. The deck's rounded price-per-m² table was checked internally and is consistent with that basis; it is not rendered on the site (`Properties!M6:P10`, `W6:W10`; `Input!I80:I84`; deck slide 7).
 - **Workbook prose:** stale statements about $7M “invested,” 70% occupancy, 24-month exits and quarter-based timing do not override active numeric cells. `Sources & Uses!C7` is a presentation residual, while its “cap binding” label conflicts with undrawn commitment in C23. That residual is not presented as called capital. The source notes the $7M authorization amendment as pending signature (`Input!D43`); the financial scenario does not establish completed legal authorization.
 
-## Validation and imagery
+## Historical validation and imagery
+
+Earlier media and layout descriptions in this section are retained as evidence, not the current sequence. In particular, the old chef-for-hospitality placement and six-stock-clip count have been superseded. Current brand and media treatment is described at the start of this document and in `design/homepage-story.md`; these historical checks do not validate the current release.
 
 The workbook was inspected read-only without recalculation or external upload; its source hash remained unchanged. No cached Excel error cells or empty numeric formula caches were found. The 320 empty formula caches were typed strings. Calls, distributions, MOIC and property-exit totals reconcile; an independent XIRR calculation from cached monthly flows agrees with the saved result. These checks validate the extracted snapshot, not the timing of the last complete recalculation or the forecast's real-world outcome.
 

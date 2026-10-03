@@ -10,38 +10,39 @@
   const websiteButton = document.querySelector('#presentation-website');
   if (!main || !controls || !startButton || !menu) return;
 
-  const steps = [
-    {id:'cover', selector:'#home', title:['Dulcinea One','Dulcinea One']},
-    {id:'lifestyle', selector:'#ownership', title:['Homes for more than a visit','Propiedades para disfrutar']},
-    {id:'benefits', selector:'#member-benefits', title:['Member benefits','Beneficios de membresía']},
-    {id:'owner-use', selector:'#member-benefits', anchor:'#owner-use', title:['Owner use','Uso de las propiedades']},
-    {id:'oriente', selector:'#oriente', title:['El Oriente countryside','El campo del Oriente']},
-    {id:'city', selector:'#destination', title:['Life in Medellín','La vida en Medellín']},
-    {id:'hospitality', selector:'#experience', title:['Lola & Ber','Lola & Ber']},
-    {id:'fontanar', selector:'#homes', home:0, title:['Fontanar 201','Fontanar 201']},
-    {id:'san-lucas', selector:'#homes', home:1, title:['San Lucas 101','San Lucas 101']},
-    {id:'aires', selector:'#homes', home:2, title:['Aires de Campestre','Aires de Campestre']},
-    {id:'monte-sereno', selector:'#homes', home:3, title:['Casa Monte Sereno','Casa Monte Sereno']},
-    {id:'montana', selector:'#homes', home:4, title:['Casa Montana','Casa Montana']},
-    {id:'idea', selector:'#approach', title:['The investment approach','La estrategia de inversión']},
-    {id:'offer', selector:'#fund', title:['The offer + the ask','La oferta + la invitación']},
-    {id:'returns', selector:'#fund', title:['Projected returns','Retornos proyectados']},
-    {id:'team', selector:'#team', title:['The core team','El equipo principal']},
-    {id:'specialists', selector:'#specialists', title:['Local specialists','Especialistas locales']},
-    {id:'disclaimer', selector:'#main .legal-notice', title:['Important disclosures','Información importante']},
-    {id:'contact', selector:'#contact', title:['Talk to us','Hable con nosotros']}
-  ];
+  const story = window.DULCINEA_STORY;
+  if (!Array.isArray(story?.main) || !story.main.length || !Array.isArray(story.appendices)) return;
+  const steps = story.main;
+  const appendices = story.appendices;
+  const allSteps = [...steps,...appendices];
+  const byId = new Map(allSteps.map(step => [step.id,step]));
+  const mainIndex = new Map(steps.map((step,number) => [step.id,number]));
+  const propertySteps = steps.filter(step => step.propertyKey);
   const sections = [...main.children];
+  if (allSteps.some(step => !sections.includes(document.querySelector(step.selector)))) {
+    startButton.disabled = true;
+    console.warn('Presentation targets must be direct children of #main.');
+    return;
+  }
   const previousButton = document.querySelector('#presentation-previous');
   const nextButton = document.querySelector('#presentation-next');
   const fullscreenButton = document.querySelector('#presentation-fullscreen');
   const languageButton = document.querySelector('#presentation-language');
   const status = document.querySelector('#presentation-status');
   const menuItems = document.querySelector('#presentation-menu-items');
+  const appendixButton = document.createElement('button');
+  appendixButton.type = 'button';
+  appendixButton.id = 'presentation-appendix-return';
+  appendixButton.hidden = true;
+  controls.insertBefore(appendixButton,document.querySelector('#presentation-title'));
   const sectionState = new Map();
   const detailsState = new Map();
   let active = false;
   let index = 0;
+  let activeId = steps[0].id;
+  let appendixReturn = null;
+  let returnFocus = null;
+  let returnLanguage = null;
   let opener = null;
   let ownsFullscreen = false;
   let resizeFrame = 0;
@@ -51,12 +52,16 @@
   const spanish = () => document.documentElement.lang === 'es';
   const translated = values => values[spanish() ? 1 : 0];
   const hasOpenDialog = () => Boolean(document.querySelector('dialog[open]'));
-  const stepTitle = number => translated(steps[number].title);
+  const stepTitle = id => translated(byId.get(id).title);
+  const inAppendix = () => !mainIndex.has(activeId);
   const clamp = number => Math.max(0,Math.min(steps.length - 1,Math.trunc(Number(number) || 0)));
-  const routeIndex = () => {
-    const match = /^#present-(\d+)$/.exec(location.hash);
-    return match ? clamp(Number(match[1]) - 1) : null;
+  const routeId = (hash = location.hash) => {
+    const match = /^#present-(.*)$/.exec(hash);
+    if (!match) return null;
+    const subject = /^\d+$/.test(match[1]) ? story.legacyNumeric[match[1]] : match[1];
+    return byId.has(subject) ? subject : steps[0].id;
   };
+  const targetId = target => typeof target === 'number' ? steps[clamp(target)].id : (byId.has(target) ? target : steps[0].id);
   function label(button, values) {
     if (!button) return;
     const text = translated(values);
@@ -66,11 +71,14 @@
   function announce(message) {
     if (status) status.textContent = message;
   }
-  function writeHash(hash, push = false) {
+  function writeHash(hash, push = false, appendixContext = null) {
     const url = new URL(location.href);
     url.hash = hash;
     try {
-      history[push ? 'pushState' : 'replaceState'](history.state,'',url);
+      const state = {...history.state};
+      if (appendixContext) state.dulcineaAppendix = appendixContext;
+      else delete state.dulcineaAppendix;
+      history[push ? 'pushState' : 'replaceState'](state,'',url);
     } catch { /* Local file previews can still present without a history update. */ }
   }
   function fitCanvas() {
@@ -117,11 +125,15 @@
     });
   }
   function updateControls() {
-    const count = `${String(index + 1).padStart(2,'0')} / ${String(steps.length).padStart(2,'0')}`;
+    const appendix = inAppendix();
+    const count = appendix ? translated(['Appendix','Anexo']) : `${String(index + 1).padStart(2,'0')} / ${String(steps.length).padStart(2,'0')}`;
     document.querySelector('#presentation-count').textContent = count;
-    document.querySelector('#presentation-title').textContent = stepTitle(index);
-    previousButton.disabled = index === 0;
-    nextButton.disabled = index === steps.length - 1;
+    document.querySelector('#presentation-title').textContent = stepTitle(activeId);
+    previousButton.disabled = appendix || index === 0;
+    nextButton.disabled = appendix || index === steps.length - 1;
+    appendixButton.hidden = !appendix;
+    appendixButton.textContent = translated(['← Back to presentation','← Volver a la presentación']);
+    label(appendixButton,['Back to presentation','Volver a la presentación']);
     label(previousButton,['Previous slide','Diapositiva anterior']);
     label(nextButton,['Next slide','Siguiente diapositiva']);
     label(document.querySelector('#presentation-overview'),['All slides','Todas las diapositivas']);
@@ -145,51 +157,59 @@
       abbreviation.textContent = targetLanguage.toUpperCase();
       languageButton.append(abbreviation);
     }
-    menuItems.querySelectorAll('[data-presentation-index]').forEach(button => {
-      const number = Number(button.dataset.presentationIndex);
-      button.querySelector('.presentation-menu-label').textContent = stepTitle(number);
-      button.classList.toggle('is-current',number === index);
-      if (number === index) button.setAttribute('aria-current','step');
+    menuItems.querySelectorAll('[data-presentation-id]').forEach(button => {
+      const id = button.dataset.presentationId;
+      button.querySelector('.presentation-menu-label').textContent = stepTitle(id);
+      button.classList.toggle('is-current',id === activeId);
+      if (id === activeId) button.setAttribute('aria-current','step');
       else button.removeAttribute('aria-current');
     });
+    menuItems.querySelector('.presentation-appendix-heading').textContent = translated(['Optional detail','Detalle opcional']);
   }
-  function goTo(number, updateRoute = true) {
-    if (!active) return start(number);
+  function goTo(target, updateRoute = true) {
+    if (!active) return start(target,updateRoute);
     status?.classList.remove('presentation-feedback');
-    const nextIndex = clamp(number);
-    const resetScroll = nextIndex !== index || !document.body.dataset.presentationStep;
-    index = nextIndex;
-    const step = steps[index];
+    const id = targetId(target);
+    const step = byId.get(id);
     const section = document.querySelector(step.selector);
-    if (!section) return;
+    if (!sections.includes(section)) return;
+    const resetScroll = id !== activeId || !document.body.dataset.presentationStep;
+    const openingAppendix = !mainIndex.has(id) && (id !== activeId || !document.body.dataset.presentationStep);
+    if (openingAppendix) {
+      const saved = history.state?.dulcineaAppendix?.returnTo;
+      const caller = updateRoute && mainIndex.has(activeId) ? activeId : (mainIndex.has(saved) ? saved : step.returnTo);
+      appendixReturn = {id:caller,element:document.activeElement,locale:document.documentElement.lang};
+    }
+    activeId = id;
+    if (mainIndex.has(id)) index = mainIndex.get(id);
+    else index = mainIndex.get(appendixReturn?.id || step.returnTo);
     if (menu.open) menu.close();
     if (websiteMenu?.open) websiteMenu.close();
     const focusedSection = sections.find(item => item.contains(document.activeElement));
     if (focusedSection && focusedSection !== section) controls.focus({preventScroll:true});
     document.body.dataset.presentationStep = step.id;
+    document.body.classList.toggle('presentation-appendix',inAppendix());
     sections.forEach(item => {
       const selected = item === section;
       item.classList.toggle('presentation-active',selected);
       item.inert = !selected;
       item.setAttribute('aria-hidden',String(!selected));
     });
-    if (typeof step.home === 'number') {
-      const changed = current !== step.home;
-      current = step.home;
-      renderHome(changed);
-    }
-    if (step.id === 'returns') document.querySelector('#fund > details.model').open = true;
-    if (step.id === 'owner-use') document.querySelector('#owner-use').open = true;
-    if (updateRoute) writeHash(`present-${index + 1}`);
+    if (step.propertyKey) window.DulcineaProperties.select(step.propertyKey,{writeRoute:false,scroll:false,focus:false});
+    if (step.id === 'returns') section.querySelector('details.model')?.setAttribute('open','');
+    if (step.anchor) document.querySelector(step.anchor)?.setAttribute('open','');
+    if (updateRoute) writeHash(`present-${id}`,openingAppendix,inAppendix() ? (openingAppendix ? {returnTo:appendixReturn.id,pushed:true} : history.state?.dulcineaAppendix || null) : null);
     updateControls();
+    if (openingAppendix) appendixButton.focus({preventScroll:true});
+    if (!inAppendix() && document.activeElement === appendixButton) controls.focus({preventScroll:true});
     fitCanvas();
     if (resetScroll) main.scrollTo({top:0,left:0,behavior:'instant'});
     refreshMedia();
-    announce(`${translated(['Slide','Diapositiva'])} ${index + 1} ${translated(['of','de'])} ${steps.length}: ${stepTitle(index)}`);
-    window.dispatchEvent(new CustomEvent('dulcinea:presentation-slide',{detail:{index,id:step.id,count:steps.length}}));
+    announce(inAppendix() ? `${translated(['Appendix','Anexo'])}: ${stepTitle(id)}` : `${translated(['Slide','Diapositiva'])} ${index + 1} ${translated(['of','de'])} ${steps.length}: ${stepTitle(id)}`);
+    window.dispatchEvent(new CustomEvent('dulcinea:presentation-slide',{detail:{index:inAppendix() ? null : index,id:step.id,count:steps.length,appendix:inAppendix()}}));
   }
-  function start(number = 0, updateRoute = true) {
-    if (active) { goTo(number,updateRoute); return; }
+  function start(target = 0, updateRoute = true) {
+    if (active) { goTo(target,updateRoute); return; }
     if (hasOpenDialog()) return;
     opener = document.activeElement;
     sectionState.clear();
@@ -199,14 +219,40 @@
     active = true;
     controls.hidden = false;
     document.body.classList.add('is-presenting');
-    if (updateRoute) writeHash(`present-${clamp(number) + 1}`,true);
-    goTo(number,false);
+    activeId = targetId(target);
+    if (updateRoute) writeHash(`present-${activeId}`,true);
+    goTo(activeId,false);
     controls.focus({preventScroll:true});
+  }
+  function returnFromAppendix() {
+    if (!active || !inAppendix()) return;
+    const destination = appendixReturn?.id || byId.get(activeId).returnTo;
+    returnFocus = appendixReturn?.element;
+    if (history.state?.dulcineaAppendix?.pushed && history.state.dulcineaAppendix.returnTo === destination) {
+      returnLanguage = document.documentElement.lang;
+      history.back();
+    } else {
+      goTo(destination);
+      restoreAppendixFocus();
+    }
+  }
+  function restoreAppendixFocus() {
+    if (!returnFocus || inAppendix()) return;
+    const element = returnFocus;
+    returnFocus = null;
+    requestAnimationFrame(() => {
+      if (!active) return;
+      const visible = element.isConnected && element.getClientRects().length && !element.closest('[inert]');
+      (visible ? element : controls).focus({preventScroll:true});
+    });
   }
   function focusWebsiteSection(section) {
     if (!section) return;
     const headingId = section.getAttribute('aria-labelledby')?.split(/\s+/)[0];
-    const heading = (headingId && document.getElementById(headingId)) || section.querySelector('h1,h2,h3') || section;
+    const labelledHeading = headingId && document.getElementById(headingId);
+    const heading = section.querySelector(':scope > summary') ||
+      (labelledHeading?.getClientRects().length ? labelledHeading : null) ||
+      [...section.querySelectorAll('h1,h2,h3')].find(item => item.getClientRects().length) || section;
     const previousTabIndex = heading.getAttribute('tabindex');
     heading.setAttribute('tabindex','-1');
     heading.focus({preventScroll:true});
@@ -217,13 +263,17 @@
   }
   function exit(updateRoute = true, restoreFocus = true, destinationId = null) {
     if (!active) return;
-    const section = (destinationId && document.getElementById(destinationId)) || document.querySelector(steps[index].selector);
+    const step = byId.get(activeId);
+    const propertyKey = destinationId?.startsWith('property-') ? destinationId.slice(9) : (!destinationId || destinationId === 'homes') ? window.DulcineaProperties.key : null;
+    const leavingProperty = Boolean(propertyKey && (step.propertyKey || destinationId === 'homes' || destinationId?.startsWith('property-')));
+    const target = destinationId || (leavingProperty ? `property-${propertyKey}` : step.anchor?.slice(1));
+    const section = (target && document.getElementById(target)) || document.querySelector(step.selector);
     if (menu.open) menu.close();
     if (websiteMenu?.open) websiteMenu.close();
     active = false;
     status?.classList.remove('presentation-feedback');
     touch = null;
-    document.body.classList.remove('is-presenting');
+    document.body.classList.remove('is-presenting','presentation-appendix');
     delete document.body.dataset.presentationStep;
     delete document.body.dataset.presentationLayout;
     ['--presentation-scale','--presentation-left','--presentation-top','--presentation-height','--presentation-width'].forEach(name => document.body.style.removeProperty(name));
@@ -235,17 +285,23 @@
       else item.setAttribute('aria-hidden',state.hidden);
     });
     detailsState.forEach((wasOpen,details) => { details.open = wasOpen; });
-    if (destinationId === 'owner-use') section.open = true;
+    if (target === 'owner-use') document.querySelector('#owner-use').open = true;
     controls.hidden = true;
     if (ownsFullscreen && document.fullscreenElement) document.exitFullscreen().catch(() => {});
     ownsFullscreen = false;
-    const sectionHash = section?.id || section?.querySelector('[id]')?.id || 'home';
+    const sectionHash = leavingProperty ? `property-${propertyKey}` : section?.id || section?.querySelector('[id]')?.id || 'home';
     if (updateRoute) writeHash(sectionHash);
     const destination = updateRoute ? section : document.getElementById(location.hash.slice(1));
     requestAnimationFrame(() => {
       if (active) return;
-      destination?.scrollIntoView({behavior:'instant',block:'start'});
-      if (restoreFocus) {
+      if (updateRoute && leavingProperty) {
+        window.DulcineaProperties.select(propertyKey,{writeRoute:false,scroll:true,focus:restoreFocus});
+      } else if (!updateRoute && location.hash.startsWith('#property-')) {
+        window.DulcineaProperties.followRoute();
+      } else {
+        destination?.scrollIntoView({behavior:'instant',block:'start'});
+      }
+      if (restoreFocus && !leavingProperty) {
         if (destination) focusWebsiteSection(destination);
         else (opener?.isConnected ? opener : startButton).focus({preventScroll:true});
       }
@@ -274,7 +330,7 @@
   function showOverview() {
     if (!active || hasOpenDialog()) return;
     menu.showModal();
-    menuItems.querySelector(`[data-presentation-index="${index}"]`)?.focus();
+    menuItems.querySelector(`[data-presentation-id="${activeId}"]`)?.focus();
     syncMotion();
   }
   function showWebsiteMenu() {
@@ -284,28 +340,35 @@
     websiteMenu.querySelector('[data-website-section]')?.focus();
     syncMotion();
   }
-  steps.forEach((step,number) => {
+  function addMenuStep(step,number = null) {
     const button = document.createElement('button');
     button.type = 'button';
-    button.dataset.presentationIndex = String(number);
+    button.dataset.presentationId = step.id;
+    if (number !== null) button.dataset.presentationIndex = String(number);
     const counter = document.createElement('span');
     counter.className = 'presentation-menu-number';
-    counter.textContent = String(number + 1).padStart(2,'0');
+    counter.textContent = number === null ? '+' : String(number + 1).padStart(2,'0');
     const title = document.createElement('span');
     title.className = 'presentation-menu-label';
-    title.textContent = stepTitle(number);
+    title.textContent = stepTitle(step.id);
     button.append(counter,title);
     button.addEventListener('click',() => {
-      goTo(number);
+      goTo(step.id);
       controls.focus({preventScroll:true});
     });
     menuItems.append(button);
-  });
+  }
+  steps.forEach(addMenuStep);
+  const appendixHeading = document.createElement('p');
+  appendixHeading.className = 'presentation-appendix-heading';
+  menuItems.append(appendixHeading);
+  appendices.forEach(step => addMenuStep(step));
   controls.tabIndex = -1;
   main.tabIndex = -1;
   startButton.addEventListener('click',() => start());
-  previousButton.addEventListener('click',() => goTo(index - 1));
-  nextButton.addEventListener('click',() => goTo(index + 1));
+  previousButton.addEventListener('click',() => { if (!inAppendix()) goTo(index - 1); });
+  nextButton.addEventListener('click',() => { if (!inAppendix()) goTo(index + 1); });
+  appendixButton.addEventListener('click',returnFromAppendix);
   document.querySelector('#presentation-exit').addEventListener('click',() => exit());
   document.querySelector('#presentation-overview').addEventListener('click',showOverview);
   document.querySelector('#presentation-menu-close').addEventListener('click',() => menu.close());
@@ -321,22 +384,45 @@
     websiteButton?.setAttribute('aria-expanded','false');
     if (active) websiteButton?.focus({preventScroll:true});
   });
-  document.addEventListener('dulcinea:language',updateControls);
+  document.addEventListener('dulcinea:language',() => {
+    // On popstate app.js may apply the caller entry's older language before
+    // this controller runs. Save locale changes only while the URL still
+    // identifies the appendix, not during that return navigation.
+    if (active && inAppendix() && routeId() === activeId && appendixReturn) appendixReturn.locale = document.documentElement.lang;
+    updateControls(); scheduleFit();
+  });
   window.addEventListener('resize',scheduleFit);
   window.visualViewport?.addEventListener('resize',scheduleFit);
   if ('ResizeObserver' in window) new ResizeObserver(() => { if (active) scheduleFit(); }).observe(controls);
   document.addEventListener('fullscreenchange',() => { updateControls(); scheduleFit(); });
   function syncRoute() {
-    const requested = routeIndex();
+    if (returnLanguage) {
+      const language = returnLanguage;
+      returnLanguage = null;
+      setLanguage(language);
+    }
+    const requested = routeId();
     if (requested !== null) {
+      // Browser navigation wins over an open viewer; ordinary dialog keyboard
+      // handling still has priority until a route actually changes.
+      document.querySelectorAll('dialog[open]').forEach(dialog => dialog.close());
       if (active) goTo(requested,false);
       else start(requested,false);
+      if (location.hash !== `#present-${requested}`) writeHash(`present-${requested}`,false,history.state?.dulcineaAppendix || null);
+      restoreAppendixFocus();
     } else {
       if (active) exit(false,false);
       if (location.hash === '#owner-use') document.querySelector('#owner-use').open = true;
     }
   }
   window.addEventListener('hashchange',syncRoute);
+  // Retain the saved appendix locale regardless of popstate listener order.
+  window.addEventListener('popstate',() => {
+    if (active && inAppendix() && mainIndex.has(routeId())) {
+      returnLanguage ||= appendixReturn?.locale || document.documentElement.lang;
+      returnFocus = appendixReturn?.element;
+    }
+  },true);
   window.addEventListener('popstate',syncRoute);
   // These destinations deliberately return to the scrolling site; ordinary
   // in-slide anchor links continue to navigate the presentation itself.
@@ -352,23 +438,26 @@
     if (!active || hasOpenDialog() || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
     const target = event.target instanceof Element ? event.target : null;
     if (target?.closest('input,textarea,select,[contenteditable="true"]')) return;
-    if (event.key === 'Escape') { event.preventDefault(); exit(); return; }
+    if (event.key === 'Escape') { event.preventDefault(); if (inAppendix()) returnFromAppendix(); else exit(); return; }
     if (event.key.toLowerCase() === 'f') { event.preventDefault(); toggleFullscreen(); return; }
     const interactive = target?.closest('a,button,summary,[role="button"]');
     const readingKey = event.key === 'PageDown' || event.key === 'PageUp' || ((event.key === ' ' || event.code === 'Space') && !interactive);
-    if (document.body.dataset.presentationLayout === 'responsive' && readingKey) {
+    if ((document.body.dataset.presentationLayout === 'responsive' || inAppendix()) && readingKey) {
       const direction = event.key === 'PageUp' || (event.shiftKey && (event.key === ' ' || event.code === 'Space')) ? -1 : 1;
-      const remaining = direction > 0 ? main.scrollHeight - main.clientHeight - main.scrollTop : main.scrollTop;
+      const scrollRegion = document.body.dataset.presentationLayout === 'canvas' && inAppendix() ? document.querySelector(byId.get(activeId).selector) : main;
+      const remaining = direction > 0 ? scrollRegion.scrollHeight - scrollRegion.clientHeight - scrollRegion.scrollTop : scrollRegion.scrollTop;
       if (remaining > 2) {
         event.preventDefault();
-        main.scrollBy({top:direction * main.clientHeight * .8,behavior:'instant'});
+        scrollRegion.scrollBy({top:direction * scrollRegion.clientHeight * .8,behavior:'instant'});
         return;
       }
     }
     let destination = null;
-    if (event.key === 'ArrowRight' || event.key === 'PageDown') destination = index + 1;
-    if (event.key === 'ArrowLeft' || event.key === 'PageUp') destination = index - 1;
-    if ((event.key === ' ' || event.code === 'Space') && !interactive) destination = index + (event.shiftKey ? -1 : 1);
+    if (!inAppendix()) {
+      if (event.key === 'ArrowRight' || event.key === 'PageDown') destination = index + 1;
+      if (event.key === 'ArrowLeft' || event.key === 'PageUp') destination = index - 1;
+      if ((event.key === ' ' || event.code === 'Space') && !interactive) destination = index + (event.shiftKey ? -1 : 1);
+    }
     if (event.key === 'Home') destination = 0;
     if (event.key === 'End') destination = steps.length - 1;
     if (destination === null) return;
@@ -381,18 +470,25 @@
     const homeButton = target?.closest('[data-home],[data-preview-home],#prev-home,#next-home');
     if (homeButton) {
       event.preventDefault(); event.stopImmediatePropagation();
-      const chosen = homeButton.hasAttribute('data-preview-home') ? Number(homeButton.dataset.previewHome) : homeButton.hasAttribute('data-home') ? Number(homeButton.dataset.home) : (current + (homeButton.id === 'next-home' ? 1 : homes.length - 1)) % homes.length;
-      goTo(steps.findIndex(step => step.home === chosen));
+      let chosen;
+      if (homeButton.hasAttribute('data-preview-home') || homeButton.hasAttribute('data-home')) {
+        const sourceIndex = Number(homeButton.dataset.previewHome ?? homeButton.dataset.home);
+        chosen = propertySteps.find(step => step.propertyKey === homes[sourceIndex]?.key);
+      } else {
+        const position = propertySteps.findIndex(step => step.propertyKey === window.DulcineaProperties.key);
+        chosen = propertySteps[(position + (homeButton.id === 'next-home' ? 1 : propertySteps.length - 1)) % propertySteps.length];
+      }
+      if (chosen) goTo(chosen.id);
       return;
     }
-    const summary = target?.closest('#fund > details.model > summary, #owner-use > summary');
+    const summary = target?.closest('#returns > details.model > summary, #owner-use > summary');
     if (summary) { event.preventDefault(); return; }
     const link = target?.closest('a[href]');
     if (!link || link.target === '_blank') return;
     const url = new URL(link.href,location.href);
     if (url.origin !== location.origin || url.pathname !== location.pathname) return;
-    const requested = steps.findIndex(step => (step.anchor || step.selector) === url.hash);
-    if (requested < 0) return;
+    const requested = routeId(url.hash) || allSteps.find(step => (step.anchor || step.selector) === url.hash || (step.propertyKey && `#property-${step.propertyKey}` === url.hash))?.id;
+    if (!requested) return;
     event.preventDefault();
     goTo(requested);
   },true);
@@ -415,15 +511,18 @@
     const elapsed = Date.now() - touch.time;
     const scrolled = Math.abs(main.scrollTop - touch.scrollTop) > 12;
     touch = null;
-    if (!scrolled && elapsed < 900 && Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) goTo(index + (deltaX < 0 ? 1 : -1));
+    if (!inAppendix() && !scrolled && elapsed < 900 && Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) goTo(index + (deltaX < 0 ? 1 : -1));
   },{passive:true});
   main.addEventListener('touchcancel',() => { touch = null; },{passive:true});
   window.DulcineaPresentation = Object.freeze({
     get active() { return active; },
-    get index() { return index; },
+    get index() { return inAppendix() ? null : index; },
+    get id() { return activeId; },
+    get appendix() { return inAppendix(); },
     get count() { return steps.length; },
-    start, goTo, exit,
-    get slides() { return steps.map((step,number) => ({index:number,id:step.id,title:stepTitle(number)})); }
+    start, goTo, exit, returnFromAppendix,
+    get slides() { return steps.map((step,number) => ({index:number,id:step.id,title:stepTitle(step.id)})); },
+    get appendices() { return appendices.map(step => ({id:step.id,title:stepTitle(step.id)})); }
   });
   updateControls();
   syncRoute();

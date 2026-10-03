@@ -111,7 +111,9 @@ body.is-presenting[data-presentation-layout="responsive"] .fund-bottom { flex-di
 body.is-presenting[data-presentation-layout="responsive"] .fund-bottom p { font-size:22px; line-height:1.4 }
 body.is-presenting[data-presentation-layout="responsive"] .fund-bottom .fund-small { font-size:18px; line-height:1.5; max-width:100%; margin-top:12px }
 body.is-presenting[data-presentation-layout="responsive"] .button-dark { font-size:18px; padding:18px 22px; gap:24px; min-height:56px }
-body.is-presenting[data-presentation-layout="responsive"] #fund > .model summary { font-size:36px; line-height:1.15; padding:0 0 26px; max-width:100%; white-space:normal }
+body.is-presenting[data-presentation-layout="responsive"] #returns .returns-heading h2 { font-size:40px; line-height:1.15; margin:20px 0; max-width:100%; white-space:normal }
+body.is-presenting[data-presentation-layout="responsive"] #returns .returns-heading > p:last-child { font-size:18px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] #returns > .line-link { width:100%; max-width:330px; font-size:18px; margin-top:25px }
 body.is-presenting[data-presentation-layout="responsive"] .projection { grid-template-columns:minmax(0,1fr); gap:0; margin:0 0 28px }
 body.is-presenting[data-presentation-layout="responsive"] .projection div { display:flex; flex-direction:column; gap:10px; padding:22px 0; border-top:1px solid #17282d35 }
 body.is-presenting[data-presentation-layout="responsive"] .projection strong { font-size:66px; line-height:1.05 }
@@ -297,9 +299,13 @@ body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-ite
 body.is-presenting[data-presentation-layout="responsive"] #main > #member-benefits.presentation-active { padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px)) }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits h2 { font-size:40px; line-height:1.1; margin:14px 0 20px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefits-heading > p:last-child { font-size:18px; line-height:1.55; max-width:660px }
-body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:minmax(0,1fr); gap:30px; margin-top:30px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:minmax(0,1fr); grid-template-rows:none; gap:30px; margin-top:30px }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article { grid-column:auto; grid-row:auto; padding-right:0 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article { padding-top:20px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-number { font-size:65px; margin:16px 0; line-height:1.1 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary .member-benefit-number { font-size:90px; margin:20px 0 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary p:not(.micro) { font-size:19px; line-height:1.5 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary p.member-benefit-detail { font-size:17px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-word { font-size:49px; line-height:1.1 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid h3 { font-size:25px; margin-bottom:13px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p:not(.micro) { font-size:18px; line-height:1.5 }
@@ -319,7 +325,9 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
 @media(min-width:700px) {
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits h2,
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owner-use-heading h2 { font-size:48px }
-  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:25px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px 36px }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary { grid-column:1; grid-row:1 / 3; padding-right:0 }
+  body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article:not(.member-benefit-primary) { grid-column:2 }
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid h3 { font-size:22px }
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p:not(.micro) { font-size:17px }
   body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid p.member-benefit-detail { font-size:15px }
@@ -331,4 +339,11 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
 @media(max-width:420px) {
   body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items { grid-template-columns:minmax(0,1fr) }
   body.is-presenting[data-presentation-layout="responsive"] #presentation-menu-items button { min-height:48px; font-size:14px }
+}
+
+/* The city film is nested so after-dark remains available on the website. */
+body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active { padding:0; min-height:var(--presentation-height) }
+body.is-presenting[data-presentation-layout="responsive"] #destination .city-cinema { height:auto; min-height:var(--presentation-height); padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px)) }
+@media(max-height:600px) and (orientation:landscape) and (min-width:380px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls #presentation-appendix-return { max-width:150px; margin-right:auto; font-size:11px; padding:5px; line-height:1.2 }
 }

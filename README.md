@@ -2,13 +2,19 @@
 
 Dulcinea is a real estate investment firm focused on Medellín, Colombia. This investor website presents Dulcinea One, its first fund, with Lola & Ber as the co-brand. Lola & Ber Hospitality is the division for the properties. Dulcinea manages acquisition, renovation, operation and sale. Investors acquire fund membership units in a Delaware LLC.
 
-The opening introduces countryside weekends in El Oriente, city experiences in Medellín and Lola & Ber hospitality. Early Member benefits explain the shared annual allowance of 365 nights once all five homes are in service. All five property films, the investment approach, offer and projected returns follow. Member benefits appear near the opening with approved booking rules. A visible subscription summary, chapter index and resource directory supplement the existing navigation. The offer shows a $7M raise, $2.1M committed and $4.9M open. Detailed projections and acquisition criteria remain separate resources. Figures and acquisition statuses reflect the supplied materials, not independently verified current subscriptions or completed closings.
+The approved 2 October 2026 storyline leads from lifestyle to El Oriente, Medellín, Lola & Ber and Member benefits before the five homes and investment case. The opening identifies the fund and retains a visible subscription summary, chapter index and direct resource links. Owner use is the main benefit; collective brand participation and conditional future-fund participation follow. The shared annual allowance reaches 365 nights once all five homes are in service, subject to the approved booking policy. Public projected returns appear at `#returns` before the offer at `#fund`. The offer shows a $7M raise, $2.1M committed and $4.9M open. Figures and acquisition statuses reflect the supplied materials, not independently verified current subscriptions or completed closings.
+
+Implementation status: the revised source follows `docs/plans/2026-10-02-001-refactor-lifestyle-storyline-plan.md`. Local build, browser and regression checks passed; results are recorded in `docs/validation-2026-10-02-storyline.md`. Publication and live-release verification remain pending; local validation does not establish deployment.
 
 English is the default; compact American and Colombian flag controls switch between English and Spanish. The header provides property and fund anchors, financials, criteria, and contact. Sign-out appears only in the password-protected financial statements. Old `#slide-N` links map to corresponding new sections.
 
 ## Present live
 
-Choose **Present** in the navigation bar, or open `/#present-1`, for a 19-slide presentation of the same current content. Desktop slides use a 16:9 canvas. Phones and tablets adapt each slide to the screen with readable text, touch navigation and scrolling within longer slides. The sequence opens with lifestyle, Member benefits, Owner use, El Oriente, Medellín and the Lola & Ber brand, then includes one slide per property and separate slides for the approach, offer, returns, core team and local specialists. Core-team biographies appear with their portraits in both views. The specialists have their own slide, website section and linked resource page. Videos, original imagery and floorplans remain interactive. Presentation controls sit below the slide.
+Choose **Present** in the navigation bar, or open `/#present-cover`, for the 18 main slides. The order is cover, lifestyle, El Oriente, Medellín, Lola & Ber, Member benefits, Monte Sereno, Montana, Fontanar, San Lucas, Aires, investment approach, projected returns, offer, core team, specialists, disclosures and Contact. Approved owner-use and booking rules are an optional appendix, opened from Benefits or the slide menu, outside the main slide count and ordinary Next/Previous/End sequence. Its return action and Escape return to the originating slide; a direct appendix visit returns to Benefits. Contact is the final main slide.
+
+`content/presentation-story.json` supplies the shared sequence and titles. Canonical subject links such as `/#present-oriente` and `/#present-monte-sereno` do not depend on displayed slide numbers. Previously published `#present-1` through `#present-19` retain their old subject meanings: for example, `#present-4` opens booking detail, `#present-7` opens Lola & Ber and `#present-19` opens Contact. Older `#slide-N` migrations also remain supported.
+
+Desktop slides use a 16:9 canvas. Phones and tablets adapt each slide to the screen with readable text, touch navigation and scrolling within longer slides. Core-team biographies appear with their portraits in both views. The specialists have their own slide, website section and linked resource page. Videos, original imagery and floorplans remain interactive. Presentation controls sit below the slide.
 
 Use the arrow or Page Up/Down keys to move, Home/End to jump to the beginning/end, the slide counter to choose a slide, and F for full screen. Escape or **Back to website** returns to the scrolling page. **Explore website** opens links to the homepage, properties, fund, team, specialists and investor documents; these links are also on the closing slide. Section links leave slide mode and focus the corresponding website heading. The flag button changes language without losing the current slide. Full screen requires a supported browser; slide mode also works inside a normal browser window. Portrait and landscape work on phones and tablets; rotating keeps the current slide. Swipe horizontally or use the arrow buttons to change slides. Scroll vertically to read longer slides; Page Up/Down and Space scroll their content before advancing. Controls reserve their own space, including device safe areas. Native fullscreen appears only when supported; it is not required to present. The same source content feeds both views.
 
@@ -16,7 +22,7 @@ Use the arrow or Page Up/Down keys to move, Home/End to jump to the beginning/en
 
 The visual direction follows the approved Aker and KOBU references recorded in `design/investor-site-reference-lock.md`, retaining the earlier Radisson lifestyle direction. The supplied palette leads: Blue Topaz, Plumeria, African Violet and Simply Green, with Coconut Shell used sparingly. Old Gold (`#CFB53B`) distinguishes “One”; Yellow Gold (`#D4AF37`) remains an interface accent. Dulcinea, KIT Capital and Lola & Ber appear together discreetly in the opening. Contact buttons say “Talk to us” / “Hable con nosotros,” with Dov retained as the named contact.
 
-The notebook-first gallery contains all five selected homes, named selectors, original imagery, and five camera-move films made from AI lifestyle illustrations. Large property visuals sit alongside concise facts, area, acquisition status and drawing links. The same design and actions work in each property's individual presentation slide. The illustrations remain labeled. Nine plan-only drawings cover Fontanar, San Lucas, Aires and Monte Sereno; Casa Montana has no supplied plan. The original PDF is available from the viewer. The team uses the later, unchanged photographs supplied for Dov, Ricardo and Adriana.
+The notebook-first collection has five visible previews and one detail panel, in the order Monte Sereno, Montana, Fontanar, San Lucas and Aires. Previews select the home; only the selected detail film plays in this collection. Stable links such as `#property-monte-sereno` preserve the selected property on reload, language change and return from presentation. The original data-record order remains unchanged. Large property visuals sit alongside concise facts, area, acquisition status and drawing links. The same design and actions work in each property's individual presentation slide. The five camera-move films remain labeled as illustrations, with original imagery available. Nine plan-only drawings cover Fontanar, San Lucas, Aires and Monte Sereno; Casa Montana has no supplied plan. The original PDF is available from the viewer. The team uses the later, unchanged photographs supplied for Dov, Ricardo and Adriana.
 
 All eleven distinct supplied stock videos and all five supplied stock photographs are used on screen, directly or within edited films:
 
@@ -34,7 +40,7 @@ The walking woman and countryside woman remain in separate films and sections, o
 
 Videos are silent and play while visible. Motion pauses when the page is hidden or a dialog is open. Reduced-motion preferences are respected; the icon control can pause animation. Camera movement over photographs does not simulate human movement. Floorplans remain still for inspection.
 
-All thirteen distinct hosted films are discoverable by scrolling the homepage. Property-film links select the corresponding home in the detailed viewer, including its status, original imagery and available plans. Hospitality and nightlife loop in separate chapters. The nineteen presentation steps follow the lifestyle-first opening and retain all five homes. The new city-sunset and reservoir clips appear in the opening montage; the reservoir also appears in the El Oriente chapter and its presentation slide. The user identifies the reservoir as El Oriente, without naming it. The opening starts with the reservoir, Monte Sereno and Montana before moving to city scenes. El Oriente is now the first destination chapter and slide 5, with direct links to both country homes. The original Monte Sereno photograph appears below the landscape film and remains in the property viewer.
+All thirteen distinct hosted films remain available on the homepage through chapter playback or property selection. Inactive property previews retain posters with `preload="none"`; selecting a home plays its detailed film and exposes its status, original imagery and plans. Nightlife is supporting content within the Medellín website chapter and is hidden while presenting the city slide. The city-sunset and reservoir clips remain in the opening montage; the reservoir also appears in the El Oriente chapter and presentation slide 3. The user identifies the reservoir as El Oriente, without naming it. Regional footage does not imply a property's view. The opening starts with the reservoir, Monte Sereno and Montana before moving to city scenes. The original Monte Sereno photograph appears below the landscape film and remains in the property viewer.
 
 Both newly supplied originals remain unchanged outside the repository. Canonical, silent, full-duration 720p24 MP4s and posters are retained under `assets/video/stock/`; private import evidence is recorded in `assets/video/stock/oriente-provenance.json`. Only the reservoir needs an additional standalone media alias: the city-sunset footage is served within the opening edit. The homepage reference decisions are recorded in `design/homepage-story.md`. The separate Adobe recommendations in `design/el-oriente-footage.md` remain unacquired and are not included in the app.
 
@@ -52,7 +58,9 @@ The active website source is:
 - `src/investor/app.js`: language, gallery, motion, dialogs and legacy anchors.
 - `src/investor/presentation.css` and `presentation.js`: fitted slideshow layouts and navigation.
 - `src/investor/media.json`: canonical media aliases.
+- `content/presentation-story.json`: main sequence, optional appendix, bilingual labels and fixed legacy-number mapping.
 - `src/financial-statements.html`, `src/investment-criteria.html`, `src/specialists.html` and `src/disclaimer.html`: investor resources.
+- `shared/investor-navigation.mjs`: compact resource navigation, contextual presentation links and one flag selector per page, rendered from an explicit template marker.
 - `shared/team.mjs`: the specialists directory shared by the website, presentation and resource page.
 - `scripts/build-investor.mjs`: active builder, called by `scripts/build.mjs`.
 
@@ -75,6 +83,8 @@ The hosted build writes `dist/private-site/`: ten English/Spanish pages and sele
 ## Financial statements
 
 The financial resource contains the projected income statement, statement of cash flows and balance sheet. Key profit amounts have percentage margins immediately underneath. Net income after carry is expandable: the result and margin remain visible, while deduction detail opens on request. Numeric zero entries display as blank cells; missing values are not silently converted to zero.
+
+Financials, criteria, specialists and disclosures share compact navigation and logo scale. Financials use a smaller masthead; acquisition criteria retain their notebook overview; legal body text retains its modest scale. The flag links preserve the current fragment across English and Spanish. Sign-out remains in the financial-statement navigation only. These header changes do not alter financial row markers, statement content or access policy.
 
 Investor pages stay concise, without Excel filenames, cells or calculation explanations. Exact values and reconciliation evidence remain internally in `content/financials.json`, `CONTENT-SOURCES.md` and `design/financial-reporting-rules.md`. Membership documents govern; projected returns are not guaranteed.
 
@@ -110,8 +120,8 @@ The explicit upstream host and protocol keep local requests on loopback HTTP, wh
 ```sh
 npm test
 npm run build:site
-python scripts/verify-model-source.py --source "/private/path/Dulcinea Model 09.xlsx"
-node scripts/verify-financials.mjs --source "/private/path/Dulcinea Model 09.xlsx"
+python scripts/verify-model-source.py --source "/private/path/Dulcinea Model 10.xlsx"
+node scripts/verify-financials.mjs --source "/private/path/Dulcinea Model 10.xlsx"
 node scripts/verify-investor-build.mjs
 wrangler deploy --config wrangler.jsonc
 ```

@@ -1,13 +1,13 @@
 /* Shared lifestyle chapters; directories and supplementary films stay on the website. */
 body.is-presenting .website-only { display:none !important; }
 
-/* Member benefits appear before the two destinations. Booking detail stays optional on the website. */
+/* Member use follows the destinations and brand; booking detail is optional. */
 .member-benefits { background:#e9edf1; }
 .member-benefits-heading { display:grid; grid-template-columns:1.3fr 1fr; align-items:end; gap:18px 5vw; }
 .member-benefits-heading > .micro { grid-column:1 / -1; color:#45585c; }
 .member-benefits-heading h2 { font-size:clamp(38px,5vw,72px); }
 .member-benefits-heading > p:last-child { max-width:440px; font-size:19px; line-height:1.5; }
-.member-benefit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4vw; margin-top:48px; }
+.member-benefit-grid { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:26px 6vw; margin-top:40px; }
 .member-benefit-grid > article { min-width:0; padding-top:22px; border-top:3px solid var(--blue); }
 .member-benefit-grid > article:nth-child(2) { border-color:var(--violet); }
 .member-benefit-grid > article:nth-child(3) { border-color:var(--old-gold); }
@@ -16,6 +16,13 @@ body.is-presenting .website-only { display:none !important; }
 .member-benefit-grid h3 { margin-bottom:18px; font-size:24px; line-height:1.2; letter-spacing:-.035em; }
 .member-benefit-grid p:not(.micro) { font-size:16px; line-height:1.55; }
 .member-benefit-grid p.member-benefit-detail { margin-top:14px; color:#42565a; font-size:14px; }
+.member-benefit-primary { grid-row:span 2; }
+.member-benefit-number small { display:block; margin-bottom:10px; font-size:14px; letter-spacing:0; line-height:1.3; }
+.member-benefit-grid > article:not(.member-benefit-primary) { position:relative; padding-right:0; }
+.member-benefit-grid > article:not(.member-benefit-primary) .member-benefit-number { float:right; margin:0 0 12px 20px; font-size:48px; color:var(--ink); }
+.member-benefit-grid > article:not(.member-benefit-primary) h3 { margin:12px 0; font-size:24px; }
+.member-benefit-grid > article:not(.member-benefit-primary) p:not(.micro) { font-size:14px; line-height:1.5; }
+.member-benefit-primary > p:not(.micro) { max-width:440px; }
 .member-benefits-bottom { display:flex; align-items:flex-end; justify-content:space-between; gap:32px; margin-top:28px; }
 .member-benefits-bottom .footnote { max-width:840px; margin:0; font-size:12px; }
 .owner-use { margin-top:36px; border-block:1px solid #17282d55; scroll-margin-top:calc(var(--header) + 20px); }
@@ -44,6 +51,7 @@ body.is-presenting .website-only { display:none !important; }
   .member-benefits { padding:44px 5vw; }
   .member-benefits-heading > p:last-child { font-size:17px; }
   .member-benefit-grid { grid-template-columns:1fr; gap:32px; margin-top:34px; }
+  .member-benefit-primary { grid-row:auto; }
   .member-benefit-number { margin:15px 0; font-size:64px; }
   .member-benefit-number.member-benefit-word { font-size:48px; line-height:1.1; }
   .member-benefit-grid h3 { margin-bottom:12px; font-size:24px; }
@@ -154,6 +162,41 @@ body.is-presenting .website-only { display:none !important; }
 .story-nightlife .story-film-copy { max-width:950px; }
 .story-nightlife .story-film-copy h2 { font-size:clamp(46px,5.6vw,84px); max-width:950px; }
 .story-nightlife .story-film-copy > p:not(.micro) { max-width:390px; }
+
+/* Medellín is one chapter, with a shorter evening frame below the city film. */
+.story-destination { scroll-margin-top:calc(var(--header) + 16px); background:var(--ink); }
+.city-cinema { min-height:clamp(500px,74svh,700px); }
+.story-destination .story-nightlife { min-height:380px; padding-block:48px; margin:0 4vw 0; border-top:1px solid #ffffff40; }
+.story-destination .story-nightlife .story-film-copy h2 { font-size:clamp(36px,4vw,60px); }
+.story-destination .story-nightlife .line-link { margin-top:18px; }
+
+/* The economics are visible by default, before the subscription terms. */
+.returns { background:var(--paper); scroll-margin-top:calc(var(--header) + 16px); }
+.returns-heading { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:18px 8vw; align-items:end; }
+.returns-heading > .micro { grid-column:1/-1; color:#45585c; }
+.returns-heading h2 { font-size:clamp(42px,5vw,76px); }
+.returns-heading > p:last-child { max-width:390px; font-size:18px; line-height:1.5; }
+.returns .model-content { margin-top:38px; padding:30px 0 0; border-top:1px solid #17282d55; }
+.returns .projection { display:grid; grid-template-columns:1.1fr 1fr .65fr; gap:40px; margin:0 0 30px; }
+.returns .projection strong { font-size:clamp(56px,7.4vw,110px); line-height:1.12; }
+.returns .projection span { font-size:13px; line-height:1.4; }
+.returns .document-links { margin-top:30px; gap:20px 34px; }
+.returns > .line-link { margin-top:35px; }
+.fund-bottom { margin-bottom:0; }
+body:not(.is-presenting) .hero-baseline > .micro { max-width:530px; line-height:1.5; }
+@media(max-width:760px) {
+  .city-cinema { min-height:610px; }
+  .story-destination .story-nightlife { min-height:370px; margin-inline:0; padding:38px 22px; }
+  .returns-heading { grid-template-columns:1fr; gap:18px; }
+  .returns-heading h2 { font-size:42px; }
+  .returns-heading > p:last-child { font-size:16px; }
+  .returns .projection { gap:20px; grid-template-columns:1fr 1fr .6fr; }
+  .returns .projection strong { font-size:clamp(30px,8.6vw,56px); }
+  .returns .projection span { max-width:100px; font-size:11px; }
+  .returns .model-content { margin-top:28px; padding-top:25px; }
+  .returns .document-links { gap:14px; }
+  body:not(.is-presenting) .hero-baseline > .micro { max-width:165px; }
+}
 
 .home-film-collection { margin-top:60px; padding-top:32px; border-top:1px solid #17282d30; scroll-margin-top:24px; }
 .film-collection-heading { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); align-items:end; gap:28px 8vw; margin-bottom:30px; }

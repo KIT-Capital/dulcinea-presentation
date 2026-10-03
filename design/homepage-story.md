@@ -1,6 +1,47 @@
 # Homepage story expansion
 
-## 2 October 2026 media correction
+## Active revision — 2 October 2026 approved storyline
+
+The user approved implementation of `docs/plans/2026-10-02-001-refactor-lifestyle-storyline-plan.md`. This sequence supersedes the older slide counts, chapter orders and duplicated property browsing described below. It retains Dulcinea's approved palette, notebook-first proportions, current Lola & Ber brand treatment and existing media. Local build, browser and regression checks passed; the current results are in `docs/validation-2026-10-02-storyline.md`. Publication and live-release verification remain pending. Historical verification entries below describe earlier revisions only.
+
+The website opens with the fund identity and an immediately available subscription strip, menu and resource links. The reading path then covers lifestyle, El Oriente, Medellín, Lola & Ber, Member benefits, five homes, investment approach, projected returns, offer, resources, core team, specialists, Contact and disclosures. After-dark footage sits within the Medellín chapter as supporting website content. Public `#returns` is a direct top-level section before `#fund` and does not depend on opening nested offer details.
+
+The presentation has 18 main slides:
+
+| Slide | Subject |
+| --- | --- |
+| 1 | Dulcinea One |
+| 2 | The lifestyle |
+| 3 | El Oriente |
+| 4 | Medellín |
+| 5 | Lola & Ber |
+| 6 | Member benefits |
+| 7 | Casa Monte Sereno |
+| 8 | Casa Montana |
+| 9 | Fontanar 201 |
+| 10 | San Lucas 101 |
+| 11 | Aires de Campestre |
+| 12 | Investment approach |
+| 13 | Projected returns |
+| 14 | The offer |
+| 15 | Core team |
+| 16 | Specialists |
+| 17 | Disclosures |
+| 18 | Contact |
+
+Approved booking rules are optional appendix detail opened from Benefits or the presentation menu. They do not increment the main counter or appear after Contact in ordinary traversal. A return action or Escape restores the originating slide; a direct appendix link returns to Benefits. `content/presentation-story.json` supplies sequence metadata and bilingual menu titles without duplicating financial or marketing copy.
+
+Canonical links use stable subjects, such as `#present-oriente`, `#present-monte-sereno` and `#present-owner-use`. Legacy `#present-1` through `#present-19` remain mapped to their original subjects, not the new displayed positions. Older `#slide-N` migration remains intact. This compatibility is part of the release checks, alongside reload, language changes, browser history and presentation exit.
+
+Property discovery uses five visible previews and one detail panel. The order is Monte Sereno, Montana, Fontanar, San Lucas and Aires; source-record indexes and floorplan associations remain unchanged. Each preview has a durable `#property-…` link. A fresh collection visit selects Monte Sereno; an existing selection survives a return within the page. Only the selected detail film plays within the collection; inactive previews use posters and `preload="none"`. All five films remain available when their property is selected, including the individual presentation slides. Original imagery and nine supplied drawings remain inspectable; no floorplan is invented for Montana.
+
+Composition varies with content: the opening and El Oriente retain immersive films; Medellín uses shorter city and after-dark frames; Member benefits prioritize owner use with brand equity and conditional future participation as supporting rows; properties use factual detail; economics use aligned figures. Financials, criteria, specialists and disclosures use one compact resource-navigation renderer, consistent logo/heading roles and an explicit template marker. Financial rows, legal body scale and the financial-only sign-out control are preserved.
+
+The current media inventory remains 13 distinct hosted MP4s. The opening leads with the reservoir and both country homes. El Oriente pairs reservoir and countryside footage with original garden imagery and the El Retiro town film; regional scenery does not imply a home's view. The walking and chef clips stay in Medellín. Lola & Ber uses the supplied robe photograph with the approved embrace/kiss and women-holding-hands clips in a 22-second silent edit. The male-running candidate remains deferred. Contact retains the Medellín drone flight. No new media purchase or generation is part of this revision.
+
+## Historical — 2 October 2026 media correction
+
+This earlier correction preceded the approved storyline and the later Lola & Ber two-clip film. Its 19-slide target and evening-photo brand treatment are superseded by the active revision above.
 
 Build target: retain the approved website and 19-slide presentation, including their typography, layout and motion controls. This is a media-context correction requested by the user, not a new visual direction.
 
@@ -13,7 +54,7 @@ Build target: retain the approved website and 19-slide presentation, including t
 
 Both languages use the same revised films. Stock originals remain unchanged; edited films and internal provenance replace the prior compositions. No additional media licenses, external services or invented brand benefits are introduced.
 
-## 1 October 2026 revision — lifestyle and El Oriente first
+## Historical — 1 October 2026 revision, lifestyle and El Oriente first
 
 This revision supersedes the sixteen-slide order described below. The existing Dulcinea design and the Radisson destination/hospitality sequence remain the reference lock. No new visual system is introduced.
 
@@ -27,7 +68,7 @@ The opening montage leads with the reservoir and both country homes. It also add
 
 Prior validation, before these two clips were added: English/Spanish build verification and all 33 server tests passed; notebook, phone and tablet layouts and country-property links were checked. That earlier build had twelve distinct hosted films. Those results do not establish validation of the new media update. Recheck the opening and El Oriente visuals in both languages and presentation modes, viewport and reduced-motion playback, asset routing and duplicate-file checks before release.
 
-## Previous homepage expansion
+## Historical — previous homepage expansion
 
 Build target: the existing Dulcinea design, navigation and sixteen-slide presentation. Direct implementation of the user's request to restore substance and make more films visible on the scrolling homepage.
 

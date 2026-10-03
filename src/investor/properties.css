@@ -5,13 +5,20 @@
 #homes .section-heading .section-index { flex:none; margin:0; gap:12px; font-size:9px; letter-spacing:.1em }
 #homes .section-heading h2 { font-size:clamp(32px,3vw,42px); line-height:1.08; letter-spacing:-.045em; white-space:normal }
 #homes .section-aside { flex:none; max-width:290px; font-size:12px; line-height:1.5; margin:0; color:#53635d }
-#homes > .property-tabs { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0; width:100%; margin:0 0 12px; border-top:1px solid #17282d35; border-bottom:1px solid #17282d35 }
-#homes .property-tabs button { display:flex; align-items:center; gap:10px; min-width:0; min-height:52px; padding:10px 12px; border:0; border-bottom:2px solid transparent; background:transparent; color:#53635d; text-align:left; transition:background .18s ease,color .18s ease,border-color .18s ease }
-#homes .property-tabs button + button { border-left:1px solid #17282d18 }
-#homes .property-tabs button:hover { background:#e9eeea; color:var(--ink) }
-#homes .property-tabs button[aria-pressed=true] { background:#e9eeea; border-bottom-color:var(--old-gold); color:var(--ink); font-weight:400 }
-#homes .property-tab-number { flex:none; font:10px/1.2 'Courier New',monospace; color:#65736b }
-#homes .property-tab-name { font:13px/1.35 Arial,Helvetica,sans-serif; letter-spacing:-.015em }
+#homes > .property-previews { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; margin:0 0 16px }
+#homes .property-preview { position:relative; display:flex; flex-direction:column; min-width:0; min-height:44px; padding-bottom:8px; border-bottom:2px solid transparent; color:#53635d; scroll-margin-top:16px; transition:border-color .18s ease,color .18s ease }
+#homes .property-preview-media { position:relative; display:block; height:clamp(66px,6.5vw,96px); overflow:hidden; background:#cad2c9 }
+#homes .property-preview-media video,#homes .property-preview-media img { display:block; width:100%; height:100%; object-fit:cover }
+#homes .property-preview-name { display:block; margin-top:7px; font-size:14px; line-height:1.25; letter-spacing:-.02em; color:var(--ink) }
+#homes .property-preview-location { display:block; margin-top:3px; font-size:11px; line-height:1.3 }
+#homes .property-preview-state { position:absolute; top:7px; left:7px; padding:4px 6px; color:var(--ink); background:var(--paper); font-size:10px; line-height:1.2 }
+#homes .property-preview-state[hidden] { display:none }
+#homes .property-preview[aria-current=true],#homes .property-preview[aria-pressed=true] { border-bottom-color:var(--old-gold); color:var(--ink) }
+#homes .property-preview[aria-current=true] .property-preview-name,#homes .property-preview[aria-pressed=true] .property-preview-name { text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px }
+#homes .property-preview:hover { color:var(--ink); border-bottom-color:#17282d55 }
+#homes .property-preview:focus-visible { outline:3px solid var(--ink); outline-offset:3px }
+#homes .property-selection-status { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0 }
+#homes #property-detail { scroll-margin-top:16px }
 #homes .property-layout { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); min-height:0; height:auto; border:0; background:#f8f9f5; align-items:stretch }
 #homes .property-visual { min-width:0; min-height:0; height:auto; aspect-ratio:16/9; background:#c9d4cc }
 #homes .property-visual video { object-fit:cover }
@@ -51,6 +58,13 @@
   #homes { padding-top:20px; padding-bottom:20px }
   #homes > .section-heading { margin-bottom:13px }
   #homes .section-heading h2 { font-size:36px }
+  #homes > .property-previews { gap:10px; margin-bottom:12px }
+  #homes .property-preview { padding-bottom:6px }
+  #homes .property-preview-media { height:60px }
+  #homes .property-preview-name { margin-top:5px; font-size:13px }
+  #homes .property-preview-location { margin-top:2px; font-size:10px }
+  #homes .property-layout { grid-template-columns:minmax(0,1.9fr) minmax(340px,1fr); height:clamp(390px,calc(100svh - var(--header) - 236px),430px) }
+  #homes .property-visual { height:100%; aspect-ratio:auto }
   #homes .property-info { padding:12px 20px 13px; gap:9px }
   #homes .property-info h3 { font-size:35px; margin-top:7px; margin-bottom:8px }
   #homes .property-facts { margin-top:12px; padding-top:10px; gap:12px }
@@ -64,8 +78,10 @@
   #homes .section-heading .section-index { margin-bottom:8px }
   #homes .section-heading h2 { font-size:34px }
   #homes .section-aside { max-width:220px; font-size:11px }
-  #homes .property-tabs button { gap:7px; padding:9px 8px; min-height:55px }
-  #homes .property-tab-name { font-size:11px }
+  #homes > .property-previews { gap:8px }
+  #homes .property-preview-media { height:66px }
+  #homes .property-preview-name { font-size:12px }
+  #homes .property-preview-location { font-size:10px }
   #homes .property-layout { grid-template-columns:minmax(0,1.35fr) minmax(290px,1fr) }
   #homes .property-visual { aspect-ratio:auto; min-height:440px }
   #homes .property-info { padding:15px 18px; gap:10px }
@@ -80,9 +96,11 @@
   #homes .section-heading .section-index { margin-bottom:10px; font-size:10px }
   #homes .section-heading h2 { font-size:35px; line-height:1.05; max-width:350px }
   #homes .section-aside { margin-top:12px; max-width:none; font-size:13px }
-  #homes > .property-tabs { display:flex; gap:0; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; margin-bottom:14px }
-  #homes .property-tabs button { flex:0 0 160px; min-height:58px; padding:10px 12px; gap:10px }
-  #homes .property-tab-name { font-size:12px }
+  #homes > .property-previews { display:flex; gap:12px; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; scroll-snap-type:x proximity; padding:4px 3px 8px; margin:0 -3px 14px }
+  #homes .property-preview { flex:0 0 148px; scroll-snap-align:start }
+  #homes .property-preview-media { height:83px }
+  #homes .property-preview-name { font-size:13px }
+  #homes .property-preview-location { font-size:11px }
   #homes .property-layout { grid-template-columns:minmax(0,1fr); height:auto }
   #homes .property-visual { aspect-ratio:16/9; min-height:0; height:auto }
   #homes .image-caption { left:11px; bottom:11px; max-width:calc(100% - 22px); font-size:8px }
@@ -106,7 +124,7 @@ body.is-presenting #homes > .section-heading > div { display:block }
 body.is-presenting #homes .section-heading .section-index { display:flex; margin:0; font-size:13px; letter-spacing:.1em; line-height:1.5 }
 body.is-presenting #homes .section-heading h2 { display:none }
 body.is-presenting #homes .section-aside { max-width:none; margin:0; font-size:15px; line-height:1.4; white-space:pre-line; text-align:right }
-body.is-presenting #homes > .property-tabs { display:none }
+body.is-presenting #homes > .property-previews { display:none }
 body.is-presenting #homes .property-layout { grid-template-columns:920px minmax(0,1fr); height:518px; min-height:0 }
 body.is-presenting #homes .property-visual { height:518px; min-height:0; aspect-ratio:16/9 }
 body.is-presenting #homes .property-info { padding:22px 26px 15px; gap:14px }
@@ -168,7 +186,7 @@ body.is-presenting[data-presentation-layout="responsive"] #homes > .footnote { f
   body.is-presenting[data-presentation-layout="responsive"] #homes .property-area-row dd { font-size:36px }
 }
 @media(prefers-reduced-motion:reduce) {
-  #homes button { transition:none }
+  #homes button,#homes .property-preview { transition:none }
 }
 
 /* Original collages need a quiet viewer, not the slide's display typography. */

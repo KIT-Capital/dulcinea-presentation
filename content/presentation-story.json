@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "main": [
+    { "id": "cover", "selector": "#home", "title": ["Dulcinea One", "Dulcinea One"] },
+    { "id": "lifestyle", "selector": "#ownership", "title": ["The lifestyle", "El estilo de vida"] },
+    { "id": "oriente", "selector": "#oriente", "title": ["El Oriente countryside", "El campo del Oriente"] },
+    { "id": "city", "selector": "#destination", "title": ["Life in Medellín", "La vida en Medellín"] },
+    { "id": "hospitality", "selector": "#experience", "title": ["Lola & Ber", "Lola & Ber"] },
+    { "id": "benefits", "selector": "#member-benefits", "title": ["Member benefits", "Beneficios de membresía"] },
+    { "id": "monte-sereno", "selector": "#homes", "propertyKey": "monte-sereno", "title": ["Casa Monte Sereno", "Casa Monte Sereno"] },
+    { "id": "montana", "selector": "#homes", "propertyKey": "montana", "title": ["Casa Montana", "Casa Montana"] },
+    { "id": "fontanar", "selector": "#homes", "propertyKey": "fontanar", "title": ["Fontanar 201", "Fontanar 201"] },
+    { "id": "san-lucas", "selector": "#homes", "propertyKey": "san-lucas", "title": ["San Lucas 101", "San Lucas 101"] },
+    { "id": "aires", "selector": "#homes", "propertyKey": "aires", "title": ["Aires de Campestre", "Aires de Campestre"] },
+    { "id": "idea", "selector": "#approach", "title": ["The investment approach", "La estrategia de inversión"] },
+    { "id": "returns", "selector": "#returns", "title": ["Projected returns", "Retornos proyectados"] },
+    { "id": "offer", "selector": "#fund", "title": ["The offer", "La oferta"] },
+    { "id": "team", "selector": "#team", "title": ["The core team", "El equipo principal"] },
+    { "id": "specialists", "selector": "#specialists", "title": ["Local specialists", "Especialistas locales"] },
+    { "id": "disclaimer", "selector": "#main .legal-notice", "title": ["Important disclosures", "Información importante"] },
+    { "id": "contact", "selector": "#contact", "title": ["Talk to us", "Hable con nosotros"] }
+  ],
+  "appendices": [
+    { "id": "owner-use", "selector": "#member-benefits", "anchor": "#owner-use", "returnTo": "benefits", "title": ["Owner use and booking", "Uso y reservas"] }
+  ],
+  "legacyNumeric": {
+    "1": "cover",
+    "2": "lifestyle",
+    "3": "benefits",
+    "4": "owner-use",
+    "5": "oriente",
+    "6": "city",
+    "7": "hospitality",
+    "8": "fontanar",
+    "9": "san-lucas",
+    "10": "aires",
+    "11": "monte-sereno",
+    "12": "montana",
+    "13": "idea",
+    "14": "offer",
+    "15": "returns",
+    "16": "team",
+    "17": "specialists",
+    "18": "disclaimer",
+    "19": "contact"
+  }
+}
