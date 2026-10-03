@@ -35,6 +35,8 @@ body:not(.is-presenting) .team-portraits { grid-template-columns:repeat(4,minmax
 body:not(.is-presenting) .team-portraits { row-gap:0; }
 body:not(.is-presenting) .team-portraits article { display:grid; grid-template-rows:subgrid; grid-row:span 5; }
 body:not(.is-presenting) .team-profile { display:grid; grid-template-rows:subgrid; grid-row:span 4; }
+body:not(.is-presenting) .team-profile { padding:0 8px 24px; }
+body:not(.is-presenting) .team-bio { margin-top:20px; }
 .team-affiliation { margin-top:3px; font-size:16px; line-height:1.5; color:#52635f; }
 body:not(.is-presenting) .team-photo { aspect-ratio:1/1; }
 .team-profile { min-width:0; }
@@ -90,15 +92,15 @@ body.is-presenting[data-presentation-layout="canvas"] .team-portraits h3 { font-
 body.is-presenting[data-presentation-layout="canvas"] .team-portraits .micro { font-size:16px; min-height:40px; }
 body.is-presenting[data-presentation-layout="canvas"] .team-bio { font-size:24px; line-height:1.4; }
 /* Four profiles share one slide without reducing the biography type size. */
-body.is-presenting[data-presentation-layout="canvas"] #main>.team.presentation-active { padding:36px 48px; }
+body.is-presenting[data-presentation-layout="canvas"] #main>.team.presentation-active { padding:48px; }
 body.is-presenting[data-presentation-layout="canvas"] .team .section-heading { margin-bottom:24px; }
-body.is-presenting[data-presentation-layout="canvas"] .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 32px; }
-body.is-presenting[data-presentation-layout="canvas"] .team-portraits article { display:grid; grid-template-columns:144px minmax(0,1fr); align-items:start; gap:20px; border-top:1px solid #17282d30; padding-top:16px; }
-body.is-presenting[data-presentation-layout="canvas"] .team-photo { width:144px; height:200px; }
+body.is-presenting[data-presentation-layout="canvas"] .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 40px; }
+body.is-presenting[data-presentation-layout="canvas"] .team-portraits article { display:grid; grid-template-columns:128px minmax(0,1fr); align-items:start; gap:28px; border-top:1px solid #17282d30; padding-top:24px; }
+body.is-presenting[data-presentation-layout="canvas"] .team-photo { width:128px; height:184px; }
 body.is-presenting[data-presentation-layout="canvas"] .team-portraits .micro { margin-top:0; min-height:22px; line-height:1.35; letter-spacing:.04em; }
 body.is-presenting[data-presentation-layout="canvas"] .team-affiliation { font-size:18px; line-height:1.35; }
-body.is-presenting[data-presentation-layout="canvas"] .team-portraits h3 { margin-top:10px; line-height:1.15; }
-body.is-presenting[data-presentation-layout="canvas"] .team-bio { margin-top:14px; line-height:1.35; max-width:none; }
+body.is-presenting[data-presentation-layout="canvas"] .team-portraits h3 { margin-top:12px; line-height:1.15; }
+body.is-presenting[data-presentation-layout="canvas"] .team-bio { margin-top:18px; line-height:1.35; min-height:calc(5 * 1.35em); max-width:none; }
 body.is-presenting[data-presentation-layout="canvas"] .specialists dt { font-size:25px; }
 body.is-presenting[data-presentation-layout="canvas"] .specialists dd { font-size:32px; font-weight:600; }
 body.is-presenting[data-presentation-layout="canvas"] .specialist-bio { font-size:24px; line-height:1.35; }
@@ -130,6 +132,7 @@ body.is-presenting[data-presentation-layout="responsive"] #ownership .lifestyle-
 body.is-presenting[data-presentation-layout="responsive"] #ownership .lifestyle-benefits dd { font-size:20px; }
 body.is-presenting[data-presentation-layout="responsive"] :is(.member-benefit-grid h3,.owner-use-rules h3,.team-portraits h3) { font-weight:600; }
 body.is-presenting[data-presentation-layout="responsive"] .team-portraits { grid-template-columns:minmax(0,1fr); }
+body.is-presenting[data-presentation-layout="responsive"] .team-profile { padding:0 12px 24px; }
 @media(min-width:600px) {
   body.is-presenting[data-presentation-layout="responsive"] .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px 28px; }
 }

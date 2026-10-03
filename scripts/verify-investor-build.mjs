@@ -178,7 +178,8 @@ for (const [pagePath, html] of pages) {
   assert.equal(nataliaPortrait.alt, 'Natalia Carvajal', `Natalia portrait description: ${pagePath}`);
   assert.ok(textContent(coreProfiles[3]).includes(language==='es' ? 'Directora de Marketing' : 'Director of Marketing'), `Missing localized Natalia role: ${pagePath}`);
   const coreBios = coreProfiles.map(profile=>textContent(profile.match(/<p\b[^>]*class="team-bio"[^>]*>[\s\S]*?<\/p>/)?.[0] || '').trim());
-  assert.ok(coreBios.every(bio=>bio.split(/\s+/).length === (language==='es' ? 33 : 30)), `Core biographies must have uniform reading length: ${pagePath}`);
+  assert.ok(coreBios.every(bio=>bio.split(/\s+/).length === (language==='es' ? 27 : 24)), `Core biographies must have uniform reading length: ${pagePath}`);
+  assert.doesNotMatch(coreBios[3], /Director of Marketing|Directora de Marketing/i, 'Natalia biography must not repeat her role label');
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
   for(const chapter of ['destination','ownership','member-benefits','owner-use','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
   const chapterOrder=['ownership','oriente','destination','after-dark','experience','member-benefits','homes','approach','returns','fund','resources','team','specialists','contact'];
