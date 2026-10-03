@@ -1,13 +1,15 @@
 ---
 title: "Refactor Dulcinea's website and presentation storyline"
 type: refactor
-status: active
+status: complete
 date: 2026-10-02
 baseline: 5396738
 depth: standard
 ---
 
 # Dulcinea storyline implementation plan
+
+Implemented and published on 2 October 2026. Release evidence, tested coverage and the source-hash qualification are recorded in `docs/validation-2026-10-02-storyline.md`.
 
 ## Purpose and boundaries
 

@@ -1,6 +1,6 @@
 # Lifestyle storyline release validation — 2 October 2026
 
-Status: implementation and local validation complete; publication and live verification pending.
+Status: implemented, committed, pushed, published and verified live.
 
 ## Scope
 
@@ -35,4 +35,10 @@ Private raw QA output is retained outside the repository and deployed assets. It
 
 ## Release
 
-The previous Cloudflare version is `163aff25-f5ed-401f-bad4-5c7af644ad8d`. Record the new release commit, version and live checks here after deployment succeeds.
+- Application commit: `4268927`, pushed to `KIT-Capital/dulcinea-presentation`, branch `codex/lifestyle-oriente`.
+- Cloudflare version: `0a83835a-b6e4-487b-9910-a163cbd25687` on `invest.dulcineainvestments.org`.
+- Previous version retained for rollback: `163aff25-f5ed-401f-bad4-5c7af644ad8d`.
+- Traversed the entire live 18-slide sequence from `/#present-cover` to Contact; the final Next button was disabled. Confirmed legacy `/#present-8` still opens Fontanar, now slide 9.
+- Confirmed live Benefits → booking appendix → Spanish → return preserves `/es/#present-benefits`, and `/es/#property-monte-sereno` opens the correct country home.
+- The live `/financial-statements#balance-sheet` route redirected an anonymous visitor to login with the intended statement fragment preserved. Public `/es/investment-criteria` remained accessible, with one language control and the shared resource navigation.
+- Visually reviewed and saved the live `/#homes` collection at notebook size. The proof image and live traversal report are stored in the private sibling `storyline-review` folder, outside deployed assets. Temporary viewport overrides were reset.
