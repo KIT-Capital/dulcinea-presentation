@@ -28,6 +28,33 @@
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{@page{margin:14mm}header{padding:0 0 20px;background:white}.brand{width:180px}.hero{margin-top:22px}h1{font-size:34px}.back-link,.skip-link{display:none}main,footer{padding:0}section{padding:25px 0}.criteria{column-gap:28px;grid-template-columns:repeat(2,minmax(0,1fr))}.criteria li{padding:18px 0;gap:10px;grid-template-columns:25px 1fr}.target{font-size:24px}.explanation{font-size:11px}.notes{display:none}.qualifier,.source,.footer-inner p{font-size:10px}footer{background:white;margin-top:20px}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><style>
+/* Strong targets and readable explanations; use space, not tiny type, to fit. */
+@media screen{
+  body{font-size:18px}
+  h2{font-size:28px;line-height:1.2;font-weight:600;letter-spacing:-.025em}
+  .section-intro{font-size:18px;line-height:1.4}
+  .number{font-size:14px;line-height:1.3}
+  .criteria h3{font-size:14px;line-height:1.2;font-weight:600;letter-spacing:.065em;margin-bottom:5px}
+  .target{font-family:Arial,Helvetica,sans-serif;font-size:26px;line-height:1.18;font-weight:600;letter-spacing:-.02em}
+  .explanation{font-size:18px;line-height:1.4;margin-top:8px}
+  .notes summary{font-size:18px;line-height:1.35;font-weight:600}
+  .detail-body p{font-size:18px;line-height:1.5}
+}
+@media screen and (min-width:961px){
+  body.resource-criteria header.resource-header{padding-bottom:10px}
+  body.resource-criteria header.resource-header>.hero{margin-top:10px}
+  #investment-criteria{padding-top:10px}
+  .section-intro{font-size:16px;line-height:1.3}
+  .criteria{margin-top:6px;column-gap:32px}
+  .criteria li{grid-template-columns:23px minmax(0,1fr);gap:9px;padding:5px 0}
+  .criteria li>div{display:grid;grid-template-columns:128px minmax(0,1fr);column-gap:10px;align-items:baseline;min-width:0}
+  .number{font-size:13px;padding-top:1px}
+  .criteria h3{font-size:13px;line-height:1.2;margin-bottom:0;letter-spacing:.02em;min-width:0;overflow-wrap:break-word;hyphens:auto}
+  .target{font-size:22px;line-height:1.15;min-width:0}
+  .explanation{grid-column:1/-1;font-size:16px;line-height:1.25;margin-top:4px}
+  .notes{margin-top:16px}
+}
 </style></head>
 <body class="resource-criteria"><a class="skip-link" href="#investment-criteria">Skip to acquisition criteria</a>
 <header class="resource-header">{{RESOURCE_NAVIGATION}}<div class="hero"><p class="eyebrow">Dulcinea One · Property selection</p><h1>Acquisition criteria</h1><p>The homes we choose. The discipline behind each acquisition.</p></div></header>

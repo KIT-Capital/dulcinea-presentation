@@ -76,6 +76,25 @@ export function renderLogin({ name = '', email = '', next = '/financial-statemen
     .access-toolbar>.access-label{margin:0;min-width:0;flex:1;line-height:1.7}
     .website-back{display:inline-flex;align-items:center;align-self:flex-start;min-height:44px;margin:0 0 18px;font-size:14px;gap:8px}
     @media(min-width:781px) and (max-height:800px){.welcome{padding-block:32px}.intro{padding-block:48px}.access{padding-block:28px}.access-toolbar{margin-bottom:14px}h2{font-size:36px}.form-intro{margin-bottom:20px;line-height:1.5}.field{margin-top:14px}input:not([type="hidden"]){height:48px}.submit{margin-top:20px}.request{margin-top:20px;padding-top:16px}}
+    /* Readable access form, with compact spacing on notebooks. */
+    body{font-size:18px}
+    .eyebrow{font-size:13px;letter-spacing:.12em}
+    .intro-copy{font-size:20px;line-height:1.5;max-width:370px}
+    .place{font-size:16px}
+    .co-brand{font-size:14px;line-height:1.5;max-width:320px}
+    .website-back{font-size:16px}
+    .form-wrap{max-width:460px}
+    .access-label{font-size:12px;letter-spacing:.1em}
+    h2{font-size:36px;line-height:1.15;font-weight:600}
+    .form-intro{font-size:18px;line-height:1.45}
+    label{font-size:14px;line-height:1.3}
+    input:not([type="hidden"]){font-size:17px}
+    .submit{font-size:17px}
+    .privacy{font-size:14px;line-height:1.45}
+    .request{font-size:16px;line-height:1.5}
+    .error{font-size:16px}
+    @media(min-width:781px) and (max-height:800px){.access{padding:20px clamp(28px,4vw,64px)}.access-toolbar{margin-bottom:12px}h2{font-size:32px;margin-bottom:12px}.form-intro{margin-bottom:16px}.field{margin-top:12px}label{margin-bottom:7px}.submit{margin-top:18px}.privacy{margin-top:12px}.request{margin-top:18px;padding-top:14px}}
+    @media(max-width:780px){.intro-copy{font-size:20px}.place{font-size:16px}.co-brand{font-size:14px}h2{font-size:34px}}
   </style>
 </head>
 <body>

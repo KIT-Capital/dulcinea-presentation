@@ -8,6 +8,14 @@ const homes = [
 const configuredHomeOrder = (window.DULCINEA_STORY?.main || []).filter(step => step.propertyKey).map(step => homes.findIndex(home => home.key === step.propertyKey));
 const homeOrder = configuredHomeOrder.length === homes.length && new Set(configuredHomeOrder).size === homes.length && configuredHomeOrder.every(index => index >= 0) ? configuredHomeOrder : [3,4,0,1,2];
 const $ = selector => document.querySelector(selector);
+// Larger navigation can wrap; anchor clearance follows its rendered height.
+const siteHeader = $('.header');
+function syncHeaderHeight() {
+  const height = siteHeader?.getBoundingClientRect().height;
+  if (height) document.documentElement.style.setProperty('--header',`${Math.ceil(height)}px`);
+}
+syncHeaderHeight();
+if (siteHeader && typeof ResizeObserver === 'function') new ResizeObserver(syncHeaderHeight).observe(siteHeader);
 const isWeb = window.DULCINEA_WEB !== false;
 const initialSpanishPath = /\/es(?:\/|$)/.test(location.pathname);
 const portableRoot = new URL(initialSpanishPath ? '../' : './',location.href);

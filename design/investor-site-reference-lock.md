@@ -29,6 +29,21 @@ The earlier [Radisson Resort Maldives](https://radissonresortmaldives.com/) refe
 
 ## Visual rules
 
+### Typography revision — 3 October 2026
+
+Build target: the user's small-text screenshot and the existing Aker/KOBU-based site. Refero styles `40181a87-fa8d-4b88-b59c-0516a353036a` (Aker) and `2b86e8de-b21d-40d0-894a-f9d3a177a193` (KOBU) were reviewed again, together with Refero's typography craft reference. Preserve immersive imagery, the current palette, sans body/display roles, restrained metadata and Lola & Ber's own serif identity. Adapt Aker's weight contrast and KOBU's distinction between information and metadata; do not import either reference's small caption sizes into investor reading text.
+
+| Role | Decision | Reason |
+| --- | --- | --- |
+| Website copy | 20px body, 22–26px introductory copy; 18px body on phones | User explicitly requested larger reading text throughout the theme. |
+| Subtitles | 26–32px and semibold; benefit explanations below their subtitles | Establish visible hierarchy and remove the cramped table-like lifestyle rows. |
+| Actions and navigation | 17px primary text actions, 14–15px navigation; flags stay compact | Improve discoverability without competing with the content. |
+| Presentation | 24px canvas body, 29–32px subtitles; shorter image columns or portraits where necessary | At 1280×720, the 1440×810 canvas scales to about 0.81. Source CSS size alone is not the reading size. |
+| Supporting pages | Financial table text 16px, larger subtitle weights, criteria targets in the same sans family | Retain dense investor information and keep all ten criteria above the notebook fold. |
+| Legal detail | Existing modest disclosure treatment retained | The user separately requested discreet disclosures; these are not marketing subtitles. |
+
+`src/investor/typography.css` is the final type-role layer after layout styles. Header clearance follows the actual rendered navigation height. Larger type must never be compensated for by hiding substantive copy or shrinking the whole slide further.
+
 Use full-size imagery, large system-sans headlines, restrained monospace labels, thin caption rules and a small number of section colors. Avoid decorative shadows, dashboard styling, repeated generic cards and large empty menu areas. Keep investor copy direct and short. English and Colombian Spanish receive equivalent hierarchy, imagery, links and disclosures.
 
 ## Release review

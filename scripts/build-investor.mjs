@@ -93,6 +93,7 @@ for(const locale of ['en','es']){
     .replace('<link rel="stylesheet" href="floorplans.css">',`<style>${floorplanStyles}</style>`)
     .replace('<link rel="stylesheet" href="properties.css">',`<style>${propertyStyles}</style>`)
     .replace('<link rel="stylesheet" href="homepage-story.css">',`<style>${storyStyles}</style>`)
+    .replace('<link rel="stylesheet" href="typography.css">',`<style>${await read('src/investor/typography.css')}</style>`)
     .replace(/(["'])media\/([^"']+)\1/g,(_,quote,name)=>{
       if(!localeMedia[name]) throw Error(`Unknown media alias: ${name}`);
       return quote+localeMedia[name]+quote;

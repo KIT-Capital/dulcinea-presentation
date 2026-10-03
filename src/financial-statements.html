@@ -18,7 +18,27 @@
 /* Carry disclosure */
 #after-carry{scroll-margin-top:90px}#after-carry th:first-child{padding-block:0}.carry-toggle{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:10px 0;border:0;background:transparent;color:inherit;font:inherit;font-weight:600;text-align:left;cursor:pointer}.carry-toggle svg{flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;transition:transform .18s ease}.carry-toggle[aria-expanded="true"] svg{transform:rotate(90deg)}.carry-toggle:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.carry-toggle:hover span{text-decoration:underline;text-underline-offset:4px}.carry-detail th,.carry-detail td{background:#f4f9fb;font-size:13px}.carry-detail th:first-child{background:#f4f9fb;padding-left:43px}[hidden]{display:none!important}@media(prefers-reduced-motion:reduce){.carry-toggle svg{transition:none}}@media print{#carry-breakdown[hidden]{display:table-row!important}.carry-toggle svg{display:none}.carry-toggle{min-height:0;padding:9px 0}.carry-detail th:first-child{padding-left:20px}}
 </style>
-<style>.statement-signout{display:flex;align-items:center;margin:0 0 0 auto;flex-shrink:0}.statement-signout button{min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--ink);font:inherit;font-size:13px;white-space:nowrap;cursor:pointer}.statement-signout button:hover{background:#e5f3f8;border-color:var(--blue)}.statement-signout button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.statement-signout button:disabled{opacity:.6;cursor:wait}.statement-signout-error{padding:16px clamp(20px,6vw,88px);font-size:14px;color:#6f2238;background:#fff1f4}@media print{.statement-signout,.statement-signout-error{display:none}}</style></head>
+<style>.statement-signout{display:flex;align-items:center;margin:0 0 0 auto;flex-shrink:0}.statement-signout button{min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--ink);font:inherit;font-size:13px;white-space:nowrap;cursor:pointer}.statement-signout button:hover{background:#e5f3f8;border-color:var(--blue)}.statement-signout button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.statement-signout button:disabled{opacity:.6;cursor:wait}.statement-signout-error{padding:16px clamp(20px,6vw,88px);font-size:14px;color:#6f2238;background:#fff1f4}@media print{.statement-signout,.statement-signout-error{display:none}}</style><style>
+/* Reading scale: keep statements legible without enlarging the masthead. */
+@media screen{
+  body{font-size:18px}
+  h2,section:target h2{font-size:28px;line-height:1.2;font-weight:600;letter-spacing:-.025em}
+  .section-intro{font-size:18px;line-height:1.5}
+  .section-nav a{font-size:16px}
+  table{font-size:16px;min-width:970px}
+  th,td{padding:14px 16px}
+  thead th{font-size:16px}
+  thead th span{font-size:14px;line-height:1.3;margin-top:5px}
+  caption,.scroll-hint{font-size:14px;line-height:1.5}
+  .margin th,.margin td{font-size:15px}
+  .statement-group th:first-child{font-size:14px;letter-spacing:.035em}
+  .carry-detail th,.carry-detail td{font-size:16px}
+  .notes p,.source p{font-size:15px;line-height:1.6}
+  .source summary{font-size:16px}
+  .statement-signout button{font-size:15px}
+  .statement-signout-error{font-size:16px}
+}
+</style></head>
 <body class="resource-financials"><a class="skip-link" href="#income-statement">Skip to financial statements</a>
 <header class="resource-header">{{RESOURCE_NAVIGATION}}<div class="hero"><p class="eyebrow">Dulcinea One</p><h1>Pro forma financial statements</h1><p>Unaudited projections in USD, October 2026–September 2030.</p></div></header>
 <nav class="section-nav" aria-label="Pro forma financial statements"><a href="#income-statement">Income statement</a><a href="#after-carry">After carry</a><a href="#cash-flow-statement">Cash flows</a><a href="#balance-sheet">Balance sheet</a><form class="session-exit statement-signout" action="/logout" method="post"><button type="submit">Sign out</button></form></nav>
