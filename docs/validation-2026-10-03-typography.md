@@ -12,4 +12,4 @@ Local verification:
 - All five property slides retained positive spacing between facts and actions. Mobile navigation links remained inside the viewport, and measured header height matched anchor clearance.
 - Resource and login changes were checked for identical markup/logic outside CSS. Source workbooks and legal documents remain outside the site.
 
-Release: pending final build, publication and live verification. Private raw viewport reports and screenshots are kept outside deployed assets in the sibling `storyline-review` folder.
+Release: application commit `3336137`, pushed to `codex/lifestyle-oriente` and published as Cloudflare version `afb9c672-3134-4ea3-bd54-24d525af0716`. Live verification confirmed 20px website lifestyle body, 30px semibold subtitles at the notebook viewport, 24px slide body and 29px semibold slide subtitles, plus 17px login fields. The live lifestyle slide was visually checked and captured. Temporary viewport overrides were reset. Private raw viewport reports and screenshots are kept outside deployed assets in the sibling `storyline-review` folder.
