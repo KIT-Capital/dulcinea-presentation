@@ -142,7 +142,7 @@ test('the dedicated login remains localized with social metadata and a public we
     assert.equal(meta('twitter:title'), title);
     assert.equal(meta('og:locale'), locale);
     assert.equal(meta('og:locale:alternate'), alternate);
-    assert.equal(meta('og:image'), `https://invest.dulcineainvestments.org/assets/social/${image}`);
+    assert.equal(meta('og:image'), `https://dulcinea-design-review.norfolk-ai.workers.dev/assets/social/${image}`);
     assert.equal(meta('twitter:image'), meta('og:image'));
     assert.equal(meta('og:image:width'), '1200');
     assert.equal(meta('og:image:height'), '630');

@@ -1,0 +1,147 @@
+/* Radisson owns the experience-led composition. Dulcinea owns the colors.
+   Canvas slides retain their tested layout; website rules never shrink them. */
+:root{--reading:20px;--subtitle:26px;--chapter-space:88px;--review-blue:#d6edf4;--review-green:#d9eee4}
+body:not(.is-presenting){background:var(--paper);font-size:var(--reading)}
+body:not(.is-presenting) .header{background:#17282d;color:white;min-height:80px;padding-block:14px;border-bottom:1px solid #ffffff33}
+body:not(.is-presenting) .header .brand img{width:145px;height:43px}
+body:not(.is-presenting) .primary{gap:24px;font-size:15px}
+body:not(.is-presenting) .contact-nav{display:block;background:var(--gold);color:var(--ink);border:0;border-radius:0;font-weight:600;font-size:15px;padding:14px 18px;transition:background .2s,transform .2s}
+body:not(.is-presenting) .contact-nav:hover{background:#ead369;transform:translateY(-2px)}
+body:not(.is-presenting) .contact-nav:active{transform:translateY(1px)}
+body:not(.is-presenting) .hero{height:calc(100svh - var(--header));min-height:640px;padding:34px 6vw 30px;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr auto auto;gap:24px}
+body:not(.is-presenting) .hero:after{background:linear-gradient(90deg,#071c24b0 0%,#0a293647 60%,#071c2414 100%),linear-gradient(0deg,#0a2536c9,transparent 45%)}
+body:not(.is-presenting) .hero-top{grid-row:1;font-size:14px}
+body:not(.is-presenting) .hero-top .micro{font:500 14px/1.4 Arial,sans-serif;letter-spacing:.05em}
+body:not(.is-presenting) .hero-bottom{display:contents}
+body:not(.is-presenting) .hero h1{grid-row:2;align-self:end;font-size:clamp(58px,6.7vw,112px);letter-spacing:-.055em;line-height:1.06;margin:0}
+body:not(.is-presenting) .hero-statement{grid-row:3;margin:0;width:min(590px,100%);min-width:0}
+body:not(.is-presenting) .hero-statement p{font-size:clamp(23px,2.2vw,32px);line-height:1.28;max-width:580px;letter-spacing:-.025em;white-space:normal;text-shadow:none}
+body:not(.is-presenting) .hero-statement .line-link{background:var(--gold);color:var(--ink);border:0;padding:16px 22px;margin-top:26px;width:320px;gap:16px;font-size:18px;font-weight:600}
+body:not(.is-presenting) .hero-statement .line-link span:first-child{white-space:nowrap}
+.hero-destinations{position:absolute;top:84px;left:6vw;display:flex;gap:24px;align-items:center;flex-wrap:wrap;max-width:80%}
+.hero-destinations button{font-size:16px;min-height:44px;padding:10px 0;border-bottom:1px solid #ffffff50;background:none;color:white}
+.hero-destinations button[aria-pressed=true]{border-color:var(--gold);color:#edcf65}
+#review-cover-caption{font-size:12px;background:#17282dd9;padding:8px}
+@media(max-width:760px){.hero-destinations{left:24px;top:64px;gap:18px}.hero-destinations button{font-size:14px}body:not(.is-presenting) .hero-statement .line-link{width:100%;max-width:320px}.hero-statement .line-link span:first-child{white-space:normal!important}}
+body:not(.is-presenting) .hero-baseline{grid-row:4;margin:18px 0 0;padding-top:22px;gap:28px;align-items:center}
+body:not(.is-presenting) .hero-baseline>.micro{font:400 16px/1.45 Arial,sans-serif;max-width:460px;text-transform:none;letter-spacing:0}
+body:not(.is-presenting) .motion{top:24px;right:6vw;border-radius:0}
+body:not(.is-presenting) .hero-top>span:last-child{padding-right:52px}
+body:not(.is-presenting) .story-index{background:var(--paper);padding:18px 6vw;gap:24px;align-items:center}
+body:not(.is-presenting) .story-index>div{gap:0 26px}
+body:not(.is-presenting) .story-index a{font-size:16px}
+body:not(.is-presenting) .story-index>.micro{font:600 12px/1.4 Arial;letter-spacing:.08em}
+body:not(.is-presenting) .offer-glance{padding:24px 6vw;background:var(--review-blue);border-top:1px solid #17282d20;border-bottom:1px solid #17282d20}
+body:not(.is-presenting) .offer-glance>p{font-size:25px;max-width:360px}
+body:not(.is-presenting) .offer-glance strong{font-size:44px}
+body:not(.is-presenting) .offer-glance>div>span{font-size:15px}
+body:not(.is-presenting) .offer-glance>a{font-size:17px}
+body:not(.is-presenting) .section-pad{padding:var(--chapter-space) 6vw}
+body:not(.is-presenting) h2{font-size:clamp(40px,4.6vw,76px);line-height:1.05;letter-spacing:-.045em;text-wrap:balance}
+body:not(.is-presenting) h3{font-size:var(--subtitle);font-weight:600;line-height:1.2}
+body:not(.is-presenting) .section-index{font:600 12px/1.4 Arial;letter-spacing:.09em;margin-bottom:24px}
+body:not(.is-presenting) .ownership-story{padding:64px 6vw;background:#f9dce1;grid-template-columns:1.05fr 1fr;gap:6vw;align-items:center}
+body:not(.is-presenting) .ownership-story .ownership-media{min-height:600px;max-height:680px;overflow:hidden}
+body:not(.is-presenting) .ownership-story h2{font-size:clamp(38px,4.2vw,64px);margin:14px 0 24px}
+body:not(.is-presenting) .ownership-copy>p:not(.micro):not(.footnote){font-size:22px;line-height:1.5;max-width:520px}
+body:not(.is-presenting) .ownership-story .lifestyle-benefits{margin-top:24px}
+body:not(.is-presenting) .ownership-story .lifestyle-benefits>div{padding:18px 0}
+body:not(.is-presenting) .ownership-story .lifestyle-benefits dt{font-size:24px;font-weight:600}
+body:not(.is-presenting) .ownership-story .lifestyle-benefits dd{font-size:18px;line-height:1.45}
+body:not(.is-presenting) .footnote{font-size:13px;line-height:1.6}
+body:not(.is-presenting) .oriente-story{background:var(--review-green)}
+body:not(.is-presenting) .oriente-cinema{min-height:730px;padding:0}
+body:not(.is-presenting) .oriente-cinema-content{padding:64px 6vw;max-width:760px}
+body:not(.is-presenting) .oriente-cinema-content h2{font-size:clamp(48px,5.2vw,80px);max-width:700px}
+body:not(.is-presenting) .oriente-cinema-copy{font-size:23px;line-height:1.45;max-width:510px}
+body:not(.is-presenting) .oriente-shade{background:linear-gradient(90deg,#062b27c4,transparent 88%)}
+body:not(.is-presenting) .oriente-support{padding:50px 6vw;grid-template-columns:1fr 1.45fr;gap:34px}
+body:not(.is-presenting) .oriente-support figcaption{font-size:17px}
+body:not(.is-presenting) .oriente-support-copy{font-size:26px;line-height:1.35}
+body:not(.is-presenting) .destination{padding:0}
+body:not(.is-presenting) .city-cinema{min-height:710px}
+body:not(.is-presenting) .city-cinema .story-film-copy{padding:60px 6vw;max-width:740px}
+body:not(.is-presenting) .city-cinema .story-film-copy p:not(.micro){font-size:23px;line-height:1.45;max-width:530px}
+body:not(.is-presenting) #after-dark{min-height:600px}
+body:not(.is-presenting) #after-dark>div{padding:60px 6vw}
+body:not(.is-presenting) .experience{min-height:760px;padding:70px 6vw;background:var(--violet)}
+body:not(.is-presenting) .experience-content{max-width:580px}
+body:not(.is-presenting) .experience h2{font-size:80px}
+body:not(.is-presenting) .experience .experience-content>p:not(.micro){font-size:22px;line-height:1.4;max-width:480px}
+body:not(.is-presenting) .experience .brand-tagline{font-size:30px}
+body:not(.is-presenting) .experience:after{background:linear-gradient(90deg,#18222ee6 0%,#3022369c 52%,transparent 100%)}
+body:not(.is-presenting) .member-benefits{background:var(--review-blue)}
+body:not(.is-presenting) .member-benefit-grid{gap:48px}
+body:not(.is-presenting) .member-benefit-grid h3{font-size:26px}
+body:not(.is-presenting) .member-benefit-grid>article{padding-top:26px;border-top-color:#17282d55}
+body:not(.is-presenting) .member-benefit-grid p:not(.micro){font-size:20px;line-height:1.5}
+body:not(.is-presenting) .member-benefit-grid p.member-benefit-detail{font-size:17px}
+body:not(.is-presenting) #homes{padding:50px 6vw 64px;background:var(--paper)}
+body:not(.is-presenting) #homes>.section-heading{margin:0 0 20px}
+body:not(.is-presenting) #homes .section-heading h2{font-size:48px}
+body:not(.is-presenting) .property-filter{display:flex;gap:12px;align-items:center;margin:16px 0 22px;flex-wrap:wrap}
+body:not(.is-presenting) .property-filter button{background:none;border:1px solid #17282d44;border-radius:0;font-size:16px;padding:12px 18px;min-height:44px}
+body:not(.is-presenting) .property-filter button[aria-pressed=true]{background:var(--ink);color:white;border-color:var(--ink)}
+body:not(.is-presenting) .property-filter button:hover{border-color:var(--green)}
+body:not(.is-presenting) #homes>.property-previews{gap:16px;margin-bottom:24px}
+body:not(.is-presenting) #homes .property-preview-media{height:clamp(100px,8.4vw,140px)}
+body:not(.is-presenting) #homes .property-preview-name{font-size:18px;margin-top:11px;font-weight:500}
+body:not(.is-presenting) #homes .property-preview-location{font:400 13px/1.4 Arial;letter-spacing:0;text-transform:none}
+body:not(.is-presenting) #homes .property-preview[hidden]{display:none}
+body:not(.is-presenting) #homes .property-layout{grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);background:#e2ede5}
+body:not(.is-presenting) #homes .property-info{padding:24px 28px;gap:16px}
+body:not(.is-presenting) #homes .property-info h3{font-size:36px;line-height:1.04;font-weight:500}
+body:not(.is-presenting) #homes .property-description{font-size:20px}
+body:not(.is-presenting) #homes .property-area-row dd{font-size:32px}
+body:not(.is-presenting) #homes .property-actions button{background:none;color:var(--ink);border-bottom:1px solid #17282d55;border-radius:0;font-size:17px;font-weight:600;padding:13px 0;min-height:48px}
+body:not(.is-presenting) #homes .property-actions button:hover{color:#00694f;border-color:#00694f}
+body:not(.is-presenting) #homes .property-details{padding:0;margin-top:0}
+body:not(.is-presenting) #homes .property-facts{margin-top:18px}
+body:not(.is-presenting) #homes .property-status-row dd{font-size:16px}
+body:not(.is-presenting) .intro{background:var(--paper)}
+body:not(.is-presenting) .intro-grid{grid-template-columns:1fr 1fr;gap:8vw}
+body:not(.is-presenting) .strategy-steps{gap:24px}
+body:not(.is-presenting) .strategy-steps article{padding-top:24px}
+body:not(.is-presenting) .returns{background:var(--review-green)}
+body:not(.is-presenting) .returns .projection{padding-top:28px;gap:8vw;border-top:1px solid #17282d55}
+body:not(.is-presenting) .returns .projection strong{font-size:clamp(52px,6vw,88px);font-weight:400}
+body:not(.is-presenting) .returns .projection span{font-size:18px}
+body:not(.is-presenting) .fund{background:var(--blue)}
+body:not(.is-presenting) .capital{padding-top:32px}
+body:not(.is-presenting) .capital strong{font-size:clamp(52px,7vw,105px)}
+body:not(.is-presenting) .capital .micro{font:600 15px/1.4 Arial;letter-spacing:0;text-transform:none}
+body:not(.is-presenting) .fund-bottom .button-dark{font-size:18px;background:var(--ink);min-width:210px;transition:transform .2s,background .2s}
+body:not(.is-presenting) .fund-bottom .button-dark:hover{transform:translateY(-2px);background:#24474f}
+body:not(.is-presenting) .resource-directory{grid-template-columns:1fr}
+body:not(.is-presenting) .resource-directory>a{display:grid;grid-template-columns:180px 1fr 1fr 26px;gap:24px;align-items:center;padding:28px 0;border-top:1px solid #17282d33;min-height:110px}
+body:not(.is-presenting) .resource-directory>a>*{grid-column:auto;grid-row:auto;max-width:none}
+body:not(.is-presenting) .resource-directory h3{font-size:26px;margin:0}
+body:not(.is-presenting) .resource-directory p{font-size:18px;margin:0}
+body:not(.is-presenting) .resource-directory>a>span:last-child{position:static;align-self:center}
+body:not(.is-presenting) .team{background:#e2ede5}
+body:not(.is-presenting) .team-portraits{gap:34px}
+body:not(.is-presenting) .team-portraits img{aspect-ratio:4/5;object-fit:cover}
+body:not(.is-presenting) .team-portraits h3{font-size:25px}
+body:not(.is-presenting) .city-cinema{padding:60px 6vw;min-height:710px}
+body:not(.is-presenting) .city-cinema .story-film-copy{padding:0;max-width:760px}
+body:not(.is-presenting) .city-cinema .story-film-copy>p:not(.micro){font-size:23px;max-width:530px}
+body:not(.is-presenting) .story-destination #after-dark{min-height:500px;margin:0;padding:56px 6vw}
+body:not(.is-presenting) .story-destination #after-dark .story-film-copy{padding:0}
+body:not(.is-presenting) .story-destination #after-dark h2{font-size:56px}
+body:not(.is-presenting) .oriente-around>p{font-size:24px;line-height:1.4;max-width:550px}
+body:not(.is-presenting) .team-portraits .team-photo{aspect-ratio:4/5}
+body:not(.is-presenting) .team-portraits .team-photo img{aspect-ratio:auto}
+body:not(.is-presenting) .hero-statement{max-width:100%}
+body:not(.is-presenting) .property-filter{scroll-margin-top:calc(var(--header) + 20px)}
+.preview-contact-dialog::backdrop{background:#17282d99}
+@media(max-width:760px){body:not(.is-presenting) .city-cinema{padding:44px 24px;min-height:650px}body:not(.is-presenting) .city-cinema .story-film-copy>p:not(.micro){font-size:20px}body:not(.is-presenting) .story-destination #after-dark{padding:44px 24px}body:not(.is-presenting) .story-destination #after-dark h2{font-size:42px}body:not(.is-presenting) .oriente-around>p{font-size:22px}body:not(.is-presenting) .capital{grid-template-columns:1fr 1fr}body:not(.is-presenting) .capital>div:last-child{grid-column:1/-1}body:not(.is-presenting) .hero-statement .line-link{width:100%;max-width:320px}body:not(.is-presenting) .hero-baseline .partners{margin:0;align-self:flex-start}body:not(.is-presenting) .hero-baseline{padding-top:16px;margin-top:0;gap:16px}}
+body:not(.is-presenting) .contact{padding:76px 6vw 28px;min-height:700px}
+.preview-contact-dialog{max-width:520px;padding:40px}.preview-contact-dialog p{font-size:18px;line-height:1.5}.preview-contact-dialog button{background:var(--gold);font-size:17px;padding:12px 18px;margin-top:24px}
+.review-exit{font-size:12px;background:none;color:inherit;border-bottom:1px solid currentColor;padding:8px 0}.review-exit-form{margin-top:16px}
+@media(max-width:1200px){body:not(.is-presenting) .header{gap:13px}body:not(.is-presenting) .primary{gap:16px;font-size:14px}body:not(.is-presenting) .contact-nav{display:none}body:not(.is-presenting) .ownership-story{gap:36px}body:not(.is-presenting) .ownership-story .ownership-media{min-height:570px}body:not(.is-presenting) .resource-directory>a{grid-template-columns:130px 1fr 1fr 24px}}
+@media(max-width:900px){body:not(.is-presenting) .section-pad{padding:64px 5vw}body:not(.is-presenting) .hero{padding-inline:5vw}body:not(.is-presenting) .hero h1{font-size:80px}body:not(.is-presenting) .ownership-story{grid-template-columns:1fr 1fr;padding:50px 5vw;gap:28px}body:not(.is-presenting) .ownership-story .ownership-media{min-height:610px}body:not(.is-presenting) .ownership-story .lifestyle-benefits dt{font-size:22px}body:not(.is-presenting) #homes .property-layout{grid-template-columns:1.4fr 1fr}body:not(.is-presenting) #homes .property-info{padding:20px}body:not(.is-presenting) #homes .property-visual{aspect-ratio:auto;min-height:540px}body:not(.is-presenting) .resource-directory>a{grid-template-columns:1fr 1fr 24px}body:not(.is-presenting) .resource-directory>a>.micro{grid-column:1/-1}body:not(.is-presenting) .team-portraits{gap:28px}}
+@media(max-width:760px){body:not(.is-presenting) .header{padding-block:10px;gap:10px}body:not(.is-presenting) .header .brand img{width:118px;height:36px}body:not(.is-presenting) .primary{font-size:13px;gap:16px;overflow:auto;white-space:nowrap;justify-content:flex-start}body:not(.is-presenting) .primary a{flex:none}body:not(.is-presenting) .hero{min-height:600px;padding:24px 24px;gap:22px}body:not(.is-presenting) .hero h1{font-size:clamp(52px,10.5vw,80px)}body:not(.is-presenting) .hero-statement p{font-size:25px}body:not(.is-presenting) .hero-top .micro{font-size:11px}body:not(.is-presenting) .hero-top>span:last-child{display:none}body:not(.is-presenting) .hero-baseline{align-items:flex-start;flex-direction:column;gap:20px}body:not(.is-presenting) .hero-baseline>.micro{font-size:16px;max-width:340px}body:not(.is-presenting) .motion{top:18px;right:24px}body:not(.is-presenting) .hero-statement .line-link{font-size:17px;width:250px}body:not(.is-presenting) .story-index{padding:16px 24px;display:block}body:not(.is-presenting) .story-index>div{justify-content:flex-start;gap:0 22px}body:not(.is-presenting) .story-index>.micro{display:block;margin-bottom:8px}body:not(.is-presenting) .offer-glance{padding:24px;display:block}body:not(.is-presenting) .offer-glance>div{margin-top:16px}body:not(.is-presenting) .offer-glance>a{margin-top:12px}body:not(.is-presenting) .section-pad{padding:52px 24px}body:not(.is-presenting) .ownership-story{padding:32px 24px 48px;display:flex;flex-direction:column;gap:28px}body:not(.is-presenting) .ownership-story .ownership-media{min-height:0;width:100%;aspect-ratio:4/3;max-height:none}body:not(.is-presenting) .ownership-story h2{font-size:40px}body:not(.is-presenting) .ownership-copy>p:not(.micro):not(.footnote){font-size:20px}body:not(.is-presenting) .oriente-cinema{min-height:660px}body:not(.is-presenting) .oriente-cinema-content{padding:42px 24px}body:not(.is-presenting) .oriente-cinema-content h2{font-size:48px}body:not(.is-presenting) .oriente-cinema-copy{font-size:20px}body:not(.is-presenting) .oriente-support{padding:28px 24px;display:block}body:not(.is-presenting) .oriente-support figure+figure{margin-top:28px}body:not(.is-presenting) .oriente-support-copy{font-size:24px}body:not(.is-presenting) .city-cinema .story-film-copy{padding:42px 24px}body:not(.is-presenting) .city-cinema .story-film-copy p:not(.micro){font-size:20px}body:not(.is-presenting) #after-dark>div{padding:40px 24px}body:not(.is-presenting) .experience{min-height:720px;padding:44px 24px}body:not(.is-presenting) .experience h2{font-size:62px}body:not(.is-presenting) .experience .experience-content>p:not(.micro){font-size:20px}body:not(.is-presenting) #homes{padding:36px 24px}body:not(.is-presenting) #homes .section-heading h2{font-size:40px}body:not(.is-presenting) #homes>.property-previews{display:flex;overflow:auto;scroll-snap-type:x proximity;gap:14px}body:not(.is-presenting) #homes .property-preview{flex:0 0 190px;scroll-snap-align:start}body:not(.is-presenting) #homes .property-preview-media{height:120px}body:not(.is-presenting) #homes .property-layout{display:block}body:not(.is-presenting) #homes .property-visual{min-height:0;aspect-ratio:4/3}body:not(.is-presenting) #homes .property-info{padding:24px}body:not(.is-presenting) .property-filter button{font-size:14px;padding:10px 13px}body:not(.is-presenting) .intro-grid{display:block}body:not(.is-presenting) .intro-copy{margin-top:30px}body:not(.is-presenting) .returns .projection{gap:28px;flex-wrap:wrap}body:not(.is-presenting) .returns .projection strong{font-size:56px}body:not(.is-presenting) .returns .projection span{font-size:16px}body:not(.is-presenting) .capital{gap:20px}body:not(.is-presenting) .capital strong{font-size:43px}body:not(.is-presenting) .capital .micro{font-size:14px}body:not(.is-presenting) .resource-directory>a{display:block;padding:26px 0}body:not(.is-presenting) .resource-directory h3{margin:12px 0}body:not(.is-presenting) .resource-directory>a>span:last-child{display:block;margin-top:12px}body:not(.is-presenting) .contact{padding:48px 24px 24px}.preview-contact-dialog{padding:28px}}
+@media(prefers-reduced-motion:reduce){body:not(.is-presenting) :is(.contact-nav,.button-dark,.property-preview img){transition:none;transform:none!important}}
+
+@media(max-width:760px){body:not(.is-presenting) .hero-baseline{display:flex;flex-direction:column;align-items:flex-start}body:not(.is-presenting) .hero-statement .line-link{width:min(320px,100%);gap:12px}body:not(.is-presenting) .returns .projection{display:flex;flex-wrap:wrap;gap:28px}body:not(.is-presenting) .returns .projection>div{flex:1 1 120px;min-width:0}body:not(.is-presenting) .hero-baseline>.micro{flex:none}}
+body:not(.is-presenting) .legal-notice h2{font-size:22px;line-height:1.2;letter-spacing:-.02em}body:not(.is-presenting) .legal-notice p{font-size:13px;line-height:1.6}

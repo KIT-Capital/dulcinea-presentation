@@ -1,5 +1,5 @@
 // One share card for the public access gate and the authenticated investor site.
-export const SOCIAL_ORIGIN = 'https://invest.dulcineainvestments.org';
+export const SOCIAL_ORIGIN = 'https://dulcinea-design-review.norfolk-ai.workers.dev';
 export const SOCIAL_IMAGE_PATH = '/assets/social/dulcinea-one-medellin-v2.jpg';
 export const SOCIAL_IMAGE_ES_PATH = '/assets/social/dulcinea-one-medellin-es-v2.jpg';
 export const SOCIAL_VIDEO_PATH = '/assets/video/stock/AdobeStock_693150796.mp4';

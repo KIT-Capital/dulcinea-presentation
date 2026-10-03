@@ -37,6 +37,7 @@ export function renderInvestorNavigation({name, locale='en', web=false, logo}) {
 }
 
 export const investorNavigationCss = `${languageSwitchCss}
+  .review-exit-form{margin-top:20px}.review-exit{font:14px Arial,sans-serif;cursor:pointer;border:0;border-bottom:1px solid currentColor;background:none;color:inherit;padding:10px 0}.review-exit:focus-visible{outline:3px solid #d4af37;outline-offset:4px}
   header.resource-header{padding:0 0 24px}
   .resource-navigation{background:#17282d;color:#fff;padding:0 clamp(22px,4vw,58px);font-family:Arial,Helvetica,sans-serif}
   .resource-navigation-inner{max-width:1320px;min-height:76px;margin:auto;display:flex;align-items:center;gap:24px}

@@ -1,0 +1,15 @@
+import {readFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const config=JSON.parse((await readFile(path.join(root,'wrangler.preview.jsonc'),'utf8')).replace(/^\uFEFF/,''));
+const branch=execFileSync('git',['-c',`safe.directory=${root.replaceAll('\\','/')}`,'branch','--show-current'],{cwd:root,encoding:'utf8'}).trim();
+if(branch!=='codex/radisson-independent'||config.name!=='dulcinea-design-review'||config.main!=='server/review-worker.mjs'||config.routes?.length||!config.workers_dev)throw Error('Review deployment isolation check failed');
+const defaultConfig=JSON.parse((await readFile(path.join(root,'wrangler.jsonc'),'utf8')).replace(/^\uFEFF/,''));
+if(JSON.stringify(defaultConfig)!==JSON.stringify(config))throw Error('Default config must also target the independent Worker');
+if(config.ratelimits.some(binding=>binding.namespace_id==='92620261'))throw Error('Production rate-limit namespace is forbidden');
+if(config.kv_namespaces||config.d1_databases||config.r2_buckets||config.services||config.send_email)throw Error('Shared service bindings are forbidden');
+const cli=process.env.WRANGLER_CLI;
+if(!cli)throw Error('Set WRANGLER_CLI to the installed official Wrangler JS entrypoint');
+execFileSync(process.execPath,[cli,'deploy','--config','wrangler.preview.jsonc'],{cwd:root,stdio:'inherit'});

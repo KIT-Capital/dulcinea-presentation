@@ -77,6 +77,9 @@ async function output(name,content){
   const file=path.join(destination,name);
   if(/\{\{[A-Z_0-9]+\}\}/.test(content)) throw Error(`Unresolved marker: ${name}`);
   await mkdir(path.dirname(file),{recursive:true});
+  // Review contacts never launch a real investor email, call or chat.
+  content=content.replace(/href="((?:mailto:|tel:|https:\/\/wa\.me\/)[^"]*)"/g,(_,target)=>`href="#contact" data-preview-contact="${target}"`);
+  if(!name.endsWith('index.html'))content=content.replace('</body>',`<script>${await read('src/investor/redesign.js')}</script></body>`);
   await writeFile(file,content.replace(/^[\t ]+$/gm,''));
   kept.add(file);
 }
@@ -94,6 +97,7 @@ for(const locale of ['en','es']){
     .replace('<link rel="stylesheet" href="properties.css">',`<style>${propertyStyles}</style>`)
     .replace('<link rel="stylesheet" href="homepage-story.css">',`<style>${storyStyles}</style>`)
     .replace('<link rel="stylesheet" href="typography.css">',`<style>${await read('src/investor/typography.css')}</style>`)
+    .replace('<link rel="stylesheet" href="redesign.css">',`<style>${await read('src/investor/redesign.css')}</style>`)
     .replace(/(["'])media\/([^"']+)\1/g,(_,quote,name)=>{
       if(!localeMedia[name]) throw Error(`Unknown media alias: ${name}`);
       return quote+localeMedia[name]+quote;
@@ -106,6 +110,7 @@ for(const locale of ['en','es']){
   }
   html=html.replace('<script src="app.js"></script>',`<script>window.DULCINEA_WEB=${web};window.DULCINEA_ASSETS=${JSON.stringify(localeMedia)};window.DULCINEA_STORY=${JSON.stringify(presentationStory)};\n${script}</script>`);
   html=html.replace('<script src="presentation.js"></script>',`<script>${presentationScript}</script>`);
+  html=html.replace('<script src="redesign.js"></script>',`<script>${await read('src/investor/redesign.js')}</script>`);
   await output(`${prefix}index.html`,html);
   for(const name of resources){
     let page=await read(`src/${name}.html`);

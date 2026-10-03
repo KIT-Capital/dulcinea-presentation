@@ -7,12 +7,12 @@ import { Script } from 'node:vm';
 import { videoSizes } from '../server/video-sizes.mjs';
 import { assetPolicy } from '../server/access-policy.mjs';
 import { publicAssetPaths } from '../server/public-asset-paths.mjs';
-import { socialMetadata, SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
+import { socialMetadata, SOCIAL_ORIGIN, SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
 
 // Read-only release gate. Build first with `node scripts/build.mjs --web`.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = path.join(root, 'dist/private-site');
-const origin = 'https://invest.dulcineainvestments.org';
+const origin = SOCIAL_ORIGIN;
 const limit = 25 * 1024 * 1024;
 const files = new Map();
 const pages = new Map();
@@ -114,7 +114,7 @@ for (const [pagePath, html] of pages) {
   assert.equal(hasSignout, pagePath.endsWith('/financial-statements.html'), `Sign-out belongs only in financial statements: ${pagePath}`);
   for (const tag of markup.match(/<[a-z][^>]*>/gi) || []) {
     const attrs = attributes(tag);
-    for (const name of ['src', 'poster', 'href', 'action']) {
+    for (const name of ['src', 'poster', 'href', 'action','data-cover-source','data-cover-poster']) {
       if (attrs[name]) resolveBuiltURL(attrs[name], pagePath, `${pagePath} ${name}`);
     }
     if (attrs['property'] === 'og:image' || attrs['property'] === 'og:video' || attrs['name'] === 'twitter:image') {
@@ -160,8 +160,9 @@ for (const [pagePath, html] of pages) {
   assert.ok(injectedStory, `Missing presentation story: ${pagePath}`);
   assert.deepEqual(JSON.parse(injectedStory[1]),story,`Presentation metadata diverges from source: ${pagePath}`);
   for (const [alias, url] of Object.entries(map)) resolveBuiltURL(url, pagePath, `${pagePath} media alias ${alias}`);
-  assert.match(markup, /href=["']https:\/\/wa\.me\/19174284062["']/, `Missing Dov WhatsApp: ${pagePath}`);
-  assert.match(markup, /href=["']mailto:kit@kitcapital\.com["']/, `Missing Dov email: ${pagePath}`);
+  assert.match(markup, /data-preview-contact=["']https:\/\/wa\.me\/19174284062["']/, `Missing preserved, inert Dov WhatsApp: ${pagePath}`);
+  assert.match(markup, /data-preview-contact=["']mailto:kit@kitcapital\.com["']/, `Missing preserved, inert Dov email: ${pagePath}`);
+  assert.doesNotMatch(markup,/href=["'](?:mailto:|tel:|https:\/\/wa\.me\/)/,`Preview contact must not send: ${pagePath}`);
   const teamSection = markup.match(/<section\b[^>]*\bid="team"[^>]*>[\s\S]*?<\/section>/)?.[0];
   assert.ok(teamSection, `Missing core team section: ${pagePath}`);
   const coreProfiles = [...teamSection.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map(match=>match[0]);
@@ -196,8 +197,11 @@ for (const [pagePath, html] of pages) {
   assert.match(markup, /id="experience-nightlife"[^>]*loop/,'Nightlife film must loop independently');
   assert.doesNotMatch(html, /#experience-hospitality\s*\{\s*opacity:\s*0/, 'Hospitality video must remain visible');
   const homepageFilms = new Set([...markup.matchAll(/<video\b[^>]*>/gi)].map(match=>attributes(match[0]).src));
+  for(const option of markup.matchAll(/<button\b[^>]*data-cover-source[^>]*>/gi))homepageFilms.add(attributes(option[0])['data-cover-source']);
   const expectedFilms = new Set(Object.entries(map).filter(([alias])=>alias.endsWith('.mp4')).map(([,url])=>url));
   assert.deepEqual(homepageFilms,expectedFilms,`Every film should appear while scrolling the homepage: ${pagePath}`);
+  assert.match(markup,/id="review-cover-film"[^>]*src="[^"']*AdobeStock_693150796\.mp4"/,'Cover starts with Medellin drone footage');
+  assert.match(markup,/data-cover-film="country"[^>]*data-cover-source="[^"']*AdobeStock_501694199\.mp4"/,'Cover country option is the supplied reservoir, not the pasture woman');
   const homeBlock = html.match(/const homes\s*=\s*\[([\s\S]*?)\n\];/);
   assert.ok(homeBlock, `Missing home configuration: ${pagePath}`);
   const homePlans = [...homeBlock[1].matchAll(/key:\s*['"]([^'"]+)['"][^\n]*?plans:\s*\[([^\]]*)\]/g)].map(([, key, planList]) => [key, planList.split(',').map(value => value.trim()).filter(Boolean).map(Number)]);

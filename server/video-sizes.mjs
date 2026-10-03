@@ -11,6 +11,7 @@ export const videoSizes=Object.freeze({
   "/assets/video/properties/monte-sereno.mp4": 1698801,
   "/assets/video/properties/san-lucas.mp4": 1669910,
   "/assets/video/stock/AdobeStock_1849343666.mp4": 8308715,
+  "/assets/video/stock/AdobeStock_501694199.mp4": 15441251,
   "/assets/video/stock/AdobeStock_693150796.mp4": 10790034,
   "/assets/video/stock/AdobeStock_762119818.mp4": 1473225
 });
