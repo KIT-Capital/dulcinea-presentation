@@ -1,5 +1,13 @@
 # Team biography release
 
+## Subsequent title correction
+
+Published the user's corrected KIT Capital titles and affiliations on 3 October 2026. Application commit: `bffc6c6`; Cloudflare version: `367cc7ac-8491-4a71-8309-c80dbca8f562`. Dov is Founder and Managing Partner at KIT Capital; Ricardo is Director of Corporate Development at KIT Capital; Adriana is Director of Business Development at KIT Capital and Dulcinea. Natalia's approved role remains unchanged. Role labels and affiliation lines are localized and shared by website and presentation; the contact label and issuer disclosure also use Dov's corrected title.
+
+Portable/web builds and investor-build verification passed, including all four localized roles, affiliations and unchanged uniform biography counts. Browser checks passed EN/ES 1280×720 presentation fit, desktop website row alignment and 390×844 responsive presentation without horizontal overflow. Maximum desktop biography bottom: 642.4px, before slide bottom 656px. Live EN/ES roles, contact label and Spanish disclosure were verified. Proof screenshot remains privately at `work/storyline-review/core-team-titles-published.png`.
+
+## Initial biography release
+
 Published 3 October 2026 to `https://invest.dulcineainvestments.org/`.
 
 - Application commit: `8c40e3a`.
