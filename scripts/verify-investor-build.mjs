@@ -162,7 +162,16 @@ for (const [pagePath, html] of pages) {
   for (const [alias, url] of Object.entries(map)) resolveBuiltURL(url, pagePath, `${pagePath} media alias ${alias}`);
   assert.match(markup, /href=["']https:\/\/wa\.me\/19174284062["']/, `Missing Dov WhatsApp: ${pagePath}`);
   assert.match(markup, /href=["']mailto:kit@kitcapital\.com["']/, `Missing Dov email: ${pagePath}`);
-  for (const person of ['K. Dov Isaza Tuzman', 'Ricardo Cidale', 'Adriana Suárez']) assert.ok(textContent(markup).includes(person), `Missing team member ${person}: ${pagePath}`);
+  const teamSection = markup.match(/<section\b[^>]*\bid="team"[^>]*>[\s\S]*?<\/section>/)?.[0];
+  assert.ok(teamSection, `Missing core team section: ${pagePath}`);
+  const coreProfiles = [...teamSection.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map(match=>match[0]);
+  assert.deepEqual(coreProfiles.map(profile=>textContent(profile.match(/<h3\b[^>]*>[\s\S]*?<\/h3>/)?.[0] || '').trim()), ['K. Dov Isaza Tuzman', 'Ricardo Cidale', 'Adriana Suárez', 'Natalia Carvajal'], `Core team order and membership: ${pagePath}`);
+  assert.equal(story.main.find(step=>step.id==='team')?.selector, '#team', 'Presentation must reuse the complete core team section');
+  const nataliaPortrait = attributes(coreProfiles[3].match(/<img\b[^>]*>/)?.[0] || '');
+  assert.ok(nataliaPortrait.src && map['natalia.png'], `Missing Natalia portrait or approved media alias: ${pagePath}`);
+  assert.equal(nataliaPortrait.src, map['natalia.png'], `Natalia portrait must use its approved media alias: ${pagePath}`);
+  assert.equal(nataliaPortrait.alt, 'Natalia Carvajal', `Natalia portrait description: ${pagePath}`);
+  assert.ok(textContent(coreProfiles[3]).includes(language==='es' ? 'Lola & Ber · Implementación de marca' : 'Lola & Ber · Brand implementation'), `Missing localized Natalia role: ${pagePath}`);
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
   for(const chapter of ['destination','ownership','member-benefits','owner-use','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
   const chapterOrder=['ownership','oriente','destination','after-dark','experience','member-benefits','homes','approach','returns','fund','resources','team','specialists','contact'];
@@ -216,6 +225,7 @@ for (const prefix of ['', '/es']) {
   const specialistBlock=html=>html.match(/<dl class="specialists">[\s\S]*?<\/dl>/)?.[0];
   assert.ok(specialistBlock(specialists), 'Missing specialists directory');
   assert.equal(specialistBlock(specialists),specialistBlock(pages.get(`${prefix}/index.html`)), 'Specialists content differs between presentation and resource page');
+  assert.doesNotMatch(textContent(specialists), /Natalia Carvajal/, 'Natalia belongs in the core team, not the specialists directory');
   for(const person of ['Marcela Vélez','María Antonia Uribe','John Mario Piedrahita','Juan Carlos Pérez','Jorge Valiente'])assert.ok(textContent(specialists).includes(person), `Missing specialist: ${person}`);
   for(const document of [financial,criteria,specialists])assert.ok(document.includes(`href="${prefix}/disclaimer.html"`), 'Missing localized disclaimer link');
   for (const section of ['income-statement', 'after-carry', 'cash-flow-statement', 'balance-sheet']) {

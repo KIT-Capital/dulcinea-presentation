@@ -23,6 +23,7 @@ export const publicAssetPaths=Object.freeze([
   "/assets/images/stock/AdobeStock_891890158-web.jpg",
   "/assets/images/team/adriana-supplied.jpeg",
   "/assets/images/team/dov-supplied.png",
+  "/assets/images/team/natalia-restored.png",
   "/assets/images/team/ricardo-supplied.jpg",
   "/assets/social/dulcinea-one-medellin-es-v2.jpg",
   "/assets/social/dulcinea-one-medellin-v2.jpg",
