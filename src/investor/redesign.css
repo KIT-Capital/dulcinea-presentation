@@ -80,13 +80,14 @@ body:not(.is-presenting) .oriente-landscape{position:relative;min-height:580px;o
 body:not(.is-presenting) .oriente-homes{display:block;margin-top:24px}
 body:not(.is-presenting) .oriente-homes .line-link{color:var(--ink);border-color:#17282d55;width:100%;font-size:20px}
 body:not(.is-presenting) .oriente-location{font-size:14px;margin-top:20px}
-body:not(.is-presenting) .oriente-support{padding:60px 0 0;display:grid;grid-template-columns:1fr 1.6fr;gap:6vw;align-items:center}
-body:not(.is-presenting) .oriente-garden-frame{height:500px;min-height:0;aspect-ratio:4/5}
+body:not(.is-presenting) .oriente-support{width:min(100%,1440px);margin-inline:auto;padding:48px 0 0;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:48px;align-items:center}
+body:not(.is-presenting) .oriente-garden-frame{width:100%;height:auto;min-height:0;aspect-ratio:647/800;--parallax-travel:.05;--parallax-inset:-7%;--parallax-height:114%}
 body:not(.is-presenting) .oriente-town-frame{aspect-ratio:16/10}
 body:not(.is-presenting) .oriente-support figcaption{font-size:16px;padding-top:16px;color:var(--ink)}
-body:not(.is-presenting) .oriente-around>p{font-size:32px;line-height:1.25;max-width:24ch;margin:32px 0 0}
+body:not(.is-presenting) .oriente-around>h3{font-size:clamp(30px,2.8vw,42px);line-height:1.15;margin:0 0 16px}
+body:not(.is-presenting) .oriente-around>p{font-size:22px;line-height:1.5;max-width:40ch;margin:0 0 24px}
 body:not(.is-presenting) .oriente-country-life{margin-top:0}
-body:not(.is-presenting) .oriente-town{margin-top:36px}
+body:not(.is-presenting) .oriente-town{margin-top:0}
 body:not(.is-presenting) .oriente-country-life .parallax-frame{height:320px}
 /* City chapter: wide film beside copy, then an inset nightlife spread. */
 body:not(.is-presenting) .story-destination{background:var(--paper);padding:88px var(--review-margin)}
@@ -100,6 +101,13 @@ body:not(.is-presenting) .story-destination .story-film-copy>p{color:var(--ink)}
 body:not(.is-presenting) .city-cinema .line-link{border-color:#17282d55}
 body:not(.is-presenting) .destination-labels{grid-column:2;grid-row:2;display:block;font-size:14px;border-color:#17282d30;margin:0;line-height:1.7}
 body:not(.is-presenting) .destination-labels>span{display:block}
+body:not(.is-presenting) .city-skyline{margin:24px 0;min-width:0}
+body:not(.is-presenting) .city-skyline-frame{width:100%;aspect-ratio:16/9;--parallax-travel:.05;--parallax-inset:-7%;--parallax-height:114%}
+body:not(.is-presenting) .city-skyline figcaption{padding-top:12px;font-size:16px;line-height:1.5;color:var(--ink)}
+body:not(.is-presenting) .city-driving{margin:24px 0;min-width:0}
+body:not(.is-presenting) .city-driving-frame{position:relative;aspect-ratio:12/5;width:100%;overflow:hidden;background:var(--ink)}
+body:not(.is-presenting) .city-driving-frame>video{position:static;display:block;width:100%;height:100%;object-fit:contain;transform:none}
+body:not(.is-presenting) .city-driving figcaption{padding-top:12px;font-size:16px;line-height:1.5;color:var(--ink)}
 body:not(.is-presenting) #after-dark{display:grid;grid-template-columns:1fr 1.25fr;gap:6vw;min-height:0;padding:0;margin:68px 0 0;background:none;color:var(--ink);overflow:visible}
 body:not(.is-presenting) #after-dark:after{display:none}
 body:not(.is-presenting) #after-dark .story-film-copy{padding:0;align-self:center;max-width:none;grid-column:1;grid-row:1}
@@ -282,7 +290,7 @@ body.is-presenting[data-presentation-layout="responsive"] .hero-statement h1{whi
  body:not(.is-presenting) .hero-visual{grid-column:1;grid-row:3}body:not(.is-presenting) .hero-place{top:20px;left:24px}body:not(.is-presenting) .hero-bottom{grid-column:1;grid-row:4;padding:18px 24px}body:not(.is-presenting) .hero-baseline{border:0;padding:0}body:not(.is-presenting) .hero-destinations{left:16px;right:16px;bottom:105px;gap:20px;justify-content:flex-start;padding:8px 15px}body:not(.is-presenting) .hero-destinations a{font-size:14px}body:not(.is-presenting) .motion{top:auto;bottom:420px;right:20px}
  body:not(.is-presenting) .story-index{padding:12px 24px}body:not(.is-presenting) .story-index>div{justify-content:flex-start;gap:0 20px}body:not(.is-presenting) .story-index a{font-size:14px}body:not(.is-presenting) .offer-glance{display:block;padding:24px}body:not(.is-presenting) .offer-glance>div{margin-top:18px}body:not(.is-presenting) .offer-glance>a{margin-top:18px}
  body:not(.is-presenting) .ownership-story{display:flex;flex-direction:column;gap:32px}body:not(.is-presenting) .ownership-copy{order:1;width:100%}body:not(.is-presenting) .ownership-media{order:2;min-height:0;width:100%;height:400px;aspect-ratio:auto}body:not(.is-presenting) .ownership-copy h2{font-size:44px}body:not(.is-presenting) .ownership-copy>p:not(.micro):not(.footnote){font-size:22px}body:not(.is-presenting) .lifestyle-benefits dt{font-size:26px}
- body:not(.is-presenting) .oriente-story{padding:48px 24px}body:not(.is-presenting) .oriente-cinema{gap:32px}body:not(.is-presenting) .oriente-cinema-content h2{font-size:48px}body:not(.is-presenting) .oriente-cinema-copy{font-size:22px}body:not(.is-presenting) .oriente-landscape{min-height:0;height:390px}body:not(.is-presenting) .oriente-support{display:block;padding-top:32px}body:not(.is-presenting) .oriente-garden-frame{height:400px;width:100%;aspect-ratio:auto}body:not(.is-presenting) .oriente-around{margin-top:36px}body:not(.is-presenting) .oriente-around>p{font-size:28px}
+ body:not(.is-presenting) .oriente-story{padding:48px 24px}body:not(.is-presenting) .oriente-cinema{gap:32px}body:not(.is-presenting) .oriente-cinema-content h2{font-size:48px}body:not(.is-presenting) .oriente-cinema-copy{font-size:22px}body:not(.is-presenting) .oriente-landscape{min-height:0;height:390px}body:not(.is-presenting) .oriente-support{display:block;padding-top:32px}body:not(.is-presenting) .oriente-garden-frame{height:auto;width:100%;aspect-ratio:647/800}body:not(.is-presenting) .oriente-around{margin-top:36px}body:not(.is-presenting) .oriente-around>p{font-size:22px}
  body:not(.is-presenting) .story-destination{padding:48px 24px}body:not(.is-presenting) .city-cinema{display:flex;flex-direction:column;gap:28px}body:not(.is-presenting) .city-cinema .story-film-copy{order:1}body:not(.is-presenting) .city-landscape{order:2;width:100%;height:400px}body:not(.is-presenting) .destination-labels{order:3;width:100%}body:not(.is-presenting) #after-dark{display:flex;flex-direction:column;gap:28px;margin-top:44px}body:not(.is-presenting) #after-dark h2{font-size:40px}body:not(.is-presenting) .nightlife-frame{width:100%;height:280px}
  body:not(.is-presenting) .experience{display:flex;flex-direction:column}body:not(.is-presenting) .experience-content{padding:44px 24px}body:not(.is-presenting) .experience h2{font-size:48px}body:not(.is-presenting) .brand-landscape{min-height:0;width:100%;height:420px}
  body:not(.is-presenting) .member-benefit-grid{grid-template-columns:1fr;gap:30px}body:not(.is-presenting) .member-benefit-grid>article:last-child{grid-column:auto}body:not(.is-presenting) .member-benefit-grid>article h3{min-height:0}

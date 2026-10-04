@@ -57,6 +57,10 @@
     {
       "stock_id": "807462744",
       "canonical_mp4": "assets/video/stock/AdobeStock_807462744.mp4"
+    },
+    {
+      "stock_id": "2118104932",
+      "canonical_mp4": "assets/video/stock/AdobeStock_2118104932.mp4"
     }
   ],
   "repository_videos": [
@@ -307,6 +311,14 @@
       "git_blob": "a3225303758295fe6a76e12c55ef327996c21b1f",
       "remote_verified": true,
       "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_2118104932.mp4",
+      "bytes": 3670771,
+      "sha256": "b90b6c27f3460437b88d7f8eabdc5ed7814af2f521b7a499d634513defd7d285",
+      "git_blob": "5cf47d06f4cd924ad63ba013dc20c6946b0151e7",
+      "remote_verified": false,
+      "status": "active"
     }
   ],
   "private_archive": {

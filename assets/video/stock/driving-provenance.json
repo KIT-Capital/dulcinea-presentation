@@ -1,0 +1,35 @@
+{
+  "id": "2118104932",
+  "subject": "Driving point of view on a tree-lined city street in Medell\u00edn",
+  "original_filename": "AdobeStock_2118104932 (1).mov",
+  "original_metadata": {
+    "bytes": 56293914,
+    "sha256": "c74f6e685731b010b7dcde4170eb896e048b2a9e00376ba68b1aa38fa2d2dca2",
+    "duration_seconds": 9.79,
+    "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 3840x1600 [SAR 1:1 DAR 12:5], 45989 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+    "audio_tracks": 0
+  },
+  "file": "assets/video/stock/AdobeStock_2118104932.mp4",
+  "optimized_metadata": {
+    "bytes": 3670771,
+    "sha256": "b90b6c27f3460437b88d7f8eabdc5ed7814af2f521b7a499d634513defd7d285",
+    "duration_seconds": 9.79,
+    "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1536x640 [SAR 1:1 DAR 12:5], 2996 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+    "audio_tracks": 0
+  },
+  "poster": "assets/video/stock/AdobeStock_2118104932-poster.jpg",
+  "poster_sha256": "e20d19bc22aaefbeac295a506a2cd70e6be8ebc751dcb6029b36de13b2591ca7",
+  "source_url": "https://stock.adobe.com/video/medellin-colombia-driving-point-of-view-on-a-city-street/2118104932",
+  "rights": "Original Adobe Stock download supplied and selected by the user. No purchase made by the agent.",
+  "location_note": "The user and Adobe listing identify Medell\u00edn. The specific neighborhood is not confirmed. No inference about people's nationality is made.",
+  "source_handling": "The unchanged full-quality original remains in private Dropbox. Repeated uploads with the same source hash are one stock identity.",
+  "render_script": "scripts/import-medellin-driving.py",
+  "validation": {
+    "full_stream_decode": "pass",
+    "decoded_frames": 235,
+    "fast_start": true,
+    "original_hash_unchanged": true,
+    "whole_frame_preserved": true,
+    "under_12_MB": true
+  }
+}

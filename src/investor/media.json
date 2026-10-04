@@ -11,6 +11,7 @@
   "nightlife.jpg": "assets/video/review/after-dark-poster.jpg",
   "location.mp4": "assets/video/review/city-life.mp4",
   "location.jpg": "assets/video/review/city-life-poster.jpg",
+  "city-skyline.jpeg": "assets/images/investor-deck/image7.jpeg",
   "hospitality.mp4": "assets/video/review/lola-ber.mp4",
   "hospitality.jpg": "assets/video/review/lola-ber-poster.jpg",
   "viewing.mp4": "assets/video/stock/AdobeStock_762119818.mp4",
@@ -44,5 +45,7 @@
   "closing.mp4": "assets/video/stock/AdobeStock_695926335.mp4",
   "closing.jpg": "assets/video/stock/AdobeStock_695926335-poster.jpg",
   "lifestyle.mp4": "assets/video/stock/AdobeStock_514654455.mp4",
-  "lifestyle.jpg": "assets/video/stock/AdobeStock_514654455-poster.jpg"
+  "lifestyle.jpg": "assets/video/stock/AdobeStock_514654455-poster.jpg",
+  "city-driving.mp4": "assets/video/stock/AdobeStock_2118104932.mp4",
+  "city-driving.jpg": "assets/video/stock/AdobeStock_2118104932-poster.jpg"
 }

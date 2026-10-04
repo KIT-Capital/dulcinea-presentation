@@ -10,6 +10,7 @@ export const videoSizes=Object.freeze({
   "/assets/video/review/lola-ber.mp4": 6738639,
   "/assets/video/review/oriente-landscape.mp4": 8028659,
   "/assets/video/stock/AdobeStock_1849343666.mp4": 8308715,
+  "/assets/video/stock/AdobeStock_2118104932.mp4": 3670771,
   "/assets/video/stock/AdobeStock_514654455.mp4": 2779832,
   "/assets/video/stock/AdobeStock_539938219.mp4": 1309712,
   "/assets/video/stock/AdobeStock_693150796.mp4": 10790034,
