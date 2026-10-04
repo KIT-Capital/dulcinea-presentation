@@ -317,7 +317,7 @@
       "bytes": 3670771,
       "sha256": "b90b6c27f3460437b88d7f8eabdc5ed7814af2f521b7a499d634513defd7d285",
       "git_blob": "5cf47d06f4cd924ad63ba013dc20c6946b0151e7",
-      "remote_verified": false,
+      "remote_verified": true,
       "status": "active"
     }
   ],
