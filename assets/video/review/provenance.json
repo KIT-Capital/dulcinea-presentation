@@ -1,0 +1,724 @@
+{
+  "render_script": "scripts/render-review-story.py",
+  "rebuild": "python -B scripts/render-review-story.py --ffmpeg /path/to/ffmpeg",
+  "created_on": "2026-10-04",
+  "method": "Existing filmed footage and retained photographic camera moves joined at original speed using half-second circular dissolves. No freezes, slow motion, motion reversal, generated imagery or optical-flow interpolation.",
+  "location_note": "Dining footage illustrates city experiences and does not imply a property dining service or endorsement by the depicted people.",
+  "source_handling": "Existing composites and every source are unchanged and SHA-256 verified before and after rendering.",
+  "encoding_options": [
+    "-an",
+    "-sn",
+    "-dn",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "slow",
+    "-crf",
+    "22",
+    "-maxrate",
+    "2800k",
+    "-bufsize",
+    "5600k",
+    "-profile:v",
+    "high",
+    "-level",
+    "3.1",
+    "-pix_fmt",
+    "yuv420p",
+    "-color_range",
+    "tv",
+    "-colorspace",
+    "bt709",
+    "-color_primaries",
+    "bt709",
+    "-color_trc",
+    "bt709",
+    "-r",
+    "24",
+    "-g",
+    "48",
+    "-movflags",
+    "+faststart",
+    "-map_metadata",
+    "-1",
+    "-threads",
+    "4"
+  ],
+  "normalization_filter": "setpts=PTS-STARTPTS,fps=24,settb=1/24,scale=1280:720:force_original_aspect_ratio=increase:flags=lanczos:out_range=tv:out_color_matrix=bt709,crop=1280:720,setsar=1,format=yuv420p,setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709",
+  "videos": [
+    {
+      "file": "assets/video/review/city-life.mp4",
+      "bytes": 5897752,
+      "sha256": "e8810754ca88e8e57f7d0d780b1542815780b650be3f386b3c49e6a2ba0639e4",
+      "duration_seconds": 21.0,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2244 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "audio_tracks": 0,
+      "poster": "assets/video/review/city-life-poster.jpg",
+      "poster_sha256": "ba8026d95315839ab1c43be5ffd7d8428eecd1f94cf6b6e11cd76d017b668ba9",
+      "sources": [
+        {
+          "id": "city-photo-891890158",
+          "subject": "Camera movement over a city valley photograph",
+          "path": "assets/video/stock-photo-city.mp4",
+          "source_start_seconds": 0,
+          "source_duration_seconds": 5.5,
+          "source_kind": "Animated photograph, not filmed aerial movement",
+          "source_provenance": "assets/video/latest-photos-provenance.json",
+          "source_sha256": "9d103291db71e708be80a4b2440c84ea72a89da555552e208b76dc872133db19",
+          "source_metadata": {
+            "bytes": 2492422,
+            "sha256": "9d103291db71e708be80a4b2440c84ea72a89da555552e208b76dc872133db19",
+            "duration_seconds": 6.0,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 3319 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        },
+        {
+          "id": "80490822",
+          "subject": "Chefs preparing and plating food in a professional kitchen",
+          "path": "assets/video/stock/AdobeStock_80490822.mp4",
+          "source_start_seconds": 3,
+          "source_duration_seconds": 9,
+          "source_provenance": "assets/video/stock/provenance.json",
+          "source_sha256": "02ca107f00a372198ee11c26e5f4c85a7e97a6657cc96877cb94b891c68a3e39",
+          "source_metadata": {
+            "bytes": 3572890,
+            "sha256": "02ca107f00a372198ee11c26e5f4c85a7e97a6657cc96877cb94b891c68a3e39",
+            "duration_seconds": 25.38,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1123 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        },
+        {
+          "id": "787505338",
+          "subject": "Woman walking along a tree-lined city sidewalk",
+          "path": "assets/video/stock/AdobeStock_787505338.mp4",
+          "source_start_seconds": 0.5,
+          "source_duration_seconds": 8,
+          "source_provenance": "assets/video/stock/latest-provenance.json",
+          "source_sha256": "1b21e20b1187bc79d3e5e6e2aaf1ded7002f01d8f25cf3ae36b521df711785de",
+          "source_metadata": {
+            "bytes": 3068971,
+            "sha256": "1b21e20b1187bc79d3e5e6e2aaf1ded7002f01d8f25cf3ae36b521df711785de",
+            "duration_seconds": 9.88,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2482 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        }
+      ],
+      "crossfade_seconds": 0.5,
+      "untrimmed_crossfade_offsets_seconds": [
+        5.0,
+        13.5,
+        21.0
+      ],
+      "output_dissolve_intervals_seconds": [
+        [
+          4.375,
+          4.875
+        ],
+        [
+          12.875,
+          13.375
+        ],
+        [
+          20.375,
+          20.875
+        ]
+      ],
+      "loop_trim_start_seconds": 0.625,
+      "loop_guard_frames": 3,
+      "loop_method": "Append the opening source, dissolve back to it, and trim both ends to consecutive camera positions at original speed. A three-frame guard puts the loop seam after the last dissolve.",
+      "validation": {
+        "full_stream_decode": "pass",
+        "decoded_frames": 504,
+        "source_hashes_unchanged": true,
+        "fast_start": true,
+        "under_12_MB": true,
+        "motion": {
+          "loop_seam_mean_pixel_difference": 1.426424,
+          "first_adjacent_frame_difference": 0.420156,
+          "last_adjacent_frame_difference": 1.291007,
+          "loop_discontinuity_check": "pass",
+          "freeze_detector_threshold": "-60 dB for 0.25 seconds",
+          "near_static_events": [],
+          "no_inserted_holds": "The edit contains no frame padding, freeze-frame filters, speed changes or motion interpolation."
+        },
+        "visual_review": "Six evenly sampled frames inspected: all scenes present, no black borders, blank frames, damaged anatomy or unexpected scene duplication."
+      },
+      "review_contact_sheet": "assets/video/review/city-life-contact.jpg"
+    },
+    {
+      "file": "assets/video/review/after-dark.mp4",
+      "bytes": 4463116,
+      "sha256": "052e18b97e3f34c65924b40ece356bcc570ebc960393632b2e501a4a7e4eb428",
+      "duration_seconds": 32.0,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1113 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "audio_tracks": 0,
+      "poster": "assets/video/review/after-dark-poster.jpg",
+      "poster_sha256": "4c173c63d2ddbbd4d3b0f9523c20eefdbc97b2ee566843ad66aaa59c509b0e7f",
+      "sources": [
+        {
+          "id": "417029984",
+          "subject": "Sunset and moving clouds over a city valley",
+          "path": "assets/video/stock/AdobeStock_417029984.mp4",
+          "source_start_seconds": 0,
+          "source_duration_seconds": 4.5,
+          "source_provenance": "assets/video/stock/oriente-provenance.json",
+          "source_sha256": "007826f667d3ed5650de4f6b762eb920f806e298ab25ad532b000355cced66f6",
+          "source_metadata": {
+            "bytes": 1550314,
+            "sha256": "007826f667d3ed5650de4f6b762eb920f806e298ab25ad532b000355cced66f6",
+            "duration_seconds": 5.0,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2476 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        },
+        {
+          "id": "727024520",
+          "subject": "Rotating overhead night view of an illuminated road and traffic",
+          "path": "assets/video/stock/AdobeStock_727024520.mp4",
+          "source_start_seconds": 3,
+          "source_duration_seconds": 8,
+          "source_provenance": "assets/video/stock/additional-provenance.json",
+          "source_sha256": "3080650ac0e90c803973ffbbda6425870aa14040e7140e3da2a267f8534d1539",
+          "source_metadata": {
+            "bytes": 1966511,
+            "sha256": "3080650ac0e90c803973ffbbda6425870aa14040e7140e3da2a267f8534d1539",
+            "duration_seconds": 32.42,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 482 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        },
+        {
+          "id": "807462744",
+          "subject": "Glowing green MEDELLIN neon animation",
+          "path": "assets/video/stock/AdobeStock_807462744.mp4",
+          "source_start_seconds": 4,
+          "source_duration_seconds": 3,
+          "source_provenance": "assets/video/stock/additional-provenance.json",
+          "source_sha256": "acacd4ec6eff9cb373bf66e1c2f3d0380929b44cc54e02d4332a45a903aea731",
+          "source_metadata": {
+            "bytes": 483655,
+            "sha256": "acacd4ec6eff9cb373bf66e1c2f3d0380929b44cc54e02d4332a45a903aea731",
+            "duration_seconds": 9.96,
+            "video_stream": "Stream #0:0[0x1](eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 385 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        },
+        {
+          "id": "evening-photo-259715040",
+          "subject": "Camera movement over evening gathering photograph",
+          "path": "assets/video/stock-photo-evening.mp4",
+          "source_start_seconds": 0,
+          "source_duration_seconds": 6,
+          "source_kind": "Animated photograph, not filmed human movement",
+          "source_provenance": "assets/video/latest-photos-provenance.json",
+          "source_sha256": "e148e6233ac2c940aadd30a8d24e68b275b2ed9a3b9e209bdf31ee59e65f3dda",
+          "source_metadata": {
+            "bytes": 297386,
+            "sha256": "e148e6233ac2c940aadd30a8d24e68b275b2ed9a3b9e209bdf31ee59e65f3dda",
+            "duration_seconds": 6.0,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 393 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        },
+        {
+          "id": "nightlife-photos",
+          "subject": "Camera movement over two photographs of DJs and a crowd",
+          "path": "assets/video/medellin-nightlife.mp4",
+          "source_start_seconds": 0,
+          "source_duration_seconds": 13,
+          "source_kind": "Animated photographs, not filmed human movement",
+          "source_provenance": "assets/video/medellin-nightlife-provenance.json",
+          "source_sha256": "a472d8c8f2a506c80be72d20422b79ad6aa7fd756b30afc57e336cf4384c6297",
+          "source_metadata": {
+            "bytes": 1601565,
+            "sha256": "a472d8c8f2a506c80be72d20422b79ad6aa7fd756b30afc57e336cf4384c6297",
+            "duration_seconds": 13.0,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 982 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        }
+      ],
+      "crossfade_seconds": 0.5,
+      "untrimmed_crossfade_offsets_seconds": [
+        4.0,
+        11.5,
+        14.0,
+        19.5,
+        32.0
+      ],
+      "output_dissolve_intervals_seconds": [
+        [
+          3.375,
+          3.875
+        ],
+        [
+          10.875,
+          11.375
+        ],
+        [
+          13.375,
+          13.875
+        ],
+        [
+          18.875,
+          19.375
+        ],
+        [
+          31.375,
+          31.875
+        ]
+      ],
+      "loop_trim_start_seconds": 0.625,
+      "loop_guard_frames": 3,
+      "loop_method": "Append the opening source, dissolve back to it, and trim both ends to consecutive camera positions at original speed. A three-frame guard puts the loop seam after the last dissolve.",
+      "validation": {
+        "full_stream_decode": "pass",
+        "decoded_frames": 768,
+        "source_hashes_unchanged": true,
+        "fast_start": true,
+        "under_12_MB": true,
+        "motion": {
+          "loop_seam_mean_pixel_difference": 3.152257,
+          "first_adjacent_frame_difference": 2.963299,
+          "last_adjacent_frame_difference": 2.821024,
+          "loop_discontinuity_check": "pass",
+          "freeze_detector_threshold": "-60 dB for 0.25 seconds",
+          "near_static_events": [
+            {
+              "event": "freeze_start",
+              "seconds": 16.25
+            },
+            {
+              "event": "freeze_duration",
+              "seconds": 0.333333
+            },
+            {
+              "event": "freeze_end",
+              "seconds": 16.583333
+            }
+          ],
+          "no_inserted_holds": "The edit contains no frame padding, freeze-frame filters, speed changes or motion interpolation.",
+          "evening_photo_source_near_static_events": [
+            {
+              "event": "freeze_start",
+              "seconds": 2.875
+            },
+            {
+              "event": "freeze_duration",
+              "seconds": 0.333333
+            },
+            {
+              "event": "freeze_end",
+              "seconds": 3.208333
+            }
+          ],
+          "near_static_note": "The 0.333-second near-static interval at output 16.25-16.583 seconds matches source evening photograph 2.875-3.208 seconds plus its 13.375-second timeline offset. It is the retained camera move easing through its midpoint, not an inserted hold."
+        },
+        "visual_review": "Six evenly sampled frames inspected: all scenes present, no black borders, blank frames, damaged anatomy or unexpected scene duplication."
+      },
+      "review_contact_sheet": "assets/video/review/after-dark-contact.jpg"
+    },
+    {
+      "file": "assets/video/review/lola-ber.mp4",
+      "bytes": 6738639,
+      "sha256": "09e93d3151d2a04a2926e1ff412954cab4d97d12e3c2f74f64f381b484b50daa",
+      "duration_seconds": 28.5,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1889 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "audio_tracks": 0,
+      "poster": "assets/video/review/lola-ber-poster.jpg",
+      "poster_sha256": "c24e0785a9ad0baf5e9313372324b587062f70c38a873c779b5e12a5e999e5e3",
+      "review_contact_sheet": "assets/video/review/lola-ber-contact.jpg",
+      "sources": [
+        {
+          "id": "160473464",
+          "subject": "Adult couple relaxing together at an outdoor pool",
+          "path": "assets/video/stock/AdobeStock_160473464.mp4",
+          "source_start_seconds": 0,
+          "source_duration_seconds": 7.5,
+          "original_filename": "AdobeStock_160473464.mov",
+          "original_metadata": {
+            "bytes": 563772535,
+            "sha256": "6f9871cded195bb4795f90178f43f8db1c9d825299b83d5747402080864fddf0",
+            "duration_seconds": 8.01,
+            "video_stream": "Stream #0:0[0x1](eng): Video: mjpeg (Baseline) (jpeg / 0x6765706A), yuvj422p(pc, bt470bg/smpte170m/bt709), 4096x2160 [SAR 72:72 DAR 256:135], 563200 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_url": "https://stock.adobe.com/video/160473464",
+          "rights": "User supplied the original Adobe Stock clip and selected it for Lola & Ber. No stock purchase made by the agent.",
+          "source_sha256": "58103e37fb50a21259aeec1768601fa339dcb95715de8ebe03322a89b6502fde",
+          "source_metadata": {
+            "bytes": 3062513,
+            "sha256": "58103e37fb50a21259aeec1768601fa339dcb95715de8ebe03322a89b6502fde",
+            "duration_seconds": 8.0,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 3059 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        },
+        {
+          "id": "approved-lola-ber",
+          "subject": "Approved robe photograph, embrace and kiss, and women holding hands",
+          "path": "assets/video/hospitality-people.mp4",
+          "source_start_seconds": 0,
+          "source_duration_seconds": 22,
+          "source_provenance": "assets/video/hospitality-provenance.json",
+          "source_sha256": "a1696e67dcc5ee1c6fc65e164eeab3305b71e76ce99515642ea5733f4dd1e480",
+          "source_metadata": {
+            "bytes": 3610404,
+            "sha256": "a1696e67dcc5ee1c6fc65e164eeab3305b71e76ce99515642ea5733f4dd1e480",
+            "duration_seconds": 22.0,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1310 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        }
+      ],
+      "crossfade_seconds": 0.5,
+      "untrimmed_crossfade_offsets_seconds": [
+        7.0,
+        28.5
+      ],
+      "output_dissolve_intervals_seconds": [
+        [
+          6.375,
+          6.875
+        ],
+        [
+          27.875,
+          28.375
+        ]
+      ],
+      "loop_trim_start_seconds": 0.625,
+      "loop_guard_frames": 3,
+      "loop_method": "Append the opening source, dissolve back to it, and trim both ends to consecutive camera positions at original speed. A three-frame guard puts the loop seam after the last dissolve.",
+      "validation": {
+        "full_stream_decode": "pass",
+        "decoded_frames": 684,
+        "source_hashes_unchanged": true,
+        "fast_start": true,
+        "under_12_MB": true,
+        "motion": {
+          "loop_seam_mean_pixel_difference": 3.933628,
+          "first_adjacent_frame_difference": 3.457795,
+          "last_adjacent_frame_difference": 5.448542,
+          "loop_discontinuity_check": "pass",
+          "freeze_detector_threshold": "-60 dB for 0.25 seconds",
+          "near_static_events": [],
+          "no_inserted_holds": "The edit contains no frame padding, freeze-frame filters, speed changes or motion interpolation."
+        }
+      },
+      "render_script": "scripts/render-review-brand.py",
+      "normalization_filter": "setpts=PTS-STARTPTS,fps=24,settb=1/24,scale=1280:720:force_original_aspect_ratio=decrease:force_divisible_by=2:flags=lanczos:out_range=tv:out_color_matrix=bt709,pad=1280:720:(ow-iw)/2:(oh-ih)/2,setsar=1,format=yuv420p,setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709",
+      "location_note": "Illustrative stock people, not actual Lola & Ber guests, personnel or endorsers. The pool is not represented as a Dulcinea property.",
+      "retained_edit": {
+        "file": "hospitality-people.mp4",
+        "bytes": 3610404,
+        "sha256": "a1696e67dcc5ee1c6fc65e164eeab3305b71e76ce99515642ea5733f4dd1e480",
+        "duration_seconds": 22.0,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1310 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0,
+        "poster": "assets/video/hospitality-people-poster.jpg",
+        "poster_sha256": "097f014ce914494d096542c9b10e8892b7ccfc269cffc43650307d9a04e27320",
+        "method": "The supplied photograph of adults socializing in robes opens and closes a montage of selected adult connection footage. Half-second dissolves join original filmed motion; cosine camera moves animate only the photograph. No generated imagery, synthetic human movement, motion reversal or optical-flow interpolation.",
+        "sources": [
+          {
+            "id": "681077127",
+            "subject": "Adults smiling and socializing indoors in white robes",
+            "path": "assets/images/stock/AdobeStock_681077127.jpeg",
+            "sha256": "ae430340b0fd64c284bb6af6b501fa9b25813210d8d09ff6cd787ae85f78ef2c",
+            "original_filename": "AdobeStock_681077127.jpeg",
+            "source_bytes": 6495730,
+            "source_dimensions": [
+              5495,
+              3663
+            ],
+            "source_unchanged": true,
+            "canonical_copy": "Byte-for-byte copy of the user-supplied original; SHA-256 verified on import."
+          },
+          {
+            "id": "sksvkteedr",
+            "subject": "Adult couple embracing and kissing indoors",
+            "source_url": "https://coverr.co/videos/couple-kissing-and-hugging-sksvkteedr",
+            "download_url": "https://cdn.coverr.co/videos/coverr-couple-kissing-and-hugging-3505/720p.mp4",
+            "external_source_path": "lola-brand-review/coverr-selected/couple-kissing-and-hugging.mp4",
+            "original_filename": "couple-kissing-and-hugging.mp4",
+            "bytes": 7272319,
+            "sha256": "eb4464a761ee305ccb14817c3f9a7e379bd3c402e7d7adba112bbc7d1f6168e8",
+            "duration_seconds": 23.64,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 2457 kb/s, 50 fps, 50 tbr, 15360 tbn (default)",
+            "audio_tracks": 0,
+            "source_start_seconds": 0.0,
+            "source_duration_seconds": 7,
+            "source_unchanged": true,
+            "distribution": "Downloaded original retained outside the repository and deployment; only the edited end product is packaged.",
+            "license": {
+              "name": "Coverr License",
+              "url": "https://coverr.co/license",
+              "terms_url": "https://coverr.co/terms",
+              "reviewed_on": "2026-10-02",
+              "commercial_use": true,
+              "attribution_required": false,
+              "limits": "No resale or stock redistribution of original footage; no implication of model endorsement or actual brand guests. Third-party rights remain subject to the published license."
+            }
+          },
+          {
+            "id": "tr7kbqumzc",
+            "subject": "Women holding hands in a close detail shot",
+            "source_url": "https://coverr.co/videos/women-holding-hands-tr7kbqumzc",
+            "download_url": "https://cdn.coverr.co/videos/coverr-women-holding-hands-7282/720p.mp4",
+            "external_source_path": "lola-brand-review/coverr-selected/women-holding-hands.mp4",
+            "original_filename": "women-holding-hands.mp4",
+            "bytes": 4498595,
+            "sha256": "faa2f536986f1e91d87ff64d77ef49442c7670c6792740247f55c61532dd3692",
+            "duration_seconds": 15.2,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 2365 kb/s, 25 fps, 25 tbr, 15360 tbn (default)",
+            "audio_tracks": 0,
+            "source_start_seconds": 0.0,
+            "source_duration_seconds": 5,
+            "source_unchanged": true,
+            "distribution": "Downloaded original retained outside the repository and deployment; only the edited end product is packaged.",
+            "license": {
+              "name": "Coverr License",
+              "url": "https://coverr.co/license",
+              "terms_url": "https://coverr.co/terms",
+              "reviewed_on": "2026-10-02",
+              "commercial_use": true,
+              "attribution_required": false,
+              "limits": "No resale or stock redistribution of original footage; no implication of model endorsement or actual brand guests. Third-party rights remain subject to the published license."
+            }
+          }
+        ],
+        "source_provenance": [
+          "assets/images/stock/AdobeStock_681077127.jpeg",
+          "https://coverr.co/license",
+          "https://coverr.co/terms"
+        ],
+        "timeline": [
+          {
+            "start_seconds": 0,
+            "end_seconds": 7.5,
+            "content": "Robe photograph, gentle camera push"
+          },
+          {
+            "start_seconds": 7.5,
+            "end_seconds": 8.0,
+            "content": "Dissolve into adult couple embracing and kissing indoors"
+          },
+          {
+            "start_seconds": 8.0,
+            "end_seconds": 14.0,
+            "content": "Adult couple embracing and kissing indoors"
+          },
+          {
+            "start_seconds": 14.0,
+            "end_seconds": 14.5,
+            "content": "Dissolve into women holding hands in a close detail shot"
+          },
+          {
+            "start_seconds": 14.5,
+            "end_seconds": 18.5,
+            "content": "Women holding hands in a close detail shot"
+          },
+          {
+            "start_seconds": 18.5,
+            "end_seconds": 19.0,
+            "content": "Dissolve back to the robe photograph"
+          },
+          {
+            "start_seconds": 19.0,
+            "end_seconds": 22.0,
+            "content": "Robe photograph, easing back to the opening framing"
+          }
+        ],
+        "crossfade_seconds": 0.5,
+        "crossfade_offsets_seconds": [
+          7.5,
+          14.0,
+          18.5
+        ],
+        "camera_filter": {
+          "opening": "scale=3840:2160:force_original_aspect_ratio=increase:flags=lanczos,crop=3840:2160:x='(iw-ow)*0.5':y='(ih-oh)*0.05',zoompan=z='1.006+0.020*(0.5-0.5*cos(PI*(on)/191))':x='(iw-iw/zoom)*(0.47+0.04*(0.5-0.5*cos(PI*(on)/191)))':y='(ih-ih/zoom)*0.02':d=192:s=1280x720:fps=24,scale=in_range=full:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p,setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709",
+          "closing": "scale=3840:2160:force_original_aspect_ratio=increase:flags=lanczos,crop=3840:2160:x='(iw-ow)*0.5':y='(ih-oh)*0.05',zoompan=z='1.006+0.020*(1-(0.5-0.5*cos(PI*(on)/83)))':x='(iw-iw/zoom)*(0.47+0.04*(1-(0.5-0.5*cos(PI*(on)/83))))':y='(ih-ih/zoom)*0.02':d=84:s=1280x720:fps=24,scale=in_range=full:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p,setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709"
+        },
+        "camera": {
+          "base_frame": [
+            3840,
+            2160
+          ],
+          "base_crop_fraction": [
+            0.5,
+            0.05
+          ],
+          "zoom_vertical_crop_fraction": 0.02,
+          "zoom_min": 1.006,
+          "zoom_max": 1.026,
+          "path": "Cosine round trip with matching camera endpoints and zero endpoint velocity."
+        },
+        "loop_method": "The complete edit's first and last uncompressed frames are identical. Complementary cosine photo moves have zero endpoint velocity.",
+        "location_note": "Illustrative stock people, not actual Lola & Ber guests, personnel or endorsers. Scenes do not identify Medellin, El Oriente or a fund property.",
+        "render_script": "scripts/render-hospitality.py",
+        "encoding_options": [
+          "-an",
+          "-c:v",
+          "libx264",
+          "-preset",
+          "slow",
+          "-crf",
+          "22",
+          "-maxrate",
+          "3M",
+          "-bufsize",
+          "6M",
+          "-profile:v",
+          "high",
+          "-level",
+          "3.1",
+          "-pix_fmt",
+          "yuv420p",
+          "-color_range",
+          "tv",
+          "-colorspace",
+          "bt709",
+          "-color_primaries",
+          "bt709",
+          "-color_trc",
+          "bt709",
+          "-r",
+          "24",
+          "-g",
+          "48",
+          "-movflags",
+          "+faststart",
+          "-threads",
+          "4"
+        ],
+        "validation": {
+          "full_stream_decode": "pass",
+          "decoded_frames": 528,
+          "duration_seconds": 22.0,
+          "fast_start": true,
+          "under_12_MB": true,
+          "source_hash_unchanged": true,
+          "loop_endpoints_identical_before_encoding": true,
+          "endpoint_frame_md5": "679f20c113e8cd5cf2718e627ce4502d",
+          "review_frame_indices": [
+            0,
+            144,
+            240,
+            384,
+            480,
+            527
+          ]
+        }
+      }
+    },
+    {
+      "file": "assets/video/review/oriente-landscape.mp4",
+      "bytes": 8028659,
+      "sha256": "06e6f7d9199aa6a1081ade68f304952d9e226966f2c9833d1ec7282316565131",
+      "duration_seconds": 24.0,
+      "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2673 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+      "audio_tracks": 0,
+      "poster": "assets/video/review/oriente-landscape-poster.jpg",
+      "poster_sha256": "a48f68c0d0e0696b6d1fb7caad2e4ac276ca6297622eecfd25551572fefc0411",
+      "review_contact_sheet": "assets/video/review/oriente-landscape-contact.jpg",
+      "sources": [
+        {
+          "id": "665115389",
+          "subject": "Aerial movement above green countryside and woodland",
+          "path": "assets/video/stock/AdobeStock_665115389.mp4",
+          "source_start_seconds": 1,
+          "source_duration_seconds": 12.5,
+          "original_filename": "AdobeStock_665115389.mp4",
+          "original_metadata": {
+            "bytes": 97923818,
+            "sha256": "40e38a71fc979db02b3964a365c5df7076390a55c40a1551dfcadb487e4cfb72",
+            "duration_seconds": 21.65,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1920x1080, 36174 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_url": "https://stock.adobe.com/video/665115389",
+          "source_provenance": "assets/video/stock/destinations-provenance.json",
+          "source_sha256": "2161d8369ffc57ac56c917460cc76b1ba809c19ae442b38fb6ecb790201bf7e4",
+          "source_metadata": {
+            "bytes": 7804919,
+            "sha256": "2161d8369ffc57ac56c917460cc76b1ba809c19ae442b38fb6ecb790201bf7e4",
+            "duration_seconds": 21.67,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2879 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        },
+        {
+          "id": "501694199",
+          "subject": "Reservoir aerial in El Oriente, identified by the user",
+          "path": "assets/video/stock/AdobeStock_501694199.mp4",
+          "source_start_seconds": 5,
+          "source_duration_seconds": 12.5,
+          "source_provenance": "assets/video/stock/oriente-provenance.json",
+          "source_sha256": "70f652ccf8c23b939393e8ecb893f5bd37e68098ab37c84bebfcf3c6c14cb528",
+          "source_metadata": {
+            "bytes": 15441251,
+            "sha256": "70f652ccf8c23b939393e8ecb893f5bd37e68098ab37c84bebfcf3c6c14cb528",
+            "duration_seconds": 47.08,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2621 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+            "audio_tracks": 0
+          },
+          "source_unchanged": true
+        }
+      ],
+      "crossfade_seconds": 0.5,
+      "untrimmed_crossfade_offsets_seconds": [
+        12.0,
+        24.0
+      ],
+      "output_dissolve_intervals_seconds": [
+        [
+          11.375,
+          11.875
+        ],
+        [
+          23.375,
+          23.875
+        ]
+      ],
+      "loop_trim_start_seconds": 0.625,
+      "loop_guard_frames": 3,
+      "loop_method": "Append the opening source, dissolve back to it, and trim both ends to consecutive camera positions at original speed. A three-frame guard puts the loop seam after the last dissolve.",
+      "validation": {
+        "full_stream_decode": "pass",
+        "decoded_frames": 576,
+        "source_hashes_unchanged": true,
+        "fast_start": true,
+        "under_12_MB": true,
+        "motion": {
+          "loop_seam_mean_pixel_difference": 2.08941,
+          "first_adjacent_frame_difference": 0.753785,
+          "last_adjacent_frame_difference": 1.026128,
+          "loop_discontinuity_check": "pass",
+          "freeze_detector_threshold": "-60 dB for 0.25 seconds",
+          "near_static_events": [],
+          "no_inserted_holds": "The edit contains no frame padding, freeze-frame filters, speed changes or motion interpolation."
+        }
+      },
+      "render_script": "scripts/render-review-destinations.py",
+      "location_note": "Countryside footage selected by the user for El Oriente. It illustrates the region, not ownership of the depicted land."
+    }
+  ],
+  "validation": {
+    "all_sources_hash_unchanged": true,
+    "existing_films_hash_unchanged": true,
+    "existing_films_checked": 24
+  }
+}

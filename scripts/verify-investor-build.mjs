@@ -92,6 +92,25 @@ for (const asset of [SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH]) {
 
 // A new alias must resolve to its canonical source, not a second copy of a video.
 const aliases = JSON.parse(await read('src/investor/media.json'));
+// Also catch repetition hidden inside different montage filenames.
+const reviewEdits = JSON.parse(await read('assets/video/review/provenance.json')).videos;
+const brandEdit = JSON.parse(await read('assets/video/hospitality-provenance.json'));
+const sourceOwners = new Map();
+for (const [alias, source] of Object.entries(aliases).filter(([name])=>name.endsWith('.mp4'))) {
+  const edit = reviewEdits.find(video=>video.file===source);
+  if(edit)assert.equal(createHash('sha256').update(await readFile(path.join(root,source))).digest('hex'),edit.sha256,`Film changed without updating its edit record: ${alias}`);
+  const sourcePaths = edit ? edit.sources.map(scene=>scene.path)
+    : source.endsWith('/hospitality-people.mp4') ? brandEdit.sources.map(scene=>scene.path||scene.external_source_path)
+    : [source];
+  for(const original of new Set(sourcePaths)){
+    assert.ok(original,`Missing footage provenance: ${alias}`);
+    assert.ok(!sourceOwners.has(original),`Footage repeated in ${alias} and ${sourceOwners.get(original)}: ${original}`);
+    sourceOwners.set(original,alias);
+  }
+}
+for(const stock of (await readdir(path.join(root,'assets/video/stock'))).filter(name=>name.endsWith('.mp4'))){
+  assert.ok(sourceOwners.has(`assets/video/stock/${stock}`),`Supplied stock clip omitted: ${stock}`);
+}
 const manifest = JSON.parse(await read('assets/manifest.json'));
 for (let page = 1; page <= 9; page++) {
   const entry = manifest.find(item => item.marker === `{{PLAN_PAGE_${page}}}`);
@@ -197,11 +216,21 @@ for (const [pagePath, html] of pages) {
   assert.match(markup, /id="experience-nightlife"[^>]*loop/,'Nightlife film must loop independently');
   assert.doesNotMatch(html, /#experience-hospitality\s*\{\s*opacity:\s*0/, 'Hospitality video must remain visible');
   const homepageFilms = new Set([...markup.matchAll(/<video\b[^>]*>/gi)].map(match=>attributes(match[0]).src));
-  for(const option of markup.matchAll(/<button\b[^>]*data-cover-source[^>]*>/gi))homepageFilms.add(attributes(option[0])['data-cover-source']);
   const expectedFilms = new Set(Object.entries(map).filter(([alias])=>alias.endsWith('.mp4')).map(([,url])=>url));
+  assert.ok(![...files.keys()].some(url=>url.includes('/review/lifestyle')), 'Rejected garden-reading and outdoor-gathering media must not be deployed');
   assert.deepEqual(homepageFilms,expectedFilms,`Every film should appear while scrolling the homepage: ${pagePath}`);
   assert.match(markup,/id="review-cover-film"[^>]*src="[^"']*AdobeStock_693150796\.mp4"/,'Cover starts with Medellin drone footage');
-  assert.match(markup,/data-cover-film="country"[^>]*data-cover-source="[^"']*AdobeStock_501694199\.mp4"/,'Cover country option is the supplied reservoir, not the pasture woman');
+  // Each story chapter owns its footage. A property's preview and detail may
+  // share its own film; destination/lifestyle chapters must not repeat films.
+  const chapterFilms = [...markup.matchAll(/<section\b[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/section>/g)]
+    .filter(([,id])=>id!=='homes')
+    .flatMap(([,id,section])=>[...section.matchAll(/<video\b[^>]*>/g)].map(([tag])=>({id,src:attributes(tag).src})));
+  assert.equal(new Set(chapterFilms.map(film=>film.src)).size,chapterFilms.length,`Repeated film across story chapters: ${pagePath}`);
+  assert.doesNotMatch(markup,/dulcinea-introduction\.mp4|medellin-location\.mp4|oriente-country\.mp4|data-cover-source/, 'Retire the overlapping compilations and cover replays');
+  const chapterLinks=markup.match(/<nav class="hero-destinations[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(chapterLinks,'Cover should link into the story');
+  for(const destination of ['destination','oriente','homes'])assert.ok(chapterLinks.includes(`href="#${destination}"`),`Missing cover chapter link: ${destination}`);
+  assert.ok(chapterFilms.some(film=>film.id==='contact'&&film.src.endsWith('AdobeStock_695926335.mp4')),'Closing uses the second Medellin drone, not the opening shot');
   const homeBlock = html.match(/const homes\s*=\s*\[([\s\S]*?)\n\];/);
   assert.ok(homeBlock, `Missing home configuration: ${pagePath}`);
   const homePlans = [...homeBlock[1].matchAll(/key:\s*['"]([^'"]+)['"][^\n]*?plans:\s*\[([^\]]*)\]/g)].map(([, key, planList]) => [key, planList.split(',').map(value => value.trim()).filter(Boolean).map(Number)]);

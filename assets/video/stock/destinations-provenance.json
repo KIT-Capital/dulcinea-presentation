@@ -1,0 +1,73 @@
+{
+  "render_script": "scripts/render-review-destinations.py",
+  "created_on": "2026-10-04",
+  "normalization_filter": "setpts=PTS-STARTPTS,fps=24,settb=1/24,scale=1280:720:force_original_aspect_ratio=decrease:force_divisible_by=2:flags=lanczos:out_range=tv:out_color_matrix=bt709,pad=1280:720:(ow-iw)/2:(oh-ih)/2,setsar=1,format=yuv420p,setparams=range=limited:color_primaries=bt709:color_trc=bt709:colorspace=bt709",
+  "source_handling": "Original downloads remain outside the repository, unchanged. Optimized files preserve original timing and framing.",
+  "location_note": "Poolside friends illustrate lifestyle and are not identified as Dulcinea guests or a portfolio property.",
+  "sources": [
+    {
+      "id": "665115389",
+      "subject": "Aerial movement above green countryside and woodland",
+      "original_filename": "AdobeStock_665115389.mp4",
+      "original_metadata": {
+        "bytes": 97923818,
+        "sha256": "40e38a71fc979db02b3964a365c5df7076390a55c40a1551dfcadb487e4cfb72",
+        "duration_seconds": 21.65,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1920x1080, 36174 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)",
+        "audio_tracks": 0
+      },
+      "file": "assets/video/stock/AdobeStock_665115389.mp4",
+      "optimized_metadata": {
+        "bytes": 7804919,
+        "sha256": "2161d8369ffc57ac56c917460cc76b1ba809c19ae442b38fb6ecb790201bf7e4",
+        "duration_seconds": 21.67,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2879 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "poster": "assets/video/stock/AdobeStock_665115389-poster.jpg",
+      "poster_sha256": "4125778dc6531a8b2b0272dfd632ec292d326e4ce3a018a865b67be0dc26db0b",
+      "source_url": "https://stock.adobe.com/video/665115389",
+      "rights": "User supplied the original Adobe Stock download and selected it for this section. No purchase made by the agent.",
+      "validation": {
+        "full_stream_decode": "pass",
+        "decoded_frames": 520,
+        "fast_start": true,
+        "original_hash_unchanged": true,
+        "whole_frame_preserved": true,
+        "under_12_MB": true
+      }
+    },
+    {
+      "id": "514654455",
+      "subject": "Adult friends sharing drinks beside an outdoor pool",
+      "original_filename": "AdobeStock_514654455.mp4",
+      "original_metadata": {
+        "bytes": 63904457,
+        "sha256": "22b8124b0c8c16487f940d14f01d8bfac185fbbd9c9d4e0800f776b8bd50468b",
+        "duration_seconds": 17.48,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(progressive), 3840x2160, 29251 kb/s, SAR 1:1 DAR 16:9, 23.98 fps, 23.98 tbr, 24k tbn (default)",
+        "audio_tracks": 0
+      },
+      "file": "assets/video/stock/AdobeStock_514654455.mp4",
+      "optimized_metadata": {
+        "bytes": 2779832,
+        "sha256": "3e65e9fbbd3c08d27ea8080eb0df88b0015c57aae951ff8da28918b2a3325e65",
+        "duration_seconds": 17.46,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1271 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+        "audio_tracks": 0
+      },
+      "poster": "assets/video/stock/AdobeStock_514654455-poster.jpg",
+      "poster_sha256": "4631a69cf00e2614574e277b56c776e2524f5ffc8dd92c8d46cc17d401071d46",
+      "source_url": "https://stock.adobe.com/video/514654455",
+      "rights": "User supplied the original Adobe Stock download and selected it for this section. No purchase made by the agent.",
+      "validation": {
+        "full_stream_decode": "pass",
+        "decoded_frames": 419,
+        "fast_start": true,
+        "original_hash_unchanged": true,
+        "whole_frame_preserved": true,
+        "under_12_MB": true
+      }
+    }
+  ]
+}

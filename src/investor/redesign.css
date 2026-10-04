@@ -27,7 +27,7 @@ body:not(.is-presenting) .hero-top{grid-column:1;grid-row:1;display:block;paddin
 body:not(.is-presenting) .hero-top>span:last-child{display:none}
 body:not(.is-presenting) .hero-statement{grid-column:1;grid-row:2;width:auto;max-width:none;min-width:0;margin:0;padding:12px 3.8vw 28px;align-self:center}
 body:not(.is-presenting) .hero h1{font-size:clamp(58px,6.8vw,112px);letter-spacing:-.055em;line-height:.98;white-space:normal;margin:0 0 30px}
-body:not(.is-presenting) .hero h1 span{display:block;color:#786000}
+body:not(.is-presenting) .hero h1 span{display:block;color:var(--gold);-webkit-text-stroke:1px #785a16;paint-order:stroke fill}
 body:not(.is-presenting) .hero-statement p{font-size:clamp(22px,2vw,29px);line-height:1.35;letter-spacing:-.025em;text-shadow:none;max-width:22ch}
 body:not(.is-presenting) .hero-statement .line-link{border:0;background:var(--ink);color:white;width:100%;max-width:330px;margin-top:26px;padding:15px 20px;font-size:17px;transition:background .2s,transform .2s}
 body:not(.is-presenting) .hero-statement .line-link:hover{background:#25464d;transform:translateY(-2px)}
@@ -37,9 +37,9 @@ body:not(.is-presenting) .hero-statement .line-link:active{transform:translateY(
 .hero-visual>.background-video{z-index:0}
 .hero-place{position:absolute;top:30px;left:30px;color:white;font-size:14px;letter-spacing:.04em;text-shadow:0 1px 6px #000}
 .hero-destinations{position:absolute;right:30px;bottom:25px;left:calc(39% + 30px);z-index:2;display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:12px 20px;background:#17282de8;color:white;max-width:none}
-.hero-destinations button{font-size:15px;min-height:44px;padding:8px 0;background:none;color:white;border-bottom:1px solid transparent}
-.hero-destinations button[aria-pressed=true]{border-color:var(--gold)}
-#review-cover-caption{font-size:11px;flex-basis:100%}
+.hero-destinations a{font-size:15px;min-height:44px;padding:8px 0;background:none;color:white;border-bottom:1px solid transparent}
+.hero-destinations a:hover,.hero-destinations a:focus-visible{border-color:var(--gold);color:var(--gold)}
+.hero-destinations a{display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:color .2s,border-color .2s}
 body:not(.is-presenting) .hero-bottom{grid-column:1;grid-row:3;padding:0 3.8vw 20px}
 body:not(.is-presenting) .hero-baseline{margin:0;padding:14px 0 0;border-top:1px solid #17282d30;display:block}
 body:not(.is-presenting) .hero-baseline>.micro{display:none}
@@ -85,7 +85,8 @@ body:not(.is-presenting) .oriente-garden-frame{height:500px;min-height:0;aspect-
 body:not(.is-presenting) .oriente-town-frame{aspect-ratio:16/10}
 body:not(.is-presenting) .oriente-support figcaption{font-size:16px;padding-top:16px;color:var(--ink)}
 body:not(.is-presenting) .oriente-around>p{font-size:32px;line-height:1.25;max-width:24ch;margin:32px 0 0}
-body:not(.is-presenting) .oriente-country-life{margin-top:36px}
+body:not(.is-presenting) .oriente-country-life{margin-top:0}
+body:not(.is-presenting) .oriente-town{margin-top:36px}
 body:not(.is-presenting) .oriente-country-life .parallax-frame{height:320px}
 /* City chapter: wide film beside copy, then an inset nightlife spread. */
 body:not(.is-presenting) .story-destination{background:var(--paper);padding:88px var(--review-margin)}
@@ -95,6 +96,7 @@ body:not(.is-presenting) .city-landscape{position:relative;grid-column:1;grid-ro
 body:not(.is-presenting) .city-cinema .story-film-copy{grid-column:2;grid-row:1;align-self:center;max-width:none;padding:0}
 body:not(.is-presenting) .city-cinema h2{font-size:clamp(44px,4.8vw,72px);margin:20px 0 24px}
 body:not(.is-presenting) .city-cinema .story-film-copy>p:not(.micro){font-size:23px;max-width:32ch;line-height:1.5}
+body:not(.is-presenting) .story-destination .story-film-copy>p{color:var(--ink)}
 body:not(.is-presenting) .city-cinema .line-link{border-color:#17282d55}
 body:not(.is-presenting) .destination-labels{grid-column:2;grid-row:2;display:block;font-size:14px;border-color:#17282d30;margin:0;line-height:1.7}
 body:not(.is-presenting) .destination-labels>span{display:block}
@@ -217,10 +219,22 @@ body:not(.is-presenting) .legal-notice p{font-size:13px;line-height:1.6}
 .preview-contact-dialog{max-width:520px;padding:40px}.preview-contact-dialog::backdrop{background:#17282d99}
 .preview-contact-dialog p{font-size:18px;line-height:1.5;margin-top:18px}.preview-contact-dialog button{background:var(--gold);font-size:17px;padding:12px 18px;margin-top:24px}
 .review-exit-form{margin:0}.review-exit{background:none;color:inherit;border-bottom:1px solid currentColor;font-size:13px;padding:8px 0}
-/* Overscan is clipped to frames. Text and document flow never translate. */
-body:not(.is-presenting) .parallax-frame{position:relative;overflow:hidden}
-body:not(.is-presenting) .parallax-frame>[data-parallax]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:translate3d(0,var(--parallax-y,0px),0) scale(1.2);animation:none;will-change:transform}
-body:not(.is-presenting).is-paused .parallax-frame>[data-parallax]{transform:scale(1.2);will-change:auto}
+/* BelArosa's image depth, using vertical overscan so wide imagery stays wide. */
+body:not(.is-presenting) .parallax-frame{position:relative;overflow:hidden;--parallax-travel:.12;--parallax-inset:-14%;--parallax-height:128%}
+body:not(.is-presenting) .parallax-frame>[data-parallax]{position:absolute;inset:var(--parallax-inset) 0 auto;width:100%;height:var(--parallax-height);max-width:none;object-fit:cover;transform:translate3d(0,var(--parallax-y,0px),0) scale(var(--parallax-scale,1));transform-origin:center;animation:none}
+body:not(.is-presenting) .motion-in-view>[data-parallax]{will-change:transform}
+body:not(.is-presenting) .hero-visual{--parallax-travel:.09}
+body:not(.is-presenting) .property-visual{--parallax-travel:.045;--parallax-inset:-6%;--parallax-height:112%}
+body:not(.is-presenting).is-paused .parallax-frame>[data-parallax]{transform:none;will-change:auto}
+@media(min-width:1050px){
+ body:not(.is-presenting) .ownership-story{align-items:start}
+ body:not(.is-presenting) .ownership-media{height:max(800px,112svh);min-height:0;max-height:none}
+ body:not(.is-presenting) .oriente-cinema{align-items:start}
+ body:not(.is-presenting) .oriente-landscape{height:max(800px,112svh)}
+ body:not(.is-presenting) .city-cinema{grid-template-rows:1fr auto}
+ body:not(.is-presenting) .city-landscape{height:max(780px,110svh)}
+ body:not(.is-presenting) :is(.ownership-copy,.oriente-cinema-content,.city-cinema .story-film-copy).motion-sticky{position:sticky;top:var(--story-sticky-top,calc(var(--header) + 24px));align-self:start}
+}
 /* Wrappers retain the original deck content and working controls. */
 body.is-presenting .property-explorer{display:contents}
 body.is-presenting :is(.city-landscape,.nightlife-frame,.brand-landscape,.oriente-landscape){position:absolute;inset:0;z-index:-2}
@@ -232,7 +246,7 @@ body.is-presenting[data-presentation-layout="canvas"] .hero-top{grid-column:1;gr
 body.is-presenting[data-presentation-layout="canvas"] .hero-top>span:last-child{display:none}
 body.is-presenting[data-presentation-layout="canvas"] .hero-statement{grid-column:1;grid-row:2;width:auto;max-width:none;margin:0;padding:20px 48px;align-self:center}
 body.is-presenting[data-presentation-layout="canvas"] .hero-statement h1{font-size:112px;line-height:.98;white-space:normal;margin:0 0 34px}
-body.is-presenting[data-presentation-layout="canvas"] .hero h1 span{display:block;color:#786000}
+body.is-presenting[data-presentation-layout="canvas"] .hero h1 span{display:block;color:var(--gold);-webkit-text-stroke:1px #785a16;paint-order:stroke fill}
 body.is-presenting[data-presentation-layout="canvas"] .hero-statement p{font-size:33px;line-height:1.3;text-shadow:none}
 body.is-presenting[data-presentation-layout="canvas"] .hero-statement .line-link{color:var(--ink);border-color:#17282d60;width:100%;margin-top:28px}
 body.is-presenting[data-presentation-layout="canvas"] .hero-bottom{grid-column:1;grid-row:3;padding:0 48px 24px}
@@ -251,7 +265,7 @@ body.is-presenting[data-presentation-layout="responsive"] .hero-statement h1{whi
 }
 @media(max-width:850px){
  body:not(.is-presenting) .header .brand img{width:120px}body:not(.is-presenting) .primary{gap:10px;font-size:12px}body:not(.is-presenting) .present-launch{font-size:12px;padding:8px}.header{flex-wrap:wrap}
- body:not(.is-presenting) .hero{grid-template-columns:45% 55%;min-height:600px}body:not(.is-presenting) .hero-destinations{left:calc(45% + 15px);right:15px;gap:12px;padding:8px 12px}body:not(.is-presenting) .hero-destinations button{font-size:13px}body:not(.is-presenting) .hero h1{font-size:57px}body:not(.is-presenting) .hero-statement p{font-size:22px}body:not(.is-presenting) .hero-statement .line-link{font-size:15px;padding:12px 14px}
+ body:not(.is-presenting) .hero{grid-template-columns:45% 55%;min-height:600px}body:not(.is-presenting) .hero-destinations{left:calc(45% + 15px);right:15px;gap:12px;padding:8px 12px}body:not(.is-presenting) .hero-destinations a{font-size:13px}body:not(.is-presenting) .hero h1{font-size:57px}body:not(.is-presenting) .hero-statement p{font-size:22px}body:not(.is-presenting) .hero-statement .line-link{font-size:15px;padding:12px 14px}
  body:not(.is-presenting) .ownership-story{gap:4vw}body:not(.is-presenting) .ownership-media{min-height:660px}body:not(.is-presenting) .ownership-copy h2{font-size:42px}
  body:not(.is-presenting) .oriente-cinema{grid-template-columns:1fr}body:not(.is-presenting) .oriente-landscape{min-height:420px;order:2}
  body:not(.is-presenting) .city-cinema{gap:30px;grid-template-columns:1fr 1fr}body:not(.is-presenting) .city-landscape{height:620px}body:not(.is-presenting) .city-cinema h2{font-size:42px}
@@ -265,7 +279,7 @@ body.is-presenting[data-presentation-layout="responsive"] .hero-statement h1{whi
  :root{--review-margin:24px;--chapter-space:56px}
  body:not(.is-presenting)>.header{padding:10px 20px;gap:8px}body:not(.is-presenting) .brand img{width:112px;height:35px}body:not(.is-presenting) .primary{order:5;flex-basis:100%;justify-content:space-between;gap:8px;margin:0;font-size:12px;border-top:1px solid #17282d20;padding-top:4px;flex-wrap:wrap}body:not(.is-presenting) .present-launch{margin-left:auto}body:not(.is-presenting) .language{padding-left:4px}.language button{padding:7px 3px}
  body:not(.is-presenting) .hero{display:grid;grid-template-columns:1fr;grid-template-rows:auto auto 380px auto;height:auto;max-height:none;min-height:0}body:not(.is-presenting) .hero-top{grid-column:1;grid-row:1;padding:26px 24px 0}body:not(.is-presenting) .hero-statement{grid-column:1;grid-row:2;padding:24px}body:not(.is-presenting) .hero h1{font-size:66px;line-height:1;margin-bottom:24px}body:not(.is-presenting) .hero h1 span{display:inline}body:not(.is-presenting) .hero-statement p{font-size:24px;max-width:28ch}body:not(.is-presenting) .hero-statement .line-link{font-size:17px;margin-top:22px}
- body:not(.is-presenting) .hero-visual{grid-column:1;grid-row:3}body:not(.is-presenting) .hero-place{top:20px;left:24px}body:not(.is-presenting) .hero-bottom{grid-column:1;grid-row:4;padding:18px 24px}body:not(.is-presenting) .hero-baseline{border:0;padding:0}body:not(.is-presenting) .hero-destinations{left:16px;right:16px;bottom:105px;gap:20px;justify-content:flex-start;padding:8px 15px}body:not(.is-presenting) .hero-destinations button{font-size:14px}body:not(.is-presenting) .motion{top:auto;bottom:420px;right:20px}
+ body:not(.is-presenting) .hero-visual{grid-column:1;grid-row:3}body:not(.is-presenting) .hero-place{top:20px;left:24px}body:not(.is-presenting) .hero-bottom{grid-column:1;grid-row:4;padding:18px 24px}body:not(.is-presenting) .hero-baseline{border:0;padding:0}body:not(.is-presenting) .hero-destinations{left:16px;right:16px;bottom:105px;gap:20px;justify-content:flex-start;padding:8px 15px}body:not(.is-presenting) .hero-destinations a{font-size:14px}body:not(.is-presenting) .motion{top:auto;bottom:420px;right:20px}
  body:not(.is-presenting) .story-index{padding:12px 24px}body:not(.is-presenting) .story-index>div{justify-content:flex-start;gap:0 20px}body:not(.is-presenting) .story-index a{font-size:14px}body:not(.is-presenting) .offer-glance{display:block;padding:24px}body:not(.is-presenting) .offer-glance>div{margin-top:18px}body:not(.is-presenting) .offer-glance>a{margin-top:18px}
  body:not(.is-presenting) .ownership-story{display:flex;flex-direction:column;gap:32px}body:not(.is-presenting) .ownership-copy{order:1;width:100%}body:not(.is-presenting) .ownership-media{order:2;min-height:0;width:100%;height:400px;aspect-ratio:auto}body:not(.is-presenting) .ownership-copy h2{font-size:44px}body:not(.is-presenting) .ownership-copy>p:not(.micro):not(.footnote){font-size:22px}body:not(.is-presenting) .lifestyle-benefits dt{font-size:26px}
  body:not(.is-presenting) .oriente-story{padding:48px 24px}body:not(.is-presenting) .oriente-cinema{gap:32px}body:not(.is-presenting) .oriente-cinema-content h2{font-size:48px}body:not(.is-presenting) .oriente-cinema-copy{font-size:22px}body:not(.is-presenting) .oriente-landscape{min-height:0;height:390px}body:not(.is-presenting) .oriente-support{display:block;padding-top:32px}body:not(.is-presenting) .oriente-garden-frame{height:400px;width:100%;aspect-ratio:auto}body:not(.is-presenting) .oriente-around{margin-top:36px}body:not(.is-presenting) .oriente-around>p{font-size:28px}
@@ -278,4 +292,42 @@ body.is-presenting[data-presentation-layout="responsive"] .hero-statement h1{whi
  body:not(.is-presenting) .fund .section-heading{display:block}body:not(.is-presenting) .fund-summary{margin-top:24px;font-size:22px}body:not(.is-presenting) .capital{grid-template-columns:1fr;gap:20px;margin-top:32px}body:not(.is-presenting) .capital>div{display:flex;justify-content:space-between;align-items:center;gap:20px}body:not(.is-presenting) .capital strong{font-size:58px}body:not(.is-presenting) .fund-bottom{display:block}body:not(.is-presenting) .fund-bottom>div>p{font-size:22px}body:not(.is-presenting) .button-dark{margin-top:26px;display:flex;max-width:100%}
  body:not(.is-presenting) .resource-directory>a{display:block}body:not(.is-presenting) .resource-directory h3{margin:12px 0}body:not(.is-presenting) .resource-directory>a>span:last-child{display:block;margin-top:15px}body:not(.is-presenting) .team-portraits{grid-template-columns:1fr;gap:36px}body:not(.is-presenting) .team-photo{aspect-ratio:4/5;max-height:480px}body:not(.is-presenting) .contact{padding:48px 24px 24px}body:not(.is-presenting) .legal-notice{padding:24px}.preview-contact-dialog{padding:28px}
 }
-@media(prefers-reduced-motion:reduce){body:not(.is-presenting) .parallax-frame>[data-parallax]{transform:scale(1.2);will-change:auto}}
+@media(max-width:1049px){body:not(.is-presenting) .parallax-frame{--parallax-travel:.055;--parallax-inset:-7%;--parallax-height:114%}body:not(.is-presenting) .property-visual{--parallax-travel:.035}}
+@media(prefers-reduced-motion:reduce){body:not(.is-presenting) .parallax-frame>[data-parallax]{transform:none;will-change:auto}}
+
+/* Use the supplied home photograph while replacement lifestyle footage is selected. */
+body:not(.is-presenting) .ownership-media{height:auto;min-height:0;max-height:none;aspect-ratio:4/3;align-self:start}
+body:not(.is-presenting) .ownership-media.motion-sticky{position:sticky;top:var(--story-sticky-top,calc(var(--header) + 24px))}
+@media(max-width:1049px) and (min-width:651px){
+ body:not(.is-presenting) .ownership-story{grid-template-columns:1fr;gap:32px}
+ body:not(.is-presenting) .ownership-media{max-height:540px;aspect-ratio:16/10}
+}
+
+/* People footage keeps its full camera frame; scroll overscan would crop faces. */
+body:not(.is-presenting) .oriente-country-life{grid-column:1/-1;width:min(100%,960px);justify-self:center;margin:0 0 24px;scroll-margin-top:calc(var(--header) + 28px)}
+body:not(.is-presenting) .oriente-country-life .country-life-frame{height:auto;min-height:0;aspect-ratio:16/9}
+body:not(.is-presenting) .country-life-frame>video{position:static;display:block;width:100%;height:100%;object-fit:contain;object-position:center;transform:none}
+body.is-presenting .ownership-media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* Keep the complete Lola & Ber people scenes separate from the copy. */
+body:not(.is-presenting) .brand-landscape{min-height:0;height:auto;aspect-ratio:16/9;align-self:center}
+.brand-landscape>video.background-video{position:static;inset:auto;display:block;width:100%;height:100%;object-fit:contain;transform:none;z-index:auto}
+body.is-presenting #main>.experience.presentation-active{background:var(--violet);color:var(--ink)}
+body.is-presenting .experience:after{display:none}
+body.is-presenting .experience-content>p,body.is-presenting .experience-note{color:var(--ink)}
+body.is-presenting .experience .line-link{border-color:#17282d55}
+body.is-presenting .brand-landscape{position:relative;inset:auto;z-index:0;width:100%;height:auto;min-height:0;aspect-ratio:16/9;align-self:center}
+body.is-presenting[data-presentation-layout="canvas"] #main>.experience.presentation-active{display:grid;grid-template-columns:620px minmax(0,1fr);gap:48px;padding:56px 60px;align-items:center}
+body.is-presenting[data-presentation-layout="canvas"] .brand-landscape{grid-column:2;grid-row:1}
+body.is-presenting[data-presentation-layout="canvas"] .experience-content{grid-column:1;grid-row:1;max-width:none}
+body.is-presenting[data-presentation-layout="canvas"] .experience h2{font-size:60px;margin:16px 0 12px}
+body.is-presenting[data-presentation-layout="canvas"] .experience-content>p:not(.micro){font-size:23px;line-height:1.45}
+body.is-presenting[data-presentation-layout="canvas"] .experience-content>p.brand-tagline{font-size:32px}
+body.is-presenting[data-presentation-layout="responsive"] #main>.experience.presentation-active{display:flex;flex-direction:column;align-items:stretch;padding:0;justify-content:flex-start}
+body.is-presenting[data-presentation-layout="responsive"] .experience-content{padding:32px 22px;max-width:none}
+
+/* The approved poolside lifestyle scene also keeps every person in frame. */
+body:not(.is-presenting) .ownership-media{aspect-ratio:16/9;max-height:none}
+.ownership-media>video{position:static;inset:auto;width:100%;height:100%;object-fit:contain;transform:none}
+body.is-presenting[data-presentation-layout="canvas"] #ownership .ownership-media{height:auto;aspect-ratio:16/9;align-self:center}
+body.is-presenting[data-presentation-layout="responsive"] #ownership .ownership-media{height:auto;aspect-ratio:16/9}

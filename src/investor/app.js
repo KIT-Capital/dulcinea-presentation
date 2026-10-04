@@ -26,8 +26,8 @@ let lang = 'en', current = homeOrder[0], planIndex = 0, currentMediaKey = null;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 let paused = reduce.matches;
 const videos = [...document.querySelectorAll('video')];
-const previewVideos = new Set(document.querySelectorAll('[data-preview-home] video'));
-previewVideos.forEach(video => { video.autoplay = false; video.removeAttribute('autoplay'); video.preload = 'none'; video.pause(); });
+// Property previews are films too; the shared controller starts them near the viewport.
+document.querySelectorAll('[data-preview-home] video').forEach(video => { video.loop = true; });
 const visibleVideos = new Set();
 const motion = $('.motion');
 const originalDialog = $('#original-dialog');
@@ -43,18 +43,29 @@ const dialogs = [...document.querySelectorAll('dialog')];
 const propertyVideo = $('#property-video');
 function canAnimate() { return !paused && !document.hidden && !dialogs.some(dialog => dialog.open); }
 function syncVideo(video) {
-  if (!previewVideos.has(video) && canAnimate() && visibleVideos.has(video) && !video.closest('[inert]') && video.getClientRects().length) video.play().catch(() => {});
-  else video.pause();
+  if (canAnimate() && visibleVideos.has(video) && !video.closest('[inert]') && video.getClientRects().length) {
+    if (video.paused) video.play().catch(() => {});
+  } else if (!video.paused) video.pause();
 }
 function syncMotion() { document.body.classList.toggle('is-paused',!canAnimate()); videos.forEach(syncVideo); }
+// Observe the stable crop, not the oversized media moving through it. Start before
+// entry and keep playing beyond the edge so scroll transitions never hold a frame.
+const playbackFrames = new Map();
+videos.forEach(video => {
+  const frame = video.closest('.parallax-frame,.property-preview-media,.oriente-town-frame,.approach-film') || video;
+  if (!playbackFrames.has(frame)) playbackFrames.set(frame,[]);
+  playbackFrames.get(frame).push(video);
+});
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) visibleVideos.add(entry.target);
-    else visibleVideos.delete(entry.target);
-    syncVideo(entry.target);
+    playbackFrames.get(entry.target).forEach(video => {
+      if (entry.isIntersecting) visibleVideos.add(video);
+      else visibleVideos.delete(video);
+      syncVideo(video);
+    });
   });
-},{threshold:.15});
-videos.filter(video => !previewVideos.has(video)).forEach(video => observer.observe(video));
+},{threshold:0,rootMargin:'240px 0px'});
+playbackFrames.forEach((_,frame) => observer.observe(frame));
 function motionState() {
   const label = lang === 'es' ? (paused ? 'Reanudar animaciones' : 'Pausar animaciones') : (paused ? 'Resume animations' : 'Pause animations');
   motion?.setAttribute('aria-pressed',String(paused)); motion?.setAttribute('aria-label',label);

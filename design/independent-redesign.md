@@ -2,6 +2,19 @@
 
 Approved build target: the user's explicit Radisson URL and complete independent-version brief. Direct build of that reference-locked direction; no replacement of production, no monochrome starting point.
 
+## BelArosa motion application, 4 October 2026
+
+User-approved direct build after authenticated Refero research and inspection of BelArosa's public interaction configuration. The existing storyline, copy, figures, media selections and presentation order are locked. No HTML or content-data changes are required.
+
+| Decision | Reference and role | Application |
+| --- | --- | --- |
+| Scroll-linked image depth | BelArosa e-113/a-56, clipped media drifting -10% to +10% | Desktop media travel up to 12% of frame height with 14% overscan each side; less travel on smaller screens and property films. |
+| Hero depth | BelArosa e-5/a-4, independent media translation and scale | Opening film drifts and scales up to 1.08 as it leaves the viewport; title and controls remain readable and stationary within the page. |
+| Anchored short copy | BelArosa desktop sticky editorial text | Lifestyle/country/city copy sticks only if it fits beneath the measured navigation; long copy, mobile and presentation retain normal flow. |
+| Native access and input | Existing Dulcinea controls and Refero motion guidance | Native scrolling, time-based smoothing, pause/reduced-motion/dialog/presentation reset; no changes to financial, gallery or floorplan interactions. |
+
+Reference: https://www.belarosa-chalet.ch/en and authenticated Refero style 1396fd36-a1bc-4d2b-a59c-1111f17145dc. Production, shared services and the paused Replit export remain outside this change.
+
 ## Review access update, 4 October 2026
 
 The user explicitly requested removal of the review-site password. Both review-only configs now set REVIEW_PUBLIC=true. The website, approved media, floorplan PDF, criteria and presentation open directly. Formal financial statements and reserved future private downloads continue through the existing isolated investor gate; company/legal and financial source files remain blocked for everyone. The retired /preview-login URL redirects safely to the requested internal page. No-index/no-store headers, inert contact actions and the absence of shared writable services remain. This authorized change supersedes the earlier whole-review-password requirement for this review Worker only. Production is untouched. The earlier protected review revisions and restore evidence remain archived. Three additional access tests verify the public entry, protected statements/source files, safe redirects and logout (47 server tests total).

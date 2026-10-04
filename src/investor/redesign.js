@@ -1,44 +1,80 @@
 (() => {
-  // Native scroll drives media only; the clipped overscan leaves text stationary.
+  // BelArosa reference: scroll-linked media in clipped frames, with native scrolling.
   const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
-  const parallax=[...document.querySelectorAll('[data-parallax]')].map(media=>({media,frame:media.parentElement,y:0}));
+  const desktopMotion=matchMedia('(min-width: 1050px)');
+  const parallax=[...document.querySelectorAll('[data-parallax]')].map(media=>({media,frame:media.parentElement,y:0,scale:1,travel:.12,hero:media.id==='review-cover-film'}));
+  const anchoredCopy=[...document.querySelectorAll('.ownership-media,.oriente-cinema-content,.city-cinema .story-film-copy')];
   const visibleFrames=new Set();
-  let parallaxTick=0;
+  let parallaxTick=0,layoutTick=0,lastFrame=0,headerHeight=0;
   const motionAllowed=()=>!motionPreference.matches&&!document.hidden&&!document.body.classList.contains('is-paused')&&!document.body.classList.contains('is-presenting');
-  function renderParallax(){
+  const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+  function refreshMotionLayout(){
+    layoutTick=0;
+    headerHeight=document.querySelector('body>.header')?.getBoundingClientRect().height||0;
+    // Measure first, then write; longer Spanish copy and browser zoom can disable sticky.
+    const measurements=anchoredCopy.map(copy=>({copy,height:copy.getBoundingClientRect().height}));
+    const mediaMeasurements=parallax.map(item=>({item,height:item.frame.clientHeight,travel:parseFloat(getComputedStyle(item.frame).getPropertyValue('--parallax-travel'))||.12}));
+    mediaMeasurements.forEach(({item,height,travel})=>{
+      item.travel=travel;
+      // A resized offscreen frame must not retain an offset from a taller viewport.
+      item.y=clamp(item.y,-height*travel,height*travel);
+      item.media.style.setProperty('--parallax-y',`${item.y.toFixed(2)}px`);
+    });
+    measurements.forEach(({copy,height})=>{
+      const enabled=desktopMotion.matches&&motionAllowed()&&height>0&&height<=innerHeight-headerHeight-56;
+      copy.classList.toggle('motion-sticky',enabled);
+      if(enabled)copy.style.setProperty('--story-sticky-top',`${Math.min(Math.max(headerHeight+24,innerHeight*.24),innerHeight-height-32)}px`);
+      else copy.style.removeProperty('--story-sticky-top');
+    });
+    scheduleParallax();
+  }
+  function scheduleMotionLayout(){if(!layoutTick)layoutTick=requestAnimationFrame(refreshMotionLayout);}
+  function renderParallax(time){
     parallaxTick=0;
-    if(!motionAllowed()){parallax.forEach(item=>{item.y=0;item.media.style.removeProperty('--parallax-y');});return;}
+    if(!motionAllowed()){
+      parallax.forEach(item=>{item.y=0;item.scale=1;item.media.style.removeProperty('--parallax-y');item.media.style.removeProperty('--parallax-scale');});
+      lastFrame=0;return;
+    }
+    // Time-based smoothing keeps the same feel on 60Hz and high-refresh screens.
+    const blend=1-Math.exp(-(lastFrame?Math.min(64,time-lastFrame):16.67)/95);
+    lastFrame=time;
     const height=innerHeight;
     const positions=parallax.filter(item=>visibleFrames.has(item.frame)).map(item=>{
       const rect=item.frame.getBoundingClientRect();
-      const limit=Math.min(48,rect.height*.08);
-      return {item,target:Math.max(-limit,Math.min(limit,(height/2-rect.top-rect.height/2)*.13))};
+      if(item.hero){
+        const progress=clamp((headerHeight-rect.top)/Math.max(1,rect.height),0,1);
+        return {item,target:progress*rect.height*item.travel,scale:1+progress*(desktopMotion.matches ? .08 : .04)};
+      }
+      const progress=clamp((height/2-rect.top-rect.height/2)/((height+rect.height)/2),-1,1);
+      return {item,target:progress*rect.height*item.travel,scale:1};
     });
     let settling=false;
-    positions.forEach(({item,target})=>{
-      item.y+=(target-item.y)*.18;
-      if(Math.abs(target-item.y)>.15)settling=true;
+    positions.forEach(({item,target,scale})=>{
+      item.y+=(target-item.y)*blend;
+      item.scale+=(scale-item.scale)*blend;
+      if(Math.abs(target-item.y)>.1||Math.abs(scale-item.scale)>.0001)settling=true;
       item.media.style.setProperty('--parallax-y',`${item.y.toFixed(2)}px`);
+      item.media.style.setProperty('--parallax-scale',item.scale.toFixed(4));
     });
     if(settling)parallaxTick=requestAnimationFrame(renderParallax);
+    else lastFrame=0;
   }
   function scheduleParallax(){if(!parallaxTick)parallaxTick=requestAnimationFrame(renderParallax);}
   if(parallax.length){
-    const visibility=new IntersectionObserver(entries=>{entries.forEach(entry=>entry.isIntersecting?visibleFrames.add(entry.target):visibleFrames.delete(entry.target));scheduleParallax();},{rootMargin:'80px'});
+    const visibility=new IntersectionObserver(entries=>{entries.forEach(entry=>{
+      entry.isIntersecting?visibleFrames.add(entry.target):visibleFrames.delete(entry.target);
+      entry.target.classList.toggle('motion-in-view',entry.isIntersecting);
+    });scheduleParallax();},{rootMargin:'80px'});
     parallax.forEach(item=>visibility.observe(item.frame));
-    addEventListener('scroll',scheduleParallax,{passive:true});addEventListener('resize',scheduleParallax,{passive:true});
-    document.addEventListener('visibilitychange',scheduleParallax);motionPreference.addEventListener('change',scheduleParallax);
-    new MutationObserver(scheduleParallax).observe(document.body,{attributes:true,attributeFilter:['class']});
+    addEventListener('scroll',scheduleParallax,{passive:true});addEventListener('resize',scheduleMotionLayout,{passive:true});
+    document.addEventListener('visibilitychange',scheduleMotionLayout);motionPreference.addEventListener('change',scheduleMotionLayout);
+    desktopMotion.addEventListener('change',scheduleMotionLayout);
+    new MutationObserver(scheduleMotionLayout).observe(document.body,{attributes:true,attributeFilter:['class']});
+    new MutationObserver(scheduleMotionLayout).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+    const resize=new ResizeObserver(scheduleMotionLayout);
+    [...anchoredCopy,...parallax.map(item=>item.frame),document.querySelector('body>.header')].filter(Boolean).forEach(element=>resize.observe(element));
+    scheduleMotionLayout();
   }
-  const cover=document.getElementById('review-cover-film');
-  document.querySelectorAll('[data-cover-film]').forEach(button=>button.addEventListener('click',()=>{
-    document.querySelectorAll('[data-cover-film]').forEach(option=>option.setAttribute('aria-pressed',String(option===button)));
-    cover.src=button.dataset.coverSource;cover.poster=button.dataset.coverPoster;cover.load();
-    const place=document.querySelector('.hero-place');
-    if(place)place.textContent=button.dataset.coverFilm==='country'?'El Oriente, Antioquia':button.dataset.coverFilm==='homes'?'Dulcinea One':'Medellín, Colombia';
-    document.getElementById('review-cover-caption').hidden=button.dataset.coverFilm!=='homes';
-    if(!document.body.classList.contains('is-paused'))cover.play().catch(()=>{});
-  }));
   const buttons=[...document.querySelectorAll('[data-property-filter]')];
   const previews=[...document.querySelectorAll('#home-films [data-preview-home]')];
   let filter='all';
