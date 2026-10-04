@@ -1,5 +1,9 @@
 # Independent Radisson-led redesign
 
+## Next pass — narrative review, 4 October 2026
+
+Follow [the current handoff](../docs/HANDOFF.md) and [the complete homepage narrative workflow](../docs/plans/2026-10-04-homepage-narrative-workflow.md). The typography pass is published as application `0bb9f62`, Worker version `26bdced0-c12c-464b-83b3-81261a93eced`. The user now requests clearer chapter progression, spacing and number hierarchy. That next plan is not yet implemented. The prior instruction below to lock the exact presentation order describes the earlier motion-only pass; the new narrative plan explicitly proposes regrouping scenes while preserving approved content and stable links.
+
 Approved build target: the user's explicit Radisson URL and complete independent-version brief. Direct build of that reference-locked direction; no replacement of production, no monochrome starting point.
 
 ## BelArosa motion application, 4 October 2026

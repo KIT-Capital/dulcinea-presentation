@@ -1,6 +1,10 @@
 # Homepage story expansion
 
-## Active revision — 2 October 2026 approved storyline
+## Current direction — 4 October 2026
+
+The user found the current homepage narrative fragmented despite the typography improvements. The [new narrative workflow](../docs/plans/2026-10-04-homepage-narrative-workflow.md) is the next implementation plan, not a deployed change. Start with the [current handoff](../docs/HANDOFF.md). The review currently has 19 main presentation entries and 17 active MP4s; the old orders, film counts and release identifiers below are historical. Preserve current approved team roles, financial values, media restrictions and continuous-video behavior.
+
+## Historical implementation — 2 October 2026 approved storyline
 
 The user approved implementation of `docs/plans/2026-10-02-001-refactor-lifestyle-storyline-plan.md`. This sequence supersedes the older slide counts, chapter orders and duplicated property browsing described below. It retains Dulcinea's approved palette, notebook-first proportions, current Lola & Ber brand treatment and existing media. Local build, browser and regression checks passed; the current results are in `docs/validation-2026-10-02-storyline.md`. Published and verified live as Cloudflare version 0a83835a-b6e4-487b-9910-a163cbd25687 (application commit 4268927). Historical verification entries below describe earlier revisions only.
 
