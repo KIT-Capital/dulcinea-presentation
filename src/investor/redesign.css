@@ -339,3 +339,20 @@ body:not(.is-presenting) .ownership-media{aspect-ratio:16/9;max-height:none}
 .ownership-media>video{position:static;inset:auto;width:100%;height:100%;object-fit:contain;transform:none}
 body.is-presenting[data-presentation-layout="canvas"] #ownership .ownership-media{height:auto;aspect-ratio:16/9;align-self:center}
 body.is-presenting[data-presentation-layout="responsive"] #ownership .ownership-media{height:auto;aspect-ratio:16/9}
+
+/* A regional outing uses its full frame so both faces stay visible. */
+body:not(.is-presenting) .regional-outing{background:var(--review-green);padding:0 var(--review-margin) 80px;display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:6vw;align-items:center;scroll-margin-top:calc(var(--header) + 24px)}
+.regional-outing-copy h2{margin:20px 0 24px}
+.regional-outing-copy>p:not(.micro){font-size:23px;line-height:1.5;max-width:28ch}
+.regional-outing-film{margin:0;min-width:0}
+.regional-outing-frame{width:100%;aspect-ratio:16/9;background:var(--ink);overflow:hidden}
+.regional-outing-frame>video{position:static;display:block;width:100%;height:100%;object-fit:contain;transform:none}
+.regional-outing-film figcaption{font-size:16px;line-height:1.5;padding-top:12px}
+body.is-presenting #main>.regional-outing.presentation-active{display:grid;grid-template-columns:400px minmax(0,1fr);gap:48px;align-items:center;background:var(--review-green)}
+body.is-presenting .regional-outing-copy h2{font-size:64px;line-height:1.06}
+body.is-presenting .regional-outing-copy>p:not(.micro){font-size:26px}
+body.is-presenting[data-presentation-layout="responsive"] #main>.regional-outing.presentation-active{display:flex;flex-direction:column;gap:28px;padding:36px 22px}
+body.is-presenting[data-presentation-layout="responsive"] .regional-outing-copy h2{font-size:42px}
+body.is-presenting[data-presentation-layout="responsive"] .regional-outing-copy>p:not(.micro){font-size:22px}
+body.is-presenting[data-presentation-layout="responsive"] .regional-outing-film{width:100%}
+@media(max-width:760px){body:not(.is-presenting) .regional-outing{display:flex;flex-direction:column;gap:28px;padding:0 24px 48px}.regional-outing-film{width:100%}}

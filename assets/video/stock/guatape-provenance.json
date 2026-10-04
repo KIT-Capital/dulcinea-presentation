@@ -1,0 +1,35 @@
+{
+  "id": "1164208469",
+  "subject": "A couple smiling and kissing by the Guatap\u00e9 reservoir",
+  "original_filename": "AdobeStock_1164208469.mov",
+  "original_metadata": {
+    "bytes": 29009225,
+    "sha256": "e384ffe270ebab2e2f8290eee642bc675bd819f53665f08bde367b11e4f04f58",
+    "duration_seconds": 9.17,
+    "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 3840x2160, 25264 kb/s, 29.99 fps, 30 tbr, 600 tbn (default)",
+    "audio_tracks": 0
+  },
+  "file": "assets/video/stock/AdobeStock_1164208469.mp4",
+  "optimized_metadata": {
+    "bytes": 3475628,
+    "sha256": "455c9825118991e1eb4eed19b2bdafa86456ab19dd98a33b8d97d972af1c62d9",
+    "duration_seconds": 9.17,
+    "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 3030 kb/s, 24 fps, 24 tbr, 12288 tbn (default)",
+    "audio_tracks": 0
+  },
+  "poster": "assets/video/stock/AdobeStock_1164208469-poster.jpg",
+  "poster_sha256": "b084a7b5c9a2b3d0742d65d222ad9d94900df3caa744ebf718559561dd73d5af",
+  "source_url": "https://stock.adobe.com/video/video-of-colombian-couple-in-love-in-guatape-dam-colombia-town-near-medellin-looking-at-camera-and-kissing/1164208469",
+  "rights": "Original Adobe Stock download supplied and selected by the user. No purchase made by the agent.",
+  "location_note": "Adobe identifies Guatap\u00e9 and a Colombian couple. This is a regional outing, not a portfolio property or American expat testimonial.",
+  "source_handling": "The unchanged full-quality original remains in private Dropbox. Repeated uploads with the same source hash are one stock identity.",
+  "render_script": "scripts/import-guatape-couple.py",
+  "validation": {
+    "full_stream_decode": "pass",
+    "decoded_frames": 220,
+    "fast_start": true,
+    "original_hash_unchanged": true,
+    "whole_frame_preserved": true,
+    "under_12_MB": true
+  }
+}

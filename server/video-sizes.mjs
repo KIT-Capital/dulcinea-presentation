@@ -9,6 +9,7 @@ export const videoSizes=Object.freeze({
   "/assets/video/review/city-life.mp4": 5897752,
   "/assets/video/review/lola-ber.mp4": 6738639,
   "/assets/video/review/oriente-landscape.mp4": 8028659,
+  "/assets/video/stock/AdobeStock_1164208469.mp4": 3475628,
   "/assets/video/stock/AdobeStock_1849343666.mp4": 8308715,
   "/assets/video/stock/AdobeStock_2118104932.mp4": 3670771,
   "/assets/video/stock/AdobeStock_514654455.mp4": 2779832,
