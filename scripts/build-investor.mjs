@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {toColombianSpanish} from './spanish.mjs';
 import {renderInvestorNavigation,renderInvestorReturn,investorNavigationCss,investorNavigationScript} from '../shared/investor-navigation.mjs';
 import {disclosures,homeDisclosure,fullDisclosure} from '../shared/investor-disclosures.mjs';
+import {investorFontCss} from '../shared/investor-typography.mjs';
 import {renderSpecialists} from '../shared/team.mjs';
 import {renderSocialMetadata,SOCIAL_IMAGE_PATH,SOCIAL_IMAGE_ES_PATH} from '../shared/social-metadata.mjs';
 
@@ -68,7 +69,8 @@ function resourceNavigation(markup,name,locale){
   if(markup.split('{{RESOURCE_NAVIGATION}}').length!==2) throw Error(`Expected one navigation marker: ${name}`);
   if(markup.split('{{RESOURCE_RETURN}}').length!==2) throw Error(`Expected one website return marker: ${name}`);
   const logo=web?darkLogo:(locale==='es'?'../':'')+darkLogo;
-  return markup.replace('</head>',`<style>${investorNavigationCss}</style></head>`)
+  const font=web?media['font-manrope.woff2']:(locale==='es'?'../':'')+media['font-manrope.woff2'];
+  return markup.replace('</head>',`<style>${investorNavigationCss}${investorFontCss(font)}</style></head>`)
     .replace('{{RESOURCE_NAVIGATION}}',renderInvestorNavigation({name,locale,web,logo}))
     .replace('{{RESOURCE_RETURN}}',renderInvestorReturn({name,locale,web}))
     .replace('</body>',`<script>${investorNavigationScript}</script></body>`);
@@ -98,6 +100,7 @@ for(const locale of ['en','es']){
     .replace('<link rel="stylesheet" href="homepage-story.css">',`<style>${storyStyles}</style>`)
     .replace('<link rel="stylesheet" href="typography.css">',`<style>${await read('src/investor/typography.css')}</style>`)
     .replace('<link rel="stylesheet" href="redesign.css">',`<style>${await read('src/investor/redesign.css')}</style>`)
+    .replace('</head>',`<link rel="preload" href="media/font-manrope.woff2" as="font" type="font/woff2" crossorigin><style>${investorFontCss('media/font-manrope.woff2')}</style></head>`)
     .replace(/(["'])media\/([^"']+)\1/g,(_,quote,name)=>{
       if(!localeMedia[name]) throw Error(`Unknown media alias: ${name}`);
       return quote+localeMedia[name]+quote;
