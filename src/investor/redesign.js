@@ -1,8 +1,41 @@
 (() => {
+  // Native scroll drives media only; the clipped overscan leaves text stationary.
+  const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+  const parallax=[...document.querySelectorAll('[data-parallax]')].map(media=>({media,frame:media.parentElement,y:0}));
+  const visibleFrames=new Set();
+  let parallaxTick=0;
+  const motionAllowed=()=>!motionPreference.matches&&!document.hidden&&!document.body.classList.contains('is-paused')&&!document.body.classList.contains('is-presenting');
+  function renderParallax(){
+    parallaxTick=0;
+    if(!motionAllowed()){parallax.forEach(item=>{item.y=0;item.media.style.removeProperty('--parallax-y');});return;}
+    const height=innerHeight;
+    const positions=parallax.filter(item=>visibleFrames.has(item.frame)).map(item=>{
+      const rect=item.frame.getBoundingClientRect();
+      const limit=Math.min(48,rect.height*.08);
+      return {item,target:Math.max(-limit,Math.min(limit,(height/2-rect.top-rect.height/2)*.13))};
+    });
+    let settling=false;
+    positions.forEach(({item,target})=>{
+      item.y+=(target-item.y)*.18;
+      if(Math.abs(target-item.y)>.15)settling=true;
+      item.media.style.setProperty('--parallax-y',`${item.y.toFixed(2)}px`);
+    });
+    if(settling)parallaxTick=requestAnimationFrame(renderParallax);
+  }
+  function scheduleParallax(){if(!parallaxTick)parallaxTick=requestAnimationFrame(renderParallax);}
+  if(parallax.length){
+    const visibility=new IntersectionObserver(entries=>{entries.forEach(entry=>entry.isIntersecting?visibleFrames.add(entry.target):visibleFrames.delete(entry.target));scheduleParallax();},{rootMargin:'80px'});
+    parallax.forEach(item=>visibility.observe(item.frame));
+    addEventListener('scroll',scheduleParallax,{passive:true});addEventListener('resize',scheduleParallax,{passive:true});
+    document.addEventListener('visibilitychange',scheduleParallax);motionPreference.addEventListener('change',scheduleParallax);
+    new MutationObserver(scheduleParallax).observe(document.body,{attributes:true,attributeFilter:['class']});
+  }
   const cover=document.getElementById('review-cover-film');
   document.querySelectorAll('[data-cover-film]').forEach(button=>button.addEventListener('click',()=>{
     document.querySelectorAll('[data-cover-film]').forEach(option=>option.setAttribute('aria-pressed',String(option===button)));
     cover.src=button.dataset.coverSource;cover.poster=button.dataset.coverPoster;cover.load();
+    const place=document.querySelector('.hero-place');
+    if(place)place.textContent=button.dataset.coverFilm==='country'?'El Oriente, Antioquia':button.dataset.coverFilm==='homes'?'Dulcinea One':'Medellín, Colombia';
     document.getElementById('review-cover-caption').hidden=button.dataset.coverFilm!=='homes';
     if(!document.body.classList.contains('is-paused'))cover.play().catch(()=>{});
   }));
