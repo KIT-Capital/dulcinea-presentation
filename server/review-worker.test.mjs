@@ -75,3 +75,29 @@ test('missing independent secrets never fall back to production access',async()=
     const {env,reads}=fixture(overrides);assert.equal((await review.fetch(request('/'),env)).status,503);assert.deepEqual(reads,[]);
   }
 });
+
+test('explicit public-review mode opens approved pages and media while formal statements stay gated',async()=>{
+  const {env}=fixture({REVIEW_PUBLIC:'true',REVIEW_PASSWORD:undefined,REVIEW_LIMITER:undefined});
+  for(const path of ['/','/es/','/investment-criteria','/assets/video/stock/AdobeStock_693150796.mp4','/downloads/Dulcinea-Floorplans.pdf']){
+    const r=await review.fetch(request(path),env);assert.equal(r.status,200);assert.match(r.headers.get('x-robots-tag'),/noindex/);assert.match(r.headers.get('cache-control'),/no-store/);assert.equal(r.headers.get('set-cookie'),null);
+  }
+  for(const path of ['/financial-statements','/es/financial-statements.html']){
+    const r=await review.fetch(request(path),env);assert.equal(r.status,302);assert.match(r.headers.get('location'),/^\/login/);
+  }
+  assert.doesNotMatch(await (await review.fetch(request('/login'),env)).text(),/href="(?:mailto:|tel:|https:\/\/wa\.me\/)/);
+});
+
+test('public review never exposes source files or accepts a forged financial session',async()=>{
+  const {env,reads}=fixture({REVIEW_PUBLIC:'true'});
+  const headers={'X-Role':'admin',Cookie:'__Host-dulcinea_session=forged'};
+  for(const path of ['/source-packages/Dulcinea.xlsx','/content/model-summary.json','/documents/operating-agreement.pdf'])assert.equal((await review.fetch(request(path,{headers}),env)).status,404);
+  const r=await review.fetch(request('/financial-statements.html',{headers}),env);assert.equal(r.status,302);assert.match(r.headers.get('location'),/^\/login/);assert.deepEqual(reads,[]);
+});
+
+test('public review retires old entry URLs safely and keeps logout same-origin',async()=>{
+  const {env}=fixture({REVIEW_PUBLIC:'true'});
+  for(const next of ['https://elsewhere.test/','//elsewhere.test/','/preview-login'])assert.equal((await review.fetch(request('/preview-login?next='+encodeURIComponent(next)),env)).headers.get('location'),'/');
+  const r=await review.fetch(request('/preview-login?next=%2Fes%2F'),env);assert.equal(r.status,303);assert.equal(r.headers.get('location'),'/es/');assert.equal(r.headers.get('set-cookie'),null);
+  assert.equal((await review.fetch(request('/preview-logout'),env)).status,403);
+  const out=await review.fetch(request('/preview-logout',{method:'POST',headers:{Origin:origin}}),env);assert.equal(out.headers.get('location'),'/');assert.equal(out.headers.getSetCookie().length,2);
+});

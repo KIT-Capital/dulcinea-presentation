@@ -2,6 +2,10 @@
 
 Approved build target: the user's explicit Radisson URL and complete independent-version brief. Direct build of that reference-locked direction; no replacement of production, no monochrome starting point.
 
+## Review access update, 4 October 2026
+
+The user explicitly requested removal of the review-site password. Both review-only configs now set REVIEW_PUBLIC=true. The website, approved media, floorplan PDF, criteria and presentation open directly. Formal financial statements and reserved future private downloads continue through the existing isolated investor gate; company/legal and financial source files remain blocked for everyone. The retired /preview-login URL redirects safely to the requested internal page. No-index/no-store headers, inert contact actions and the absence of shared writable services remain. This authorized change supersedes the earlier whole-review-password requirement for this review Worker only. Production is untouched. The earlier protected review revisions and restore evidence remain archived. Three additional access tests verify the public entry, protected statements/source files, safe redirects and logout (47 server tests total).
+
 ## Composition correction, 4 October 2026
 
 The first review (368090e) retained too much of the original composition. The user correctly identified that it looked like the current site. This pass changes the composition and interaction, not the approved content.

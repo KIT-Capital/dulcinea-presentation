@@ -17,12 +17,14 @@ function gate(next='/',es=false,error=''){
 }
 export default {async fetch(request,env,ctx){
  const url=new URL(request.url);const es=url.searchParams.get('lang')==='es'||url.pathname.startsWith('/es/');
+ const publicReview=env.REVIEW_PUBLIC==='true';
  if(url.protocol!=='https:'&&!['localhost','127.0.0.1'].includes(url.hostname))return secured('HTTPS required',400);
  if(url.pathname==='/robots.txt')return secured(request.method==='HEAD'?null:'User-agent: *\nDisallow: /\n',200,{'Content-Type':'text/plain'});
- if(!env.REVIEW_PASSWORD||env.REVIEW_PASSWORD.length<16||!env.SESSION_SECRET||env.SESSION_SECRET.length<32)return secured('Preview access is unavailable.',503);
+ if(!publicReview&&(!env.REVIEW_PASSWORD||env.REVIEW_PASSWORD.length<16||!env.SESSION_SECRET||env.SESSION_SECRET.length<32))return secured('Preview access is unavailable.',503);
  if(url.pathname==='/gate-assets/logo.svg'&&['GET','HEAD'].includes(request.method))return investor.fetch(request,env,ctx);
  if(url.pathname==='/preview-login'){
    const next=nextPath(url.searchParams.get('next')||'/');
+   if(publicReview)return secured(null,303,{Location:next});
    if(request.method==='GET')return secured(gate(next,es));
    if(request.method!=='POST')return secured('Method not allowed',405,{Allow:'GET, POST'});
    if(request.headers.get('Origin')!==url.origin)return secured('Use the preview sign-in form.',403);
@@ -39,11 +41,11 @@ export default {async fetch(request,env,ctx){
  }
  if(url.pathname==='/preview-logout'){
    if(request.method!=='POST'||request.headers.get('Origin')!==url.origin)return secured('Use the preview sign-out form.',403);
-   const response=secured(null,303,{Location:'/preview-login','Set-Cookie':`${cookieName}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`});
+   const response=secured(null,303,{Location:publicReview?'/':'/preview-login','Set-Cookie':`${cookieName}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`});
    response.headers.append('Set-Cookie','__Host-dulcinea_session=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0');
    return response;
  }
- if(!await valid(request,env))return secured(null,302,{Location:'/preview-login?next='+encodeURIComponent(url.pathname+url.search)});
+ if(!publicReview&&!await valid(request,env))return secured(null,302,{Location:'/preview-login?next='+encodeURIComponent(url.pathname+url.search)});
  // Inner financial gate retains its own isolated secrets and checks. No fetch,
  // database, production service binding or contact automation is added here.
  const response=await investor.fetch(request,env,ctx);

@@ -13,7 +13,7 @@
     "html_handling": "none",
     "not_found_handling": "404-page"
   },
-  "vars": {"PREVIEW_ONLY": "false", "REVIEW_SITE": "true"},
+  "vars": {"PREVIEW_ONLY": "false", "REVIEW_SITE": "true", "REVIEW_PUBLIC": "true"},
   "ratelimits": [
     {"name": "LOGIN_LIMITER", "namespace_id": "92620301", "simple": {"limit": 8, "period": 60}},
     {"name": "REVIEW_LIMITER", "namespace_id": "92620302", "simple": {"limit": 8, "period": 60}}

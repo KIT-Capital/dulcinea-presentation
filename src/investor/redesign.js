@@ -82,9 +82,4 @@
     dialog.querySelector('p').textContent=es?'El contacto está desactivado en esta versión de comparación. No se envía ningún mensaje. Use el sitio actual para contactar al equipo.':'Contact is disabled in this comparison version. No message is sent. Use the current website to contact the team.';
     dialog.querySelector('button').textContent=es?'Cerrar':'Close';dialog.showModal();
   });
-  const exit=document.createElement('form');exit.method='post';exit.action='/preview-logout';exit.className='review-exit-form';
-  const exitButton=document.createElement('button');exitButton.type='submit';exitButton.className='review-exit';exit.append(exitButton);
-  (document.querySelector('.contact footer')||document.querySelector('footer')||document.body).append(exit);
-  const update=()=>exitButton.textContent=document.documentElement.lang==='es'?'Salir de la revisión':'Sign out of review';
-  document.addEventListener('dulcinea:language',update);update();
 })();
