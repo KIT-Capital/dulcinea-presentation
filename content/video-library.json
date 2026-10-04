@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-10-04",
+  "stock_clips": [
+    {
+      "stock_id": "160473464",
+      "canonical_mp4": "assets/video/stock/AdobeStock_160473464.mp4"
+    },
+    {
+      "stock_id": "1849343666",
+      "canonical_mp4": "assets/video/stock/AdobeStock_1849343666.mp4"
+    },
+    {
+      "stock_id": "417029984",
+      "canonical_mp4": "assets/video/stock/AdobeStock_417029984.mp4"
+    },
+    {
+      "stock_id": "501694199",
+      "canonical_mp4": "assets/video/stock/AdobeStock_501694199.mp4"
+    },
+    {
+      "stock_id": "514654455",
+      "canonical_mp4": "assets/video/stock/AdobeStock_514654455.mp4"
+    },
+    {
+      "stock_id": "539938219",
+      "canonical_mp4": "assets/video/stock/AdobeStock_539938219.mp4"
+    },
+    {
+      "stock_id": "665115389",
+      "canonical_mp4": "assets/video/stock/AdobeStock_665115389.mp4"
+    },
+    {
+      "stock_id": "693150796",
+      "canonical_mp4": "assets/video/stock/AdobeStock_693150796.mp4"
+    },
+    {
+      "stock_id": "695926335",
+      "canonical_mp4": "assets/video/stock/AdobeStock_695926335.mp4"
+    },
+    {
+      "stock_id": "727024520",
+      "canonical_mp4": "assets/video/stock/AdobeStock_727024520.mp4"
+    },
+    {
+      "stock_id": "762119818",
+      "canonical_mp4": "assets/video/stock/AdobeStock_762119818.mp4"
+    },
+    {
+      "stock_id": "787505338",
+      "canonical_mp4": "assets/video/stock/AdobeStock_787505338.mp4"
+    },
+    {
+      "stock_id": "80490822",
+      "canonical_mp4": "assets/video/stock/AdobeStock_80490822.mp4"
+    },
+    {
+      "stock_id": "807462744",
+      "canonical_mp4": "assets/video/stock/AdobeStock_807462744.mp4"
+    }
+  ],
+  "repository_videos": [
+    {
+      "path": "assets/video/dulcinea-introduction.mp4",
+      "bytes": 16569873,
+      "sha256": "76fba68b33b22f42e611fd2f1c928b61d553dc804717cf2ef9e08a57ca7b633e",
+      "git_blob": "687db05b67cd4be9ab01b0372b76991732b35e6f",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/hospitality-people.mp4",
+      "bytes": 3610404,
+      "sha256": "a1696e67dcc5ee1c6fc65e164eeab3305b71e76ce99515642ea5733f4dd1e480",
+      "git_blob": "a19680e9ec4353e83b9823e6bf6addbe22c5a462",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/medellin-after-dark.mp4",
+      "bytes": 2242720,
+      "sha256": "1ee4b31469759a863d1bffce800ab222dc110f2947024f4826ebb8bf9f7b21e8",
+      "git_blob": "70751bb930ea638da5caee49de3e07e2da1c4e74",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/medellin-location.mp4",
+      "bytes": 7008282,
+      "sha256": "5465fa84d85e0282559b540725759e14886c4c6a64b15820f2f1c4fbf7e998ef",
+      "git_blob": "451ff005f99b35ae1b21af7f87a9fa4f84a5167e",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/medellin-nightlife.mp4",
+      "bytes": 1601565,
+      "sha256": "a472d8c8f2a506c80be72d20422b79ad6aa7fd756b30afc57e336cf4384c6297",
+      "git_blob": "f368cb582ff1c84ab0aa2b06189a3f9ddca7d07c",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/oriente-country.mp4",
+      "bytes": 5959425,
+      "sha256": "a2ba0f45ef1f7ce32948c2fb14c96a90857b81863beae9e17b6feb8341df08ac",
+      "git_blob": "acfc95cf338c70e0edddf36a7f5016d518a8e894",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/properties/aires.mp4",
+      "bytes": 1625531,
+      "sha256": "393b73d4e38409e1ab5676c04a8b66835a62f9695eb18236816b41e07afc1b44",
+      "git_blob": "d8c7a0df80bea4d7b843a52a4f32e541c05e4cd9",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/properties/fontanar.mp4",
+      "bytes": 1075890,
+      "sha256": "5e3f5d4bb161215e0c79190373a2dabce6e4e3e4887d682f1e4ff888b586baab",
+      "git_blob": "7ee2e5c86115ba6069f577a110960b20c9dc4d4b",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/properties/montana.mp4",
+      "bytes": 1662892,
+      "sha256": "4615ecce7191acff9b615165efe67fda63c1b64fa036d7f3d02c5ef262d4aced",
+      "git_blob": "2a40216547c14cb8c859f24e5c4503b70d8d43a5",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/properties/monte-sereno.mp4",
+      "bytes": 1698801,
+      "sha256": "8613aa411553e3183e26ee1f5ccdc135886f3034938f16990180047d8aea03ef",
+      "git_blob": "4dbc054d5af68dc2c357575337ffb596163a0941",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/properties/san-lucas.mp4",
+      "bytes": 1669910,
+      "sha256": "f83fbbf5fb1cc945067e16ac63a7d4eec910ef6334d88e6f68c3c8f083bad171",
+      "git_blob": "4b3bef2df552d2f8cccdf140e602f55c11d76763",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/review/after-dark.mp4",
+      "bytes": 4463116,
+      "sha256": "052e18b97e3f34c65924b40ece356bcc570ebc960393632b2e501a4a7e4eb428",
+      "git_blob": "92499896071db389e0d9703630db3b2b633e34df",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/review/city-life.mp4",
+      "bytes": 5897752,
+      "sha256": "e8810754ca88e8e57f7d0d780b1542815780b650be3f386b3c49e6a2ba0639e4",
+      "git_blob": "cf8a89c3f79b951220986d0c360f0e5ceaf6f8cb",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/review/lola-ber.mp4",
+      "bytes": 6738639,
+      "sha256": "09e93d3151d2a04a2926e1ff412954cab4d97d12e3c2f74f64f381b484b50daa",
+      "git_blob": "461eabbe9ff405f2958fb819949e53cabe0de7e9",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/review/oriente-landscape.mp4",
+      "bytes": 8028659,
+      "sha256": "06e6f7d9199aa6a1081ade68f304952d9e226966f2c9833d1ec7282316565131",
+      "git_blob": "e184fbd6f594c802f9c5d03312887f15fb0ad84f",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_160473464.mp4",
+      "bytes": 3062513,
+      "sha256": "58103e37fb50a21259aeec1768601fa339dcb95715de8ebe03322a89b6502fde",
+      "git_blob": "cd20e1b14c111a18641010cf19bca7f500e17725",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_1849343666.mp4",
+      "bytes": 8308715,
+      "sha256": "4dbc26061bb64d7bbfd51326db78c7643ac863f4b890e73a4dcf1c63b94285ee",
+      "git_blob": "74985d1472ee3966d3e27ef4ad66660406b26fc4",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_417029984.mp4",
+      "bytes": 1550314,
+      "sha256": "007826f667d3ed5650de4f6b762eb920f806e298ab25ad532b000355cced66f6",
+      "git_blob": "d6ee8e892984e38e546504d6fdfe723e6a892fb3",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_501694199.mp4",
+      "bytes": 15441251,
+      "sha256": "70f652ccf8c23b939393e8ecb893f5bd37e68098ab37c84bebfcf3c6c14cb528",
+      "git_blob": "9ccf909952c994fc9f0eabbff601259a8fa534c2",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_514654455.mp4",
+      "bytes": 2779832,
+      "sha256": "3e65e9fbbd3c08d27ea8080eb0df88b0015c57aae951ff8da28918b2a3325e65",
+      "git_blob": "ada5e660f60e11caf94d85ac570a97cd3a20a3ac",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_539938219.mp4",
+      "bytes": 1309712,
+      "sha256": "53601cf0531b444e08ece51269f0672c8c3f48cfa98d4185db4caab4625ca0b9",
+      "git_blob": "4ae10a44adb4701f6c7316d09aa3f39b9c353067",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_665115389.mp4",
+      "bytes": 7804919,
+      "sha256": "2161d8369ffc57ac56c917460cc76b1ba809c19ae442b38fb6ecb790201bf7e4",
+      "git_blob": "21ed05745bb75413cb45bd57a26eb09ef9b85c38",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_693150796.mp4",
+      "bytes": 10790034,
+      "sha256": "b9b7e410f4a4c3fd19865f7dbb584c7b4d30455b8bbf9d71bce9c071e3349db2",
+      "git_blob": "cf3bb3abf654319fb68472bc8e05c852c1ffcac3",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_695926335.mp4",
+      "bytes": 16350907,
+      "sha256": "858021ca7450532ea4d73b27f7a0d7bd9797209c3c7874836487cf13a992929e",
+      "git_blob": "cb747f4196e0b874a7260d96b0c9c5a096d59ba3",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_727024520.mp4",
+      "bytes": 1966511,
+      "sha256": "3080650ac0e90c803973ffbbda6425870aa14040e7140e3da2a267f8534d1539",
+      "git_blob": "070d0f67f06db115c9dcbc0e1620e25ce3b430b6",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_762119818.mp4",
+      "bytes": 1473225,
+      "sha256": "7d50539838617d04e63cfa33b193057426b1dbbee42a2fa5563b2c99fa3a2b59",
+      "git_blob": "3ffd1ab1e62b8f3860851f18f244a6be7389726c",
+      "remote_verified": true,
+      "status": "active"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_787505338.mp4",
+      "bytes": 3068971,
+      "sha256": "1b21e20b1187bc79d3e5e6e2aaf1ded7002f01d8f25cf3ae36b521df711785de",
+      "git_blob": "95e5dfd1ec9d714c8ffd80f9ea4600d085b9ce43",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_80490822.mp4",
+      "bytes": 3572890,
+      "sha256": "02ca107f00a372198ee11c26e5f4c85a7e97a6657cc96877cb94b891c68a3e39",
+      "git_blob": "7c3f831a2a1cd75ad0b560c07b05d0181086fc1d",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_807462744.mp4",
+      "bytes": 483655,
+      "sha256": "acacd4ec6eff9cb373bf66e1c2f3d0380929b44cc54e02d4332a45a903aea731",
+      "git_blob": "e47053cf3f9d433101726774f1c310d69d42fc03",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock-photo-city.mp4",
+      "bytes": 2492422,
+      "sha256": "9d103291db71e708be80a4b2440c84ea72a89da555552e208b76dc872133db19",
+      "git_blob": "f4bbd338857848a226c770036145aa551147ccfc",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    },
+    {
+      "path": "assets/video/stock-photo-evening.mp4",
+      "bytes": 297386,
+      "sha256": "e148e6233ac2c940aadd30a8d24e68b275b2ed9a3b9e209bdf31ee59e65f3dda",
+      "git_blob": "a3225303758295fe6a76e12c55ef327996c21b1f",
+      "remote_verified": true,
+      "status": "retained-for-future-use"
+    }
+  ],
+  "private_archive": {
+    "filename": "Dulcinea-Video-Library-2026-10-04.zip",
+    "unique_video_entries": 35,
+    "sha256": "07cc99100f96090efc942041751907db0413f0b745775c10de706cccb592ee93"
+  },
+  "policy": "One canonical MP4 per stock ID. Source versions and edited films are linked through provenance; inactive films are retained for reuse. Private full-length sources stay out of the public build."
+}

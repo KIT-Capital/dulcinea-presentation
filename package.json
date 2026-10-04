@@ -9,6 +9,7 @@
     "build:site": "node scripts/build.mjs --web",
     "test": "node --test server/*.test.mjs",
     "verify": "node scripts/verify-investor-build.mjs",
+    "verify:videos": "node scripts/verify-video-library.mjs",
     "deploy:review": "node scripts/deploy-review.mjs"
   }
 }
