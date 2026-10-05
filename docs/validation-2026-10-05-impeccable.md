@@ -96,3 +96,12 @@ User reported missing hero logos and requested transparent backgrounds. Removed 
 - Browser: desktop website and canvas opening slide, 390x844 mobile website and Spanish responsive opening slide inspected. Three brand images loaded, row background computed transparent, mobile had no horizontal overflow, logos fit within the slide.
 - Live EN and ES homepages returned 200 and matched local build SHA-256 exactly after publication.
 - Financial content, contact destinations, original media and access configuration unchanged.
+
+## Lower hero layout — 5 October 2026
+
+At the user's request, moved the transparent logos to the lower-right and the non-interactive scroll prompt farther down to the hero's lower-left. On phones, the cue stacks above the right-aligned logos. The opening slide retains lower-right logos and hides the website-only scrolling cue.
+
+- Application `2ca4b7b`; production Worker `9ed56a8c-ad1b-45f8-8a00-dde160a36891`.
+- Production build/verifier and diff whitespace check passed. Server behavior unchanged from the preceding 47-test pass.
+- Browser verified desktop website and opening canvas slide, plus EN/ES 390x844 mobile websites. Mobile content width matched the viewport; logos stayed 40px above the hero bottom. No overlaps with eligibility or the reading cue.
+- Live EN/ES homepage status 200; SHA-256 matched the built files exactly.
