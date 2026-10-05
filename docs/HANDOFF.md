@@ -8,7 +8,7 @@ Updated 5 October 2026. The user approved canonical publication and GitHub synch
 - Production Worker: `dulcinea-investor-presentation`.
 - Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main`. The user explicitly authorized committing and pushing the canonical source after publication.
 - Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
-- Published and verified: application `10e04c29390813da9c159cbced6340b87bd282b6`; Worker version `9b23653c-9127-4c2a-a220-7eff23efb6d0`. See `docs/validation-2026-10-04-canonical.md`.
+- Published and verified: application `f77c5e0b92ae0cefa511273c93899faa398837a4`; Worker version `53f7a6ea-2777-49ad-8353-8625671c9cf6`. See `docs/validation-2026-10-05-opening.md`. The original canonical release is recorded in `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
 Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. The 5 October refinement leads with a large Dulcinea One title and explains the fund before the three member benefits. The lake outing is removed, nightlife uses a full-width film, and Lola & Ber uses the shared Manrope typography. “Profit share from future funds” explains conditional participation in Dulcinea’s share of profits, without inventing an allocation denominator. See `docs/validation-2026-10-05-opening.md` for checks. Homes, operating approach and all four core team members precede returns and the offer.

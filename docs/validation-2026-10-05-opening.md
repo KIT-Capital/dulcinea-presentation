@@ -20,4 +20,11 @@ The user requested a larger Dulcinea One title, an explanation of the fund befor
 - KIT voice checks on the revised opening and benefit explanation passed with zero failures or warnings. A separate agent reviewed narrative dependencies, wording precision and the final diff.
 - Screenshots and provider/source backups are private in the parent workspace's `preservation/2026-10-05/opening-refinement/` folder. Previous production Worker: `9b23653c-9127-4c2a-a220-7eff23efb6d0`.
 
-Publication identifiers and live verification are recorded after deployment.
+## Published release
+
+- Application commit: `f77c5e0b92ae0cefa511273c93899faa398837a4`.
+- Worker version: `53f7a6ea-2777-49ad-8353-8625671c9cf6`.
+- Canonical URL: https://invest.dulcineainvestments.org/.
+- Eight public EN/ES pages matched the built files exactly. Public floorplans returned 200; the nightlife film returned a correct 1024-byte range with status 206.
+- Financial routes and aliases still redirect unauthenticated visitors to login. An incorrect password was rejected; the existing password opened both languages; sign-out expired the session cookie. No secrets changed.
+- Source/private paths returned 404. Provider binding names/types and the independent review deployment remained unchanged.
