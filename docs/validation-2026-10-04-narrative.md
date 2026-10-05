@@ -1,5 +1,7 @@
 # Narrative implementation — 4 October 2026
 
+Historical local-review record. The subsequent user-approved canonical publication is recorded in [canonical release validation](validation-2026-10-04-canonical.md).
+
 Implemented the seven-chapter homepage and the 18-slide presentation in the independent review version. Family stays and three member benefits lead; destinations, the five homes, operating approach and team precede projected returns and the offer. English and Colombian Spanish retain approved financial figures, terms and property content.
 
 ## Verification

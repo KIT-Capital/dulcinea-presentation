@@ -6,9 +6,9 @@ Updated 4 October 2026. The user approved the local preview, requested a final A
 
 - Canonical website: https://invest.dulcineainvestments.org/
 - Production Worker: `dulcinea-investor-presentation`.
-- Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main` after release promotion.
-- Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; promotion originates from `codex/radisson-independent`.
-- Publication status: final candidate approved by user; see `docs/validation-2026-10-04-canonical.md` for completed release status and revision.
+- Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, local branch `main`; remote `main` synchronization awaits explicit approval after automatic approval review rejected the push.
+- Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
+- Published and verified: application `10e04c29390813da9c159cbced6340b87bd282b6`; Worker version `9b23653c-9127-4c2a-a220-7eff23efb6d0`. See `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
 Astra reviewed the seven-chapter homepage and 18-slide presentation. The final pass keeps the accepted full-bleed opening, shows all three member benefits, removes vague copy and redundant labels, fixes Spanish menu accents, restores natural film framing and moves the phone pause control out of the prose. Homes, operating approach and all four core team members precede returns and the offer.
