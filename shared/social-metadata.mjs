@@ -1,5 +1,6 @@
-// One share card for the public access gate and the authenticated investor site.
-export const SOCIAL_ORIGIN = 'https://dulcinea-design-review.norfolk-ai.workers.dev';
+// Canonical production metadata; review builds select their origin explicitly.
+export const SOCIAL_ORIGIN = 'https://invest.dulcineainvestments.org';
+export const REVIEW_ORIGIN = 'https://dulcinea-design-review.norfolk-ai.workers.dev';
 export const SOCIAL_IMAGE_PATH = '/assets/social/dulcinea-one-medellin-v2.jpg';
 export const SOCIAL_IMAGE_ES_PATH = '/assets/social/dulcinea-one-medellin-es-v2.jpg';
 export const SOCIAL_VIDEO_PATH = '/assets/video/stock/AdobeStock_693150796.mp4';
@@ -8,7 +9,7 @@ const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[character]);
 
-export function socialMetadata(language = 'en') {
+export function socialMetadata(language = 'en', { origin = SOCIAL_ORIGIN } = {}) {
   const es = language === 'es';
   return {
     title: es ? 'Dulcinea One | Propiedades en Medellín y el Oriente' : 'Dulcinea One | Homes in Medellín and El Oriente',
@@ -18,19 +19,19 @@ export function socialMetadata(language = 'en') {
     imageAlt: es
       ? 'Dulcinea One: cinco propiedades, un portafolio, con Medellín y sus montañas de fondo.'
       : 'Dulcinea One: five homes, one portfolio, with Medellín and its mountains in the background.',
-    url: `${SOCIAL_ORIGIN}${es ? '/es/' : '/'}`,
+    url: `${origin}${es ? '/es/' : '/'}`,
     locale: es ? 'es_CO' : 'en_US',
     alternateLocale: es ? 'en_US' : 'es_CO',
     imagePath: es ? SOCIAL_IMAGE_ES_PATH : SOCIAL_IMAGE_PATH,
   };
 }
 
-export function renderSocialMetadata(language = 'en', { includeDocumentMetadata = false } = {}) {
-  const card = socialMetadata(language);
+export function renderSocialMetadata(language = 'en', { includeDocumentMetadata = false, origin = SOCIAL_ORIGIN } = {}) {
+  const card = socialMetadata(language, { origin });
   const property = (name, value) => `<meta property="${name}" content="${escapeHtml(value)}">`;
   const named = (name, value) => `<meta name="${name}" content="${escapeHtml(value)}">`;
-  const image = `${SOCIAL_ORIGIN}${card.imagePath}`;
-  const video = `${SOCIAL_ORIGIN}${SOCIAL_VIDEO_PATH}`;
+  const image = `${origin}${card.imagePath}`;
+  const video = `${origin}${SOCIAL_VIDEO_PATH}`;
   return [
     ...(includeDocumentMetadata ? [`<title>${escapeHtml(card.title)}</title>`, named('description', card.description)] : []),
     `<link rel="canonical" href="${card.url}">`,

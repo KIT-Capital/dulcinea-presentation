@@ -1,11 +1,13 @@
 {
-  "name": "dulcinea-design-review",
+  "name": "dulcinea-investor-presentation",
   "account_id": "691c05eedd282317f3311e441d77a007",
-  "main": "server/review-worker.mjs",
+  "main": "server/worker.mjs",
   "compatibility_date": "2026-09-26",
-  "workers_dev": true,
+  "workers_dev": false,
   "preview_urls": false,
-  "routes": [],
+  "routes": [
+    { "pattern": "invest.dulcineainvestments.org", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./dist/private-site",
     "binding": "ASSETS",
@@ -13,10 +15,9 @@
     "html_handling": "none",
     "not_found_handling": "404-page"
   },
-  "vars": {"PREVIEW_ONLY": "false", "REVIEW_SITE": "true", "REVIEW_PUBLIC": "true"},
+  "vars": { "PREVIEW_ONLY": "false" },
   "ratelimits": [
-    {"name": "LOGIN_LIMITER", "namespace_id": "92620301", "simple": {"limit": 8, "period": 60}},
-    {"name": "REVIEW_LIMITER", "namespace_id": "92620302", "simple": {"limit": 8, "period": 60}}
+    { "name": "LOGIN_LIMITER", "namespace_id": "92620261", "simple": { "limit": 8, "period": 60 } }
   ],
   "observability": {"enabled": false}
 }

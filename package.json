@@ -7,9 +7,12 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:site": "node scripts/build.mjs --web",
+    "build:review": "node scripts/build.mjs --web --review",
     "test": "node --test server/*.test.mjs",
     "verify": "node scripts/verify-investor-build.mjs",
+    "verify:review": "node scripts/verify-investor-build.mjs --review",
     "verify:videos": "node scripts/verify-video-library.mjs",
-    "deploy:review": "node scripts/deploy-review.mjs"
+    "deploy:review": "node scripts/deploy-review.mjs",
+    "deploy:production": "node scripts/deploy-production.mjs"
   }
 }

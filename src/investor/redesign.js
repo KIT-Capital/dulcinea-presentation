@@ -105,7 +105,8 @@
   });
   window.addEventListener('dulcinea:presentation-slide',()=>applyFilter('all'));
 
-  // Contact actions are deliberately inert in the comparison version.
+  // Only an explicitly built review version carries inert contact targets.
+  if(!document.querySelector('[data-preview-contact]'))return;
   const dialog=document.createElement('dialog');dialog.className='preview-contact-dialog';
   dialog.setAttribute('aria-labelledby','review-contact-heading');
   dialog.innerHTML='<h2 id="review-contact-heading"></h2><p></p><button type="button"></button>';
@@ -118,4 +119,20 @@
     dialog.querySelector('p').textContent=es?'El contacto está desactivado en esta versión de comparación. No se envía ningún mensaje. Use el sitio actual para contactar al equipo.':'Contact is disabled in this comparison version. No message is sent. Use the current website to contact the team.';
     dialog.querySelector('button').textContent=es?'Cerrar':'Close';dialog.showModal();
   });
+})();
+
+// The chapter guide follows native scrolling, including the scenes within each chapter.
+(() => {
+ const links=[...document.querySelectorAll('.chapter-link')];
+ const starts=links.map(link=>({link,section:document.querySelector(link.getAttribute('href'))})).filter(item=>item.section);
+ let pending=0;
+ function update(){
+  pending=0;if(document.body.classList.contains('is-presenting'))return;
+  const threshold=(document.querySelector('.header')?.offsetHeight||80)+120;
+  let current=starts[0];for(const item of starts)if(item.section.getBoundingClientRect().top<=threshold)current=item;
+  const label=document.querySelector('.chapter-current');if(label&&current)label.textContent=current.link.querySelector('[data-en]')?.textContent||current.link.textContent;
+  for(const item of starts){if(item===current)item.link.setAttribute('aria-current','location');else item.link.removeAttribute('aria-current');}
+ }
+ function schedule(){if(!pending)pending=requestAnimationFrame(update);}
+ addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});addEventListener('hashchange',schedule);new MutationObserver(schedule).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});update();
 })();

@@ -40,7 +40,10 @@ test('valid review session serves the website but formal statements retain the i
 test('inner login also keeps contact actions inert in the review',async()=>{
   const {env}=fixture();const headers={Cookie:await cookie(env)};
   const response=await review.fetch(request('/login',{headers}),env);
-  assert.equal(response.status,200);assert.doesNotMatch(await response.text(),/href="(?:mailto:|tel:|https:\/\/wa\.me\/)/);
+  const html=await response.text();
+  assert.equal(response.status,200);assert.doesNotMatch(html,/href="(?:mailto:|tel:|https:\/\/wa\.me\/)/);
+  assert.match(html,/<link rel="canonical" href="https:\/\/dulcinea-design-review\.norfolk-ai\.workers\.dev\/">/);
+  assert.ok(html.includes('font-family:Manrope'));
   assert.equal(response.headers.get('referrer-policy'),'same-origin');
 });
 test('production-style, malformed and tampered cookies do not grant review access',async()=>{

@@ -7,20 +7,23 @@ import { Script } from 'node:vm';
 import { videoSizes } from '../server/video-sizes.mjs';
 import { assetPolicy } from '../server/access-policy.mjs';
 import { publicAssetPaths } from '../server/public-asset-paths.mjs';
-import { socialMetadata, SOCIAL_ORIGIN, SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
+import { socialMetadata, SOCIAL_ORIGIN, REVIEW_ORIGIN, SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
 
 // Read-only release gate. Build first with `node scripts/build.mjs --web`.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = path.join(root, 'dist/private-site');
-const origin = SOCIAL_ORIGIN;
+const review = process.argv.includes('--review');
+const origin = review ? REVIEW_ORIGIN : SOCIAL_ORIGIN;
 const limit = 25 * 1024 * 1024;
 const files = new Map();
 const pages = new Map();
 const read = name => readFile(path.join(root, name), 'utf8');
+const build = JSON.parse(await read('dist/investor-build.json'));
+assert.deepEqual(build, {version:1,mode:review?'review':'production',origin}, 'Build mode does not match this verification; rebuild for the intended destination');
 const story = JSON.parse(await read('content/presentation-story.json'));
-const expectedOrder = ['cover','lifestyle','oriente','guatape','city','hospitality','benefits','monte-sereno','montana','fontanar','san-lucas','aires','idea','returns','offer','team','specialists','disclaimer','contact'];
+const expectedOrder = ["cover", "lifestyle", "oriente", "city", "hospitality", "benefits", "monte-sereno", "montana", "fontanar", "san-lucas", "aires", "idea", "team", "specialists", "returns", "offer", "disclaimer", "contact"];
 assert.deepEqual(story.main.map(step=>step.id), expectedOrder, 'Main presentation order');
-assert.deepEqual(story.appendices.map(step=>step.id), ['owner-use'], 'Booking is optional detail');
+assert.deepEqual(story.appendices.map(step=>step.id), ['owner-use','guatape'], 'Booking and regional outing are optional detail');
 assert.deepEqual(Object.values(story.legacyNumeric), ['cover','lifestyle','benefits','owner-use','oriente','city','hospitality','fontanar','san-lucas','aires','monte-sereno','montana','idea','offer','returns','team','specialists','disclaimer','contact'], 'Published numeric links must retain their subjects');
 const presentationAnchors = new Set([...story.main,...story.appendices].map(step=>`present-${step.id}`).concat(Object.keys(story.legacyNumeric).map(key=>`present-${key}`)));
 const decode = text => text.replace(/&#(x[\da-f]+|\d+);/gi, (_, value) =>
@@ -153,7 +156,7 @@ for (const [pagePath, html] of pages) {
     assert.equal((markup.match(/class="locale-switch(?:\s[^"]*)?"/g)||[]).length,1, `Exactly one resource language switch: ${pagePath}`);
     continue;
   }
-  const card = socialMetadata(language);
+  const card = socialMetadata(language, { origin });
   const socialTags = [...markup.matchAll(/<meta\b[^>]*>/gi)].map(match => attributes(match[0]));
   const socialValue = key => {
     const matches = socialTags.filter(tag => tag.property === key || tag.name === key);
@@ -179,9 +182,16 @@ for (const [pagePath, html] of pages) {
   assert.ok(injectedStory, `Missing presentation story: ${pagePath}`);
   assert.deepEqual(JSON.parse(injectedStory[1]),story,`Presentation metadata diverges from source: ${pagePath}`);
   for (const [alias, url] of Object.entries(map)) resolveBuiltURL(url, pagePath, `${pagePath} media alias ${alias}`);
-  assert.match(markup, /data-preview-contact=["']https:\/\/wa\.me\/19174284062["']/, `Missing preserved, inert Dov WhatsApp: ${pagePath}`);
-  assert.match(markup, /data-preview-contact=["']mailto:kit@kitcapital\.com["']/, `Missing preserved, inert Dov email: ${pagePath}`);
-  assert.doesNotMatch(markup,/href=["'](?:mailto:|tel:|https:\/\/wa\.me\/)/,`Preview contact must not send: ${pagePath}`);
+  if(review){
+    assert.match(markup, /data-preview-contact=["']https:\/\/wa\.me\/19174284062["']/, `Missing preserved, inert Dov WhatsApp: ${pagePath}`);
+    assert.match(markup, /data-preview-contact=["']mailto:kit@kitcapital\.com["']/, `Missing preserved, inert Dov email: ${pagePath}`);
+    assert.doesNotMatch(markup,/href=["'](?:mailto:|tel:|https:\/\/wa\.me\/)/,`Preview contact must not send: ${pagePath}`);
+  }else{
+    assert.match(markup, /href=["']https:\/\/wa\.me\/19174284062["']/, `Missing active Dov WhatsApp: ${pagePath}`);
+    assert.match(markup, /href=["']mailto:kit@kitcapital\.com["']/, `Missing active Dov email: ${pagePath}`);
+    assert.doesNotMatch(markup,/data-preview-contact=/,`Production contact is still disabled: ${pagePath}`);
+    assert.ok(!markup.includes(REVIEW_ORIGIN),`Production metadata refers to the review website: ${pagePath}`);
+  }
   const teamSection = markup.match(/<section\b[^>]*\bid="team"[^>]*>[\s\S]*?<\/section>/)?.[0];
   assert.ok(teamSection, `Missing core team section: ${pagePath}`);
   const coreProfiles = [...teamSection.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map(match=>match[0]);
@@ -202,14 +212,14 @@ for (const [pagePath, html] of pages) {
   assert.doesNotMatch(coreBios[3], /Director of Marketing|Directora de Marketing/i, 'Natalia biography must not repeat her role label');
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
   for(const chapter of ['destination','ownership','member-benefits','owner-use','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
-  const chapterOrder=['ownership','oriente','guatape','destination','after-dark','experience','member-benefits','homes','approach','returns','fund','resources','team','specialists','contact'];
+  const chapterOrder=['ownership','oriente','guatape','destination','after-dark','experience','member-benefits','homes','approach','team','specialists','returns','fund','resources','contact'];
   for(let i=1;i<chapterOrder.length;i++) assert.ok(markup.indexOf(`id="${chapterOrder[i-1]}"`) < markup.indexOf(`id="${chapterOrder[i]}"`), `Homepage chapter order: ${chapterOrder[i-1]} before ${chapterOrder[i]}`);
   assert.match(markup, /<details class="owner-use" id="owner-use">/, 'Owner booking rules should be expandable on the website');
   assert.doesNotMatch(markup, /Three equity kickers|Tres beneficios de participación adicionales/, 'The old equity-only overview must be replaced');
   assert.deepEqual([...markup.matchAll(/<a class="property-preview"[^>]*data-preview-home="(\d)"/g)].map(match=>Number(match[1])),[3,4,0,1,2],`Five country-first property selectors: ${pagePath}`);
   assert.doesNotMatch(markup, /class="property-tabs"|class="home-film-grid"/, 'Avoid duplicate property browsing');
   for(const step of story.main.filter(step=>step.propertyKey))assert.ok(markup.includes(`id="property-${step.propertyKey}"`),`Missing durable property URL: ${step.propertyKey}`);
-  assert.ok(markup.indexOf('id="fund"') < markup.indexOf('id="team"'),'The offer should precede the team directory');
+  assert.ok(markup.indexOf('id="team"') < markup.indexOf('id="returns"'),'The team should precede projected returns');
   assert.match(markup, /<section class="returns section-pad" id="returns"/,'Projected results should be a visible section');
   assert.doesNotMatch(markup, /<details class="model"/,'Returns must not depend on the offer accordion');
   assert.match(markup, /id="experience-hospitality"[^>]*loop/,'Hospitality film must loop independently');

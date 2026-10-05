@@ -1,5 +1,5 @@
 import investor from './worker.mjs';
-import {investorFontCss} from '../shared/investor-typography.mjs';
+import {SOCIAL_ORIGIN,REVIEW_ORIGIN} from '../shared/social-metadata.mjs';
 const encoder=new TextEncoder();
 const TTL=8*60*60;
 const cookieName='__Host-dulcinea_review';
@@ -52,7 +52,7 @@ export default {async fetch(request,env,ctx){
  const response=await investor.fetch(request,env,ctx);
  const headers=new Headers(response.headers);headers.set('X-Robots-Tag','noindex, nofollow, noarchive');headers.set('Cache-Control','private, no-store');headers.set('Referrer-Policy','same-origin');
  if(url.pathname==='/login'&&headers.get('Content-Type')?.includes('text/html')){
-   const body=(await response.text()).replace('</head>',`<style>${investorFontCss('/assets/fonts/manrope/manrope-variable.woff2')}</style></head>`).replace(/href="(?:mailto:|tel:|https:\/\/wa\.me\/)[^"]*"/g,'href="#" aria-disabled="true" title="Contact is disabled in this review"');
+   const body=(await response.text()).replaceAll(SOCIAL_ORIGIN,REVIEW_ORIGIN).replace(/href="(?:mailto:|tel:|https:\/\/wa\.me\/)[^"]*"/g,'href="#" aria-disabled="true" title="Contact is disabled in this review"');
    headers.delete('Content-Length');headers.delete('ETag');
    return new Response(body,{status:response.status,headers});
  }

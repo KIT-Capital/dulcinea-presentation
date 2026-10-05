@@ -13,8 +13,8 @@
       "id": "lifestyle",
       "selector": "#ownership",
       "title": [
-        "The lifestyle",
-        "El estilo de vida"
+        "Member benefits",
+        "Beneficios de membresía"
       ]
     },
     {
@@ -23,14 +23,6 @@
       "title": [
         "El Oriente countryside",
         "El campo del Oriente"
-      ]
-    },
-    {
-      "id": "guatape",
-      "selector": "#guatape",
-      "title": [
-        "A day in Guatapé",
-        "Un día en Guatapé"
       ]
     },
     {
@@ -53,8 +45,8 @@
       "id": "benefits",
       "selector": "#member-benefits",
       "title": [
-        "Member benefits",
-        "Beneficios de membresía"
+        "Membership terms",
+        "Condiciones de membresía"
       ]
     },
     {
@@ -111,22 +103,6 @@
       ]
     },
     {
-      "id": "returns",
-      "selector": "#returns",
-      "title": [
-        "Projected returns",
-        "Retornos proyectados"
-      ]
-    },
-    {
-      "id": "offer",
-      "selector": "#fund",
-      "title": [
-        "The offer",
-        "La oferta"
-      ]
-    },
-    {
       "id": "team",
       "selector": "#team",
       "title": [
@@ -140,6 +116,22 @@
       "title": [
         "Local specialists",
         "Especialistas locales"
+      ]
+    },
+    {
+      "id": "returns",
+      "selector": "#returns",
+      "title": [
+        "Projected returns",
+        "Retornos proyectados"
+      ]
+    },
+    {
+      "id": "offer",
+      "selector": "#fund",
+      "title": [
+        "The offer",
+        "La oferta"
       ]
     },
     {
@@ -169,6 +161,16 @@
         "Owner use and booking",
         "Uso y reservas"
       ]
+    },
+    {
+      "id": "guatape",
+      "selector": "#guatape",
+      "title": [
+        "A day in Guatapé",
+        "Un día en Guatapé"
+      ],
+      "anchor": "#guatape",
+      "returnTo": "oriente"
     }
   ],
   "legacyNumeric": {

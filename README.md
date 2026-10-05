@@ -1,6 +1,6 @@
 # Dulcinea One
 
-> **Current review handoff (4 October 2026):** Start with [docs/HANDOFF.md](docs/HANDOFF.md) and the [homepage narrative workflow](docs/plans/2026-10-04-homepage-narrative-workflow.md). The review currently runs application `0bb9f62`; the new narrative plan is documentation only and has not been applied. Older release/count descriptions below record earlier versions, not the current review inventory. Production remains a separate preserved website.
+> **Canonical release (4 October 2026):** The user approved the storyboard implementation for publication after Astra review. See [current handoff](docs/HANDOFF.md) and [canonical release validation](docs/validation-2026-10-04-canonical.md). Production is the default build; explicit review builds remain separate. Earlier release descriptions below are historical.
 
 Dulcinea is a real estate investment firm focused on Medellín, Colombia. This investor website presents Dulcinea One, its first fund, with Lola & Ber as the co-brand. Lola & Ber Hospitality is the division for the properties. Dulcinea manages acquisition, renovation, operation and sale. Investors acquire fund membership units in a Delaware LLC.
 
