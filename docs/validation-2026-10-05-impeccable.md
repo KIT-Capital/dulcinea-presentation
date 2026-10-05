@@ -85,3 +85,14 @@ The user requested clearer formatting on the closing slide, then explicitly inst
 The user requested the standalone "Accredited investors only" note and a slower reading path. The website's opening links to returns and homes are now a non-interactive downward cue: "Scroll down slowly to explore the full story." Spanish uses "Solo inversionistas acreditados" and "Desplácese despacio para conocer toda la propuesta." The payment schedule remains in the offer, with header/chapter shortcuts and presentation controls preserved.
 
 Production build and verifier passed. Desktop and 390px phone views were inspected; Spanish had matching 375px client/scroll widths and no opening jump anchors. Both published homepages return 200 and match the build by SHA-256. Application commit `4620b43` is pushed to `main`; Worker version `9bf1da86-0852-4749-9af6-37e48b076198` is live, replacing `aaa481aa-7003-4563-b43b-5d19a17c3a19`.
+
+## Hero brand restoration — 5 October 2026
+
+User reported missing hero logos and requested transparent backgrounds. Removed the website and presentation hide rules; restored the Dulcinea, KIT Capital and Lola & Ber row above the hero overlay. Removed the opaque panel and used monochrome filtering with screen blending for the existing raster marks. Original brand assets were not altered.
+
+- Application commit: `187b32e`, pushed to canonical `main`.
+- Production Worker version: `052f51e9-6395-4de3-9ff0-89c0d630ef54`.
+- Production build/verifier passed; all 47 server tests passed; diff whitespace check passed.
+- Browser: desktop website and canvas opening slide, 390x844 mobile website and Spanish responsive opening slide inspected. Three brand images loaded, row background computed transparent, mobile had no horizontal overflow, logos fit within the slide.
+- Live EN and ES homepages returned 200 and matched local build SHA-256 exactly after publication.
+- Financial content, contact destinations, original media and access configuration unchanged.
