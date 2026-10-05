@@ -6,7 +6,7 @@ Updated 4 October 2026. The user approved the local preview, requested a final A
 
 - Canonical website: https://invest.dulcineainvestments.org/
 - Production Worker: `dulcinea-investor-presentation`.
-- Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, local branch `main`; remote `main` synchronization awaits explicit approval after automatic approval review rejected the push.
+- Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main`. The user explicitly authorized committing and pushing the canonical source after publication.
 - Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
 - Published and verified: application `10e04c29390813da9c159cbced6340b87bd282b6`; Worker version `9b23653c-9127-4c2a-a220-7eff23efb6d0`. See `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
