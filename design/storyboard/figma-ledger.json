@@ -8,56 +8,56 @@
   "chapters": [
     [
       "01 / DULCINEA ONE",
-      "Invest in homes\\nyou can also use.",
-      "The investment idea in one sentence. A city cover film and a quiet “Partly subscribed” note.",
+      "Stay in Medellín\nand El Oriente.",
+      "Show what membership adds to life with family and friends. Introduce home use, brand equity and future-fund carry before returns.",
       "Explore life here →",
       "medellin.jpg",
       "ink"
     ],
     [
       "02 / LIFE HERE",
-      "The city. The country.\\nTime for both.",
-      "El Oriente first; modern Medellín and El Poblado second. Give people and places their own scenes.",
+      "Medellín and\nEl Oriente",
+      "Show how members can spend time with family and friends in the country and city, with homes as their base.",
       "Meet Lola & Ber →",
       "reservoir.jpg",
       "mint"
     ],
     [
       "03 / MEMBERSHIP",
-      "More than a\\nplace to stay.",
-      "Lola & Ber, shared home use and participation. The 365-night pool and 3% stake belong here.",
+      "Member benefits",
+      "Explain home use first, Lola & Ber equity at no additional capital contribution second, and conditional pro-rata future-fund carry third.",
       "Explore the homes →",
       "hospitality.jpg",
       "pink"
     ],
     [
       "04 / THE HOMES",
-      "Two country homes.\\nThree city properties.",
-      "Five original property previews. Explore status, galleries, films and supplied floorplans.",
+      "The homes",
+      "Show two country homes and three city properties. Let readers explore status, original photos, films and supplied plans.",
       "How Dulcinea works →",
       "monte-sereno-original.png",
       "paper"
     ],
     [
       "05 / EXECUTION",
-      "Acquire. Improve.\\nRent. Sell.",
-      "Show the operating approach, then the core team and specialists who will execute it.",
+      "How Dulcinea works",
+      "Dulcinea handles acquisition, renovation, rentals and resale. Show the core team and specialists responsible for execution.",
       "Review the projections →",
       "fontanar-original.jpeg",
       "violet"
     ],
     [
       "06 / THE INVESTMENT",
-      "The base case.\\nThen the offer.",
-      "One return group: 14.6% / 1.40× / 4 years. One offer group: $7M / $2.1M / $4.9M.",
+      "Projected returns",
+      "Show 14.6% / 1.40× / 4 years as one projected return group. Follow with the US$7M / US$2.1M / US$4.9M offer.",
       "Talk to us →",
       "aires-original.png",
       "blue"
     ],
     [
       "07 / NEXT STEP",
-      "Let’s talk\\nDulcinea One.",
-      "Dov’s contact, protected financial statements, acquisition criteria and disclosures.",
+      "Talk to us",
+      "Invite a conversation with Dov about the homes, member benefits and investment. Keep financials, criteria and disclosures accessible.",
       "Talk to us · Review financials →",
       "closing.jpg",
       "ink"
@@ -67,14 +67,14 @@
     [
       "01",
       "Dulcinea One",
-      "Invest in homes you can also use.\\nFive selected homes in Medellín and El Oriente.",
+      "You can invest in homes and stay with family and friends in Medellín and El Oriente. Stays begin as each home opens.",
       "medellin.jpg",
       "ink"
     ],
     [
       "02",
-      "Make time for life here",
-      "Time with friends, days in the country and evenings in the city.",
+      "Member benefits",
+      "You can use the homes as they open.\nLola & Ber equity requires no additional capital contribution.\nYou receive pro-rata future-fund carry, subject to terms.",
       "lifestyle.jpg",
       "mint"
     ],
@@ -101,8 +101,8 @@
     ],
     [
       "06",
-      "Membership",
-      "Up to 365 shared nights annually when all homes operate.\\n3% collective Lola & Ber stake at full subscription.",
+      "Membership terms",
+      "The shared pool reaches 365 nights as five homes open; allocation is pro rata to commitment.\nMembers collectively receive 3% of Lola & Ber at full subscription.\nPro-rata future-fund carry follows membership terms; future funds are not guaranteed.",
       "lifestyle.jpg",
       "pink"
     ],
@@ -144,7 +144,7 @@
     [
       "12",
       "How Dulcinea operates",
-      "Acquire → Improve → Rent → Sell\\nYou invest in the portfolio.",
+      "Dulcinea handles acquisition, renovation, rentals and resale.\nThe team manages the work while you hold your investment.",
       "fontanar-original.jpeg",
       "violet"
     ],
@@ -353,11 +353,53 @@
       "11:116",
       "11:117"
     ],
-    "homepageDescendants": 221,
-    "totalEditableTextNodes": 224,
-    "totalComponentInstances": 27,
+    "totalEditableTextNodes": 232,
+    "totalComponentInstances": 26,
     "font": "Manrope",
     "temporaryCaptureRemoved": true,
-    "status": "Visually inspected; no clipped text found; separate transparent image scrims preserve cover and closing footage."
+    "status": "Benefits revision visually inspected; text and frame bounds checked. Membership terms use a dedicated frame with the cropped banner hidden.",
+    "validation": [
+      {
+        "id": "4:27",
+        "width": 2280,
+        "height": 1392,
+        "textCount": 36,
+        "instanceCount": 7,
+        "fonts": [
+          "Manrope"
+        ],
+        "overflow": []
+      },
+      {
+        "id": "4:28",
+        "width": 1840,
+        "height": 8793,
+        "textCount": 131,
+        "instanceCount": 7,
+        "fonts": [
+          "Manrope"
+        ],
+        "overflow": []
+      },
+      {
+        "id": "4:29",
+        "width": 2136,
+        "height": 2847,
+        "textCount": 65,
+        "instanceCount": 12,
+        "fonts": [
+          "Manrope"
+        ],
+        "overflow": []
+      }
+    ]
+  },
+  "latestRevision": {
+    "date": "2026-10-04",
+    "sourceRevision": "fc02f8c",
+    "record": "figma-benefits-revision.json",
+    "layoutPolish": "figma-benefits-polish.json",
+    "direction": "Life with family and friends first; home use, collective Lola & Ber equity without additional capital contribution, and conditional pro-rata participation in future-fund carry at the opening. Properties and execution precede projected returns.",
+    "membershipSlideId": "20:116"
   }
 }

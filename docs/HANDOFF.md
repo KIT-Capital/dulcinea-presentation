@@ -4,13 +4,17 @@ Updated: 4 October 2026. Start here before changing the review website.
 
 ## Immediate task
 
-The user says the homepage has lost its storyline: sections seem too close, and numbers and words compete without a clear sequence. The review produced a narrative workflow, followed by an editable Figma storyboard with seven chapter boards, detailed homepage compositions and an 18-slide presentation contact sheet. **The narrative plan has not been implemented or deployed on either website.**
+The user says the homepage has lost its storyline: sections seem too close, and numbers and words compete without a clear sequence. The review produced a narrative workflow, followed by an editable Figma storyboard with seven chapter boards, detailed homepage compositions and an 18-slide presentation contact sheet. The latest storyboard revision applies Dov's direction to lead with what membership provides for the investor's life and family, before projected investment returns. **The narrative plan and storyboard revision have not been implemented or deployed on either website.**
 
 Start with the [visual storyboard in Figma](https://www.figma.com/design/TSa7o009bLZpjJI6d7GBym?node-id=4-27), then read the [storyboard guide and saved previews](../design/storyboard/README.md). It uses current approved site content and assets; no company documents, source workbooks or private investor files were uploaded. The Figma draft has not been made public through new sharing permissions.
 
 Follow [Homepage narrative workflow](plans/2026-10-04-homepage-narrative-workflow.md). The next pass must address the entire story before refining individual blocks. Do not call the storyline fixed because typography or one financial section looks better.
 
 Proposed chapter order: Dulcinea One → Life here (El Oriente, regional outings, modern Medellín) → Membership (Lola & Ber and benefits) → The homes → Execution and team → The investment (projections, then offer) → Next step.
+
+The opening now introduces all three benefits: stays with family and friends as homes open for use; collective Lola & Ber equity with no additional capital contribution; and conditional pro-rata economic participation in the carry of future Dulcinea funds. Chapter 3 explains all three visibly, with their conditions. Do not hide the future-carry benefit in an accordion or reduce it to a right to invest. Slide 2 gives the three-benefit overview; slide 6 explains membership terms. Keep all five property slides and introduce homes and the execution team before projected returns.
+
+Use short factual headings and complete sentences. Remove slogan fragments, choppy verb lists and generic promises. Family and friend stays belong to the home-use story; Lola & Ber's adult brand has a distinct scene and must not be presented as family programming.
 
 The latest published typography pass remains the runtime baseline. Retain its useful reading improvements; review its colorful metric panels as part of the overall chapter hierarchy.
 
@@ -23,6 +27,7 @@ The latest published typography pass remains the runtime baseline. Retain its us
 | Review branch | `codex/radisson-independent` |
 | Review worktree | `C:/Users/ricar/OneDrive/Documents/ChatGPT/Dulcinea Presentation/worktrees/radisson-independent` |
 | Repository | https://github.com/KIT-Capital/dulcinea-presentation.git |
+| Source before this storyboard revision | `fc02f8c` |
 | Published application revision | `0bb9f62` |
 | Published review Worker version | `26bdced0-c12c-464b-83b3-81261a93eced` |
 | Published review deployment | `5c063f5b-3405-46bb-841b-cb1d9d7af444` |
@@ -32,7 +37,7 @@ The latest published typography pass remains the runtime baseline. Retain its us
 | Preserved production Worker version | `2761df60-ce13-42ea-9cef-048ef22c3a1c` |
 | Preserved production deployment | `da9ba466-98b1-4140-98c3-b592c283e22c` |
 
-The identifiers above come from the completed typography release record. That release verified production deployment/settings and homepage content unchanged. This documentation-only turn made no deployment or service changes. Re-read live provider state before any later deployment; do not treat historical identifiers as a fresh verification.
+The deployment identifiers above come from the completed typography release record. That release verified production deployment/settings and homepage content unchanged. This storyboard and documentation revision made no application, deployment or service changes; both websites remain unchanged by this work. Re-read live provider state before any later deployment; do not treat historical identifiers as a fresh verification.
 
 Keep both sites available. No production merge, deployment, DNS, build-rule or shared-service change without explicit user approval. Both worktree Wrangler configurations target the review Worker; `scripts/deploy-review.mjs` enforces branch/config/name/no-routes/no-shared-bindings checks. Keep credentials outside Git. Replit packaging remains stopped.
 
@@ -56,7 +61,8 @@ The latest release record is `preservation/2026-10-04/typography-returns/release
 
 - Model 10: 14.6% projected investor IRR; 1.40× capital multiple; four-year projected term; after-tax/after-carry and called-capital context. Capital installments occur during Year 1; do not revert to one upfront call. Montana's modeled works period is six months.
 - Offer currently displays $7M total, $2.1M committed, $4.9M available and $100,000 minimum. These are supplied/approved content, not a new verification of subscriptions or closings.
-- Benefits: a shared pool reaching 365 nights with five operating homes, pro-rata allocation and approved booking terms; collective 3% Lola & Ber stake at full subscription; conditional future-fund economics. Never turn pooled/collective rights into per-investor entitlements.
+- Benefits: member use phases in as each home opens, with a shared pool reaching 365 nights when all five operate, pro-rata allocation and approved booking terms. The 3% Lola & Ber stake is collective at full subscription, with no additional capital contribution, subject to membership terms. Future-fund carry participation is conditional and pro rata; do not invent a participation percentage or imply that future funds are guaranteed. Never turn pooled/collective rights into per-investor entitlements.
+- Model 10 already includes owner-use costs in the projected base case. Lola & Ber equity and future-fund participation have no modeled value. Do not describe all three benefits as excluded from the base case or imply that home use starts immediately for every property.
 - Lola & Ber is an adult, sex-positive brand. Hospitality is the property division name. Follow its supplied brand material; no chef/restaurant positioning.
 - Retain El Oriente prominence and modern Medellín/El Poblado. Guatapé is a regional outing, not a property location/view claim. Keep faces inside the frame, continuous approved video playback and restrained spatial motion.
 - No repeated canonical media files. Keep unused videos in the preserved library. The male-running clip, rejected garden-reading and outdoor-gathering clips remain excluded from active presentation. Nomad Capitalist/club-DJ editing remains pending clean source/rights and exact source identification.

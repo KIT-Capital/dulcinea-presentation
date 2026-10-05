@@ -1,14 +1,16 @@
 # Homepage narrative workflow
 
-Date: 4 October 2026. Status: reviewed implementation plan, not an applied website change.
+Date: 4 October 2026. Status: revised narrative plan and Figma storyboard, not an applied website change. Source before this revision: `fc02f8c`; published application: `0bb9f62`. Neither website was changed or deployed by this revision.
 
 This plan responds to the user's review of the independently deployed website: the storyline is difficult to follow, sections appear too close together, and numbers and words compete for attention. It supersedes the older homepage composition plans for the next design pass. Keep the existing implementation and approved content as the foundation.
 
 ## The story
 
-Dulcinea One lets members invest in homes they can also use in Medellín and El Oriente. Show the life around those homes, explain membership and Lola & Ber, and introduce the actual properties. Then show how Dulcinea puts capital to work, who executes the plan, the projected economics and the subscription opportunity.
+Dulcinea One lets members invest in homes they can also use in Medellín and El Oriente. Lead with time for family and friends, country stays and city experiences, following the experience-first approach Dov valued in Radisson Maldives. Introduce all three membership benefits in the opening: home use as each property opens; collective Lola & Ber equity with no additional capital contribution; and conditional pro-rata economic participation in future-fund carry. Explain these benefits visibly, introduce the actual homes, and show who executes the investment plan. Projected returns and subscription terms follow the homes and team.
 
-The opening must establish both investment and use. The experience comes first in the reading path, as Dov requested. Returns are projected; use is governed by membership and booking terms. Membership does not convey title to a particular home.
+The opening must establish both investment and use without leading with financial figures. Show the life benefit during ownership; do not promise immediate access to every home. Use phases in as properties open and follows membership and booking terms. Membership does not convey title to a particular home. Keep family stays distinct from Lola & Ber's adult brand programming.
+
+The revised [Figma storyboard](https://www.figma.com/design/TSa7o009bLZpjJI6d7GBym?node-id=4-27) retains seven chapters and 18 main presentation slides. It moves the three-benefit introduction into the opening and slide 2, makes all three benefits visible in Chapter 3, and uses slide 6 for membership terms. This is the design target; it is not the current website implementation.
 
 ## What the review found
 
@@ -30,11 +32,11 @@ These are navigation and editorial groups, not seven forced full-screen sections
 
 | Chapter | Reader's question | What to show | Primary continuation |
 | --- | --- | --- | --- |
-| 1. Dulcinea One | What is this, and what do I get? | Fund identity; one sentence joining investment and member use; a short lifestyle introduction. Explain that Dulcinea handles acquisitions, works, rentals and sale. Retain a quiet partially subscribed status and a direct Offer shortcut, with the full subscription figures later. | Explore life here |
+| 1. Dulcinea One | What is this, and what do I get? | Fund identity and stays with family and friends in Medellín and El Oriente as homes open. Introduce home use, collective Lola & Ber equity with no additional capital contribution, and conditional pro-rata future-fund carry participation. Explain Dulcinea's role in a complete sentence. Retain a quiet partially subscribed status and a direct Offer shortcut, with full subscription figures later. | Explore life here |
 | 2. Life here | Why would I want time in this region? | El Oriente and El Retiro first: homes, green space, reservoir, town and Guatapé outing. Then modern Medellín and El Poblado: urban activity, driving, people and evening life. Country and city are two parts of the same proposition. | Meet Lola & Ber |
-| 3. Membership | What does membership add? | Introduce Lola & Ber as the adult, sex-positive brand; Hospitality names the property division. Then home use, collective brand participation and conditional future economics. Keep consent, respect, privacy and all relevant conditions. | Explore the homes |
+| 3. Membership | What does membership add? | Explain all three benefits visibly: home use as properties open; collective Lola & Ber equity at no additional capital contribution; conditional pro-rata economic participation in future-fund carry. The carry benefit must not require opening an accordion. Introduce Lola & Ber as the adult, sex-positive brand; Hospitality names the property division. Keep consent, respect, privacy and the relevant conditions beside each benefit. | Explore the homes |
 | 4. The homes | What is the actual portfolio? | Two country homes and three city homes. Preserve five visible previews, current status, original imagery, property films, galleries and supplied plans. Explain the region and property type beside each selected home. | How Dulcinea works |
-| 5. Execution | How does this become an investment, and who does it? | One concise acquire/renovate/rent/sell explanation, supported by actual property material. Follow with the four core team members and local specialists. Establish accountability before asking the investor to assess projected returns. | Review the projections |
+| 5. Execution | How does this become an investment, and who does it? | Explain in a complete sentence how Dulcinea acquires, renovates, rents and sells homes; support it with actual property material. Follow with the four core team members and local specialists. Establish accountability before asking the investor to assess projected returns. | Review the projections |
 | 6. The investment | What are the projected economics and the terms? | First one aligned return group with its qualifiers. Then one subscription group with raise, committed, available and minimum, plus payment timing. Returns and the ask are consecutive parts of the same chapter. | Talk to us |
 | 7. Next step | How do I investigate or discuss it? | A concise resource directory and Dov's contact under Talk to us. Retain financials, criteria and disclaimer links in navigation. Keep the homepage disclosure and the presentation's disclosure slide. | Talk to us / Review financials |
 
@@ -44,19 +46,21 @@ The early status is orientation, not a second full offer. A reader may jump dire
 
 | Location | Dominant information | Supporting information and conditions |
 | --- | --- | --- |
-| Opening | Investment plus member use | A quiet partially subscribed reminder; the complete raise figures belong to the offer. |
+| Opening | Life and family use, plus the three membership benefits | Say what investors receive before presenting return figures. Introduce home use, brand equity at no additional capital contribution and conditional future-fund carry participation. Keep the partially subscribed reminder quiet; complete raise figures belong to the offer. |
 | Membership | Up to 365 shared nights annually when all five homes operate | State that this is the collective pool, not an individual entitlement. Keep 73 nights per active home and approximate pro-rata examples in booking detail. |
-| Membership, secondary row | 3% collective Lola & Ber stake at full subscription | Preserve no additional capital call or dilution and the membership conditions. It is not 3% for each member. |
-| Membership, secondary row | Conditional participation in future economics | Keep planned $10M and $15M future rounds and conditions in expandable detail; do not present them as committed raises or guaranteed benefits. |
+| Membership, visible benefit | 3% collective Lola & Ber stake at full subscription | State no additional capital contribution and preserve the existing no-additional-call/no-dilution terms. It is not 3% for each member; membership conditions apply. |
+| Membership, visible benefit | Conditional pro-rata participation in future-fund carry | Show the economic benefit and its conditions without an accordion. Planned $10M and $15M future-round details may expand separately; they are not committed raises. Future funds are not guaranteed. Do not invent a carry-participation percentage or allocation denominator. |
 | Projections | 14.6% projected investor IRR | 1.40× capital multiple and four-year projected term on the same baseline. Keep called-capital, after-tax/after-carry and no-guarantee qualifications adjacent. No animated counters or decorative chart implying a cash-flow path. |
 | Offer | $7M total / $2.1M committed / $4.9M open | Use one aligned group or a clearly labeled subscription bar; do not restate all three in the following paragraph. Minimum $100,000 (10 units at $10,000), accredited investors and installments in Year 1 remain visible. |
 | Individual home | That property's area, status and operating facts | No fund-wide return figures repeated on each home. Retain existing source records and dates/status distinctions. |
 
 Preserve these approved figures exactly. This review did not recalculate Model 10 or independently verify subscriptions or closings. Use `docs/model-10-reconciliation.md` and existing data records when implementing. Any factual conflict is an open content issue, never a reason to improvise a number.
 
+Owner-use costs are already included in the Model 10 base case. Lola & Ber equity and future-fund participation have no modeled value. State this distinction when connecting benefits to the projected returns; never claim that all three benefits are outside the model. The annual pool reaches 365 shared nights only when all five homes operate, with 73 nights added per home in service.
+
 ## Page composition and transitions
 
-1. Give each chapter a clear opening: one short label, one lead sentence, one dominant visual or information group. Remove labels that simply repeat the heading.
+1. Give each chapter a clear opening: one short factual heading, one lead sentence, one dominant visual or information group. Use complete sentences for investor-facing prose, not slogans or choppy verb strings. Remove labels that simply repeat the heading.
 2. Design the space between chapters separately from the space inside a chapter. At notebook size, start with 112–144px total separation from the prior chapter's final content to the next chapter opening; use roughly 32–48px between related scenes. At mobile size use 64–80px and 24–32px respectively. Validate these relationships visually; do not append that much padding to both adjacent sections.
 3. A chapter opening should have its heading and the start of its visual or lead copy in the same viewport. Avoid a lone heading at the bottom of the screen, then a new media block after scrolling.
 4. Use one shared text alignment and consistent reading widths. Keep lead copy around 28–36 characters per line, ordinary explanatory copy around 45–65 where the grid permits. Keep the readable Manrope scale from the current review; do not enlarge every text role again.
@@ -82,11 +86,11 @@ Preserve these approved figures exactly. This review did not recalculate Model 1
 Target 18 ordinary slides, preserving five individual property slides:
 
 1. Dulcinea One
-2. Lifestyle and member use
+2. Member benefits
 3. El Oriente, with Guatapé as supporting exploration
 4. Medellín and El Poblado
 5. Lola & Ber
-6. Member benefits
+6. Membership terms
 7. Casa Monte Sereno
 8. Casa Montana
 9. Fontanar 201
@@ -104,10 +108,12 @@ Keep booking detail optional. Preserve `#present-guatape` as an optional slide s
 
 The presentation shares authored content, terms and media with the website, but uses deliberate slide compositions. Do not shrink a long web chapter onto a canvas. Desktop keeps a 16:9 canvas; phone and tablet slides remain readable, touch-navigable and scrollable where necessary.
 
+Slide 1 leads with stays for family and friends and identifies the investment. Slide 2 introduces all three benefits before the destination exploration. Slide 6 carries the shared-night pool, collective brand stake and conditional pro-rata carry terms in distinct groups. Do not replace the economic participation with a bare right of first refusal. All five property slides and both team slides remain before projected returns.
+
 ## Implementation workflow
 
 1. **Freeze the content inventory.** Record the deployed review revision, all section and deep-link destinations, approved figures, biographies, property status and media roles. Distinguish the current review from the untouched production baseline.
-2. **Lay out the complete storyboard.** Create a continuous notebook-width storyboard covering all seven chapters before coding a single isolated section. Annotate the main sentence, visual, figure group and continuation for each. Include the 18-slide contact sheet. This is an internal design check, not another approval gate for already authorized routine work.
+2. **Lay out the complete storyboard.** Use the revised Figma storyboard as the complete notebook-width sequence covering all seven chapters. Its opening and slide 2 introduce all three benefits; Chapter 3 explains them visibly and slide 6 states membership terms. Check the main sentence, visual, figure group and continuation for each chapter together with the 18-slide contact sheet. This is an internal design check, not another approval gate for already authorized routine work.
 3. **Fix the narrative structure.** Group existing sections, resolve the competing CTAs, combine regional outings under the destination chapter, and put execution before projections. Reuse components and data; preserve every required page and property function.
 4. **Apply the composition system.** Set chapter/scene spacing, shared alignment, color roles and figure hierarchy across the entire flow. Inspect ordinary notebook scrolling, not just individual screenshots. Keep the current readable font foundation where it works.
 5. **Carry it through English, Spanish and presentation.** Update the shared story manifest and both language labels together. Preserve subject links, return-to-website routes, property selection, booking detail and financial gating.
@@ -116,7 +122,10 @@ The presentation shares authored content, terms and media with the website, but 
 
 ## Acceptance criteria
 
-- Within the opening, a first-time reader can say what Dulcinea One is, that members invest and can use the homes, and that they are in Medellín/El Oriente.
+- Within the opening, a first-time reader can explain the home-use benefit for family and friends in Medellín/El Oriente, the collective Lola & Ber equity at no additional capital contribution, and conditional pro-rata future-fund carry participation.
+- All three benefits appear visibly in Chapter 3 and by slide 2. Slide 6 explains membership terms. No accordion is required to discover the carry benefit.
+- Home use phases in as homes open; 365 nights is the collective pool at five operating homes, and 3% is the collective brand stake at full subscription. No copy promises all homes immediately available or a guaranteed future fund.
+- The benefit-to-return transition correctly distinguishes modeled owner-use costs from unmodeled brand equity and future-fund participation.
 - The reader can identify the current chapter without using the browser address bar.
 - El Oriente and modern Medellín receive distinct, balanced treatment; supporting footage does not create accidental chapters.
 - Every chapter has one obvious next step and no competing headline metric groups.
