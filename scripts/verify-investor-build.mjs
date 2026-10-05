@@ -23,7 +23,7 @@ assert.deepEqual(build, {version:1,mode:review?'review':'production',origin}, 'B
 const story = JSON.parse(await read('content/presentation-story.json'));
 const expectedOrder = ["cover", "lifestyle", "oriente", "city", "hospitality", "benefits", "monte-sereno", "montana", "fontanar", "san-lucas", "aires", "idea", "team", "specialists", "returns", "offer", "disclaimer", "contact"];
 assert.deepEqual(story.main.map(step=>step.id), expectedOrder, 'Main presentation order');
-assert.deepEqual(story.appendices.map(step=>step.id), ['owner-use','guatape'], 'Booking and regional outing are optional detail');
+assert.deepEqual(story.appendices.map(step=>step.id), ['owner-use'], 'Owner booking is optional detail');
 assert.deepEqual(Object.values(story.legacyNumeric), ['cover','lifestyle','benefits','owner-use','oriente','city','hospitality','fontanar','san-lucas','aires','monte-sereno','montana','idea','offer','returns','team','specialists','disclaimer','contact'], 'Published numeric links must retain their subjects');
 const presentationAnchors = new Set([...story.main,...story.appendices].map(step=>`present-${step.id}`).concat(Object.keys(story.legacyNumeric).map(key=>`present-${key}`)));
 const decode = text => text.replace(/&#(x[\da-f]+|\d+);/gi, (_, value) =>
@@ -112,6 +112,11 @@ for (const [alias, source] of Object.entries(aliases).filter(([name])=>name.ends
   }
 }
 for(const stock of (await readdir(path.join(root,'assets/video/stock'))).filter(name=>name.endsWith('.mp4'))){
+  // The lake outing was removed from the story; its original clip stays archived.
+  if(stock==='AdobeStock_1164208469.mp4'){
+    assert.ok(!sourceOwners.has(`assets/video/stock/${stock}`),'Removed lake outing must not return to the active story');
+    continue;
+  }
   assert.ok(sourceOwners.has(`assets/video/stock/${stock}`),`Supplied stock clip omitted: ${stock}`);
 }
 const manifest = JSON.parse(await read('assets/manifest.json'));
@@ -212,7 +217,7 @@ for (const [pagePath, html] of pages) {
   assert.doesNotMatch(coreBios[3], /Director of Marketing|Directora de Marketing/i, 'Natalia biography must not repeat her role label');
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
   for(const chapter of ['destination','ownership','member-benefits','owner-use','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
-  const chapterOrder=['ownership','oriente','guatape','destination','after-dark','experience','member-benefits','homes','approach','team','specialists','returns','fund','resources','contact'];
+  const chapterOrder=['ownership','oriente','destination','after-dark','experience','member-benefits','homes','approach','team','specialists','returns','fund','resources','contact'];
   for(let i=1;i<chapterOrder.length;i++) assert.ok(markup.indexOf(`id="${chapterOrder[i-1]}"`) < markup.indexOf(`id="${chapterOrder[i]}"`), `Homepage chapter order: ${chapterOrder[i-1]} before ${chapterOrder[i]}`);
   assert.match(markup, /<details class="owner-use" id="owner-use">/, 'Owner booking rules should be expandable on the website');
   assert.doesNotMatch(markup, /Three equity kickers|Tres beneficios de participación adicionales/, 'The old equity-only overview must be replaced');
@@ -301,5 +306,3 @@ for (const [url, filename] of files) {
   videoHashes.set(hash, url);
 }
 console.log(`Verified protected investor build: ${pages.size} EN/ES pages, ${files.size} files, ${Object.keys(aliases).length} media aliases, ${videoHashes.size} distinct MP4s, ${compiledScripts} parsed inline scripts; links, plan coverage, team, offer, sign-out and public share assets passed.`);
-
-for(const page of ['index.html','es/index.html']){const markup=await readFile(path.join(site,page),'utf8');assert.ok(markup.includes('id="guatape-couple-film"')&&markup.includes('AdobeStock_1164208469.mp4'),'Guatape visitor film must be present in both languages');}

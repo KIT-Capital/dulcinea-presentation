@@ -42,8 +42,6 @@ export const publicAssetPaths=Object.freeze([
   "/assets/video/review/lola-ber.mp4",
   "/assets/video/review/oriente-landscape-poster.jpg",
   "/assets/video/review/oriente-landscape.mp4",
-  "/assets/video/stock/AdobeStock_1164208469-poster.jpg",
-  "/assets/video/stock/AdobeStock_1164208469.mp4",
   "/assets/video/stock/AdobeStock_1849343666-poster.jpg",
   "/assets/video/stock/AdobeStock_1849343666.mp4",
   "/assets/video/stock/AdobeStock_2118104932-poster.jpg",

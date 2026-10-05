@@ -115,7 +115,7 @@ body.is-presenting .homes .footnote { font-size:13px; max-width:none; margin-top
 body.is-presenting #main > .experience.presentation-active { display:flex; align-items:center }
 body.is-presenting .experience-content { max-width:760px }
 body.is-presenting .experience-content > .micro { font-size:16px; letter-spacing:.06em }
-body.is-presenting .experience h2 { font-size:72px; letter-spacing:.08em; line-height:1.14; margin:24px 0 12px }
+body.is-presenting .experience h2 { font-size:72px; letter-spacing:-.04em; line-height:1.14; margin:24px 0 12px }
 body.is-presenting .experience-content > p:not(.micro) { font-size:25px; line-height:1.45; max-width:590px }
 body.is-presenting .experience-content > p.brand-tagline { font-size:34px; margin:0 0 28px }
 body.is-presenting .experience-content > p.brand-values { font-size:23px; margin-top:22px }

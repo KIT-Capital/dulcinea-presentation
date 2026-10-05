@@ -1,6 +1,6 @@
 # Dulcinea canonical website
 
-Updated 4 October 2026. The user approved the local preview, requested a final Astra review, and explicitly authorized making it canonical and publishing the new site. Only formal financial statements require a password. This supersedes the earlier review-only production restriction for this release.
+Updated 5 October 2026. The user approved canonical publication and GitHub synchronization, then requested a larger fund title and explanation, removal of the lake outing, a more prominent nightlife section and matching Lola & Ber typography. The future-fund benefit must use plain language. Only formal financial statements require a password.
 
 ## Canonical release
 
@@ -11,7 +11,7 @@ Updated 4 October 2026. The user approved the local preview, requested a final A
 - Published and verified: application `10e04c29390813da9c159cbced6340b87bd282b6`; Worker version `9b23653c-9127-4c2a-a220-7eff23efb6d0`. See `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
-Astra reviewed the seven-chapter homepage and 18-slide presentation. The final pass keeps the accepted full-bleed opening, shows all three member benefits, removes vague copy and redundant labels, fixes Spanish menu accents, restores natural film framing and moves the phone pause control out of the prose. Homes, operating approach and all four core team members precede returns and the offer.
+Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. The 5 October refinement leads with a large Dulcinea One title and explains the fund before the three member benefits. The lake outing is removed, nightlife uses a full-width film, and Lola & Ber uses the shared Manrope typography. “Profit share from future funds” explains conditional participation in Dulcinea’s share of profits, without inventing an allocation denominator. See `docs/validation-2026-10-05-opening.md` for checks. Homes, operating approach and all four core team members precede returns and the offer.
 
 ## Build and publish
 
@@ -25,7 +25,7 @@ The canonical website uses working Dov email/WhatsApp links and canonical produc
 
 - English default with Colombian Spanish; language changes preserve current subject/property.
 - Seven chapters: opening, life here, membership, homes, execution, investment and next step.
-- 18 main slides, including all five properties and both team slides. Guatapé and booking are optional appendices, outside ordinary traversal. Legacy numeric links retain their established subjects.
+- 18 main slides, including all five properties and both team slides. Booking remains the optional appendix. The Guatapé lake outing was removed at the user's request; its original media stays in the source library. Legacy numeric links retain their established subjects.
 - Five homes with original imagery, existing films, galleries and nine supplied floorplan sheets. Montana has no supplied plan. AI property visualizations retain their disclosure.
 - Dov, Ricardo, Adriana and Natalia stay together in that order, with approved roles and biographies. Natalia is a core team member.
 - Model 10: 14.6% projected investor IRR, 1.40× projected capital multiple, four-year projected term; after tax/carry and on called capital. Capital paid in Year 1 installments. Montana modeled works period is six months.
@@ -36,7 +36,7 @@ The canonical website uses working Dov email/WhatsApp links and canonical produc
 - Owner-use costs are included in modeled returns. Brand equity and future-fund participation have no modeled value.
 - Lola & Ber is an adult, sex-positive brand; Hospitality is its property division. Keep it distinct from family home-use scenes.
 - El Oriente and modern Medellín/El Poblado retain distinct scenes. Guatapé is a regional outing, not a portfolio location/view claim.
-- 17 active MP4s, 33 unique preserved canonical videos, 61 media aliases. Keep unused films and approved continuous playback. No duplicate media, male-running, rejected garden-reading or outdoor-gathering films.
+- 16 active MP4s, 33 unique preserved canonical videos, 59 media aliases. Keep unused films and approved continuous playback. No duplicate media, male-running, rejected garden-reading or outdoor-gathering films.
 - Nomad Capitalist / club-DJ excerpts remain pending clean source/rights and source identification. No new footage was produced in this release.
 - Financial zero cells remain blank, margins visible, after-carry detail collapsible and cash-flow statements available. Do not expose legal/company/financial source files.
 

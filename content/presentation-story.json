@@ -161,16 +161,6 @@
         "Owner use and booking",
         "Uso y reservas"
       ]
-    },
-    {
-      "id": "guatape",
-      "selector": "#guatape",
-      "title": [
-        "A day in Guatapé",
-        "Un día en Guatapé"
-      ],
-      "anchor": "#guatape",
-      "returnTo": "oriente"
     }
   ],
   "legacyNumeric": {
