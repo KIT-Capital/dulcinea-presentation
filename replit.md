@@ -1,7 +1,8 @@
 # Dulcinea One: editable canonical project
 
-This is a source import of https://github.com/KIT-Capital/dulcinea-presentation,
-not a new design. Preserve the existing website, presentation, supporting pages,
+Codex is the source of truth. This is an exported working copy of
+https://github.com/KIT-Capital/dulcinea-presentation, not a new design.
+Preserve the existing website, presentation, supporting pages,
 English/Spanish copy, financial values, media and brand treatment when setting up
 the workspace. The live canonical site remains https://invest.dulcineainvestments.org/.
 
@@ -29,8 +30,10 @@ the workspace. The live canonical site remains https://invest.dulcineainvestment
   not replace missing-looking video frames with newly generated media.
 - Preserve Dov's approved email and WhatsApp links, gold “One”, lower-right hero
   logos, the non-interactive scroll cue and “Accredited investors only” wording.
-- Pull before editing; commit and push intentional changes to the same GitHub
-  repository. Do not overwrite colleagues' uncommitted work or force-push.
+- Refresh from the Codex-maintained GitHub source before editing, preserving any
+  colleague work. Keep Replit changes on a separate working branch and return
+  them to Codex for review and integration. Do not push Replit changes directly
+  to canonical `main`, automatically sync them back, or overwrite canonical files.
 
 ## Financial access and publication
 

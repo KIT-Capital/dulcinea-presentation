@@ -1,7 +1,7 @@
 # Replit continuation workspace
 
-The goal is an editable copy of the canonical Dulcinea project with identical
-site, presentation and supporting-page content. Import the complete repository
+Codex is the source of truth. Replit is an editable downstream working copy with
+identical site, presentation and supporting-page content. Export the repository
 from https://github.com/KIT-Capital/dulcinea-presentation. The published design
 baseline is application commit `c44a8aa`, with release record `673459d`.
 
@@ -18,8 +18,9 @@ Replit setup additions; no Git LFS is used.
 
 ## Setup
 
-1. Import into the intended team workspace from GitHub, preserving the source
-   tree and Git history. Retain the same GitHub repository as the upstream.
+1. Copy into the intended team workspace from GitHub, preserving the complete
+   source tree and canonical commit identity. A shallow fetch is sufficient for
+   the working copy; full history remains in the canonical repository.
 2. Use Node 22 or newer. Replit's Run button runs `npm start`, which builds and
    verifies the current source before starting the Node server on port 5000.
 3. Open the preview in an external tab. The existing anti-framing policy is kept.
@@ -54,10 +55,12 @@ successful sign-in/logout only with workspace credentials, never with secrets
 in a committed test fixture. Replit hosting configuration is allowed to differ;
 the site content and assets should not.
 
-Use GitHub for deliberate synchronization. A Replit import does not establish
-automatic two-way synchronization. Pull before editing, preserve colleagues'
-changes, and push reviewed commits. Publishing to the canonical domain remains
-a separate release step, using the existing guarded production workflow.
+Synchronization runs from the Codex-maintained GitHub source into Replit. Keep
+colleague changes on a separate Replit working branch and return them to Codex
+for review and integration. Do not push from Replit directly to canonical main
+or set up automatic reverse synchronization. Preserve colleague work before any
+refresh. Canonical publication remains a Codex release step using the existing
+guarded production workflow.
 
 ## Source material outside this import
 
