@@ -8,12 +8,14 @@ Updated 5 October 2026. The user approved canonical publication and GitHub synch
 - Production Worker: `dulcinea-investor-presentation`.
 - Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main`. The user explicitly authorized committing and pushing the canonical source after publication.
 - Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
-- Published and verified: application `980889080a7f926edb00ea3a85da6ab2b75157ac`; Worker version `d64514fe-9ab2-4b0d-a9cc-8fa4e86dc76a`. See `docs/validation-2026-10-05-reservoir.md`. Earlier releases are recorded in `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
+- Published and verified: application `68b14eeb9a67cb96ccc28b5e649e1841c3372b73`; Worker version `aaa481aa-7003-4563-b43b-5d19a17c3a19`. See `docs/validation-2026-10-05-impeccable.md`. Earlier releases are recorded in `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
 Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. The 5 October refinement leads with a large Dulcinea One title and explains the fund before the three member benefits. The lake outing is removed, nightlife uses a full-width film, and Lola & Ber uses the shared Manrope typography. The final user clarification is explicit: members participate economically on the general partner's side of future Dulcinea funds, sharing in the manager's performance profits alongside their own investment returns. The visible heading is “Participate alongside the fund manager.” See `docs/validation-2026-10-05-gp-participation.md` for the latest wording and checks. Homes, operating approach and all four core team members precede returns and the offer.
 
 ## Build and publish
+
+The latest canonical update incorporates the approved Impeccable presentation refinements: shorter first slides, friends/spa sequencing on slide 2, concise specialist biographies and the confirmed Juan Carlos Pérez Sarmiento identity, gold One lettering, and dollar notation with a shared US-dollar note. Five property illustrations and their motion loops now use distinct fictional male guests, including blond guests in three homes. The closing groups Dov's portrait and role with one explicit WhatsApp button and a labeled email link; further-reading links are separate. Both contact destinations are active. The user explicitly requested commit/push and canonical publication; the comparison-only phase is historical.
 
 The latest refinement uses the full 47-second green-water reservoir aerial in El Oriente, replacing the pine-first composite. Both the original pine footage and composite remain archived. The city hero remains. English and Spanish identify Dulcinea One as a closed-end real estate fund and explain the plan to buy, renovate, rent and sell homes for a profit. The execution section preserves the projected four-year term. Astra reviewed the final wording and regional label. Live media and financial-only access checks passed.
 
@@ -41,6 +43,8 @@ The canonical website uses working Dov email/WhatsApp links and canonical produc
 - 16 active MP4s, 33 unique preserved canonical videos, 59 media aliases. Keep unused films and approved continuous playback. No duplicate media, male-running, rejected garden-reading or outdoor-gathering films.
 - Nomad Capitalist / club-DJ excerpts remain pending clean source/rights and source identification. No new footage was produced in this release.
 - Financial zero cells remain blank, margins visible, after-carry detail collapsible and cash-flow statements available. Do not expose legal/company/financial source files.
+
+The currently available Model 10 workbook has a different package hash from the approved extraction. A fresh read-only comparison on 5 October found all 27 sheets' saved values and formula views equivalent, including all current app references. The approved financial data and source template are byte-identical to the previous canonical release. The hash-gated source verifiers were not relaxed; see the current validation record for the explicit limitation and semantic evidence.
 
 ## Evidence and recovery
 
