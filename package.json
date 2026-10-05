@@ -4,7 +4,13 @@
   "private": true,
   "description": "Dulcinea One visual investor website",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
+    "prestart": "node scripts/build.mjs --web && node scripts/verify-investor-build.mjs",
+    "start": "node server/node.mjs",
+    "dev": "npm start",
     "build": "node scripts/build.mjs",
     "build:site": "node scripts/build.mjs --web",
     "build:review": "node scripts/build.mjs --web --review",

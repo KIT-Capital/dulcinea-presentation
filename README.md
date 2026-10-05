@@ -50,6 +50,10 @@ The property floorplan viewer prioritizes notebook screens, with direct sheet se
 
 ## Source and builds
 
+For the Replit continuation workspace, use the included Run configuration and
+read [Replit handoff](docs/replit-handoff.md). It rebuilds and serves this same
+source with the existing access policy. No production secrets are transferred.
+
 The active website source is:
 
 - `src/investor/index.html`: structure and concise English/Spanish copy.
@@ -68,7 +72,7 @@ The active website source is:
 
 The former slide presentation remains in `src/presentation.*` and related files. `scripts/build-legacy.mjs` is retained for reference, not used by the standard production build. `assets/manifest.json` still supplies floorplan mappings.
 
-Run from the repository root with Node.js 18 or newer:
+Run from the repository root with Node.js 22 or newer:
 
 ```sh
 npm run build
