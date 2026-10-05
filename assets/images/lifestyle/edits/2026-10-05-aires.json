@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-05",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "precise-object-edit",
+  "generation_count": 1,
+  "property": "aires",
+  "generated_source_path": "exec-60f5be82-5881-4528-a6d7-6745b3bb8249.png",
+  "prompt": "Use case: precise-object-edit. Asset type: Dulcinea Aires de Campestre lifestyle property photograph. Input image: edit target. Replace only the head identities of the TWO existing adult men with distinct fictional guests. (1) The seated foreground man near the center in the wooden armchair, wearing the navy shirt and olive trousers and holding a mug: give him a clean-shaven face and wavy medium-length chestnut hair, appearing in his 40s, a natural different facial identity. Preserve his smile toward the woman, exact gaze direction, pose, body proportions, clothing, crossed legs, shoes, watch, hands and mug. (2) The standing man by the kitchen island at back right in the cream shirt and dark trousers: give him short silver-gray hair, a clean-shaven face and natural facial features of a man in his 60s, clearly distinct from the seated man. Preserve his exact position, gaze, stance, cup, clothing, hands and crossed ankles. The seated woman at left remains completely unchanged. Preserve all architecture, room proportions, wood wall slats, cabinetry, kitchen, windows, view, furnishings, table objects, foreground empty armchair, lighting, shadows, color grading, camera framing and aspect ratio. Do not add people, remove people, add amenities or text. Keep everything outside the two male heads unchanged. Photorealistic targeted edit; no crop or recomposition.",
+  "slug": "aires",
+  "width": 1672,
+  "height": 941,
+  "before_png_sha256": "AA426239ADC3A98D6D793EC4FC2F6A51AE6A59DCE21308F05146985168E44299",
+  "after_png_sha256": "4EAAE3F68AD057F691DFFF2CDEBD58074B3BB244E8EEC3EC939206F3758E238B",
+  "before_jpg_sha256": "4B4E42BB1F8B86E75EB52863E4B237D4C3B6E1A8A6225E1D769E76F646A2313F",
+  "after_jpg_sha256": "514C0B2106C7D868A3D0D4127C6471D699CBE90316D9E60599FFAFF6204EBA16",
+  "preservation_png": "external-archive:preservation/2026-10-05/diverse-guests/before/aires.png",
+  "preservation_jpg": "external-archive:preservation/2026-10-05/diverse-guests/before/aires.jpg",
+  "saved_png": "assets/images/lifestyle/aires.png",
+  "saved_jpg": "assets/images/lifestyle/aires.jpg",
+  "jpeg_derivative": {
+    "method": "FFmpeg JPEG encoder",
+    "executable": "ffmpeg",
+    "arguments": [
+      "-y",
+      "-i",
+      "assets/images/lifestyle/aires.png",
+      "-q:v",
+      "2",
+      "assets/images/lifestyle/aires.jpg"
+    ],
+    "resized": false,
+    "version": "ffmpeg version f50f8731e Copyright (c) 2000-2023 the FFmpeg developers"
+  },
+  "visual_review": "Accepted after inspecting source and generated output. Male identities and hair/facial hair differentiated; adult count, women, placement, poses, clothing, architecture, furnishings, lighting, and framing visually retained. No additional generation needed.",
+  "initial_jpeg_derivative": {
+    "method": "System.Drawing JPEG encoder",
+    "quality": 92,
+    "resized": false
+  },
+  "generated_source_sha256": "4eaae3f68ad057f691dfff2cdebd58074b3bb244e8eec3ec939206f3758e238b"
+}

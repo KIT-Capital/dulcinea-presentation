@@ -1,0 +1,54 @@
+{
+  "property": "Montana",
+  "slug": "montana",
+  "editDate": "2026-10-05",
+  "tool": "Built-in image_gen.imagegen",
+  "mode": "edit",
+  "generationCount": 1,
+  "generatedSourcePath": "exec-48704569-52da-456f-a7b8-421b492c12df.png",
+  "prompt": "Use case: precise-object-edit. Edit target: the supplied Montana lifestyle property photograph. Make an extremely localized photographic edit to only the heads, hair and facial identity of the TWO adult MEN on the terrace. The standing man at the right, wearing a white shirt and olive trousers while holding a drink, becomes a distinct fictional adult man in his 50s with short SILVER-BLOND hair and a clean-shaven face; retain his exact standing pose, side angle, proportions and clothes. The seated man at the left of the group, wearing a navy shirt and light trousers, becomes a different fictional man in his 40s with dark-brown hair and a neat mustache only, no beard; retain his exact seated pose, crossed legs, head direction and clothes. Preserve the seated woman completely unchanged. Preserve all 3 adult people, exact positions, poses, body proportions, hands, clothes and props. Lock everything outside the men's heads: complete building architecture, roof and balcony outlines, glass doors and railing, interior and furniture, trees and garden, colors, sunset lighting and shadows, full wide camera framing and original aspect ratio. Do not add, remove or move anything. Natural photorealistic results, subtle localized retouching only. No text, no logos, no watermark.",
+  "before": [
+    {
+      "format": "png",
+      "path": "external-archive:preservation/2026-10-05/diverse-guests/before/montana.png",
+      "sha256": "b82c3248c3fbe57ab56ef4e7ad032663c914415a393fd402cea456489536b837"
+    },
+    {
+      "format": "webp",
+      "path": "external-archive:preservation/2026-10-05/diverse-guests/before/montana.webp",
+      "sha256": "f7b6e9309d9ec82a7ec423f2af54a10ddb0964fe9ed9a67050f8be820b13ad9e"
+    }
+  ],
+  "after": [
+    {
+      "format": "png",
+      "path": "assets/images/lifestyle/montana.png",
+      "sha256": "ed32b5a70f66c9e9ebad58fbf0638d2433af7f0c12878bf75f0cee22e6b5eaf2"
+    },
+    {
+      "format": "webp",
+      "path": "assets/images/lifestyle/montana.webp",
+      "sha256": "463acff34b872a0fb7e5d3348e34425a2bbde164b1920e83b86c233a5985631e"
+    }
+  ],
+  "derivative": {
+    "format": "webp",
+    "method": "Pillow image format conversion from selected PNG",
+    "quality": 90,
+    "encodingMethod": 6,
+    "width": 1672,
+    "height": 941
+  },
+  "review": {
+    "decision": "Selected first generation; no targeted correction needed.",
+    "checked": [
+      "Three adult people retained in their original positions and poses",
+      "Woman retained",
+      "Men given distinct fictional appearances",
+      "Wide architecture and framing retained",
+      "No added text or amenities"
+    ]
+  },
+  "disclosure": "AI-edited lifestyle visualization with fictional adult guests. Not documentary photography or confirmation of finished condition.",
+  "generatedSourceSha256": "ed32b5a70f66c9e9ebad58fbf0638d2433af7f0c12878bf75f0cee22e6b5eaf2"
+}

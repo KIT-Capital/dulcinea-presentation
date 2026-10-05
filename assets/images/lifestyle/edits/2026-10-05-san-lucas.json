@@ -1,0 +1,51 @@
+{
+  "property": "San Lucas 101",
+  "date": "2026-10-05",
+  "tool": "Built-in image_gen.imagegen",
+  "input": "external-archive:preservation/2026-10-05/diverse-guests/before/san-lucas.png",
+  "generatedSource": "exec-e7f0c117-4e65-4845-a627-21f2cc866dbb.png",
+  "output": "assets/images/lifestyle/san-lucas.png",
+  "prompt": "Use case: precise-object-edit. Edit target: attached San Lucas property lifestyle illustration. Change ONLY the fictional adult man standing at left in the navy shirt holding a white cup. Give him a clearly different identity: clean-shaven, short straight black hair neatly cropped, medium brown skin, a slightly broader face and a natural relaxed smile, age around 35-40. Keep his exact body, pose, navy shirt, beige trousers, cup, hands and position; remove all beard and stubble. Preserve the woman completely. Preserve the entire apartment exactly: windows and mullions, columns, statues and plinths, plants, wood floor, tables, objects, artwork, proportions, sunlight, reflections, shadows, framing and original 3:2 landscape aspect ratio. Exactly two adults. This is a localized head/face/hair edit, not a scene redesign. Photorealistic restrained architectural lifestyle illustration; human anatomy and lighting must match. No new people, amenities, text, logos or watermark.",
+  "review": "Visually inspected. Distinct clean-shaven short black-haired man; original woman, architecture, fixtures, objects, count and pose retained.",
+  "slug": "san-lucas",
+  "before": [
+    {
+      "format": "png",
+      "path": "external-archive:preservation/2026-10-05/diverse-guests/before/san-lucas.png",
+      "sha256": "391410af65825178e58c9edc1010d5b865106fac83b193ef0d99e66950f3f0b0"
+    },
+    {
+      "format": "webp",
+      "path": "external-archive:preservation/2026-10-05/diverse-guests/before/san-lucas.webp",
+      "sha256": "312a83299dc6243aaa377b800b70ca727f252a57574673a86f2a3f0c7a6ad749"
+    }
+  ],
+  "after": [
+    {
+      "format": "png",
+      "path": "assets/images/lifestyle/san-lucas.png",
+      "sha256": "4c43c4c0f147e5a9e919f4a0a9cf37b3bb4c623a046bb3f72fab94dbc6a5d5fe"
+    },
+    {
+      "format": "webp",
+      "path": "assets/images/lifestyle/san-lucas.webp",
+      "sha256": "894c18c6e1ccde8d961e70d887ba058da5e77b462a4d93271d17476359ebff17"
+    }
+  ],
+  "derivative": {
+    "format": "webp",
+    "method": "FFmpeg WebP encoder",
+    "executable": "ffmpeg",
+    "arguments": [
+      "-y",
+      "-i",
+      "assets/images/lifestyle/san-lucas.png",
+      "-quality",
+      "90",
+      "assets/images/lifestyle/san-lucas.webp"
+    ],
+    "resized": false,
+    "version": "ffmpeg version f50f8731e Copyright (c) 2000-2023 the FFmpeg developers"
+  },
+  "generatedSourceSha256": "4c43c4c0f147e5a9e919f4a0a9cf37b3bb4c623a046bb3f72fab94dbc6a5d5fe"
+}

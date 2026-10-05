@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-05",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "precise-object-edit",
+  "generation_count": 1,
+  "property": "fontanar",
+  "generated_source_path": "exec-6aec0a9b-3e89-43c6-be08-ea519c054885.png",
+  "prompt": "Use case: precise-object-edit. Asset type: Dulcinea Fontanar lifestyle property photograph. Input image: edit target. Make one precise change only: replace the adult man standing left of center at the kitchen island cutting tomatoes with a distinct fictional adult man in his 30s who has short ash-blond hair, a clean-shaven face, and a naturally different facial identity. Keep his exact position, body size, smile, downward gaze, cutting pose, hands, olive-gray button shirt, sleeves, trousers, watch, and every object he touches unchanged. There is only one man; the two women (foreground at right with cup, distant seated woman in the rear living room) must remain exactly unchanged. Preserve the entire architecture, ceiling, four hanging lights, stairs, cabinetry, island, food, furniture, window view, framing, image aspect ratio, lighting, shadows, color grading, materials, and all original image details outside the male head. No new people, no new amenities, no logos or text. Photorealistic targeted identity replacement with clean anatomy. Do not crop or recompose.",
+  "slug": "fontanar",
+  "width": 1536,
+  "height": 1024,
+  "before_png_sha256": "3C7C702C88813E8CDC301E4D2E45A0BAFEFC3CA89472857DA39D249B8ED8C083",
+  "after_png_sha256": "6BBF1A99D5D119B2E18AB2D9D6B67E1B972BE2F10917E8AC143383B07E43E0CA",
+  "before_jpg_sha256": "34993230B9DD897A1B2C763B5F48393568FA97FE6262815242D19A71C7CAE782",
+  "after_jpg_sha256": "B8B03F3B9A3F793228402A3CC887F2F3DCACC4E2C460E42677E967E0BD1928C8",
+  "preservation_png": "external-archive:preservation/2026-10-05/diverse-guests/before/fontanar.png",
+  "preservation_jpg": "external-archive:preservation/2026-10-05/diverse-guests/before/fontanar.jpg",
+  "saved_png": "assets/images/lifestyle/fontanar.png",
+  "saved_jpg": "assets/images/lifestyle/fontanar.jpg",
+  "jpeg_derivative": {
+    "method": "FFmpeg JPEG encoder",
+    "executable": "ffmpeg",
+    "arguments": [
+      "-y",
+      "-i",
+      "assets/images/lifestyle/fontanar.png",
+      "-q:v",
+      "2",
+      "assets/images/lifestyle/fontanar.jpg"
+    ],
+    "resized": false,
+    "version": "ffmpeg version f50f8731e Copyright (c) 2000-2023 the FFmpeg developers"
+  },
+  "visual_review": "Accepted after inspecting source and generated output. Male identities and hair/facial hair differentiated; adult count, women, placement, poses, clothing, architecture, furnishings, lighting, and framing visually retained. No additional generation needed.",
+  "initial_jpeg_derivative": {
+    "method": "System.Drawing JPEG encoder",
+    "quality": 92,
+    "resized": false
+  },
+  "generated_source_sha256": "6bbf1a99d5d119b2e18ab2d9d6b67e1b972be2f10917e8ac143383b07e43e0ca"
+}

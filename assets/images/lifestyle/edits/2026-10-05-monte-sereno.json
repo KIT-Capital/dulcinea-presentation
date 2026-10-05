@@ -1,0 +1,54 @@
+{
+  "property": "Monte Sereno",
+  "slug": "monte-sereno",
+  "editDate": "2026-10-05",
+  "tool": "Built-in image_gen.imagegen",
+  "mode": "edit",
+  "generationCount": 1,
+  "generatedSourcePath": "exec-c0399db1-3d41-4fef-82be-41d89e527504.png",
+  "prompt": "Use case: precise-object-edit. Edit target: the supplied Monte Sereno lifestyle property photograph. Make an extremely localized photographic edit to only the head, hair and facial identity of the TWO adult MEN. The foreground man walking away across the lawn, wearing a pale sage shirt and cream trousers, becomes a distinct fictional adult man in his 40s with short sandy BLOND hair and a clean-shaven face; retain his exact walking pose, rear three-quarter angle, sunglasses, proportions and clothes. The man on the patio to the left of the woman, wearing a pale blue shirt and beige trousers, becomes a different fictional man in his 50s with short dark curly hair and a clean-shaven face; retain his precise position and conversational pose. Preserve the woman completely unchanged. Preserve all 3 adult people, exact positions, poses, body proportions, hands, clothes and props. Lock everything outside the men's heads: the complete building and roofline, architecture, glazing, garden and plants, patio, furniture, sky, colors, late-day lighting and shadows, full wide camera framing and original aspect ratio. Do not add, remove or move anything. Natural photorealistic results, subtle localized retouching only. No text, no logos, no watermark.",
+  "before": [
+    {
+      "format": "png",
+      "path": "external-archive:preservation/2026-10-05/diverse-guests/before/monte-sereno.png",
+      "sha256": "ee8624f4799d11cef226ed3524bd32921bd961d5a36e435e185d20e40dd01c3f"
+    },
+    {
+      "format": "webp",
+      "path": "external-archive:preservation/2026-10-05/diverse-guests/before/monte-sereno.webp",
+      "sha256": "351974c14a7ce9c7ac8686df27e7a8d3767f011d20b721ebe3d53c25483cdc83"
+    }
+  ],
+  "after": [
+    {
+      "format": "png",
+      "path": "assets/images/lifestyle/monte-sereno.png",
+      "sha256": "588dca013e27ed4ad9a9229cf74f7593234fc53a5bee915dcf91d664a69714a1"
+    },
+    {
+      "format": "webp",
+      "path": "assets/images/lifestyle/monte-sereno.webp",
+      "sha256": "bf8d0cb51cc4b9f0f1391e061dcbb77a159ac35ee2b02efdfb8ad3e49acd1aa1"
+    }
+  ],
+  "derivative": {
+    "format": "webp",
+    "method": "Pillow image format conversion from selected PNG",
+    "quality": 90,
+    "encodingMethod": 6,
+    "width": 1672,
+    "height": 941
+  },
+  "review": {
+    "decision": "Selected first generation; no targeted correction needed.",
+    "checked": [
+      "Three adult people retained in their original positions and poses",
+      "Woman retained",
+      "Men given distinct fictional appearances",
+      "Wide architecture and framing retained",
+      "No added text or amenities"
+    ]
+  },
+  "disclosure": "AI-edited lifestyle visualization with fictional adult guests. Not documentary photography or confirmation of finished condition.",
+  "generatedSourceSha256": "588dca013e27ed4ad9a9229cf74f7593234fc53a5bee915dcf91d664a69714a1"
+}

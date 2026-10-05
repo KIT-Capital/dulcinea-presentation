@@ -118,43 +118,108 @@
     },
     {
       "path": "assets/video/properties/aires.mp4",
-      "bytes": 1625531,
-      "sha256": "393b73d4e38409e1ab5676c04a8b66835a62f9695eb18236816b41e07afc1b44",
-      "git_blob": "d8c7a0df80bea4d7b843a52a4f32e541c05e4cd9",
-      "remote_verified": true,
-      "status": "active"
+      "bytes": 1375905,
+      "sha256": "970cc9b8b58c4ba556a2dc6291dafaae178b983a28a289d45f41c47b8319728f",
+      "git_blob": "92868611f93a0bec5cbc0772f8aeb7732e9a17bf",
+      "remote_verified": false,
+      "status": "active",
+      "history": [
+        {
+          "catalog_verified_on": "2026-10-04",
+          "path": "assets/video/properties/aires.mp4",
+          "bytes": 1625531,
+          "sha256": "393b73d4e38409e1ab5676c04a8b66835a62f9695eb18236816b41e07afc1b44",
+          "git_blob": "d8c7a0df80bea4d7b843a52a4f32e541c05e4cd9",
+          "remote_verified": true,
+          "status": "active"
+        }
+      ],
+      "updated_on": "2026-10-05",
+      "provenance": "assets/video/properties/metadata/provenance.json"
     },
     {
       "path": "assets/video/properties/fontanar.mp4",
-      "bytes": 1075890,
-      "sha256": "5e3f5d4bb161215e0c79190373a2dabce6e4e3e4887d682f1e4ff888b586baab",
-      "git_blob": "7ee2e5c86115ba6069f577a110960b20c9dc4d4b",
-      "remote_verified": true,
-      "status": "active"
+      "bytes": 1055605,
+      "sha256": "5b57baf069c7c69e4ccbcf2131765f955bfd43ef82f2a93b9cb708ae0a473a3f",
+      "git_blob": "93b37aeadae89ac94dce591a8c1f0a9431ac0265",
+      "remote_verified": false,
+      "status": "active",
+      "history": [
+        {
+          "catalog_verified_on": "2026-10-04",
+          "path": "assets/video/properties/fontanar.mp4",
+          "bytes": 1075890,
+          "sha256": "5e3f5d4bb161215e0c79190373a2dabce6e4e3e4887d682f1e4ff888b586baab",
+          "git_blob": "7ee2e5c86115ba6069f577a110960b20c9dc4d4b",
+          "remote_verified": true,
+          "status": "active"
+        }
+      ],
+      "updated_on": "2026-10-05",
+      "provenance": "assets/video/properties/metadata/provenance.json"
     },
     {
       "path": "assets/video/properties/montana.mp4",
-      "bytes": 1662892,
-      "sha256": "4615ecce7191acff9b615165efe67fda63c1b64fa036d7f3d02c5ef262d4aced",
-      "git_blob": "2a40216547c14cb8c859f24e5c4503b70d8d43a5",
-      "remote_verified": true,
-      "status": "active"
+      "bytes": 1655177,
+      "sha256": "485826959a7eba314dbb27599f9a4c05e3994187fd2c581cc55451b8bb8908a6",
+      "git_blob": "92f9784d81930393dbbefdfaa2af4f5de2f3e48e",
+      "remote_verified": false,
+      "status": "active",
+      "history": [
+        {
+          "catalog_verified_on": "2026-10-04",
+          "path": "assets/video/properties/montana.mp4",
+          "bytes": 1662892,
+          "sha256": "4615ecce7191acff9b615165efe67fda63c1b64fa036d7f3d02c5ef262d4aced",
+          "git_blob": "2a40216547c14cb8c859f24e5c4503b70d8d43a5",
+          "remote_verified": true,
+          "status": "active"
+        }
+      ],
+      "updated_on": "2026-10-05",
+      "provenance": "assets/video/properties/metadata/provenance.json"
     },
     {
       "path": "assets/video/properties/monte-sereno.mp4",
-      "bytes": 1698801,
-      "sha256": "8613aa411553e3183e26ee1f5ccdc135886f3034938f16990180047d8aea03ef",
-      "git_blob": "4dbc054d5af68dc2c357575337ffb596163a0941",
-      "remote_verified": true,
-      "status": "active"
+      "bytes": 1690131,
+      "sha256": "3bb7d4e4f07df9834f0548e0d5fcc1c168ed699219ca7b2993df6e55f768e7e9",
+      "git_blob": "ee59ed042122e694bad19e20384dd2d93f0ea498",
+      "remote_verified": false,
+      "status": "active",
+      "history": [
+        {
+          "catalog_verified_on": "2026-10-04",
+          "path": "assets/video/properties/monte-sereno.mp4",
+          "bytes": 1698801,
+          "sha256": "8613aa411553e3183e26ee1f5ccdc135886f3034938f16990180047d8aea03ef",
+          "git_blob": "4dbc054d5af68dc2c357575337ffb596163a0941",
+          "remote_verified": true,
+          "status": "active"
+        }
+      ],
+      "updated_on": "2026-10-05",
+      "provenance": "assets/video/properties/metadata/provenance.json"
     },
     {
       "path": "assets/video/properties/san-lucas.mp4",
-      "bytes": 1669910,
-      "sha256": "f83fbbf5fb1cc945067e16ac63a7d4eec910ef6334d88e6f68c3c8f083bad171",
-      "git_blob": "4b3bef2df552d2f8cccdf140e602f55c11d76763",
-      "remote_verified": true,
-      "status": "active"
+      "bytes": 1645148,
+      "sha256": "220ac6633924c5a124892c0cc731489090d4265c3f94f3d9fb095849416c6f2e",
+      "git_blob": "09feb18ad0c000f840f29ad2a85e91d47ec697f2",
+      "remote_verified": false,
+      "status": "active",
+      "history": [
+        {
+          "catalog_verified_on": "2026-10-04",
+          "path": "assets/video/properties/san-lucas.mp4",
+          "bytes": 1669910,
+          "sha256": "f83fbbf5fb1cc945067e16ac63a7d4eec910ef6334d88e6f68c3c8f083bad171",
+          "git_blob": "4b3bef2df552d2f8cccdf140e602f55c11d76763",
+          "remote_verified": true,
+          "status": "active"
+        }
+      ],
+      "updated_on": "2026-10-05",
+      "provenance": "assets/video/properties/metadata/provenance.json"
     },
     {
       "path": "assets/video/review/after-dark.mp4",

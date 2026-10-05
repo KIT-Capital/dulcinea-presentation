@@ -3,20 +3,20 @@
   "people": "Adults are fictional and remain still. No fabricated human movement, frame interpolation or generative video.",
   "source_handling": "Retained PNGs unchanged; 16:9 crop, then 0.8-3.5 percent eased zoom with slight pan. Architecture and all depicted adults remain in frame.",
   "render_script": "scripts/render-property-videos.py",
-  "tool": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
-  "total_bytes": 7733024,
+  "tool": "ffmpeg version f50f8731e Copyright (c) 2000-2023 the FFmpeg developers",
+  "total_bytes": 7421966,
   "videos": [
     {
       "slug": "san-lucas",
       "file": "assets/video/properties/san-lucas.mp4",
       "source": "assets/images/lifestyle/san-lucas.png",
-      "source_sha256": "391410af65825178e58c9edc1010d5b865106fac83b193ef0d99e66950f3f0b0",
+      "source_sha256": "4c43c4c0f147e5a9e919f4a0a9cf37b3bb4c623a046bb3f72fab94dbc6a5d5fe",
       "source_dimensions": [
         1536,
         1024
       ],
-      "sha256": "f83fbbf5fb1cc945067e16ac63a7d4eec910ef6334d88e6f68c3c8f083bad171",
-      "bytes": 1669910,
+      "sha256": "220ac6633924c5a124892c0cc731489090d4265c3f94f3d9fb095849416c6f2e",
+      "bytes": 1645148,
       "seconds": 9,
       "frames": 216,
       "fps": 24,
@@ -46,15 +46,15 @@
       "verification": {
         "full_stream_decode": "pass",
         "uncompressed_endpoint_md5": [
-          "3679701fc24cf8dd961d47acc5463142",
-          "3679701fc24cf8dd961d47acc5463142"
+          "932209a65bca275be464c69731502844",
+          "932209a65bca275be464c69731502844"
         ],
         "uncompressed_endpoints_identical": true,
         "encoded_endpoint_sha256": [
-          "3410610c7ed281739f060ff0958e416c7e4641ee510f25b1eaf1410c3567fa3e",
-          "a5c02ae9fe976adfffbab723eb970a767c3657bb5500dd15f66258b0bc6fc05c"
+          "0680c8a96ae315a77c387a30e88a4d1a8bfd9b4153cb802eabf04e43364ac44a",
+          "f926ba919bf783f998cff9877a8a8d6c561698dc088cf1088d6f1c1ed62a28ab"
         ],
-        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 3.162109736689815,
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 2.6460091145833333,
         "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
       }
     },
@@ -62,13 +62,13 @@
       "slug": "aires",
       "file": "assets/video/properties/aires.mp4",
       "source": "assets/images/lifestyle/aires.png",
-      "source_sha256": "aa426239adc3a98d6d793ec4fc2f6a51ae6a59dce21308f05146985168e44299",
+      "source_sha256": "4eaae3f68ad057f691dfff2cdebd58074b3bb244e8eec3ec939206f3758e238b",
       "source_dimensions": [
         1672,
         941
       ],
-      "sha256": "393b73d4e38409e1ab5676c04a8b66835a62f9695eb18236816b41e07afc1b44",
-      "bytes": 1625531,
+      "sha256": "970cc9b8b58c4ba556a2dc6291dafaae178b983a28a289d45f41c47b8319728f",
+      "bytes": 1375905,
       "seconds": 9,
       "frames": 216,
       "fps": 24,
@@ -98,15 +98,15 @@
       "verification": {
         "full_stream_decode": "pass",
         "uncompressed_endpoint_md5": [
-          "2d7718a6c1a96424f7f20aa0fbfaaee9",
-          "2d7718a6c1a96424f7f20aa0fbfaaee9"
+          "200a810f5e7522cf7fd1cc8a46415f6d",
+          "200a810f5e7522cf7fd1cc8a46415f6d"
         ],
         "uncompressed_endpoints_identical": true,
         "encoded_endpoint_sha256": [
-          "12590e3d1a5b551c6af9e269e4dcf80c9a7127274be18b2cab9d0327880199f6",
-          "91cac05f94c6c14c2c58981cc235122653fac4902e5301d0dd5a7318781fce4a"
+          "034f73d61fa2c0928d7e6275b7ad05c2469c733bfa6bf5ef771dd0538b8aaa52",
+          "dbe8c8928d394db4297888775fde45770d57fb7b462cde18458203e96f244c39"
         ],
-        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 2.2789789496527777,
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 2.0018370225694446,
         "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
       }
     },
@@ -114,13 +114,13 @@
       "slug": "fontanar",
       "file": "assets/video/properties/fontanar.mp4",
       "source": "assets/images/lifestyle/fontanar.png",
-      "source_sha256": "3c7c702c88813e8cdc301e4d2e45a0bafefc3ca89472857da39d249b8ed8c083",
+      "source_sha256": "6bbf1a99d5d119b2e18ab2d9d6b67e1b972be2f10917e8ac143383b07e43e0ca",
       "source_dimensions": [
         1536,
         1024
       ],
-      "sha256": "5e3f5d4bb161215e0c79190373a2dabce6e4e3e4887d682f1e4ff888b586baab",
-      "bytes": 1075890,
+      "sha256": "5b57baf069c7c69e4ccbcf2131765f955bfd43ef82f2a93b9cb708ae0a473a3f",
+      "bytes": 1055605,
       "seconds": 9,
       "frames": 216,
       "fps": 24,
@@ -150,15 +150,15 @@
       "verification": {
         "full_stream_decode": "pass",
         "uncompressed_endpoint_md5": [
-          "4332f3d3cc3f2f82f1c88ac15220be74",
-          "4332f3d3cc3f2f82f1c88ac15220be74"
+          "afb8c739b025e0cac21e54bea4e20792",
+          "afb8c739b025e0cac21e54bea4e20792"
         ],
         "uncompressed_endpoints_identical": true,
         "encoded_endpoint_sha256": [
-          "a7224b1ce5392894eaed52c303a8d23c20a0f2fefcc64bf629354c1cc99c2ed5",
-          "e58e4812a4c2f12cf4e3fdbf961174df38573a8f4404b1a0e118b994e301cef6"
+          "0a25d7c964232d66f335ee644aa286f166d2ab25fbee36758b5cd383c7c18d55",
+          "9d6824c732378082cdaf93584dd11283c816e49432bd0be24d22c26fdfb0a6f2"
         ],
-        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 1.504129050925926,
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 1.4993485966435185,
         "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
       }
     },
@@ -166,13 +166,13 @@
       "slug": "monte-sereno",
       "file": "assets/video/properties/monte-sereno.mp4",
       "source": "assets/images/lifestyle/monte-sereno.png",
-      "source_sha256": "ee8624f4799d11cef226ed3524bd32921bd961d5a36e435e185d20e40dd01c3f",
+      "source_sha256": "588dca013e27ed4ad9a9229cf74f7593234fc53a5bee915dcf91d664a69714a1",
       "source_dimensions": [
         1672,
         941
       ],
-      "sha256": "8613aa411553e3183e26ee1f5ccdc135886f3034938f16990180047d8aea03ef",
-      "bytes": 1698801,
+      "sha256": "3bb7d4e4f07df9834f0548e0d5fcc1c168ed699219ca7b2993df6e55f768e7e9",
+      "bytes": 1690131,
       "seconds": 9,
       "frames": 216,
       "fps": 24,
@@ -202,15 +202,15 @@
       "verification": {
         "full_stream_decode": "pass",
         "uncompressed_endpoint_md5": [
-          "b67e22cf135633f61dc9b5d2f6ec9a97",
-          "b67e22cf135633f61dc9b5d2f6ec9a97"
+          "feb1b4535c5a7c9b6d6f0c64c8bc9763",
+          "feb1b4535c5a7c9b6d6f0c64c8bc9763"
         ],
         "uncompressed_endpoints_identical": true,
         "encoded_endpoint_sha256": [
-          "955910cc2aefc279db5d9463b10d505823de8ca450e127b186725eb09ffbb2f0",
-          "434cbc989b380b32331049dd39ddcd638f139f3db4a9091eb55ed5526bc7ba46"
+          "15a2ed878cf0f7796b6034c78de6dc17bffcbd3aa53c49515a942a6db818b97e",
+          "bac1a93d5c6b4872a3a9648398ca371aa46d69ac7c9200365029a5338fb4f5c1"
         ],
-        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 4.6489033564814815,
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 4.083206741898148,
         "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
       }
     },
@@ -218,13 +218,13 @@
       "slug": "montana",
       "file": "assets/video/properties/montana.mp4",
       "source": "assets/images/lifestyle/montana.png",
-      "source_sha256": "b82c3248c3fbe57ab56ef4e7ad032663c914415a393fd402cea456489536b837",
+      "source_sha256": "ed32b5a70f66c9e9ebad58fbf0638d2433af7f0c12878bf75f0cee22e6b5eaf2",
       "source_dimensions": [
         1672,
         941
       ],
-      "sha256": "4615ecce7191acff9b615165efe67fda63c1b64fa036d7f3d02c5ef262d4aced",
-      "bytes": 1662892,
+      "sha256": "485826959a7eba314dbb27599f9a4c05e3994187fd2c581cc55451b8bb8908a6",
+      "bytes": 1655177,
       "seconds": 9,
       "frames": 216,
       "fps": 24,
@@ -254,23 +254,17 @@
       "verification": {
         "full_stream_decode": "pass",
         "uncompressed_endpoint_md5": [
-          "a1b7c472b92dd73e443a8ae27a48a092",
-          "a1b7c472b92dd73e443a8ae27a48a092"
+          "b6e600325d0f5c14351a6cd4d386369d",
+          "b6e600325d0f5c14351a6cd4d386369d"
         ],
         "uncompressed_endpoints_identical": true,
         "encoded_endpoint_sha256": [
-          "7026c6965be35ad378c3f41ec981a18b922413508985c2e8004eefae030e313f",
-          "f3b20afda8270abd4ba6b546794c09c5e5f390d6d1878cae2e084aabf848a32f"
+          "df651526b3bc8a2729d72aa9c4dd2ffdaee7bcea725994402c4ed284d718aab1",
+          "441b35c1b43d8c9c9a17d9f8f9fbf5871d9b94eb8e145a3aae3451d4d7f017fa"
         ],
-        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 3.8725517216435184,
+        "encoded_endpoint_mean_absolute_rgb_difference_0_to_255": 3.45150390625,
         "note": "Lossy encoded endpoint hashes can differ although the pre-encode framing is exactly identical."
       }
     }
-  ],
-  "visual_review": {
-    "reviewed": "All five actual encoded midpoint frames",
-    "result": "All depicted adults remain visible; recognizable architectural views preserved; no framing defect found.",
-    "loop_check": "Identical uncompressed first/last frame MD5s for all five camera transforms. Encoded endpoint differences are lossy compression only.",
-    "review_frames": "work/property-video-review/{slug}-01.png, -02.png, -03.png are first/midpoint/last."
-  }
+  ]
 }

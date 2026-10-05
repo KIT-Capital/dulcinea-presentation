@@ -20,7 +20,11 @@
         "no added amenities, logos or wording"
       ],
       "decision": "Selected first generation; no clear defect requiring regeneration. Architectural resemblance is illustrative rather than measured as-built verification."
-    }
+    },
+    "latestEdit": "assets/images/lifestyle/edits/2026-10-05-san-lucas.json",
+    "latestEditDate": "2026-10-05",
+    "masterSha256": "4c43c4c0f147e5a9e919f4a0a9cf37b3bb4c623a046bb3f72fab94dbc6a5d5fe",
+    "webAssetSha256": "894c18c6e1ccde8d961e70d887ba058da5e77b462a4d93271d17476359ebff17"
   },
   {
     "property": "Aires de Campestre",
@@ -34,7 +38,11 @@
     "prompt": "Use case: compositing.\nAsset type: ultra-photorealistic landscape lifestyle visualization for the supplied Aires de Campestre apartment, 16:9.\nInput image 1 is the architecture edit target, a three-panel collage. Use ONLY its TOP wide apartment photograph as the scene. Output one continuous photograph, never a collage. Lock that top view's camera position, perspective and architecture: warm timber floor; blank ivory left wall with the tall inset vertical wood slat panel; recessed ceiling and warm cove light; deep navy kitchen cabinets at the back; stainless hood, oven and microwave; the distinctive long white angular island with dark gray inset front; exact black-framed rear windows and green mountain outlook. Do not import the hot tub or pergola from the lower panels. For a 16:9 composition extend only the foreground floor area naturally, not the architecture.\nAdd restrained movable furnishings to this presently empty apartment: one low cream sofa at the left, two simple lounge chairs and a small wood coffee table with three ceramic coffee cups, keeping the kitchen and island clearly visible and circulation open. Show exactly three fictional adults aged about 30–50 using the home: two seated comfortably in a candid conversation over coffee, one standing casually beside the kitchen island with a coffee cup, engaged with the others rather than with the camera. Comfortable understated linen and cotton casual clothing. Natural faces and individual expressions, believable body scale, anatomically correct hands and limbs, realistic contact and occlusion.\nRender as a very high-quality real interior lifestyle photograph: convincing skin pores, fabric weave, wood grain, natural soft daylight from the existing windows, warm existing interior light, physically consistent shadows, gentle lived-in realism, not glossy CGI. The people belong in the actual room; no staged advertising poses.\nKeep all permanent features, window count, layout, surfaces, materials and colors faithful to the top source photo. No extra windows, doors, terrace, pool, amenities, renovation or architectural redesign. No logos, lettering, labels, watermark, border or text.",
     "generationCount": 1,
     "disclosure": "AI-generated lifestyle visualization based on supplied property imagery, with fictional adults. Not documentary photography or confirmation of finished condition.",
-    "review": "Three fictional adults in a coffee conversation. Added movable lounge furnishings. Top source panel's wood-slat wall, cove-lit ceiling, navy kitchen, angular island and black window frames preserved. No hot tub or pergola imported from collage. Natural faces, hands, seating scale and occlusion visually checked."
+    "review": "Three fictional adults in a coffee conversation. Added movable lounge furnishings. Top source panel's wood-slat wall, cove-lit ceiling, navy kitchen, angular island and black window frames preserved. No hot tub or pergola imported from collage. Natural faces, hands, seating scale and occlusion visually checked.",
+    "latestEdit": "assets/images/lifestyle/edits/2026-10-05-aires.json",
+    "latestEditDate": "2026-10-05",
+    "masterSha256": "4eaae3f68ad057f691dfff2cdebd58074b3bb244e8eec3ec939206f3758e238b",
+    "webAssetSha256": "514c0b2106c7d868a3d0d4127c6471d699cbe90316d9e60599ffaff6204eba16"
   },
   {
     "property": "Fontanar 201",
@@ -48,7 +56,11 @@
     "prompt": "Use case: compositing.\nAsset type: ultra-photorealistic landscape lifestyle visualization for the supplied Fontanar 201 penthouse, 3:2.\nInput image 1 is the exact architecture edit target. Preserve its camera position and central kitchen-island perspective, the broad white marble island with warm brown veining and rectangular black induction hob, matte charcoal island drawers, four long thin black pendant lights above, refrigerator and dark illuminated glass-front oven cabinets on the left, white open-riser staircase with glass balustrade on the right, and the dining/living room receding toward the distant city-view windows. Keep the exact layout, proportions, sightlines, cabinetry, windows, staircase, materials, colors, furniture and light.\nAdd exactly three fictional adults aged about 30–50 naturally using the home. Two stand BEHIND the island: one preparing a simple lunch on a small wooden cutting board placed on the clear countertop to one side of the hob, the other sharing an easy conversation while holding a ceramic coffee cup. A third adult sits comfortably in the existing far living-room seating, reading. Their attention is on each other or their activity, never on the camera. Understated casual cotton or linen clothing, relaxed natural gestures, individual realistic faces, correct hand anatomy and believable scale. A modest bowl of tomatoes and a few kitchen items are enough; preserve uncluttered surfaces and the room's actual features.\nThe result must look like a high-end candid architectural lifestyle photograph, not a computer rendering: lifelike skin texture and hair, accurate fabric, true marble and metal reflections, existing soft window daylight with matching shadow direction and warm accent lights, realistic depth. Keep the background geography and every permanent architectural element unchanged. No added windows, walls, appliances, doors, pools, terraces or invented amenities. No text, logo, watermark, border or collage.",
     "generationCount": 1,
     "disclosure": "AI-generated lifestyle visualization based on supplied property imagery, with fictional adults. Not documentary photography or confirmation of finished condition.",
-    "review": "Three fictional adults: food preparation, conversation over coffee, and reading in the living area. Preserves front island view, marble and charcoal cabinetry, four slim pendants, left appliance bank, right glass stair, dining/living sightline. Hands and body scale visually checked; no obvious anatomy defects."
+    "review": "Three fictional adults: food preparation, conversation over coffee, and reading in the living area. Preserves front island view, marble and charcoal cabinetry, four slim pendants, left appliance bank, right glass stair, dining/living sightline. Hands and body scale visually checked; no obvious anatomy defects.",
+    "latestEdit": "assets/images/lifestyle/edits/2026-10-05-fontanar.json",
+    "latestEditDate": "2026-10-05",
+    "masterSha256": "6bbf1a99d5d119b2e18ab2d9d6b67e1b972be2f10917e8ac143383b07e43e0ca",
+    "webAssetSha256": "b8b03f3b9a3f793228402a3cc887f2f3dcacc4e2c460e42677e967e0bd1928c8"
   },
   {
     "property": "Casa Monte Sereno",
@@ -71,7 +83,11 @@
         "no added amenities, logos or wording"
       ],
       "decision": "Selected first generation; no clear defect requiring regeneration. Architectural resemblance is illustrative rather than measured as-built verification."
-    }
+    },
+    "latestEdit": "assets/images/lifestyle/edits/2026-10-05-monte-sereno.json",
+    "latestEditDate": "2026-10-05",
+    "masterSha256": "588dca013e27ed4ad9a9229cf74f7593234fc53a5bee915dcf91d664a69714a1",
+    "webAssetSha256": "bf8d0cb51cc4b9f0f1391e061dcbb77a159ac35ee2b02efdfb8ad3e49acd1aa1"
   },
   {
     "property": "Casa Montana",
@@ -94,6 +110,10 @@
         "no added amenities, logos or wording"
       ],
       "decision": "Selected first generation; no clear defect requiring regeneration. Architectural resemblance is illustrative rather than measured as-built verification."
-    }
+    },
+    "latestEdit": "assets/images/lifestyle/edits/2026-10-05-montana.json",
+    "latestEditDate": "2026-10-05",
+    "masterSha256": "ed32b5a70f66c9e9ebad58fbf0638d2433af7f0c12878bf75f0cee22e6b5eaf2",
+    "webAssetSha256": "463acff34b872a0fb7e5d3348e34425a2bbde164b1920e83b86c233a5985631e"
   }
 ]
