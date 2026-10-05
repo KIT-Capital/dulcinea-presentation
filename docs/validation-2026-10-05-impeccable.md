@@ -105,3 +105,31 @@ At the user's request, moved the transparent logos to the lower-right and the no
 - Production build/verifier and diff whitespace check passed. Server behavior unchanged from the preceding 47-test pass.
 - Browser verified desktop website and opening canvas slide, plus EN/ES 390x844 mobile websites. Mobile content width matched the viewport; logos stayed 40px above the hero bottom. No overlaps with eligibility or the reading cue.
 - Live EN/ES homepage status 200; SHA-256 matched the built files exactly.
+
+## Website and slides: second full pass — 5 October 2026
+
+Performed a further Impeccable refinement pass against the active source and local browser. The existing website identity, 18-slide order, approved facts and financial data were preserved.
+
+### Fixes
+
+- Added a persistent presentation toolbar pause/resume control. It uses the existing playback preference, localizes its label, and stays synchronized with the hero control and reduced-motion preference. Dialog pauses remain temporary. The toolbar retains 44px controls at narrow portrait and landscape sizes.
+- Corrected presentation sizing for the nested El Oriente video. Added existing poster imagery beneath the cover and El Oriente films and isolated their video layers, extending the existing property-video rendering mitigation. Both scenes had appeared blank despite active playback during inspection; both displayed imagery after the fix. This is a rendering mitigation, not a conclusive diagnosis of the browser compositor.
+- Corrected the shared closing footer to “Accredited investors only” and “Solo inversionistas acreditados.”
+- Renamed the specialist link to “View specialist directory” / “Ver directorio de especialistas,” matching its actual contents. No unsupported biographies were added.
+- Used ink focus indicators on the supporting specialist/disclaimer pages and on light website story panels; white remains on dark website panels.
+- Standardized acquisition-criteria dollar notation and added one bilingual US-dollar note. Values were not changed.
+- Corrected slide-overview left/right keyboard instructions. Resolved the responsive appendix return and website buttons occupying the same grid cell.
+
+### Verification
+
+- Inspected all 18 English desktop slide compositions at 1440 × 900. All 18 Spanish desktop slides passed text-boundary measurements with no clipped text detected.
+- Checked all 18 slides in each language at 390 × 844: no horizontal overflow in the document or active slide. Long responsive slides retain vertical scrolling.
+- Checked the new toolbar at 320 × 740 and 380 × 260; visible controls fit the viewport and measured at least 44 × 44px. Checked the booking appendix at 820 × 1180 and 320 × 740, including its return control.
+- Verified pause on slide 2, language switching while paused, remaining paused on slide 3, and resuming there. Checked overview navigation and the optional booking appendix.
+- Inspected the main website sections on desktop and Spanish phone layouts, along with Spanish specialist, acquisition-criteria and disclaimer pages. Exercised the compact menu and floorplan opening, zoom, sheet selection and dismissal.
+- Review build/verifier passed, followed by production build/verifier. The final local build is production, with active Dov contact URLs verified by the existing build gate. No contact message was sent.
+- `node --test server/*.test.mjs`: 47 passed. `git diff --check`: passed. No warnings or errors were present in the final inspected browser log.
+
+The Impeccable engine remains unavailable; its written playbooks and the incumbent source served as context. No real-device or full screen-reader session was performed. Protected financial-page authentication was not rechecked in the browser. The architecture and works-oversight entries still have names/roles only; additional biographies require confirmed source material.
+
+Changes remain uncommitted and unpublished. Local preview: `http://127.0.0.1:4173/#present-oriente`. Final screenshot: parent workspace `preservation/2026-10-05/website-slides-second-pass/oriente-slide.jpg`.

@@ -4,10 +4,11 @@ import { financialTranslations, preserveFinancialIdentifiers } from './financial
 
 const translations = [
   ...financialTranslations,
+  ['All amounts in US dollars.', 'Todos los montos en dólares estadounidenses.'],
   ['KIT Capital applies these criteria to properties selected for Dulcinea One.', 'KIT Capital aplica estos criterios a las propiedades seleccionadas para Dulcinea One.'],
   ['El Poblado &amp; El Oriente', 'El Poblado y El Oriente'],
   ['Apartments and penthouses in El Poblado; houses on land in El Oriente.', 'Apartamentos y penthouses en El Poblado; casas con terreno en El Oriente.'],
-  ['Paid guest stays have a 28-night minimum and a target cap of US$9,500 per 28 nights.', 'Las estadías pagadas tienen un mínimo de 28 noches y un tope objetivo de US$9.500 por 28 noches.'],
+  ['Paid guest stays have a 28-night minimum and a target cap of $9,500 per 28 nights.', 'Las estadías pagadas tienen un mínimo de 28 noches y un tope objetivo de $9.500 por 28 noches.'],
   ['12% investor IRR', 'TIR del 12% para el inversionista'],
   ['Investor return target, after carry and gains tax.', 'Retorno objetivo para el inversionista, después de carry e impuestos sobre las ganancias.'],
   ['The minimum target is a 12% investor IRR after carry and gains tax. The current portfolio projects 14.6%; returns are not guaranteed.', 'El objetivo mínimo es una TIR del 12% para el inversionista después de carry e impuestos sobre las ganancias. El portafolio actual proyecta 14,6%; los retornos no están garantizados.'],
@@ -373,7 +374,7 @@ const translations = [
   ['Technical. Legal. Title.', 'Técnica. Legal. Títulos.'],
   ['Full review before purchase, with a works budget and contingency.', 'Revisión integral antes de comprar, con presupuesto de obra e imprevistos.'],
   ['Operation', 'Operación'],
-  ['$300–$1,000 per night', 'USD 300–1.000 por noche'],
+  ['$300–$1,000 per night', '$300–$1.000 por noche'],
   ['Furnished homes, a 28-night minimum stay and a target cap of $9,500 per 28 nights.', 'Propiedades amobladas, estadía mínima de 28 noches y tarifa objetivo máxima de USD 9.500 por cada 28 noches.'],
   ['Hold &amp; exit', 'Tenencia y salida'],
   ['From purchase to sale, after renovation and a period of rental operation.', 'Desde la compra hasta la venta, después de la remodelación y un periodo de operación en alquiler.'],

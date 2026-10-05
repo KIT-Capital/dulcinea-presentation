@@ -229,6 +229,9 @@ body.is-presenting .legal-notice a { font-size:16px; margin-top:28px }
 #presentation-controls button:disabled { opacity:.28; cursor:default }
 #presentation-controls button[hidden] { display:none }
 #presentation-controls svg { width:19px; height:19px }
+#presentation-controls #presentation-motion { min-width:44px; min-height:44px; flex-shrink:0 }
+#presentation-motion svg { fill:none; stroke:currentColor; stroke-width:1.8 }
+#presentation-motion[aria-pressed="true"] { background:#ffffff13; border-color:#ffffff45 }
 #presentation-status.presentation-feedback { position:fixed; z-index:85; left:24px; bottom:80px; width:auto; height:auto; max-width:calc(100vw - 48px); margin:0; padding:12px 16px; clip:auto; overflow:visible; white-space:normal; background:var(--paper); color:var(--ink); font-size:13px; line-height:1.5; border:1px solid #17282d40 }
 #presentation-title { flex:1; font-size:13px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:#aabcbc }
 .presentation-paging { display:flex; align-items:center; gap:6px }
@@ -298,4 +301,32 @@ body.is-presenting[data-presentation-layout="canvas"] .presentation-resource-lin
   .presentation-website-sections a { font-size:17px; padding:17px 0 }
   .presentation-website-resources { margin-top:24px }
   .presentation-website-resources a { font-size:16px }
+}
+
+/* Keep motion available without taking space from the slide's reading area. */
+@media(max-width:900px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control { grid-template-columns:minmax(0,1fr) auto auto auto }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-website,
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-appendix-return { grid-row:1; grid-column:2 / 5 }
+  body.is-presenting.presentation-appendix[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-website { display:none }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-appendix-return { max-width:100%; min-width:0 }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-website { min-width:44px; flex-shrink:0 }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-motion { grid-row:2; grid-column:2 }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-language { grid-column:3 }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-fullscreen { grid-column:4 }
+}
+@media(max-width:380px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control { gap:2px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-overview { min-width:64px!important }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-overview svg { display:none }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-language { gap:0; padding:6px!important }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-language span { display:none }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-website { white-space:normal; text-align:right; padding:4px; font-size:11px }
+}
+@media(max-height:600px) and (orientation:landscape) and (min-width:380px) and (max-width:540px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control { gap:0; padding-inline:max(4px,env(safe-area-inset-left,0px)) max(4px,env(safe-area-inset-right,0px)) }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control .presentation-paging { gap:0 }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-overview { min-width:60px!important; padding:4px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-overview svg { display:none }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-count { font-size:11px }
 }

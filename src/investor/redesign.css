@@ -13,8 +13,17 @@ body:not(.is-presenting)>.header{background:var(--paper);color:var(--ink);min-he
 body:not(.is-presenting) .header .brand img{width:146px;height:43px}
 body:not(.is-presenting) .primary{font-size:14px;gap:20px}
 body:not(.is-presenting) .language{padding-left:12px;border-color:#17282d30}
-body:not(.is-presenting) .language button{color:var(--ink);opacity:.6}
+body:not(.is-presenting) .language button{color:#52615e;opacity:1}
 body:not(.is-presenting) .language button[aria-pressed=true]{color:var(--ink);opacity:1;border-bottom:1px solid var(--green)}
+body:not(.is-presenting) :is(button,a,summary):focus-visible{outline-color:var(--ink)}
+body:not(.is-presenting) #home :is(button,a,summary):focus-visible,
+body:not(.is-presenting) #contact :is(button,a,summary):focus-visible,
+body:not(.is-presenting) #after-dark :is(button,a,summary):focus-visible,
+body:not(.is-presenting) #returns :is(button,a,summary):focus-visible{outline-color:white}
+/* Slide content can sit on light or dark panels; keep both edges of its
+   keyboard ring contrasting, and use ink for the light presentation dialogs. */
+body.is-presenting .presentation-active :is(button,a,summary):focus-visible{outline-color:var(--ink);box-shadow:0 0 0 2px var(--paper)}
+body.is-presenting dialog :is(button,a,summary):focus-visible{outline-color:var(--ink)}
 body:not(.is-presenting) .present-launch{color:var(--ink);border-color:#17282d45;font-size:13px}
 body:not(.is-presenting) .present-launch:hover{background:var(--blue)}
 body:not(.is-presenting) .contact-nav{display:block;color:var(--ink);background:none;border:1px solid #17282d60;border-radius:30px;font-size:14px;padding:11px 18px}
@@ -672,6 +681,23 @@ body:not(.is-presenting) #contact .line-link{width:max-content;max-width:100%;ga
  body:not(.is-presenting) .city-cinema h2{font-size:38px}
 }
 
+/* Keep story footage at its native wide frame: preserve every person and show
+   more of the reservoir instead of cropping both scenes into tall panels. */
+body:not(.is-presenting) .ownership-media,
+body:not(.is-presenting) .oriente-landscape{
+ height:auto;
+ min-height:0;
+ max-height:none;
+ aspect-ratio:16/9;
+}
+body:not(.is-presenting) .ownership-media{align-self:center}
+body:not(.is-presenting) .ownership-media>video{height:100%;object-fit:contain}
+body:not(.is-presenting) .oriente-landscape{
+ --parallax-inset:0%;
+ --parallax-height:100%;
+ --parallax-travel:.001;
+}
+
 /* The fund name keeps its gold accent in both languages and viewing modes. */
 #hero-title .fund-name{display:inline;color:var(--gold);-webkit-text-stroke:0}
 
@@ -733,9 +759,13 @@ body.is-presenting[data-presentation-layout=responsive] .presentation-contact-gu
  body.is-presenting[data-presentation-layout=responsive] #approach .strategy-steps p{font-size:18px}
 }
 
-/* Retain the property still beneath playback and isolate the scaled deck's video layer. */
+/* Keep a still beneath film playback, including when the browser drops a video layer. */
+.hero-visual{background-image:url("media/medellin.jpg");background-size:cover;background-position:center}
+.oriente-landscape{background-image:url("media/reservoir.jpg");background-size:cover;background-position:center}
+.hero-visual>video,.oriente-landscape>video{backface-visibility:hidden}
+body.is-presenting .oriente-landscape>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #homes .property-visual{background-size:cover;background-position:center;background-repeat:no-repeat}
-body.is-presenting #property-video{transform:translateZ(0)!important;backface-visibility:hidden}
+body.is-presenting :is(#property-video,.hero-visual>video,.oriente-landscape>video){transform:translateZ(0)!important;backface-visibility:hidden}
 
 /* Closing: one contact action, one supporting channel, then further reading. */
 #contact:after{background:rgba(8,25,29,.84)}

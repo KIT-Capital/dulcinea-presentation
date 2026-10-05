@@ -28,6 +28,17 @@
   const nextButton = document.querySelector('#presentation-next');
   const fullscreenButton = document.querySelector('#presentation-fullscreen');
   const languageButton = document.querySelector('#presentation-language');
+  const motionButton = document.createElement('button');
+  motionButton.type = 'button';
+  motionButton.id = 'presentation-motion';
+  const motionIcon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  motionIcon.setAttribute('viewBox','0 0 24 24');
+  motionIcon.setAttribute('aria-hidden','true');
+  const motionPath = document.createElementNS('http://www.w3.org/2000/svg','path');
+  motionIcon.append(motionPath);
+  motionButton.append(motionIcon);
+  controls.insertBefore(motionButton,languageButton || fullscreenButton);
+  controls.classList.add('has-motion-control');
   const status = document.querySelector('#presentation-status');
   const menuItems = document.querySelector('#presentation-menu-items');
   const appendixButton = document.createElement('button');
@@ -70,6 +81,11 @@
   }
   function announce(message) {
     if (status) status.textContent = message;
+  }
+  function updateMotionControl() {
+    label(motionButton,paused ? ['Resume animations','Reanudar animaciones'] : ['Pause animations','Pausar animaciones']);
+    motionButton.setAttribute('aria-pressed',String(paused));
+    motionPath.setAttribute('d',paused ? 'M8 5l10 7-10 7z' : 'M8 6v12M16 6v12');
   }
   function announceCurrentStep() {
     announce(inAppendix() ? `${translated(['Appendix','Anexo'])}: ${stepTitle(activeId)}` : `${translated(['Slide','Diapositiva'])} ${index + 1} ${translated(['of','de'])} ${steps.length}: ${stepTitle(activeId)}`);
@@ -128,6 +144,7 @@
     });
   }
   function updateControls() {
+    updateMotionControl();
     const appendix = inAppendix();
     const count = appendix ? translated(['Appendix','Anexo']) : `${String(index + 1).padStart(2,'0')} / ${String(steps.length).padStart(2,'0')}`;
     document.querySelector('#presentation-count').textContent = count;
@@ -380,6 +397,15 @@
   fullscreenButton?.addEventListener('click',toggleFullscreen);
   if (fullscreenButton) fullscreenButton.hidden = !document.fullscreenEnabled || !document.documentElement.requestFullscreen;
   languageButton?.addEventListener('click',() => setLanguage(spanish() ? 'en' : 'es'));
+  motionButton.addEventListener('click',() => {
+    paused = !paused;
+    motionState();
+    updateMotionControl();
+  });
+  // Hero controls and reduced-motion changes use the same playback preference.
+  // Temporary pauses for dialogs or hidden tabs do not alter that preference.
+  const heroMotionButton = document.querySelector('.motion');
+  if (heroMotionButton) new MutationObserver(updateMotionControl).observe(heroMotionButton,{attributes:true,attributeFilter:['aria-pressed']});
   menu.addEventListener('close',() => {
     if (active) document.querySelector('#presentation-overview')?.focus({preventScroll:true});
   });
