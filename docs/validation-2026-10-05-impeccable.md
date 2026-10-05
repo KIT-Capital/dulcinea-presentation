@@ -132,4 +132,13 @@ Performed a further Impeccable refinement pass against the active source and loc
 
 The Impeccable engine remains unavailable; its written playbooks and the incumbent source served as context. No real-device or full screen-reader session was performed. Protected financial-page authentication was not rechecked in the browser. The architecture and works-oversight entries still have names/roles only; additional biographies require confirmed source material.
 
-Changes remain uncommitted and unpublished. Local preview: `http://127.0.0.1:4173/#present-oriente`. Final screenshot: parent workspace `preservation/2026-10-05/website-slides-second-pass/oriente-slide.jpg`.
+Local preview: `http://127.0.0.1:4173/#present-oriente`. Final local screenshot: parent workspace `preservation/2026-10-05/website-slides-second-pass/oriente-slide.jpg`.
+
+### Published release and live verification
+
+- Application commit `c44a8aa` is committed and pushed to canonical GitHub `main`. The user explicitly authorized completing the pending commit, push, publication and live checks.
+- Published to the existing `dulcinea-investor-presentation` Worker and `https://invest.dulcineainvestments.org/`. Worker version `b59b21dd-c720-4d4f-ba06-65ce1dc6a57a` replaces `9ed56a8c-ad1b-45f8-8a00-dde160a36891`; the guarded production deploy passed with existing secrets and bindings retained.
+- All eight public English/Spanish pages returned 200 and matched the production build by SHA-256. Both homepages contain the active Dov contact URLs, new presentation pause control, accredited-only footer and accurate specialist-directory label.
+- All eight sampled English/Spanish financial-statement aliases redirected anonymous requests to login. Three private source paths returned 404. The public floorplan PDF returned 200. Five representative video range requests returned exact 1,024-byte HTTP 206 responses matching local bytes and file lengths.
+- Live browser verification covered the opening logos and imagery, slide 2 pause, language switching while paused, slide 3 remaining paused and resuming with decoded video, and the closing slide in both languages. Dov's WhatsApp and email destinations and the accredited-only footer were confirmed; no contact message was sent. Browser warnings/errors were empty.
+- Fresh verification script, JSON results and `live-presentation.jpg` / `live-contact.jpg` screenshots are in the parent workspace's `preservation/2026-10-05/website-slides-second-pass/`. Earlier evidence was not overwritten. Positive authenticated financial access remains outside this verification; the access implementation was unchanged and the preceding 47 server tests passed.
