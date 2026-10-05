@@ -71,6 +71,9 @@
   function announce(message) {
     if (status) status.textContent = message;
   }
+  function announceCurrentStep() {
+    announce(inAppendix() ? `${translated(['Appendix','Anexo'])}: ${stepTitle(activeId)}` : `${translated(['Slide','Diapositiva'])} ${index + 1} ${translated(['of','de'])} ${steps.length}: ${stepTitle(activeId)}`);
+  }
   function writeHash(hash, push = false, appendixContext = null) {
     const url = new URL(location.href);
     url.hash = hash;
@@ -205,7 +208,7 @@
     fitCanvas();
     if (resetScroll) main.scrollTo({top:0,left:0,behavior:'instant'});
     refreshMedia();
-    announce(inAppendix() ? `${translated(['Appendix','Anexo'])}: ${stepTitle(id)}` : `${translated(['Slide','Diapositiva'])} ${index + 1} ${translated(['of','de'])} ${steps.length}: ${stepTitle(id)}`);
+    announceCurrentStep();
     window.dispatchEvent(new CustomEvent('dulcinea:presentation-slide',{detail:{index:inAppendix() ? null : index,id:step.id,count:steps.length,appendix:inAppendix()}}));
   }
   function start(target = 0, updateRoute = true) {
@@ -390,6 +393,10 @@
     // identifies the appendix, not during that return navigation.
     if (active && inAppendix() && routeId() === activeId && appendixReturn) appendixReturn.locale = document.documentElement.lang;
     updateControls(); scheduleFit();
+    if (active) {
+      status?.classList.remove('presentation-feedback');
+      announceCurrentStep();
+    }
   });
   window.addEventListener('resize',scheduleFit);
   window.visualViewport?.addEventListener('resize',scheduleFit);

@@ -94,7 +94,7 @@ for(const locale of ['en','es']){
   const prefix=locale==='es'?'es/':'';
   const relative=locale==='es'?'../':'';
   const localeMedia=Object.fromEntries(Object.entries(media).map(([name,url])=>[name,web?url:relative+url]));
-  let html=localize(template.replace('{{HOME_DISCLOSURE}}',homeDisclosure(locale)).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale)),locale).replace('<html lang="en">',`<html lang="${locale}">`)
+  let html=localize(template.replace('{{HOME_DISCLOSURE}}',homeDisclosure(locale)).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale,{presentationVariants:true})),locale).replace('<html lang="en">',`<html lang="${locale}">`)
     .replace(/<title>[^<]*<\/title>/,shareMetadata(locale))
     .replace('<link rel="stylesheet" href="style.css">',`<style>${styles}</style>`)
     .replace('<link rel="stylesheet" href="presentation.css">',`<style>${presentationStyles}</style>`)
@@ -104,6 +104,7 @@ for(const locale of ['en','es']){
     .replace('<link rel="stylesheet" href="homepage-story.css">',`<style>${storyStyles}</style>`)
     .replace('<link rel="stylesheet" href="typography.css">',`<style>${await read('src/investor/typography.css')}</style>`)
     .replace('<link rel="stylesheet" href="redesign.css">',`<style>${await read('src/investor/redesign.css')}</style>`)
+    .replace('<link rel="stylesheet" href="navigation.css">',`<style>${await read('src/investor/navigation.css')}</style>`)
     .replace('</head>',`<link rel="preload" href="media/font-manrope.woff2" as="font" type="font/woff2" crossorigin><style>${investorFontCss('media/font-manrope.woff2')}</style></head>`)
     .replace(/(["'])media\/([^"']+)\1/g,(_,quote,name)=>{
       if(!localeMedia[name]) throw Error(`Unknown media alias: ${name}`);
@@ -116,6 +117,7 @@ for(const locale of ['en','es']){
     html=html.replaceAll(`href="${resource}.html`, `href="${target}`);
   }
   html=html.replace('<script src="app.js"></script>',`<script>window.DULCINEA_WEB=${web};window.DULCINEA_ASSETS=${JSON.stringify(localeMedia)};window.DULCINEA_STORY=${JSON.stringify(presentationStory)};\n${script}</script>`);
+  html=html.replace('<script src="navigation.js"></script>',`<script>${await read('src/investor/navigation.js')}</script>`);
   html=html.replace('<script src="presentation.js"></script>',`<script>${presentationScript}</script>`);
   html=html.replace('<script src="redesign.js"></script>',`<script>${await read('src/investor/redesign.js')}</script>`);
   await output(`${prefix}index.html`,html);

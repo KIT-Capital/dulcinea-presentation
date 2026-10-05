@@ -281,7 +281,21 @@ for (const prefix of ['', '/es']) {
   assert.ok(specialists.includes(`href="${prefix}/#team"`), 'Missing localized core-team return link');
   const specialistBlock=html=>html.match(/<dl class="specialists">[\s\S]*?<\/dl>/)?.[0];
   assert.ok(specialistBlock(specialists), 'Missing specialists directory');
-  assert.equal(specialistBlock(specialists),specialistBlock(pages.get(`${prefix}/index.html`)), 'Specialists content differs between presentation and resource page');
+  const homeSpecialists = specialistBlock(pages.get(`${prefix}/index.html`));
+  assert.ok(homeSpecialists, 'Missing homepage specialists directory');
+  const presentationBioPattern = /<p class="specialist-bio presentation-only"[^>]*>[\s\S]*?<\/p>/g;
+  const presentationBios = [...homeSpecialists.matchAll(presentationBioPattern)].map(match=>match[0]);
+  const fullBios = [...homeSpecialists.matchAll(/<p class="specialist-bio website-only"[^>]*>[\s\S]*?<\/p>/g)].map(match=>match[0]);
+  assert.equal(presentationBios.length, 2, `Missing concise specialist biographies: ${prefix || '/'}`);
+  assert.equal(fullBios.length, presentationBios.length, 'Each concise specialist biography needs its full website version');
+  for (const [index, bio] of presentationBios.entries()) {
+    const copy = textContent(bio).trim();
+    assert.equal(copy, attributes(bio.match(/<p\b[^>]*>/)[0])[`data-${prefix ? 'es' : 'en'}`], 'Concise specialist biography must use the current page language');
+    assert.ok(copy.length > 0 && copy.length < textContent(fullBios[index]).trim().length, 'Presentation specialist biography must be concise and nonempty');
+  }
+  const websiteSpecialists = homeSpecialists.replace(presentationBioPattern, '').replaceAll('class="specialist-bio website-only"', 'class="specialist-bio"');
+  assert.equal(specialistBlock(specialists), websiteSpecialists, 'Full specialists content differs between website and resource page');
+  assert.doesNotMatch(specialistBlock(specialists), /\b(?:website-only|presentation-only)\b/, 'Dedicated specialist biographies must always remain visible');
   assert.doesNotMatch(textContent(specialists), /Natalia Carvajal/, 'Natalia belongs in the core team, not the specialists directory');
   for(const person of ['Marcela Vélez','María Antonia Uribe','John Mario Piedrahita','Juan Carlos Pérez','Jorge Valiente'])assert.ok(textContent(specialists).includes(person), `Missing specialist: ${person}`);
   for(const document of [financial,criteria,specialists])assert.ok(document.includes(`href="${prefix}/disclaimer.html"`), 'Missing localized disclaimer link');

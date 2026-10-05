@@ -1,6 +1,6 @@
 const homes = [
   {name:'Fontanar 201',key:'fontanar',image:'fontanar.jpg',original:'fontanar-original.jpeg',plans:[1,2],location:'El Poblado',type:['Penthouse','Penthouse'],area:'389 m²',description:['A two-level penthouse in El Poblado.','Un penthouse de dos niveles en El Poblado.'],status:['Closed · 3Q26','Cerrado · 3T26']},
-  {name:'San Lucas 101',key:'san-lucas',image:'san-lucas.webp',original:'san-lucas-original.png',plans:[8,9],location:'El Poblado',type:['Apartment','Apartamento'],area:'325 m²',description:['An apartment in El Poblado.','Un apartamento en El Poblado.'],status:['Negotiated · Compraventa drafted','Negociado · Compraventa redactada']},
+  {name:'San Lucas 101',key:'san-lucas',image:'san-lucas.webp',original:'san-lucas-original.png',plans:[8,9],location:'El Poblado',type:['Apartment','Apartamento'],area:'325 m²',description:['An apartment in El Poblado.','Un apartamento en El Poblado.'],status:['Negotiated · Purchase agreement drafted','Negociado · Compraventa redactada']},
   {name:'Aires de Campestre',key:'aires',image:'aires.jpg',original:'aires-original.png',plans:[6,7],location:'El Poblado',type:['Penthouse','Penthouse'],area:'489 m²',description:['A two-level penthouse in El Poblado.','Un penthouse de dos niveles en El Poblado.'],status:['Closed · 3Q26','Cerrado · 3T26']},
   {name:'Casa Monte Sereno',key:'monte-sereno',image:'monte-sereno.webp',original:'monte-sereno-original.png',plans:[3,4,5],location:'El Retiro',type:['House','Casa'],area:'420 m²',description:['A country house on a 2,940 m² lot.','Una casa de campo en un lote de 2.940 m².'],status:['Negotiated · Finalizing modifications','Negociado · Ajustando modificaciones']},
   {name:'Casa Montana',key:'montana',image:'montana.webp',original:'montana-original.png',plans:[],location:'El Retiro',type:['House','Casa'],area:'591 m²',description:['A country house in El Retiro.','Una casa de campo en El Retiro.'],status:['Negotiated · Works being budgeted','Negociado · Obras en presupuesto']}
@@ -41,13 +41,42 @@ const plansDownload = $('#plans-dialog a[download]');
 if (plansDownload) plansDownload.href = assetMap['floorplans.pdf'] || new URL(plansDownload.getAttribute('href'),location.href).href;
 const dialogs = [...document.querySelectorAll('dialog')];
 const propertyVideo = $('#property-video');
+const ownershipVideo = $('#ownership .ownership-media video');
+const ownershipFilms = [
+  {src:asset('lifestyle.mp4'),poster:asset('lifestyle.jpg')},
+  {src:asset('hospitality.mp4'),poster:asset('hospitality.jpg')}
+];
+let ownershipSequence = false, ownershipFilm = 0;
+function isMembershipSlide() {
+  return document.body.classList.contains('is-presenting') && document.body.dataset.presentationStep === 'lifestyle';
+}
+function showOwnershipFilm(index) {
+  ownershipFilm = index;
+  ownershipVideo.pause();
+  ownershipVideo.poster = ownershipFilms[index].poster;
+  ownershipVideo.src = ownershipFilms[index].src;
+  ownershipVideo.load();
+}
+function syncOwnershipSequence() {
+  const enabled = isMembershipSlide();
+  if (!ownershipVideo || enabled === ownershipSequence) return;
+  ownershipSequence = enabled;
+  ownershipVideo.loop = !enabled;
+  // Always enter on friends; restore the website's original film when leaving.
+  showOwnershipFilm(0);
+}
+ownershipVideo?.addEventListener('ended',() => {
+  if (!ownershipSequence || !isMembershipSlide()) return;
+  showOwnershipFilm((ownershipFilm + 1) % ownershipFilms.length);
+  syncVideo(ownershipVideo);
+});
 function canAnimate() { return !paused && !document.hidden && !dialogs.some(dialog => dialog.open); }
 function syncVideo(video) {
   if (canAnimate() && visibleVideos.has(video) && !video.closest('[inert]') && video.getClientRects().length) {
     if (video.paused) video.play().catch(() => {});
   } else if (!video.paused) video.pause();
 }
-function syncMotion() { document.body.classList.toggle('is-paused',!canAnimate()); videos.forEach(syncVideo); }
+function syncMotion() { syncOwnershipSequence(); document.body.classList.toggle('is-paused',!canAnimate()); videos.forEach(syncVideo); }
 // Observe the stable crop, not the oversized media moving through it. Start before
 // entry and keep playing beyond the edge so scroll transitions never hold a frame.
 const playbackFrames = new Map();
@@ -202,6 +231,9 @@ function renderHome(changeMedia = true) {
       else control.removeAttribute('aria-current');
     } else control.setAttribute('aria-pressed',String(selected));
     if (control.matches('.property-preview')) {
+      const acquisition = control.querySelector('.property-preview-acquisition');
+      if (acquisition) acquisition.textContent = homes[index].status[i];
+      control.setAttribute('aria-label',`${homeLabel(index)}. ${homes[index].status[i]}`);
       let state = control.querySelector('.property-preview-state');
       if (!state) { state = document.createElement('span'); state.className = 'property-preview-state'; control.append(state); }
       state.textContent = lang === 'es' ? 'Seleccionada' : 'Selected';
@@ -209,6 +241,8 @@ function renderHome(changeMedia = true) {
     }
   });
   if (changeMedia && currentMediaKey !== home.key) {
+    // Keep the approved still visible if a decoded video frame fails to paint.
+    propertyVideo.parentElement.style.backgroundImage = `url(${JSON.stringify(asset(home.image))})`;
     planIndex = 0; propertyVideo.pause(); propertyVideo.poster = asset(home.image); propertyVideo.src = asset(`${home.key}.mp4`);
     currentMediaKey = home.key; propertyVideo.dataset.property = home.key;
     propertyVideo.load(); syncVideo(propertyVideo);
@@ -345,3 +379,9 @@ const requestedLanguage = new URLSearchParams(location.search).get('lang');
 setLanguage(requestedLanguage === 'es' || (requestedLanguage !== 'en' && initialSpanishPath) ? 'es' : 'en');
 migrateLegacyHash();
 if (!followPropertyRoute()) renderHome();
+
+// Booking links reveal the existing rules before navigating to them.
+document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventListener('click', () => {
+  const rules = document.querySelector('#owner-use');
+  if (rules) rules.open = true;
+}));

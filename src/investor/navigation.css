@@ -1,0 +1,138 @@
+/* One set of navigation controls, disclosed only on compact screens. */
+.header-navigation { display:contents; }
+.navigation-toggle,
+body:not(.is-presenting) > .header > .contact-nav-mobile { display:none; }
+.navigation-label-close,
+.navigation-icon-close { display:none; }
+
+@media (max-width:850px) {
+  body:not(.is-presenting) > .header {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto auto;
+    align-items:center;
+    gap:0 8px;
+    min-height:78px;
+    padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));
+    padding-top:max(16px,env(safe-area-inset-top,0px));
+  }
+  body:not(.is-presenting) .header .brand {
+    grid-column:1;
+    grid-row:1;
+    min-width:0;
+    min-height:44px;
+    justify-content:center;
+  }
+  body:not(.is-presenting) .header .brand img {
+    width:clamp(98px,28vw,126px);
+    max-width:100%;
+    height:38px;
+  }
+  body:not(.is-presenting) .header .chapter-current { display:none; }
+  body:not(.is-presenting) > .header > .contact-nav-desktop { display:none; }
+  body:not(.is-presenting) > .header > .contact-nav-mobile {
+    display:inline-flex;
+    grid-column:2;
+    grid-row:1;
+    align-items:center;
+    justify-content:center;
+    min-height:44px;
+    padding:10px 12px;
+    font-size:14px;
+    line-height:1.2;
+  }
+  body:not(.is-presenting) .navigation-toggle {
+    grid-column:3;
+    grid-row:1;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    min-width:76px;
+    min-height:44px;
+    padding:10px 8px;
+    background:transparent;
+    color:var(--ink);
+    border:0;
+    font-family:inherit;
+    font-weight:600;
+    font-size:14px;
+    line-height:1.2;
+    cursor:pointer;
+  }
+  body:not(.is-presenting) .header.navigation-ready .navigation-toggle { display:inline-flex; }
+  .navigation-toggle svg { width:18px; height:18px; flex-shrink:0; }
+  .navigation-toggle[aria-expanded="true"] :is(.navigation-label-open,.navigation-icon-open) { display:none; }
+  .navigation-toggle[aria-expanded="true"] :is(.navigation-label-close,.navigation-icon-close) { display:block; }
+  body:not(.is-presenting) .header-navigation {
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    grid-column:1 / -1;
+    grid-row:2;
+    gap:16px;
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px solid #17282d26;
+  }
+  body:not(.is-presenting) .header.navigation-ready:not(.navigation-open) .header-navigation { display:none; }
+  body:not(.is-presenting) .header.navigation-open {
+    max-height:100svh;
+    max-height:100dvh;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+  }
+  body:not(.is-presenting) .header-navigation .primary {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-column:1 / -1;
+    order:0;
+    width:100%;
+    gap:4px 16px;
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:16px;
+    line-height:1.35;
+  }
+  body:not(.is-presenting) .header-navigation .primary a {
+    display:flex;
+    align-items:center;
+    min-height:44px;
+    padding:10px 0;
+    white-space:normal;
+    overflow-wrap:break-word;
+  }
+  body:not(.is-presenting) .header-navigation .present-launch {
+    display:inline-flex;
+    justify-self:start;
+    min-height:44px;
+    padding:10px 12px;
+    margin:0;
+    font-size:14px;
+  }
+  body:not(.is-presenting) .header-navigation .present-launch span { display:inline; }
+  body:not(.is-presenting) .header-navigation .language {
+    gap:4px;
+    margin:0;
+    padding:0;
+    border:0;
+  }
+  body:not(.is-presenting) .header-navigation .language button {
+    justify-content:center;
+    min-width:56px;
+    min-height:44px;
+    padding:10px 8px;
+    color:var(--ink);
+    opacity:1;
+    font-size:14px;
+    border-bottom:2px solid transparent;
+  }
+  body:not(.is-presenting) .header-navigation .language button[aria-pressed="true"] {
+    border-bottom:2px solid var(--green);
+    font-weight:700;
+  }
+  body:not(.is-presenting) .header :is(a,button):focus-visible {
+    outline:2px solid var(--ink);
+    outline-offset:3px;
+  }
+  body:not(.is-presenting) .navigation-toggle:hover { text-decoration:underline; text-underline-offset:4px; }
+}
