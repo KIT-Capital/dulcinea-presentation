@@ -4,7 +4,9 @@ Updated: 4 October 2026. Start here before changing the review website.
 
 ## Immediate task
 
-The user says the homepage has lost its storyline: sections seem too close, and numbers and words compete without a clear sequence. This turn reviewed the live page, created a complete narrative workflow and updated documentation. **The narrative plan has not been implemented or deployed.**
+The user says the homepage has lost its storyline: sections seem too close, and numbers and words compete without a clear sequence. The review produced a narrative workflow, followed by an editable Figma storyboard with seven chapter boards, detailed homepage compositions and an 18-slide presentation contact sheet. **The narrative plan has not been implemented or deployed on either website.**
+
+Start with the [visual storyboard in Figma](https://www.figma.com/design/TSa7o009bLZpjJI6d7GBym?node-id=4-27), then read the [storyboard guide and saved previews](../design/storyboard/README.md). It uses current approved site content and assets; no company documents, source workbooks or private investor files were uploaded. The Figma draft has not been made public through new sharing permissions.
 
 Follow [Homepage narrative workflow](plans/2026-10-04-homepage-narrative-workflow.md). The next pass must address the entire story before refining individual blocks. Do not call the storyline fixed because typography or one financial section looks better.
 

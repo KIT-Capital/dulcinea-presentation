@@ -1,0 +1,56 @@
+const state={"createdNodeIds":["0:1","4:27","4:28","4:29","4:30","4:31","4:32"],"variables":{"ink":"VariableID:4:3","paper":"VariableID:4:4","white":"VariableID:4:5","blue":"VariableID:4:6","pink":"VariableID:4:7","violet":"VariableID:4:8","green":"VariableID:4:9","gold":"VariableID:4:10","mint":"VariableID:4:11"},"spaces":{"8":"VariableID:4:12","16":"VariableID:4:13","24":"VariableID:4:14","32":"VariableID:4:15","40":"VariableID:4:16","48":"VariableID:4:17","64":"VariableID:4:18","96":"VariableID:4:19","128":"VariableID:4:20"},"styles":{"display":"S:d15d4d64112ada435fefac4f30d5c14126e8b700,","heading":"S:5951405a7af044327d780716cb33f23a70420e65,","subtitle":"S:b98a9605324a676c22347daa8f29dce9617a518b,","body":"S:cc873097e8a1a959ed8457b1ac7c1a564df854bc,","small":"S:9923a6e15232c96679589f84a1a5beaf6e973454,","label":"S:1dc235213748da34eccc7ab4e5ddbe3f27210290,"},"collectionId":"VariableCollectionId:4:2","roots":{"overview":"4:27","homepage":"4:28","slides":"4:29","components":"4:30"},"cta":{"id":"4:31","labelProp":"Label#4:0"},"bounds":[{"id":"4:27","name":"01 · Seven-chapter story / START HERE","x":1450,"y":100,"width":2280,"height":100},{"id":"4:28","name":"02 · Homepage storyboard / Read down","x":1450,"y":1850,"width":1840,"height":100},{"id":"4:29","name":"03 · Presentation / 18-slide contact sheet","x":3490,"y":1850,"width":2136,"height":100},{"id":"4:30","name":"04 · Reusable elements","x":5860,"y":100,"width":560,"height":57}]};
+const H={"medellin.jpg":"b635bc0a9eef4c4ff5b7b49f9eb7bff64f544708","reservoir.jpg":"9d3e1354185b5a38ec88d7b524ce9745908bc5e6","oriente-country.jpg":"39f26ce15c1657f4c388335f02dfad3c45965318","el-retiro.jpg":"493d01f96e603bea1326ad62653e046151c7d1ac","location.jpg":"931d2ab14d0656fa5425794f39a62584a4fd1a10","city-driving.jpg":"a3d8f423fcfeff783cb0bb91d6f176ba40a80d01","nightlife.jpg":"9bc013f8f4199c7fb5987b2968535c39809e84af","hospitality.jpg":"64732df1a011a78f3e5c192eb96f59a3d64eab1e","lifestyle.jpg":"b387258b0e21079204b90bcec0dd6aab95b48010","closing.jpg":"3e7c4953bda9079bd6dbd7f9fc126c261993aa76","guatape-couple.jpg":"b2f611bd3bc56b0b2a01180fa2d723015f1abc66","monte-sereno-original.png":"a0f82fd606f5d10fb56277916660fc023e98e7ad","montana-original.png":"791d5a16a62936192c7a310c2ee379673465a14a","fontanar-original.jpeg":"369461653f964845770d0a6d307ebb2ff9af6347","san-lucas-original.png":"6c810c029a8fcad96a4dbd9b28ed1113c5fa9455","aires-original.png":"090ffb1e862058451a35e7d389f305802261f91f","dov.png":"c70232470ce1e44a6d4464d84fcee7fec0381628","ricardo.jpg":"af96b148ce0754ba998527bc24a97f639a0d22ac","adriana.jpg":"9e437fb781308dd9ad2d4b63a87a947a9a7be660","natalia.png":"def29b65cfa417148ad2ed0a7b6af325df126555","lola.png":"db4d4831a93e64ccfbd087ca3c6dc9d987ad5957","kit.png":"3e5743dd0c4e4ca9361ccfa7f00a419830af3a88"};
+const ids=[], pending=[];
+await Promise.all(['Regular','Medium','SemiBold'].map(style=>figma.loadFontAsync({family:'Manrope',style})));
+const page=await figma.getNodeByIdAsync('0:1');await figma.setCurrentPageAsync(page);
+const entries=await Promise.all(Object.entries({...state.variables,...Object.fromEntries(Object.entries(state.spaces).map(([n,v])=>['s'+n,v]))}).map(async([k,v])=>[k,await figma.variables.getVariableByIdAsync(v)]));
+const V=Object.fromEntries(entries);
+const mark=n=>(ids.push(n.id),n);
+function paint(key,opacity=1){const p=figma.variables.setBoundVariableForPaint({type:'SOLID',color:{r:0,g:0,b:0}},'color',V[key]);p.opacity=opacity;return p;}
+function al(parent,name,w,{direction='VERTICAL',gap=24,pad=0,bg=null}={}){
+const n=mark(figma.createAutoLayout(direction));n.name=name;parent.appendChild(n);n.resize(w,100);n.layoutSizingHorizontal='FIXED';n.layoutSizingVertical='HUG';n.primaryAxisAlignItems='MIN';n.counterAxisAlignItems='MIN';n.itemSpacing=gap;if(V['s'+gap])n.setBoundVariable('itemSpacing',V['s'+gap]);for(const p of ['paddingLeft','paddingRight','paddingTop','paddingBottom']){n[p]=pad;if(V['s'+pad])n.setBoundVariable(p,V['s'+pad]);}n.fills=bg?[paint(bg)]:[];return n;
+}
+const typography={display:[72,'Medium',78],heading:[48,'Medium',54],subtitle:[28,'SemiBold',36],body:[22,'Regular',32],small:[16,'Regular',23],label:[14,'SemiBold',20]};
+function tx(parent,text,w,style='body',color='ink'){const n=mark(figma.createText());n.name=text.slice(0,70);n.fontName={family:'Manrope',style:typography[style][1]};n.fontSize=typography[style][0];n.lineHeight={unit:'PIXELS',value:typography[style][2]};n.characters=text;n.fills=[paint(color)];parent.appendChild(n);n.resize(w,10);n.textAutoResize='HEIGHT';pending.push(n.setTextStyleIdAsync(state.styles[style]));return n;}
+function im(parent,key,w,h,mode='FILL'){if(!H[key])throw Error('Missing asset '+key);const n=mark(figma.createRectangle());n.name='Asset / '+key;parent.appendChild(n);n.resize(w,h);n.fills=[{type:'IMAGE',imageHash:H[key],scaleMode:mode}];return n;}
+function line(parent,w,color='ink'){const n=mark(figma.createRectangle());parent.appendChild(n);n.resize(w,1);n.fills=[paint(color,.2)];return n;}
+async function cta(parent,label){const main=await figma.getNodeByIdAsync(state.cta.id);const n=mark(main.createInstance());parent.appendChild(n);n.setProperties({[state.cta.labelProp]:label+' →'});return n;}
+function report(root){const all=root.findAll(()=>true);const types={};for(const n of all)types[n.type]=(types[n.type]||0)+1;return {id:root.id,name:root.name,width:root.width,height:root.height,descendants:all.length,types};}
+
+const root=await figma.getNodeByIdAsync(state.roots.overview);root.fills=[paint('paper')];for(const p of ['paddingTop','paddingBottom','paddingLeft','paddingRight'])root[p]=64;root.itemSpacing=40;
+const head=al(root,'Story thesis',2152,{gap:16});
+tx(head,'DULCINEA ONE / STORYBOARD PROPOSAL / 04 OCT 2026',2152,'label');
+tx(head,'A place in your life.\nAn investment you understand.',2000,'display');
+tx(head,'Read left to right, then continue on the second row. Lifestyle earns attention; the homes and team establish substance; the investment terms close the story.',1940,'body');
+const compHost=await figma.getNodeByIdAsync(state.roots.components);
+const card=mark(figma.createComponent());card.name='Storyboard / Chapter';compHost.appendChild(card);card.layoutMode='VERTICAL';card.resize(520,550);card.primaryAxisSizingMode='AUTO';card.counterAxisSizingMode='FIXED';card.itemSpacing=0;card.fills=[paint('white')];card.description='One of seven narrative chapters. Editable image, chapter, headline, purpose and continuation.';
+im(card,'medellin.jpg',520,200);
+const detail=al(card,'Chapter content',520,{pad:24,gap:16});
+const fields={};
+for(const [key,value,style]of [['Chapter','Chapter','label'],['Headline','Headline','subtitle'],['Purpose','Purpose','small'],['Continue','Continue','label']]){
+ const t=tx(detail,value,472,style);const prop=card.addComponentProperty(key,'TEXT',value);t.componentPropertyReferences={characters:prop};fields[key]=prop;
+}
+const data=[["01 / DULCINEA ONE","Invest in homes\\nyou can also use.","The investment idea in one sentence. A city cover film and a quiet “Partly subscribed” note.","Explore life here →","medellin.jpg","ink"],["02 / LIFE HERE","The city. The country.\\nTime for both.","El Oriente first; modern Medellín and El Poblado second. Give people and places their own scenes.","Meet Lola & Ber →","reservoir.jpg","mint"],["03 / MEMBERSHIP","More than a\\nplace to stay.","Lola & Ber, shared home use and participation. The 365-night pool and 3% stake belong here.","Explore the homes →","hospitality.jpg","pink"],["04 / THE HOMES","Two country homes.\\nThree city properties.","Five original property previews. Explore status, galleries, films and supplied floorplans.","How Dulcinea works →","monte-sereno-original.png","paper"],["05 / EXECUTION","Acquire. Improve.\\nRent. Sell.","Show the operating approach, then the core team and specialists who will execute it.","Review the projections →","fontanar-original.jpeg","violet"],["06 / THE INVESTMENT","The base case.\\nThen the offer.","One return group: 14.6% / 1.40× / 4 years. One offer group: $7M / $2.1M / $4.9M.","Talk to us →","aires-original.png","blue"],["07 / NEXT STEP","Let’s talk\\nDulcinea One.","Dov’s contact, protected financial statements, acquisition criteria and disclosures.","Talk to us · Review financials →","closing.jpg","ink"]];
+for(let r=0;r<2;r++){
+ const row=al(root,'Reading row '+(r+1),2152,{direction:'HORIZONTAL',gap:24});
+ for(const c of data.slice(r*4,r*4+4)){
+  const n=mark(card.createInstance());row.appendChild(n);
+  const color=c[5]==='ink'?'white':'ink';
+  n.fills=[paint(c[5])];
+  n.setProperties({[fields.Chapter]:c[0],[fields.Headline]:c[1].replace(/\\n/g,'\n'),[fields.Purpose]:c[2],[fields.Continue]:c[3]});
+  const image=n.findAllWithCriteria({types:['RECTANGLE']}).find(x=>x.name.startsWith('Asset'));
+  image.fills=[{type:'IMAGE',imageHash:H[c[4]],scaleMode:'FILL'}];ids.push(image.id);
+  for(const t of n.findAllWithCriteria({types:['TEXT']})){t.fills=[paint(color)];ids.push(t.id);}
+ }
+ if(r===1){
+ const n=al(row,'Reading rhythm',520,{pad:32,gap:24,bg:'gold'});
+ tx(n,'THE READING RHYTHM',456,'label');
+ tx(n,'One question.\nOne clear answer.\nThen move on.',456,'subtitle');
+ tx(n,'Give chapter changes more room than scenes within a chapter. Keep each heading, short message and visual together. Place numbers only where they answer the reader’s current question.',456,'small');
+ tx(n,'1440px notebook composition\nEnglish first · Spanish mirrors the sequence\nMatching presentation: 18 main slides',456,'small');
+ }
+}
+line(root,2152);
+tx(root,'DESIGN DIRECTION  /  Dulcinea identity and assets · Radisson experience-led sequence · BelArosa image depth and breathing room · Resident property exploration · Atelier Deux-Cé editorial rhythm',2110,'small');
+await Promise.all(pending);
+return {createdNodeIds:ids,mutatedNodeIds:[root.id],chapterComponent:{id:card.id,fields},report:report(root)};
