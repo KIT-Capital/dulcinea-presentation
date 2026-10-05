@@ -112,9 +112,10 @@ for (const [alias, source] of Object.entries(aliases).filter(([name])=>name.ends
   }
 }
 for(const stock of (await readdir(path.join(root,'assets/video/stock'))).filter(name=>name.endsWith('.mp4'))){
-  // The lake outing was removed from the story; its original clip stays archived.
-  if(stock==='AdobeStock_1164208469.mp4'){
-    assert.ok(!sourceOwners.has(`assets/video/stock/${stock}`),'Removed lake outing must not return to the active story');
+  // The user removed the lake outing and replaced the pine opening with the full reservoir aerial.
+  // Keep both source clips archived, outside the active story.
+  if(['AdobeStock_1164208469.mp4','AdobeStock_665115389.mp4'].includes(stock)){
+    assert.ok(!sourceOwners.has(`assets/video/stock/${stock}`),`Archived footage must not return to the active story: ${stock}`);
     continue;
   }
   assert.ok(sourceOwners.has(`assets/video/stock/${stock}`),`Supplied stock clip omitted: ${stock}`);
@@ -260,8 +261,8 @@ for (const [pagePath, html] of pages) {
   const text = textContent(markup);
   assert.match(markup, /class="legal-notice"/, `Missing homepage disclosure: ${pagePath}`);
   for (const phrase of language === 'en'
-    ? ['Dulcinea One is our first fund.', 'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake', 'Each active home adds 73 nights.', 'Cancel 30 days ahead.', 'Winners sit out the next draw.', 'Delaware LLC']
-    : ['Dulcinea One es nuestro primer fondo.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Beneficios de membresía', 'Participación colectiva', 'Cada propiedad activa aporta 73 noches.', 'Cancele con 30 días de anticipación.', 'Los ganadores no participan en el siguiente sorteo.', 'LLC de Delaware']) {
+    ? ['Dulcinea One is our first fund, with a projected four-year term.', 'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake', 'Each active home adds 73 nights.', 'Cancel 30 days ahead.', 'Winners sit out the next draw.', 'Delaware LLC']
+    : ['Dulcinea One es nuestro primer fondo, con un plazo proyectado de cuatro años.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Beneficios de membresía', 'Participación colectiva', 'Cada propiedad activa aporta 73 noches.', 'Cancele con 30 días de anticipación.', 'Los ganadores no participan en el siguiente sorteo.', 'LLC de Delaware']) {
     assert.ok(text.includes(phrase), `Missing visible ${language} investor content: ${phrase}`);
   }
 }

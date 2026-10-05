@@ -252,7 +252,7 @@ function setLanguage(next,updateRoute = true) {
   document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.language === lang)));
   document.querySelectorAll('[data-path]').forEach(link => { link.href = resource(link.dataset.path); });
   document.title = lang === 'es' ? 'Dulcinea One | Inversión inmobiliaria en Medellín' : 'Dulcinea One | Real estate investment in Medellín';
-  const description = lang === 'es' ? 'Cinco propiedades en El Poblado y el Oriente. El primer fondo de Dulcinea, con la marca compartida de Lola & Ber.' : 'Five homes in El Poblado and El Oriente. Dulcinea’s first real estate fund, co-branded by Lola & Ber.';
+  const description = lang === 'es' ? 'Dulcinea One es un fondo inmobiliario cerrado en Medellín y el Oriente. El plan combina ingresos por arriendo, ganancias por venta y estadías para miembros.' : 'Dulcinea One is a closed-end real estate fund in Medellín and El Oriente. The plan combines rental income, resale profits and stays for members.';
   $('meta[name="description"]')?.setAttribute('content',description);
   if (updateRoute) {
     const url = new URL(isWeb ? (lang === 'es' ? '/es/' : '/') : `${lang === 'es' ? 'es/' : ''}index.html`,isWeb ? location.origin : portableRoot);

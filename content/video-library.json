@@ -186,7 +186,7 @@
       "sha256": "06e6f7d9199aa6a1081ade68f304952d9e226966f2c9833d1ec7282316565131",
       "git_blob": "e184fbd6f594c802f9c5d03312887f15fb0ad84f",
       "remote_verified": true,
-      "status": "active"
+      "status": "retained-for-future-use"
     },
     {
       "path": "assets/video/stock/AdobeStock_160473464.mp4",
@@ -218,7 +218,7 @@
       "sha256": "70f652ccf8c23b939393e8ecb893f5bd37e68098ab37c84bebfcf3c6c14cb528",
       "git_blob": "9ccf909952c994fc9f0eabbff601259a8fa534c2",
       "remote_verified": true,
-      "status": "retained-for-future-use"
+      "status": "active"
     },
     {
       "path": "assets/video/stock/AdobeStock_514654455.mp4",

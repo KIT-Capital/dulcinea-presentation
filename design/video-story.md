@@ -1,6 +1,6 @@
-# Review video story — 4 October 2026
+# Canonical video story — updated 5 October 2026
 
-Scope: independent review Worker only. Approved story order, investment figures, copy, property details and presentation mode are retained.
+The review story was promoted to the canonical website on 4 October. The user subsequently removed the lake outing and selected the full reservoir aerial in place of the pine-tree opening. The independent review deployment remains unchanged.
 
 The former introduction previewed almost every later scene. Its city drone, reservoir, town and five property films then appeared again in individual sections. The former city and country edits repeated the same drone and reservoir a third time. These compilations remain archived in the repository, but are no longer part of the review build.
 
@@ -8,10 +8,9 @@ The former introduction previewed almost every later scene. Its city drone, rese
 | --- | --- | --- |
 | Opening | Adobe 693150796 | Establish Medellín with the close city-towers drone. |
 | Lifestyle | Adobe 514654455 | User-selected poolside friends footage, shown with the full landscape frame. |
-| El Oriente landscape | Adobe 665115389 + 501694199 | Green country scenery followed by the existing reservoir aerial. |
+| El Oriente landscape | Adobe 501694199 | The full 47-second green-water reservoir aerial opens the country chapter. Pine footage and the former composite remain archived. |
 | El Retiro town | Adobe 1849343666 | Show town life separately from the landscape. |
 | Country life detail | Adobe 539938219 | The pasture woman appears here only, without another reservoir repeat. |
-| Regional outing | Adobe 1164208469 | A couple enjoying Guatapé, after the country homes and before city life. Full frame, separate from the Lola & Ber scene. Also available in presentation mode. |
 | City life | Supplied city photograph movement, Adobe 80490822 + 787505338 | Shift from the green city context to restaurants and walking. The cook is confined to the city chapter. |
 | City transition | Adobe 2118104932 | A brief full-width driving view in the city chapter, keeping the original horizontal frame. People footage remains the priority for the next acquisition. |
 | After dark | Adobe 417029984 + 727024520 + 807462744; supplied evening and nightlife photo films | Sunset, night roads, neon and nightlife form one evening sequence. |
@@ -20,7 +19,7 @@ The former introduction previewed almost every later scene. Its city drone, rese
 | Acquisition approach | Adobe 762119818 | Property visits and selection. |
 | Closing | Adobe 695926335 | A wider, different city-and-mountains drone for the invitation to talk. |
 
-The cover's destination controls now link directly to their chapters rather than replaying films from farther down the page. All sixteen unique supplied stock videos remain represented, each in one chapter. Continuous playback, parallax on landscape imagery, reduced-motion preferences and explicit pause controls are retained.
+The cover's destination controls now link directly to their chapters rather than replaying films from farther down the page. Fourteen supplied stock videos are represented, each in one chapter. The removed lake outing and pine footage remain archived; sixteen MP4s are active across stock, edited and property films. Continuous playback, parallax on landscape imagery, reduced-motion preferences and explicit pause controls are retained.
 
 ## Rejected supplemental footage
 
