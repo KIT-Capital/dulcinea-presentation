@@ -20,4 +20,10 @@ Evidence and rollback material are outside Git and published assets in the paren
 
 ## Publication
 
-Live release identifiers and access checks will be recorded after deployment.
+- Application commit: `980889080a7f926edb00ea3a85da6ab2b75157ac`.
+- Worker version: `d64514fe-9ab2-4b0d-a9cc-8fa4e86dc76a`.
+- Canonical URL: https://invest.dulcineainvestments.org/.
+- All eight public EN/ES page hashes match the build after propagation. The first immediate homepage check returned the preceding release; the subsequent verification confirmed the new version without redeployment.
+- Financial statements and their aliases require login. An incorrect password was rejected; the existing password opened both languages; sign-out expired the session cookie.
+- The reservoir video returned the requested 1024-byte range with HTTP 206. Public floorplans returned 200. Source and private paths returned 404.
+- Runtime service/secret bindings and the independent review deployment remain unchanged.

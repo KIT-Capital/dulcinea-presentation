@@ -8,12 +8,14 @@ Updated 5 October 2026. The user approved canonical publication and GitHub synch
 - Production Worker: `dulcinea-investor-presentation`.
 - Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main`. The user explicitly authorized committing and pushing the canonical source after publication.
 - Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
-- Published and verified: application `1fd2ca9a99b56596371a69e00f0edc03b5463486`; Worker version `09731d0f-0c43-413e-a86a-c21a1d5de3fb`. See `docs/validation-2026-10-05-gp-participation.md`. Prior opening refinements are recorded in `docs/validation-2026-10-05-opening.md` and the original canonical release in `docs/validation-2026-10-04-canonical.md`.
+- Published and verified: application `980889080a7f926edb00ea3a85da6ab2b75157ac`; Worker version `d64514fe-9ab2-4b0d-a9cc-8fa4e86dc76a`. See `docs/validation-2026-10-05-reservoir.md`. Earlier releases are recorded in `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
 Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. The 5 October refinement leads with a large Dulcinea One title and explains the fund before the three member benefits. The lake outing is removed, nightlife uses a full-width film, and Lola & Ber uses the shared Manrope typography. The final user clarification is explicit: members participate economically on the general partner's side of future Dulcinea funds, sharing in the manager's performance profits alongside their own investment returns. The visible heading is “Participate alongside the fund manager.” See `docs/validation-2026-10-05-gp-participation.md` for the latest wording and checks. Homes, operating approach and all four core team members precede returns and the offer.
 
 ## Build and publish
+
+The latest refinement uses the full 47-second green-water reservoir aerial in El Oriente, replacing the pine-first composite. Both the original pine footage and composite remain archived. The city hero remains. English and Spanish identify Dulcinea One as a closed-end real estate fund and explain the plan to buy, renovate, rent and sell homes for a profit. The execution section preserves the projected four-year term. Astra reviewed the final wording and regional label. Live media and financial-only access checks passed.
 
 Production is the default: `npm run build:site`, `npm run verify`, `npm test`, then `npm run deploy:production` with `WRANGLER_CLI` pointing to the installed official CLI. The deployment guard validates the exact existing Worker, custom domain, access middleware, asset directory and production rate limiter. Existing remote password and session secrets are retained; never upload `.dev.vars`.
 
