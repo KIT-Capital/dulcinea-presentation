@@ -23,3 +23,13 @@ Production build and link/content verification passed: 10 EN/ES pages, 73 files,
 Eight language/viewport checks passed at 1366×768, 1440×900, 820×1180 and 390×844, with no JavaScript errors or horizontal page overflow. All 38 EN/ES numeric legacy routes resolved correctly. All 72 desktop presentation checks passed. The Spanish lifestyle slide now uses its available copy-column width, preserving the explanation and existing font size without clipping. The final English and Spanish lifestyle and membership slides were captured and visually reviewed. Worker/authentication code is unchanged from the release whose 47 server tests passed; live financial-only access is checked during publication.
 
 Private screenshots, source/provider backups and live checks are stored outside the repository in the parent workspace's `preservation/2026-10-05/gp-participation/` folder. Previous Worker version: `53f7a6ea-2777-49ad-8353-8625671c9cf6`.
+
+## Published release
+
+- Application commit: `1fd2ca9a99b56596371a69e00f0edc03b5463486`.
+- Worker version: `09731d0f-0c43-413e-a86a-c21a1d5de3fb`.
+- Canonical URL: https://invest.dulcineainvestments.org/.
+- Eight public EN/ES pages match the local build hashes. The first checks during propagation returned the preceding homepage; subsequent checks confirmed the new version at `/`, `/index.html` and the release-specific query URL.
+- Financial statement routes and aliases require login; an incorrect password was rejected, the existing production password opened both languages, and sign-out expired the session cookie.
+- Public floorplans returned 200 and the nightlife video returned a correct 1024-byte range with 206. Source/private paths returned 404.
+- Runtime bindings and the independent review deployment were unchanged. No secrets were modified.
