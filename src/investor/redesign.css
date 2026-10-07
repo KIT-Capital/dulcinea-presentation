@@ -621,10 +621,14 @@ body:not(.is-presenting) .hero :focus-visible{outline:3px solid white;outline-of
 body:not(.is-presenting) .ownership-copy .ownership-stays{margin:24px 0 0;font-size:20px;line-height:1.5}
 .membership-detail-link{display:flex;align-items:center;gap:18px;max-width:34ch;min-height:48px;margin-top:18px;font-size:17px;text-decoration:underline;text-underline-offset:5px}
 body:not(.is-presenting) .ownership-media{height:max(620px,82svh);min-height:0}
-body:not(.is-presenting) .allocation-example{margin-top:24px;padding-top:20px;border-top:1px solid #17282d50}
-.allocation-example h4{font-size:18px;font-weight:650;line-height:1.35;margin-bottom:12px;text-wrap:balance}
-body:not(.is-presenting) .member-benefit-grid .allocation-example p{font-size:17px;line-height:1.5;margin-top:10px;max-width:65ch}
-body:not(.is-presenting) .member-benefit-grid .allocation-example .allocation-note{font-size:14px;color:#3b504c}
+body:not(.is-presenting) #member-benefits .allocation-example{margin-top:22px}
+body:not(.is-presenting) #member-benefits .allocation-example h3{font-size:clamp(32px,3vw,42px);line-height:1.15;margin:0 0 12px;text-wrap:balance}
+body:not(.is-presenting) #member-benefits .allocation-example .allocation-commitment{font-size:20px;font-weight:600;line-height:1.4;margin:0 0 14px}
+body:not(.is-presenting) #member-benefits .allocation-example .allocation-note{font-size:17px;line-height:1.5;color:#3b504c;margin:0}
+#member-benefits .member-pool{margin-top:24px;padding-top:20px;border-top:1px solid #17282d50}
+#member-benefits .member-pool h4{font-size:18px;font-weight:650;line-height:1.35;margin-bottom:10px;text-wrap:balance}
+body:not(.is-presenting) #member-benefits .member-pool p{font-size:17px;line-height:1.5}
+body:not(.is-presenting) .resource-directory>a.resource-team-link{grid-template-columns:minmax(0,1fr) 44px}
 .booking-detail-link{display:inline-flex;align-items:center;gap:20px;min-height:44px;font-size:16px;text-decoration:underline;text-underline-offset:4px;margin-top:8px}
 body:not(.is-presenting) #homes .property-preview{grid-template-rows:auto auto auto}
 body:not(.is-presenting) #homes .property-preview-media{grid-row:1/4}
@@ -708,7 +712,6 @@ body.is-presenting .hero-statement>p.presentation-only,
 body.is-presenting .ownership-copy>p.presentation-only,
 body.is-presenting #ownership-title>.presentation-only,
 body.is-presenting .member-benefit-grid p.presentation-only,
-body.is-presenting .allocation-slide,
 body.is-presenting .specialist-bio.presentation-only,
 body.is-presenting .presentation-contact-guidance{display:block}
 body.is-presenting #home:after{content:'';display:block;position:absolute;inset:0;background:rgba(8,25,29,.80);z-index:1}
@@ -720,15 +723,16 @@ body.is-presenting #home .hero-statement>.presentation-investment-context{font-s
 body.is-presenting #home .hero-statement>.presentation-investment-note{font-size:17px;line-height:1.5;margin-top:10px;color:#e1ecea;max-width:62ch}
 body.is-presenting[data-presentation-layout=canvas] #home .hero-top{margin-bottom:64px}
 body.is-presenting[data-presentation-layout=canvas] #home .hero-statement h1{margin-bottom:30px}
-body.is-presenting .allocation-slide{margin-top:20px;padding-top:16px;border-top:1px solid #17282d50}
-body.is-presenting .allocation-slide h4{font-size:20px;line-height:1.3;font-weight:650;margin:0 0 10px}
 body.is-presenting[data-presentation-layout=canvas] #member-benefits .member-benefit-grid{grid-template-columns:1.3fr 1fr 1fr;gap:32px}
 body.is-presenting[data-presentation-layout=canvas] #member-benefits .member-benefit-primary .member-benefit-number{font-size:76px;margin:14px 0}
 body.is-presenting[data-presentation-layout=canvas] #member-benefits .member-benefit-grid h3{font-size:26px}
 body.is-presenting[data-presentation-layout=canvas] #member-benefits .member-benefit-grid p:not(.micro){font-size:20px;line-height:1.4}
 body.is-presenting[data-presentation-layout=canvas] #member-benefits .member-benefit-grid p.member-benefit-detail{font-size:17px;line-height:1.4}
-body.is-presenting[data-presentation-layout=canvas] #member-benefits .allocation-slide p{font-size:19px;line-height:1.4}
-body.is-presenting[data-presentation-layout] #member-benefits .allocation-slide p.allocation-note{font-size:15px;line-height:1.45;margin-top:10px;color:#42565a}
+body.is-presenting[data-presentation-layout] #member-benefits .allocation-example h3{font-size:36px;line-height:1.15;margin:18px 0 12px;text-wrap:balance}
+body.is-presenting[data-presentation-layout] #member-benefits .allocation-example .allocation-commitment{font-size:21px;font-weight:600;line-height:1.4;margin:0 0 14px}
+body.is-presenting[data-presentation-layout] #member-benefits .allocation-example .allocation-note{font-size:17px;line-height:1.45;margin:0;color:#42565a}
+body.is-presenting[data-presentation-layout] #member-benefits .member-pool{margin-top:20px;padding-top:16px}
+body.is-presenting[data-presentation-layout] #member-benefits .member-pool p{font-size:18px;line-height:1.4}
 body.is-presenting[data-presentation-layout=canvas] #approach .intro-grid{grid-template-columns:1fr 1fr;gap:80px;margin-top:0}
 body.is-presenting[data-presentation-layout=canvas] #approach .intro-title{font-size:74px;line-height:1.05}
 body.is-presenting #approach .intro-copy>.line-link{display:none}

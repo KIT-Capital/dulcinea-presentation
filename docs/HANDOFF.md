@@ -15,6 +15,17 @@ Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. T
 
 ## Build and publish
 
+Local, unpublished changes on 7 October simplify the English/Spanish website and
+presentation after the AI-style copy audit. The illustrative five nights per
+$100,000 now leads the owner-use benefit, with all allocation conditions adjacent
+and the shared 365-night pool below. Future-fund copy directly explains pro-rata
+participation in the general partner's performance profits. Generic scene-setting,
+redundant section labels and staged criteria fragments are reduced. Source and
+portable/web builds are updated; build verification, all 57 server tests and
+desktop/phone layout checks pass. These edits are not committed, pushed or
+published. See `docs/validation-2026-10-07-copy-cleanup.md`. The canonical release
+record above remains the current published version.
+
 The 7 October favicon/share audit is published. All pages and the login use the
 approved adaptive favicon with ICO/PNG/Apple fallbacks. Resources have localized,
 page-specific Open Graph/Twitter metadata and canonical URLs. Share-card images
