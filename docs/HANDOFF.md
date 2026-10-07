@@ -8,23 +8,26 @@ Updated 7 October 2026. The user approved canonical publication and GitHub synch
 - Production Worker: `dulcinea-investor-presentation`.
 - Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main`. The user explicitly authorized committing and pushing the canonical source after publication.
 - Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
-- Published and verified: application `6c99ea9`; Worker version `82ab3983-bdb6-4536-93bd-3a01b887a0f9`. See `docs/validation-2026-10-07-favicon-social.md`. Earlier releases are recorded in `docs/validation-2026-10-06-architects.md`, `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
+- Published and verified: application `de96e91`; Worker version `90f8fbf9-506b-47e6-92ce-187df8c9fa88`. See `docs/validation-2026-10-07-copy-release.md`. Earlier releases are recorded in `docs/validation-2026-10-07-favicon-social.md`, `docs/validation-2026-10-06-architects.md`, `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
 Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. The 5 October refinement leads with a large Dulcinea One title and explains the fund before the three member benefits. The lake outing is removed, nightlife uses a full-width film, and Lola & Ber uses the shared Manrope typography. The final user clarification is explicit: members participate economically on the general partner's side of future Dulcinea funds, sharing in the manager's performance profits alongside their own investment returns. The visible heading is “Participate alongside the fund manager.” See `docs/validation-2026-10-05-gp-participation.md` for the latest wording and checks. Homes, operating approach and all four core team members precede returns and the offer.
 
 ## Build and publish
 
-Local, unpublished changes on 7 October simplify the English/Spanish website and
+Published changes on 7 October simplify the English/Spanish website and
 presentation after the AI-style copy audit. The illustrative five nights per
 $100,000 now leads the owner-use benefit, with all allocation conditions adjacent
 and the shared 365-night pool below. Future-fund copy directly explains pro-rata
 participation in the general partner's performance profits. Generic scene-setting,
-redundant section labels and staged criteria fragments are reduced. Source and
-portable/web builds are updated; build verification, all 57 server tests and
-desktop/phone layout checks pass. These edits are not committed, pushed or
-published. See `docs/validation-2026-10-07-copy-cleanup.md`. The canonical release
-record above remains the current published version.
+redundant section labels and staged criteria fragments are reduced. The final
+approved clarity pass cuts 29 words across eight English/Spanish passages without
+changing their meaning. Source and portable/web builds are updated, committed and
+pushed; all 57 server tests and desktop/phone layout checks pass. All eight public
+EN/ES pages match the production build exactly, live slide language switching
+works, and anonymous financial/source protection and video range checks pass.
+See `docs/validation-2026-10-07-copy-cleanup.md` and
+`docs/validation-2026-10-07-copy-release.md`.
 
 The 7 October favicon/share audit is published. All pages and the login use the
 approved adaptive favicon with ICO/PNG/Apple fallbacks. Resources have localized,

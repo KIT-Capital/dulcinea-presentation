@@ -1,6 +1,6 @@
 # Bilingual copy and membership hierarchy cleanup
 
-7 October 2026. Implemented locally after the user approved the three audit recommendations. Not committed, pushed or published; production remains application `6c99ea9`, Worker `82ab3983-bdb6-4536-93bd-3a01b887a0f9` as previously verified.
+7 October 2026. Initially implemented locally after the user approved the three audit recommendations. Subsequently committed, pushed and published with the final approved clarity pass as application `de96e91`, Worker `90f8fbf9-506b-47e6-92ce-187df8c9fa88`. See `validation-2026-10-07-copy-release.md` for live verification.
 
 ## Changes
 

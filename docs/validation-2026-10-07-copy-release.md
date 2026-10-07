@@ -1,8 +1,10 @@
 # Copy cleanup release
 
 7 October 2026. The user approved applying the clarity review, committing,
-pushing and publishing the complete pending copy cleanup. Prepared for release;
-production verification will be recorded after deployment.
+pushing and publishing the complete pending copy cleanup. Application `de96e91`
+is pushed to canonical `main` and published as Worker version
+`90f8fbf9-506b-47e6-92ce-187df8c9fa88` at
+https://invest.dulcineainvestments.org/.
 
 ## Scope
 
@@ -37,3 +39,19 @@ Evidence is outside Git and the public build in the parent workspace:
 `preservation/2026-10-07/clarity-review/` and
 `preservation/2026-10-07/copy-release/`. Earlier full membership layout checks
 remain in `preservation/2026-10-07/copy-cleanup/`.
+
+## Live verification
+
+- All eight public EN/ES pages return 200 and exactly match the production build
+  bytes. These responses needed no Cloudflare beacon normalization.
+- All 23 latest-copy, membership and active Dov-contact checks pass.
+- All eight financial aliases redirect to login; six private/source probes
+  return 404. Authenticated financial access was not retested in this release.
+- Public floorplan PDF and SVG/ICO favicons return 200.
+- The reservoir video returns HTTP 206 for bytes 0–1023 with exactly 1,024 bytes
+  matching the local file and the correct complete-file size.
+- Browser confirmed the new English membership slide, switching that subject to
+  Spanish, and the shortened Spanish closing slide. Published membership
+  screenshot: `preservation/2026-10-07/copy-release/published-membership.png`.
+- HTTP evidence: `preservation/2026-10-07/copy-release/live-check-latest.json`.
+  Third-party cached social previews were not retested.
