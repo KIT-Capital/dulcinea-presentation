@@ -286,7 +286,7 @@ for (const prefix of ['', '/es']) {
   const presentationBioPattern = /<p class="specialist-bio presentation-only"[^>]*>[\s\S]*?<\/p>/g;
   const presentationBios = [...homeSpecialists.matchAll(presentationBioPattern)].map(match=>match[0]);
   const fullBios = [...homeSpecialists.matchAll(/<p class="specialist-bio website-only"[^>]*>[\s\S]*?<\/p>/g)].map(match=>match[0]);
-  assert.equal(presentationBios.length, 2, `Missing concise specialist biographies: ${prefix || '/'}`);
+  assert.equal(presentationBios.length, 4, `Missing concise specialist biographies: ${prefix || '/'}`);
   assert.equal(fullBios.length, presentationBios.length, 'Each concise specialist biography needs its full website version');
   for (const [index, bio] of presentationBios.entries()) {
     const copy = textContent(bio).trim();

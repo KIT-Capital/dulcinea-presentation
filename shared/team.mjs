@@ -1,6 +1,21 @@
 // One source for the website section, presentation slide and specialists page.
 const specialists = [
-  { role:['Architecture · Design and works','Arquitectura · Diseño y obras'], name:'Marcela Vélez & María Antonia Uribe' },
+  { role:['Architecture · Design and works','Arquitectura · Diseño y obras'], people:[
+    { name:'Marcela Vélez', url:'https://marcelavelez.com/home/', bio:[
+      'Medellín-based architect and interior designer with 10+ years of experience across hospitality, commercial, educational and residential projects. Her work includes coordinating interior design execution, furniture and décor for Nattivo Collection Hotel in San Andrés.',
+      'Arquitecta y diseñadora de interiores radicada en Medellín, con más de 10 años de experiencia en proyectos hoteleros, comerciales, educativos y residenciales. Su trabajo incluye la coordinación de la ejecución del diseño interior, el mobiliario y la decoración del Nattivo Collection Hotel en San Andrés.',
+    ], shortBio:[
+      'Architect and interior designer with 10+ years across hotels, homes, retail and education.',
+      'Arquitecta e interiorista con más de 10 años en hoteles, vivienda, comercio y educación.',
+    ] },
+    { name:'María Antonia Uribe', url:'https://www.instagram.com/maar.arquitectura/', bio:[
+      'Her Medellín practice, MAAR, focuses on architecture, interior design and renovations.',
+      'Su estudio MAAR, en Medellín, trabaja en arquitectura, interiorismo y reformas.',
+    ], shortBio:[
+      'MAAR · Architecture, interiors and renovations in Medellín.',
+      'MAAR · Arquitectura, interiorismo y reformas en Medellín.',
+    ] },
+  ] },
   { role:['Works oversight','Interventoría'], name:'John Mario Piedrahita' },
   { role:['Legal · Title and closing','Legal · Títulos y cierre'], name:'Juan Carlos Pérez Sarmiento', bio:[
     'Cartagena attorney with more than 20 years advising businesses and investors on real estate and corporate matters. He holds a law degree from Universidad de Cartagena and a business-law specialization from Universidad Autónoma de Bucaramanga, and serves as general counsel to Obra Pía in Colombia.',
@@ -21,10 +36,15 @@ const escape = value => value.replaceAll('&','&amp;').replaceAll('"','&quot;').r
 export function renderSpecialists(locale = 'en', { presentationVariants = false } = {}) {
   const languageIndex = locale === 'es' ? 1 : 0;
   const renderBio = (bio, variant = '') => `<p class="specialist-bio${variant ? ` ${variant}` : ''}" data-en="${escape(bio[0])}" data-es="${escape(bio[1])}">${escape(bio[languageIndex])}</p>`;
-  return `<dl class="specialists">${specialists.map(({role,name,bio,shortBio}) => {
+  const renderPerson = ({name,url,bio,shortBio}) => {
     const bioContent = !bio ? '' : presentationVariants && shortBio
       ? renderBio(bio, 'website-only') + renderBio(shortBio, 'presentation-only')
       : renderBio(bio);
-    return `<div><dt data-en="${escape(role[0])}" data-es="${escape(role[1])}">${escape(role[languageIndex])}</dt><dd>${escape(name)}${bioContent}</dd></div>`;
+    const personName = url ? `<a class="specialist-profile" href="${escape(url)}" target="_blank" rel="noopener">${escape(name)}</a>` : escape(name);
+    return personName + bioContent;
+  };
+  return `<dl class="specialists">${specialists.map(({role,people,...person}) => {
+    const content = people ? people.map(person => `<article class="specialist-person">${renderPerson(person)}</article>`).join('') : renderPerson(person);
+    return `<div><dt data-en="${escape(role[0])}" data-es="${escape(role[1])}">${escape(role[languageIndex])}</dt><dd>${content}</dd></div>`;
   }).join('')}</dl>`;
 }

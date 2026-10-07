@@ -735,8 +735,11 @@ body.is-presenting #approach .intro-copy>.line-link{display:none}
 body.is-presenting #approach .strategy-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:44px}
 body.is-presenting #approach .strategy-steps h3{font-size:30px;line-height:1.15}
 body.is-presenting #approach .strategy-steps p{font-size:20px;line-height:1.45;max-width:none}
-body.is-presenting[data-presentation-layout=canvas] #specialists .section-heading{margin-bottom:32px}
-body.is-presenting[data-presentation-layout=canvas] #specialists .specialists div{grid-template-columns:32px 340px 1fr;gap:26px;padding:18px 0;min-height:90px}
+.specialist-person+.specialist-person{margin-top:24px}
+.specialist-profile{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.specialist-profile:focus-visible{outline:3px solid currentColor;outline-offset:5px}
+body.is-presenting[data-presentation-layout=canvas] #specialists .section-heading{margin-bottom:24px}
+body.is-presenting[data-presentation-layout=canvas] #specialists .specialists div{grid-template-columns:32px 340px 1fr;gap:26px;padding:14px 0;min-height:78px}
 body.is-presenting[data-presentation-layout=canvas] #specialists .specialists dt{font-size:21px}
 body.is-presenting[data-presentation-layout=canvas] #specialists .specialists dd{font-size:27px}
 body.is-presenting #specialists .specialist-bio.presentation-only{font-size:20px;line-height:1.4;letter-spacing:0;margin-top:10px;color:#425559;max-width:none}
