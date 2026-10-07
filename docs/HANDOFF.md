@@ -8,12 +8,22 @@ Updated 7 October 2026. The latest user direction makes the website hero and pre
 - Production Worker: `dulcinea-investor-presentation`.
 - Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main`. The user explicitly authorized committing and pushing the canonical source after publication.
 - Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
-- Published and verified: application `d71a50d`; Worker version `99cdfb10-ae23-4c23-83c3-acd3a62cdd18`. See `docs/validation-2026-10-07-warm-hero.md`. Earlier releases are recorded in `docs/validation-2026-10-07-copy-release.md`, `docs/validation-2026-10-07-favicon-social.md`, `docs/validation-2026-10-06-architects.md`, `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
+- Published and verified: application `32b1729`; Worker version `ea9f124d-06be-4f14-93a2-1bcef82fe3e3`. See `docs/validation-2026-10-07-impeccable-fixes.md`. Earlier releases are recorded in `docs/validation-2026-10-07-warm-hero.md`, `docs/validation-2026-10-07-copy-release.md`, `docs/validation-2026-10-07-favicon-social.md`, `docs/validation-2026-10-06-architects.md`, `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
 Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. The 5 October refinement leads with a large Dulcinea One title and explains the fund before the three member benefits. The lake outing is removed, nightlife uses a full-width film, and Lola & Ber uses the shared Manrope typography. The final user clarification is explicit: members participate economically on the general partner's side of future Dulcinea funds, sharing in the manager's performance profits alongside their own investment returns. The visible heading is “Participate alongside the fund manager.” See `docs/validation-2026-10-05-gp-participation.md` for the latest wording and checks. Homes, operating approach and all four core team members precede returns and the offer.
 
 ## Build and publish
+
+The approved Impeccable fixes are published in English and Spanish. Compact
+presentation controls use one row, with website exit, language and fullscreen
+in the Menu dialog. Long slides have a reading cue in reserved space; at the
+bottom it confirms the slide is complete. All 18 slides and the booking appendix
+remain. Footer text and acquisition-note contrast are improved, marketing
+navigation says “The program” / “El programa,” and the 3% benefit explicitly
+groups “collectively” / “en conjunto” beside the figure. All eight public pages
+match the build, 62 live delivery assertions and the existing access/media
+checks pass; 57 server tests pass. See the latest validation record above.
 
 The latest opening leads with “Spend time with family and friends in Medellín
 and El Oriente.” Website and cover share the same English/Spanish copy, identify
