@@ -33,8 +33,8 @@ export function socialMetadata(language = 'en', { origin = SOCIAL_ORIGIN, page =
   return {
     title: es ? 'Dulcinea One | Propiedades en Medellín y el Oriente' : 'Dulcinea One | Homes in Medellín and El Oriente',
     description: es
-      ? 'Dulcinea One es un fondo inmobiliario cerrado en Medellín y el Oriente. El plan combina ingresos por arriendo, ganancias por venta y estadías para miembros.'
-      : 'Dulcinea One is a closed-end real estate fund in Medellín and El Oriente. The plan combines rental income, resale profits and stays for members.',
+      ? 'Dulcinea One: un programa inmobiliario con inversión en cinco propiedades y estadías para miembros, familiares y amigos en Medellín y el Oriente.'
+      : 'Dulcinea One: a real estate program with investment in five homes and member stays with family and friends in Medellín and El Oriente.',
     imageAlt: es
       ? 'Dulcinea One: cinco propiedades, un portafolio, con Medellín y sus montañas de fondo.'
       : 'Dulcinea One: five homes, one portfolio, with Medellín and its mountains in the background.',

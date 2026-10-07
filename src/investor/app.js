@@ -286,7 +286,7 @@ function setLanguage(next,updateRoute = true) {
   document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.language === lang)));
   document.querySelectorAll('[data-path]').forEach(link => { link.href = resource(link.dataset.path); });
   document.title = lang === 'es' ? 'Dulcinea One | Inversión inmobiliaria en Medellín' : 'Dulcinea One | Real estate investment in Medellín';
-  const description = lang === 'es' ? 'Dulcinea One es un fondo inmobiliario cerrado en Medellín y el Oriente. El plan combina ingresos por arriendo, ganancias por venta y estadías para miembros.' : 'Dulcinea One is a closed-end real estate fund in Medellín and El Oriente. The plan combines rental income, resale profits and stays for members.';
+  const description = lang === 'es' ? 'Dulcinea One: un programa inmobiliario con inversión en cinco propiedades y estadías para miembros, familiares y amigos en Medellín y el Oriente.' : 'Dulcinea One: a real estate program with investment in five homes and member stays with family and friends in Medellín and El Oriente.';
   $('meta[name="description"]')?.setAttribute('content',description);
   if (updateRoute) {
     const url = new URL(isWeb ? (lang === 'es' ? '/es/' : '/') : `${lang === 'es' ? 'es/' : ''}index.html`,isWeb ? location.origin : portableRoot);
