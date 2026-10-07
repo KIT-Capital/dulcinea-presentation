@@ -10,6 +10,7 @@ const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.
 const MAX_BODY_BYTES = 4096;
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.svg': 'image/svg+xml',
+  '.ico': 'image/x-icon',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
   '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif',
   '.mp4': 'video/mp4', '.woff': 'font/woff', '.woff2': 'font/woff2',

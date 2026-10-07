@@ -7,6 +7,7 @@ import {disclosures,homeDisclosure,fullDisclosure} from '../shared/investor-disc
 import {investorFontCss} from '../shared/investor-typography.mjs';
 import {renderSpecialists} from '../shared/team.mjs';
 import {renderSocialMetadata,SOCIAL_ORIGIN,REVIEW_ORIGIN,SOCIAL_IMAGE_PATH,SOCIAL_IMAGE_ES_PATH} from '../shared/social-metadata.mjs';
+import {FAVICON_ASSETS,renderFaviconMetadata} from '../shared/favicon.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const web=process.argv.includes('--web');
@@ -25,7 +26,8 @@ const resources=['financial-statements','investment-criteria','specialists','dis
 
 async function asset(source,target=source){
   const approvedFloorplans = source === 'source-packages/PLANOS PROPIEDADES DULCINEA.pdf' && target === 'downloads/Dulcinea-Floorplans.pdf';
-  if (!approvedFloorplans && !/\.(?:avif|gif|jpe?g|png|svg|webp|mp4|woff2?|ttf)$/i.test(source)) throw Error(`Source documents cannot be published: ${source}`);
+  const approvedIcon = source === FAVICON_ASSETS['favicon.ico'] && target === 'favicon.ico';
+  if (!approvedFloorplans && !approvedIcon && !/\.(?:avif|gif|jpe?g|png|svg|webp|mp4|woff2?|ttf)$/i.test(source)) throw Error(`Source documents cannot be published: ${source}`);
   const sourcePath=path.resolve(root,source),targetPath=path.resolve(destination,target);
   if(!sourcePath.startsWith(root+path.sep)||!targetPath.startsWith(destination+path.sep)) throw Error('Asset outside build directory');
   if((await stat(sourcePath)).size>25*1024*1024) throw Error(`Asset exceeds Cloudflare limit: ${source}`);
@@ -52,6 +54,10 @@ await asset('assets/images/stock/AdobeStock_891890158-web.jpg');
 await asset(SOCIAL_IMAGE_PATH.slice(1));
 await asset(SOCIAL_IMAGE_ES_PATH.slice(1));
 await asset('assets/video/stock/AdobeStock_693150796.mp4');
+for(const [target,source] of Object.entries(FAVICON_ASSETS)){
+  await asset(source,target);
+  if(!web)await copyFile(path.join(root,source),path.join(destination,target));
+}
 
 function localize(markup,locale){
   // Translate only authored text nodes, never JavaScript or media identifiers.
@@ -86,6 +92,8 @@ async function output(name,content){
   // Only an explicitly selected review build disables contact actions.
   if(review)content=content.replace(/href="((?:mailto:|tel:|https:\/\/wa\.me\/)[^"]*)"/g,(_,target)=>`href="#contact" data-preview-contact="${target}"`);
   if(!name.endsWith('index.html'))content=content.replace('</body>',`<script>${await read('src/investor/redesign.js')}</script></body>`);
+  const iconBase=web?'/':name.startsWith('es/')?'../':'';
+  content=content.replace('</head>',`${renderFaviconMetadata({basePath:iconBase})}\n</head>`);
   await writeFile(file,content.replace(/^[\t ]+$/gm,''));
   kept.add(file);
 }
@@ -130,6 +138,8 @@ for(const locale of ['en','es']){
     page=page.replace(/href="index\.html#(home|team|specialists)"/g,(_,section)=>`href="${web?'/'+prefix:'index.html'}#${section}"`);
     for(const resource of resources)page=page.replaceAll(`href="${resource}.html`, `href="${web?'/'+prefix:''}${resource}.html`);
     if(locale==='es') page=(['disclaimer','specialists'].includes(name)?page.replace('aria-label="Documents"','aria-label="Documentos"'):translateResource(page)).replace('<html lang="en">','<html lang="es">');
+    page=page.replace(/<meta\b(?=[^>]*\bname="description")[^>]*>/gi,'')
+      .replace(/<title>[^<]*<\/title>/,renderSocialMetadata(locale,{includeDocumentMetadata:true,origin,page:name}));
     await output(`${prefix}${name}.html`,resourceNavigation(page,name,locale));
   }
 }

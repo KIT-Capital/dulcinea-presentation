@@ -1,6 +1,7 @@
 import { toColombianSpanish } from '../scripts/spanish.mjs';
 import { renderLanguageSwitch, languageSwitchCss } from '../shared/language-switch.mjs';
 import { renderSocialMetadata } from '../shared/social-metadata.mjs';
+import { renderFaviconMetadata } from '../shared/favicon.mjs';
 import { investorFontCss } from '../shared/investor-typography.mjs';
 
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({
@@ -138,6 +139,7 @@ export function renderLogin({ name = '', email = '', next = '/financial-statemen
   const localized = (lang === 'es' ? toColombianSpanish(translatable).replace('<html lang="en">', '<html lang="es">') : translatable)
     .replace(/__LOGINSTYLE(\d+)__/g, (_, index) => styles[Number(index)])
     .replace('{{SOCIAL_METADATA}}', renderSocialMetadata(lang))
+    .replace('</head>', `${renderFaviconMetadata()}\n</head>`)
     .replace('</head>', `<style>${investorFontCss('/assets/fonts/manrope/manrope-variable.woff2')}</style></head>`);
   // URL fragments never reach the server. Carry a statement section through the
   // access form and language switch without changing any authentication rule.

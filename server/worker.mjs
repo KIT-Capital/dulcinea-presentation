@@ -2,6 +2,7 @@ import { renderLogin } from './login.mjs';
 import { withVideoRange } from './video-range.mjs';
 import { videoSizes } from './video-sizes.mjs';
 import { assetPolicy } from './access-policy.mjs';
+import { robotsText } from './robots.mjs';
 
 const encoder = new TextEncoder();
 const SESSION_SECONDS = 8 * 60 * 60;
@@ -208,7 +209,7 @@ export default {
     if (url.protocol !== 'https:' && !(url.protocol === 'http:' && local)) return text('HTTPS is required.', 400);
     try {
       const readRequest = ['GET', 'HEAD'].includes(request.method);
-      if (url.pathname === '/robots.txt' && readRequest) return text(request.method === 'HEAD' ? null : 'User-agent: *\nDisallow: /\n');
+      if (url.pathname === '/robots.txt' && readRequest) return text(request.method === 'HEAD' ? null : robotsText);
       const policy = assetPolicy(url.pathname);
       const serve = async () => {
         const assetURL = new URL(url);

@@ -218,14 +218,14 @@ test('only approved public media and the floorplan PDF reach the asset binding w
   const paths = ['/gate-assets/logo.svg', '/assets/images/stock/AdobeStock_891890158-web.jpg',
     '/assets/video/stock/AdobeStock_693150796.mp4', '/assets/social/dulcinea-one-medellin-v2.jpg',
     '/assets/social/dulcinea-one-medellin-es-v2.jpg', '/assets/images/team/dov-supplied.png',
-    '/assets/images/floorplans/page-01-fontanar-floor-1.webp', '/downloads/Dulcinea-Floorplans.pdf'];
+    '/assets/images/floorplans/page-01-fontanar-floor-1.webp', '/downloads/Dulcinea-Floorplans.pdf',
+    '/favicon.svg', '/favicon.ico', '/favicon-32x32.png', '/apple-touch-icon.png'];
   for (const path of paths) {
     for (const method of ['GET', 'HEAD']) assert.equal((await worker.fetch(request(path, { method }), env)).status, 200, `${method} ${path}`);
   }
   const robots = await worker.fetch(request('/robots.txt'), env);
   assert.match(await robots.text(), /Disallow: \/$/m);
   assert.equal(assetRequests.length, paths.length * 2);
-  assert.equal((await worker.fetch(request('/favicon.ico'), env)).status, 404);
   assert.equal((await worker.fetch(request('/gate-assets/logo.svg', { method: 'POST' }), env)).status, 405);
   assert.equal(assetRequests.length, paths.length * 2);
 });

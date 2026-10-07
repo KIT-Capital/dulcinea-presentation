@@ -9,8 +9,27 @@ const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[character]);
 
-export function socialMetadata(language = 'en', { origin = SOCIAL_ORIGIN } = {}) {
+export function socialMetadata(language = 'en', { origin = SOCIAL_ORIGIN, page = 'index' } = {}) {
   const es = language === 'es';
+  const resources = {
+    'investment-criteria': {
+      title: es ? 'Dulcinea One | Criterios de adquisición' : 'Dulcinea One | Acquisition criteria',
+      description: es ? 'Los diez criterios que guían la selección de propiedades para Dulcinea One en Medellín y el Oriente.' : 'The ten criteria guiding property selection for Dulcinea One in Medellín and El Oriente.',
+    },
+    specialists: {
+      title: es ? 'Dulcinea One | Especialistas locales' : 'Dulcinea One | Local specialists',
+      description: es ? 'Conozca a los especialistas locales de Dulcinea One en arquitectura, interventoría, asuntos legales, contabilidad e impuestos.' : 'Meet Dulcinea One’s local specialists in architecture, works oversight, legal matters, accounting and tax.',
+    },
+    disclaimer: {
+      title: es ? 'Dulcinea One | Información legal' : 'Dulcinea One | Investment disclosures',
+      description: es ? 'Información sobre riesgos, elegibilidad y condiciones de la inversión en Dulcinea One. Solo para inversionistas acreditados.' : 'Risks, investor eligibility and investment disclosures for Dulcinea One. Accredited investors only.',
+    },
+    'financial-statements': {
+      title: es ? 'Dulcinea One | Estados financieros privados' : 'Dulcinea One | Private financial statements',
+      description: es ? 'Acceso con contraseña a los estados financieros pro forma de Dulcinea One.' : 'Password-protected access to Dulcinea One’s pro forma financial statements.',
+    },
+  };
+  if (page !== 'index' && !Object.hasOwn(resources, page)) throw new Error(`Unknown social metadata page: ${page}`);
   return {
     title: es ? 'Dulcinea One | Propiedades en Medellín y el Oriente' : 'Dulcinea One | Homes in Medellín and El Oriente',
     description: es
@@ -19,15 +38,16 @@ export function socialMetadata(language = 'en', { origin = SOCIAL_ORIGIN } = {})
     imageAlt: es
       ? 'Dulcinea One: cinco propiedades, un portafolio, con Medellín y sus montañas de fondo.'
       : 'Dulcinea One: five homes, one portfolio, with Medellín and its mountains in the background.',
-    url: `${origin}${es ? '/es/' : '/'}`,
+    ...resources[page],
+    url: `${origin}${es ? '/es/' : '/'}${page === 'index' ? '' : `${page}.html`}`,
     locale: es ? 'es_CO' : 'en_US',
     alternateLocale: es ? 'en_US' : 'es_CO',
     imagePath: es ? SOCIAL_IMAGE_ES_PATH : SOCIAL_IMAGE_PATH,
   };
 }
 
-export function renderSocialMetadata(language = 'en', { includeDocumentMetadata = false, origin = SOCIAL_ORIGIN } = {}) {
-  const card = socialMetadata(language, { origin });
+export function renderSocialMetadata(language = 'en', { includeDocumentMetadata = false, origin = SOCIAL_ORIGIN, page = 'index' } = {}) {
+  const card = socialMetadata(language, { origin, page });
   const property = (name, value) => `<meta property="${name}" content="${escapeHtml(value)}">`;
   const named = (name, value) => `<meta name="${name}" content="${escapeHtml(value)}">`;
   const image = `${origin}${card.imagePath}`;
@@ -48,11 +68,13 @@ export function renderSocialMetadata(language = 'en', { includeDocumentMetadata 
     property('og:image:width', '1200'),
     property('og:image:height', '630'),
     property('og:image:alt', card.imageAlt),
-    property('og:video', video),
-    property('og:video:secure_url', video),
-    property('og:video:type', 'video/mp4'),
-    property('og:video:width', '1280'),
-    property('og:video:height', '720'),
+    ...(page === 'index' ? [
+      property('og:video', video),
+      property('og:video:secure_url', video),
+      property('og:video:type', 'video/mp4'),
+      property('og:video:width', '1280'),
+      property('og:video:height', '720'),
+    ] : []),
     named('twitter:card', 'summary_large_image'),
     named('twitter:title', card.title),
     named('twitter:description', card.description),

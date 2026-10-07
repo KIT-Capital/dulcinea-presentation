@@ -12,6 +12,9 @@ for (const prefix of ['', '/es']) {
   }
 }
 
+// Preview crawlers may discover only pages already classified as public.
+export const publicPagePaths = Object.freeze([...pages].filter(([, policy]) => policy.access === 'public').map(([pathname]) => pathname));
+
 // Classify a canonical path before the asset binding can normalize or redirect it.
 // Unknown files are denied even when a valid session is present.
 export function assetPolicy(pathname) {

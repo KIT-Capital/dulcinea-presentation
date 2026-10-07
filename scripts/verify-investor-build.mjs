@@ -8,6 +8,7 @@ import { videoSizes } from '../server/video-sizes.mjs';
 import { assetPolicy } from '../server/access-policy.mjs';
 import { publicAssetPaths } from '../server/public-asset-paths.mjs';
 import { socialMetadata, SOCIAL_ORIGIN, REVIEW_ORIGIN, SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
+import { FAVICON_ASSETS } from '../shared/favicon.mjs';
 
 // Read-only release gate. Build first with `node scripts/build.mjs --web`.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -75,6 +76,11 @@ const requiredPages = ['', 'es/'].flatMap(prefix => ['index', 'financial-stateme
 assert.deepEqual([...pages.keys()].sort(), [...requiredPages].sort(), 'Expected only EN/ES investor, financial, criteria, specialists and disclaimer pages');
 const publicAssets = ['/gate-assets/logo.svg', SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH, '/assets/images/stock/AdobeStock_891890158-web.jpg', '/assets/video/stock/AdobeStock_693150796.mp4'];
 for (const asset of publicAssets) assert.ok(files.has(asset), `Missing public share/login asset: ${asset}`);
+for (const [filename, source] of Object.entries(FAVICON_ASSETS)) {
+  const asset = '/' + filename;
+  assert.ok(files.has(asset), `Missing browser icon: ${asset}`);
+  assert.ok((await readFile(files.get(asset))).equals(await readFile(path.join(root,source))), `Browser icon differs from approved brand asset: ${asset}`);
+}
 for (const asset of [SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH]) {
   const image = await readFile(files.get(asset));
   assert.equal(image.readUInt16BE(0), 0xffd8, `Share image must be JPEG: ${asset}`);
@@ -158,11 +164,16 @@ for (const [pagePath, html] of pages) {
     compiledScripts++;
   }
 
-  if (!pagePath.endsWith('/index.html')) {
-    assert.equal((markup.match(/class="locale-switch(?:\s[^"]*)?"/g)||[]).length,1, `Exactly one resource language switch: ${pagePath}`);
-    continue;
+  const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)[1];
+  const headLinks = [...head.matchAll(/<link\b[^>]*>/gi)].map(match => attributes(match[0]));
+  for (const filename of Object.keys(FAVICON_ASSETS)) {
+    const icons = headLinks.filter(link => link.href === '/' + filename);
+    assert.equal(icons.length, 1, `Expected browser icon on ${pagePath}: ${filename}`);
+    assert.equal(icons[0].rel, filename === 'apple-touch-icon.png' ? 'apple-touch-icon' : 'icon');
   }
-  const card = socialMetadata(language, { origin });
+  assert.equal(headLinks.filter(link => link.rel === 'icon').length, 3, `Unexpected or duplicate favicon: ${pagePath}`);
+  const page = path.posix.basename(pagePath, '.html');
+  const card = socialMetadata(language, { origin, page });
   const socialTags = [...markup.matchAll(/<meta\b[^>]*>/gi)].map(match => attributes(match[0]));
   const socialValue = key => {
     const matches = socialTags.filter(tag => tag.property === key || tag.name === key);
@@ -179,6 +190,12 @@ for (const [pagePath, html] of pages) {
   assert.equal(socialValue('og:image:height'), '630');
   assert.equal(socialValue('twitter:image'), socialValue('og:image'));
   assert.equal(socialValue('twitter:image:alt'), card.imageAlt);
+  assert.deepEqual(headLinks.filter(link => link.rel === 'canonical').map(link => link.href), [card.url], `Incorrect canonical URL: ${pagePath}`);
+  assert.equal(socialValue('description'), card.description);
+  if (!pagePath.endsWith('/index.html')) {
+    assert.equal((markup.match(/class="locale-switch(?:\s[^"]*)?"/g)||[]).length,1, `Exactly one resource language switch: ${pagePath}`);
+    continue;
+  }
   assert.match(html, /window\.DULCINEA_WEB\s*=\s*true\s*;/, `Portable build deployed: ${pagePath}`);
   const injected = html.match(/window\.DULCINEA_ASSETS\s*=\s*(\{[^\n]*?\})\s*;/);
   assert.ok(injected, `Missing injected media map: ${pagePath}`);
