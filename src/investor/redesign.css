@@ -13,7 +13,7 @@ body:not(.is-presenting)>.header{background:var(--paper);color:var(--ink);min-he
 body:not(.is-presenting) .header .brand img{width:146px;height:43px}
 body:not(.is-presenting) .primary{font-size:14px;gap:20px}
 body:not(.is-presenting) .language{padding-left:12px;border-color:#17282d30}
-body:not(.is-presenting) .language button{color:#52615e;opacity:1}
+body:not(.is-presenting) .language button{font-size:14px;line-height:1.4;min-height:44px;color:#52615e;opacity:1}
 body:not(.is-presenting) .language button[aria-pressed=true]{color:var(--ink);opacity:1;border-bottom:1px solid var(--green)}
 body:not(.is-presenting) :is(button,a,summary):focus-visible{outline-color:var(--ink)}
 body:not(.is-presenting) #home :is(button,a,summary):focus-visible,
@@ -142,6 +142,7 @@ body:not(.is-presenting) .member-benefit-grid>article{border-top:2px solid var(-
 body:not(.is-presenting) .member-benefit-grid>article:nth-child(2){border-color:var(--violet)}
 body:not(.is-presenting) .member-benefit-grid>article:nth-child(3){border-color:var(--old-gold)}
 body:not(.is-presenting) .member-benefit-grid>article .member-benefit-number{float:none;font-size:80px;margin:20px 0 24px}
+.member-benefit-number .member-benefit-scope{display:inline-block;font-size:22px;font-weight:500;line-height:1.3;letter-spacing:0;white-space:nowrap;vertical-align:baseline}
 body:not(.is-presenting) .member-benefit-grid>article h3{font-size:27px;min-height:66px;margin:22px 0 18px}
 body:not(.is-presenting) .member-benefit-grid>article p:not(.micro){font-size:19px;line-height:1.5}
 body:not(.is-presenting) .member-benefit-grid p.member-benefit-detail{font-size:17px}
@@ -814,7 +815,12 @@ body.is-presenting[data-presentation-layout=responsive] #contact .presentation-c
 body.is-presenting[data-presentation-layout=responsive] #contact .presentation-closing-navigation{border-left:0;border-top:1px solid #ffffff40;padding:32px 0 0}
 body.is-presenting[data-presentation-layout=responsive] #contact .presentation-closing-navigation h3{font-size:26px;margin-bottom:16px}
 body.is-presenting[data-presentation-layout=responsive] #contact footer{margin-top:0}
+body:not(.is-presenting) #contact footer{font-size:14px;line-height:1.5;align-items:center;gap:12px 28px}
+body:not(.is-presenting) #contact footer>a{display:inline-flex;align-items:center;min-height:44px;padding-block:8px;flex-shrink:0}
+/* The property name is the floorplan dialog's single heading. */
+#plans-dialog .plan-header .micro{display:none}
 @media(max-width:600px){
+ body:not(.is-presenting) #contact footer>span{flex-basis:100%;max-width:100%}
  #contact .contact-person{gap:16px}
  #contact .contact-person img{width:64px;height:64px}
  #contact .contact-person strong{font-size:23px}

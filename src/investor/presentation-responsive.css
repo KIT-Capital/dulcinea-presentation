@@ -3,7 +3,7 @@
 body.is-presenting[data-presentation-layout="responsive"] { touch-action:pan-y pinch-zoom }
 body.is-presenting[data-presentation-layout="responsive"] #main {
   position:fixed; inset:0 auto auto 0; width:var(--presentation-width,100%);
-  height:var(--presentation-height,calc(100dvh - 108px)); transform:none;
+  height:var(--presentation-height,calc(100dvh - 64px)); transform:none;
   overflow-x:hidden; overflow-y:auto; overscroll-behavior:contain;
   scroll-behavior:auto; scroll-padding:0; -webkit-overflow-scrolling:touch;
   box-shadow:none; touch-action:pan-y pinch-zoom;
@@ -229,38 +229,12 @@ body.is-presenting[data-presentation-layout="responsive"] #presentation-status.p
 body.is-presenting[data-presentation-layout="responsive"] dialog { max-height:calc(100dvh - 32px); overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain }
 body.is-presenting[data-presentation-layout="responsive"] dialog button { min-width:44px; min-height:44px }
 body.is-presenting[data-presentation-layout="responsive"] .dialog-top h2 { overflow-wrap:anywhere }
-@media(max-width:900px) {
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls { display:grid; grid-template-columns:minmax(0,1fr) auto auto; grid-template-rows:44px 44px; height:calc(108px + env(safe-area-inset-bottom,0px)); padding-top:8px; padding-bottom:calc(10px + env(safe-area-inset-bottom,0px)); gap:2px 6px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-exit { grid-row:1; grid-column:1; margin:0; padding-left:0!important; justify-self:start }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-exit span { font-size:12px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website { grid-row:1; grid-column:2 / 4; margin:0; justify-self:end; font-size:12px; gap:4px; padding:8px }
-  body.is-presenting[data-presentation-layout="responsive"] .presentation-paging { grid-row:2; grid-column:1; justify-self:start; gap:2px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-overview { min-width:78px!important; gap:5px; padding:6px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-overview svg { width:16px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-count { font-size:12px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-language { grid-row:2; grid-column:2; padding-left:8px!important }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-fullscreen { grid-row:2; grid-column:3 }
-}
 @media(max-height:600px) and (orientation:landscape) and (min-width:380px) {
   body.is-presenting[data-presentation-layout="responsive"] #main > .presentation-active { padding:26px 28px }
   body.is-presenting[data-presentation-layout="responsive"] #main > .hero.presentation-active { padding:24px 28px }
   body.is-presenting[data-presentation-layout="responsive"] .hero-statement { margin-top:36px; padding-bottom:16px }
   body.is-presenting[data-presentation-layout="responsive"] .hero-statement p { font-size:34px }
   body.is-presenting[data-presentation-layout="responsive"] .hero h1 { font-size:clamp(48px,10vw,88px) }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls { display:flex; height:calc(56px + env(safe-area-inset-bottom,0px)); padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px)); gap:4px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-exit span { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website { margin-right:auto }
-  body.is-presenting[data-presentation-layout="responsive"] .presentation-paging { gap:2px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-overview { min-width:78px!important; padding:6px; gap:5px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-language { padding-left:6px!important; gap:4px }
-}
-@media(max-height:600px) and (orientation:landscape) and (min-width:380px) and (max-width:540px) {
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website span,
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-language span { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website { margin:0; padding:8px; gap:0 }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website::before { content:''; width:14px; height:11px; border-block:1px solid currentColor; background:linear-gradient(currentColor,currentColor) center/100% 1px no-repeat }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website svg { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-language { margin-left:auto; border-left:0!important; padding:6px!important }
 }
 
 /* Keep content clear of device cutouts in both fullscreen orientations. */
@@ -303,6 +277,7 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .memb
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article { grid-column:auto; grid-row:auto; padding-right:0 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article { padding-top:20px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-number { font-size:65px; margin:16px 0; line-height:1.1 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article:not(.member-benefit-primary) .member-benefit-number { float:none; display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin:16px 0 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary .member-benefit-number { font-size:90px; margin:20px 0 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary p:not(.micro) { font-size:19px; line-height:1.5 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary p.member-benefit-detail { font-size:17px }
@@ -344,6 +319,20 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
 /* The city film is nested so after-dark remains available on the website. */
 body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active { padding:0; min-height:var(--presentation-height) }
 body.is-presenting[data-presentation-layout="responsive"] #destination .city-cinema { height:auto; min-height:var(--presentation-height); padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px)) }
-@media(max-height:600px) and (orientation:landscape) and (min-width:380px) {
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls #presentation-appendix-return { max-width:150px; margin-right:auto; font-size:11px; padding:5px; line-height:1.2 }
+/* Keep the current slide and its controls readable in one compact row.
+   The reading cue occupies its own space, never covering slide content. */
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact { display:flex; justify-content:space-between; gap:6px; height:calc(64px + env(safe-area-inset-bottom,0px)) }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-website { display:flex; margin:0; padding:8px; font-size:14px; gap:5px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-website svg { width:16px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact .presentation-paging { gap:2px; flex-shrink:0 }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-overview { min-width:78px!important; padding:6px; gap:5px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-count { font-size:12px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-overview svg { width:16px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-appendix-return { margin:0; min-width:0; max-width:190px; flex:1; padding:6px; font-size:13px; line-height:1.3 }
+body.is-presenting.presentation-appendix[data-presentation-layout="responsive"] #presentation-controls.is-compact .presentation-paging { display:none }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-reading-overflow { height:calc(88px + env(safe-area-inset-bottom,0px)); padding-top:30px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-reading-cue:not([hidden]) { display:block; position:absolute; top:0; left:0; right:0; height:24px; margin:0; padding:0 10px; text-align:center; color:#e8eded; font-size:13px; line-height:24px }
+@media(max-width:350px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact { padding-inline:6px; gap:4px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-overview svg { display:none }
 }

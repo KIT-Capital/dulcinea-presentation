@@ -304,6 +304,15 @@ body.is-presenting .legal-notice a { font-size:16px; margin-top:28px }
 #presentation-controls button:hover:not(:disabled) { background:#ffffff13; border-color:#ffffff28 }
 #presentation-controls button:disabled { opacity:.28; cursor:default }
 #presentation-controls button[hidden] { display:none }
+#presentation-reading-cue { display:none }
+.presentation-menu-actions[hidden] { display:none }
+.presentation-menu-actions { display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding:0 0 20px; margin-bottom:8px; border-bottom:1px solid #17282d30 }
+.presentation-menu-actions button { display:flex; align-items:center; justify-content:center; gap:8px; min-height:44px; min-width:44px; padding:10px 12px; border:1px solid #17282d40; border-radius:4px; background:transparent; color:var(--ink); font:inherit; font-size:14px; line-height:1.4 }
+.presentation-menu-actions button[hidden] { display:none }
+.presentation-menu-actions button:hover { background:#78bdd426 }
+.presentation-menu-actions svg { width:19px; height:19px }
+.presentation-menu-actions #presentation-language { border-left:1px solid #17282d40!important; border-radius:4px!important; padding-left:12px!important }
+.presentation-menu-actions #presentation-language svg { height:14px }
 #presentation-controls svg { width:19px; height:19px }
 #presentation-controls #presentation-motion { min-width:44px; min-height:44px; flex-shrink:0 }
 #presentation-motion svg { fill:none; stroke:currentColor; stroke-width:1.8 }
@@ -358,18 +367,6 @@ body.is-presenting[data-presentation-layout="canvas"] .presentation-resource-lin
 body.is-presenting[data-presentation-layout="canvas"] .presentation-resource-links a { padding:10px 0 }
 @media(max-width:1000px) { #presentation-title { display:none } #presentation-controls { gap:10px } #presentation-website { margin-right:auto } }
 @media(max-width:760px) {
-  #presentation-controls { display:grid; grid-template-columns:minmax(0,1fr) auto auto; grid-template-rows:42px 42px; height:104px; padding:8px 12px; gap:2px 6px }
-  #presentation-controls[hidden] { display:none }
-  #presentation-exit { grid-row:1; grid-column:1; margin:0; justify-self:start; padding-left:0!important }
-  #presentation-controls #presentation-exit span { font-size:12px }
-  #presentation-controls #presentation-website { grid-row:1; grid-column:2 / 4; margin:0; justify-self:end; min-width:0; gap:5px; padding:8px; font-size:12px }
-  body.presentation-appendix #presentation-controls #presentation-website { display:none }
-  #presentation-controls #presentation-appendix-return { grid-row:1; grid-column:2 / 4; justify-self:end; padding:8px; font-size:12px }
-  #presentation-website svg { width:16px }
-  .presentation-paging { grid-row:2; grid-column:1; gap:3px; justify-self:start }
-  #presentation-controls #presentation-language { grid-row:2; grid-column:2; padding-left:10px!important }
-  #presentation-fullscreen { grid-row:2; grid-column:3 }
-  #presentation-status.presentation-feedback { bottom:120px }
   #presentation-website-menu { padding:24px; width:calc(100vw - 32px) }
   #presentation-website-menu .dialog-top { gap:12px }
   #presentation-website-menu .dialog-top h2 { font-size:29px }
@@ -378,41 +375,13 @@ body.is-presenting[data-presentation-layout="canvas"] .presentation-resource-lin
   .presentation-website-resources { margin-top:24px }
   .presentation-website-resources a { font-size:16px }
 }
-
-/* Keep motion available without taking space from the slide's reading area. */
-@media(max-width:900px) {
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control { grid-template-columns:minmax(0,1fr) auto auto auto }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-website,
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-appendix-return { grid-row:1; grid-column:2 / 5 }
-  body.is-presenting.presentation-appendix[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-website { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-appendix-return { max-width:100%; min-width:0 }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-website { min-width:44px; flex-shrink:0 }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-motion { grid-row:2; grid-column:2 }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-language { grid-column:3 }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-fullscreen { grid-column:4 }
-}
-@media(max-width:380px) {
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control { gap:2px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-overview { min-width:64px!important }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-overview svg { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-language { gap:0; padding:6px!important }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-language span { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-website { white-space:normal; text-align:right; padding:4px; font-size:11px }
-}
-@media(max-height:600px) and (orientation:landscape) and (min-width:380px) and (max-width:540px) {
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control { gap:0; padding-inline:max(4px,env(safe-area-inset-left,0px)) max(4px,env(safe-area-inset-right,0px)) }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control .presentation-paging { gap:0 }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-overview { min-width:60px!important; padding:4px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-overview svg { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-motion-control #presentation-count { font-size:11px }
-}
 </style>
   <style>/* Small screens keep one slide at a time, with readable type and natural
    vertical scrolling instead of shrinking a desktop canvas to fit. */
 body.is-presenting[data-presentation-layout="responsive"] { touch-action:pan-y pinch-zoom }
 body.is-presenting[data-presentation-layout="responsive"] #main {
   position:fixed; inset:0 auto auto 0; width:var(--presentation-width,100%);
-  height:var(--presentation-height,calc(100dvh - 108px)); transform:none;
+  height:var(--presentation-height,calc(100dvh - 64px)); transform:none;
   overflow-x:hidden; overflow-y:auto; overscroll-behavior:contain;
   scroll-behavior:auto; scroll-padding:0; -webkit-overflow-scrolling:touch;
   box-shadow:none; touch-action:pan-y pinch-zoom;
@@ -638,38 +607,12 @@ body.is-presenting[data-presentation-layout="responsive"] #presentation-status.p
 body.is-presenting[data-presentation-layout="responsive"] dialog { max-height:calc(100dvh - 32px); overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain }
 body.is-presenting[data-presentation-layout="responsive"] dialog button { min-width:44px; min-height:44px }
 body.is-presenting[data-presentation-layout="responsive"] .dialog-top h2 { overflow-wrap:anywhere }
-@media(max-width:900px) {
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls { display:grid; grid-template-columns:minmax(0,1fr) auto auto; grid-template-rows:44px 44px; height:calc(108px + env(safe-area-inset-bottom,0px)); padding-top:8px; padding-bottom:calc(10px + env(safe-area-inset-bottom,0px)); gap:2px 6px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-exit { grid-row:1; grid-column:1; margin:0; padding-left:0!important; justify-self:start }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-exit span { font-size:12px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website { grid-row:1; grid-column:2 / 4; margin:0; justify-self:end; font-size:12px; gap:4px; padding:8px }
-  body.is-presenting[data-presentation-layout="responsive"] .presentation-paging { grid-row:2; grid-column:1; justify-self:start; gap:2px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-overview { min-width:78px!important; gap:5px; padding:6px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-overview svg { width:16px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-count { font-size:12px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-language { grid-row:2; grid-column:2; padding-left:8px!important }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-fullscreen { grid-row:2; grid-column:3 }
-}
 @media(max-height:600px) and (orientation:landscape) and (min-width:380px) {
   body.is-presenting[data-presentation-layout="responsive"] #main > .presentation-active { padding:26px 28px }
   body.is-presenting[data-presentation-layout="responsive"] #main > .hero.presentation-active { padding:24px 28px }
   body.is-presenting[data-presentation-layout="responsive"] .hero-statement { margin-top:36px; padding-bottom:16px }
   body.is-presenting[data-presentation-layout="responsive"] .hero-statement p { font-size:34px }
   body.is-presenting[data-presentation-layout="responsive"] .hero h1 { font-size:clamp(48px,10vw,88px) }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls { display:flex; height:calc(56px + env(safe-area-inset-bottom,0px)); padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px)); gap:4px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-exit span { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website { margin-right:auto }
-  body.is-presenting[data-presentation-layout="responsive"] .presentation-paging { gap:2px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-overview { min-width:78px!important; padding:6px; gap:5px }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-language { padding-left:6px!important; gap:4px }
-}
-@media(max-height:600px) and (orientation:landscape) and (min-width:380px) and (max-width:540px) {
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website span,
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-language span { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website { margin:0; padding:8px; gap:0 }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website::before { content:''; width:14px; height:11px; border-block:1px solid currentColor; background:linear-gradient(currentColor,currentColor) center/100% 1px no-repeat }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-website svg { display:none }
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-language { margin-left:auto; border-left:0!important; padding:6px!important }
 }
 
 /* Keep content clear of device cutouts in both fullscreen orientations. */
@@ -712,6 +655,7 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .memb
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article { grid-column:auto; grid-row:auto; padding-right:0 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article { padding-top:20px }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-number { font-size:65px; margin:16px 0; line-height:1.1 }
+body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-grid > article:not(.member-benefit-primary) .member-benefit-number { float:none; display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin:16px 0 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary .member-benefit-number { font-size:90px; margin:20px 0 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary p:not(.micro) { font-size:19px; line-height:1.5 }
 body.is-presenting[data-presentation-layout="responsive"] #member-benefits .member-benefit-primary p.member-benefit-detail { font-size:17px }
@@ -753,8 +697,22 @@ body.is-presenting[data-presentation-layout="responsive"] #member-benefits .owne
 /* The city film is nested so after-dark remains available on the website. */
 body.is-presenting[data-presentation-layout="responsive"] #main > #destination.presentation-active { padding:0; min-height:var(--presentation-height) }
 body.is-presenting[data-presentation-layout="responsive"] #destination .city-cinema { height:auto; min-height:var(--presentation-height); padding:max(var(--slide-block),env(safe-area-inset-top,0px)) max(var(--slide-inline),env(safe-area-inset-right,0px)) max(var(--slide-block),env(safe-area-inset-bottom,0px)) max(var(--slide-inline),env(safe-area-inset-left,0px)) }
-@media(max-height:600px) and (orientation:landscape) and (min-width:380px) {
-  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls #presentation-appendix-return { max-width:150px; margin-right:auto; font-size:11px; padding:5px; line-height:1.2 }
+/* Keep the current slide and its controls readable in one compact row.
+   The reading cue occupies its own space, never covering slide content. */
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact { display:flex; justify-content:space-between; gap:6px; height:calc(64px + env(safe-area-inset-bottom,0px)) }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-website { display:flex; margin:0; padding:8px; font-size:14px; gap:5px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-website svg { width:16px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact .presentation-paging { gap:2px; flex-shrink:0 }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-overview { min-width:78px!important; padding:6px; gap:5px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-count { font-size:12px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-overview svg { width:16px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-appendix-return { margin:0; min-width:0; max-width:190px; flex:1; padding:6px; font-size:13px; line-height:1.3 }
+body.is-presenting.presentation-appendix[data-presentation-layout="responsive"] #presentation-controls.is-compact .presentation-paging { display:none }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.has-reading-overflow { height:calc(88px + env(safe-area-inset-bottom,0px)); padding-top:30px }
+body.is-presenting[data-presentation-layout="responsive"] #presentation-reading-cue:not([hidden]) { display:block; position:absolute; top:0; left:0; right:0; height:24px; margin:0; padding:0 10px; text-align:center; color:#e8eded; font-size:13px; line-height:24px }
+@media(max-width:350px) {
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact { padding-inline:6px; gap:4px }
+  body.is-presenting[data-presentation-layout="responsive"] #presentation-controls.is-compact #presentation-overview svg { display:none }
 }
 </style>
   <style>/* The collection: architectural imagery, a quiet fact panel and direct plans. */
@@ -809,7 +767,7 @@ body.is-presenting[data-presentation-layout="responsive"] #destination .city-cin
 #homes .property-actions .original { background:transparent; color:#4a5e54; padding-inline:0 }
 #homes .property-actions .original:hover { color:var(--ink); background:#e9eeea }
 #homes .property-actions button > span:last-child { flex:none; font-size:19px; line-height:1 }
-#homes > .footnote { max-width:none; margin-top:12px; font-size:10px; line-height:1.5; color:#637067 }
+#homes > .footnote { max-width:none; margin-top:12px; font-size:10px; line-height:1.5; color:var(--ink) }
 #homes button:focus-visible { outline-offset:-3px }
 
 /* Moderate notebook heights keep both actions in the first collection view. */
@@ -1595,7 +1553,7 @@ body:not(.is-presenting)>.header{background:var(--paper);color:var(--ink);min-he
 body:not(.is-presenting) .header .brand img{width:146px;height:43px}
 body:not(.is-presenting) .primary{font-size:14px;gap:20px}
 body:not(.is-presenting) .language{padding-left:12px;border-color:#17282d30}
-body:not(.is-presenting) .language button{color:#52615e;opacity:1}
+body:not(.is-presenting) .language button{font-size:14px;line-height:1.4;min-height:44px;color:#52615e;opacity:1}
 body:not(.is-presenting) .language button[aria-pressed=true]{color:var(--ink);opacity:1;border-bottom:1px solid var(--green)}
 body:not(.is-presenting) :is(button,a,summary):focus-visible{outline-color:var(--ink)}
 body:not(.is-presenting) #home :is(button,a,summary):focus-visible,
@@ -1724,6 +1682,7 @@ body:not(.is-presenting) .member-benefit-grid>article{border-top:2px solid var(-
 body:not(.is-presenting) .member-benefit-grid>article:nth-child(2){border-color:var(--violet)}
 body:not(.is-presenting) .member-benefit-grid>article:nth-child(3){border-color:var(--old-gold)}
 body:not(.is-presenting) .member-benefit-grid>article .member-benefit-number{float:none;font-size:80px;margin:20px 0 24px}
+.member-benefit-number .member-benefit-scope{display:inline-block;font-size:22px;font-weight:500;line-height:1.3;letter-spacing:0;white-space:nowrap;vertical-align:baseline}
 body:not(.is-presenting) .member-benefit-grid>article h3{font-size:27px;min-height:66px;margin:22px 0 18px}
 body:not(.is-presenting) .member-benefit-grid>article p:not(.micro){font-size:19px;line-height:1.5}
 body:not(.is-presenting) .member-benefit-grid p.member-benefit-detail{font-size:17px}
@@ -2396,7 +2355,12 @@ body.is-presenting[data-presentation-layout=responsive] #contact .presentation-c
 body.is-presenting[data-presentation-layout=responsive] #contact .presentation-closing-navigation{border-left:0;border-top:1px solid #ffffff40;padding:32px 0 0}
 body.is-presenting[data-presentation-layout=responsive] #contact .presentation-closing-navigation h3{font-size:26px;margin-bottom:16px}
 body.is-presenting[data-presentation-layout=responsive] #contact footer{margin-top:0}
+body:not(.is-presenting) #contact footer{font-size:14px;line-height:1.5;align-items:center;gap:12px 28px}
+body:not(.is-presenting) #contact footer>a{display:inline-flex;align-items:center;min-height:44px;padding-block:8px;flex-shrink:0}
+/* The property name is the floorplan dialog's single heading. */
+#plans-dialog .plan-header .micro{display:none}
 @media(max-width:600px){
+ body:not(.is-presenting) #contact footer>span{flex-basis:100%;max-width:100%}
  #contact .contact-person{gap:16px}
  #contact .contact-person img{width:64px;height:64px}
  #contact .contact-person strong{font-size:23px}
@@ -2575,7 +2539,7 @@ body:not(.is-presenting) > .header > .contact-nav-mobile { display:none; }
   <div class="header-navigation" id="header-navigation">
   <nav class="primary" aria-label="Main navigation" data-en-aria-label="Main navigation" data-es-aria-label="Navegación principal">
     <a href="#homes" data-en="The homes" data-es="Las propiedades">The homes</a>
-    <a href="#fund" data-en="The fund" data-es="El fondo">The fund</a>
+    <a href="#fund" data-en="The program" data-es="El programa">The program</a>
     <a class="resource" data-path="financial-statements.html" href="financial-statements.html" target="_blank" rel="noopener" data-en="Financials ↗" data-es="Finanzas ↗">Financials ↗</a>
     <a class="resource" data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener" data-en="Criteria ↗" data-es="Criterios ↗">Criteria ↗</a>
     <a class="resource" data-path="disclaimer.html" href="disclaimer.html" data-en="Disclaimer" data-es="Aviso legal">Disclaimer</a>
@@ -2683,7 +2647,7 @@ body:not(.is-presenting) > .header > .contact-nav-mobile { display:none; }
           </div>
           <a href="#owner-use" class="booking-detail-link website-only"><span data-en="Read the booking rules" data-es="Lea las reglas de reserva">Read the booking rules</span><span aria-hidden="true">↓</span></a>
         </article>
-        <article><p class="micro" data-en="Lola &amp; Ber" data-es="Lola &amp; Ber">Lola &amp; Ber</p><strong class="member-benefit-number">3%</strong><h3 data-en="Members’ collective stake" data-es="Participación colectiva">Members’ collective stake</h3><p data-en="Members collectively receive 3% of Lola &amp; Ber at full subscription." data-es="Los miembros reciben colectivamente el 3% de Lola &amp; Ber al completarse la suscripción.">Members collectively receive 3% of Lola &amp; Ber at full subscription.</p><p class="member-benefit-detail" data-en="No additional capital call or dilution, subject to the membership terms." data-es="Sin aportes adicionales ni dilución, sujeto a las condiciones de membresía.">No additional capital call or dilution, subject to the membership terms.</p></article>
+        <article><p class="micro" data-en="Lola &amp; Ber" data-es="Lola &amp; Ber">Lola &amp; Ber</p><strong class="member-benefit-number">3% <span class="member-benefit-scope" data-en="collectively" data-es="en conjunto">collectively</span></strong><h3 data-en="Members’ collective stake" data-es="Participación colectiva">Members’ collective stake</h3><p data-en="Members collectively receive 3% of Lola &amp; Ber at full subscription." data-es="Los miembros reciben colectivamente el 3% de Lola &amp; Ber al completarse la suscripción.">Members collectively receive 3% of Lola &amp; Ber at full subscription.</p><p class="member-benefit-detail" data-en="No additional capital call or dilution, subject to the membership terms." data-es="Sin aportes adicionales ni dilución, sujeto a las condiciones de membresía.">No additional capital call or dilution, subject to the membership terms.</p></article>
         <article><p class="micro" data-en="Future Dulcinea funds" data-es="Futuros fondos de Dulcinea">Future Dulcinea funds</p><h3 data-en="Participate alongside the fund manager" data-es="Participe junto al gestor del fondo">Participate alongside the fund manager</h3><p data-en="Membership includes a pro-rata share of the general partner’s performance profits (carried interest) from future Dulcinea funds, under the membership terms." data-es="La membresía incluye una participación a prorrata en las ganancias por desempeño del socio gestor (carried interest) de futuros fondos de Dulcinea, según las condiciones de membresía.">Membership includes a pro-rata share of the general partner’s performance profits (carried interest) from future Dulcinea funds, under the membership terms.</p><p data-en="This is in addition to returns on your Dulcinea One investment." data-es="Se suma a los retornos de su inversión en Dulcinea One.">This is in addition to returns on your Dulcinea One investment.</p><p class="member-benefit-detail" data-en="Future funds and distributions are not guaranteed." data-es="No se garantizan futuros fondos ni distribuciones.">Future funds and distributions are not guaranteed.</p></article>
       </div>
       <div class="member-benefits-bottom"><p class="footnote" data-en="Owner-use costs are included in the modeled return. Brand equity and future-fund participation have no modeled value. Membership gives no title to an individual home." data-es="Los costos del uso están incluidos en el retorno modelado. La participación en la marca y en futuros fondos no tiene valor modelado. La membresía no otorga título sobre una propiedad individual.">Owner-use costs are included in the modeled return. Brand equity and future-fund participation have no modeled value. Membership gives no title to an individual home.</p><a class="line-link ink presentation-only" href="#owner-use"><span data-en="How booking works" data-es="Cómo reservar">How booking works</span><span aria-hidden="true">↗</span></a></div>
@@ -2839,7 +2803,7 @@ body:not(.is-presenting) > .header > .contact-nav-mobile { display:none; }
     <a href="#home" data-website-section="home"><span data-en="Home" data-es="Inicio">Home</span><span aria-hidden="true">↗</span></a>
     <a href="#homes" data-website-section="homes"><span data-en="The homes" data-es="Las propiedades">The homes</span><span aria-hidden="true">↗</span></a>
     <a href="#returns" data-website-section="returns"><span data-en="Projected returns" data-es="Retornos proyectados">Projected returns</span><span aria-hidden="true">↗</span></a>
-    <a href="#fund" data-website-section="fund"><span data-en="The fund" data-es="El fondo">The fund</span><span aria-hidden="true">↗</span></a>
+    <a href="#fund" data-website-section="fund"><span data-en="The program" data-es="El programa">The program</span><span aria-hidden="true">↗</span></a>
     <a href="#ownership" data-website-section="ownership"><span data-en="Your membership" data-es="Su membresía">Your membership</span><span aria-hidden="true">↗</span></a>
     <a href="#member-benefits" data-website-section="member-benefits"><span data-en="Member benefits" data-es="Beneficios de membresía">Member benefits</span><span aria-hidden="true">↗</span></a>
     <a href="#owner-use" data-website-section="owner-use"><span data-en="Owner use" data-es="Uso y reservas">Owner use</span><span aria-hidden="true">↗</span></a>
@@ -3344,6 +3308,15 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
   const nextButton = document.querySelector('#presentation-next');
   const fullscreenButton = document.querySelector('#presentation-fullscreen');
   const languageButton = document.querySelector('#presentation-language');
+  const exitButton = document.querySelector('#presentation-exit');
+  const menuActions = document.createElement('div');
+  menuActions.className = 'presentation-menu-actions';
+  menuActions.hidden = true;
+  websiteMenu?.querySelector('.dialog-top')?.after(menuActions);
+  const readingCue = document.createElement('p');
+  readingCue.id = 'presentation-reading-cue';
+  readingCue.hidden = true;
+  controls.prepend(readingCue);
   const motionButton = document.createElement('button');
   motionButton.type = 'button';
   motionButton.id = 'presentation-motion';
@@ -3354,7 +3327,6 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
   motionIcon.append(motionPath);
   motionButton.append(motionIcon);
   controls.insertBefore(motionButton,languageButton || fullscreenButton);
-  controls.classList.add('has-motion-control');
   const status = document.querySelector('#presentation-status');
   const menuItems = document.querySelector('#presentation-menu-items');
   const appendixButton = document.createElement('button');
@@ -3374,6 +3346,7 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
   let ownsFullscreen = false;
   let resizeFrame = 0;
   let mediaFrame = 0;
+  let readingFrame = 0;
   let touch = null;
 
   const spanish = () => document.documentElement.lang === 'es';
@@ -3416,6 +3389,39 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
       history[push ? 'pushState' : 'replaceState'](state,'',url);
     } catch { /* Local file previews can still present without a history update. */ }
   }
+  function compactControls(compact) {
+    if (!websiteMenu || controls.classList.contains('is-compact') === compact) return;
+    if (websiteMenu.open) websiteMenu.close();
+    controls.classList.toggle('is-compact',compact);
+    menuActions.hidden = !compact;
+    if (compact) {
+      [exitButton,languageButton,fullscreenButton].filter(Boolean).forEach(button => menuActions.append(button));
+    } else {
+      controls.insertBefore(exitButton,websiteButton);
+      [languageButton,fullscreenButton].filter(Boolean).forEach(button => controls.append(button));
+    }
+    updateControls();
+  }
+  function updateReadingCue() {
+    if (!active || document.body.dataset.presentationLayout !== 'responsive') {
+      controls.classList.remove('has-reading-overflow');
+      readingCue.hidden = true;
+      return;
+    }
+    // Discount the cue's own row so adding it cannot manufacture overflow.
+    const cueHeight = controls.classList.contains('has-reading-overflow') ? 24 : 0;
+    const overflows = main.scrollHeight > main.clientHeight + cueHeight + 8;
+    controls.classList.toggle('has-reading-overflow',overflows);
+    readingCue.hidden = !overflows;
+    if (!overflows) return;
+    const more = main.scrollHeight - main.clientHeight - main.scrollTop > 8;
+    const text = translated(more ? ['More on this slide ↓','Más en esta diapositiva ↓'] : ['End of this slide','Fin de esta diapositiva']);
+    if (readingCue.textContent !== text) readingCue.textContent = text;
+  }
+  function scheduleReadingCue() {
+    cancelAnimationFrame(readingFrame);
+    readingFrame = requestAnimationFrame(updateReadingCue);
+  }
   function fitCanvas() {
     if (!active) return;
     // Preserve the user's pinch zoom rather than reflowing under their fingers.
@@ -3425,10 +3431,16 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
     const height = zoomed ? window.innerHeight : Math.min(window.innerHeight,window.visualViewport?.height || window.innerHeight);
     const responsive = width < 1180 || height < 600;
     document.body.dataset.presentationLayout = responsive ? 'responsive' : 'canvas';
+    compactControls(responsive && (width <= 900 || height < 600));
+    if (!responsive) {
+      controls.classList.remove('has-reading-overflow');
+      readingCue.hidden = true;
+    }
     const toolbarHeight = controls.getBoundingClientRect().height || 64;
     const availableHeight = Math.max(1,height - toolbarHeight);
     document.body.style.setProperty('--presentation-width',`${width}px`);
     document.body.style.setProperty('--presentation-height',`${availableHeight}px`);
+    scheduleReadingCue();
     if (responsive) {
       ['--presentation-scale','--presentation-left','--presentation-top'].forEach(name => document.body.style.removeProperty(name));
       return;
@@ -3473,9 +3485,14 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
     label(previousButton,['Previous slide','Diapositiva anterior']);
     label(nextButton,['Next slide','Siguiente diapositiva']);
     label(document.querySelector('#presentation-overview'),['All slides','Todas las diapositivas']);
-    label(document.querySelector('#presentation-exit'),['Back to website','Volver al sitio web']);
-    label(websiteButton,['Explore website','Explorar sitio web']);
-    label(document.querySelector('#presentation-website-close'),['Close website navigation','Cerrar navegación del sitio web']);
+    label(exitButton,['Back to website','Volver al sitio web']);
+    const compact = controls.classList.contains('is-compact');
+    label(websiteButton,compact ? ['Presentation menu','Menú de presentación'] : ['Explore website','Explorar sitio web']);
+    const websiteLabel = websiteButton?.querySelector('span');
+    if (websiteLabel) websiteLabel.textContent = translated(compact ? ['Menu','Menú'] : ['Explore website','Explorar sitio web']);
+    const websiteTitle = document.querySelector('#presentation-website-title');
+    if (websiteTitle) websiteTitle.textContent = translated(compact ? ['Presentation menu','Menú de presentación'] : ['Explore the website','Explore el sitio web']);
+    label(document.querySelector('#presentation-website-close'),compact ? ['Close presentation menu','Cerrar menú de presentación'] : ['Close website navigation','Cerrar navegación del sitio web']);
     label(document.querySelector('#presentation-menu-close'),['Close slide overview','Cerrar índice de diapositivas']);
     label(startButton,['Start presentation','Iniciar presentación']);
     label(fullscreenButton,document.fullscreenElement ? ['Exit full screen','Salir de pantalla completa'] : ['Full screen','Pantalla completa']);
@@ -3540,6 +3557,7 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
     if (!inAppendix() && document.activeElement === appendixButton) controls.focus({preventScroll:true});
     fitCanvas();
     if (resetScroll) main.scrollTo({top:0,left:0,behavior:'instant'});
+    scheduleReadingCue();
     refreshMedia();
     announceCurrentStep();
     window.dispatchEvent(new CustomEvent('dulcinea:presentation-slide',{detail:{index:inAppendix() ? null : index,id:step.id,count:steps.length,appendix:inAppendix()}}));
@@ -3607,6 +3625,9 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
     if (menu.open) menu.close();
     if (websiteMenu?.open) websiteMenu.close();
     active = false;
+    controls.classList.remove('has-reading-overflow');
+    readingCue.hidden = true;
+    compactControls(false);
     status?.classList.remove('presentation-feedback');
     touch = null;
     document.body.classList.remove('is-presenting','presentation-appendix');
@@ -3673,7 +3694,8 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
     if (!active || !websiteMenu || hasOpenDialog()) return;
     websiteMenu.showModal();
     websiteButton?.setAttribute('aria-expanded','true');
-    websiteMenu.querySelector('[data-website-section]')?.focus();
+    const firstAction = controls.classList.contains('is-compact') ? exitButton : websiteMenu.querySelector('[data-website-section]');
+    firstAction?.focus();
     syncMotion();
   }
   function addMenuStep(step,number = null) {
@@ -3743,6 +3765,14 @@ document.querySelectorAll('.booking-detail-link').forEach(link => link.addEventL
   window.addEventListener('resize',scheduleFit);
   window.visualViewport?.addEventListener('resize',scheduleFit);
   if ('ResizeObserver' in window) new ResizeObserver(() => { if (active) scheduleFit(); }).observe(controls);
+  if ('ResizeObserver' in window) {
+    const contentResize = new ResizeObserver(entries => {
+      if (active && entries.some(entry => entry.target.classList.contains('presentation-active'))) scheduleReadingCue();
+    });
+    sections.forEach(section => contentResize.observe(section));
+  }
+  document.fonts?.ready.then(scheduleFit);
+  main.addEventListener('scroll',scheduleReadingCue,{passive:true});
   document.addEventListener('fullscreenchange',() => { updateControls(); scheduleFit(); });
   function syncRoute() {
     if (returnLanguage) {

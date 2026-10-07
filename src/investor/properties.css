@@ -50,7 +50,7 @@
 #homes .property-actions .original { background:transparent; color:#4a5e54; padding-inline:0 }
 #homes .property-actions .original:hover { color:var(--ink); background:#e9eeea }
 #homes .property-actions button > span:last-child { flex:none; font-size:19px; line-height:1 }
-#homes > .footnote { max-width:none; margin-top:12px; font-size:10px; line-height:1.5; color:#637067 }
+#homes > .footnote { max-width:none; margin-top:12px; font-size:10px; line-height:1.5; color:var(--ink) }
 #homes button:focus-visible { outline-offset:-3px }
 
 /* Moderate notebook heights keep both actions in the first collection view. */

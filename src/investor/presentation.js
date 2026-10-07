@@ -28,6 +28,15 @@
   const nextButton = document.querySelector('#presentation-next');
   const fullscreenButton = document.querySelector('#presentation-fullscreen');
   const languageButton = document.querySelector('#presentation-language');
+  const exitButton = document.querySelector('#presentation-exit');
+  const menuActions = document.createElement('div');
+  menuActions.className = 'presentation-menu-actions';
+  menuActions.hidden = true;
+  websiteMenu?.querySelector('.dialog-top')?.after(menuActions);
+  const readingCue = document.createElement('p');
+  readingCue.id = 'presentation-reading-cue';
+  readingCue.hidden = true;
+  controls.prepend(readingCue);
   const motionButton = document.createElement('button');
   motionButton.type = 'button';
   motionButton.id = 'presentation-motion';
@@ -38,7 +47,6 @@
   motionIcon.append(motionPath);
   motionButton.append(motionIcon);
   controls.insertBefore(motionButton,languageButton || fullscreenButton);
-  controls.classList.add('has-motion-control');
   const status = document.querySelector('#presentation-status');
   const menuItems = document.querySelector('#presentation-menu-items');
   const appendixButton = document.createElement('button');
@@ -58,6 +66,7 @@
   let ownsFullscreen = false;
   let resizeFrame = 0;
   let mediaFrame = 0;
+  let readingFrame = 0;
   let touch = null;
 
   const spanish = () => document.documentElement.lang === 'es';
@@ -100,6 +109,39 @@
       history[push ? 'pushState' : 'replaceState'](state,'',url);
     } catch { /* Local file previews can still present without a history update. */ }
   }
+  function compactControls(compact) {
+    if (!websiteMenu || controls.classList.contains('is-compact') === compact) return;
+    if (websiteMenu.open) websiteMenu.close();
+    controls.classList.toggle('is-compact',compact);
+    menuActions.hidden = !compact;
+    if (compact) {
+      [exitButton,languageButton,fullscreenButton].filter(Boolean).forEach(button => menuActions.append(button));
+    } else {
+      controls.insertBefore(exitButton,websiteButton);
+      [languageButton,fullscreenButton].filter(Boolean).forEach(button => controls.append(button));
+    }
+    updateControls();
+  }
+  function updateReadingCue() {
+    if (!active || document.body.dataset.presentationLayout !== 'responsive') {
+      controls.classList.remove('has-reading-overflow');
+      readingCue.hidden = true;
+      return;
+    }
+    // Discount the cue's own row so adding it cannot manufacture overflow.
+    const cueHeight = controls.classList.contains('has-reading-overflow') ? 24 : 0;
+    const overflows = main.scrollHeight > main.clientHeight + cueHeight + 8;
+    controls.classList.toggle('has-reading-overflow',overflows);
+    readingCue.hidden = !overflows;
+    if (!overflows) return;
+    const more = main.scrollHeight - main.clientHeight - main.scrollTop > 8;
+    const text = translated(more ? ['More on this slide ↓','Más en esta diapositiva ↓'] : ['End of this slide','Fin de esta diapositiva']);
+    if (readingCue.textContent !== text) readingCue.textContent = text;
+  }
+  function scheduleReadingCue() {
+    cancelAnimationFrame(readingFrame);
+    readingFrame = requestAnimationFrame(updateReadingCue);
+  }
   function fitCanvas() {
     if (!active) return;
     // Preserve the user's pinch zoom rather than reflowing under their fingers.
@@ -109,10 +151,16 @@
     const height = zoomed ? window.innerHeight : Math.min(window.innerHeight,window.visualViewport?.height || window.innerHeight);
     const responsive = width < 1180 || height < 600;
     document.body.dataset.presentationLayout = responsive ? 'responsive' : 'canvas';
+    compactControls(responsive && (width <= 900 || height < 600));
+    if (!responsive) {
+      controls.classList.remove('has-reading-overflow');
+      readingCue.hidden = true;
+    }
     const toolbarHeight = controls.getBoundingClientRect().height || 64;
     const availableHeight = Math.max(1,height - toolbarHeight);
     document.body.style.setProperty('--presentation-width',`${width}px`);
     document.body.style.setProperty('--presentation-height',`${availableHeight}px`);
+    scheduleReadingCue();
     if (responsive) {
       ['--presentation-scale','--presentation-left','--presentation-top'].forEach(name => document.body.style.removeProperty(name));
       return;
@@ -157,9 +205,14 @@
     label(previousButton,['Previous slide','Diapositiva anterior']);
     label(nextButton,['Next slide','Siguiente diapositiva']);
     label(document.querySelector('#presentation-overview'),['All slides','Todas las diapositivas']);
-    label(document.querySelector('#presentation-exit'),['Back to website','Volver al sitio web']);
-    label(websiteButton,['Explore website','Explorar sitio web']);
-    label(document.querySelector('#presentation-website-close'),['Close website navigation','Cerrar navegación del sitio web']);
+    label(exitButton,['Back to website','Volver al sitio web']);
+    const compact = controls.classList.contains('is-compact');
+    label(websiteButton,compact ? ['Presentation menu','Menú de presentación'] : ['Explore website','Explorar sitio web']);
+    const websiteLabel = websiteButton?.querySelector('span');
+    if (websiteLabel) websiteLabel.textContent = translated(compact ? ['Menu','Menú'] : ['Explore website','Explorar sitio web']);
+    const websiteTitle = document.querySelector('#presentation-website-title');
+    if (websiteTitle) websiteTitle.textContent = translated(compact ? ['Presentation menu','Menú de presentación'] : ['Explore the website','Explore el sitio web']);
+    label(document.querySelector('#presentation-website-close'),compact ? ['Close presentation menu','Cerrar menú de presentación'] : ['Close website navigation','Cerrar navegación del sitio web']);
     label(document.querySelector('#presentation-menu-close'),['Close slide overview','Cerrar índice de diapositivas']);
     label(startButton,['Start presentation','Iniciar presentación']);
     label(fullscreenButton,document.fullscreenElement ? ['Exit full screen','Salir de pantalla completa'] : ['Full screen','Pantalla completa']);
@@ -224,6 +277,7 @@
     if (!inAppendix() && document.activeElement === appendixButton) controls.focus({preventScroll:true});
     fitCanvas();
     if (resetScroll) main.scrollTo({top:0,left:0,behavior:'instant'});
+    scheduleReadingCue();
     refreshMedia();
     announceCurrentStep();
     window.dispatchEvent(new CustomEvent('dulcinea:presentation-slide',{detail:{index:inAppendix() ? null : index,id:step.id,count:steps.length,appendix:inAppendix()}}));
@@ -291,6 +345,9 @@
     if (menu.open) menu.close();
     if (websiteMenu?.open) websiteMenu.close();
     active = false;
+    controls.classList.remove('has-reading-overflow');
+    readingCue.hidden = true;
+    compactControls(false);
     status?.classList.remove('presentation-feedback');
     touch = null;
     document.body.classList.remove('is-presenting','presentation-appendix');
@@ -357,7 +414,8 @@
     if (!active || !websiteMenu || hasOpenDialog()) return;
     websiteMenu.showModal();
     websiteButton?.setAttribute('aria-expanded','true');
-    websiteMenu.querySelector('[data-website-section]')?.focus();
+    const firstAction = controls.classList.contains('is-compact') ? exitButton : websiteMenu.querySelector('[data-website-section]');
+    firstAction?.focus();
     syncMotion();
   }
   function addMenuStep(step,number = null) {
@@ -427,6 +485,14 @@
   window.addEventListener('resize',scheduleFit);
   window.visualViewport?.addEventListener('resize',scheduleFit);
   if ('ResizeObserver' in window) new ResizeObserver(() => { if (active) scheduleFit(); }).observe(controls);
+  if ('ResizeObserver' in window) {
+    const contentResize = new ResizeObserver(entries => {
+      if (active && entries.some(entry => entry.target.classList.contains('presentation-active'))) scheduleReadingCue();
+    });
+    sections.forEach(section => contentResize.observe(section));
+  }
+  document.fonts?.ready.then(scheduleFit);
+  main.addEventListener('scroll',scheduleReadingCue,{passive:true});
   document.addEventListener('fullscreenchange',() => { updateControls(); scheduleFit(); });
   function syncRoute() {
     if (returnLanguage) {
