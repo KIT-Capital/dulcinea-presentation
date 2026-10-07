@@ -1,6 +1,6 @@
 # Dulcinea canonical website
 
-Updated 6 October 2026. The user approved canonical publication and GitHub synchronization, then requested a larger fund title and explanation, removal of the lake outing, a more prominent nightlife section and matching Lola & Ber typography. The future-fund benefit must use plain language. Only formal financial statements require a password.
+Updated 7 October 2026. The user approved canonical publication and GitHub synchronization, then requested a larger fund title and explanation, removal of the lake outing, a more prominent nightlife section and matching Lola & Ber typography. The future-fund benefit must use plain language. Only formal financial statements require a password.
 
 ## Canonical release
 
@@ -8,12 +8,20 @@ Updated 6 October 2026. The user approved canonical publication and GitHub synch
 - Production Worker: `dulcinea-investor-presentation`.
 - Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main`. The user explicitly authorized committing and pushing the canonical source after publication.
 - Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
-- Published and verified: application `00b8cc3`; Worker version `10389ce0-29c5-4a76-b0bd-55df1748cecd`. See `docs/validation-2026-10-06-architects.md`. Earlier releases are recorded in `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
+- Published and verified: application `6c99ea9`; Worker version `82ab3983-bdb6-4536-93bd-3a01b887a0f9`. See `docs/validation-2026-10-07-favicon-social.md`. Earlier releases are recorded in `docs/validation-2026-10-06-architects.md`, `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
 Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. The 5 October refinement leads with a large Dulcinea One title and explains the fund before the three member benefits. The lake outing is removed, nightlife uses a full-width film, and Lola & Ber uses the shared Manrope typography. The final user clarification is explicit: members participate economically on the general partner's side of future Dulcinea funds, sharing in the manager's performance profits alongside their own investment returns. The visible heading is “Participate alongside the fund manager.” See `docs/validation-2026-10-05-gp-participation.md` for the latest wording and checks. Homes, operating approach and all four core team members precede returns and the offer.
 
 ## Build and publish
+
+The 7 October favicon/share audit is published. All pages and the login use the
+approved adaptive favicon with ICO/PNG/Apple fallbacks. Resources have localized,
+page-specific Open Graph/Twitter metadata and canonical URLs. Share-card images
+remain the verified 1200x630 English/Spanish brand cards. General crawling and
+indexing remain disabled; named social-preview crawlers receive robots permission
+only for already-public page aliases and assets. Financial and source-document
+protection is unchanged. Platform cache refreshes were not asserted.
 
 The 6 October update adds separate verified biographies and portfolio links for
 Marcela Vélez and María Antonia Uribe / MAAR, from the user's supplied official

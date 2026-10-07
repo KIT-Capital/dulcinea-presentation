@@ -36,4 +36,21 @@ Primary implementation references:
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel#icon
 - https://api.slack.com/robots
 
-Publication and live verification are recorded after deployment.
+Published application `6c99ea9`; Worker version
+`82ab3983-bdb6-4536-93bd-3a01b887a0f9` on 7 October 2026.
+
+Live verification passed: all four icons return 200 with correct MIME and exact
+brand hashes; eight public EN/ES pages have the expected localized metadata and
+icons; the login has all four icon links; preview robots rules are present.
+Facebook/Twitter/WhatsApp user-agent requests get public page/image 200,
+financial-page 302 to login, and denied-source 404.
+
+Raw public HTML hashes differ from the build solely because Cloudflare injects
+one Web Analytics beacon script and newline. Removing only that injected element
+produces exact build hashes on all eight pages. No Cloudflare analytics or other
+provider settings were changed. Actual platform-rendered/cached cards were not
+verified or forcibly refreshed.
+
+Evidence is outside Git and the public build in the parent workspace:
+`preservation/2026-10-07/favicon-social/live-check.json` and
+`preservation/2026-10-07/favicon-social/published-favicon.png`.
