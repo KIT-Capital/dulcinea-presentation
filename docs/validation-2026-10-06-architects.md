@@ -28,5 +28,12 @@ languages end at 613.6px within the 656px slide, above the controls. The Spanish
 slide and directory at 390x844 have no horizontal overflow. Source links resolve
 to each architect's own supplied profile.
 
-Release status: local verification complete; production publication is recorded
-below after deployment and live verification.
+Published and verified on 6 October 2026 at
+https://invest.dulcineainvestments.org/#present-specialists.
+Application commit: `00b8cc3`; Worker version:
+`10389ce0-29c5-4a76-b0bd-55df1748cecd`. Deployment uploaded only the four changed
+homepage/directory EN/ES assets. Live browser verification confirmed both
+architects, separate source links and English/Spanish biographies. Portable HTML
+was also regenerated from the current canonical source. Screenshot evidence:
+`preservation/2026-10-06/architect-profiles/published-specialists.jpg` in the
+parent workspace, outside Git and the public build.
