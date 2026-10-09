@@ -1,6 +1,6 @@
 # Three-language presentation and PDF downloads
 
-Implemented in source and local builds on 9 October 2026. Production publication remains pending explicit approval, together with the earlier slide revisions.
+Implemented in source and local builds on 9 October 2026, then published following the user's explicit approval. See [publication validation](validation-2026-10-09-publication.md) for the deployed version and live checks. The checks below describe the original implementation pass.
 
 - English uses the US flag, Latin American Spanish the Colombian flag, and French the French flag. French is available at `/fr/`, including presentation mode, supporting pages and financial login.
 - The PDF action follows the current language in the website header/menu, presentation toolbar/compact menu and resource navigation. Property selection, slide, optional appendix and return destination survive language changes.
@@ -18,4 +18,4 @@ Implemented in source and local builds on 9 October 2026. Production publication
 
 The PDFs are approximately 2.8 MiB (English), 3.0 MiB (Spanish) and 3.1 MiB (French). Only these exact presentation filenames and the previously approved floorplan PDF are public document downloads. Other source documents remain excluded or denied; financial statements retain their password gate.
 
-No production deployment was attempted in this revision. GitHub synchronization and production publication are separate actions.
+No production deployment was attempted during the original implementation pass. The later approved publication is recorded separately above.

@@ -12,4 +12,4 @@ The full build gate passed for 15 pages, 88 files, 62 media aliases and 42 inlin
 
 The local PowerPoint deliverable is version 035, `Dulcinea - Investor Presentation 035 - Regional Map.pptx`, under the workspace `output/pptx-035-map/`. Slide 5 uses the same English labeled map and removes the former airport-only overlay. All 24 slides were rendered; the other 23 were pixel-identical to version 034, and all 210 unrelated package parts were byte-identical. Two pre-existing chart-series findings remain unchanged. Financial charts, embedded workbooks and model inputs were not edited.
 
-Source synchronization does not publish the website. Production publication remains pending the explicit approval requested for the earlier slide and language revisions.
+Source synchronization was followed by the user's explicit publication approval. The deployed version and live verification are recorded in [publication validation](validation-2026-10-09-publication.md).

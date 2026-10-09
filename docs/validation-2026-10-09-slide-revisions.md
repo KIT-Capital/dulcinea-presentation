@@ -1,7 +1,8 @@
 # Slide revisions — 9 October 2026
 
-Implemented in source and portable/web builds. Production publication is pending
-explicit deployment approval; the live application remains the 7 October release.
+Implemented in source and portable/web builds, then published following the user's
+explicit approval on 9 October. See [publication validation](validation-2026-10-09-publication.md)
+for the deployed version and live checks. The checks below describe the original implementation pass.
 
 ## Content
 

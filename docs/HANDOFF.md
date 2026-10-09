@@ -1,6 +1,8 @@
 # Dulcinea canonical website
 
-## Pending language/PDF and slide revision — 9 October 2026
+## Published language/PDF and slide revision — 9 October 2026
+
+Application `b237c4e` is published at the canonical website as Worker version `5a7dcef1-9891-4e80-aea9-818bc6f00b31`. The user explicitly approved publication on 9 October. All 12 public pages and three PDF downloads match the verified production build; financial access controls remain in place. See `docs/validation-2026-10-09-publication.md`.
 
 The regional map now labels seven key places and distinguishes the three city homes in El Poblado from the two country homes around El Retiro. All three language PDFs were refreshed. The matching local PowerPoint is version 035. See `docs/validation-2026-10-09-map-labels.md`.
 
@@ -14,16 +16,16 @@ planned services. The cover omits the minimum and projected term; the offer
 retains them. The current-model owner-use example leads with approximately
 52 nights per $1M, with its 365 × ($1M / $7M) formula and conditions.
 
-**Not published:** production still runs the 7 October release below. Automatic
-approval review required explicit production deployment approval. See
-`docs/validation-2026-10-09-slide-revisions.md` for validation and sources.
+The earlier publication approval requirement is resolved by the user's explicit
+instruction to publish. See `docs/validation-2026-10-09-slide-revisions.md` for
+the original slide validation and sources, and the publication record above for live checks.
 The Excel model is being edited separately. No financial source, workbook,
 owner-use policy, carry allocation or projected return was changed in this pass.
 The 30% owner-use proposal and revised economics remain pending.
 
-Updated 9 October 2026 after reviewing the related website, design, presentation and image chats. The latest website release remains 7 October: lead with stays, family, friends and life in Medellín and El Oriente, and introduce Dulcinea One as a real estate program. Detailed investment structure and future-fund rights remain precise in their existing sections. The user approved canonical publication and GitHub synchronization. On the website, only formal financial statements require a password.
+Updated 9 October 2026 after reviewing the related website, design, presentation and image chats and publishing the approved revisions. The website leads with stays, family, friends and life in Medellín and El Oriente, and introduces Dulcinea One as a real estate program. Detailed investment structure and future-fund rights remain precise in their existing sections. The user approved canonical publication and GitHub synchronization. On the website, only formal financial statements require a password.
 
-The 9 October review confirmed the current website source was already on GitHub, rebuilt and checked it, and verified that all eight public pages still match production. This synchronization updates project documentation and preserves the closed design critique; it does not deploy a new website. See `docs/validation-2026-10-09-project-review.md` for fresh results, related-chat decisions and the scope of material retained outside Git. The user explicitly chose to keep the repository public; website access controls do not restrict access to files already committed to public GitHub.
+The earlier 9 October source review and related-chat decisions are recorded in `docs/validation-2026-10-09-project-review.md`. That review preceded the new slide, language and PDF release documented above. The user explicitly chose to keep the repository public; website access controls do not restrict access to files already committed to public GitHub.
 
 ## Canonical release
 
@@ -31,12 +33,12 @@ The 9 October review confirmed the current website source was already on GitHub,
 - Production Worker: `dulcinea-investor-presentation`.
 - Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main`. The user explicitly authorized committing and pushing the canonical source after publication.
 - Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
-- Published and verified: application `32b1729`; Worker version `ea9f124d-06be-4f14-93a2-1bcef82fe3e3`. See `docs/validation-2026-10-07-impeccable-fixes.md`. Earlier releases are recorded in `docs/validation-2026-10-07-warm-hero.md`, `docs/validation-2026-10-07-copy-release.md`, `docs/validation-2026-10-07-favicon-social.md`, `docs/validation-2026-10-06-architects.md`, `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
+- Published and verified: application `b237c4e`; Worker version `5a7dcef1-9891-4e80-aea9-818bc6f00b31`. See `docs/validation-2026-10-09-publication.md`. Earlier releases are recorded in `docs/validation-2026-10-07-impeccable-fixes.md`, `docs/validation-2026-10-07-warm-hero.md`, `docs/validation-2026-10-07-copy-release.md`, `docs/validation-2026-10-07-favicon-social.md`, `docs/validation-2026-10-06-architects.md`, `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
 Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. The 5 October refinement leads with a large Dulcinea One title and explains the fund before the three member benefits. The lake outing is removed, nightlife uses a full-width film, and Lola & Ber uses the shared Manrope typography. The final user clarification is explicit: members participate economically on the general partner's side of future Dulcinea funds, sharing in the manager's performance profits alongside their own investment returns. The visible heading is “Participate alongside the fund manager.” See `docs/validation-2026-10-05-gp-participation.md` for the latest wording and checks. Homes, operating approach and all four core team members precede returns and the offer.
 
-## Build and publish
+## Earlier releases and deployment workflow
 
 The approved Impeccable fixes are published in English and Spanish. Compact
 presentation controls use one row, with website exit, language and fullscreen
@@ -104,9 +106,9 @@ The canonical website uses working Dov email/WhatsApp links and canonical produc
 
 ## Content to preserve
 
-- English default with Colombian Spanish; language changes preserve current subject/property.
+- English default with Colombian Spanish and French; language changes preserve current subject/property and the PDF download follows the selected language.
 - Seven chapters: opening, life here, membership, homes, execution, investment and next step.
-- 18 main slides, including all five properties and both team slides. Booking remains the optional appendix. The Guatapé lake outing was removed at the user's request; its original media stays in the source library. Legacy numeric links retain their established subjects.
+- 20 main slides, including all five properties, the regional map, planned services and both team slides. Booking remains the optional appendix and page 21 of each PDF. The Guatapé lake outing was removed at the user's request; its original media stays in the source library. Legacy numeric links retain their established subjects.
 - Five homes with original imagery, existing films, galleries and nine supplied floorplan sheets. Montana has no supplied plan. AI property visualizations retain their disclosure.
 - Dov, Ricardo, Adriana and Natalia stay together in that order, with approved roles and biographies. Natalia is a core team member.
 - Model 10: 14.6% projected investor IRR, 1.40× projected capital multiple, four-year projected term; after tax/carry and on called capital. Capital paid in Year 1 installments. Montana modeled works period is six months.
@@ -117,7 +119,7 @@ The canonical website uses working Dov email/WhatsApp links and canonical produc
 - Owner-use costs are included in modeled returns. Brand equity and future-fund participation have no modeled value.
 - Lola & Ber is an adult, sex-positive brand; Hospitality is its property division. Keep it distinct from family home-use scenes.
 - El Oriente and modern Medellín/El Poblado retain distinct scenes. Guatapé is a regional outing, not a portfolio location/view claim.
-- 16 active MP4s, 33 unique preserved canonical videos, 59 media aliases. Keep unused films and approved continuous playback. No duplicate media, male-running, rejected garden-reading or outdoor-gathering films.
+- 16 active MP4s, 33 unique preserved canonical videos, 62 media aliases. Keep unused films and approved continuous playback. No duplicate media, male-running, rejected garden-reading or outdoor-gathering films.
 - Nomad Capitalist / club-DJ excerpts remain pending clean source/rights and source identification. No new footage was produced in this release.
 - Financial zero cells remain blank, margins visible, after-carry detail collapsible and cash-flow statements available. Do not expose legal/company/financial source files.
 
