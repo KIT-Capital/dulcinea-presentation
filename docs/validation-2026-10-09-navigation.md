@@ -16,4 +16,14 @@ The current section is highlighted in the header. Section navigation first close
 - Portable and production web builds passed. All 62 server tests and the full build/PDF freshness gate passed.
 - All 63 presentation slide captures had loaded images and no detected text overflow. Three 21-page PDFs were refreshed to the new source fingerprint; all pages rendered and the embedded images matched the captures. The local PDF endpoints returned identical bytes.
 
-This changes navigation, not the investment content, financial model, slides or PowerPoint. Private browser and export evidence is under the parent workspace's `preservation/2026-10-09/navigation/`.
+## Publication
+
+Application `5e8502c80d65a4ce7c18db60fe9bbc6a1c84215d` was pushed to `main` and published at https://invest.dulcineainvestments.org/ as Worker version `ad76c587-1ac5-4322-91f2-66272666407a` on 9 October 2026.
+
+- All 12 public pages matched the production build, and all three PDF downloads returned HTTP 200 with the expected MIME type and SHA-256.
+- All 12 financial aliases redirected to login with their destinations preserved; three localized login pages passed. Six private/source probes returned HTTP 404.
+- Public floorplans and both favicon formats returned HTTP 200. The reservoir video returned HTTP 206 with the exact requested 1,024-byte range.
+- The live browser showed the single header and localized resource destinations. Resources opened and closed with Escape, restoring focus; no browser errors were reported.
+- All four financial-source hashes matched the recorded baseline. Positive financial sign-in was not retested.
+
+This changes navigation, not the investment content, financial model, slides or PowerPoint. Private browser and export evidence is under the parent workspace's `preservation/2026-10-09/navigation/`, including `live-verification.json` and `published-navigation.png`. The preceding production version was `5a7dcef1-9891-4e80-aea9-818bc6f00b31`.
