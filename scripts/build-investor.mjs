@@ -110,7 +110,7 @@ for(const locale of ['en','es','fr']){
   const prefix=locale==='en'?'':`${locale}/`;
   const relative=locale!=='en'?'../':'';
   const localeMedia=Object.fromEntries(Object.entries(media).map(([name,url])=>[name,web?url:relative+url]));
-  let html=localize(template.replace('{{HOME_DISCLOSURE}}',homeDisclosure(locale)).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale,{presentationVariants:true})),locale).replace('<html lang="en">',`<html lang="${locale}">`)
+  let html=localize(template.replace('{{REGIONAL_MAP_MARKERS}}',await read('src/investor/regional-map-markers.svg')).replace('{{HOME_DISCLOSURE}}',homeDisclosure(locale)).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale,{presentationVariants:true})),locale).replace('<html lang="en">',`<html lang="${locale}">`)
     .replace(/<title>[^<]*<\/title>/,shareMetadata(locale))
     .replace('<link rel="stylesheet" href="style.css">',`<style>${styles}</style>`)
     .replace('<link rel="stylesheet" href="presentation.css">',`<style>${presentationStyles}</style>`)

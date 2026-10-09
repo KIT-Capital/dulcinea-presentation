@@ -2,6 +2,8 @@
 
 ## Pending language/PDF and slide revision — 9 October 2026
 
+The regional map now labels seven key places and distinguishes the three city homes in El Poblado from the two country homes around El Retiro. All three language PDFs were refreshed. The matching local PowerPoint is version 035. See `docs/validation-2026-10-09-map-labels.md`.
+
 The source now supports English (US flag), Latin American Spanish (Colombian flag) and French (French flag), including all resource and login pages. Current-language PDF downloads mirror the 20 main online slides plus the booking appendix. The three PDFs are committed under `downloads/`; 62 server tests and the full 15-page release gate pass. Browser language-state checks and all 63 PDF page renders passed. Source fingerprints prevent stale PDFs from passing the release gate. See `docs/validation-2026-10-09-localized-pdfs.md`.
 
 

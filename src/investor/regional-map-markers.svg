@@ -1,0 +1,53 @@
+<svg class="regional-map-markers" viewBox="0 0 1280 720" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <g class="map-context">
+    <path class="map-leader" d="M392 80 L490 65"/>
+    <circle class="map-point" cx="490" cy="65" r="12"/>
+    <rect class="map-label" x="90" y="40" width="302" height="76" rx="8"/>
+    <text class="map-place" x="116" y="91">Medellín</text>
+  </g>
+  <g class="map-city">
+    <path class="map-leader" d="M434 240 L520 194"/>
+    <circle class="map-halo" cx="520" cy="194" r="24"/>
+    <circle class="map-point" cx="520" cy="194" r="14"/>
+    <rect class="map-label" x="98" y="192" width="336" height="110" rx="8"/>
+    <text class="map-place" x="124" y="241">El Poblado</text>
+    <text class="map-detail" x="124" y="278" data-en="3 city homes" data-es="3 propiedades urbanas" data-fr="3 propriétés en ville">3 city homes</text>
+  </g>
+  <g class="map-country">
+    <path class="map-leader" d="M636 597 L698 612"/>
+    <circle class="map-halo" cx="698" cy="612" r="24"/>
+    <circle class="map-point" cx="698" cy="612" r="14"/>
+    <rect class="map-label" x="300" y="548" width="336" height="110" rx="8"/>
+    <text class="map-place" x="326" y="597">El Retiro</text>
+    <text class="map-detail" x="326" y="634" data-en="2 country homes" data-es="2 casas de campo" data-fr="2 maisons de campagne">2 country homes</text>
+  </g>
+  <g class="map-airport">
+    <path class="map-leader" d="M927 245 L927 300"/>
+    <circle class="map-point" cx="927" cy="300" r="15"/>
+    <rect class="map-label" x="760" y="140" width="404" height="105" rx="8"/>
+    <text class="map-place" x="786" y="187">MDE</text>
+    <text class="map-detail" x="786" y="223">José María Córdova</text>
+  </g>
+  <g class="map-context">
+    <path class="map-leader" d="M1070 330 L1120 378"/>
+    <circle class="map-point" cx="1070" cy="330" r="12"/>
+    <rect class="map-label" x="1020" y="378" width="248" height="74" rx="8"/>
+    <text class="map-place" x="1042" y="427">Rionegro</text>
+  </g>
+  <g class="map-context">
+    <path class="map-leader" d="M947 410 L915 472"/>
+    <circle class="map-point" cx="947" cy="410" r="12"/>
+    <rect class="map-label" x="750" y="472" width="346" height="76" rx="8"/>
+    <text class="map-place" x="774" y="523">Llanogrande</text>
+  </g>
+  <g class="map-context">
+    <path class="map-leader" d="M906 687 L997 639"/>
+    <circle class="map-point" cx="906" cy="687" r="12"/>
+    <rect class="map-label" x="997" y="600" width="252" height="76" rx="8"/>
+    <text class="map-place" x="1023" y="651">La Ceja</text>
+  </g>
+  <g class="map-region">
+    <rect x="796" y="38" width="300" height="58" rx="29"/>
+    <text x="946" y="77" text-anchor="middle">EL ORIENTE</text>
+  </g>
+</svg>

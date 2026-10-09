@@ -850,7 +850,26 @@ body.is-presenting #home .hero-statement>.presentation-investment-context{margin
 .regional-map,.services-visual{margin:0}
 .regional-map img{display:block;width:100%;height:auto}
 .regional-map-frame{position:relative}
-.airport-label{position:absolute;left:73.5%;top:36%;font-size:11px;line-height:1.2;padding:3px 5px;background:#fff;color:#17282d;border:1px solid #17282d55}
+.regional-map-markers{position:absolute;inset:0;width:100%;height:100%;overflow:visible;font-family:var(--font-body,Manrope),Arial,sans-serif}
+.regional-map-markers .map-leader{fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round}
+.regional-map-markers .map-point{fill:currentColor;stroke:#fff;stroke-width:4}
+.regional-map-markers .map-halo{fill:currentColor;opacity:.25}
+.regional-map-markers .map-label{fill:#fff;stroke:currentColor;stroke-width:3}
+.regional-map-markers .map-place{font-size:40px;font-weight:700;fill:currentColor}
+.regional-map-markers .map-detail{font-size:26px;font-weight:600;fill:currentColor}
+.regional-map-markers .map-context{color:#344a4d}
+.regional-map-markers .map-city{color:#225a78}
+.regional-map-markers .map-country{color:#08734f}
+.regional-map-markers .map-airport{color:#78591a}
+.regional-map-markers .map-region rect{fill:#e1eee5;stroke:#588366;stroke-width:2}
+.regional-map-markers .map-region text{font-size:30px;font-weight:700;letter-spacing:3px;fill:#335d43}
+.regional-home-key{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px}
+.regional-home-key>div{border-top:3px solid;padding-top:8px;font-size:14px;line-height:1.4}
+.regional-home-key strong,.regional-home-key span{display:block}
+.regional-home-key strong{font-size:18px;margin-bottom:4px}
+.regional-home-key .map-city-key{color:#225a78}.regional-home-key .map-country-key{color:#08734f}
+.regional-area-note{font-size:12px;line-height:1.4;margin-top:10px;color:#415557}
+@media(max-width:600px){.regional-home-key{gap:14px}.regional-home-key>div{font-size:12px}.regional-home-key strong{font-size:15px}.regional-area-note{font-size:11px}}
 .regional-copy .regional-stat-note{font-size:13px;color:#415557}
 .regional-map figcaption,.services-visual figcaption,.brand-origin-image figcaption{font-size:12px;line-height:1.5;margin-top:10px}
 .regional-map figcaption a,.regional-sources a{text-decoration:underline;text-underline-offset:3px}
