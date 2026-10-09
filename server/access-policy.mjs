@@ -5,7 +5,7 @@ const publicDownloads = new Set(['/downloads/Dulcinea-Floorplans.pdf', ...Object
 const publicAssets = new Set([...publicAssetPaths, ...publicDownloads]);
 const pages = new Map();
 for (const prefix of ['', '/es', '/fr']) {
-  for (const name of ['index', 'investment-criteria', 'specialists', 'disclaimer', 'financial-statements']) {
+  for (const name of ['index', 'member-benefits', 'investment-criteria', 'specialists', 'disclaimer', 'financial-statements']) {
     const asset = `${prefix}/${name}.html`;
     const access = name === 'financial-statements' ? 'private' : 'public';
     const aliases = [`${prefix}/${name}`, asset, `${prefix}/${name}/`, `${prefix}/${name}/index.html`];

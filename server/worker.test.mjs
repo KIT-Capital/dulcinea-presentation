@@ -101,8 +101,8 @@ test('public website pages and presentation aliases work without a session or au
     ['/', '/index.html'], ['/index', '/index.html'], ['/index.html', '/index.html'], ['/index/', '/index.html'], ['/index/index.html', '/index.html'],
     ['/es', '/es/index.html'], ['/es/', '/es/index.html'], ['/es/index.html', '/es/index.html'],
   ]);
-  for (const prefix of ['', '/es']) {
-    for (const name of ['investment-criteria', 'specialists', 'disclaimer']) {
+  for (const prefix of ['', '/es', '/fr']) {
+    for (const name of ['member-benefits', 'investment-criteria', 'specialists', 'disclaimer']) {
       for (const suffix of ['', '/', '.html', '/index.html']) expected.set(`${prefix}/${name}${suffix}`, `${prefix}/${name}.html`);
     }
   }

@@ -13,6 +13,10 @@ const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
 export function socialMetadata(language = 'en', { origin = SOCIAL_ORIGIN, page = 'index' } = {}) {
   const es = language === 'es';
   const resources = {
+    'member-benefits': {
+      title: es ? 'Dulcinea One | Beneficios de membresía' : 'Dulcinea One | Member benefits',
+      description: es ? 'Detalles sobre estadías, beneficios y condiciones de membresía de Dulcinea One.' : 'Details of member stays, benefits and membership terms for Dulcinea One.',
+    },
     'investment-criteria': {
       title: es ? 'Dulcinea One | Criterios de adquisición' : 'Dulcinea One | Acquisition criteria',
       description: es ? 'Los diez criterios que guían la selección de propiedades para Dulcinea One en Medellín y el Oriente.' : 'The ten criteria guiding property selection for Dulcinea One in Medellín and El Oriente.',

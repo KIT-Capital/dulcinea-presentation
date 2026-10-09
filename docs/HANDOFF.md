@@ -1,5 +1,15 @@
 # Dulcinea canonical website
 
+## Latest workbook and member details — 9 October 2026
+
+The latest supplied Pro Forma workbook is now reconciled across all 27 sheets. Current figures are 14.3% investor IRR, 1.40× capital multiple, $7M called and $9,770,156 net distributions. Member allocations use 547.5 annual nights at full operation (109.5 per home; about 78 per $1M at full subscription). The new EN/ES/FR `member-benefits.html` resource includes the calculator, stay inclusions, discounts, shared benefits and booking guidance, without adding a main slide.
+
+The user directed use of Pacaso's published cancellation approach: cancel as soon as plans change, without a fixed 30/60-day deadline. An uncancelled no-show requires notice at least 48 hours before scheduled departure or cleaning fees are charged. Only that cancellation/no-show policy was adopted; Pacaso app behavior, guarantees and ownership quotas were not imported. The exact peak-use cap remains unresolved between workbook and prior approved wording; public copy refers to applicable membership rules without a conflicting numeric cap. Original Excel files were not edited.
+
+Important limitations: the $368,604 reserve is $30,871 below its $399,475 target; the 19.8% after-tax deal return is below the workbook's 20% deal-level screen. Neither is the separately approved 12% net-investor screening measure. No new financing, reserve funding or current availability was inferred. Full audit and provenance: `docs/model-latest-reconciliation.md`. Website/PDF checks: `docs/validation-2026-10-09-member-benefits.md`.
+
+All entries below record earlier releases and are superseded where they give older numerical or cancellation terms.
+
 ## Illustration caption — 9 October 2026
 
 Online slide 7 and the matching website services section use the exact English caption "Imagery is for illustration only." Spanish and French versions and their PDFs are updated. The PowerPoint counterpart is version 036, with the same caption on its services slide 4. The service availability, pricing and additional-charge qualifications remain in the body.

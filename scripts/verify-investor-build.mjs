@@ -26,6 +26,9 @@ const read = name => readFile(path.join(root, name), 'utf8');
 const build = JSON.parse(await read('dist/investor-build.json'));
 assert.deepEqual(build, {version:1,mode:review?'review':'production',origin}, 'Build mode does not match this verification; rebuild for the intended destination');
 const story = JSON.parse(await read('content/presentation-story.json'));
+const memberTerms = JSON.parse(await read('content/investor-terms.json'));
+const latestModel = JSON.parse(await read('content/model-summary.json'));
+assert.equal(memberTerms.source.sha256, latestModel.provenance.sha256, 'Member terms and financial projections must use the same workbook');
 const expectedOrder = ["cover", "lifestyle", "region", "oriente", "city", "hospitality", "services", "benefits", "monte-sereno", "montana", "fontanar", "san-lucas", "aires", "idea", "team", "specialists", "returns", "offer", "disclaimer", "contact"];
 assert.deepEqual(story.main.map(step=>step.id), expectedOrder, 'Main presentation order');
 assert.deepEqual(story.appendices.map(step=>step.id), ['owner-use'], 'Owner booking is optional detail');
@@ -78,8 +81,8 @@ await verifyPresentationPdfs(root, { builtDirectory: site });
 assert.deepEqual([...publicAssetPaths].sort(), [...files.keys()].filter(file=>!file.endsWith('.html')).sort(), 'Public asset allowlist must match approved built media');
 for (const asset of publicAssetPaths) assert.equal(assetPolicy(asset).access, 'public', `Public media classification: ${asset}`);
 for (const page of pages.keys()) assert.equal(assetPolicy(page).access, page.endsWith('/financial-statements.html')?'private':'public', `Page access classification: ${page}`);
-const requiredPages = ['', 'es/', 'fr/'].flatMap(prefix => ['index', 'financial-statements', 'investment-criteria', 'specialists', 'disclaimer'].map(name => `/${prefix}${name}.html`));
-assert.deepEqual([...pages.keys()].sort(), [...requiredPages].sort(), 'Expected only EN/ES/FR investor, financial, criteria, specialists and disclaimer pages');
+const requiredPages = ['', 'es/', 'fr/'].flatMap(prefix => ['index', 'financial-statements', 'member-benefits', 'investment-criteria', 'specialists', 'disclaimer'].map(name => `/${prefix}${name}.html`));
+assert.deepEqual([...pages.keys()].sort(), [...requiredPages].sort(), 'Expected only EN/ES/FR investor, financial, member-benefits, criteria, specialists and disclaimer pages');
 assert.deepEqual([...files.keys()].filter(file => /\.pdf$/i.test(file)).sort(), [...approvedPDFs].sort(), 'Exactly the floorplan PDF and three localized presentation PDFs must be built');
 for (const [language, asset] of Object.entries(PRESENTATION_PDFS)) {
   const pdf = await readFile(files.get(asset));
@@ -305,23 +308,23 @@ for (const [pagePath, html] of pages) {
   assert.equal(homePlans.filter(([, planList]) => planList.length).length, 4, `Expected four homes with plans: ${pagePath}`);
   assert.deepEqual(homePlans.flatMap(([, planList]) => planList).sort((a, b) => a - b), [1, 2, 3, 4, 5, 6, 7, 8, 9], `Plan coverage is incomplete or duplicated: ${pagePath}`);
   assert.deepEqual(homePlans.find(([key]) => key === 'montana')?.[1], [], 'Do not invent Casa Montana plans');
-  for (const name of ['financial-statements', 'investment-criteria', 'specialists', 'disclaimer']) {
+  for (const name of ['financial-statements', 'member-benefits', 'investment-criteria', 'specialists', 'disclaimer']) {
     const target = `/${language === 'en' ? '' : language + '/'}${name}.html`;
     assert.ok(markup.includes(`href="${target}"`), `Missing ${language} navigation resource ${name}`);
   }
   const text = textContent(markup);
   assert.match(markup, /class="legal-notice"/, `Missing homepage disclosure: ${pagePath}`);
-  const englishPhrases = ['Dulcinea One is our first fund, with a projected four-year term.', 'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake', 'Each active home adds 73 nights.', 'Cancel 30 days ahead.', 'Winners sit out the next draw.', 'Delaware LLC'];
+  const englishPhrases = ['Dulcinea One is our first fund, with a projected four-year term.', 'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake', 'Each active home adds 109.5 nights.', 'Cancel as soon as plans change.', 'Winners sit out the next draw.', 'Delaware LLC'];
   const frenchPhrases = [
     'Dulcinea One is our first fund, with a projected four-year term. The return model combines rental income with projected profits on sale.',
     'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake',
-    'The pool reaches 365 nights when all five homes operate. Each active home adds 73 nights.',
-    'Book any home in service for at least two nights. Swaps within 48 hours. Cancel 30 days ahead.',
+    'The pool reaches 547.5 nights when all five homes operate. Each active home adds 109.5 nights.',
+    'Book any home in service for at least two nights. Confirm swaps within 48 hours. Cancel as soon as plans change.',
     'Christmas to New Year, Semana Santa and Feria de las Flores: one stay per home, three nights minimum. A draw weighted by Units allocates stays. Winners sit out the next draw.',
-    'You subscribe for units in a Delaware LLC fund investing in five homes without debt. Capital is paid in installments during Year 1, including a reserve for the fund’s term.',
+    'You subscribe for units in a Delaware LLC fund investing in five homes without debt. Capital is paid in installments during Year 1, including an operating reserve.',
   ].map(frenchText);
   for (const phrase of language === 'es'
-    ? ['Dulcinea One es nuestro primer fondo, con un plazo proyectado de cuatro años.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Beneficios de membresía', 'Participación colectiva', 'Cada propiedad activa aporta 73 noches.', 'Cancele con 30 días de anticipación.', 'Los ganadores no participan en el siguiente sorteo.', 'LLC de Delaware']
+    ? ['Dulcinea One es nuestro primer fondo, con un plazo proyectado de cuatro años.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Beneficios de membresía', 'Participación colectiva', 'Cada propiedad activa aporta 109,5 noches.', 'Cancele en cuanto cambien sus planes.', 'Los ganadores no participan en el siguiente sorteo.', 'LLC de Delaware']
     : language === 'fr' ? frenchPhrases : englishPhrases) {
     assert.ok(text.includes(normalizeWhitespace(phrase)), `Missing visible ${language} investor content: ${phrase}`);
   }
@@ -333,6 +336,19 @@ for (const prefix of ['', '/es', '/fr']) {
   const criteria = pages.get(`${prefix}/investment-criteria.html`);
   const disclaimer = pages.get(`${prefix}/disclaimer.html`);
   const specialists = pages.get(`${prefix}/specialists.html`);
+  const members = pages.get(`${prefix}/member-benefits.html`);
+  assert.ok(members, 'Member details are a separate resource in each language');
+  const calculator = attributes(members.match(/<form\b[^>]*id="member-calculator"[^>]*>/)?.[0] || '');
+  assert.equal(Number(calculator['data-raise-usd']), memberTerms.offering.raiseUsd, 'Member calculator full-subscription denominator');
+  assert.equal(Number(calculator['data-nights-per-home']), memberTerms.ownerUse.annualNightsPerHomeInService, 'Member calculator annual home allocation');
+  const commitmentInput = attributes(members.match(/<input\b[^>]*id="member-commitment"[^>]*>/)?.[0] || '');
+  assert.equal(Number(commitmentInput.min), memberTerms.offering.minimumInvestmentUsd, 'Member calculator minimum commitment');
+  assert.equal(Number(commitmentInput.step), memberTerms.offering.unitUsd, 'Member calculator unit size');
+  assert.equal(Number(commitmentInput.max), memberTerms.offering.raiseUsd, 'Member calculator maximum commitment');
+  assert.ok(members.includes(`href="${prefix}/#member-benefits"`), 'Member detail return destination');
+  assert.ok(members.includes(`href="${prefix}/#present-benefits"`), 'Member detail presentation destination');
+  for (const section of ['member-stays','stay-inclusions','shared-benefits','member-booking']) assert.ok(members.includes(`id="${section}"`), `Missing member details: ${section}`);
+  assert.doesNotMatch(textContent(members), /Cancel 30 days|Cancel 60 days|Cancele con (?:30|60) días|Annulation (?:30|60) jours/, 'Superseded fixed cancellation notice');
   assert.match(textContent(financial), language === 'fr' ? /États financiers pro forma/ : language === 'es' ? /Estados financieros pro forma/ : /Pro forma financial statements/);
   assert.match(textContent(disclaimer), language === 'fr' ? /ensemble du portefeuille/ : language === 'es' ? /portafolio en su conjunto/ : /portfolio as a whole/);
   assert.match(textContent(disclaimer), language === 'fr' ? /non auditées/ : language === 'es' ? /no auditadas/ : /unaudited/);
@@ -370,7 +386,7 @@ for (const prefix of ['', '/es', '/fr']) {
 }
 
 const videoHashes = new Map();
-for(const name of ['financial-statements','investment-criteria','specialists']){
+for(const name of ['financial-statements','member-benefits','investment-criteria','specialists']){
   const styles=html=>[...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map(match=>match[1]);
   for (const language of ['es', 'fr']) assert.deepEqual(styles(pages.get(`/${language}/${name}.html`)),styles(pages.get(`/${name}.html`)),`Translation changed responsive CSS: ${language}/${name}`);
 }

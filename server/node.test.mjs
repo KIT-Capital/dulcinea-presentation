@@ -19,6 +19,9 @@ async function fixture(t, env = credentials) {
   for (const [name, bytes] of Object.entries({
     'index.html': '<h1>English site and presentation</h1>',
     'es/index.html': '<h1>Sitio y presentación</h1>',
+    'member-benefits.html': '<h1>Member benefits</h1>',
+    'es/member-benefits.html': '<h1>Beneficios de membresía</h1>',
+    'fr/member-benefits.html': '<h1>Avantages des membres</h1>',
     'financial-statements.html': 'Private statement fixture',
     'es/financial-statements.html': 'Estados financieros privados',
     'source-packages/model.xlsx': 'Never serve this source',
@@ -55,11 +58,12 @@ function login(origin, overrides = {}) {
 
 test('Node serves identical public bytes and keeps statements gated with source paths denied', async t => {
   const { request } = await fixture(t);
-  for (const [pathname, expected] of [['/', '<h1>English site and presentation</h1>'], ['/es/', '<h1>Sitio y presentación</h1>']]) {
+  for (const [pathname, expected] of [['/', '<h1>English site and presentation</h1>'], ['/es/', '<h1>Sitio y presentación</h1>'], ['/member-benefits', '<h1>Member benefits</h1>'], ['/es/member-benefits/', '<h1>Beneficios de membresía</h1>'], ['/fr/member-benefits/index.html', '<h1>Avantages des membres</h1>']]) {
     const response = await request(pathname);
     assert.equal(response.status, 200);
     assert.equal(await response.text(), expected);
     assert.equal(response.headers.get('X-Frame-Options'), 'DENY');
+    assert.equal(response.headers.get('X-Robots-Tag'), 'noindex, nofollow');
     assert.match(response.headers.get('Content-Security-Policy'), /frame-ancestors 'none'/);
   }
   for (const pathname of ['/financial-statements', '/es/financial-statements.html']) {

@@ -2,7 +2,7 @@
 
 Usage: python scripts/verify-model-source.py --source /private/path/to/model.xlsx
 Requires openpyxl. Build the site and run verify-financials.mjs separately to check
-the displayed statements, margins, cash reconciliation and bilingual headlines.
+the displayed statements, margins, cash reconciliation and EN/ES/FR headlines.
 """
 import argparse
 from datetime import date, datetime
@@ -92,6 +92,30 @@ def check_summary(node):
             check_summary(value)
 check_summary(summary)
 
+for flow in summary['monthlyInvestorCashFlows']:
+    match = re.fullmatch(r"'_IRR Engine'!B(\d+):G\1", flow['ref'])
+    assert match, flow['ref']
+    row = match[1]
+    for key, column, sign in [('date', 'B', 1), ('calledUsd', 'E', -1), ('distributedUsd', 'F', 1), ('netUsd', 'G', 1)]:
+        actual = values['_IRR Engine'][column+row]
+        same(actual*sign if isinstance(actual, (int, float)) else actual, flow[key], flow['ref']+' '+key)
+same(sum(flow['calledUsd'] for flow in summary['monthlyInvestorCashFlows']), summary['headline']['capitalCalledUsd']['value'], 'Monthly capital total')
+same(sum(flow['distributedUsd'] for flow in summary['monthlyInvestorCashFlows']), summary['headline']['netDistributionsUsd']['value'], 'Monthly distribution total')
+same(summary['sourcesAndUses']['reserveTargetUsd']['value']-summary['sourcesAndUses']['yearOneEndingCashUsd']['value'],
+     summary['sourcesAndUses']['reserveShortfallUsd']['value'], 'Reserve target shortfall')
+same(summary['ownerBenefits']['annualNightsFullPortfolio']['value']*100000/summary['activeScenario']['fullCommitmentUsd']['value'],
+     summary['ownerBenefits']['annualNightsPer100k']['value'], 'Pro rata owner nights')
+terms = json.loads((root / 'content/investor-terms.json').read_text(encoding='utf8'))
+for item in properties:
+    match = re.fullmatch(r'Properties!T(\d+):Y\1', item['source']['operatingCells'])
+    assert match, item['source']['operatingCells']
+    row = match[1]
+    same(values['Properties']['X'+row], item['stabilizedAnnualNoiUsd'], item['token']+' NOI')
+    same(values['Properties']['Y'+row], item['stabilizedAnnualRentalRevenueUsd'], item['token']+' rent')
+    same(values['Properties']['U'+row]-values['Properties']['T'+row], item['rentalMonths'], item['token']+' rental months')
+    if terms['propertyStatus'][item['token']]['value'].startswith('Closed'):
+        assert item['status'].startswith('Closed'), 'Do not regress approved closed-property status from workbook prose'
+
 ns = {'m': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
 with zipfile.ZipFile(args.source) as archive:
     assert not any(name.startswith('xl/externalLinks/') for name in archive.namelist()), 'External workbook links require review'
@@ -103,6 +127,8 @@ with zipfile.ZipFile(args.source) as archive:
             if cell.find('m:f', ns) is not None and cell.get('t') != 'str':
                 value = cell.find('m:v', ns)
                 assert value is not None and value.text is not None, f'Missing numeric formula cache: {name}:{cell.get("r")}'
+            formula = cell.find('m:f', ns)
+            assert formula is None or '#REF!' not in (formula.text or ''), f'Broken formula reference: {name}:{cell.get("r")}'
 book.close()
 formulas.close()
 assert hashlib.sha256(args.source.read_bytes()).hexdigest() == source_hash, 'Workbook changed during verification'

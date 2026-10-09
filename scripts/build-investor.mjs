@@ -24,7 +24,7 @@ const aliases=JSON.parse(await read('src/investor/media.json'));
 const manifest=JSON.parse(await read('assets/manifest.json'));
 const presentationStory=JSON.parse(await read('content/presentation-story.json'));
 for(let page=1;page<=9;page++) aliases[`plan-${page}.webp`]=manifest.find(item=>item.marker===`{{PLAN_PAGE_${page}}}`).path;
-const resources=['financial-statements','investment-criteria','specialists','disclaimer'];
+const resources=['financial-statements','member-benefits','investment-criteria','specialists','disclaimer'];
 
 async function asset(source,target=source){
   const approvedFloorplans = source === 'source-packages/PLANOS PROPIEDADES DULCINEA.pdf' && target === 'downloads/Dulcinea-Floorplans.pdf';
@@ -147,10 +147,11 @@ for(const locale of ['en','es','fr']){
     if(!web) page=page.replace(/<form\b[^>]*class="[^"]*session-exit[^"]*"[^>]*>[\s\S]*?<\/form>/g,'').replace(/<script id="statement-session-exit">[\s\S]*?<\/script>/g,'').replace(/<p\b[^>]*id="statement-signout-error"[^>]*>[\s\S]*?<\/p>/g,'');
     if(name==='disclaimer')page=localize(page.replace('{{DISCLAIMER_TITLE}}',`Dulcinea One — ${disclosures.title[locale==='es'?1:0]}`).replace('{{DISCLAIMER_CONTENT}}',fullDisclosure(locale)),locale);
     if(name==='specialists')page=localize(page.replace('{{SPECIALISTS_TITLE}}',`Dulcinea One — ${locale==='es'?'Especialistas locales':'Local specialists'}`).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale)),locale);
+    if(name==='member-benefits')page=localize(page,locale);
     page=page.replace(/href="index\.html#slide-[78]"/g,`href="${web?('/'+prefix):'index.html'}#${name==='financial-statements'?'fund':'homes'}"`);
-    page=page.replace(/href="index\.html#(home|team|specialists)"/g,(_,section)=>`href="${web?'/'+prefix:'index.html'}#${section}"`);
+    page=page.replace(/href="index\.html#(home|team|specialists|member-benefits)"/g,(_,section)=>`href="${web?'/'+prefix:'index.html'}#${section}"`);
     for(const resource of resources)page=page.replaceAll(`href="${resource}.html`, `href="${web?'/'+prefix:''}${resource}.html`);
-    if(locale==='es') page=(['disclaimer','specialists'].includes(name)?page.replace('aria-label="Documents"','aria-label="Documentos"'):translateResource(page)).replace('<html lang="en">','<html lang="es">');
+    if(locale==='es') page=(['disclaimer','specialists','member-benefits'].includes(name)?page.replace('aria-label="Documents"','aria-label="Documentos"'):translateResource(page)).replace('<html lang="en">','<html lang="es">');
     if(locale==='fr')page=frenchMarkup(page).replace('<html lang="en">','<html lang="fr">');
     page=page.replace(/<meta\b(?=[^>]*\bname="description")[^>]*>/gi,'')
       .replace(/<title>[^<]*<\/title>/,renderSocialMetadata(locale,{includeDocumentMetadata:true,origin,page:name}));
@@ -172,4 +173,4 @@ if(web){
   // Deployment bookkeeping stays outside the hosted asset directory.
   await writeFile(buildMarker,JSON.stringify({version:1,mode:review?'review':'production',origin},null,2)+'\n');
 }
-console.log(`Built investor site (${review?'review':'production'}; ${web?'web':'portable'}), English/Spanish/French, ${Object.keys(media).length} media aliases, pro forma financial statements, criteria, specialists and disclaimer.`);
+console.log(`Built investor site (${review?'review':'production'}; ${web?'web':'portable'}), English/Spanish/French, ${Object.keys(media).length} media aliases, pro forma financial statements, member benefits, criteria, specialists and disclaimer.`);

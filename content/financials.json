@@ -1,17 +1,19 @@
 {
   "source": {
-    "file": "Dulcinea Model 10.xlsx",
-    "sha256": "6943e850555794c314adc213e3e117bf237ebcbff8e6e09350cbb5a1edff1365",
+    "file": "Dulcinea Pro Forma Model.xlsx",
+    "sha256": "11dc277993672a01993dcc8a3de324c51d37c958a46930f556ddc48288724868",
     "method": "Read saved XML formula caches and formulas from the currently supplied workbook without editing or recalculating it. Annual values use C:F. Annual EBITDA and net income margins use the workbook percentages; aggregate margins use aggregate income / aggregate revenue. After-carry result is derived using the workbook carry payment timing.",
     "priorDeck": {
       "file": "Dulcinea - Investor Presentation 032.pptx",
       "slides": {
         "profitAndLoss": 21
       },
-      "note": "PPTX P&L values are stale; workbook saved values govern the statements."
+      "note": "Historical comparison only; the current workbook saved values govern the statements."
     },
-    "previousSourceSha256": "9c6f9654d3cf02b83fbe71902619eb5fd5a7a83bd5dc1247aaae80635cdf8fb9",
-    "modifiedUtc": "2026-10-01T23:23:11.551157+00:00"
+    "previousSourceSha256": "818a13b65414431519fdb8b1f149898c55963eb5ba62a267df48d149e77f9fb4",
+    "modifiedUtc": "2026-10-09T21:21:53.1111764Z",
+    "snapshotModifiedUtc": "2026-10-09T21:30:08.902400+00:00",
+    "modificationTimeBasis": "Original source modification time from hash-matched snapshot manifest"
   },
   "status": "Workbook projections; not actual results or guaranteed returns",
   "currency": "USD",
@@ -42,43 +44,43 @@
         "unit": "USD",
         "kind": "",
         "values": [
-          64301.95110937501,
-          232342.48661492416,
-          158725.05670993822,
-          30540.67265122486,
-          485910.16708546225
+          55222.8766640625,
+          198079.27069702902,
+          135332.21550929305,
+          26047.446511366717,
+          414681.8093817513
         ],
         "displayValues": [
-          "64,302",
-          "232,342",
-          "158,725",
-          "30,541",
-          "485,910"
+          "55,223",
+          "198,079",
+          "135,332",
+          "26,047",
+          "414,682"
         ],
         "sourceRange": "'Income Statement'!C7:F7",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C7",
-            "cachedValue": 64301.95110937501,
-            "cachedValueText": "64301.951109375012",
+            "cachedValue": 55222.8766640625,
+            "cachedValueText": "55222.876664062504",
             "formula": "=SUMIF('_Month Engine'!$C$5:$DR$5,C$4,'_Month Engine'!$C$44:$DR$44)"
           },
           {
             "cell": "'Income Statement'!D7",
-            "cachedValue": 232342.48661492416,
-            "cachedValueText": "232342.48661492416",
+            "cachedValue": 198079.27069702902,
+            "cachedValueText": "198079.27069702902",
             "formula": "=SUMIF('_Month Engine'!$C$5:$DR$5,D$4,'_Month Engine'!$C$44:$DR$44)"
           },
           {
             "cell": "'Income Statement'!E7",
-            "cachedValue": 158725.05670993822,
-            "cachedValueText": "158725.05670993822",
+            "cachedValue": 135332.21550929305,
+            "cachedValueText": "135332.21550929305",
             "formula": "=SUMIF('_Month Engine'!$C$5:$DR$5,E$4,'_Month Engine'!$C$44:$DR$44)"
           },
           {
             "cell": "'Income Statement'!F7",
-            "cachedValue": 30540.67265122486,
-            "cachedValueText": "30540.672651224861",
+            "cachedValue": 26047.446511366717,
+            "cachedValueText": "26047.446511366717",
             "formula": "=SUMIF('_Month Engine'!$C$5:$DR$5,F$4,'_Month Engine'!$C$44:$DR$44)"
           }
         ],
@@ -140,43 +142,43 @@
         "unit": "USD",
         "kind": "subtotal",
         "values": [
-          64301.95110937501,
-          232342.48661492416,
-          5705234.276484178,
-          5860942.441497629,
-          11862821.155706106
+          55222.8766640625,
+          198079.27069702902,
+          5681841.435283533,
+          5856449.21535777,
+          11791592.798002396
         ],
         "displayValues": [
-          "64,302",
-          "232,342",
-          "5,705,234",
-          "5,860,942",
-          "11,862,821"
+          "55,223",
+          "198,079",
+          "5,681,841",
+          "5,856,449",
+          "11,791,593"
         ],
         "sourceRange": "'Income Statement'!C29:F29",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C29",
-            "cachedValue": 64301.95110937501,
-            "cachedValueText": "64301.951109375012",
+            "cachedValue": 55222.8766640625,
+            "cachedValueText": "55222.876664062504",
             "formula": "=C7+C18"
           },
           {
             "cell": "'Income Statement'!D29",
-            "cachedValue": 232342.48661492416,
-            "cachedValueText": "232342.48661492416",
+            "cachedValue": 198079.27069702902,
+            "cachedValueText": "198079.27069702902",
             "formula": "=D7+D18"
           },
           {
             "cell": "'Income Statement'!E29",
-            "cachedValue": 5705234.276484178,
-            "cachedValueText": "5705234.2764841784",
+            "cachedValue": 5681841.435283533,
+            "cachedValueText": "5681841.4352835333",
             "formula": "=E7+E18"
           },
           {
             "cell": "'Income Statement'!F29",
-            "cachedValue": 5860942.441497629,
-            "cachedValueText": "5860942.4414976286",
+            "cachedValue": 5856449.21535777,
+            "cachedValueText": "5856449.2153577702",
             "formula": "=F7+F18"
           }
         ],
@@ -189,43 +191,43 @@
         "unit": "USD",
         "kind": "",
         "values": [
-          -15141.545563123143,
-          -54500.15935805233,
-          -3454797.187731687,
-          -3593534.22626643,
-          -7117973.118919292
+          -13950.932719684712,
+          -49782.91645169011,
+          -3451477.3994527403,
+          -3592840.129997425,
+          -7108051.37862154
         ],
         "displayValues": [
-          "(15,142)",
-          "(54,500)",
-          "(3,454,797)",
-          "(3,593,534)",
-          "(7,117,973)"
+          "(13,951)",
+          "(49,783)",
+          "(3,451,477)",
+          "(3,592,840)",
+          "(7,108,051)"
         ],
         "sourceRange": "'Income Statement'!C109:F109",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C109",
-            "cachedValue": 15141.545563123143,
-            "cachedValueText": "15141.545563123143",
+            "cachedValue": 13950.932719684712,
+            "cachedValueText": "13950.932719684712",
             "formula": "=SUM(C104:C108)"
           },
           {
             "cell": "'Income Statement'!D109",
-            "cachedValue": 54500.15935805233,
-            "cachedValueText": "54500.159358052333",
+            "cachedValue": 49782.91645169011,
+            "cachedValueText": "49782.916451690107",
             "formula": "=SUM(D104:D108)"
           },
           {
             "cell": "'Income Statement'!E109",
-            "cachedValue": 3454797.187731687,
-            "cachedValueText": "3454797.187731687",
+            "cachedValue": 3451477.3994527403,
+            "cachedValueText": "3451477.3994527403",
             "formula": "=SUM(E104:E108)"
           },
           {
             "cell": "'Income Statement'!F109",
-            "cachedValue": 3593534.22626643,
-            "cachedValueText": "3593534.2262664302",
+            "cachedValue": 3592840.129997425,
+            "cachedValueText": "3592840.1299974248",
             "formula": "=SUM(F104:F108)"
           }
         ],
@@ -238,43 +240,43 @@
         "unit": "USD",
         "kind": "subtotal",
         "values": [
-          49160.405546251866,
-          177842.32725687182,
-          2250437.0887524914,
-          2267408.2152311984,
-          4744848.036786813
+          41271.943944377796,
+          148296.3542453389,
+          2230364.035830793,
+          2263609.0853603454,
+          4683541.419380855
         ],
         "displayValues": [
-          "49,160",
-          "177,842",
-          "2,250,437",
-          "2,267,408",
-          "4,744,848"
+          "41,272",
+          "148,296",
+          "2,230,364",
+          "2,263,609",
+          "4,683,541"
         ],
         "sourceRange": "'Income Statement'!C110:F110",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C110",
-            "cachedValue": 49160.405546251866,
-            "cachedValueText": "49160.405546251866",
+            "cachedValue": 41271.943944377796,
+            "cachedValueText": "41271.943944377796",
             "formula": "=C103-C109"
           },
           {
             "cell": "'Income Statement'!D110",
-            "cachedValue": 177842.32725687182,
-            "cachedValueText": "177842.32725687182",
+            "cachedValue": 148296.3542453389,
+            "cachedValueText": "148296.35424533891",
             "formula": "=D103-D109"
           },
           {
             "cell": "'Income Statement'!E110",
-            "cachedValue": 2250437.0887524914,
-            "cachedValueText": "2250437.0887524914",
+            "cachedValue": 2230364.035830793,
+            "cachedValueText": "2230364.035830793",
             "formula": "=E103-E109"
           },
           {
             "cell": "'Income Statement'!F110",
-            "cachedValue": 2267408.2152311984,
-            "cachedValueText": "2267408.2152311984",
+            "cachedValue": 2263609.0853603454,
+            "cachedValueText": "2263609.0853603454",
             "formula": "=F103-F109"
           }
         ],
@@ -287,43 +289,43 @@
         "unit": "percent",
         "kind": "margin",
         "values": [
-          0.7645243215502436,
-          0.7654317978942057,
-          0.39445130203124834,
-          0.38686751113218826,
-          0.39997636097754924
+          0.747370409467213,
+          0.7486717500700248,
+          0.39254246378304536,
+          0.3865156175903186,
+          0.3971932799591154
         ],
         "displayValues": [
-          "76.5%",
-          "76.5%",
-          "39.4%",
+          "74.7%",
+          "74.9%",
+          "39.3%",
           "38.7%",
-          "40.0%"
+          "39.7%"
         ],
         "sourceRange": "'Income Statement'!C111:F111",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C111",
-            "cachedValue": 0.7645243215502436,
-            "cachedValueText": "0.76452432155024364",
+            "cachedValue": 0.747370409467213,
+            "cachedValueText": "0.747370409467213",
             "formula": "=IF(C103=0,0,C110/C103)"
           },
           {
             "cell": "'Income Statement'!D111",
-            "cachedValue": 0.7654317978942057,
-            "cachedValueText": "0.76543179789420568",
+            "cachedValue": 0.7486717500700248,
+            "cachedValueText": "0.74867175007002484",
             "formula": "=IF(D103=0,0,D110/D103)"
           },
           {
             "cell": "'Income Statement'!E111",
-            "cachedValue": 0.39445130203124834,
-            "cachedValueText": "0.39445130203124834",
+            "cachedValue": 0.39254246378304536,
+            "cachedValueText": "0.39254246378304536",
             "formula": "=IF(E103=0,0,E110/E103)"
           },
           {
             "cell": "'Income Statement'!F111",
-            "cachedValue": 0.38686751113218826,
-            "cachedValueText": "0.38686751113218826",
+            "cachedValue": 0.3865156175903186,
+            "cachedValueText": "0.38651561759031861",
             "formula": "=IF(F103=0,0,F110/F103)"
           }
         ],
@@ -385,43 +387,43 @@
         "unit": "USD",
         "kind": "",
         "values": [
-          -104641.98136563977,
-          -97261.08789471378,
-          -77692.76768420283,
-          -26270.57594946968,
-          -305866.4128940261
+          -104637.21891426602,
+          -97242.21892308834,
+          -77679.48853108704,
+          -26267.799564393656,
+          -305826.7259328351
         ],
         "displayValues": [
-          "(104,642)",
-          "(97,261)",
-          "(77,693)",
-          "(26,271)",
-          "(305,866)"
+          "(104,637)",
+          "(97,242)",
+          "(77,679)",
+          "(26,268)",
+          "(305,827)"
         ],
         "sourceRange": "'Income Statement'!C144:F144",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C144",
-            "cachedValue": 104641.98136563977,
-            "cachedValueText": "104641.98136563977",
+            "cachedValue": 104637.21891426602,
+            "cachedValueText": "104637.21891426602",
             "formula": "=SUM(C141:C143)"
           },
           {
             "cell": "'Income Statement'!D144",
-            "cachedValue": 97261.08789471378,
-            "cachedValueText": "97261.087894713783",
+            "cachedValue": 97242.21892308834,
+            "cachedValueText": "97242.218923088338",
             "formula": "=SUM(D141:D143)"
           },
           {
             "cell": "'Income Statement'!E144",
-            "cachedValue": 77692.76768420283,
-            "cachedValueText": "77692.76768420283",
+            "cachedValue": 77679.48853108704,
+            "cachedValueText": "77679.488531087045",
             "formula": "=SUM(E141:E143)"
           },
           {
             "cell": "'Income Statement'!F144",
-            "cachedValue": 26270.57594946968,
-            "cachedValueText": "26270.575949469679",
+            "cachedValue": 26267.799564393656,
+            "cachedValueText": "26267.799564393656",
             "formula": "=SUM(F141:F143)"
           }
         ],
@@ -434,43 +436,43 @@
         "unit": "USD",
         "kind": "subtotal",
         "values": [
-          -143239.90241054218,
-          -62862.23083741046,
-          2073992.8023924525,
-          2224680.135236421,
-          4092570.804380921
+          -151123.6015610425,
+          -92389.33487731792,
+          2053933.0286238699,
+          2220883.7817506446,
+          4031303.873936154
         ],
         "displayValues": [
-          "(143,240)",
-          "(62,862)",
-          "2,073,993",
-          "2,224,680",
-          "4,092,571"
+          "(151,124)",
+          "(92,389)",
+          "2,053,933",
+          "2,220,884",
+          "4,031,304"
         ],
         "sourceRange": "'Income Statement'!C147:F147",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C147",
-            "cachedValue": -143239.90241054218,
-            "cachedValueText": "-143239.90241054218",
+            "cachedValue": -151123.6015610425,
+            "cachedValueText": "-151123.60156104251",
             "formula": "=C110-C145"
           },
           {
             "cell": "'Income Statement'!D147",
-            "cachedValue": -62862.23083741046,
-            "cachedValueText": "-62862.230837410461",
+            "cachedValue": -92389.33487731792,
+            "cachedValueText": "-92389.334877317917",
             "formula": "=D110-D145"
           },
           {
             "cell": "'Income Statement'!E147",
-            "cachedValue": 2073992.8023924525,
-            "cachedValueText": "2073992.8023924525",
+            "cachedValue": 2053933.0286238699,
+            "cachedValueText": "2053933.0286238699",
             "formula": "=E110-E145"
           },
           {
             "cell": "'Income Statement'!F147",
-            "cachedValue": 2224680.135236421,
-            "cachedValueText": "2224680.1352364211",
+            "cachedValue": 2220883.7817506446,
+            "cachedValueText": "2220883.7817506446",
             "formula": "=F110-F145"
           }
         ],
@@ -483,43 +485,43 @@
         "unit": "percent",
         "kind": "margin",
         "values": [
-          -2.2276136250810947,
-          -0.27055848352693235,
-          0.3635245639151106,
-          0.3795772023770217,
-          0.3449913600368462
+          -2.736612264521698,
+          -0.4664260654444325,
+          0.3614907335972454,
+          0.3792201895863227,
+          0.3418795020312348
         ],
         "displayValues": [
-          "(222.8%)",
-          "(27.1%)",
-          "36.4%",
-          "38.0%",
-          "34.5%"
+          "(273.7%)",
+          "(46.6%)",
+          "36.1%",
+          "37.9%",
+          "34.2%"
         ],
         "sourceRange": "'Income Statement'!C148:F148",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C148",
-            "cachedValue": -2.2276136250810947,
-            "cachedValueText": "-2.2276136250810947",
+            "cachedValue": -2.736612264521698,
+            "cachedValueText": "-2.7366122645216979",
             "formula": "=IF(C$103=0,0,C147/C$103)"
           },
           {
             "cell": "'Income Statement'!D148",
-            "cachedValue": -0.27055848352693235,
-            "cachedValueText": "-0.27055848352693235",
+            "cachedValue": -0.4664260654444325,
+            "cachedValueText": "-0.46642606544443249",
             "formula": "=IF(D$103=0,0,D147/D$103)"
           },
           {
             "cell": "'Income Statement'!E148",
-            "cachedValue": 0.3635245639151106,
-            "cachedValueText": "0.36352456391511062",
+            "cachedValue": 0.3614907335972454,
+            "cachedValueText": "0.36149073359724537",
             "formula": "=IF(E$103=0,0,E147/E$103)"
           },
           {
             "cell": "'Income Statement'!F148",
-            "cachedValue": 0.3795772023770217,
-            "cachedValueText": "0.37957720237702169",
+            "cachedValue": 0.3792201895863227,
+            "cachedValueText": "0.3792201895863227",
             "formula": "=IF(F$103=0,0,F147/F$103)"
           }
         ],
@@ -581,43 +583,43 @@
         "unit": "USD",
         "kind": "result",
         "values": [
-          -143239.90241054218,
-          -62862.23083741046,
-          1793284.5366039649,
-          1936779.6544355936,
-          3523962.057791606
+          -151123.6015610425,
+          -92389.33487731792,
+          1773224.7628353823,
+          1932983.300949817,
+          3462695.127346839
         ],
         "displayValues": [
-          "(143,240)",
-          "(62,862)",
-          "1,793,285",
-          "1,936,780",
-          "3,523,962"
+          "(151,124)",
+          "(92,389)",
+          "1,773,225",
+          "1,932,983",
+          "3,462,695"
         ],
         "sourceRange": "'Income Statement'!C155:F155",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C155",
-            "cachedValue": -143239.90241054218,
-            "cachedValueText": "-143239.90241054218",
+            "cachedValue": -151123.6015610425,
+            "cachedValueText": "-151123.60156104251",
             "formula": "=C147-C153"
           },
           {
             "cell": "'Income Statement'!D155",
-            "cachedValue": -62862.23083741046,
-            "cachedValueText": "-62862.230837410461",
+            "cachedValue": -92389.33487731792,
+            "cachedValueText": "-92389.334877317917",
             "formula": "=D147-D153"
           },
           {
             "cell": "'Income Statement'!E155",
-            "cachedValue": 1793284.5366039649,
-            "cachedValueText": "1793284.5366039649",
+            "cachedValue": 1773224.7628353823,
+            "cachedValueText": "1773224.7628353823",
             "formula": "=E147-E153"
           },
           {
             "cell": "'Income Statement'!F155",
-            "cachedValue": 1936779.6544355936,
-            "cachedValueText": "1936779.6544355936",
+            "cachedValue": 1932983.300949817,
+            "cachedValueText": "1932983.3009498171",
             "formula": "=F147-F153"
           }
         ],
@@ -630,43 +632,43 @@
         "unit": "percent",
         "kind": "margin result-margin",
         "values": [
-          -2.2276136250810947,
-          -0.27055848352693235,
-          0.3143226815409704,
-          0.3304553275805067,
-          0.2970593597878321
+          -2.736612264521698,
+          -0.4664260654444325,
+          0.3120862810116234,
+          0.33006062715968265,
+          0.29365796348848233
         ],
         "displayValues": [
-          "(222.8%)",
-          "(27.1%)",
-          "31.4%",
+          "(273.7%)",
+          "(46.6%)",
+          "31.2%",
           "33.0%",
-          "29.7%"
+          "29.4%"
         ],
         "sourceRange": "'Income Statement'!C156:F156",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C156",
-            "cachedValue": -2.2276136250810947,
-            "cachedValueText": "-2.2276136250810947",
+            "cachedValue": -2.736612264521698,
+            "cachedValueText": "-2.7366122645216979",
             "formula": "=IF(C$103=0,0,C155/C$103)"
           },
           {
             "cell": "'Income Statement'!D156",
-            "cachedValue": -0.27055848352693235,
-            "cachedValueText": "-0.27055848352693235",
+            "cachedValue": -0.4664260654444325,
+            "cachedValueText": "-0.46642606544443249",
             "formula": "=IF(D$103=0,0,D155/D$103)"
           },
           {
             "cell": "'Income Statement'!E156",
-            "cachedValue": 0.3143226815409704,
-            "cachedValueText": "0.31432268154097037",
+            "cachedValue": 0.3120862810116234,
+            "cachedValueText": "0.31208628101162339",
             "formula": "=IF(E$103=0,0,E155/E$103)"
           },
           {
             "cell": "'Income Statement'!F156",
-            "cachedValue": 0.3304553275805067,
-            "cachedValueText": "0.33045532758050672",
+            "cachedValue": 0.33006062715968265,
+            "cachedValueText": "0.33006062715968265",
             "formula": "=IF(F$103=0,0,F155/F$103)"
           }
         ],
@@ -690,43 +692,43 @@
         "unit": "USD",
         "kind": "subtotal",
         "values": [
-          -143239.90241054218,
-          -62862.23083741046,
-          1793284.5366039649,
-          1936779.6544355936,
-          3523962.057791606
+          -151123.6015610425,
+          -92389.33487731792,
+          1773224.7628353823,
+          1932983.300949817,
+          3462695.127346839
         ],
         "displayValues": [
-          "(143,240)",
-          "(62,862)",
-          "1,793,285",
-          "1,936,780",
-          "3,523,962"
+          "(151,124)",
+          "(92,389)",
+          "1,773,225",
+          "1,932,983",
+          "3,462,695"
         ],
         "sourceRange": "'Income Statement'!C155:F155",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C155",
-            "cachedValue": -143239.90241054218,
-            "cachedValueText": "-143239.90241054218",
+            "cachedValue": -151123.6015610425,
+            "cachedValueText": "-151123.60156104251",
             "formula": "=C147-C153"
           },
           {
             "cell": "'Income Statement'!D155",
-            "cachedValue": -62862.23083741046,
-            "cachedValueText": "-62862.230837410461",
+            "cachedValue": -92389.33487731792,
+            "cachedValueText": "-92389.334877317917",
             "formula": "=D147-D153"
           },
           {
             "cell": "'Income Statement'!E155",
-            "cachedValue": 1793284.5366039649,
-            "cachedValueText": "1793284.5366039649",
+            "cachedValue": 1773224.7628353823,
+            "cachedValueText": "1773224.7628353823",
             "formula": "=E147-E153"
           },
           {
             "cell": "'Income Statement'!F155",
-            "cachedValue": 1936779.6544355936,
-            "cachedValueText": "1936779.6544355936",
+            "cachedValue": 1932983.300949817,
+            "cachedValueText": "1932983.3009498171",
             "formula": "=F147-F153"
           }
         ],
@@ -739,43 +741,43 @@
         "unit": "percent",
         "kind": "margin",
         "values": [
-          -2.2276136250810947,
-          -0.27055848352693235,
-          0.3143226815409704,
-          0.3304553275805067,
-          0.2970593597878321
+          -2.736612264521698,
+          -0.4664260654444325,
+          0.3120862810116234,
+          0.33006062715968265,
+          0.29365796348848233
         ],
         "displayValues": [
-          "(222.8%)",
-          "(27.1%)",
-          "31.4%",
+          "(273.7%)",
+          "(46.6%)",
+          "31.2%",
           "33.0%",
-          "29.7%"
+          "29.4%"
         ],
         "sourceRange": "'Income Statement'!C156:F156",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C156",
-            "cachedValue": -2.2276136250810947,
-            "cachedValueText": "-2.2276136250810947",
+            "cachedValue": -2.736612264521698,
+            "cachedValueText": "-2.7366122645216979",
             "formula": "=IF(C$103=0,0,C155/C$103)"
           },
           {
             "cell": "'Income Statement'!D156",
-            "cachedValue": -0.27055848352693235,
-            "cachedValueText": "-0.27055848352693235",
+            "cachedValue": -0.4664260654444325,
+            "cachedValueText": "-0.46642606544443249",
             "formula": "=IF(D$103=0,0,D155/D$103)"
           },
           {
             "cell": "'Income Statement'!E156",
-            "cachedValue": 0.3143226815409704,
-            "cachedValueText": "0.31432268154097037",
+            "cachedValue": 0.3120862810116234,
+            "cachedValueText": "0.31208628101162339",
             "formula": "=IF(E$103=0,0,E155/E$103)"
           },
           {
             "cell": "'Income Statement'!F156",
-            "cachedValue": 0.3304553275805067,
-            "cachedValueText": "0.33045532758050672",
+            "cachedValue": 0.33006062715968265,
+            "cachedValueText": "0.33006062715968265",
             "formula": "=IF(F$103=0,0,F155/F$103)"
           }
         ],
@@ -791,15 +793,15 @@
           0,
           0,
           0,
-          -704792.4115583212,
-          -704792.4115583212
+          -692539.0254693676,
+          -692539.0254693676
         ],
         "displayValues": [
           "",
           "",
           "",
-          "(704,792)",
-          "(704,792)"
+          "(692,539)",
+          "(692,539)"
         ],
         "sourceRange": "'Investor Return'!C10:F10",
         "sourceCells": [
@@ -823,8 +825,8 @@
           },
           {
             "cell": "'Investor Return'!F10",
-            "cachedValue": -704792.4115583212,
-            "cachedValueText": "-704792.41155832121",
+            "cachedValue": -692539.0254693676,
+            "cachedValueText": "-692539.02546936763",
             "formula": "=-MAX(0,Input!$C$47*MAX(0,SUM($C$8:F$9)+SUM($C$7:F$7))+SUM($B$10:E10))"
           }
         ],
@@ -837,43 +839,43 @@
         "unit": "USD",
         "kind": "result",
         "values": [
-          -143239.90241054218,
-          -62862.23083741046,
-          1793284.5366039649,
-          1231987.2428772724,
-          2819169.646233285
+          -151123.6015610425,
+          -92389.33487731792,
+          1773224.7628353823,
+          1240444.2754804494,
+          2770156.1018774714
         ],
         "displayValues": [
-          "(143,240)",
-          "(62,862)",
-          "1,793,285",
-          "1,231,987",
-          "2,819,170"
+          "(151,124)",
+          "(92,389)",
+          "1,773,225",
+          "1,240,444",
+          "2,770,156"
         ],
         "sourceRange": "Derived: 'Income Statement'!C155:F155 + 'Investor Return'!C10:F10",
         "sourceCells": [
           {
             "cell": "'Income Statement'!C155",
-            "cachedValue": -143239.90241054218,
-            "cachedValueText": "-143239.90241054218",
+            "cachedValue": -151123.6015610425,
+            "cachedValueText": "-151123.60156104251",
             "formula": "=C147-C153"
           },
           {
             "cell": "'Income Statement'!D155",
-            "cachedValue": -62862.23083741046,
-            "cachedValueText": "-62862.230837410461",
+            "cachedValue": -92389.33487731792,
+            "cachedValueText": "-92389.334877317917",
             "formula": "=D147-D153"
           },
           {
             "cell": "'Income Statement'!E155",
-            "cachedValue": 1793284.5366039649,
-            "cachedValueText": "1793284.5366039649",
+            "cachedValue": 1773224.7628353823,
+            "cachedValueText": "1773224.7628353823",
             "formula": "=E147-E153"
           },
           {
             "cell": "'Income Statement'!F155",
-            "cachedValue": 1936779.6544355936,
-            "cachedValueText": "1936779.6544355936",
+            "cachedValue": 1932983.300949817,
+            "cachedValueText": "1932983.3009498171",
             "formula": "=F147-F153"
           },
           {
@@ -896,8 +898,8 @@
           },
           {
             "cell": "'Investor Return'!F10",
-            "cachedValue": -704792.4115583212,
-            "cachedValueText": "-704792.41155832121",
+            "cachedValue": -692539.0254693676,
+            "cachedValueText": "-692539.02546936763",
             "formula": "=-MAX(0,Input!$C$47*MAX(0,SUM($C$8:F$9)+SUM($C$7:F$7))+SUM($B$10:E10))"
           }
         ],
@@ -909,44 +911,44 @@
         "unit": "percent",
         "kind": "margin result-margin",
         "values": [
-          -2.2276136250810947,
-          -0.27055848352693235,
-          0.3143226815409704,
-          0.21020292473004845,
-          0.23764748783026565
+          -2.736612264521698,
+          -0.4664260654444325,
+          0.3120862810116234,
+          0.211808252725482,
+          0.2349263707907859
         ],
         "sourceRange": "Derived: ('Income Statement'!C155:F155 + 'Investor Return'!C10:F10) / 'Income Statement'!C29:F29",
         "totalMethod": "Total result after carry / total revenue",
         "displayValues": [
-          "(222.8%)",
-          "(27.1%)",
-          "31.4%",
-          "21.0%",
-          "23.8%"
+          "(273.7%)",
+          "(46.6%)",
+          "31.2%",
+          "21.2%",
+          "23.5%"
         ],
         "sourceCells": [
           {
             "cell": "'Income Statement'!C155",
-            "cachedValue": -143239.90241054218,
-            "cachedValueText": "-143239.90241054218",
+            "cachedValue": -151123.6015610425,
+            "cachedValueText": "-151123.60156104251",
             "formula": "=C147-C153"
           },
           {
             "cell": "'Income Statement'!D155",
-            "cachedValue": -62862.23083741046,
-            "cachedValueText": "-62862.230837410461",
+            "cachedValue": -92389.33487731792,
+            "cachedValueText": "-92389.334877317917",
             "formula": "=D147-D153"
           },
           {
             "cell": "'Income Statement'!E155",
-            "cachedValue": 1793284.5366039649,
-            "cachedValueText": "1793284.5366039649",
+            "cachedValue": 1773224.7628353823,
+            "cachedValueText": "1773224.7628353823",
             "formula": "=E147-E153"
           },
           {
             "cell": "'Income Statement'!F155",
-            "cachedValue": 1936779.6544355936,
-            "cachedValueText": "1936779.6544355936",
+            "cachedValue": 1932983.300949817,
+            "cachedValueText": "1932983.3009498171",
             "formula": "=F147-F153"
           },
           {
@@ -969,32 +971,32 @@
           },
           {
             "cell": "'Investor Return'!F10",
-            "cachedValue": -704792.4115583212,
-            "cachedValueText": "-704792.41155832121",
+            "cachedValue": -692539.0254693676,
+            "cachedValueText": "-692539.02546936763",
             "formula": "=-MAX(0,Input!$C$47*MAX(0,SUM($C$8:F$9)+SUM($C$7:F$7))+SUM($B$10:E10))"
           },
           {
             "cell": "'Income Statement'!C29",
-            "cachedValue": 64301.95110937501,
-            "cachedValueText": "64301.951109375012",
+            "cachedValue": 55222.8766640625,
+            "cachedValueText": "55222.876664062504",
             "formula": "=C7+C18"
           },
           {
             "cell": "'Income Statement'!D29",
-            "cachedValue": 232342.48661492416,
-            "cachedValueText": "232342.48661492416",
+            "cachedValue": 198079.27069702902,
+            "cachedValueText": "198079.27069702902",
             "formula": "=D7+D18"
           },
           {
             "cell": "'Income Statement'!E29",
-            "cachedValue": 5705234.276484178,
-            "cachedValueText": "5705234.2764841784",
+            "cachedValue": 5681841.435283533,
+            "cachedValueText": "5681841.4352835333",
             "formula": "=E7+E18"
           },
           {
             "cell": "'Income Statement'!F29",
-            "cachedValue": 5860942.441497629,
-            "cachedValueText": "5860942.4414976286",
+            "cachedValue": 5856449.21535777,
+            "cachedValueText": "5856449.2153577702",
             "formula": "=F7+F18"
           }
         ]
@@ -1020,43 +1022,43 @@
         "unit": "USD",
         "kind": "",
         "values": [
-          -143239.90241054218,
-          -62862.23083741046,
-          1793284.5366039649,
-          1936779.6544355936,
-          3523962.057791606
+          -151123.6015610425,
+          -92389.33487731792,
+          1773224.7628353823,
+          1932983.300949817,
+          3462695.127346839
         ],
         "displayValues": [
-          "(143,240)",
-          "(62,862)",
-          "1,793,285",
-          "1,936,780",
-          "3,523,962"
+          "(151,124)",
+          "(92,389)",
+          "1,773,225",
+          "1,932,983",
+          "3,462,695"
         ],
         "sourceRange": "'Statement of Cash Flows'!C7:F7",
         "sourceCells": [
           {
             "cell": "'Statement of Cash Flows'!C7",
-            "cachedValue": -143239.90241054218,
-            "cachedValueText": "-143239.90241054218",
+            "cachedValue": -151123.6015610425,
+            "cachedValueText": "-151123.60156104251",
             "formula": "='Income Statement'!C155"
           },
           {
             "cell": "'Statement of Cash Flows'!D7",
-            "cachedValue": -62862.23083741046,
-            "cachedValueText": "-62862.230837410461",
+            "cachedValue": -92389.33487731792,
+            "cachedValueText": "-92389.334877317917",
             "formula": "='Income Statement'!D155"
           },
           {
             "cell": "'Statement of Cash Flows'!E7",
-            "cachedValue": 1793284.5366039649,
-            "cachedValueText": "1793284.5366039649",
+            "cachedValue": 1773224.7628353823,
+            "cachedValueText": "1773224.7628353823",
             "formula": "='Income Statement'!E155"
           },
           {
             "cell": "'Statement of Cash Flows'!F7",
-            "cachedValue": 1936779.6544355936,
-            "cachedValueText": "1936779.6544355936",
+            "cachedValue": 1932983.300949817,
+            "cachedValueText": "1932983.3009498171",
             "formula": "='Income Statement'!F155"
           }
         ],
@@ -1118,43 +1120,43 @@
         "unit": "USD",
         "kind": "subtotal",
         "values": [
-          -143239.90241054218,
-          -62862.23083741046,
-          5000282.918480988,
-          5301747.291976047,
-          10095928.077209082
+          -151123.6015610425,
+          -92389.33487731792,
+          4980223.144712405,
+          5297950.93849027,
+          10034661.146764314
         ],
         "displayValues": [
-          "(143,240)",
-          "(62,862)",
-          "5,000,283",
-          "5,301,747",
-          "10,095,928"
+          "(151,124)",
+          "(92,389)",
+          "4,980,223",
+          "5,297,951",
+          "10,034,661"
         ],
         "sourceRange": "'Statement of Cash Flows'!C19:F19",
         "sourceCells": [
           {
             "cell": "'Statement of Cash Flows'!C19",
-            "cachedValue": -143239.90241054218,
-            "cachedValueText": "-143239.90241054218",
+            "cachedValue": -151123.6015610425,
+            "cachedValueText": "-151123.60156104251",
             "formula": "=C7+C18"
           },
           {
             "cell": "'Statement of Cash Flows'!D19",
-            "cachedValue": -62862.23083741046,
-            "cachedValueText": "-62862.230837410461",
+            "cachedValue": -92389.33487731792,
+            "cachedValueText": "-92389.334877317917",
             "formula": "=D7+D18"
           },
           {
             "cell": "'Statement of Cash Flows'!E19",
-            "cachedValue": 5000282.918480988,
-            "cachedValueText": "5000282.9184809877",
+            "cachedValue": 4980223.144712405,
+            "cachedValueText": "4980223.1447124053",
             "formula": "=E7+E18"
           },
           {
             "cell": "'Statement of Cash Flows'!F19",
-            "cachedValue": 5301747.291976047,
-            "cachedValueText": "5301747.2919760467",
+            "cachedValue": 5297950.93849027,
+            "cachedValueText": "5297950.9384902697",
             "formula": "=F7+F18"
           }
         ],
@@ -1320,25 +1322,25 @@
         "unit": "USD",
         "kind": "",
         "values": [
-          6988000.544191187,
+          7000000,
           0,
           0,
           0,
-          6988000.544191187
+          7000000
         ],
         "displayValues": [
-          "6,988,001",
+          "7,000,000",
           "",
           "",
           "",
-          "6,988,001"
+          "7,000,000"
         ],
         "sourceRange": "'Statement of Cash Flows'!C47:F47",
         "sourceCells": [
           {
             "cell": "'Statement of Cash Flows'!C47",
-            "cachedValue": 6988000.544191187,
-            "cachedValueText": "6988000.5441911872",
+            "cachedValue": 7000000,
+            "cachedValueText": "7000000",
             "formula": "=MIN(Input!$C$37-SUM($B47:B47),MAX(0,C56-(C53+(C19-(SUMPRODUCT(Properties!$D$6:$D$15*(ROUNDUP(Properties!$U$6:$U$15/'_IRR Engine'!$Q$7,0)=C$4)*Properties!$AB$6:$AB$15)-'Income Statement'!C152))+C44)))*(C$4<=Input!$C$58)"
           },
           {
@@ -1371,16 +1373,16 @@
         "values": [
           0,
           0,
-          -5159642.5,
-          -4647527.690424472,
-          -9807170.190424472
+          -5111519.49,
+          -4658636.611877471,
+          -9770156.101877471
         ],
         "displayValues": [
           "",
           "",
-          "(5,159,643)",
-          "(4,647,528)",
-          "(9,807,170)"
+          "(5,111,519)",
+          "(4,658,637)",
+          "(9,770,156)"
         ],
         "sourceRange": "'Statement of Cash Flows'!C48:F48",
         "sourceCells": [
@@ -1398,14 +1400,14 @@
           },
           {
             "cell": "'Statement of Cash Flows'!E48",
-            "cachedValue": -5159642.5,
-            "cachedValueText": "-5159642.5",
+            "cachedValue": -5111519.49,
+            "cachedValueText": "-5111519.49",
             "formula": "=-'Investor Return'!E11"
           },
           {
             "cell": "'Statement of Cash Flows'!F48",
-            "cachedValue": -4647527.690424472,
-            "cachedValueText": "-4647527.6904244721",
+            "cachedValue": -4658636.611877471,
+            "cachedValueText": "-4658636.6118774712",
             "formula": "=-'Investor Return'!F11"
           }
         ],
@@ -1421,15 +1423,15 @@
           0,
           0,
           0,
-          -704792.4115583212,
-          -704792.4115583212
+          -692539.0254693676,
+          -692539.0254693676
         ],
         "displayValues": [
           "",
           "",
           "",
-          "(704,792)",
-          "(704,792)"
+          "(692,539)",
+          "(692,539)"
         ],
         "sourceRange": "'Statement of Cash Flows'!C49:F49",
         "sourceCells": [
@@ -1453,8 +1455,8 @@
           },
           {
             "cell": "'Statement of Cash Flows'!F49",
-            "cachedValue": -704792.4115583212,
-            "cachedValueText": "-704792.41155832121",
+            "cachedValue": -692539.0254693676,
+            "cachedValueText": "-692539.02546936763",
             "formula": "='Investor Return'!F10"
           }
         ],
@@ -1467,25 +1469,25 @@
         "unit": "USD",
         "kind": "subtotal",
         "values": [
-          6988000.544191187,
+          7000000,
           0,
-          -5159642.5,
-          -5352320.101982793,
-          -3523962.0577916056
+          -5111519.49,
+          -5351175.637346839,
+          -3462695.127346839
         ],
         "displayValues": [
-          "6,988,001",
+          "7,000,000",
           "",
-          "(5,159,643)",
-          "(5,352,320)",
-          "(3,523,962)"
+          "(5,111,519)",
+          "(5,351,176)",
+          "(3,462,695)"
         ],
         "sourceRange": "'Statement of Cash Flows'!C50:F50",
         "sourceCells": [
           {
             "cell": "'Statement of Cash Flows'!C50",
-            "cachedValue": 6988000.544191187,
-            "cachedValueText": "6988000.5441911872",
+            "cachedValue": 7000000,
+            "cachedValueText": "7000000",
             "formula": "=C47+C48+C49"
           },
           {
@@ -1496,14 +1498,14 @@
           },
           {
             "cell": "'Statement of Cash Flows'!E50",
-            "cachedValue": -5159642.5,
-            "cachedValueText": "-5159642.5",
+            "cachedValue": -5111519.49,
+            "cachedValueText": "-5111519.49",
             "formula": "=E47+E48+E49"
           },
           {
             "cell": "'Statement of Cash Flows'!F50",
-            "cachedValue": -5352320.101982793,
-            "cachedValueText": "-5352320.1019827928",
+            "cachedValue": -5351175.637346839,
+            "cachedValueText": "-5351175.6373468386",
             "formula": "=F47+F48+F49"
           }
         ],
@@ -1519,43 +1521,43 @@
         "unit": "USD",
         "kind": "subtotal",
         "values": [
-          364488.25774612464,
-          -154555.86622036624,
-          -159359.58151901234,
-          -50572.81000674609,
+          368604.0144044375,
+          -184082.9702602737,
+          -131296.34528759494,
+          -53224.698856568895,
           -2.9103830456733704e-11
         ],
         "displayValues": [
-          "364,488",
-          "(154,556)",
-          "(159,360)",
-          "(50,573)",
+          "368,604",
+          "(184,083)",
+          "(131,296)",
+          "(53,225)",
           ""
         ],
         "sourceRange": "'Statement of Cash Flows'!C52:F52",
         "sourceCells": [
           {
             "cell": "'Statement of Cash Flows'!C52",
-            "cachedValue": 364488.25774612464,
-            "cachedValueText": "364488.25774612464",
+            "cachedValue": 368604.0144044375,
+            "cachedValueText": "368604.0144044375",
             "formula": "=C19+C44+C50"
           },
           {
             "cell": "'Statement of Cash Flows'!D52",
-            "cachedValue": -154555.86622036624,
-            "cachedValueText": "-154555.86622036624",
+            "cachedValue": -184082.9702602737,
+            "cachedValueText": "-184082.97026027369",
             "formula": "=D19+D44+D50"
           },
           {
             "cell": "'Statement of Cash Flows'!E52",
-            "cachedValue": -159359.58151901234,
-            "cachedValueText": "-159359.58151901234",
+            "cachedValue": -131296.34528759494,
+            "cachedValueText": "-131296.34528759494",
             "formula": "=E19+E44+E50"
           },
           {
             "cell": "'Statement of Cash Flows'!F52",
-            "cachedValue": -50572.81000674609,
-            "cachedValueText": "-50572.810006746091",
+            "cachedValue": -53224.698856568895,
+            "cachedValueText": "-53224.698856568895",
             "formula": "=F19+F44+F50"
           }
         ],
@@ -1569,16 +1571,16 @@
         "kind": "",
         "values": [
           0,
-          364488.25774612464,
-          209932.3915257584,
-          50572.81000674606,
+          368604.0144044375,
+          184521.0441441638,
+          53224.698856568866,
           0
         ],
         "displayValues": [
           "",
-          "364,488",
-          "209,932",
-          "50,573",
+          "368,604",
+          "184,521",
+          "53,225",
           ""
         ],
         "sourceRange": "'Statement of Cash Flows'!C53:F53",
@@ -1591,20 +1593,20 @@
           },
           {
             "cell": "'Statement of Cash Flows'!D53",
-            "cachedValue": 364488.25774612464,
-            "cachedValueText": "364488.25774612464",
+            "cachedValue": 368604.0144044375,
+            "cachedValueText": "368604.0144044375",
             "formula": "=IF(D$4=1,0,C54)"
           },
           {
             "cell": "'Statement of Cash Flows'!E53",
-            "cachedValue": 209932.3915257584,
-            "cachedValueText": "209932.3915257584",
+            "cachedValue": 184521.0441441638,
+            "cachedValueText": "184521.04414416381",
             "formula": "=IF(E$4=1,0,D54)"
           },
           {
             "cell": "'Statement of Cash Flows'!F53",
-            "cachedValue": 50572.81000674606,
-            "cachedValueText": "50572.810006746062",
+            "cachedValue": 53224.698856568866,
+            "cachedValueText": "53224.698856568866",
             "formula": "=IF(F$4=1,0,E54)"
           }
         ],
@@ -1617,16 +1619,16 @@
         "unit": "USD",
         "kind": "result",
         "values": [
-          364488.25774612464,
-          209932.3915257584,
-          50572.81000674606,
+          368604.0144044375,
+          184521.0441441638,
+          53224.698856568866,
           0,
           0
         ],
         "displayValues": [
-          "364,488",
-          "209,932",
-          "50,573",
+          "368,604",
+          "184,521",
+          "53,225",
           "",
           ""
         ],
@@ -1634,20 +1636,20 @@
         "sourceCells": [
           {
             "cell": "'Statement of Cash Flows'!C54",
-            "cachedValue": 364488.25774612464,
-            "cachedValueText": "364488.25774612464",
+            "cachedValue": 368604.0144044375,
+            "cachedValueText": "368604.0144044375",
             "formula": "=C52+C53"
           },
           {
             "cell": "'Statement of Cash Flows'!D54",
-            "cachedValue": 209932.3915257584,
-            "cachedValueText": "209932.3915257584",
+            "cachedValue": 184521.0441441638,
+            "cachedValueText": "184521.04414416381",
             "formula": "=D52+D53"
           },
           {
             "cell": "'Statement of Cash Flows'!E54",
-            "cachedValue": 50572.81000674606,
-            "cachedValueText": "50572.810006746062",
+            "cachedValue": 53224.698856568866,
+            "cachedValueText": "53224.698856568866",
             "formula": "=E52+E53"
           },
           {
@@ -1677,35 +1679,35 @@
         "unit": "USD",
         "kind": "",
         "values": [
-          364488.25774612464,
-          209932.3915257584,
-          50572.81000674606,
+          368604.0144044375,
+          184521.0441441638,
+          53224.698856568866,
           0
         ],
         "displayValues": [
-          "364,488",
-          "209,932",
-          "50,573",
+          "368,604",
+          "184,521",
+          "53,225",
           ""
         ],
         "sourceRange": "'Balance Sheet'!C7:F7",
         "sourceCells": [
           {
             "cell": "'Balance Sheet'!C7",
-            "cachedValue": 364488.25774612464,
-            "cachedValueText": "364488.25774612464",
+            "cachedValue": 368604.0144044375,
+            "cachedValueText": "368604.0144044375",
             "formula": "='Statement of Cash Flows'!C54"
           },
           {
             "cell": "'Balance Sheet'!D7",
-            "cachedValue": 209932.3915257584,
-            "cachedValueText": "209932.3915257584",
+            "cachedValue": 184521.0441441638,
+            "cachedValueText": "184521.04414416381",
             "formula": "='Statement of Cash Flows'!D54"
           },
           {
             "cell": "'Balance Sheet'!E7",
-            "cachedValue": 50572.81000674606,
-            "cachedValueText": "50572.810006746062",
+            "cachedValue": 53224.698856568866,
+            "cachedValueText": "53224.698856568866",
             "formula": "='Statement of Cash Flows'!E54"
           },
           {
@@ -1771,35 +1773,35 @@
         "unit": "USD",
         "kind": "subtotal",
         "values": [
-          6844760.641780644,
-          6781898.410943233,
-          3415540.4475471973,
+          6848876.398438957,
+          6756487.063561639,
+          3418192.33639702,
           -1.862645149230957e-09
         ],
         "displayValues": [
-          "6,844,761",
-          "6,781,898",
-          "3,415,540",
+          "6,848,876",
+          "6,756,487",
+          "3,418,192",
           ""
         ],
         "sourceRange": "'Balance Sheet'!C10:F10",
         "sourceCells": [
           {
             "cell": "'Balance Sheet'!C10",
-            "cachedValue": 6844760.641780644,
-            "cachedValueText": "6844760.6417806437",
+            "cachedValue": 6848876.398438957,
+            "cachedValueText": "6848876.3984389566",
             "formula": "=C7+C8+C9"
           },
           {
             "cell": "'Balance Sheet'!D10",
-            "cachedValue": 6781898.410943233,
-            "cachedValueText": "6781898.4109432334",
+            "cachedValue": 6756487.063561639,
+            "cachedValueText": "6756487.0635616388",
             "formula": "=D7+D8+D9"
           },
           {
             "cell": "'Balance Sheet'!E10",
-            "cachedValue": 3415540.4475471973,
-            "cachedValueText": "3415540.4475471973",
+            "cachedValue": 3418192.33639702,
+            "cachedValueText": "3418192.3363970201",
             "formula": "=E7+E8+E9"
           },
           {
@@ -1865,35 +1867,35 @@
         "unit": "USD",
         "kind": "result",
         "values": [
-          6844760.641780645,
-          6781898.410943234,
-          3415540.447547199,
+          6848876.3984389575,
+          6756487.06356164,
+          3418192.336397022,
           0
         ],
         "displayValues": [
-          "6,844,761",
-          "6,781,898",
-          "3,415,540",
+          "6,848,876",
+          "6,756,487",
+          "3,418,192",
           ""
         ],
         "sourceRange": "'Balance Sheet'!C20:F20",
         "sourceCells": [
           {
             "cell": "'Balance Sheet'!C20",
-            "cachedValue": 6844760.641780645,
-            "cachedValueText": "6844760.6417806447",
+            "cachedValue": 6848876.3984389575,
+            "cachedValueText": "6848876.3984389575",
             "formula": "=C17+C18+C19"
           },
           {
             "cell": "'Balance Sheet'!D20",
-            "cachedValue": 6781898.410943234,
-            "cachedValueText": "6781898.4109432343",
+            "cachedValue": 6756487.06356164,
+            "cachedValueText": "6756487.0635616397",
             "formula": "=D17+D18+D19"
           },
           {
             "cell": "'Balance Sheet'!E20",
-            "cachedValue": 3415540.447547199,
-            "cachedValueText": "3415540.4475471992",
+            "cachedValue": 3418192.336397022,
+            "cachedValueText": "3418192.336397022",
             "formula": "=E17+E18+E19"
           },
           {
@@ -1919,7 +1921,7 @@
       "Net income less carry equals lifetime investor profit",
       "Investor distributions and capital calls equal Investor Return totals"
     ],
-    "profitAfterCarryUsd": 2819169.646233285,
-    "investorDistributionsAfterCarryUsd": 9807170.190424472
+    "profitAfterCarryUsd": 2770156.1018774714,
+    "investorDistributionsAfterCarryUsd": 9770156.101877471
   }
 }

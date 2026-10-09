@@ -4,18 +4,21 @@ import {PRESENTATION_PDFS} from './presentation-downloads.mjs';
 
 const pages = [
   ['financial-statements', 'Financials', 'Finanzas'],
+  ['member-benefits', 'Member benefits', 'Beneficios'],
   ['investment-criteria', 'Criteria', 'Criterios'],
   ['specialists', 'Specialists', 'Especialistas'],
   ['disclaimer', 'Disclaimer', 'Aviso legal'],
 ];
 const presentationSubjects = {
   'financial-statements': 'returns',
+  'member-benefits': 'benefits',
   'investment-criteria': 'idea',
   specialists: 'specialists',
   disclaimer: 'disclaimer',
 };
 const websiteDestinations = {
   'financial-statements': ['fund','Back to the fund','Volver al fondo'],
+  'member-benefits': ['member-benefits','Membership on the website','Membresía en el sitio web'],
   'investment-criteria': ['homes','View the homes','Ver las propiedades'],
   specialists: ['specialists','Specialists on the website','Especialistas en el sitio web'],
   disclaimer: ['disclaimer-title','Disclaimer on the website','Aviso legal en el sitio web'],
@@ -47,10 +50,10 @@ export const investorNavigationCss = `${languageSwitchCss}
   .review-exit-form{margin-top:20px}.review-exit{font:14px Arial,sans-serif;cursor:pointer;border:0;border-bottom:1px solid currentColor;background:none;color:inherit;padding:10px 0}.review-exit:focus-visible{outline:3px solid #d4af37;outline-offset:4px}
   header.resource-header{padding:0 0 24px}
   .resource-navigation{background:#17282d;color:#fff;padding:0 clamp(22px,4vw,58px);font-family:Arial,Helvetica,sans-serif}
-  .resource-navigation-inner{max-width:1320px;min-height:76px;margin:auto;display:flex;align-items:center;gap:24px}
+  .resource-navigation-inner{max-width:1320px;min-height:76px;margin:auto;display:flex;align-items:center;gap:clamp(14px,1.5vw,22px)}
   .resource-brand{display:block;flex-shrink:0;line-height:0;text-decoration:none}
   .resource-brand img{display:block;width:148px;height:45px;object-fit:contain}
-  .resource-links{display:flex;align-items:center;justify-content:flex-end;gap:24px;flex:1;min-width:0}
+  .resource-links{display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,1.25vw,18px);flex:1;min-width:0}
   .resource-links a{font-size:15px;line-height:1.3;white-space:nowrap;padding:10px 0;text-decoration:none;border-bottom:1px solid transparent;color:#e2e8e5}
   .resource-links a[aria-current="page"]{color:#fff;border-color:#d4b342}
   .resource-links a:hover{color:#fff;border-color:#78bdd4}
@@ -77,7 +80,7 @@ export const investorNavigationCss = `${languageSwitchCss}
     .resource-criteria header.resource-header .hero p:last-child{font-size:18px;line-height:1.3;margin:0 0 2px;max-width:570px}
   }
   @media(max-width:1000px){.resource-navigation-inner{gap:18px}.resource-links{gap:16px}.resource-brand img{width:132px;height:40px}.resource-present{gap:5px;padding:8px}.resource-present svg{width:16px}}
-  @media(max-width:800px){
+  @media(max-width:1399px){
     .resource-navigation-inner{min-height:0;padding-block:12px;flex-wrap:wrap;gap:8px 18px}
     .resource-links{order:4;flex:1 0 100%;justify-content:flex-start;gap:24px;overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:1px}
     .resource-links a{font-size:14px;padding:8px 0}

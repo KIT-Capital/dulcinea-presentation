@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import worker from './worker.mjs';
 import review from './review-worker.mjs';
-import {renderInvestorNavigation} from '../shared/investor-navigation.mjs';
+import {renderInvestorNavigation,renderInvestorReturn} from '../shared/investor-navigation.mjs';
 
 const origin = 'https://investor.example.test';
 function fixture() {
@@ -33,6 +33,7 @@ test('French public page aliases and the three exact PDF paths work without auth
     ['/fr','/fr/index.html'],['/fr/','/fr/index.html'],['/fr/index.html','/fr/index.html'],
     ['/fr/investment-criteria','/fr/investment-criteria.html'],['/fr/specialists/','/fr/specialists.html'],
     ['/fr/disclaimer/index.html','/fr/disclaimer.html'],
+    ['/fr/member-benefits','/fr/member-benefits.html'],
     ...['EN','ES','FR'].map(locale => [`/downloads/Dulcinea-Presentation-${locale}.pdf`,`/downloads/Dulcinea-Presentation-${locale}.pdf`]),
   ];
   for (const [path,asset] of paths) {
@@ -114,14 +115,24 @@ test('the outer French review gate preserves locale through errors and successfu
 });
 
 test('resource navigation keeps the current locale for its PDF and links across sibling portable folders',() => {
-  for (const locale of ['en','es','fr']) {
-    const html = renderInvestorNavigation({name:'disclaimer',locale,web:false,logo:'logo.svg'});
+  for (const name of ['disclaimer','member-benefits']) for (const locale of ['en','es','fr']) {
+    const html = renderInvestorNavigation({name,locale,web:false,logo:'logo.svg'});
     const root = locale === 'en' ? '' : '../';
     assert.ok(html.includes(`href="${root}downloads/Dulcinea-Presentation-${locale.toUpperCase()}.pdf"`));
     for (const destination of ['en','es','fr']) {
-      const path = `${root}${destination === 'en' ? '' : destination+'/'}disclaimer.html`;
+      const path = `${root}${destination === 'en' ? '' : destination+'/'}${name}.html`;
       assert.ok(html.includes(`href="${path}" lang="${destination}"`),`${locale} -> ${destination}`);
     }
     assert.match(html,/<span>FR<\/span>/);
+    if(name==='member-benefits') {
+      assert.ok(html.includes('href="member-benefits.html" aria-current="page"'));
+      assert.ok(html.includes('href="index.html#present-benefits"'));
+      assert.ok(renderInvestorReturn({name,locale,web:false}).includes('href="index.html#member-benefits"'));
+      const prefix=locale==='en'?'':`/${locale}`;
+      const web=renderInvestorNavigation({name,locale,web:true,logo:'logo.svg'});
+      assert.ok(web.includes(`href="${prefix}/member-benefits.html" aria-current="page"`));
+      assert.ok(web.includes(`href="${prefix}/#present-benefits"`));
+      assert.ok(renderInvestorReturn({name,locale,web:true}).includes(`href="${prefix}/#member-benefits"`));
+    }
   }
 });

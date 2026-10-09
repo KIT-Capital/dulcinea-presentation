@@ -1,9 +1,9 @@
-"""Refresh internal financial records and statement cells from saved Model 10 caches.
+"""Refresh internal financial records from the reviewed Pro Forma workbook layout.
 
 Reads a private workbook without recalculating, editing or copying it. The source
 path is supplied at runtime and is never embedded in the hosted investor pages.
-Usage: python scripts/refresh-financial-model.py --source /private/Model10.xlsx
-The Model 09 -> 10 Input-row migration is explicit; other layouts fail validation.
+Usage: python scripts/refresh-financial-model.py --source /private/model.xlsx
+The Model 10 -> Pro Forma Dashboard migration is explicit; other layouts fail validation.
 """
 import argparse
 from datetime import date, datetime, timezone
@@ -22,6 +22,7 @@ import openpyxl
 warnings.filterwarnings('ignore', message='Conditional Formatting extension is not supported and will be removed')
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--source', type=Path, required=True)
+parser.add_argument('--source-metadata', type=Path, help='Optional read-only snapshot manifest with sha256 and original sourceModifiedUtc/modifiedUtc')
 args = parser.parse_args()
 root = Path(__file__).resolve().parent.parent
 digest = hashlib.sha256(args.source.read_bytes()).hexdigest()
@@ -29,10 +30,14 @@ book = openpyxl.load_workbook(args.source, data_only=True, read_only=True)
 formula_book = openpyxl.load_workbook(args.source, data_only=False, read_only=True)
 values = {s.title: {c.coordinate: c.value for row in s for c in row if c.value is not None} for s in book}
 formulas = {s.title: {c.coordinate: getattr(c.value, 'text', c.value) for row in s for c in row if c.data_type == 'f'} for s in formula_book}
-assert values['Input']['B40'].startswith('Fund-life reserve funded from the raise'), 'Expected Model 10 input layout'
+assert values['Input']['B40'].startswith('Fund-life reserve funded from the raise'), 'Unexpected reserve input layout'
 assert values['Input']['B43'].startswith('Capital committed to date'), 'Unexpected commitment cell'
 assert values['Input']['B47'].startswith('Carry to Managing Partner'), 'Unexpected carry cell'
 assert values['Input']['B176'].startswith('Owner nights per property'), 'Missing owner-use inputs'
+assert values['Input']['B194'] == "Owner-use share of each property's year", 'Expected reviewed Pro Forma owner-use layout'
+assert values['Dashboard']['B16'].startswith('All-in investment'), 'Unexpected Dashboard all-in row'
+assert values['Dashboard']['B17'].startswith('Projected gross exit'), 'Unexpected Dashboard exit row'
+assert values['Dashboard']['B79'] == 'Scenario' and values['Dashboard']['B81'] == 'Equity Investor IRR', 'Unexpected Dashboard sensitivity rows'
 assert values['Input']['C58'] == 4, 'Statement layout requires four model years'
 ns = {'m': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
 raw_values = {}
@@ -104,15 +109,29 @@ def xirr(flows):
 
 financials = json.loads((root/'content/financials.json').read_text(encoding='utf8'))
 summary = json.loads((root/'content/model-summary.json').read_text(encoding='utf8'))
+terms = json.loads((root/'content/investor-terms.json').read_text(encoding='utf8'))
 old_source = summary['provenance']['source']
-assert old_source in ('Dulcinea Model 09.xlsx', 'Dulcinea Model 10.xlsx'), 'Review migration from this source before refresh'
+assert old_source in ('Dulcinea Model 09.xlsx', 'Dulcinea Model 10.xlsx', 'Dulcinea Pro Forma Model.xlsx'), 'Review migration from this source before refresh'
 prior_digest = summary['provenance']['sha256'] if digest != summary['provenance']['sha256'] else summary['provenance'].get('previousSourceSha256')
-modified = datetime.fromtimestamp(args.source.stat().st_mtime, timezone.utc).isoformat()
+snapshot_modified = datetime.fromtimestamp(args.source.stat().st_mtime, timezone.utc).isoformat()
+modified = snapshot_modified
+modification_basis = 'Read file modification time; may be a snapshot rather than original source'
+if args.source_metadata:
+    metadata = json.loads(args.source_metadata.read_text(encoding='utf8'))
+    assert metadata['sha256'].lower() == digest, 'Snapshot metadata hash differs from workbook'
+    modified = metadata.get('sourceModifiedUtc', metadata.get('modifiedUtc'))
+    assert isinstance(modified, str), 'Snapshot metadata is missing original source modification time'
+    datetime.fromisoformat(modified.replace('Z', '+00:00'))
+    modification_basis = 'Original source modification time from hash-matched snapshot manifest'
+elif digest == summary['provenance']['sha256'] and summary['provenance'].get('modificationTimeBasis') == 'Original source modification time from hash-matched snapshot manifest':
+    modified = summary['provenance']['modifiedUtc']
+    modification_basis = summary['provenance']['modificationTimeBasis']
 summary['provenance'].update(source=args.source.name, sha256=digest, modifiedUtc=modified,
-                            workbookModifiedMetadata=book.properties.modified.isoformat() + 'Z', previousSourceSha256=prior_digest)
-financials['source'].update(file=args.source.name, sha256=digest, modifiedUtc=modified, previousSourceSha256=prior_digest)
-financials['source']['priorDeck'] = {'file': 'Dulcinea - Investor Presentation 032.pptx', 'slides': {'profitAndLoss': 21},
-                                   'note': 'PPTX P&L values are stale; workbook saved values govern the statements.'}
+                            workbookModifiedMetadata=book.properties.modified.isoformat() + 'Z', previousSourceSha256=prior_digest,
+                            snapshotModifiedUtc=snapshot_modified, modificationTimeBasis=modification_basis)
+financials['source'].update(file=args.source.name, sha256=digest, modifiedUtc=modified, previousSourceSha256=prior_digest,
+                           snapshotModifiedUtc=snapshot_modified, modificationTimeBasis=modification_basis)
+financials['source']['priorDeck']['note'] = 'Historical comparison only; the current workbook saved values govern the statements.'
 
 def refresh_summary(node):
     if isinstance(node, list):
@@ -123,12 +142,17 @@ def refresh_summary(node):
             if old_source == 'Dulcinea Model 09.xlsx':
                 node['ref'] = re.sub(r"('Input'![A-Z]+)(\d+)", lambda m: m[1] + str(int(m[2]) + (int(m[2]) >= 40)), node['ref'])
                 node['ref'] = re.sub(r"('Dashboard'![A-Z]+)(76|78)$", lambda m: m[1] + str(int(m[2])+1), node['ref'])
-            node['value'] = actual(node['ref'])
+            if old_source in ('Dulcinea Model 09.xlsx', 'Dulcinea Model 10.xlsx'):
+                node['ref'] = re.sub(r"('Dashboard'![A-Z]+)(14|15|77|79)$", lambda m: m[1] + str(int(m[2])+2), node['ref'])
+            refreshed = actual(node['ref'])
+            if isinstance(node['value'], (int, float)):
+                assert isinstance(refreshed, (int, float)) and math.isfinite(refreshed), f"Numeric source layout changed: {node['ref']}"
+            node['value'] = refreshed
         for child in node.values():
             refresh_summary(child)
 refresh_summary(summary)
-summary['activeScenario']['description'] = 'Five selected properties; USD 7M commitment; 30% entry discount; 60% booked occupancy after owner-use and maintenance deductions; flat COP/USD 3090; six-month works for all five; 8.5% El Poblado and 7.15% El Retiro annual appreciation. Capital paid in installments during Year 1, including a fund-life reserve; no later calls.'
-summary['activeScenario']['capitalTiming'] = 'Monthly acquisition/spend-weighted payments during Year 1, as saved in the monthly XIRR engine. User confirmed this timing on 2026-10-02; not one upfront capital call.'
+summary['activeScenario']['description'] = 'Five selected properties; USD 7M commitment; 30% entry discount; 60% booked occupancy after owner-use and maintenance deductions; flat COP/USD 3090; six-month works for all five; 8.5% El Poblado and 7.15% El Retiro annual appreciation. The full commitment is paid in installments during Year 1; no later calls. Owner use is 30% of each home’s year. The Year 1 cash reserve is below its target; see sourcesAndUses.'
+summary['activeScenario']['capitalTiming'] = 'Monthly acquisition/spend-weighted payments during Year 1, as saved in the monthly XIRR engine. Retains the user-confirmed installment convention; no calls after Year 1.'
 summary['activeScenario']['fundLifeReserveEnabled'] = {'value': actual("'Input'!C40"), 'ref': "'Input'!C40"}
 summary['activeScenario']['ownerUseEnabled'] = {'value': actual("'Input'!C177"), 'ref': "'Input'!C177"}
 summary['monthlyInvestorCashFlows'] = []
@@ -145,15 +169,33 @@ for row in range(6,126):
 for prop in summary['properties']:
     if old_source == 'Dulcinea Model 09.xlsx':
         prop['assumptionRow'] = re.sub(r"(\d+)$", lambda m: str(int(m[1])+1), prop['assumptionRow'])
+    row = int(re.search(r'(\d+)$', prop['sourceRow'])[1])
+    all_in = values['Properties'][f'P{row}']
+    comp = all_in / (1-prop['entryDiscount']['value'])
+    prop['entryValueBridge'].update(allInUsd=all_in, improvedComparableValueUsd=comp,
+        boughtBelowCompsUsd=comp-all_in, appreciationUsd=values['Properties'][f'W{row}']-comp)
+    start = values['Input']['C7']
+    for key, col in [('purchaseCalendarMonth', 'Q'), ('saleCalendarMonth', 'U')]:
+        month_index = start.year*12+start.month-1+values['Properties'][f'{col}{row}']-1
+        prop[key] = f'{month_index//12:04d}-{month_index%12+1:02d}'
 bridge = summary['returnBridge']
 bridge['taxDragPercentagePoints'] = (bridge['dealPreTaxXirr']['value']-bridge['afterGainsTaxXirr']['value'])*100
 bridge['feesCarryAndFundCashFlowTimingDragPercentagePoints'] = (bridge['afterGainsTaxXirr']['value']-bridge['fundInvestorXirr']['value'])*100
-bridge['note'] = 'Saved monthly investor flows give 14.6162%, rounded to 14.6%. Capital is contributed through Year 1, including the reserve. Condensed deal bridge: 22.7% before tax, 20.1% after gains tax, 14.6% to investors.'
+bridge['note'] = (f"Saved monthly investor flows give {bridge['fundInvestorXirr']['value']:.4%}, rounded to {bridge['fundInvestorXirr']['value']:.1%}. "
+    f"Condensed deal bridge: {bridge['dealPreTaxXirr']['value']:.1%} before tax, {bridge['afterGainsTaxXirr']['value']:.1%} after gains tax, "
+    f"{bridge['fundInvestorXirr']['value']:.1%} to investors. Capital is contributed through Year 1.")
 summary['entryDiscountSensitivity']['presentationChoice'] = 'Only the live 30% base case is current. The pasted 25% and 35% sensitivity columns predate owner use and the fund-life reserve; omit their returns from investor pages until refreshed.'
 for scenario in summary['entryDiscountSensitivity']['scenarios']:
     scenario['currentForInvestorPresentation'] = scenario['discount']['value'] == .3
-summary['kickers']['note'] = 'Up to 3% brand equity at full subscription; current $2.1M commitments imply 0.9%. Brand and future-fund participation carry no modeled value. Owner-use revenue and housekeeping costs are included in base-case financial returns.'
-summary['sourcesAndUses']['caution'] = 'C7 is rental income and retained sale proceeds, not called capital. C23 is undrawn commitment. The $364,488.26 reserve is included in Year 1 called capital; no later capital contributions are modeled.'
+summary['kickers']['note'] = 'Brand equity and future-fund carry are separate collective interests allocated pro rata. Neither enters base-case investor returns. The workbook separately illustrates future carry using unconfirmed assumptions; that valuation is excluded from investor content. Owner-use revenue and housekeeping costs are included in base-case financial returns.'
+for key, sheet, cell in [('yearOneEndingCashUsd', 'Statement of Cash Flows', 'C54'), ('reserveShortfallUsd', 'Sources & Uses', 'C24')]:
+    ref = f"'{sheet}'!{cell}"
+    summary['sourcesAndUses'][key] = {'value': actual(ref), 'ref': ref}
+summary['sourcesAndUses']['caution'] = ('C7 is a presentation residual assigned to rental income and retained proceeds, not called capital or a financing commitment. '
+    f"The full ${summary['headline']['capitalCalledUsd']['value']:,.2f} commitment is called in Year 1. "
+    f"Year 1 ending cash of ${summary['sourcesAndUses']['yearOneEndingCashUsd']['value']:,.2f} is "
+    f"${summary['sourcesAndUses']['reserveShortfallUsd']['value']:,.2f} below the ${summary['sourcesAndUses']['reserveTargetUsd']['value']:,.2f} reserve target. "
+    'No later contributions are modeled. Do not describe the target as fully funded or imply undrawn headroom.')
 summary['ownerBenefits'] = {}
 for name, sheet, cell in [('annualNightsFullPortfolio','Owner Benefits','C6'),('annualNightsPerHome','Owner Benefits','C13'),
                          ('annualNightsPerUnit','Owner Benefits','C17'),('annualNightsPer100k','Owner Benefits','C18'),
@@ -163,11 +205,18 @@ for name, sheet, cell in [('annualNightsFullPortfolio','Owner Benefits','C6'),('
                          ('reserveRentalStress','Input','C189'),('reserveRentalCushionUsd','Input','C191')]:
     ref = f"'{sheet}'!{cell}"
     summary['ownerBenefits'][name] = {'value': actual(ref), 'ref': ref}
-summary['ownerBenefits']['note'] = 'Night pool phases in with homes open for rental and is shared pro rata; 365 is the full five-home annual pool, not an entitlement per Member. Booking terms are separate from financial assumptions; user-approved website cancellation is 30 days, while the unchanged model proposal says 60 days.'
+for name, cell in [('ownerUseShare', 'C194'), ('fundLuxuryCostPerOwnerNightUsd', 'C195'), ('memberDiscountOtherProperties', 'C196'), ('friendsAndFamilyDiscount', 'C197')]:
+    ref = f"'Input'!{cell}"
+    summary['ownerBenefits'][name] = {'value': actual(ref), 'ref': ref}
+summary['kickers']['futureFundCarryShare'] = {'value': actual("'Input'!C200"), 'ref': "'Input'!C200"}
+summary['ownerBenefits']['note'] = ('The full-portfolio pool phases in with homes open for rental and is shared pro rata, not an entitlement per Member. '
+    'The workbook’s current-portfolio count means selected homes, not homes already in service. Booking terms are separate from financial assumptions. '
+    + terms['ownerUse']['bookingRulesApproval'])
 summary['reconciliation'] = [
-    {'topic': 'Return and capital timing', 'decision': 'User confirmed Model 10 monthly Year 1 payment schedule and 14.6% IRR on 2026-10-02. Replace PPTX one-capital-call wording; no calls after Year 1.', 'refs': ["'Investor Return'!C7:F7", "'_IRR Engine'!E6:G17", "'Investor Return'!C22"]},
-    {'topic': 'Statement refresh', 'decision': 'Saved Model 10 income, balance sheet and cash-flow figures replace stale typed PPTX P&L. Income is $3,523,962.06 before carry and $2,819,169.65 after carry.', 'refs': ["'Income Statement'!C155:F155", "'Investor Return'!C20"]},
-    {'topic': 'Owner benefits', 'decision': 'Owner use is already in base-case returns; only brand/future-fund participation is unvalued. Rent forgone $142,456.72 plus owner housekeeping $10,428.57. Detailed booking rules approved by user separately; cancellation 30 days differs from 60-day model draft.', 'refs': ["'Owner Benefits'!C43:C45", "'Owner Benefits'!C81"]},
+    {'topic': 'Return and capital timing', 'decision': 'Latest Pro Forma saved values supersede Model 10 returns. Preserve the monthly Year 1 contribution timing; no calls after Year 1.', 'refs': ["'Investor Return'!C7:F7", "'_IRR Engine'!E6:G17", "'Investor Return'!C22"]},
+    {'topic': 'Statement refresh', 'decision': 'Saved Pro Forma income, balance sheet and cash flows replace earlier figures. Carry remains an investor allocation and financing cash outflow, not an operating expense.', 'refs': ["'Income Statement'!C155:F155", "'Investor Return'!C20"]},
+    {'topic': 'Owner benefits', 'decision': 'The owner pool increases with the 30% owner-use assumption. Foregone rent and housekeeping already reduce base-case returns. Luxury services are billed separately to members; no fund cost is modeled. Booking policy follows the explicit user-approved investor-terms record, which supersedes workbook draft prose.', 'refs': ["'Owner Benefits'!C43:C45", "'Input'!C194:C197", "'Owner Benefits'!C81"]},
+    {'topic': 'Reserve funding', 'decision': 'The full capital commitment is called. Year 1 ending cash is below the reserve target; retain both figures and the shortfall rather than claim a fully funded target.', 'refs': ["'Statement of Cash Flows'!C54:C56", "'Sources & Uses'!C23:C24"]},
     {'topic': 'Montana renovation', 'decision': 'User confirmed six-month Model 10 works on 2026-10-02, replacing the deck nine-month statement.', 'refs': ["'Properties'!R9"]},
     {'topic': 'Acquisition status', 'decision': 'Model still labels Aires and Fontanar signed; latest user-supplied deck states closed Sep 2026. Preserve model values in this source record; investor-facing status comes from the newer deck.'},
     {'topic': 'Minimum return', 'decision': 'Workbook retains a 20% deal-level after-tax criterion; deck states 12% net investor criterion. These are different return bases and must remain distinct.', 'refs': ["'The Buy Box'!C37", "'The Buy Box'!C28"]},
@@ -253,7 +302,8 @@ for property in properties:
     numeric = next(p for p in summary['properties'] if p['sourceRow'] == f"'Properties'!{row}")
     rental_months = values['Properties'][f'U{row}'] - values['Properties'][f'T{row}']
     noi = values['Properties'][f'X{row}']
-    noi_text = f'${noi/1000:.1f}K' if abs(noi) < 10000 else f'${noi/1000:.0f}K'
+    noi_amount = f'${abs(noi):,.0f}' if abs(noi) < 1000 else f'${abs(noi)/1000:.1f}K' if abs(noi) < 10000 else f'${abs(noi)/1000:.0f}K'
+    noi_text = f'({noi_amount})' if noi < 0 else noi_amount
     works_months = values['Properties'][f'R{row}']
     assert works_months == 6, 'Works duration changed; review the approved six-month scenario'
     property.update(purchase=money(values['Properties'][f'M{row}']), allin=money(values['Properties'][f'P{row}']),
@@ -293,4 +343,4 @@ assert hashlib.sha256(args.source.read_bytes()).hexdigest() == digest, 'Workbook
 for relative,data in [('content/financials.json',financials),('content/model-summary.json',summary),('content/properties.json',properties)]:
     (root/relative).write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 html_path.write_text(html,encoding='utf8')
-print(f'Refreshed Model 10 saved values; {formula_count} formula caches checked; XIRR {independent:.10%}; source unchanged.')
+print(f'Refreshed reviewed Pro Forma saved values; {formula_count} formula caches checked; XIRR {independent:.10%}; source unchanged.')

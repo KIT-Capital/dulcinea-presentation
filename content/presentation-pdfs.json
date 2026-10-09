@@ -1,24 +1,24 @@
 {
   "version": 1,
   "sourceAlgorithm": "sha256-path-content-v1",
-  "sourceSha256": "6e51b3ca95f7fd7e0c11dcbea2e03ccc8220ff463331f5ae204bad5b04eb4dcd",
+  "sourceSha256": "ca884a92de3f6e10b6e5a97f5ece7eb207e05d3a5c5e2c8a880c9bf50a1f5773",
   "slideCount": 21,
-  "exportedAt": "2026-10-09T20:31:36.732Z",
+  "exportedAt": "2026-10-09T21:28:03.717Z",
   "locales": {
     "en": {
       "path": "downloads/Dulcinea-Presentation-EN.pdf",
       "pageCount": 21,
-      "sha256": "7530893e290af5d5d963cadd8019bc20975c3b6ed66a7645dca4a1b71817399d"
+      "sha256": "5a8f6a2a1876f4dc94051c9d441de15567e050c1f8ce29ee7fe4513d4c246598"
     },
     "es": {
       "path": "downloads/Dulcinea-Presentation-ES.pdf",
       "pageCount": 21,
-      "sha256": "3146959da2df4432ca65c0168cdb3c036ce4f3547b5f1ca65993c18fdffb3338"
+      "sha256": "78a81a8d3621c1ff4492e421cdf88c7580f344701a6527ecd25ff92d4658fe48"
     },
     "fr": {
       "path": "downloads/Dulcinea-Presentation-FR.pdf",
       "pageCount": 21,
-      "sha256": "e8072a7f2bff7cac7a86add67fc45c53f09f5c3c64305f40fb67ec8422a24371"
+      "sha256": "3006a896aa812913a8d6210e4f21b61bdb6c9e527de6847c6178cb9d2a069067"
     }
   },
   "sourceFiles": [
@@ -329,13 +329,13 @@
     },
     {
       "path": "content/locales/fr-presentation.json",
-      "bytes": 30715,
-      "sha256": "1c46c7d740ac99af7f57ed0f311d7d88dabb40921b05310b406bf3d38d68be96"
+      "bytes": 30846,
+      "sha256": "a33fae693fcacb757d7f801cb4ddcef72c2369ce3b3294d8225be368df4cb3e8"
     },
     {
       "path": "content/locales/fr-resources.json",
-      "bytes": 31320,
-      "sha256": "dd98035dc6fc5cb89c04b2dc69e440767795b14f484759a5df932040f40f4ffc"
+      "bytes": 31627,
+      "sha256": "5c4c1d3711f40b969fd1e7c81781942e265df3dfe117a468188ec9c2f363274d"
     },
     {
       "path": "content/presentation-story.json",
@@ -384,8 +384,8 @@
     },
     {
       "path": "src/investor/index.html",
-      "bytes": 76813,
-      "sha256": "54bc87a80a12109c3093a29954437212578d4dfc7d9bb0e86aa4ae8ac323c805"
+      "bytes": 77376,
+      "sha256": "973d75ea4688d73ff9ebb0dccc3bca7b56d1bfba5f9893bbc1fa107661e7ecc9"
     },
     {
       "path": "src/investor/media.json",

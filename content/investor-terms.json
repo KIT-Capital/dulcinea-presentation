@@ -1,9 +1,17 @@
 {
   "source": {
-    "file": "Dulcinea - Investor Presentation 032.pptx",
-    "sha256": "e378987ce8079bb1f9de5ce915c96031a4a5a692a3ddd69adc587fc1cb83b401",
-    "reviewed": "2026-10-02",
-    "distribution": "Internal source map only. Neither presentation nor workbook is a website download."
+    "file": "Dulcinea Pro Forma Model.xlsx",
+    "sha256": "11dc277993672a01993dcc8a3de324c51d37c958a46930f556ddc48288724868",
+    "reviewed": "2026-10-09",
+    "distribution": "Internal source map only. Neither presentation nor workbook is a website download.",
+    "previousPresentation": {
+      "file": "Dulcinea - Investor Presentation 032.pptx",
+      "sha256": "e378987ce8079bb1f9de5ce915c96031a4a5a692a3ddd69adc587fc1cb83b401",
+      "reviewed": "2026-10-02",
+      "distribution": "Internal source map only. Neither presentation nor workbook is a website download."
+    },
+    "modifiedUtc": "2026-10-09T21:21:53.1111764Z",
+    "reviewNote": "New save checked against the initial audit snapshot: no changed cells, formulas, caches, comments or number formats across all 27 sheets."
   },
   "offering": {
     "raiseUsd": 7000000,
@@ -16,7 +24,7 @@
       2,
       11
     ],
-    "capitalTiming": "Model 10 monthly contributions during Year 1; user confirmed 2026-10-02. Not one upfront call."
+    "capitalTiming": "Monthly acquisition/spend-weighted installments during Year 1; no subsequent calls. Retains the user-confirmed installment convention."
   },
   "criteria": {
     "minimumInvestorIrr": 0.12,
@@ -25,15 +33,29 @@
     "distinctFrom": "The workbook separately retains a 20% deal-level screening hurdle. Do not relabel either metric."
   },
   "ownerUse": {
-    "annualPortfolioNights": 365,
-    "annualNightsPerHomeInService": 73,
-    "allocation": "Pro rata to committed capital; 5.21 nights per $100,000 and 52.14 per $1M at full subscription and all homes in service. Display about 5/about 52.",
+    "annualPortfolioNights": 547.5,
+    "annualNightsPerHomeInService": 109.5,
+    "allocation": "Pro rata to committed capital against the full $7M subscription: 7.8214 nights per $100,000 and 78.2143 per $1M with all five homes in service.",
     "sourceSlides": [
       3,
       19
     ],
-    "bookingRulesApproval": "User explicitly approved detailed slide 19 booking rules on 2026-10-02. Its 30-day cancellation notice supersedes the 60-day draft workbook note for investor-facing terms.",
-    "costTreatment": "Foregone rent and owner housekeeping are included in Model 10, not additional to base-case costs."
+    "bookingRulesApproval": "User directed use of Pacaso cancellation policy on 2026-10-09, superseding both the prior approved 30-day notice and the workbook 60-day proposal. Cancel as soon as plans change; no fixed notice deadline. For an uncancelled no-show, notify management at least 48 hours before scheduled departure or cleaning fees apply.",
+    "costTreatment": "Foregone rent of $213,685.073111 and owner cleaning/turnover of $15,642.857143 are already included in projected returns; optional luxury services are paid separately at cost.",
+    "sourceCells": [
+      "Owner Benefits!C6",
+      "Owner Benefits!C13",
+      "Owner Benefits!C18",
+      "Owner Benefits!E37"
+    ],
+    "phaseIn": "Allocations begin the month after each home opens for rental, prorated for the remainder of the year. Selection flags are not evidence of homes currently in service.",
+    "peakAllocation": "Public copy leaves the exact peak cap to membership terms pending reconciliation: workbook uses a collective 25% of annual owner nights per home, while prior presentation wording describes a per-member quarter of peak nights.",
+    "cancellationSource": {
+      "url": "https://www.pacaso.com/scheduling",
+      "faq": "https://www.pacaso.com/faq/scheduling",
+      "checked": "2026-10-09",
+      "scope": "Cancellation and no-show only. Pacaso ownership shares, app functionality, guarantees and stay quotas are not imported."
+    }
   },
   "brandEquity": {
     "collectiveMemberFraction": 0.03,
@@ -46,7 +68,14 @@
       15000000
     ],
     "sourceSlide": 3,
-    "economics": "Participation in the Managing Partner structure; no percentage specified in source."
+    "economics": "At full subscription, members collectively share 3% of future Dulcinea carried interest, allocated pro rata to commitment under membership terms. No management-fee or general-partner equity rights inferred. Future funds and distributions are not guaranteed.",
+    "collectiveCarryFraction": 0.03,
+    "rightOfFirstRefusal": "Pro rata right of first refusal to invest in Dulcinea II.",
+    "sourceCells": [
+      "Owner Benefits!C53:C54",
+      "Input!C200"
+    ],
+    "illustrativeValuation": "Excluded from investor-facing benefits and current-fund projected return. The workbook five-year hold and 15% discount-rate assumptions are marked unconfirmed."
   },
   "propertyStatus": {
     "FONTANAR": {
@@ -71,9 +100,18 @@
     }
   },
   "decisions": [
-    "Model 10 numerical statements and return projections supersede typed PPTX P&L amounts.",
+    "The 2026-10-09 supplied workbook numeric saved results supersede Model 10 and typed prior PPTX values; do not use stale workbook prose or unverified sensitivities.",
     "Six-month Casa Montana renovation confirmed by user, superseding deck nine-month text.",
     "Retain earlier direct user instructions: co-branded by Lola & Ber Hospitality; Ricardo Planning and Corporate Development; no Ashoka; all three formal statements retained and protected.",
     "Do not import unverified source-noted sensitivity outputs or internal working instructions."
-  ]
+  ],
+  "stayServices": {
+    "memberDiscountOtherLolaBerProperties": 0.33,
+    "friendsAndFamilyPaidStayDiscount": 0.25,
+    "optionalServices": "At cost, billed separately to members.",
+    "sourceCells": [
+      "Owner Benefits!C55:C57",
+      "Input!C195:C197"
+    ]
+  }
 }
