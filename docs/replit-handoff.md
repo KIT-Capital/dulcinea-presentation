@@ -2,8 +2,10 @@
 
 Codex is the source of truth. Replit is an editable downstream working copy with
 identical site, presentation and supporting-page content. Export the repository
-from https://github.com/KIT-Capital/dulcinea-presentation. The published design
-baseline is application commit `c44a8aa`, with release record `673459d`.
+from https://github.com/KIT-Capital/dulcinea-presentation. The current published
+website is application commit `32b1729`, with release record `424c459` (7 October
+2026). The initial Replit export used the earlier 5 October release; it is not
+evidence that Replit contains the subsequent changes.
 
 ## Included
 
@@ -64,8 +66,8 @@ guarded production workflow.
 
 ## Source material outside this import
 
-The current Model 10 workbook, latest supplied PPTX 032, some original raw stock
-footage and local preservation screenshots/evidence are outside Git. They are
+The current Model 10 workbook, supplied PPTX 032 and edited PPTX 033, some original
+raw stock footage and local preservation screenshots/evidence are outside Git. They are
 not required to edit and rebuild the current website. They are required for
 changing financial source data or regenerating certain films, and must be
 obtained from the existing controlled source library when needed. Historical
@@ -78,15 +80,21 @@ are present. See the current handoff's Model 10 hash/reconciliation limitation.
 - [Replit import from GitHub](https://docs.replit.com/build/import-from-providers)
 - [Replit project configuration](https://docs.replit.com/features/project-setup/configuration)
 
-## Status
+## Status reviewed 9 October 2026
 
-Local preparation passed the production build/verifier and all 55 server tests
-(47 existing tests plus eight Node adapter tests). `npm start` successfully
-rebuilt, verified and started the server on port 5000. All eight public EN/ES page
-hashes still match the published `c44a8aa` release. An independent code review
-found no release blockers.
+The initial local preparation passed the production build/verifier and all 55
+server tests (47 existing tests plus eight Node adapter tests). `npm start`
+successfully rebuilt, verified and started the server on port 5000. At that time,
+all eight public EN/ES page hashes matched the published `c44a8aa` release. An
+independent code review found no release blockers.
 
-The export destination is a new project in the signed-in Dulcinea workspace.
-The older `Dulcinea Investment Website` project is being preserved. Do not treat
-local checks as evidence of a completed remote import: add the new project link
-and remote verification here once Replit setup completes.
+The related chat records completion of the 5 October export to
+[Dulcinea Canonical Website](https://replit.com/t/dulcinea/repls/Dulcinea-Canonical-Website).
+The older `Dulcinea Investment Website` project was preserved. Existing owner
+access was accepted; Replit-specific financial credentials remained pending in
+the last detailed report. No evidence establishes that the 7 October website
+changes were exported to Replit, and remote Replit parity was not retested on
+9 October. The fresh canonical build/verifier and all 57 server tests pass; all
+eight public pages match the canonical Cloudflare site. These results do not
+establish current Replit parity. Refresh the downstream copy from canonical
+GitHub only after preserving colleague changes.

@@ -1,6 +1,8 @@
 # Dulcinea canonical website
 
-Updated 7 October 2026. The latest user direction makes the website hero and presentation cover warmer: lead with stays, family, friends and life in Medellín and El Oriente, and introduce Dulcinea One as a real estate program. Detailed investment structure and future-fund rights remain precise in their existing sections. The user approved canonical publication and GitHub synchronization. Only formal financial statements require a password.
+Updated 9 October 2026 after reviewing the related website, design, presentation and image chats. The latest website release remains 7 October: lead with stays, family, friends and life in Medellín and El Oriente, and introduce Dulcinea One as a real estate program. Detailed investment structure and future-fund rights remain precise in their existing sections. The user approved canonical publication and GitHub synchronization. On the website, only formal financial statements require a password.
+
+The 9 October review confirmed the current website source was already on GitHub, rebuilt and checked it, and verified that all eight public pages still match production. This synchronization updates project documentation and preserves the closed design critique; it does not deploy a new website. See `docs/validation-2026-10-09-project-review.md` for fresh results, related-chat decisions and the scope of material retained outside Git. The user explicitly chose to keep the repository public; website access controls do not restrict access to files already committed to public GitHub.
 
 ## Canonical release
 
