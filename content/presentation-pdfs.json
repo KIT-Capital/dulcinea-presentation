@@ -1,24 +1,24 @@
 {
   "version": 1,
   "sourceAlgorithm": "sha256-path-content-v1",
-  "sourceSha256": "c03f97f2e827dd0aeba3d7c601a7466c0ef987e51f55ddc7e82c7e6002e68031",
+  "sourceSha256": "6e51b3ca95f7fd7e0c11dcbea2e03ccc8220ff463331f5ae204bad5b04eb4dcd",
   "slideCount": 21,
-  "exportedAt": "2026-10-09T19:59:20.468Z",
+  "exportedAt": "2026-10-09T20:31:36.732Z",
   "locales": {
     "en": {
       "path": "downloads/Dulcinea-Presentation-EN.pdf",
       "pageCount": 21,
-      "sha256": "beb317ef31b5f5cf9847470904ed89a237629bdf16cb991d8e654021d93608f9"
+      "sha256": "7530893e290af5d5d963cadd8019bc20975c3b6ed66a7645dca4a1b71817399d"
     },
     "es": {
       "path": "downloads/Dulcinea-Presentation-ES.pdf",
       "pageCount": 21,
-      "sha256": "af05eda83b6cf4fb38b384e1601839c573c505963525eb5f0920e114ffb0ee1c"
+      "sha256": "3146959da2df4432ca65c0168cdb3c036ce4f3547b5f1ca65993c18fdffb3338"
     },
     "fr": {
       "path": "downloads/Dulcinea-Presentation-FR.pdf",
       "pageCount": 21,
-      "sha256": "d8ea7a869299e5801916832216466917ec664d00968408654f14684e0e9ec0f4"
+      "sha256": "e8072a7f2bff7cac7a86add67fc45c53f09f5c3c64305f40fb67ec8422a24371"
     }
   },
   "sourceFiles": [
@@ -329,8 +329,8 @@
     },
     {
       "path": "content/locales/fr-presentation.json",
-      "bytes": 30759,
-      "sha256": "2fee05a2ccf644856c493b8879c09c073007f22737bdcdbe5048c3f0a5f61979"
+      "bytes": 30715,
+      "sha256": "1c46c7d740ac99af7f57ed0f311d7d88dabb40921b05310b406bf3d38d68be96"
     },
     {
       "path": "content/locales/fr-resources.json",
@@ -384,8 +384,8 @@
     },
     {
       "path": "src/investor/index.html",
-      "bytes": 76900,
-      "sha256": "47a7bcf1fb37aa650b1912b1c96f2ec2cf4e0ba9c4f675d61cdbad7dc7d83b45"
+      "bytes": 76813,
+      "sha256": "54bc87a80a12109c3093a29954437212578d4dfc7d9bb0e86aa4ae8ac323c805"
     },
     {
       "path": "src/investor/media.json",
