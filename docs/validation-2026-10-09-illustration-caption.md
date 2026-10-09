@@ -10,4 +10,8 @@ The user requested the exact caption "Imagery is for illustration only." on onli
 - All 63 PDF pages rendered successfully. The three revised page renders were inspected, and the local downloads matched the output PDF bytes.
 - The local PowerPoint counterpart is version 036. Its services caption is on slide 4; only that caption changed. All 24 slides rendered in PowerPoint, the revised slide was visually inspected, and the other 23 renders are pixel-identical to version 035. The remaining 212 package parts are byte-identical, preserving editable content and financial charts.
 
-Private capture, PDF and verification evidence is in the parent workspace at `preservation/2026-10-09/retreat-caption/`.
+## Publication
+
+Application `3c09891abfb03015bfdefb82b1693b392c3b48f3` was pushed to `main` and published at https://invest.dulcineainvestments.org/ as Worker version `4a600dea-44ae-41a8-af83-d1247abfbd26` on 9 October 2026. All 12 public pages and three PDF downloads match the production build. Twelve financial redirects, three login-language checks, six denied source paths, four public asset checks and four financial-source hashes passed. Positive financial sign-in was not retested. The exact caption was verified in the live website browser.
+
+Private capture, PDF and live verification evidence is in the parent workspace at `preservation/2026-10-09/retreat-caption/`. PowerPoint evidence is in the sibling `pptx-036-retreat-caption/` folder. The preceding Worker version was `ad76c587-1ac5-4322-91f2-66272666407a`.

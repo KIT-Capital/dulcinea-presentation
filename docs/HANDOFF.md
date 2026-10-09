@@ -1,10 +1,16 @@
 # Dulcinea canonical website
 
+## Illustration caption — 9 October 2026
+
+Online slide 7 and the matching website services section use the exact English caption "Imagery is for illustration only." Spanish and French versions and their PDFs are updated. The PowerPoint counterpart is version 036, with the same caption on its services slide 4. The service availability, pricing and additional-charge qualifications remain in the body.
+
+Published and verified: application `3c09891`, Worker version `4a600dea-44ae-41a8-af83-d1247abfbd26`. All 12 public pages and three PDF downloads match the production build. The live website caption was checked in the browser. See `docs/validation-2026-10-09-illustration-caption.md`.
+
 ## Unified navigation — 9 October 2026
 
 Use the single website header: Life here, Membership, The homes, Team and Investment, with PDF downloads and investor documents under Resources. Present, the three language flags and contact remain alongside it, or within the single compact Menu. The lower chapter bar and chapter label under the logo are retired. See `docs/validation-2026-10-09-navigation.md` for interaction and export checks. Presentation content and PowerPoint 035 are unchanged.
 
-Published and verified: application `5e8502c`, Worker version `ad76c587-1ac5-4322-91f2-66272666407a`. All 12 public pages and three PDF downloads match the production build. The live Resources menu and Escape behavior passed browser checks; the financial access controls and four financial-source hashes passed their existing checks.
+The preceding navigation release was published and verified as application `5e8502c`, Worker version `ad76c587-1ac5-4322-91f2-66272666407a`. All 12 public pages and three PDF downloads matched that production build. The live Resources menu and Escape behavior passed browser checks; the financial access controls and four financial-source hashes passed their existing checks.
 
 ## Published language/PDF and slide revision — 9 October 2026
 
@@ -39,7 +45,7 @@ The earlier 9 October source review and related-chat decisions are recorded in `
 - Production Worker: `dulcinea-investor-presentation`.
 - Canonical repository: https://github.com/KIT-Capital/dulcinea-presentation.git, branch `main`. The user explicitly authorized committing and pushing the canonical source after publication.
 - Current working checkout: `worktrees/radisson-independent` under the Dulcinea Presentation workspace; this checkout now uses `main`.
-- Published and verified: application `5e8502c`; Worker version `ad76c587-1ac5-4322-91f2-66272666407a`. See `docs/validation-2026-10-09-navigation.md`. Earlier releases are recorded in `docs/validation-2026-10-09-publication.md`, `docs/validation-2026-10-07-impeccable-fixes.md`, `docs/validation-2026-10-07-warm-hero.md`, `docs/validation-2026-10-07-copy-release.md`, `docs/validation-2026-10-07-favicon-social.md`, `docs/validation-2026-10-06-architects.md`, `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
+- Published and verified: application `3c09891`; Worker version `4a600dea-44ae-41a8-af83-d1247abfbd26`. See `docs/validation-2026-10-09-illustration-caption.md`. Earlier releases are recorded in `docs/validation-2026-10-09-navigation.md`, `docs/validation-2026-10-09-publication.md`, `docs/validation-2026-10-07-impeccable-fixes.md`, `docs/validation-2026-10-07-warm-hero.md`, `docs/validation-2026-10-07-copy-release.md`, `docs/validation-2026-10-07-favicon-social.md`, `docs/validation-2026-10-06-architects.md`, `docs/validation-2026-10-05-impeccable.md`, `docs/validation-2026-10-05-reservoir.md`, `docs/validation-2026-10-05-gp-participation.md`, `docs/validation-2026-10-05-opening.md` and `docs/validation-2026-10-04-canonical.md`.
 - Historical independent review: https://dulcinea-design-review.norfolk-ai.workers.dev/ remains available separately.
 
 Astra reviewed the canonical seven-chapter homepage and 18-slide presentation. The 5 October refinement leads with a large Dulcinea One title and explains the fund before the three member benefits. The lake outing is removed, nightlife uses a full-width film, and Lola & Ber uses the shared Manrope typography. The final user clarification is explicit: members participate economically on the general partner's side of future Dulcinea funds, sharing in the manager's performance profits alongside their own investment returns. The visible heading is “Participate alongside the fund manager.” See `docs/validation-2026-10-05-gp-participation.md` for the latest wording and checks. Homes, operating approach and all four core team members precede returns and the offer.
