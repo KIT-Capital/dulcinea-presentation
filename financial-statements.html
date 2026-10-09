@@ -292,17 +292,19 @@
   });
 })();
 
-// The chapter guide follows native scrolling, including the scenes within each chapter.
+// The single header follows native scrolling, including the opening and contact.
 (() => {
- const links=[...document.querySelectorAll('.chapter-link')];
- const starts=links.map(link=>({link,section:document.querySelector(link.getAttribute('href'))})).filter(item=>item.section);
+ const links=[...document.querySelectorAll('.header [data-section-nav]')];
+ const starts=links.map(link=>({link,section:document.querySelector(link.getAttribute('href'))})).filter(item=>item.section)
+  .sort((a,b)=>a.section===b.section?0:a.section.compareDocumentPosition(b.section)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1);
  let pending=0;
  function update(){
   pending=0;if(document.body.classList.contains('is-presenting'))return;
-  const threshold=(document.querySelector('.header')?.offsetHeight||80)+120;
+  const header=document.querySelector('.header');
+  const headerHeight=header?.classList.contains('navigation-open')?(header.querySelector('.navigation-toggle').getBoundingClientRect().bottom+16):(header?.offsetHeight||80);
+  const threshold=headerHeight+120;
   let current=starts[0];for(const item of starts)if(item.section.getBoundingClientRect().top<=threshold)current=item;
-  const label=document.querySelector('.chapter-current');if(label&&current)label.textContent=current.link.querySelector('[data-en]')?.textContent||current.link.textContent;
-  for(const item of starts){if(item===current)item.link.setAttribute('aria-current','location');else item.link.removeAttribute('aria-current');}
+  for(const item of starts){if(item.section===current?.section)item.link.setAttribute('aria-current','location');else item.link.removeAttribute('aria-current');}
  }
  function schedule(){if(!pending)pending=requestAnimationFrame(update);}
  addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});addEventListener('hashchange',schedule);new MutationObserver(schedule).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});update();

@@ -17,21 +17,30 @@
 <body>
 <a class="skip" href="#main" data-en="Skip to content" data-es="Ir al contenido">Skip to content</a>
 <header class="header">
-  <a class="brand" href="#home" aria-label="Dulcinea One — Home"><img src="media/logo-dark.svg" alt="Dulcinea One" width="170" height="52"><span class="chapter-current website-only"></span></a>
-  <a class="contact-nav contact-nav-mobile" href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  <a class="brand" href="#home" data-section-nav aria-label="Dulcinea One — Home"><img src="media/logo-dark.svg" alt="Dulcinea One" width="170" height="52"></a>
+  <a class="contact-nav contact-nav-mobile" href="#contact" data-section-nav data-en="Contact" data-es="Contacto">Contact</a>
   <button class="navigation-toggle" type="button" aria-expanded="false" aria-controls="header-navigation" aria-label="Open menu" data-open-en="Open menu" data-open-es="Abrir menú" data-open-fr="Ouvrir le menu" data-close-en="Close menu" data-close-es="Cerrar menú" data-close-fr="Fermer le menu">
     <span class="navigation-label-open" data-en="Menu" data-es="Menú">Menu</span><span class="navigation-label-close" data-en="Close" data-es="Cerrar">Close</span>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path class="navigation-icon-open" d="M4 7h16M4 12h16M4 17h16"/><path class="navigation-icon-close" d="m6 6 12 12M18 6 6 18"/></svg>
   </button>
   <div class="header-navigation" id="header-navigation">
   <nav class="primary" aria-label="Main navigation" data-en-aria-label="Main navigation" data-es-aria-label="Navegación principal">
-    <a href="#homes" data-en="The homes" data-es="Las propiedades">The homes</a>
-    <a href="#fund" data-en="The program" data-es="El programa">The program</a>
+    <a class="chapter-link" data-section-nav href="#region" data-en="Life here" data-es="La vida aquí">Life here</a>
+    <a class="chapter-link" data-section-nav href="#experience" data-en="Membership" data-es="Membresía">Membership</a>
+    <a class="chapter-link" data-section-nav href="#homes" data-en="The homes" data-es="Las propiedades">The homes</a>
+    <a class="chapter-link" data-section-nav href="#team" data-en="Team" data-es="Equipo" data-fr="Équipe">Team</a>
+    <a class="chapter-link" data-section-nav href="#returns" data-en="Investment" data-es="Inversión" data-fr="Investissement">Investment</a>
+  </nav>
+  <details class="navigation-resources">
+    <summary><span data-en="Resources" data-es="Recursos" data-fr="Ressources">Resources</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary>
+    <nav class="resource-links" aria-label="Resources" data-en-aria-label="Resources" data-es-aria-label="Recursos" data-fr-aria-label="Ressources">
+    <a class="presentation-download" data-presentation-pdf href="downloads/Dulcinea-Presentation-EN.pdf" download="Dulcinea-Presentation-EN.pdf" data-en="Download PDF ↓" data-es="Descargar PDF ↓" data-fr="Télécharger le PDF ↓">Download PDF ↓</a>
     <a class="resource" data-path="financial-statements.html" href="financial-statements.html" target="_blank" rel="noopener" data-en="Financials ↗" data-es="Finanzas ↗">Financials ↗</a>
     <a class="resource" data-path="investment-criteria.html" href="investment-criteria.html" target="_blank" rel="noopener" data-en="Criteria ↗" data-es="Criterios ↗">Criteria ↗</a>
+    <a class="resource" data-path="specialists.html" href="specialists.html" target="_blank" rel="noopener" data-en="Specialists ↗" data-es="Especialistas ↗" data-fr="Spécialistes ↗">Specialists ↗</a>
     <a class="resource" data-path="disclaimer.html" href="disclaimer.html" data-en="Disclaimer" data-es="Aviso legal">Disclaimer</a>
-    <a class="presentation-download" data-presentation-pdf href="downloads/Dulcinea-Presentation-EN.pdf" download="Dulcinea-Presentation-EN.pdf" data-en="Download PDF ↓" data-es="Descargar PDF ↓" data-fr="Télécharger le PDF ↓">Download PDF ↓</a>
-  </nav>
+    </nav>
+  </details>
   <button type="button" class="present-launch" id="start-presentation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 4h18v12H3zM12 16v5M8 21h8"/><path d="m10 7 5 3-5 3z"/></svg><span data-en="Present" data-es="Presentar">Present</span></button>
   <div class="language" role="group" aria-label="Language" data-en-aria-label="Language" data-es-aria-label="Idioma">
     <button type="button" data-language="en" lang="en-US" aria-label="English (United States)" title="English (United States)" aria-pressed="true"><svg viewBox="0 0 26 18" aria-hidden="true"><path fill="#fff" d="M0 0h26v18H0z"/><path stroke="#b22234" stroke-width="2" d="M0 1h26M0 5h26M0 9h26M0 13h26M0 17h26"/><path fill="#3c3b6e" d="M0 0h12v10H0z"/><path fill="#fff" d="M2 2h1v1H2zm4 0h1v1H6zm4 0h1v1h-1zM4 5h1v1H4zm4 0h1v1H8zM2 8h1v1H2zm4 0h1v1H6zm4 0h1v1h-1z"/></svg><span>EN</span></button>
@@ -39,7 +48,7 @@
     <button type="button" data-language="fr" lang="fr-FR" aria-label="Français" title="Français" aria-pressed="false"><svg viewBox="0 0 26 18" aria-hidden="true"><path fill="#002654" d="M0 0h8.667v18H0z"/><path fill="#fff" d="M8.667 0h8.666v18H8.667z"/><path fill="#ed2939" d="M17.333 0H26v18h-8.667z"/></svg><span>FR</span></button>
   </div>
   </div>
-  <a class="contact-nav contact-nav-desktop" href="#contact" data-en="Talk to us ↗" data-es="Hable con nosotros ↗">Talk to us ↗</a>
+  <a class="contact-nav contact-nav-desktop" href="#contact" data-section-nav data-en="Talk to us ↗" data-es="Hable con nosotros ↗">Talk to us ↗</a>
 </header>
 <main id="main">
   <section class="hero film" id="home" aria-labelledby="hero-title"><p class="chapter-marker website-only"><span>01</span> <span data-en="Dulcinea One" data-es="Dulcinea One">Dulcinea One</span></p>
@@ -52,7 +61,6 @@
   </section>
 
 
-  <nav class="story-index website-only" aria-label="Dulcinea chapters"><div><a class="chapter-link" href="#home"><span data-en="Dulcinea One" data-es="Dulcinea One">Dulcinea One</span><span aria-hidden="true">↓</span></a><a class="chapter-link" href="#oriente"><span data-en="Life here" data-es="La vida aquí">Life here</span><span aria-hidden="true">↓</span></a><a class="chapter-link" href="#experience"><span data-en="Membership" data-es="Membresía">Membership</span><span aria-hidden="true">↓</span></a><a class="chapter-link" href="#homes"><span data-en="The homes" data-es="Las propiedades">The homes</span><span aria-hidden="true">↓</span></a><a class="chapter-link" href="#approach"><span data-en="Execution" data-es="Ejecución">Execution</span><span aria-hidden="true">↓</span></a><a class="chapter-link" href="#returns"><span data-en="The investment" data-es="La inversión">The investment</span><span aria-hidden="true">↓</span></a><a class="chapter-link" href="#resources"><span data-en="Next step" data-es="Siguiente paso">Next step</span><span aria-hidden="true">↓</span></a></div></nav>
   <aside class="offer-glance website-only"><p data-en="Dulcinea One is partially subscribed." data-es="Dulcinea One está parcialmente suscrito.">Dulcinea One is partially subscribed.</p><a class="offer-shortcut" href="#fund"><span data-en="See the offer" data-es="Ver la oferta">See the offer</span><span aria-hidden="true">↓</span></a></aside>
 
   <section class="ownership-story section-pad" id="ownership" aria-labelledby="ownership-title">

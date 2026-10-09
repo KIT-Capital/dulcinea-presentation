@@ -1,5 +1,9 @@
 # Dulcinea canonical website
 
+## Unified navigation — 9 October 2026
+
+Use the single website header: Life here, Membership, The homes, Team and Investment, with PDF downloads and investor documents under Resources. Present, the three language flags and contact remain alongside it, or within the single compact Menu. The lower chapter bar and chapter label under the logo are retired. See `docs/validation-2026-10-09-navigation.md` for interaction and export checks. Presentation content and PowerPoint 035 are unchanged.
+
 ## Published language/PDF and slide revision — 9 October 2026
 
 Application `b237c4e` is published at the canonical website as Worker version `5a7dcef1-9891-4e80-aea9-818bc6f00b31`. The user explicitly approved publication on 9 October. All 12 public pages and three PDF downloads match the verified production build; financial access controls remain in place. See `docs/validation-2026-10-09-publication.md`.

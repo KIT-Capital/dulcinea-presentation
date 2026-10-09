@@ -1,24 +1,24 @@
 {
   "version": 1,
   "sourceAlgorithm": "sha256-path-content-v1",
-  "sourceSha256": "3473087a4f64a6e2763c7d1e59c351da210785be5b51e1c4a2cdbffcb69ea1a9",
+  "sourceSha256": "c03f97f2e827dd0aeba3d7c601a7466c0ef987e51f55ddc7e82c7e6002e68031",
   "slideCount": 21,
-  "exportedAt": "2026-10-09T19:19:11.444Z",
+  "exportedAt": "2026-10-09T19:59:20.468Z",
   "locales": {
     "en": {
       "path": "downloads/Dulcinea-Presentation-EN.pdf",
       "pageCount": 21,
-      "sha256": "94fac546bd46efdb2f7ae8385a5b46be13df1e6ce5f4ddec2d2dcb1d94fcd836"
+      "sha256": "beb317ef31b5f5cf9847470904ed89a237629bdf16cb991d8e654021d93608f9"
     },
     "es": {
       "path": "downloads/Dulcinea-Presentation-ES.pdf",
       "pageCount": 21,
-      "sha256": "6e110edfb8bfb666f446cd6fa68be3b13622ac9a5450b2cef493d719984a2198"
+      "sha256": "af05eda83b6cf4fb38b384e1601839c573c505963525eb5f0920e114ffb0ee1c"
     },
     "fr": {
       "path": "downloads/Dulcinea-Presentation-FR.pdf",
       "pageCount": 21,
-      "sha256": "c304f1fd4c3647e3702c945340a86e502ae15b690e3c19228cc57df745ad7a2e"
+      "sha256": "d8ea7a869299e5801916832216466917ec664d00968408654f14684e0e9ec0f4"
     }
   },
   "sourceFiles": [
@@ -329,8 +329,8 @@
     },
     {
       "path": "content/locales/fr-presentation.json",
-      "bytes": 30633,
-      "sha256": "6288491ebea9f9a2d5582bc80454f4ed985ab2bda7c19b6d971750635beaea70"
+      "bytes": 30759,
+      "sha256": "2fee05a2ccf644856c493b8879c09c073007f22737bdcdbe5048c3f0a5f61979"
     },
     {
       "path": "content/locales/fr-resources.json",
@@ -384,8 +384,8 @@
     },
     {
       "path": "src/investor/index.html",
-      "bytes": 76904,
-      "sha256": "423dbd299d5d3e997967c86b47c90e60686f32feafdc20fd8e895e76d33536eb"
+      "bytes": 76900,
+      "sha256": "47a7bcf1fb37aa650b1912b1c96f2ec2cf4e0ba9c4f675d61cdbad7dc7d83b45"
     },
     {
       "path": "src/investor/media.json",
@@ -394,13 +394,13 @@
     },
     {
       "path": "src/investor/navigation.css",
-      "bytes": 4180,
-      "sha256": "56e50f746605fe70f49b612573d71bd62ab8a6737efe2eac91252f45a12e2d92"
+      "bytes": 7212,
+      "sha256": "db84ee72d25241b18d7598364e690b42b54d640c6b5275bfc7a25b17ca85093d"
     },
     {
       "path": "src/investor/navigation.js",
-      "bytes": 2736,
-      "sha256": "2e1a691f7c598225e42f54008f66b5afbba309989237822495bfed12400e484c"
+      "bytes": 4884,
+      "sha256": "efc4a8a6bd50e65e6e11cc9419791ac4dc99ffc93f13d21d1bdd2dbf2adf080a"
     },
     {
       "path": "src/investor/presentation-print.css",
@@ -434,8 +434,8 @@
     },
     {
       "path": "src/investor/redesign.js",
-      "bytes": 9315,
-      "sha256": "737f24a5408e8ab4973407a68726bf16a4057a365e4d180c06236661595d4429"
+      "bytes": 9471,
+      "sha256": "e0900027ed6749fffc55da13c59ea24df1b8599ff439a71fd82ffa28aaeb5560"
     },
     {
       "path": "src/investor/regional-map-markers.svg",
