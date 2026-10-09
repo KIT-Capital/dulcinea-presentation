@@ -147,7 +147,7 @@ for(const locale of ['en','es','fr']){
     if(!web) page=page.replace(/<form\b[^>]*class="[^"]*session-exit[^"]*"[^>]*>[\s\S]*?<\/form>/g,'').replace(/<script id="statement-session-exit">[\s\S]*?<\/script>/g,'').replace(/<p\b[^>]*id="statement-signout-error"[^>]*>[\s\S]*?<\/p>/g,'');
     if(name==='disclaimer')page=localize(page.replace('{{DISCLAIMER_TITLE}}',`Dulcinea One — ${disclosures.title[locale==='es'?1:0]}`).replace('{{DISCLAIMER_CONTENT}}',fullDisclosure(locale)),locale);
     if(name==='specialists')page=localize(page.replace('{{SPECIALISTS_TITLE}}',`Dulcinea One — ${locale==='es'?'Especialistas locales':'Local specialists'}`).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale)),locale);
-    if(name==='member-benefits')page=localize(page,locale);
+    if(['member-benefits','financial-statements'].includes(name))page=localize(page,locale);
     page=page.replace(/href="index\.html#slide-[78]"/g,`href="${web?('/'+prefix):'index.html'}#${name==='financial-statements'?'fund':'homes'}"`);
     page=page.replace(/href="index\.html#(home|team|specialists|member-benefits)"/g,(_,section)=>`href="${web?'/'+prefix:'index.html'}#${section}"`);
     for(const resource of resources)page=page.replaceAll(`href="${resource}.html`, `href="${web?'/'+prefix:''}${resource}.html`);

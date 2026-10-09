@@ -43,8 +43,11 @@ close(summary.headline.capitalCalledUsd.value,cash.capitalCalled.values[4]);
 close(summary.headline.netDistributionsUsd.value,-cash.distributions.values[4]);
 close(summary.sourcesAndUses.yearOneEndingCashUsd.value,cash.closingCash.values[0]);
 close(summary.sourcesAndUses.reserveTargetUsd.value-cash.closingCash.values[0],summary.sourcesAndUses.reserveShortfallUsd.value);
+close(summary.headline.capitalCalledUsd.value,summary.activeScenario.fullCommitmentUsd.value);
+assert(summary.sourcesAndUses.reserveShortfallUsd.value>0,'Revise the shortfall disclosure if the reserve reaches its target');
+assert(summary.returnBridge.afterGainsTaxXirr.value<summary.criteria.minimumDealIrr.value,'Revise the below-screen disclosure if the deal return reaches its target');
 const expected=[...data.profitAndLoss.rows,carry.resultAfterCarry,carry.resultAfterCarryMargin,carry.carry,...data.cashFlows.rows,...data.balanceSheet.rows].filter(r=>r.id).flatMap(r=>r.displayValues);
-function verifyStatement(html,label){
+function verifyStatement(html,label,locale='en'){
  const cells=[...html.matchAll(/<td\b[^>]*>(.*?)<\/td>/gs)].map(m=>m[1]);
  assert.deepEqual(cells,expected,`${label} HTML numeric cells`);
  assert.equal((html.match(/<table>/g)||[]).length,3);
@@ -54,12 +57,30 @@ function verifyStatement(html,label){
    const rows=[...html.matchAll(/<tr[^>]*data-id="([^"]+)"[^>]*>/g)].map(m=>m[1]);
    const index=rows.indexOf(id);assert.equal(rows[index+1],margin,`${id} margin placement`);
  }
+ const visibleNote=id=>{
+  const match=html.match(new RegExp(`<p\\b[^>]*id="${id}"[^>]*>([^<]*)<\\/p>`));
+  assert(match,`${label}: missing visible ${id}`);
+  return match[1].replace(/&nbsp;|&#160;|\s/g,'');
+ };
+ const reserve=visibleNote('operating-reserve-note');
+ const numberLocale={en:'en-US',es:'es-CO',fr:'fr-FR'}[locale];
+ const whole=value=>new Intl.NumberFormat(numberLocale,{maximumFractionDigits:0}).format(value).replace(/\s/g,'');
+ for(const value of [summary.sourcesAndUses.yearOneEndingCashUsd.value,summary.sourcesAndUses.reserveTargetUsd.value,summary.sourcesAndUses.reserveShortfallUsd.value]){
+  assert(reserve.includes(whole(value)),`${label}: reserve disclosure differs from source`);
+ }
+ assert(reserve.includes({en:'shortfall',es:'faltante',fr:'insuffisance'}[locale]),`${label}: reserve shortfall must be explicit`);
+ const returnBasis=visibleNote('return-basis-note');
+ const percent=(value,digits=0)=>(value*100).toFixed(digits).replace('.',locale==='en'?'.':',')+'%';
+ for(const expectedReturn of [percent(summary.returnBridge.afterGainsTaxXirr.value,1),percent(summary.criteria.minimumDealIrr.value),percent(terms.criteria.minimumInvestorIrr)]){
+  assert(returnBasis.includes(expectedReturn),`${label}: return-basis disclosure differs from source`);
+ }
+ assert(returnBasis.includes({en:'below',es:'inferior',fr:'inférieur'}[locale]),`${label}: deal screening shortfall must be explicit`);
 }
 verifyStatement(await readFile(path.join(root,'src/financial-statements.html'),'utf8'),'source template');
 const sourceOnly=process.argv.includes('--source-only');
 for(const locale of sourceOnly?[]:['','es/','fr/']){
  const html=await readFile(path.join(root,`dist/private-site/${locale}financial-statements.html`),'utf8');
- verifyStatement(html,locale||'en');
+ verifyStatement(html,locale||'en',locale?locale.slice(0,-1):'en');
  const home=await readFile(path.join(root,`dist/private-site/${locale}index.html`),'utf8');
  const localeNumber=(value,digits)=>value.toFixed(digits).replace('.',locale==='fr/'?',':'.');
  const irr=localeNumber(summary.headline.monthlyXirr.value*100,1)+'%';
