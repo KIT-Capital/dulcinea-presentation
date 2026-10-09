@@ -1,5 +1,21 @@
 # Dulcinea canonical website
 
+## Pending slide revision — 9 October 2026
+
+The current source and portable/web builds now include the user-requested slide
+revisions in both languages: 20 main slides, four benefits near the opening,
+regional map/context, evidenced Lola & Ber origin and imagery, and qualified
+planned services. The cover omits the minimum and projected term; the offer
+retains them. The current-model owner-use example leads with approximately
+52 nights per $1M, with its 365 × ($1M / $7M) formula and conditions.
+
+**Not published:** production still runs the 7 October release below. Automatic
+approval review required explicit production deployment approval. See
+`docs/validation-2026-10-09-slide-revisions.md` for validation and sources.
+The Excel model is being edited separately. No financial source, workbook,
+owner-use policy, carry allocation or projected return was changed in this pass.
+The 30% owner-use proposal and revised economics remain pending.
+
 Updated 9 October 2026 after reviewing the related website, design, presentation and image chats. The latest website release remains 7 October: lead with stays, family, friends and life in Medellín and El Oriente, and introduce Dulcinea One as a real estate program. Detailed investment structure and future-fund rights remain precise in their existing sections. The user approved canonical publication and GitHub synchronization. On the website, only formal financial statements require a password.
 
 The 9 October review confirmed the current website source was already on GitHub, rebuilt and checked it, and verified that all eight public pages still match production. This synchronization updates project documentation and preserves the closed design critique; it does not deploy a new website. See `docs/validation-2026-10-09-project-review.md` for fresh results, related-chat decisions and the scope of material retained outside Git. The user explicitly chose to keep the repository public; website access controls do not restrict access to files already committed to public GitHub.

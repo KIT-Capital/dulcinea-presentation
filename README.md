@@ -1,5 +1,12 @@
 # Dulcinea One
 
+> **Pending revision (9 October 2026):** Source and builds contain 20 slides with
+> the new regional map, four opening benefits, brand evidence and planned-services
+> explanation. The minimum and projected term are removed from the cover; the
+> current-model usage example is shown per $1M. Financial sources are unchanged
+> while Excel is being edited. Production deployment awaits explicit approval.
+> See [revision validation](docs/validation-2026-10-09-slide-revisions.md).
+
 > **Canonical release (7 October 2026):** Application `32b1729` was published at [invest.dulcineainvestments.org](https://invest.dulcineainvestments.org/) as Worker version `ea9f124d-06be-4f14-93a2-1bcef82fe3e3`. The release includes the lifestyle-led opening, bilingual copy refinements, favicon/share metadata and compact presentation improvements. Dov's email and WhatsApp links are active. Only formal financial statements require a password on the hosted website. See the [current handoff](docs/HANDOFF.md), [release validation](docs/validation-2026-10-07-impeccable-fixes.md) and [9 October source review](docs/validation-2026-10-09-project-review.md). The source review is separate from the recorded publication. Production is the default build; explicit review builds remain separate.
 
 Dulcinea is a real estate investment firm focused on Medellín, Colombia. This investor website presents Dulcinea One, its first fund, with Lola & Ber as the co-brand. Lola & Ber Hospitality is the division for the properties. Dulcinea manages acquisition, renovation, operation and sale. Investors acquire fund membership units in a Delaware LLC.

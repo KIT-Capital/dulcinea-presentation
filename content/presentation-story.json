@@ -18,6 +18,14 @@
       ]
     },
     {
+      "id": "region",
+      "selector": "#region",
+      "title": [
+        "Medellín and El Oriente",
+        "Medellín y el Oriente"
+      ]
+    },
+    {
       "id": "oriente",
       "selector": "#oriente",
       "title": [
@@ -39,6 +47,14 @@
       "title": [
         "Lola & Ber",
         "Lola & Ber"
+      ]
+    },
+    {
+      "id": "services",
+      "selector": "#stay-services",
+      "title": [
+        "A stay with support",
+        "Una estadía con apoyo"
       ]
     },
     {

@@ -17,7 +17,7 @@ const specialists = [
     ] },
   ] },
   { role:['Works oversight','Interventoría'], name:'John Mario Piedrahita' },
-  { role:['Legal · Title and closing','Legal · Títulos y cierre'], name:'Juan Carlos Pérez Sarmiento', bio:[
+  { role:['Legal · Title and closing','Legal · Títulos y cierre'], name:'Juan Carlos Pérez', bio:[
     'Cartagena attorney with more than 20 years advising businesses and investors on real estate and corporate matters. He holds a law degree from Universidad de Cartagena and a business-law specialization from Universidad Autónoma de Bucaramanga, and serves as general counsel to Obra Pía in Colombia.',
     'Abogado cartagenero con más de 20 años asesorando a empresas e inversionistas en asuntos inmobiliarios y corporativos. Es egresado de la Universidad de Cartagena y especialista en Derecho Empresarial de la Universidad Autónoma de Bucaramanga. Es asesor jurídico general de Obra Pía en Colombia.',
   ], shortBio:[

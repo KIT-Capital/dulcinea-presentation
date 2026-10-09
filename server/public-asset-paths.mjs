@@ -2,6 +2,9 @@
 export const publicAssetPaths=Object.freeze([
   "/apple-touch-icon.png",
   "/assets/fonts/manrope/manrope-variable.woff2",
+  "/assets/images/2026-10-slide-update/lola-ber-retreat-community.jpeg",
+  "/assets/images/2026-10-slide-update/lola-ber-retreat-terrace.png",
+  "/assets/images/2026-10-slide-update/medellin-oriente-map.jpg",
   "/assets/images/floorplans/page-01-fontanar-floor-1.webp",
   "/assets/images/floorplans/page-02-fontanar-floor-2.webp",
   "/assets/images/floorplans/page-03-monte-sereno-site.webp",

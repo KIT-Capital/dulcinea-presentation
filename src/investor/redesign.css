@@ -842,3 +842,67 @@ body.is-presenting #home .hero-statement>.presentation-investment-context{margin
  body:not(.is-presenting) #home .hero-statement>.hero-program-summary,body.is-presenting[data-presentation-layout=responsive] #home .hero-statement>.hero-program-summary{font-size:19px}
  body:not(.is-presenting) #home .hero-statement>.hero-stay-note,body.is-presenting[data-presentation-layout=responsive] #home .hero-statement>.hero-stay-note{font-size:14px}
 }
+
+/* Geographic orientation and the planned stay experience share the deck's typography. */
+.regional-context,.stay-services{background:var(--paper);color:var(--ink)}
+.regional-layout{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center}
+.regional-context h2,.stay-services h2{font-size:clamp(38px,4.5vw,64px);line-height:1.08;letter-spacing:-.04em;margin:16px 0 28px}
+.regional-map,.services-visual{margin:0}
+.regional-map img{display:block;width:100%;height:auto}
+.regional-map-frame{position:relative}
+.airport-label{position:absolute;left:73.5%;top:36%;font-size:11px;line-height:1.2;padding:3px 5px;background:#fff;color:#17282d;border:1px solid #17282d55}
+.regional-copy .regional-stat-note{font-size:13px;color:#415557}
+.regional-map figcaption,.services-visual figcaption,.brand-origin-image figcaption{font-size:12px;line-height:1.5;margin-top:10px}
+.regional-map figcaption a,.regional-sources a{text-decoration:underline;text-underline-offset:3px}
+.regional-copy p{font-size:18px;line-height:1.55;margin-bottom:18px;max-width:48ch}
+.regional-copy strong{font-weight:600}
+.regional-context .regional-sources{font-size:12px;line-height:1.6;margin-top:24px;max-width:100%}
+.stay-services{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.services-visual img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.services-copy>p:not(.micro){font-size:23px;line-height:1.5;max-width:32ch}
+.services-copy>.services-terms{font-size:17px!important;margin-top:24px}
+.brand-origin-image{position:absolute;right:6vw;bottom:80px;width:28vw;max-width:420px;z-index:2;color:var(--ink)}
+.brand-origin-image img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+.experience-content{max-width:58%}
+.allocation-formula{font-size:16px;line-height:1.5;margin:18px 0;color:var(--ink)}
+body.is-presenting[data-presentation-layout=canvas] #ownership h2{font-size:52px;margin:12px 0}
+body.is-presenting[data-presentation-layout=canvas] #ownership .lifestyle-benefits{margin-top:16px}
+body.is-presenting[data-presentation-layout=canvas] #ownership .lifestyle-benefits>div{grid-template-columns:170px minmax(0,1fr);padding:12px 0;gap:20px}
+body.is-presenting[data-presentation-layout=canvas] #ownership .lifestyle-benefits dd{font-size:17px}
+body.is-presenting #main>#region.presentation-active{padding:42px 60px}
+body.is-presenting #region h2{font-size:54px;margin:12px 0 28px}
+body.is-presenting #region .regional-layout{grid-template-columns:730px 1fr;gap:40px}
+body.is-presenting #region .regional-copy p{font-size:22px;line-height:1.4;margin-bottom:22px}
+body.is-presenting #region .regional-copy .regional-stat-note{font-size:14px}
+body.is-presenting #region .regional-map img{max-height:545px;object-fit:contain;background:#e5e7df}
+body.is-presenting #region .regional-sources{font-size:13px;margin-top:18px}
+body.is-presenting #main>#stay-services.presentation-active{display:grid;grid-template-columns:680px 1fr;gap:50px;padding:60px}
+body.is-presenting #stay-services h2{font-size:62px}
+body.is-presenting #stay-services .services-copy>p:not(.micro){font-size:26px}
+body.is-presenting #stay-services .services-copy>.services-terms{font-size:20px!important}
+body.is-presenting #experience .experience-content{max-width:800px}
+body.is-presenting #experience .experience-content>p:not(.micro){font-size:23px;max-width:730px}
+body.is-presenting #experience .experience-content>.brand-tagline{font-size:30px;margin-bottom:20px}
+body.is-presenting #experience .experience-note{max-width:710px;font-size:17px}
+body.is-presenting[data-presentation-layout=canvas] #experience .brand-landscape{display:none}
+body.is-presenting #experience .brand-origin-image{position:static;grid-column:2;grid-row:1;align-self:center;width:100%;max-width:none;margin:0;color:var(--ink)}
+body.is-presenting #experience .brand-origin-image img{object-fit:contain}
+body.is-presenting #member-benefits .member-benefit-primary .allocation-formula{font-size:18px}
+@media(max-width:1000px){
+ .regional-layout,.stay-services{grid-template-columns:minmax(0,1fr);gap:30px}
+ .experience-content{max-width:100%}
+ .brand-origin-image{position:relative;right:auto;bottom:auto;width:100%;max-width:440px;margin:30px 0 0}
+}
+body.is-presenting[data-presentation-layout=responsive] #main>#region.presentation-active,
+body.is-presenting[data-presentation-layout=responsive] #main>#stay-services.presentation-active{display:block;padding:30px 22px}
+body.is-presenting[data-presentation-layout=responsive] #region .regional-layout{display:block}
+body.is-presenting[data-presentation-layout=responsive] #region h2,
+body.is-presenting[data-presentation-layout=responsive] #stay-services h2{font-size:40px}
+body.is-presenting[data-presentation-layout=responsive] #region .regional-copy{margin-top:28px}
+body.is-presenting[data-presentation-layout=responsive] #region .regional-copy p{font-size:19px}
+body.is-presenting[data-presentation-layout=responsive] #region .regional-map img{max-height:none}
+body.is-presenting[data-presentation-layout=responsive] #stay-services .services-copy{margin-top:30px}
+body.is-presenting[data-presentation-layout=responsive] #stay-services .services-copy>p:not(.micro){font-size:21px}
+body.is-presenting[data-presentation-layout=responsive] #stay-services .services-copy>.services-terms{font-size:17px!important}
+body.is-presenting[data-presentation-layout=responsive] #experience .brand-landscape{display:none}
+body.is-presenting[data-presentation-layout=responsive] #experience .brand-origin-image{position:relative;right:auto;bottom:auto;width:calc(100% - 44px);max-width:600px;margin:0 22px 30px}

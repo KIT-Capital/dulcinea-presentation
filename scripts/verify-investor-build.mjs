@@ -22,7 +22,7 @@ const read = name => readFile(path.join(root, name), 'utf8');
 const build = JSON.parse(await read('dist/investor-build.json'));
 assert.deepEqual(build, {version:1,mode:review?'review':'production',origin}, 'Build mode does not match this verification; rebuild for the intended destination');
 const story = JSON.parse(await read('content/presentation-story.json'));
-const expectedOrder = ["cover", "lifestyle", "oriente", "city", "hospitality", "benefits", "monte-sereno", "montana", "fontanar", "san-lucas", "aires", "idea", "team", "specialists", "returns", "offer", "disclaimer", "contact"];
+const expectedOrder = ["cover", "lifestyle", "region", "oriente", "city", "hospitality", "services", "benefits", "monte-sereno", "montana", "fontanar", "san-lucas", "aires", "idea", "team", "specialists", "returns", "offer", "disclaimer", "contact"];
 assert.deepEqual(story.main.map(step=>step.id), expectedOrder, 'Main presentation order');
 assert.deepEqual(story.appendices.map(step=>step.id), ['owner-use'], 'Owner booking is optional detail');
 assert.deepEqual(Object.values(story.legacyNumeric), ['cover','lifestyle','benefits','owner-use','oriente','city','hospitality','fontanar','san-lucas','aires','monte-sereno','montana','idea','offer','returns','team','specialists','disclaimer','contact'], 'Published numeric links must retain their subjects');
