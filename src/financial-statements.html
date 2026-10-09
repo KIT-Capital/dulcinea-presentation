@@ -91,8 +91,8 @@
 </main><footer><div class="footer-inner"><p>Unaudited projections. Actual results may differ materially. Returns are not guaranteed.</p><p>Dulcinea One · Pro forma financial statements</p><p><a href="disclaimer.html">Disclaimer</a></p>{{RESOURCE_RETURN}}</div></footer><script id="carry-disclosure">(()=>{const button=document.getElementById('carry-toggle');const row=document.getElementById('carry-breakdown');if(!button||!row)return;const setExpanded=expanded=>{button.setAttribute('aria-expanded',String(expanded));row.hidden=!expanded;};setExpanded(false);button.addEventListener('click',()=>setExpanded(button.getAttribute('aria-expanded')!=='true'));})();</script><script id="statement-session-exit">(()=>{
   const form=document.querySelector('.statement-signout');
   if(!form)return;
-  const spanish=document.documentElement.lang==='es';
-  form.action=spanish?'/logout?lang=es':'/logout';
+  const locale=['en','es','fr'].includes(document.documentElement.lang)?document.documentElement.lang:'en';
+  form.action=locale==='en'?'/logout':`/logout?lang=${locale}`;
   form.addEventListener('submit',async event=>{
     event.preventDefault();
     const button=form.querySelector('button');
@@ -102,9 +102,9 @@
     try{
       const response=await fetch(form.action,{method:'POST',mode:'cors',credentials:'same-origin',headers:{Accept:'application/json'}});
       if(!response.ok)throw new Error('Sign-out failed');
-      location.replace(spanish?'/es/#home':'/#home');
+      location.replace(locale==='en'?'/#home':`/${locale}/#home`);
     }catch{
-      feedback.textContent=spanish?'No se pudo cerrar sesión. Inténtelo de nuevo.':'Could not sign out. Please try again.';
+      feedback.textContent=locale==='fr'?'La déconnexion a échoué. Veuillez réessayer.':locale==='es'?'No se pudo cerrar sesión. Inténtelo de nuevo.':'Could not sign out. Please try again.';
       feedback.hidden=false;button.disabled=false;form.removeAttribute('aria-busy');
     }
   });

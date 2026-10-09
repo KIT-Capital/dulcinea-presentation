@@ -104,6 +104,7 @@ body.is-presenting[data-presentation-layout="canvas"] .team-bio { margin-top:18p
 body.is-presenting[data-presentation-layout="canvas"] .specialists dt { font-size:25px; }
 body.is-presenting[data-presentation-layout="canvas"] .specialists dd { font-size:32px; font-weight:600; }
 body.is-presenting[data-presentation-layout="canvas"] .specialist-bio { font-size:24px; line-height:1.35; }
+html[lang="fr"] body.is-presenting[data-presentation-layout="canvas"] :is(.team-bio,.specialist-bio) { font-size:22px; line-height:1.35; }
 body.is-presenting[data-presentation-layout="canvas"] :is(.fund-bottom .fund-small,.raise-status,.button-dark,.document-links,.experience-content>p.co-brand-copy) { font-size:23px; }
 #presentation-controls :is(button,.presentation-title) { font-size:14px; }
 

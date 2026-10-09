@@ -28,6 +28,8 @@
   const nextButton = document.querySelector('#presentation-next');
   const fullscreenButton = document.querySelector('#presentation-fullscreen');
   const languageButton = document.querySelector('#presentation-language');
+  const languageMenu = document.querySelector('#presentation-language-menu');
+  const downloadLink = document.querySelector('#presentation-download');
   const exitButton = document.querySelector('#presentation-exit');
   const menuActions = document.createElement('div');
   menuActions.className = 'presentation-menu-actions';
@@ -69,8 +71,7 @@
   let readingFrame = 0;
   let touch = null;
 
-  const spanish = () => document.documentElement.lang === 'es';
-  const translated = values => values[spanish() ? 1 : 0];
+  const translated = values => window.DulcineaI18n.translate(values);
   const hasOpenDialog = () => Boolean(document.querySelector('dialog[open]'));
   const stepTitle = id => translated(byId.get(id).title);
   const inAppendix = () => !mainIndex.has(activeId);
@@ -115,10 +116,10 @@
     controls.classList.toggle('is-compact',compact);
     menuActions.hidden = !compact;
     if (compact) {
-      [exitButton,languageButton,fullscreenButton].filter(Boolean).forEach(button => menuActions.append(button));
+      [exitButton,downloadLink,languageButton,fullscreenButton].filter(Boolean).forEach(button => menuActions.append(button));
     } else {
       controls.insertBefore(exitButton,websiteButton);
-      [languageButton,fullscreenButton].filter(Boolean).forEach(button => controls.append(button));
+      [downloadLink,languageButton,fullscreenButton].filter(Boolean).forEach(button => controls.append(button));
     }
     updateControls();
   }
@@ -220,15 +221,16 @@
     controls.setAttribute('aria-label',translated(['Presentation controls','Controles de presentación']));
     document.querySelector('#presentation-menu-title').textContent = translated(['The presentation','La presentación']);
     if (languageButton) {
-      label(languageButton,spanish() ? ['Switch to English','Cambiar a inglés'] : ['Switch to Spanish','Cambiar a español']);
+      label(languageButton,['Choose language','Elegir idioma','Choisir la langue']);
       // Reuse the exact flag artwork from the site's language switch.
-      const targetLanguage = spanish() ? 'en' : 'es';
-      const flag = document.querySelector(`.header [data-language="${targetLanguage}"] svg`);
+      const currentLanguage = window.DulcineaI18n.language;
+      const flag = document.querySelector(`.header [data-language="${currentLanguage}"] svg`);
       languageButton.replaceChildren();
       if (flag) languageButton.append(flag.cloneNode(true));
       const abbreviation = document.createElement('span');
-      abbreviation.textContent = targetLanguage.toUpperCase();
+      abbreviation.textContent = currentLanguage.toUpperCase();
       languageButton.append(abbreviation);
+      languageMenu?.querySelectorAll('[data-presentation-language]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.presentationLanguage === currentLanguage)));
     }
     menuItems.querySelectorAll('[data-presentation-id]').forEach(button => {
       const id = button.dataset.presentationId;
@@ -258,6 +260,7 @@
     else index = mainIndex.get(appendixReturn?.id || step.returnTo);
     if (menu.open) menu.close();
     if (websiteMenu?.open) websiteMenu.close();
+    if (languageMenu?.open) languageMenu.close();
     const focusedSection = sections.find(item => item.contains(document.activeElement));
     if (focusedSection && focusedSection !== section) controls.focus({preventScroll:true});
     document.body.dataset.presentationStep = step.id;
@@ -344,6 +347,7 @@
     const section = (target && document.getElementById(target)) || document.querySelector(step.selector);
     if (menu.open) menu.close();
     if (websiteMenu?.open) websiteMenu.close();
+    if (languageMenu?.open) languageMenu.close();
     active = false;
     controls.classList.remove('has-reading-overflow');
     readingCue.hidden = true;
@@ -454,7 +458,31 @@
   document.querySelector('#presentation-website-close')?.addEventListener('click',() => websiteMenu.close());
   fullscreenButton?.addEventListener('click',toggleFullscreen);
   if (fullscreenButton) fullscreenButton.hidden = !document.fullscreenEnabled || !document.documentElement.requestFullscreen;
-  languageButton?.addEventListener('click',() => setLanguage(spanish() ? 'en' : 'es'));
+  if (languageMenu) {
+    const options = languageMenu.querySelector('.presentation-language-options');
+    document.querySelectorAll('.header [data-language]').forEach(source => {
+      const button = source.cloneNode(true);
+      button.dataset.presentationLanguage = button.dataset.language;
+      delete button.dataset.language;
+      button.querySelector('span').textContent = source.getAttribute('aria-label');
+      button.addEventListener('click',() => { setLanguage(button.dataset.presentationLanguage); languageMenu.close(); });
+      options.append(button);
+    });
+    languageButton?.addEventListener('click',() => {
+      if (!active) return;
+      if (websiteMenu?.open) websiteMenu.close();
+      if (hasOpenDialog()) return;
+      languageMenu.showModal();
+      languageButton.setAttribute('aria-expanded','true');
+      languageMenu.querySelector('[aria-pressed="true"]')?.focus();
+      syncMotion();
+    });
+    document.querySelector('#presentation-language-close')?.addEventListener('click',() => languageMenu.close());
+    languageMenu.addEventListener('close',() => {
+      languageButton?.setAttribute('aria-expanded','false');
+      if (active) (controls.classList.contains('is-compact') ? websiteButton : languageButton)?.focus({preventScroll:true});
+    });
+  }
   motionButton.addEventListener('click',() => {
     paused = !paused;
     motionState();

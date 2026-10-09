@@ -1,4 +1,6 @@
 import {renderLanguageSwitch, languageSwitchCss} from './language-switch.mjs';
+import {normalizeLocale, localePath, frenchText} from './locales.mjs';
+import {PRESENTATION_PDFS} from './presentation-downloads.mjs';
 
 const pages = [
   ['financial-statements', 'Financials', 'Finanzas'],
@@ -20,20 +22,25 @@ const websiteDestinations = {
 };
 
 export function renderInvestorReturn({name,locale='en',web=false}) {
-  const spanish=locale==='es';
-  const home=web?(spanish?'/es/':'/'):'index.html';
+  locale=normalizeLocale(locale);
+  const home=web?localePath('/',locale):'index.html';
   const [anchor,en,es]=websiteDestinations[name];
-  return `<a class="resource-context-return" href="${home}#${anchor}">${spanish?es:en} ↗</a>`;
+  return `<a class="resource-context-return" href="${home}#${anchor}">${locale==='fr'?frenchText(en):locale==='es'?es:en} ↗</a>`;
 }
 
 export function renderInvestorNavigation({name, locale='en', web=false, logo}) {
-  const spanish = locale === 'es';
-  const home = web ? (spanish ? '/es/' : '/') : 'index.html';
-  const resourcePrefix = web ? (spanish ? '/es/' : '/') : '';
-  const englishPath = web ? `/${name}.html` : `${spanish ? '../' : ''}${name}.html`;
-  const spanishPath = web ? `/es/${name}.html` : `${spanish ? '' : 'es/'}${name}.html`;
-  const links = pages.map(([id,en,es]) => `<a href="${resourcePrefix}${id}.html"${id===name?' aria-current="page"':''}>${spanish?es:en}</a>`).join('');
-  return `<div class="resource-navigation"><div class="resource-navigation-inner"><a class="resource-brand" href="${home}#home" aria-label="Dulcinea One — ${spanish?'Inicio':'Home'}"><img src="${logo}" alt="Dulcinea One" width="148" height="45"></a><nav class="resource-links" aria-label="${spanish?'Navegación principal':'Main navigation'}"><a class="resource-home" href="${home}#home">${spanish?'Inicio':'Home'}</a>${links}</nav><a class="resource-present" href="${home}#present-${presentationSubjects[name]}" aria-label="${spanish?'Abrir presentación':'Open presentation'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 4h18v12H3zM12 16v5M8 21h8"/><path d="m10 7 5 3-5 3z"/></svg><span>${spanish?'Presentar':'Present'}</span></a>${renderLanguageSwitch({englishPath,spanishPath,locale})}</div></div>`;
+  locale = normalizeLocale(locale);
+  const tr = (en,es) => locale === 'fr' ? frenchText(en) : locale === 'es' ? es : en;
+  const home = web ? localePath('/',locale) : 'index.html';
+  const resourcePrefix = web ? localePath('/',locale) : '';
+  const portableRoot = locale === 'en' ? '' : '../';
+  const englishPath = web ? `/${name}.html` : `${portableRoot}${name}.html`;
+  const spanishPath = web ? `/es/${name}.html` : `${portableRoot}es/${name}.html`;
+  const frenchPath = web ? `/fr/${name}.html` : `${portableRoot}fr/${name}.html`;
+  const pdfPath = web ? PRESENTATION_PDFS[locale] : `${portableRoot}${PRESENTATION_PDFS[locale].slice(1)}`;
+  const downloadLabel = locale === 'fr' ? 'Télécharger le PDF ↓' : tr('Download PDF ↓','Descargar PDF ↓');
+  const links = pages.map(([id,en,es]) => `<a href="${resourcePrefix}${id}.html"${id===name?' aria-current="page"':''}>${tr(en,es)}</a>`).join('');
+  return `<div class="resource-navigation"><div class="resource-navigation-inner"><a class="resource-brand" href="${home}#home" aria-label="Dulcinea One — ${tr('Home','Inicio')}"><img src="${logo}" alt="Dulcinea One" width="148" height="45"></a><nav class="resource-links" aria-label="${tr('Main navigation','Navegación principal')}"><a class="resource-home" href="${home}#home">${tr('Home','Inicio')}</a>${links}<a href="${pdfPath}" download="${PRESENTATION_PDFS[locale].split('/').at(-1)}">${downloadLabel}</a></nav><a class="resource-present" href="${home}#present-${presentationSubjects[name]}" aria-label="${tr('Open presentation','Abrir presentación')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 4h18v12H3zM12 16v5M8 21h8"/><path d="m10 7 5 3-5 3z"/></svg><span>${tr('Present','Presentar')}</span></a>${renderLanguageSwitch({englishPath,spanishPath,frenchPath,locale})}</div></div>`;
 }
 
 export const investorNavigationCss = `${languageSwitchCss}

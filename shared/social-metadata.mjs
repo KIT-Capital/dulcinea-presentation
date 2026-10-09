@@ -1,3 +1,4 @@
+import {frenchText} from './locales.mjs';
 // Canonical production metadata; review builds select their origin explicitly.
 export const SOCIAL_ORIGIN = 'https://invest.dulcineainvestments.org';
 export const REVIEW_ORIGIN = 'https://dulcinea-design-review.norfolk-ai.workers.dev';
@@ -30,7 +31,7 @@ export function socialMetadata(language = 'en', { origin = SOCIAL_ORIGIN, page =
     },
   };
   if (page !== 'index' && !Object.hasOwn(resources, page)) throw new Error(`Unknown social metadata page: ${page}`);
-  return {
+  const card = {
     title: es ? 'Dulcinea One | Propiedades en Medellín y el Oriente' : 'Dulcinea One | Homes in Medellín and El Oriente',
     description: es
       ? 'Dulcinea One: un programa inmobiliario con inversión en cinco propiedades y estadías para miembros, familiares y amigos en Medellín y el Oriente.'
@@ -39,11 +40,14 @@ export function socialMetadata(language = 'en', { origin = SOCIAL_ORIGIN, page =
       ? 'Dulcinea One: cinco propiedades, un portafolio, con Medellín y sus montañas de fondo.'
       : 'Dulcinea One: five homes, one portfolio, with Medellín and its mountains in the background.',
     ...resources[page],
-    url: `${origin}${es ? '/es/' : '/'}${page === 'index' ? '' : `${page}.html`}`,
-    locale: es ? 'es_CO' : 'en_US',
+    url: `${origin}${language === 'en' ? '/' : `/${language}/`}${page === 'index' ? '' : `${page}.html`}`,
+    locale: language === 'fr' ? 'fr_FR' : es ? 'es_CO' : 'en_US',
+    alternateLocales: ['en_US','es_CO','fr_FR'].filter(value => value !== (language === 'fr' ? 'fr_FR' : es ? 'es_CO' : 'en_US')),
     alternateLocale: es ? 'en_US' : 'es_CO',
     imagePath: es ? SOCIAL_IMAGE_ES_PATH : SOCIAL_IMAGE_PATH,
   };
+  if(language === 'fr')for(const key of ['title','description','imageAlt'])card[key]=frenchText(card[key]);
+  return card;
 }
 
 export function renderSocialMetadata(language = 'en', { includeDocumentMetadata = false, origin = SOCIAL_ORIGIN, page = 'index' } = {}) {
@@ -59,7 +63,7 @@ export function renderSocialMetadata(language = 'en', { includeDocumentMetadata 
     property('og:site_name', 'Dulcinea'),
     property('og:url', card.url),
     property('og:locale', card.locale),
-    property('og:locale:alternate', card.alternateLocale),
+    ...card.alternateLocales.map(value => property('og:locale:alternate', value)),
     property('og:title', card.title),
     property('og:description', card.description),
     property('og:image', image),

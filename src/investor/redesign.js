@@ -114,10 +114,10 @@
   dialog.querySelector('button').addEventListener('click',()=>dialog.close());
   document.addEventListener('click',event=>{
     if(!event.target.closest('[data-preview-contact]'))return;event.preventDefault();
-    const es=document.documentElement.lang==='es';
-    dialog.querySelector('h2').textContent=es?'Hable con nosotros':'Talk to us';
-    dialog.querySelector('p').textContent=es?'El contacto está desactivado en esta versión de comparación. No se envía ningún mensaje. Use el sitio actual para contactar al equipo.':'Contact is disabled in this comparison version. No message is sent. Use the current website to contact the team.';
-    dialog.querySelector('button').textContent=es?'Cerrar':'Close';dialog.showModal();
+    const tr=window.DulcineaI18n.translate;
+    dialog.querySelector('h2').textContent=tr(['Talk to us','Hable con nosotros']);
+    dialog.querySelector('p').textContent=tr(['Contact is disabled in this comparison version. No message is sent. Use the current website to contact the team.','El contacto está desactivado en esta versión de comparación. No se envía ningún mensaje. Use el sitio actual para contactar al equipo.']);
+    dialog.querySelector('button').textContent=tr(['Close','Cerrar']);dialog.showModal();
   });
 })();
 

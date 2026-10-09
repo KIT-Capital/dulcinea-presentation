@@ -17,12 +17,29 @@ function syncHeaderHeight() {
 syncHeaderHeight();
 if (siteHeader && typeof ResizeObserver === 'function') new ResizeObserver(syncHeaderHeight).observe(siteHeader);
 const isWeb = window.DULCINEA_WEB !== false;
-const initialSpanishPath = /\/es(?:\/|$)/.test(location.pathname);
-const portableRoot = new URL(initialSpanishPath ? '../' : './',location.href);
+const languageFromPath = () => /^\/(?:.*\/)?(es|fr)(?:\/|$)/.exec(location.pathname)?.[1] || 'en';
+const initialLanguage = languageFromPath();
+const portableRoot = new URL(initialLanguage === 'en' ? './' : '../',location.href);
 const assetMap = Object.fromEntries(Object.entries(window.DULCINEA_ASSETS || {}).map(([name,url]) => [name,new URL(url,location.href).href]));
 const asset = name => assetMap[name] || `/media/${name}`;
-const resource = path => isWeb ? `/${lang === 'es' ? 'es/' : ''}${path}` : new URL(`${lang === 'es' ? 'es/' : ''}${path}`,portableRoot).href;
+const localePrefix = () => lang === 'en' ? '' : `${lang}/`;
+const resource = path => isWeb ? `/${localePrefix()}${path}` : new URL(`${localePrefix()}${path}`,portableRoot).href;
 let lang = 'en', current = homeOrder[0], planIndex = 0, currentMediaKey = null;
+function translate(values) {
+  return lang === 'fr' ? (values[2] ?? window.DULCINEA_FR?.[values[0]] ?? values[0]) : (values[lang === 'es' ? 1 : 0] ?? values[0]);
+}
+function translatedAttribute(element,name) {
+  return translate(['en','es','fr'].map(locale => element.getAttribute(`data-${locale}${name ? `-${name}` : ''}`) ?? undefined));
+}
+function syncPresentationDownloads() {
+  const filename = `Dulcinea-Presentation-${lang.toUpperCase()}.pdf`;
+  document.querySelectorAll('[data-presentation-pdf]').forEach(link => {
+    link.href = isWeb ? `/downloads/${filename}` : new URL(`downloads/${filename}`,portableRoot).href;
+    link.download = filename;
+    link.hreflang = {en:'en-US',es:'es-419',fr:'fr-FR'}[lang];
+  });
+}
+window.DulcineaI18n = Object.freeze({translate,get language() { return lang; },syncDownloads:syncPresentationDownloads});
 const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 let paused = reduce.matches;
 const videos = [...document.querySelectorAll('video')];
@@ -96,7 +113,7 @@ const observer = new IntersectionObserver(entries => {
 },{threshold:0,rootMargin:'240px 0px'});
 playbackFrames.forEach((_,frame) => observer.observe(frame));
 function motionState() {
-  const label = lang === 'es' ? (paused ? 'Reanudar animaciones' : 'Pausar animaciones') : (paused ? 'Resume animations' : 'Pause animations');
+  const label = translate(paused ? ['Resume animations','Reanudar animaciones'] : ['Pause animations','Pausar animaciones']);
   motion?.setAttribute('aria-pressed',String(paused)); motion?.setAttribute('aria-label',label);
   if (motion) motion.title = label;
   motion?.querySelector('path')?.setAttribute('d',paused ? 'M8 5l10 7-10 7z' : 'M8 6v12M16 6v12');
@@ -106,7 +123,7 @@ motion?.addEventListener('click',() => { paused = !paused; motionState(); });
 reduce.addEventListener('change',event => { paused = event.matches; motionState(); });
 document.addEventListener('visibilitychange',syncMotion);
 // Hospitality and nightlife now have separate, viewport-controlled film chapters.
-function homeLabel(index) { return `${lang === 'es' ? 'Ver' : 'View'} ${homes[index].name}`; }
+function homeLabel(index) { return `${translate(['View','Ver','Voir'])} ${homes[index].name}`; }
 function homeIndex(value) { return typeof value === 'number' ? (Number.isInteger(value) && homes[value] ? value : -1) : homes.findIndex(home => home.key === value); }
 function homeHref(value = current) { const index = homeIndex(value); return index < 0 ? '#homes' : `#property-${homes[index].key}`; }
 const propertyAnnouncement = document.createElement('p');
@@ -136,7 +153,7 @@ function selectHome(value,{writeRoute = false,scroll = false,focus = false} = {}
     const url = new URL(location.href); url.hash = homeHref();
     history[writeRoute === 'replace' ? 'replaceState' : 'pushState'](history.state,'',url);
   }
-  if (changed) propertyAnnouncement.textContent = lang === 'es' ? `${homes[current].name} seleccionada. ${homeOrder.indexOf(current) + 1} de ${homes.length}.` : `${homes[current].name} selected. ${homeOrder.indexOf(current) + 1} of ${homes.length}.`;
+  if (changed) propertyAnnouncement.textContent = `${homes[current].name} ${translate(['selected.','seleccionada.','sélectionnée.'])} ${homeOrder.indexOf(current) + 1} ${translate(['of','de','sur'])} ${homes.length}.`;
   if (scroll || focus) revealHome(focus,scroll === 'instant');
   return true;
 }
@@ -180,7 +197,7 @@ function renderPlan() {
   const home = homes[current], page = home.plans[planIndex];
   if (!page || !plansDialog) return;
   const labels = {1:['Floor 1','Piso 1'],2:['Floor 2','Piso 2'],3:['Site plan','Terreno'],4:['Floor 1','Piso 1'],5:['Roof plan','Cubierta'],6:['Floor 1','Piso 1'],7:['Floor 2','Piso 2'],8:['Floor 1','Piso 1'],9:['Floor 2','Piso 2']};
-  const caption = `${home.name} · ${labels[page][lang === 'es' ? 1 : 0]}`;
+  const caption = `${home.name} · ${translate(labels[page])}`;
   $('#plans-title').textContent = home.name;
   const sheets = $('#plan-sheets');
   // Reuse sheet controls when possible so keyboard focus survives selection.
@@ -193,7 +210,7 @@ function renderPlan() {
     sheets.dataset.property = home.key;
   }
   [...sheets.children].forEach((button,index) => {
-    button.textContent = labels[home.plans[index]][lang === 'es' ? 1 : 0];
+    button.textContent = translate(labels[home.plans[index]]);
     button.setAttribute('aria-pressed',String(index === planIndex));
   });
   if (renderedPlan !== page) {
@@ -212,10 +229,10 @@ function renderPlan() {
   schedulePlanLayout();
 }
 function renderHome(changeMedia = true) {
-  const home = homes[current], i = lang === 'es' ? 1 : 0;
+  const home = homes[current];
   $('#property-name').textContent = home.name; $('#property-location').textContent = home.location;
-  $('#property-type').textContent = home.type[i]; $('#property-description').textContent = home.description[i];
-  $('#property-area').textContent = home.area; $('#property-status').textContent = home.status[i];
+  $('#property-type').textContent = translate(home.type); $('#property-description').textContent = translate(home.description);
+  $('#property-area').textContent = home.area; $('#property-status').textContent = translate(home.status);
   $('#property-count').textContent = `${String(homeOrder.indexOf(current) + 1).padStart(2,'0')} / ${String(homes.length).padStart(2,'0')}`;
   $('#property-plan-count').textContent = String(home.plans.length).padStart(2,'0');
   $('.property-layout').dataset.property = home.key;
@@ -232,11 +249,11 @@ function renderHome(changeMedia = true) {
     } else control.setAttribute('aria-pressed',String(selected));
     if (control.matches('.property-preview')) {
       const acquisition = control.querySelector('.property-preview-acquisition');
-      if (acquisition) acquisition.textContent = homes[index].status[i];
-      control.setAttribute('aria-label',`${homeLabel(index)}. ${homes[index].status[i]}`);
+      if (acquisition) acquisition.textContent = translate(homes[index].status);
+      control.setAttribute('aria-label',`${homeLabel(index)}. ${translate(homes[index].status)}`);
       let state = control.querySelector('.property-preview-state');
       if (!state) { state = document.createElement('span'); state.className = 'property-preview-state'; control.append(state); }
-      state.textContent = lang === 'es' ? 'Seleccionada' : 'Selected';
+      state.textContent = translate(['Selected','Seleccionada','Sélectionnée']);
       state.hidden = !selected;
     }
   });
@@ -248,7 +265,7 @@ function renderHome(changeMedia = true) {
     propertyVideo.load(); syncVideo(propertyVideo);
   }
   $('#original-title').textContent = home.name; $('#original-image').src = asset(home.original);
-  $('#original-image').alt = lang === 'es' ? `${home.name}: imagen original` : `${home.name}: original property imagery`;
+  $('#original-image').alt = `${home.name}: ${translate(['original property imagery','imagen original','photographie originale du bien'])}`;
   if ($('#view-plans')) $('#view-plans').hidden = home.plans.length === 0;
   if (plansDialog?.open) renderPlan();
 }
@@ -276,24 +293,24 @@ function translateAria() {
     '#prev-plan':['Previous floorplan','Plano anterior'], '#next-plan':['Next floorplan','Siguiente plano'], '#close-plans':['Close floorplans','Cerrar planos'],
     '.raise-bar':['30 percent of the target raise committed','30 por ciento del capital objetivo comprometido']
   };
-  for (const [selector,values] of Object.entries(labels)) $(selector)?.setAttribute('aria-label',values[lang === 'es' ? 1 : 0]);
-  document.querySelectorAll('[data-en-aria-label]').forEach(element => element.setAttribute('aria-label',element.getAttribute(`data-${lang}-aria-label`)));
+  for (const [selector,values] of Object.entries(labels)) $(selector)?.setAttribute('aria-label',translate(values));
+  document.querySelectorAll('[data-en-aria-label]').forEach(element => element.setAttribute('aria-label',translatedAttribute(element,'aria-label')));
 }
 function setLanguage(next,updateRoute = true) {
-  lang = next === 'es' ? 'es' : 'en'; document.documentElement.lang = lang;
-  document.querySelectorAll('[data-en]').forEach(element => { element.textContent = element.dataset[lang]; });
-  document.querySelectorAll('[data-en-alt]').forEach(element => element.alt = element.getAttribute(`data-${lang}-alt`));
+  lang = ['en','es','fr'].includes(next) ? next : 'en'; document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach(element => { element.textContent = translatedAttribute(element,''); });
+  document.querySelectorAll('[data-en-alt]').forEach(element => element.alt = translatedAttribute(element,'alt'));
   document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.language === lang)));
   document.querySelectorAll('[data-path]').forEach(link => { link.href = resource(link.dataset.path); });
-  document.title = lang === 'es' ? 'Dulcinea One | Inversión inmobiliaria en Medellín' : 'Dulcinea One | Real estate investment in Medellín';
-  const description = lang === 'es' ? 'Dulcinea One: un programa inmobiliario con inversión en cinco propiedades y estadías para miembros, familiares y amigos en Medellín y el Oriente.' : 'Dulcinea One: a real estate program with investment in five homes and member stays with family and friends in Medellín and El Oriente.';
+  document.title = translate(['Dulcinea One | Real estate investment in Medellín','Dulcinea One | Inversión inmobiliaria en Medellín','Dulcinea One | Investissement immobilier à Medellín']);
+  const description = translate(['Dulcinea One: a real estate program with investment in five homes and member stays with family and friends in Medellín and El Oriente.','Dulcinea One: un programa inmobiliario con inversión en cinco propiedades y estadías para miembros, familiares y amigos en Medellín y el Oriente.','Dulcinea One : un programme immobilier associant un investissement dans cinq résidences à des séjours en famille et entre amis à Medellín et dans l’Oriente.']);
   $('meta[name="description"]')?.setAttribute('content',description);
   if (updateRoute) {
-    const url = new URL(isWeb ? (lang === 'es' ? '/es/' : '/') : `${lang === 'es' ? 'es/' : ''}index.html`,isWeb ? location.origin : portableRoot);
+    const url = new URL(isWeb ? `/${localePrefix()}` : `${localePrefix()}index.html`,isWeb ? location.origin : portableRoot);
     url.search = location.search; url.searchParams.delete('lang'); url.hash = location.hash;
     try { history.replaceState(history.state,'',url); } catch { /* File previews still switch in place. */ }
   }
-  renderHome(false); translateAria(); motionState();
+  renderHome(false); translateAria(); syncPresentationDownloads(); motionState();
   document.dispatchEvent(new CustomEvent('dulcinea:language'));
 }
 document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click',() => setLanguage(button.dataset.language)));
@@ -374,9 +391,9 @@ function migrateLegacyHash() {
   if (!anchor.startsWith('property-')) requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({behavior:'instant'}));
 }
 window.addEventListener('hashchange',() => { migrateLegacyHash(); followPropertyRoute(); });
-window.addEventListener('popstate',() => { setLanguage(/\/es(?:\/|$)/.test(location.pathname) ? 'es' : 'en',false); migrateLegacyHash(); followPropertyRoute(); });
+window.addEventListener('popstate',() => { setLanguage(languageFromPath(),false); migrateLegacyHash(); followPropertyRoute(); });
 const requestedLanguage = new URLSearchParams(location.search).get('lang');
-setLanguage(requestedLanguage === 'es' || (requestedLanguage !== 'en' && initialSpanishPath) ? 'es' : 'en');
+setLanguage(['en','es','fr'].includes(requestedLanguage) ? requestedLanguage : initialLanguage);
 migrateLegacyHash();
 if (!followPropertyRoute()) renderHome();
 

@@ -9,6 +9,7 @@ const stars = Array.from({ length: 9 }, (_, row) =>
 ).join('');
 const usFlag = `<svg class="flag-icon" viewBox="0 0 24 16" aria-hidden="true" focusable="false"><rect width="24" height="16" fill="#fff"/><path fill="#b22234" d="M0 0h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0z"/><path fill="#3c3b6e" d="M0 0h10.4v8.62H0z"/><g fill="#fff">${stars}</g></svg>`;
 const colombiaFlag = '<svg class="flag-icon" viewBox="0 0 24 16" aria-hidden="true" focusable="false"><path fill="#fcd116" d="M0 0h24v8H0z"/><path fill="#003893" d="M0 8h24v4H0z"/><path fill="#ce1126" d="M0 12h24v4H0z"/></svg>';
+const franceFlag = '<svg class="flag-icon" viewBox="0 0 24 16" aria-hidden="true" focusable="false"><path fill="#002654" d="M0 0h8v16H0z"/><path fill="#fff" d="M8 0h8v16H8z"/><path fill="#ed2939" d="M16 0h8v16h-8z"/></svg>';
 
 export const languageSwitchCss = `
   .locale-switch{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto;margin:0;color:inherit;font:500 10px/1.2 'Segoe UI',Arial,sans-serif;white-space:nowrap}
@@ -23,6 +24,6 @@ export const languageSwitchCss = `
   @media(prefers-reduced-motion:reduce){.locale-switch a{transition:none}}
 `;
 
-export function renderLanguageSwitch({ englishPath, spanishPath, locale = 'en' }) {
-  return `<nav class="locale-switch notranslate" translate="no" aria-label="${locale === 'es' ? 'Idioma' : 'Language'}"><a href="${escapeAttribute(englishPath)}" lang="en" hreflang="en-US" aria-label="English (United States)" title="English"${locale === 'en' ? ' aria-current="page"' : ''}>${usFlag}<span>EN</span></a><a href="${escapeAttribute(spanishPath)}" lang="es" hreflang="es-CO" aria-label="Español (Colombia)" title="Español"${locale === 'es' ? ' aria-current="page"' : ''}>${colombiaFlag}<span>ES</span></a></nav>`;
+export function renderLanguageSwitch({ englishPath, spanishPath, frenchPath, locale = 'en' }) {
+  return `<nav class="locale-switch notranslate" translate="no" aria-label="${locale === 'fr' ? 'Langue' : locale === 'es' ? 'Idioma' : 'Language'}"><a href="${escapeAttribute(englishPath)}" lang="en" hreflang="en-US" aria-label="English (United States)" title="English"${locale === 'en' ? ' aria-current="page"' : ''}>${usFlag}<span>EN</span></a><a href="${escapeAttribute(spanishPath)}" lang="es" hreflang="es-419" aria-label="Español (Latinoamérica)" title="Español"${locale === 'es' ? ' aria-current="page"' : ''}>${colombiaFlag}<span>ES</span></a>${frenchPath ? `<a href="${escapeAttribute(frenchPath)}" lang="fr" hreflang="fr-FR" aria-label="Français" title="Français"${locale === 'fr' ? ' aria-current="page"' : ''}>${franceFlag}<span>FR</span></a>` : ''}</nav>`;
 }

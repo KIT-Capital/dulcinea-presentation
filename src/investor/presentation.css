@@ -171,6 +171,17 @@ body.is-presenting #member-benefits .owner-use-rules h3 { font-size:25px; margin
 body.is-presenting #member-benefits .owner-use-rules p { font-size:20px; line-height:1.4; max-width:none }
 body.is-presenting #member-benefits .owner-use-content > .footnote { margin-top:22px; font-size:14px; line-height:1.5; max-width:none }
 body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits { overflow-y:auto; overscroll-behavior:contain }
+/* The booking appendix also fits a single fixed-canvas slide/PDF page. */
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits { padding:40px 64px; overflow:hidden }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-heading h2 { font-size:48px; margin:8px 0 12px }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-heading > p:not(.micro) { font-size:20px; line-height:1.35 }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-facts { gap:28px; margin:20px 0 }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-facts strong { font-size:40px }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-rules { gap:18px 38px }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-rules article { padding-top:12px }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-rules h3 { font-size:22px; margin-bottom:8px }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-rules p { font-size:18px; line-height:1.35 }
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-content > .footnote { margin-top:16px; font-size:13px; line-height:1.4 }
 
 /* The offer and returns each have room of their own. */
 body.is-presenting .fund-summary { font-size:24px; line-height:1.5; max-width:500px; margin:0 }
@@ -231,9 +242,9 @@ body.is-presenting .legal-notice a { font-size:16px; margin-top:28px }
 #presentation-reading-cue { display:none }
 .presentation-menu-actions[hidden] { display:none }
 .presentation-menu-actions { display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding:0 0 20px; margin-bottom:8px; border-bottom:1px solid #17282d30 }
-.presentation-menu-actions button { display:flex; align-items:center; justify-content:center; gap:8px; min-height:44px; min-width:44px; padding:10px 12px; border:1px solid #17282d40; border-radius:4px; background:transparent; color:var(--ink); font:inherit; font-size:14px; line-height:1.4 }
+.presentation-menu-actions :is(button,a) { display:flex; align-items:center; justify-content:center; gap:8px; min-height:44px; min-width:44px; padding:10px 12px; border:1px solid #17282d40; border-radius:4px; background:transparent; color:var(--ink); font:inherit; font-size:14px; line-height:1.4 }
 .presentation-menu-actions button[hidden] { display:none }
-.presentation-menu-actions button:hover { background:#78bdd426 }
+.presentation-menu-actions :is(button,a):hover { background:#78bdd426 }
 .presentation-menu-actions svg { width:19px; height:19px }
 .presentation-menu-actions #presentation-language { border-left:1px solid #17282d40!important; border-radius:4px!important; padding-left:12px!important }
 .presentation-menu-actions #presentation-language svg { height:14px }
@@ -248,6 +259,15 @@ body.is-presenting .legal-notice a { font-size:16px; margin-top:28px }
 #presentation-overview { min-width:114px!important }
 #presentation-language { border-left:1px solid #ffffff28!important; border-radius:0!important; padding-left:18px!important }
 #presentation-language svg { width:19px; height:14px }
+#presentation-controls #presentation-download { display:flex; align-items:center; min-height:44px; padding:8px 12px; border:1px solid #ffffff35; border-radius:4px; font-size:13px; white-space:nowrap }
+#presentation-controls #presentation-download:hover { background:#ffffff13; border-color:#ffffff70 }
+#presentation-language-menu { max-width:440px; padding:28px }
+#presentation-language-menu .dialog-top h2 { font-size:30px }
+.presentation-language-options { display:grid; gap:8px }
+.presentation-language-options button { display:flex; align-items:center; gap:14px; min-height:52px; padding:12px 16px; border:1px solid #17282d30; border-radius:4px; background:transparent; color:var(--ink); text-align:left; font-size:16px }
+.presentation-language-options button[aria-pressed="true"] { border-color:var(--green); background:#78bdd426; font-weight:600 }
+.presentation-language-options button:hover { background:#78bdd426 }
+.presentation-language-options svg { width:26px; height:18px; flex-shrink:0 }
 #presentation-menu { max-width:940px; padding:32px }
 #presentation-menu .dialog-top h2 { font-size:35px }
 #presentation-menu-items { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px }
@@ -299,3 +319,5 @@ body.is-presenting[data-presentation-layout="canvas"] .presentation-resource-lin
   .presentation-website-resources { margin-top:24px }
   .presentation-website-resources a { font-size:16px }
 }
+
+body.is-presenting[data-presentation-layout="canvas"][data-presentation-step="owner-use"] #member-benefits .owner-use-facts span { font-size:18px; line-height:1.35 }

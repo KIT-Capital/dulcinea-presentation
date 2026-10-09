@@ -1,9 +1,12 @@
 # Dulcinea canonical website
 
-## Pending slide revision — 9 October 2026
+## Pending language/PDF and slide revision — 9 October 2026
+
+The source now supports English (US flag), Latin American Spanish (Colombian flag) and French (French flag), including all resource and login pages. Current-language PDF downloads mirror the 20 main online slides plus the booking appendix. The three PDFs are committed under `downloads/`; 62 server tests and the full 15-page release gate pass. Browser language-state checks and all 63 PDF page renders passed. Source fingerprints prevent stale PDFs from passing the release gate. See `docs/validation-2026-10-09-localized-pdfs.md`.
+
 
 The current source and portable/web builds now include the user-requested slide
-revisions in both languages: 20 main slides, four benefits near the opening,
+revisions in all three languages: 20 main slides, four benefits near the opening,
 regional map/context, evidenced Lola & Ber origin and imagery, and qualified
 planned services. The cover omits the minimum and projected term; the offer
 retains them. The current-model owner-use example leads with approximately

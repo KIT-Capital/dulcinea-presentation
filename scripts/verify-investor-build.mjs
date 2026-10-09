@@ -9,6 +9,9 @@ import { assetPolicy } from '../server/access-policy.mjs';
 import { publicAssetPaths } from '../server/public-asset-paths.mjs';
 import { socialMetadata, SOCIAL_ORIGIN, REVIEW_ORIGIN, SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH } from '../shared/social-metadata.mjs';
 import { FAVICON_ASSETS } from '../shared/favicon.mjs';
+import { french, frenchText } from '../shared/locales.mjs';
+import { PRESENTATION_PDFS } from '../shared/presentation-downloads.mjs';
+import { verifyPresentationPdfs } from './verify-presentation-pdfs.mjs';
 
 // Read-only release gate. Build first with `node scripts/build.mjs --web`.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -16,6 +19,7 @@ const site = path.join(root, 'dist/private-site');
 const review = process.argv.includes('--review');
 const origin = review ? REVIEW_ORIGIN : SOCIAL_ORIGIN;
 const limit = 25 * 1024 * 1024;
+const approvedPDFs = new Set(['/downloads/Dulcinea-Floorplans.pdf', ...Object.values(PRESENTATION_PDFS)]);
 const files = new Map();
 const pages = new Map();
 const read = name => readFile(path.join(root, name), 'utf8');
@@ -31,7 +35,8 @@ const decode = text => text.replace(/&#(x[\da-f]+|\d+);/gi, (_, value) =>
   String.fromCodePoint(value[0].toLowerCase() === 'x' ? parseInt(value.slice(1), 16) : Number(value)))
   .replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>');
 const withoutScripts = html => html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
-const textContent = html => decode(withoutScripts(html).replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ');
+const normalizeWhitespace = text => text.replace(/\s+/g, ' ');
+const textContent = html => normalizeWhitespace(decode(withoutScripts(html).replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<[^>]*>/g, ' ')));
 const attributes = tag => Object.fromEntries([...tag.matchAll(/\b([\w-]+)\s*=\s*(["'])([\s\S]*?)\2/g)].map(([, key, , value]) => [key.toLowerCase(), decode(value)]));
 
 async function inventory(directory) {
@@ -44,7 +49,7 @@ async function inventory(directory) {
     assert.ok(info.size <= limit, `Asset exceeds 25 MiB: ${relative}`);
     assert.ok(!/(^|\/)(?:source-packages|source-documents|company[ -]documents|content|docs|design|server|scripts|\.git|\.wrangler|node_modules)(?:\/|$)/i.test(relative), `Internal file in build: ${relative}`);
     assert.ok(!/(?:\.(?:docx?|xlsx?|xlsm|xlsb|pptx?|csv|tsv|ods|odt|odp|rtf|txt|md|zip|7z|rar|tar|gz|mov)|(?:^|\/)(?:\.env[^/]*|\.dev\.vars[^/]*|[^/]*(?:secrets|provenance)[^/]*))$/i.test(relative), `Source or private file in build: ${relative}`);
-    if (/\.pdf$/i.test(relative)) assert.equal(relative, 'downloads/Dulcinea-Floorplans.pdf', 'Only the approved floorplan PDF may be published');
+    if (/\.pdf$/i.test(relative)) assert.ok(approvedPDFs.has('/' + relative), `Only the approved floorplan and localized presentation PDFs may be published: ${relative}`);
     files.set('/' + relative, filename);
     if (relative.endsWith('.html')) pages.set('/' + relative, await readFile(filename, 'utf8'));
   }
@@ -69,11 +74,20 @@ function resolveBuiltURL(reference, base, label) {
 }
 
 await inventory(site);
+await verifyPresentationPdfs(root, { builtDirectory: site });
 assert.deepEqual([...publicAssetPaths].sort(), [...files.keys()].filter(file=>!file.endsWith('.html')).sort(), 'Public asset allowlist must match approved built media');
 for (const asset of publicAssetPaths) assert.equal(assetPolicy(asset).access, 'public', `Public media classification: ${asset}`);
 for (const page of pages.keys()) assert.equal(assetPolicy(page).access, page.endsWith('/financial-statements.html')?'private':'public', `Page access classification: ${page}`);
-const requiredPages = ['', 'es/'].flatMap(prefix => ['index', 'financial-statements', 'investment-criteria', 'specialists', 'disclaimer'].map(name => `/${prefix}${name}.html`));
-assert.deepEqual([...pages.keys()].sort(), [...requiredPages].sort(), 'Expected only EN/ES investor, financial, criteria, specialists and disclaimer pages');
+const requiredPages = ['', 'es/', 'fr/'].flatMap(prefix => ['index', 'financial-statements', 'investment-criteria', 'specialists', 'disclaimer'].map(name => `/${prefix}${name}.html`));
+assert.deepEqual([...pages.keys()].sort(), [...requiredPages].sort(), 'Expected only EN/ES/FR investor, financial, criteria, specialists and disclaimer pages');
+assert.deepEqual([...files.keys()].filter(file => /\.pdf$/i.test(file)).sort(), [...approvedPDFs].sort(), 'Exactly the floorplan PDF and three localized presentation PDFs must be built');
+for (const [language, asset] of Object.entries(PRESENTATION_PDFS)) {
+  const pdf = await readFile(files.get(asset));
+  assert.ok(pdf.length > 1024, `Empty presentation PDF: ${language}`);
+  assert.equal(pdf.subarray(0, 5).toString('ascii'), '%PDF-', `Invalid presentation PDF: ${language}`);
+  assert.match(pdf.subarray(-2048).toString('latin1'), /%%EOF\s*$/, `Incomplete presentation PDF: ${language}`);
+  assert.ok(pdf.equals(await readFile(path.join(root, asset.slice(1)))), `Built presentation differs from its approved source: ${language}`);
+}
 const publicAssets = ['/gate-assets/logo.svg', SOCIAL_IMAGE_PATH, SOCIAL_IMAGE_ES_PATH, '/assets/images/stock/AdobeStock_891890158-web.jpg', '/assets/video/stock/AdobeStock_693150796.mp4'];
 for (const asset of publicAssets) assert.ok(files.has(asset), `Missing public share/login asset: ${asset}`);
 for (const [filename, source] of Object.entries(FAVICON_ASSETS)) {
@@ -137,11 +151,18 @@ const expectedMap = Object.fromEntries(Object.entries(aliases).map(([alias, sour
   alias === 'floorplans.pdf' ? '/downloads/Dulcinea-Floorplans.pdf' : '/' + source.replaceAll('\\', '/')]));
 let compiledScripts = 0;
 for (const [pagePath, html] of pages) {
-  const language = pagePath.startsWith('/es/') ? 'es' : 'en';
+  const language = pagePath.startsWith('/es/') ? 'es' : pagePath.startsWith('/fr/') ? 'fr' : 'en';
   assert.match(html, new RegExp(`<html\\s+lang=["']${language}["']`), `Wrong language: ${pagePath}`);
   assert.doesNotMatch(html, /Design preview|Vista previa|\{\{[A-Z_0-9]+\}\}|\/\*__[A-Z_]+__\*\//i, `Preview text or unexpanded marker: ${pagePath}`);
   assert.doesNotMatch(html, /\uFFFD/, `Invalid text encoding: ${pagePath}`);
   const markup = withoutScripts(html);
+  if (language === 'fr') {
+    const prose = markup.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
+    for (const [, node] of prose.matchAll(/>([^<>]+)</g)) {
+      const key = decode(node).trim();
+      assert.ok(!Object.hasOwn(french, key) || french[key] === key, `Untranslated French text: ${pagePath}: ${key}`);
+    }
+  }
   assert.doesNotMatch(decode(markup) + textContent(markup), /buy[\s\u00ad\u200b\u2010-\u2015-]*box/i, `Use acquisition criteria instead of the retired label: ${pagePath}`);
   const forms = [...markup.matchAll(/<form\b[^>]*>/gi)].map(match => attributes(match[0]));
   const hasSignout = forms.some(form => form.action === '/logout' && form.method?.toLowerCase() === 'post');
@@ -184,7 +205,7 @@ for (const [pagePath, html] of pages) {
   assert.equal(socialValue('og:description'), card.description);
   assert.equal(socialValue('og:url'), card.url);
   assert.equal(socialValue('og:locale'), card.locale);
-  assert.equal(socialValue('og:locale:alternate'), card.alternateLocale);
+  assert.deepEqual(socialTags.filter(tag => tag.property === 'og:locale:alternate').map(tag => tag.content).sort(), [...card.alternateLocales].sort(), `Alternate social locales: ${pagePath}`);
   assert.equal(socialValue('og:image'), origin + card.imagePath);
   assert.equal(socialValue('og:image:width'), '1200');
   assert.equal(socialValue('og:image:height'), '630');
@@ -194,7 +215,19 @@ for (const [pagePath, html] of pages) {
   assert.equal(socialValue('description'), card.description);
   if (!pagePath.endsWith('/index.html')) {
     assert.equal((markup.match(/class="locale-switch(?:\s[^"]*)?"/g)||[]).length,1, `Exactly one resource language switch: ${pagePath}`);
+    const switchMarkup = markup.match(/<nav\b[^>]*class="locale-switch[^>]*>[\s\S]*?<\/nav>/)?.[0] || '';
+    const choices = [...switchMarkup.matchAll(/<a\b[^>]*>/g)].map(match => attributes(match[0]));
+    assert.deepEqual(choices.map(choice => choice.lang), ['en', 'es', 'fr'], `All three resource languages must be available: ${pagePath}`);
+    assert.deepEqual(choices.filter(choice => choice['aria-current'] === 'page').map(choice => choice.lang), [language], `Current resource language: ${pagePath}`);
     continue;
+  }
+  const languageButtons = [...markup.matchAll(/<button\b[^>]*\bdata-language="[^"]+"[^>]*>/g)].map(match => attributes(match[0]));
+  assert.deepEqual(languageButtons.map(button => button['data-language']), ['en', 'es', 'fr'], `All three homepage languages must be available: ${pagePath}`);
+  const downloads = [...markup.matchAll(/<a\b[^>]*\bdata-presentation-pdf\b[^>]*>/g)].map(match => attributes(match[0]));
+  assert.ok(downloads.length >= 1, `Missing presentation PDF download: ${pagePath}`);
+  for (const download of downloads) {
+    assert.equal(download.href, PRESENTATION_PDFS[language], `PDF download must match the current language: ${pagePath}`);
+    assert.equal(download.download, path.posix.basename(PRESENTATION_PDFS[language]), `PDF download filename must identify its language: ${pagePath}`);
   }
   assert.match(html, /window\.DULCINEA_WEB\s*=\s*true\s*;/, `Portable build deployed: ${pagePath}`);
   const injected = html.match(/window\.DULCINEA_ASSETS\s*=\s*(\{[^\n]*?\})\s*;/);
@@ -222,17 +255,18 @@ for (const [pagePath, html] of pages) {
   assert.equal(story.main.find(step=>step.id==='team')?.selector, '#team', 'Presentation must reuse the complete core team section');
   const expectedRoles = language==='es'
     ? ['Fundador y Socio Director','Director de Desarrollo Corporativo','Directora de Desarrollo de Negocios','Directora de Marketing']
-    : ['Founder and Managing Partner','Director of Corporate Development','Director of Business Development','Director of Marketing'];
+    : ['Founder and Managing Partner','Director of Corporate Development','Director of Business Development','Director of Marketing'].map(role => language === 'fr' ? frenchText(role) : role);
   assert.deepEqual(coreProfiles.map(profile=>textContent(profile.match(/<p class="micro"[^>]*>[\s\S]*?<\/p>/)?.[0] || '').trim()), expectedRoles, `Current user-approved core team titles: ${pagePath}`);
-  assert.deepEqual(coreProfiles.map(profile=>textContent(profile.match(/<p class="team-affiliation"[^>]*>[\s\S]*?<\/p>/)?.[0] || '').trim()), ['KIT Capital','KIT Capital',language==='es' ? 'KIT Capital y Dulcinea' : 'KIT Capital and Dulcinea',language==='es' ? 'KIT Capital y Dulcinea' : 'KIT Capital and Dulcinea'], `Core team affiliations: ${pagePath}`);
+  const sharedAffiliation = language === 'es' ? 'KIT Capital y Dulcinea' : language === 'fr' ? frenchText('KIT Capital and Dulcinea') : 'KIT Capital and Dulcinea';
+  assert.deepEqual(coreProfiles.map(profile=>textContent(profile.match(/<p class="team-affiliation"[^>]*>[\s\S]*?<\/p>/)?.[0] || '').trim()), ['KIT Capital','KIT Capital',sharedAffiliation,sharedAffiliation], `Core team affiliations: ${pagePath}`);
   const nataliaPortrait = attributes(coreProfiles[3].match(/<img\b[^>]*>/)?.[0] || '');
   assert.ok(nataliaPortrait.src && map['natalia.png'], `Missing Natalia portrait or approved media alias: ${pagePath}`);
   assert.equal(nataliaPortrait.src, map['natalia.png'], `Natalia portrait must use its approved media alias: ${pagePath}`);
   assert.equal(nataliaPortrait.alt, 'Natalia Carvajal', `Natalia portrait description: ${pagePath}`);
-  assert.ok(textContent(coreProfiles[3]).includes(language==='es' ? 'Directora de Marketing' : 'Director of Marketing'), `Missing localized Natalia role: ${pagePath}`);
+  assert.ok(textContent(coreProfiles[3]).includes(expectedRoles[3]), `Missing localized Natalia role: ${pagePath}`);
   const coreBios = coreProfiles.map(profile=>textContent(profile.match(/<p\b[^>]*class="team-bio"[^>]*>[\s\S]*?<\/p>/)?.[0] || '').trim());
-  assert.ok(coreBios.every(bio=>bio.split(/\s+/).length === (language==='es' ? 27 : 24)), `Core biographies must have uniform reading length: ${pagePath}`);
-  assert.doesNotMatch(coreBios[3], /Director of Marketing|Directora de Marketing/i, 'Natalia biography must not repeat her role label');
+  assert.ok(coreBios.every(bio=>language === 'fr' ? bio.split(/\s+/).length >= 18 && bio.split(/\s+/).length <= 45 : bio.split(/\s+/).length === (language==='es' ? 27 : 24)), `Core biographies must retain concise reading lengths: ${pagePath}`);
+  assert.ok(!coreBios[3].includes(expectedRoles[3]), 'Natalia biography must not repeat her role label');
   assert.match(markup, /id=["']plans-dialog["']/, `Missing plan viewer: ${pagePath}`);
   for(const chapter of ['destination','ownership','member-benefits','owner-use','oriente','after-dark','resources','home-films']) assert.ok(markup.includes(`id="${chapter}"`),`Missing homepage chapter ${chapter}: ${pagePath}`);
   const chapterOrder=['ownership','oriente','destination','after-dark','experience','member-benefits','homes','approach','team','specialists','returns','fund','resources','contact'];
@@ -272,27 +306,37 @@ for (const [pagePath, html] of pages) {
   assert.deepEqual(homePlans.flatMap(([, planList]) => planList).sort((a, b) => a - b), [1, 2, 3, 4, 5, 6, 7, 8, 9], `Plan coverage is incomplete or duplicated: ${pagePath}`);
   assert.deepEqual(homePlans.find(([key]) => key === 'montana')?.[1], [], 'Do not invent Casa Montana plans');
   for (const name of ['financial-statements', 'investment-criteria', 'specialists', 'disclaimer']) {
-    const target = `/${language === 'es' ? 'es/' : ''}${name}.html`;
+    const target = `/${language === 'en' ? '' : language + '/'}${name}.html`;
     assert.ok(markup.includes(`href="${target}"`), `Missing ${language} navigation resource ${name}`);
   }
   const text = textContent(markup);
   assert.match(markup, /class="legal-notice"/, `Missing homepage disclosure: ${pagePath}`);
-  for (const phrase of language === 'en'
-    ? ['Dulcinea One is our first fund, with a projected four-year term.', 'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake', 'Each active home adds 73 nights.', 'Cancel 30 days ahead.', 'Winners sit out the next draw.', 'Delaware LLC']
-    : ['Dulcinea One es nuestro primer fondo, con un plazo proyectado de cuatro años.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Beneficios de membresía', 'Participación colectiva', 'Cada propiedad activa aporta 73 noches.', 'Cancele con 30 días de anticipación.', 'Los ganadores no participan en el siguiente sorteo.', 'LLC de Delaware']) {
-    assert.ok(text.includes(phrase), `Missing visible ${language} investor content: ${phrase}`);
+  const englishPhrases = ['Dulcinea One is our first fund, with a projected four-year term.', 'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake', 'Each active home adds 73 nights.', 'Cancel 30 days ahead.', 'Winners sit out the next draw.', 'Delaware LLC'];
+  const frenchPhrases = [
+    'Dulcinea One is our first fund, with a projected four-year term. The return model combines rental income with projected profits on sale.',
+    'Lola & Ber Hospitality', '30% already committed.', 'Member benefits', 'Members’ collective stake',
+    'The pool reaches 365 nights when all five homes operate. Each active home adds 73 nights.',
+    'Book any home in service for at least two nights. Swaps within 48 hours. Cancel 30 days ahead.',
+    'Christmas to New Year, Semana Santa and Feria de las Flores: one stay per home, three nights minimum. A draw weighted by Units allocates stays. Winners sit out the next draw.',
+    'You subscribe for units in a Delaware LLC fund investing in five homes without debt. Capital is paid in installments during Year 1, including a reserve for the fund’s term.',
+  ].map(frenchText);
+  for (const phrase of language === 'es'
+    ? ['Dulcinea One es nuestro primer fondo, con un plazo proyectado de cuatro años.', 'Lola & Ber Hospitality', '30% ya comprometido.', 'Beneficios de membresía', 'Participación colectiva', 'Cada propiedad activa aporta 73 noches.', 'Cancele con 30 días de anticipación.', 'Los ganadores no participan en el siguiente sorteo.', 'LLC de Delaware']
+    : language === 'fr' ? frenchPhrases : englishPhrases) {
+    assert.ok(text.includes(normalizeWhitespace(phrase)), `Missing visible ${language} investor content: ${phrase}`);
   }
 }
 
-for (const prefix of ['', '/es']) {
+for (const prefix of ['', '/es', '/fr']) {
+  const language = prefix ? prefix.slice(1) : 'en';
   const financial = pages.get(`${prefix}/financial-statements.html`);
   const criteria = pages.get(`${prefix}/investment-criteria.html`);
   const disclaimer = pages.get(`${prefix}/disclaimer.html`);
   const specialists = pages.get(`${prefix}/specialists.html`);
-  assert.match(textContent(financial), prefix ? /Estados financieros pro forma/ : /Pro forma financial statements/);
-  assert.match(textContent(disclaimer), prefix ? /portafolio en su conjunto/ : /portfolio as a whole/);
-  assert.match(textContent(disclaimer), prefix ? /no auditadas/ : /unaudited/);
-  assert.match(textContent(specialists), prefix ? /Especialistas locales/ : /Local specialists/);
+  assert.match(textContent(financial), language === 'fr' ? /États financiers pro forma/ : language === 'es' ? /Estados financieros pro forma/ : /Pro forma financial statements/);
+  assert.match(textContent(disclaimer), language === 'fr' ? /ensemble du portefeuille/ : language === 'es' ? /portafolio en su conjunto/ : /portfolio as a whole/);
+  assert.match(textContent(disclaimer), language === 'fr' ? /non auditées/ : language === 'es' ? /no auditadas/ : /unaudited/);
+  assert.match(textContent(specialists), language === 'fr' ? /Spécialistes locaux/ : language === 'es' ? /Especialistas locales/ : /Local specialists/);
   assert.ok(specialists.includes('dulcinea-one-white-gold.svg') && specialists.includes('class="resource-navigation"'), 'Resource navigation needs the light logo on its dark background');
   assert.ok(specialists.includes(`href="${prefix}/#specialists"`), 'Missing localized specialists return link');
   assert.ok(specialists.includes(`href="${prefix}/#team"`), 'Missing localized core-team return link');
@@ -307,7 +351,7 @@ for (const prefix of ['', '/es']) {
   assert.equal(fullBios.length, presentationBios.length, 'Each concise specialist biography needs its full website version');
   for (const [index, bio] of presentationBios.entries()) {
     const copy = textContent(bio).trim();
-    assert.equal(copy, attributes(bio.match(/<p\b[^>]*>/)[0])[`data-${prefix ? 'es' : 'en'}`], 'Concise specialist biography must use the current page language');
+    assert.equal(copy, normalizeWhitespace(attributes(bio.match(/<p\b[^>]*>/)[0])[`data-${language}`]), 'Concise specialist biography must use the current page language');
     assert.ok(copy.length > 0 && copy.length < textContent(fullBios[index]).trim().length, 'Presentation specialist biography must be concise and nonempty');
   }
   const websiteSpecialists = homeSpecialists.replace(presentationBioPattern, '').replaceAll('class="specialist-bio website-only"', 'class="specialist-bio"');
@@ -328,7 +372,7 @@ for (const prefix of ['', '/es']) {
 const videoHashes = new Map();
 for(const name of ['financial-statements','investment-criteria','specialists']){
   const styles=html=>[...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map(match=>match[1]);
-  assert.deepEqual(styles(pages.get(`/es/${name}.html`)),styles(pages.get(`/${name}.html`)),`Translation changed responsive CSS: ${name}`);
+  for (const language of ['es', 'fr']) assert.deepEqual(styles(pages.get(`/${language}/${name}.html`)),styles(pages.get(`/${name}.html`)),`Translation changed responsive CSS: ${language}/${name}`);
 }
 for (const [url, filename] of files) {
   if (!url.endsWith('.mp4')) continue;
@@ -337,4 +381,4 @@ for (const [url, filename] of files) {
   assert.ok(!videoHashes.has(hash), `Duplicate MP4 bytes: ${url} and ${videoHashes.get(hash)}`);
   videoHashes.set(hash, url);
 }
-console.log(`Verified protected investor build: ${pages.size} EN/ES pages, ${files.size} files, ${Object.keys(aliases).length} media aliases, ${videoHashes.size} distinct MP4s, ${compiledScripts} parsed inline scripts; links, plan coverage, team, offer, sign-out and public share assets passed.`);
+console.log(`Verified protected investor build: ${pages.size} EN/ES/FR pages, ${files.size} files, ${Object.keys(aliases).length} media aliases, ${videoHashes.size} distinct MP4s, ${compiledScripts} parsed inline scripts; three localized presentation PDFs, links, plan coverage, team, offer, sign-out and public share assets passed.`);

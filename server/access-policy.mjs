@@ -1,8 +1,10 @@
 import { publicAssetPaths } from './public-asset-paths.mjs';
+import { PRESENTATION_PDFS } from '../shared/presentation-downloads.mjs';
 
-const publicAssets = new Set(publicAssetPaths);
+const publicDownloads = new Set(['/downloads/Dulcinea-Floorplans.pdf', ...Object.values(PRESENTATION_PDFS)]);
+const publicAssets = new Set([...publicAssetPaths, ...publicDownloads]);
 const pages = new Map();
-for (const prefix of ['', '/es']) {
+for (const prefix of ['', '/es', '/fr']) {
   for (const name of ['index', 'investment-criteria', 'specialists', 'disclaimer', 'financial-statements']) {
     const asset = `${prefix}/${name}.html`;
     const access = name === 'financial-statements' ? 'private' : 'public';
@@ -25,10 +27,10 @@ export function assetPolicy(pathname) {
     decoded = new URL(decoded, 'https://asset.invalid').pathname;
   } catch { return { access: 'denied' }; }
   if (pages.has(decoded)) return pages.get(decoded);
-  // Reserved for future, explicitly approved investor downloads. Nothing here
-  // is currently publishable; authenticating does not expose source documents.
-  if ((decoded !== '/downloads/Dulcinea-Floorplans.pdf' && /^\/(?:downloads|private-documents)(?:\/|$)/i.test(decoded))
-      || /^\/(?:es\/)?financial-statements(?:[./;]|$)/i.test(decoded)) return { access: 'private' };
+  // Only the named public presentations and floorplans are downloadable.
+  // Authenticating does not expose other source documents.
+  if ((!publicDownloads.has(decoded) && /^\/(?:downloads|private-documents)(?:\/|$)/i.test(decoded))
+      || /^\/(?:(?:es|fr)\/)?financial-statements(?:[./;]|$)/i.test(decoded)) return { access: 'private' };
   if (publicAssets.has(decoded)) return { access: 'public', asset: decoded };
   return { access: 'denied' };
 }

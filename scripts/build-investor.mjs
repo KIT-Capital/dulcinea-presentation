@@ -7,6 +7,8 @@ import {disclosures,homeDisclosure,fullDisclosure} from '../shared/investor-disc
 import {investorFontCss} from '../shared/investor-typography.mjs';
 import {renderSpecialists} from '../shared/team.mjs';
 import {renderSocialMetadata,SOCIAL_ORIGIN,REVIEW_ORIGIN,SOCIAL_IMAGE_PATH,SOCIAL_IMAGE_ES_PATH} from '../shared/social-metadata.mjs';
+import {french, frenchAttributes, frenchMarkup, frenchText} from '../shared/locales.mjs';
+import {PRESENTATION_PDFS} from '../shared/presentation-downloads.mjs';
 import {FAVICON_ASSETS,renderFaviconMetadata} from '../shared/favicon.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -26,8 +28,9 @@ const resources=['financial-statements','investment-criteria','specialists','dis
 
 async function asset(source,target=source){
   const approvedFloorplans = source === 'source-packages/PLANOS PROPIEDADES DULCINEA.pdf' && target === 'downloads/Dulcinea-Floorplans.pdf';
+  const approvedPresentation = Object.values(PRESENTATION_PDFS).includes('/' + source) && target === source;
   const approvedIcon = source === FAVICON_ASSETS['favicon.ico'] && target === 'favicon.ico';
-  if (!approvedFloorplans && !approvedIcon && !/\.(?:avif|gif|jpe?g|png|svg|webp|mp4|woff2?|ttf)$/i.test(source)) throw Error(`Source documents cannot be published: ${source}`);
+  if (!approvedFloorplans && !approvedPresentation && !approvedIcon && !/\.(?:avif|gif|jpe?g|png|svg|webp|mp4|woff2?|ttf)$/i.test(source)) throw Error(`Source documents cannot be published: ${source}`);
   const sourcePath=path.resolve(root,source),targetPath=path.resolve(destination,target);
   if(!sourcePath.startsWith(root+path.sep)||!targetPath.startsWith(destination+path.sep)) throw Error('Asset outside build directory');
   if((await stat(sourcePath)).size>25*1024*1024) throw Error(`Asset exceeds Cloudflare limit: ${source}`);
@@ -39,6 +42,10 @@ async function asset(source,target=source){
   return web?'/'+target.replaceAll('\\','/'):source.replaceAll('\\','/');
 }
 const media={};
+for (const url of Object.values(PRESENTATION_PDFS)) {
+  // Draft renders can precede PDF regeneration. Release verification requires all three.
+  try { await asset(url.slice(1)); } catch (error) { if(error.code !== 'ENOENT') throw error; }
+}
 for(const [name,source] of Object.entries(aliases)) media[name]=await asset(source,name==='floorplans.pdf'?'downloads/Dulcinea-Floorplans.pdf':source);
 if(web){
   const sizes={};
@@ -60,6 +67,7 @@ for(const [target,source] of Object.entries(FAVICON_ASSETS)){
 }
 
 function localize(markup,locale){
+  markup = frenchAttributes(markup);
   // Translate only authored text nodes, never JavaScript or media identifiers.
   return markup.replace(/<([a-z][\w-]*)\b([^>]*\bdata-en="[^"]*"[^>]*\bdata-es="[^"]*"[^>]*)>[\s\S]*?<\/\1>/g,(whole,tag,attributes)=>{
     const text=attributes.match(new RegExp(`\\bdata-${locale}="([^"]*)"`))[1];
@@ -78,8 +86,8 @@ function shareMetadata(locale){
 function resourceNavigation(markup,name,locale){
   if(markup.split('{{RESOURCE_NAVIGATION}}').length!==2) throw Error(`Expected one navigation marker: ${name}`);
   if(markup.split('{{RESOURCE_RETURN}}').length!==2) throw Error(`Expected one website return marker: ${name}`);
-  const logo=web?darkLogo:(locale==='es'?'../':'')+darkLogo;
-  const font=web?media['font-manrope.woff2']:(locale==='es'?'../':'')+media['font-manrope.woff2'];
+  const logo=web?darkLogo:(locale!=='en'?'../':'')+darkLogo;
+  const font=web?media['font-manrope.woff2']:(locale!=='en'?'../':'')+media['font-manrope.woff2'];
   return markup.replace('</head>',`<style>${investorNavigationCss}${investorFontCss(font)}</style></head>`)
     .replace('{{RESOURCE_NAVIGATION}}',renderInvestorNavigation({name,locale,web,logo}))
     .replace('{{RESOURCE_RETURN}}',renderInvestorReturn({name,locale,web}))
@@ -92,15 +100,15 @@ async function output(name,content){
   // Only an explicitly selected review build disables contact actions.
   if(review)content=content.replace(/href="((?:mailto:|tel:|https:\/\/wa\.me\/)[^"]*)"/g,(_,target)=>`href="#contact" data-preview-contact="${target}"`);
   if(!name.endsWith('index.html'))content=content.replace('</body>',`<script>${await read('src/investor/redesign.js')}</script></body>`);
-  const iconBase=web?'/':name.startsWith('es/')?'../':'';
+  const iconBase=web?'/':/^(es|fr)\//.test(name)?'../':'';
   content=content.replace('</head>',`${renderFaviconMetadata({basePath:iconBase})}\n</head>`);
   await writeFile(file,content.replace(/^[\t ]+$/gm,''));
   kept.add(file);
 }
 const [template,styles,script,presentationStyles,presentationScript,responsiveStyles,floorplanStyles,propertyStyles,storyStyles]=await Promise.all(['src/investor/index.html','src/investor/style.css','src/investor/app.js','src/investor/presentation.css','src/investor/presentation.js','src/investor/presentation-responsive.css','src/investor/floorplans.css','src/investor/properties.css','src/investor/homepage-story.css'].map(read));
-for(const locale of ['en','es']){
-  const prefix=locale==='es'?'es/':'';
-  const relative=locale==='es'?'../':'';
+for(const locale of ['en','es','fr']){
+  const prefix=locale==='en'?'':`${locale}/`;
+  const relative=locale!=='en'?'../':'';
   const localeMedia=Object.fromEntries(Object.entries(media).map(([name,url])=>[name,web?url:relative+url]));
   let html=localize(template.replace('{{HOME_DISCLOSURE}}',homeDisclosure(locale)).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale,{presentationVariants:true})),locale).replace('<html lang="en">',`<html lang="${locale}">`)
     .replace(/<title>[^<]*<\/title>/,shareMetadata(locale))
@@ -113,6 +121,7 @@ for(const locale of ['en','es']){
     .replace('<link rel="stylesheet" href="typography.css">',`<style>${await read('src/investor/typography.css')}</style>`)
     .replace('<link rel="stylesheet" href="redesign.css">',`<style>${await read('src/investor/redesign.css')}</style>`)
     .replace('<link rel="stylesheet" href="navigation.css">',`<style>${await read('src/investor/navigation.css')}</style>`)
+    .replace('</head>',`<style>${await read('src/investor/presentation-print.css')}</style></head>`)
     .replace('</head>',`<link rel="preload" href="media/font-manrope.woff2" as="font" type="font/woff2" crossorigin><style>${investorFontCss('media/font-manrope.woff2')}</style></head>`)
     .replace(/(["'])media\/([^"']+)\1/g,(_,quote,name)=>{
       if(!localeMedia[name]) throw Error(`Unknown media alias: ${name}`);
@@ -120,24 +129,29 @@ for(const locale of ['en','es']){
     });
   if(!web)html=html.replace(/<form\b[^>]*class="[^"]*(?:signout|session-exit)[^"]*"[^>]*>[\s\S]*?<\/form>/g,'');
   html=html.replaceAll('href="/downloads/Dulcinea-Floorplans.pdf"',`href="${localeMedia['floorplans.pdf']}"`);
+  const presentationPdf=PRESENTATION_PDFS[locale];
+  html=html.replaceAll('href="downloads/Dulcinea-Presentation-EN.pdf"',`href="${web?presentationPdf:relative+presentationPdf.slice(1)}"`)
+    .replaceAll('download="Dulcinea-Presentation-EN.pdf"',`download="${path.posix.basename(presentationPdf)}"`);
   for(const resource of resources){
     const target=web?`/${prefix}${resource}.html`:`${resource}.html`;
     html=html.replaceAll(`href="${resource}.html`, `href="${target}`);
   }
-  html=html.replace('<script src="app.js"></script>',`<script>window.DULCINEA_WEB=${web};window.DULCINEA_ASSETS=${JSON.stringify(localeMedia)};window.DULCINEA_STORY=${JSON.stringify(presentationStory)};\n${script}</script>`);
+  html=html.replace('<script src="app.js"></script>',`<script>window.DULCINEA_FR=${JSON.stringify(french).replaceAll('<','\\u003c')};window.DULCINEA_WEB=${web};window.DULCINEA_ASSETS=${JSON.stringify(localeMedia)};window.DULCINEA_STORY=${JSON.stringify(presentationStory)};\n${script}</script>`);
   html=html.replace('<script src="navigation.js"></script>',`<script>${await read('src/investor/navigation.js')}</script>`);
   html=html.replace('<script src="presentation.js"></script>',`<script>${presentationScript}</script>`);
   html=html.replace('<script src="redesign.js"></script>',`<script>${await read('src/investor/redesign.js')}</script>`);
+  if(locale==='fr')html=frenchMarkup(html);
   await output(`${prefix}index.html`,html);
   for(const name of resources){
     let page=await read(`src/${name}.html`);
     if(!web) page=page.replace(/<form\b[^>]*class="[^"]*session-exit[^"]*"[^>]*>[\s\S]*?<\/form>/g,'').replace(/<script id="statement-session-exit">[\s\S]*?<\/script>/g,'').replace(/<p\b[^>]*id="statement-signout-error"[^>]*>[\s\S]*?<\/p>/g,'');
     if(name==='disclaimer')page=localize(page.replace('{{DISCLAIMER_TITLE}}',`Dulcinea One — ${disclosures.title[locale==='es'?1:0]}`).replace('{{DISCLAIMER_CONTENT}}',fullDisclosure(locale)),locale);
     if(name==='specialists')page=localize(page.replace('{{SPECIALISTS_TITLE}}',`Dulcinea One — ${locale==='es'?'Especialistas locales':'Local specialists'}`).replace('{{SPECIALISTS_CONTENT}}',renderSpecialists(locale)),locale);
-    page=page.replace(/href="index\.html#slide-[78]"/g,`href="${web?(locale==='es'?'/es/':'/'):'index.html'}#${name==='financial-statements'?'fund':'homes'}"`);
+    page=page.replace(/href="index\.html#slide-[78]"/g,`href="${web?('/'+prefix):'index.html'}#${name==='financial-statements'?'fund':'homes'}"`);
     page=page.replace(/href="index\.html#(home|team|specialists)"/g,(_,section)=>`href="${web?'/'+prefix:'index.html'}#${section}"`);
     for(const resource of resources)page=page.replaceAll(`href="${resource}.html`, `href="${web?'/'+prefix:''}${resource}.html`);
     if(locale==='es') page=(['disclaimer','specialists'].includes(name)?page.replace('aria-label="Documents"','aria-label="Documentos"'):translateResource(page)).replace('<html lang="en">','<html lang="es">');
+    if(locale==='fr')page=frenchMarkup(page).replace('<html lang="en">','<html lang="fr">');
     page=page.replace(/<meta\b(?=[^>]*\bname="description")[^>]*>/gi,'')
       .replace(/<title>[^<]*<\/title>/,renderSocialMetadata(locale,{includeDocumentMetadata:true,origin,page:name}));
     await output(`${prefix}${name}.html`,resourceNavigation(page,name,locale));
@@ -154,8 +168,8 @@ if(web){
   }
   await prune(destination);
   const publicPaths=[...kept].map(file=>'/'+path.relative(destination,file).replaceAll('\\','/')).filter(file=>!file.endsWith('.html')).sort();
-  await writeFile(path.join(root,'server/public-asset-paths.mjs'),`// Generated by the web build. Only approved presentation media and the floorplan PDF are public.\nexport const publicAssetPaths=Object.freeze(${JSON.stringify(publicPaths,null,2)});\n`);
+  await writeFile(path.join(root,'server/public-asset-paths.mjs'),`// Generated by the web build. Only approved presentation media, rendered presentations and the floorplan PDF are public.\nexport const publicAssetPaths=Object.freeze(${JSON.stringify(publicPaths,null,2)});\n`);
   // Deployment bookkeeping stays outside the hosted asset directory.
   await writeFile(buildMarker,JSON.stringify({version:1,mode:review?'review':'production',origin},null,2)+'\n');
 }
-console.log(`Built investor site (${review?'review':'production'}; ${web?'web':'portable'}), English/Spanish, ${Object.keys(media).length} media aliases, pro forma financial statements, criteria, specialists and disclaimer.`);
+console.log(`Built investor site (${review?'review':'production'}; ${web?'web':'portable'}), English/Spanish/French, ${Object.keys(media).length} media aliases, pro forma financial statements, criteria, specialists and disclaimer.`);

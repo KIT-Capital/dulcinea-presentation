@@ -111,6 +111,7 @@ body:not(.is-presenting) > .header > .contact-nav-mobile { display:none; }
   }
   body:not(.is-presenting) .header-navigation .present-launch span { display:inline; }
   body:not(.is-presenting) .header-navigation .language {
+    flex-wrap:wrap;
     gap:4px;
     margin:0;
     padding:0;
@@ -118,9 +119,9 @@ body:not(.is-presenting) > .header > .contact-nav-mobile { display:none; }
   }
   body:not(.is-presenting) .header-navigation .language button {
     justify-content:center;
-    min-width:56px;
+    min-width:44px;
     min-height:44px;
-    padding:10px 8px;
+    padding:10px 5px;
     color:var(--ink);
     opacity:1;
     font-size:14px;

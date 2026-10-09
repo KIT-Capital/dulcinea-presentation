@@ -1,0 +1,18 @@
+/* Export the active online slide at its authored 16:9 size. */
+@page { size: 15in 8.4375in; margin: 0; }
+@media print {
+  html:has(body.is-presenting), body.is-presenting {
+    width: 1440px !important; height: 810px !important;
+    min-height: 0 !important; overflow: hidden !important;
+    margin: 0 !important; padding: 0 !important;
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  body.is-presenting > :not(#main) { display: none !important; }
+  body.is-presenting #main {
+    position: absolute !important; left: 0 !important; top: 0 !important;
+    width: 1440px !important; height: 810px !important;
+    transform: none !important; box-shadow: none !important;
+  }
+  body.is-presenting #main > .presentation-active { animation: none !important; }
+  body.is-presenting .motion, body.is-presenting .film-control { display: none !important; }
+}

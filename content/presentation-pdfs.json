@@ -1,0 +1,451 @@
+{
+  "version": 1,
+  "sourceAlgorithm": "sha256-path-content-v1",
+  "sourceSha256": "2fa36487fd953f21818e027fcdf87e8604ed00d3d3ec8902e1acbacf95cb5714",
+  "slideCount": 21,
+  "exportedAt": "2026-10-09T19:05:55.311Z",
+  "locales": {
+    "en": {
+      "path": "downloads/Dulcinea-Presentation-EN.pdf",
+      "pageCount": 21,
+      "sha256": "41ff2384ce8406ba14b17aa9a39fd11c84e9d5200917fd07d2fd2c16d76a8092"
+    },
+    "es": {
+      "path": "downloads/Dulcinea-Presentation-ES.pdf",
+      "pageCount": 21,
+      "sha256": "5289b4da13cc8cd2e618552374f277ed4e0ccbf203b957db591726117e190f5b"
+    },
+    "fr": {
+      "path": "downloads/Dulcinea-Presentation-FR.pdf",
+      "pageCount": 21,
+      "sha256": "e310c6f6d9f1d5f08ccdd7e2095825ec7bc7340dfd597962079fb05a8c8f08be"
+    }
+  },
+  "sourceFiles": [
+    {
+      "path": "assets/fonts/manrope/manrope-variable.woff2",
+      "bytes": 53832,
+      "sha256": "eb156aacb4369a62a855edc1f821bfc4ef3317eb0ea21d5e91ced206fab26bc3"
+    },
+    {
+      "path": "assets/images/2026-10-slide-update/lola-ber-retreat-community.jpeg",
+      "bytes": 107134,
+      "sha256": "00cfe5f1dd7cc5bab6036be94457500ce2a8f6c666520e951cfff3a126064bb2"
+    },
+    {
+      "path": "assets/images/2026-10-slide-update/lola-ber-retreat-terrace.png",
+      "bytes": 512171,
+      "sha256": "4776200530e6add50e9eef4454688553e8e93ef5e59c33e4e931406e1a575959"
+    },
+    {
+      "path": "assets/images/2026-10-slide-update/medellin-oriente-map.jpg",
+      "bytes": 177609,
+      "sha256": "c7d632d28f4a431c3126f9a9e2d85df1c5392948f08fbc0058e0e47d96c627b3"
+    },
+    {
+      "path": "assets/images/floorplans/page-01-fontanar-floor-1.webp",
+      "bytes": 569860,
+      "sha256": "d8485a9cf80fe95aec1b5aa7d5994ad7e0f850d8d5c732c54ea6e4ac5ae0c773"
+    },
+    {
+      "path": "assets/images/floorplans/page-02-fontanar-floor-2.webp",
+      "bytes": 412120,
+      "sha256": "871dab5820119bdc41262353f7d14c623d76a908630ef0cde8a8474d9b00fe50"
+    },
+    {
+      "path": "assets/images/floorplans/page-03-monte-sereno-site.webp",
+      "bytes": 328748,
+      "sha256": "257f01c34cb47eea6c076c138fa30b2daeb8881651a7ed66ac061f47f7470e95"
+    },
+    {
+      "path": "assets/images/floorplans/page-04-monte-sereno-floor-1.webp",
+      "bytes": 66488,
+      "sha256": "958e4f175dce461bc1ee9b7a719e525d600c94da115be740e910546c35b92436"
+    },
+    {
+      "path": "assets/images/floorplans/page-05-monte-sereno-roof.webp",
+      "bytes": 70642,
+      "sha256": "7a417c349e4afb625e07ff6bc80bf9a47bc13aca14abf12f963131eb08b97d64"
+    },
+    {
+      "path": "assets/images/floorplans/page-06-aires-del-campestre-floor-1.webp",
+      "bytes": 4068,
+      "sha256": "0e2d3361068f00a2da95be9a469e9402d5fdd1cecf36e75e001264c279ecc565"
+    },
+    {
+      "path": "assets/images/floorplans/page-07-aires-del-campestre-floor-2.webp",
+      "bytes": 4620,
+      "sha256": "94705af93c1664552da3b6f71ea39336f8f24af0a8f0b20127f7d16a2a03d202"
+    },
+    {
+      "path": "assets/images/floorplans/page-08-san-lucas-floor-1.webp",
+      "bytes": 6602,
+      "sha256": "88a85c224c06a67cb6eaff7e05ecb41db8e4e2dc9d0147db4794a46b2526ea1e"
+    },
+    {
+      "path": "assets/images/floorplans/page-09-san-lucas-floor-2.webp",
+      "bytes": 6120,
+      "sha256": "36d2db005807526d7f45c58e2063a859f36ffd12ef018a6f07bd7c2b952977d5"
+    },
+    {
+      "path": "assets/images/investor-deck/image24.png",
+      "bytes": 415156,
+      "sha256": "3ce0e4dba42311ed2e2c5666194153da46639b3e5bd63b2c3cabd0931fd0045a"
+    },
+    {
+      "path": "assets/images/investor-deck/image44.png",
+      "bytes": 1183973,
+      "sha256": "699d3c323cb960c59dff38f3cbeba5bd6315ecd099af1bcc7552e4d85fe136d4"
+    },
+    {
+      "path": "assets/images/investor-deck/image45.png",
+      "bytes": 921710,
+      "sha256": "824b41f53def68d33081fa71734f6c44babb0e42dc0a86512cb1dc1829ca21b2"
+    },
+    {
+      "path": "assets/images/investor-deck/image46.jpeg",
+      "bytes": 154010,
+      "sha256": "e844733b48cfcd4361d736a85735fe6333f90408b867d6e286b9e60074b2efb0"
+    },
+    {
+      "path": "assets/images/investor-deck/image47.png",
+      "bytes": 1055170,
+      "sha256": "ef35786f9114d5461dae6eadb0403b04b3a3d37ad6896344d1ef73f7f0c97187"
+    },
+    {
+      "path": "assets/images/investor-deck/image48.png",
+      "bytes": 852171,
+      "sha256": "0bd6f4187e6e88999e4cf27cb12931034ccac0c0e5cff99b77a6f3a483d88335"
+    },
+    {
+      "path": "assets/images/investor-deck/image7.jpeg",
+      "bytes": 216262,
+      "sha256": "451a9aea2e9c280144a22c358f74e7db217c5788c9c07fd7d3cbec8756d0e120"
+    },
+    {
+      "path": "assets/images/lifestyle/aires.jpg",
+      "bytes": 350000,
+      "sha256": "514c0b2106c7d868a3d0d4127c6471d699cbe90316d9e60599ffaff6204eba16"
+    },
+    {
+      "path": "assets/images/lifestyle/fontanar.jpg",
+      "bytes": 239635,
+      "sha256": "b8b03f3b9a3f793228402a3cc887f2f3dcacc4e2c460e42677e967e0bd1928c8"
+    },
+    {
+      "path": "assets/images/lifestyle/montana.webp",
+      "bytes": 429234,
+      "sha256": "463acff34b872a0fb7e5d3348e34425a2bbde164b1920e83b86c233a5985631e"
+    },
+    {
+      "path": "assets/images/lifestyle/monte-sereno.webp",
+      "bytes": 477222,
+      "sha256": "bf8d0cb51cc4b9f0f1391e061dcbb77a159ac35ee2b02efdfb8ad3e49acd1aa1"
+    },
+    {
+      "path": "assets/images/lifestyle/san-lucas.webp",
+      "bytes": 320662,
+      "sha256": "894c18c6e1ccde8d961e70d887ba058da5e77b462a4d93271d17476359ebff17"
+    },
+    {
+      "path": "assets/images/team/adriana-supplied.jpeg",
+      "bytes": 108768,
+      "sha256": "e49940f39872a54be6c25efa6dbd47cafc10ee088060d568bfe158a2c4e75642"
+    },
+    {
+      "path": "assets/images/team/dov-supplied.png",
+      "bytes": 119873,
+      "sha256": "73bd88efe8e9c722d92eb0011e5837c2f21be596f28a0fa6fa82be489dd03cc0"
+    },
+    {
+      "path": "assets/images/team/natalia-restored.png",
+      "bytes": 2156508,
+      "sha256": "657d46f84f5d21e7d28ddd05506e214d3fa50280aab4d5808a1155ab3fbd1c03"
+    },
+    {
+      "path": "assets/images/team/ricardo-supplied.jpg",
+      "bytes": 796934,
+      "sha256": "e5625ae0e432620aed75f1118d0fd36303a29f598c497cb2d266f9b6b36e29e0"
+    },
+    {
+      "path": "assets/video/properties/aires.mp4",
+      "bytes": 1375905,
+      "sha256": "970cc9b8b58c4ba556a2dc6291dafaae178b983a28a289d45f41c47b8319728f"
+    },
+    {
+      "path": "assets/video/properties/fontanar.mp4",
+      "bytes": 1055605,
+      "sha256": "5b57baf069c7c69e4ccbcf2131765f955bfd43ef82f2a93b9cb708ae0a473a3f"
+    },
+    {
+      "path": "assets/video/properties/montana.mp4",
+      "bytes": 1655177,
+      "sha256": "485826959a7eba314dbb27599f9a4c05e3994187fd2c581cc55451b8bb8908a6"
+    },
+    {
+      "path": "assets/video/properties/monte-sereno.mp4",
+      "bytes": 1690131,
+      "sha256": "3bb7d4e4f07df9834f0548e0d5fcc1c168ed699219ca7b2993df6e55f768e7e9"
+    },
+    {
+      "path": "assets/video/properties/san-lucas.mp4",
+      "bytes": 1645148,
+      "sha256": "220ac6633924c5a124892c0cc731489090d4265c3f94f3d9fb095849416c6f2e"
+    },
+    {
+      "path": "assets/video/review/after-dark-poster.jpg",
+      "bytes": 104695,
+      "sha256": "4c173c63d2ddbbd4d3b0f9523c20eefdbc97b2ee566843ad66aaa59c509b0e7f"
+    },
+    {
+      "path": "assets/video/review/after-dark.mp4",
+      "bytes": 4463116,
+      "sha256": "052e18b97e3f34c65924b40ece356bcc570ebc960393632b2e501a4a7e4eb428"
+    },
+    {
+      "path": "assets/video/review/city-life-poster.jpg",
+      "bytes": 371660,
+      "sha256": "ba8026d95315839ab1c43be5ffd7d8428eecd1f94cf6b6e11cd76d017b668ba9"
+    },
+    {
+      "path": "assets/video/review/city-life.mp4",
+      "bytes": 5897752,
+      "sha256": "e8810754ca88e8e57f7d0d780b1542815780b650be3f386b3c49e6a2ba0639e4"
+    },
+    {
+      "path": "assets/video/review/lola-ber-poster.jpg",
+      "bytes": 154702,
+      "sha256": "c24e0785a9ad0baf5e9313372324b587062f70c38a873c779b5e12a5e999e5e3"
+    },
+    {
+      "path": "assets/video/review/lola-ber.mp4",
+      "bytes": 6738639,
+      "sha256": "09e93d3151d2a04a2926e1ff412954cab4d97d12e3c2f74f64f381b484b50daa"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_1849343666-poster.jpg",
+      "bytes": 415658,
+      "sha256": "f9659ec312ddbd29de7cd3166b0fdac5de8c26210f8ae4d6c022a725c6c59113"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_1849343666.mp4",
+      "bytes": 8308715,
+      "sha256": "4dbc26061bb64d7bbfd51326db78c7643ac863f4b890e73a4dcf1c63b94285ee"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_2118104932-poster.jpg",
+      "bytes": 196662,
+      "sha256": "e20d19bc22aaefbeac295a506a2cd70e6be8ebc751dcb6029b36de13b2591ca7"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_2118104932.mp4",
+      "bytes": 3670771,
+      "sha256": "b90b6c27f3460437b88d7f8eabdc5ed7814af2f521b7a499d634513defd7d285"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_501694199-poster.jpg",
+      "bytes": 145833,
+      "sha256": "b96b7aae137380b7854376a4f1a3b16f80c2783c95bdd4de6136734c6d22a317"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_501694199.mp4",
+      "bytes": 15441251,
+      "sha256": "70f652ccf8c23b939393e8ecb893f5bd37e68098ab37c84bebfcf3c6c14cb528"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_514654455-poster.jpg",
+      "bytes": 77905,
+      "sha256": "4631a69cf00e2614574e277b56c776e2524f5ffc8dd92c8d46cc17d401071d46"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_514654455.mp4",
+      "bytes": 2779832,
+      "sha256": "3e65e9fbbd3c08d27ea8080eb0df88b0015c57aae951ff8da28918b2a3325e65"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_539938219-poster.jpg",
+      "bytes": 96873,
+      "sha256": "7537fbd63c13776df0580556826f9eea8d73870807154ad802c61305dd20b6f1"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_539938219.mp4",
+      "bytes": 1309712,
+      "sha256": "53601cf0531b444e08ece51269f0672c8c3f48cfa98d4185db4caab4625ca0b9"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_693150796-poster.jpg",
+      "bytes": 331105,
+      "sha256": "07ae2bb03c8d2e930115583737b242b4df4ff497f399ffad300ebcff6b739ad4"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_693150796.mp4",
+      "bytes": 10790034,
+      "sha256": "b9b7e410f4a4c3fd19865f7dbb584c7b4d30455b8bbf9d71bce9c071e3349db2"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_695926335-poster.jpg",
+      "bytes": 334024,
+      "sha256": "6d05df96d872807c4ee8ef7a2be6cba60015500608f7a656242b80ab3b6b5c22"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_695926335.mp4",
+      "bytes": 16350907,
+      "sha256": "858021ca7450532ea4d73b27f7a0d7bd9797209c3c7874836487cf13a992929e"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_762119818-poster.jpg",
+      "bytes": 85696,
+      "sha256": "82e461bd7160147c9f3db97bb0944195ddba1f18d9f4c29a2555808c175d201f"
+    },
+    {
+      "path": "assets/video/stock/AdobeStock_762119818.mp4",
+      "bytes": 1473225,
+      "sha256": "7d50539838617d04e63cfa33b193057426b1dbbee42a2fa5563b2c99fa3a2b59"
+    },
+    {
+      "path": "brand/dulcinea-one/svg/dulcinea-one-black-gold.svg",
+      "bytes": 10167,
+      "sha256": "0f729566b736489ad71408a5f95443c7e1430b5ce029016b826c18fdb400e2e1"
+    },
+    {
+      "path": "brand/dulcinea-one/svg/dulcinea-one-white-gold.svg",
+      "bytes": 10167,
+      "sha256": "cf652b2bc86a7aa094450d5141354e1ad87fbe5767818130b4dfec813b002897"
+    },
+    {
+      "path": "brand/dulcinea/svg/dulcinea-mono-white.svg",
+      "bytes": 8511,
+      "sha256": "e4e7f0b9b8525faa5670b6cbe99af834bb5b83ca54c9046eb3930ef29700ea8d"
+    },
+    {
+      "path": "brand/kit-capital/kit-capital.png",
+      "bytes": 25078,
+      "sha256": "1b866b9da26232d292f4d7265b61a2fd942b228f9d305a69a5e2b82132d80178"
+    },
+    {
+      "path": "brand/shared-symbol/svg/dulcinea-symbol-mono-white.svg",
+      "bytes": 2026,
+      "sha256": "6d09477dd3a0b03f34bd7106f6dc4bb0f608f71020f6281e227a34e15f3643fe"
+    },
+    {
+      "path": "content/locales/fr-presentation.json",
+      "bytes": 30360,
+      "sha256": "b84aaf61ea4ca212cb2d774ab05e3dd5fce25ad3f79afff7fd90d2d54b5c18ba"
+    },
+    {
+      "path": "content/locales/fr-resources.json",
+      "bytes": 31320,
+      "sha256": "dd98035dc6fc5cb89c04b2dc69e440767795b14f484759a5df932040f40f4ffc"
+    },
+    {
+      "path": "content/presentation-story.json",
+      "bytes": 3853,
+      "sha256": "2d1fd490d88898abb7e4afaad92b65ff469a6642cb475bb5eb51596c690d5517"
+    },
+    {
+      "path": "shared/investor-disclosures.mjs",
+      "bytes": 12471,
+      "sha256": "7c6d018af66b0335c0a3eed014120301e7f9ea4b3343ef02df358bf15e046fe9"
+    },
+    {
+      "path": "shared/investor-typography.mjs",
+      "bytes": 582,
+      "sha256": "e0dfce69c7d2d2a700dc391793f91636a3fc88660bf485ff010bb16a434847bd"
+    },
+    {
+      "path": "shared/locales.mjs",
+      "bytes": 2565,
+      "sha256": "1c1c03d2cb5150808c82bda79f6f2341e217fbcf42bfd464c9de84f09861ca68"
+    },
+    {
+      "path": "shared/team.mjs",
+      "bytes": 4893,
+      "sha256": "e8348f59cd9d918d62e5a279c897fe21aa20fb3fe4caa978f07e51f2604b0dd3"
+    },
+    {
+      "path": "source-packages/PLANOS PROPIEDADES DULCINEA.pdf",
+      "bytes": 988111,
+      "sha256": "0a17a88d9a9a1ee8ec4d7086d192506d754457a283694e977e460bee6bf8de01"
+    },
+    {
+      "path": "src/investor/app.js",
+      "bytes": 27056,
+      "sha256": "960d1ce0ca447db609419d797c0eba468dd6a8fb7d4f54f37f37764746fa574c"
+    },
+    {
+      "path": "src/investor/floorplans.css",
+      "bytes": 6457,
+      "sha256": "75afc9d49fa92be8e2263ab5d5a23a584f8b53149a70a735d0c83364ba8f109e"
+    },
+    {
+      "path": "src/investor/homepage-story.css",
+      "bytes": 25475,
+      "sha256": "b6daf9572e9b7ced6459a8a14ddb73c1cc4f20d9b0f710dbbde51ae64e14c705"
+    },
+    {
+      "path": "src/investor/index.html",
+      "bytes": 76276,
+      "sha256": "171b9afa0455846d11f5ed18d6a166de31c9a548e15bb8beef1f4c95069f80ac"
+    },
+    {
+      "path": "src/investor/media.json",
+      "bytes": 3529,
+      "sha256": "bf606da0572104122c26cda5f6c4135cdc7e0ebdfebd2cec5cc78c7b3caa6afa"
+    },
+    {
+      "path": "src/investor/navigation.css",
+      "bytes": 4180,
+      "sha256": "56e50f746605fe70f49b612573d71bd62ab8a6737efe2eac91252f45a12e2d92"
+    },
+    {
+      "path": "src/investor/navigation.js",
+      "bytes": 2736,
+      "sha256": "2e1a691f7c598225e42f54008f66b5afbba309989237822495bfed12400e484c"
+    },
+    {
+      "path": "src/investor/presentation-print.css",
+      "bytes": 874,
+      "sha256": "43e6726ee0fd94d33a9a507024141f56411e9d22bf47fabf9a4021611b37a8d4"
+    },
+    {
+      "path": "src/investor/presentation-responsive.css",
+      "bytes": 39337,
+      "sha256": "51a3895cd50a4beed953632b5a55b1c9312b573396fcdda07ce9d5a84aecb3bd"
+    },
+    {
+      "path": "src/investor/presentation.css",
+      "bytes": 31008,
+      "sha256": "a3db42234f5b3a41af6b5a95c8d66ffdac28d86aaab4c371e60868dee3643c43"
+    },
+    {
+      "path": "src/investor/presentation.js",
+      "bytes": 36119,
+      "sha256": "09efa7af1fd2b1fa11b844449da9d0b10208fc94d307627eed184629cab48805"
+    },
+    {
+      "path": "src/investor/properties.css",
+      "bytes": 17694,
+      "sha256": "fd3eddac840690a5e2f3cf423953d0ec5db66806b2f5031c91305bc93507fb67"
+    },
+    {
+      "path": "src/investor/redesign.css",
+      "bytes": 91068,
+      "sha256": "1b8a6a65fc33c256c4f6f9e053ddd69fb2b6d9c3254c86ec6075915ce1362aa1"
+    },
+    {
+      "path": "src/investor/redesign.js",
+      "bytes": 9315,
+      "sha256": "737f24a5408e8ab4973407a68726bf16a4057a365e4d180c06236661595d4429"
+    },
+    {
+      "path": "src/investor/style.css",
+      "bytes": 21849,
+      "sha256": "5c63476980af6911784fff090807a2af08d54d2c4dff10f5fcec0b1fb8b882f4"
+    },
+    {
+      "path": "src/investor/typography.css",
+      "bytes": 13683,
+      "sha256": "c33ff93107526e78ec46fdda5f3c7457ec2a4b5b0abcd8ae350d25b5d3efcfe1"
+    }
+  ]
+}

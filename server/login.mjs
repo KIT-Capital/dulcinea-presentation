@@ -3,6 +3,7 @@ import { renderLanguageSwitch, languageSwitchCss } from '../shared/language-swit
 import { renderSocialMetadata } from '../shared/social-metadata.mjs';
 import { renderFaviconMetadata } from '../shared/favicon.mjs';
 import { investorFontCss } from '../shared/investor-typography.mjs';
+import { normalizeLocale, localePath, frenchMarkup, frenchText } from '../shared/locales.mjs';
 
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
@@ -15,17 +16,16 @@ function localDestination(value) {
 }
 
 function destinationForLanguage(value, language) {
-  const path = localDestination(value);
-  if (language === 'es') return path === '/' || path === '/es' ? '/es/' : path.startsWith('/es/') ? path : `/es${path}`;
-  return path === '/es' || path === '/es/' ? '/' : path.startsWith('/es/') ? path.slice(3) : path;
+  return localePath(localDestination(value),normalizeLocale(language));
 }
 
 export function renderLogin({ name = '', email = '', next = '/financial-statements.html', error = '', lang = 'en', contactEmail = 'kit@kitcapital.com' } = {}) {
-  lang = lang === 'es' ? 'es' : 'en';
+  lang = normalizeLocale(lang);
   const firmName = 'Dulcinea Investments, LLC';
   const firmDescription = lang === 'es'
     ? `${firmName} es una firma de inversión inmobiliaria.`
     : `${firmName} is a real estate investment firm.`;
+  const metaDescription = lang === 'fr' ? frenchText(`${firmDescription} Medellín, Colombia.`) : `${firmDescription} Medellín, Colombia.`;
   const accessTitle = lang === 'es' ? 'Estados financieros privados' : 'Private financial statements';
   const accessLabel = lang === 'es' ? 'Acceso con contraseña' : 'Password access';
   const accessIntro = lang === 'es'
@@ -33,15 +33,17 @@ export function renderLogin({ name = '', email = '', next = '/financial-statemen
     : 'The website and presentation are open. Enter your details and password to view the financial statements.';
   const submitLabel = lang === 'es' ? 'Ver estados financieros' : 'View financial statements';
   const websiteLabel = lang === 'es' ? 'Volver al sitio web' : 'Back to website';
-  const websitePath = lang === 'es' ? '/es/#home' : '/#home';
+  const websitePath = localePath('/#home',lang);
   const contact = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(String(contactEmail))
     ? String(contactEmail) : 'kit@kitcapital.com';
-  const requestAccess = `mailto:${encodeURIComponent(contact)}?subject=${encodeURIComponent(`${firmName} — ${accessTitle}`)}`;
+  const requestAccess = `mailto:${encodeURIComponent(contact)}?subject=${encodeURIComponent(`${firmName} — ${lang === 'fr' ? frenchText(accessTitle) : accessTitle}`)}`;
   const englishNext = destinationForLanguage(next, 'en');
   const spanishNext = destinationForLanguage(next, 'es');
+  const frenchNext = destinationForLanguage(next, 'fr');
   const loginLanguageLinks = renderLanguageSwitch({
     englishPath: `/login?lang=en&next=${encodeURIComponent(englishNext)}`,
     spanishPath: `/login?lang=es&next=${encodeURIComponent(spanishNext)}`,
+    frenchPath: `/login?lang=fr&next=${encodeURIComponent(frenchNext)}`,
     locale: lang,
   });
   const errorBlock = error ? `<div class="error" id="sign-in-error" role="alert" tabindex="-1" autofocus>
@@ -56,7 +58,7 @@ export function renderLogin({ name = '', email = '', next = '/financial-statemen
   <meta name="robots" content="noindex, nofollow">
   <meta name="referrer" content="same-origin">
   <meta name="theme-color" content="#78BDD4">
-  <meta name="description" content="${firmDescription} Medellín, Colombia.">
+  <meta name="description" content="${escapeHtml(metaDescription)}">
   {{SOCIAL_METADATA}}
   <title>${accessTitle} · ${firmName}</title>
   <style>
@@ -136,7 +138,7 @@ export function renderLogin({ name = '', email = '', next = '/financial-statemen
 </html>`;
   const styles = [];
   const translatable = markup.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, block => `__LOGINSTYLE${styles.push(block)-1}__`);
-  const localized = (lang === 'es' ? toColombianSpanish(translatable).replace('<html lang="en">', '<html lang="es">') : translatable)
+  const localized = (lang === 'fr' ? frenchMarkup(translatable).replace('<html lang="en">', '<html lang="fr">') : lang === 'es' ? toColombianSpanish(translatable).replace('<html lang="en">', '<html lang="es">') : translatable)
     .replace(/__LOGINSTYLE(\d+)__/g, (_, index) => styles[Number(index)])
     .replace('{{SOCIAL_METADATA}}', renderSocialMetadata(lang))
     .replace('</head>', `${renderFaviconMetadata()}\n</head>`)

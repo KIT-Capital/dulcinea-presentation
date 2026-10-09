@@ -1,6 +1,7 @@
 node_modules/
 dist/
 /es/
+/fr/
 .wrangler/
 cloudflare-logs/
 .dev.vars*

@@ -3,6 +3,8 @@ import { withVideoRange } from './video-range.mjs';
 import { videoSizes } from './video-sizes.mjs';
 import { assetPolicy } from './access-policy.mjs';
 import { robotsText } from './robots.mjs';
+import { normalizeLocale, localePath } from '../shared/locales.mjs';
+import { PRESENTATION_PDFS } from '../shared/presentation-downloads.mjs';
 
 const encoder = new TextEncoder();
 const SESSION_SECONDS = 8 * 60 * 60;
@@ -11,7 +13,8 @@ const MAX_FORM_BYTES = 4096;
 const CONTACT_EMAIL = 'kit@kitcapital.com';
 const DEFAULT_NEXT = '/financial-statements.html';
 // Source documents are never served, regardless of session or claimed role.
-// The investor floorplan PDF is the only explicitly approved document download.
+// Public presentation PDFs and floorplans are the only approved document downloads.
+const approvedDownloads = new Set(['/downloads/Dulcinea-Floorplans.pdf', ...Object.values(PRESENTATION_PDFS)]);
 function restrictedSource(pathname) {
   let decoded = pathname;
   try {
@@ -19,7 +22,7 @@ function restrictedSource(pathname) {
   } catch { return true; }
   if (decoded.includes('%')) return true;
   const normalized = decoded.replaceAll('\\', '/').toLowerCase();
-  if (normalized === '/downloads/dulcinea-floorplans.pdf') return false;
+  if (approvedDownloads.has(decoded)) return false;
   return /(?:^|\/)(?:source-packages|company[ -]documents|source-documents|content|docs|design|scripts|server|\.git|\.wrangler)(?:\/|$)/.test(normalized)
     || /\.(?:pdf|docx?|xlsx?|xlsm|xlsb|pptx?|csv|tsv|ods|odt|odp|rtf|txt|md|zip|7z|rar|tar|gz)(?:\/|$)/.test(normalized);
 }
@@ -171,7 +174,7 @@ async function readSmallForm(request) {
 
 async function submitLogin(request, env, url) {
   const wantsJson = request.headers.get('Accept')?.includes('application/json');
-  const requestLanguage = url.searchParams.get('lang') === 'es' ? 'es' : 'en';
+  const requestLanguage = normalizeLocale(url.searchParams.get('lang'));
   const failure = (error, status, options = {}, headers = {}) => wantsJson
     ? json({ error }, status, headers) : loginPage({ lang: requestLanguage, ...options, error }, status, headers);
   if (request.headers.get('Origin') !== url.origin) return text('Please submit the form from this website.', 403);
@@ -186,10 +189,8 @@ async function submitLogin(request, env, url) {
   const email = (form.get('email') || '').trim().toLowerCase();
   const password = form.get('password') || '';
   let next = safeNext(form.get('next') || DEFAULT_NEXT, url.origin);
-  const lang = form.get('lang') === 'es' || requestLanguage === 'es' ? 'es' : 'en';
-  if (lang === 'es') next = next === '/' || next === '/es' ? '/es/' : next.startsWith('/es/') ? next : `/es${next}`;
-  else if (next === '/es' || next === '/es/') next = '/';
-  else if (next.startsWith('/es/')) next = next.slice(3);
+  const lang = normalizeLocale(form.get('lang') || requestLanguage);
+  next = localePath(next,lang);
   const options = { name, email, next, lang };
   if (name.length < 2 || name.length > 120 || /[\x00-\x1f\x7f]/.test(name)
       || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -230,14 +231,14 @@ export default {
         if (request.method === 'POST') return await submitLogin(request, env, url);
         if (request.method !== 'GET') return text('Method not allowed.', 405, { Allow: 'GET, POST' });
         const next = safeNext(url.searchParams.get('next') || DEFAULT_NEXT, url.origin);
-        const lang = url.searchParams.get('lang') === 'es' || next === '/es' || next.startsWith('/es/') ? 'es' : 'en';
+        const lang = normalizeLocale(url.searchParams.get('lang') || /^\/(es|fr)(?:\/|$)/.exec(next)?.[1]);
         return loginPage({ next, lang });
       }
       if (url.pathname === '/logout') {
         if (request.method !== 'POST') return text('Method not allowed.', 405, { Allow: 'POST' });
         if (request.headers.get('Origin') !== url.origin) return text('Please sign out from this website.', 403);
         const cookie = sessionCookie(url, '', 0);
-        const home = url.searchParams.get('lang') === 'es' ? '/es/' : '/';
+        const home = localePath('/',normalizeLocale(url.searchParams.get('lang')));
         return request.headers.get('Accept')?.includes('application/json')
           ? json({ next: home }, 200, { 'Set-Cookie': cookie }) : redirect(home, cookie);
       }

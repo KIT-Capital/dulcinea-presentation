@@ -9,7 +9,7 @@
   let viewportWidth = window.innerWidth;
 
   function translateToggle() {
-    const language = document.documentElement.lang === 'es' ? 'es' : 'en';
+    const language = ['en','es','fr'].includes(document.documentElement.lang) ? document.documentElement.lang : 'en';
     toggle.setAttribute('aria-label',toggle.getAttribute(`data-${open ? 'close' : 'open'}-${language}`));
   }
 
