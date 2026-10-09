@@ -2,6 +2,10 @@
 
 ## Latest workbook and member details — 9 October 2026
 
+Published and verified: application `b809bbe457c362570f6e360b4738c06bf0e0d68d`, Worker `3440a3ab-83ad-43d5-acd0-5fed0464efce`. All 15 public pages and three presentation PDFs match the build. Financial statement routes remain protected. The cash-flow page explicitly shows the reserve shortfall and distinguishes the two screening thresholds.
+
+The corresponding editable PowerPoint is version 037, `Latest Model Members`, in the parent workspace's `output/pptx-037-member-benefits/`. All 24 slides were reviewed in PowerPoint; its 65 P&L cells and 27 native-chart values reconcile to the latest workbook. Version 036 is preserved. The three online presentation PDFs remain 21 pages each.
+
 The latest supplied Pro Forma workbook is now reconciled across all 27 sheets. Current figures are 14.3% investor IRR, 1.40× capital multiple, $7M called and $9,770,156 net distributions. Member allocations use 547.5 annual nights at full operation (109.5 per home; about 78 per $1M at full subscription). The new EN/ES/FR `member-benefits.html` resource includes the calculator, stay inclusions, discounts, shared benefits and booking guidance, without adding a main slide.
 
 The user directed use of Pacaso's published cancellation approach: cancel as soon as plans change, without a fixed 30/60-day deadline. An uncancelled no-show requires notice at least 48 hours before scheduled departure or cleaning fees are charged. Only that cancellation/no-show policy was adopted; Pacaso app behavior, guarantees and ownership quotas were not imported. The exact peak-use cap remains unresolved between workbook and prior approved wording; public copy refers to applicable membership rules without a conflicting numeric cap. Original Excel files were not edited.

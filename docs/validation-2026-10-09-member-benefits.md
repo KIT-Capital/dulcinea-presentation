@@ -26,4 +26,18 @@ The website and presentation now show 14.3% investor IRR, 547.5 pooled annual ni
 - Presentation PDF source fingerprint: `ca884a92de3f6e10b6e5a97f5ece7eb207e05d3a5c5e2c8a880c9bf50a1f5773` across 86 source files.
 - Source records and this audit are not deployed public assets. Saved formula results were reviewed without recalculating or editing Excel.
 
-Publication and final PowerPoint verification are recorded below when complete.
+## Published website and PDFs
+
+Published application `b809bbe457c362570f6e360b4738c06bf0e0d68d`, Worker version `3440a3ab-83ad-43d5-acd0-5fed0464efce`, at `https://invest.dulcineainvestments.org/`. The initial member-page release was `016eabd`; the follow-up puts the reserve shortfall and distinct return-screening bases visibly beside the cash-flow statement in all three languages. The follow-up changes no presentation content or PDF fingerprint.
+
+Live verification passes: all 15 public pages and three PDFs match the approved build; 12 financial aliases remain gated; all three login pages use the appropriate language; six private-source probes return 404; floorplan/favicon and video-range checks pass; four approved financial source hashes remain unchanged. The initial English member-route 404 cleared during normal propagation before the successful rerun. Positive financial sign-in was not repeated; the protected page content was checked locally and all three new assets were acknowledged by the deployment service.
+
+The Resources link opens the new member page on production. Browser proof is saved privately in `preservation/2026-10-09/model-latest/published-member-benefits.png`; the financial-note layout was reviewed in French beside the cash-flow table. The original workbook was neither changed nor published by this work.
+
+## Editable PowerPoint
+
+`Dulcinea - Investor Presentation 037 - Latest Model Members.pptx` is saved in the parent workspace's `output/pptx-037-member-benefits/`. SHA-256: `19da4b8b4e97b84e5418ac86bd3dbd2baafeb3bdcdc42266ef5339890516b73e`; 18,226,557 bytes. Version 036 is unchanged.
+
+Updated member benefits, pooled nights, cancellation, operating figures, P&L and current return projections. Removed stale sensitivity outputs, unsupported all-criteria-cleared claims and deal-by-deal carry wording. The two charts remain native and editable with current-data embedded workbooks. The illustration-only caption is preserved.
+
+All 24 slides were rendered and visually reviewed in Microsoft PowerPoint. Verification passes for 101 text assertions, all 65 P&L cells and all 27 chart values. Package and layout checks have zero findings; a pre-existing slide-2 title-boundary warning remains, with the native render confirming the title is visible. Root review separately inspected the final member-benefits, deal-economics/chart and P&L renders. Evidence remains private under `preservation/2026-10-09/pptx-037-member-benefits/`.

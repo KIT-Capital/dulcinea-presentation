@@ -1,5 +1,7 @@
 # Dulcinea One
 
+Current production: application `b809bbe`, Worker `3440a3ab-83ad-43d5-acd0-5fed0464efce`. Live checks pass for all 15 public pages, three presentation PDFs and the existing financial access controls.
+
 **Latest model and member page (9 October 2026):** The supplied Pro Forma workbook now governs the figures: 14.3% projected investor IRR, $7M called, $9.77M net distributions and 1.40× capital multiple. Members share 547.5 annual nights with all five homes operating, about 78 nights per $1M at full subscription. The separate [Member benefits](member-benefits.html) page sits under Resources, outside the presentation sequence, with a commitment calculator, stay inclusions, 33%/25% discounts and conditional collective benefits. Cancellation follows the user-selected Pacaso approach: cancel as soon as plans change; no fixed 30/60-day notice. See [model reconciliation](docs/model-latest-reconciliation.md) and [release validation](docs/validation-2026-10-09-member-benefits.md).
 
 The website uses one header for Life here, Membership, The homes, Team and Investment. **Resources** groups PDF downloads and investor documents; Present, language flags and contact sit alongside it. Compact screens use one Menu. The former chapter bar below the hero has been removed. See [navigation validation](docs/validation-2026-10-09-navigation.md).
