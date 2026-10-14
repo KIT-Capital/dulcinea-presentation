@@ -1,6 +1,6 @@
 import {frenchText} from './locales.mjs';
 // Canonical production metadata; review builds select their origin explicitly.
-export const SOCIAL_ORIGIN = 'https://invest.dulcineainvestments.org';
+export const SOCIAL_ORIGIN = 'https://c.invest.dulcineainvestments.org';
 export const REVIEW_ORIGIN = 'https://dulcinea-design-review.norfolk-ai.workers.dev';
 export const SOCIAL_IMAGE_PATH = '/assets/social/dulcinea-one-medellin-v2.jpg';
 export const SOCIAL_IMAGE_ES_PATH = '/assets/social/dulcinea-one-medellin-es-v2.jpg';

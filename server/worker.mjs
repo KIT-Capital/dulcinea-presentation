@@ -5,6 +5,7 @@ import { assetPolicy } from './access-policy.mjs';
 import { robotsText } from './robots.mjs';
 import { normalizeLocale, localePath } from '../shared/locales.mjs';
 import { PRESENTATION_PDFS } from '../shared/presentation-downloads.mjs';
+import { SOCIAL_ORIGIN } from '../shared/social-metadata.mjs';
 
 const encoder = new TextEncoder();
 const SESSION_SECONDS = 8 * 60 * 60;
@@ -208,6 +209,13 @@ export default {
     const local = ['127.0.0.1', 'localhost', '[::1]'].includes(url.hostname);
     if (env.PREVIEW_ONLY === 'true' && !local) return text('This preview is not published.', 503);
     if (url.protocol !== 'https:' && !(url.protocol === 'http:' && local)) return text('HTTPS is required.', 400);
+    if (url.hostname === 'invest.dulcineainvestments.org') {
+      const destination = new URL(SOCIAL_ORIGIN);
+      destination.pathname = url.pathname;
+      destination.search = url.search;
+      destination.hash = url.hash;
+      return redirect(destination.href, null, 308);
+    }
     try {
       const readRequest = ['GET', 'HEAD'].includes(request.method);
       if (url.pathname === '/robots.txt' && readRequest) return text(request.method === 'HEAD' ? null : robotsText);

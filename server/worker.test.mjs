@@ -7,6 +7,31 @@ if (!globalThis.crypto) globalThis.crypto = webcrypto;
 const ORIGIN = 'https://investor.example.test';
 const SESSION_SECONDS = 8 * 60 * 60;
 
+test('legacy domain permanently forwards localized and deep links without serving assets or copying cookies', async () => {
+  const {env, assetRequests} = fixture();
+  for (const method of ['GET', 'HEAD']) {
+    for (const path of ['/', '/es/?campaign=member', '/fr/financial-statements.html', '/downloads/Dulcinea-Presentation-EN.pdf']) {
+      const response = await worker.fetch(request(path, {origin:'https://invest.dulcineainvestments.org',method,headers:{Cookie:'__Host-dulcinea_session=old-session'}}),env);
+      assert.equal(response.status,308);
+      assert.equal(response.headers.get('location'),`https://c.invest.dulcineainvestments.org${path}`);
+      assert.equal(response.headers.get('set-cookie'),null);
+      assert.equal(await response.text(),'');
+    }
+  }
+  assert.equal(assetRequests.length,0);
+});
+
+test('new Codex domain keeps its financial gate and does not redirect Replit or unrelated hosts', async () => {
+  const {env} = fixture();
+  for (const origin of ['https://c.invest.dulcineainvestments.org','https://r.invest.dulcineainvestments.org','https://invest.dulcineainvestments.org.example.test']) {
+    assert.equal((await worker.fetch(request('/',{origin}),env)).status,200);
+  }
+  const response = await worker.fetch(request('/fr/financial-statements.html',{origin:'https://c.invest.dulcineainvestments.org'}),env);
+  assert.equal(response.status,302);
+  assert.match(response.headers.get('location'),/^\/login\?next=/);
+  assert.equal((await worker.fetch(request('/source-packages/model.xlsx',{origin:'https://c.invest.dulcineainvestments.org'}),env)).status,404);
+});
+
 function fixture(overrides = {}) {
   const assetRequests = [];
   const rateKeys = [];
@@ -142,8 +167,8 @@ test('the dedicated login remains localized with social metadata and a public we
     assert.equal(meta('twitter:title'), title);
     assert.equal(meta('og:locale'), locale);
     assert.equal(meta('og:locale:alternate'), alternate);
-    assert.equal(meta('og:image'), `https://invest.dulcineainvestments.org/assets/social/${image}`);
-    assert.equal(meta('og:url'), `https://invest.dulcineainvestments.org${prefix}/`);
+    assert.equal(meta('og:image'), `https://c.invest.dulcineainvestments.org/assets/social/${image}`);
+    assert.equal(meta('og:url'), `https://c.invest.dulcineainvestments.org${prefix}/`);
     assert.ok(html.includes('font-family:Manrope'), 'The financial gate retains the website typeface');
     assert.equal(meta('twitter:image'), meta('og:image'));
     assert.equal(meta('og:image:width'), '1200');

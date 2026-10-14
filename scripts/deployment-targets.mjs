@@ -12,7 +12,10 @@ export function assertDeploymentTarget(config, mode) {
     compatibility_date: '2026-09-26',
     workers_dev: !production,
     preview_urls: false,
-    routes: production ? [{pattern:'invest.dulcineainvestments.org',custom_domain:true}] : [],
+    routes: production ? [
+      {pattern:'invest.dulcineainvestments.org',custom_domain:true},
+      {pattern:'c.invest.dulcineainvestments.org',custom_domain:true},
+    ] : [],
     assets: {
       directory: './dist/private-site',
       binding: 'ASSETS',

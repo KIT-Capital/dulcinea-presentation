@@ -1,5 +1,29 @@
 # Dulcinea canonical website
 
+## Codex publishing address — 14 October 2026
+
+The default destination for **publish** in this Codex chat is
+**https://c.invest.dulcineainvestments.org/**. It is attached directly to the
+existing `dulcinea-investor-presentation` Cloudflare Worker. The retained
+`invest.dulcineainvestments.org` hostname permanently forwards to the new Codex
+hostname, preserving paths, queries and browser slide fragments. Both routes
+are recorded in the deployment configuration and target guard. Canonical and
+social-share metadata use the new Codex origin.
+
+Codex uses `KIT-Capital/dulcinea-presentation` and publishes independently of
+Replit. Replit's project **Dulcinea Investment Website**, repository
+`KIT-Capital/dulcinea-investments-replit`, and address
+`r.invest.dulcineainvestments.org` are separate. A publication from this chat
+does not update or synchronize with Replit. Approved content and financial
+access controls are unchanged.
+
+Published as Worker version `69c675e5-3efc-460c-8895-9710e8f51b70`.
+The protected build and all 64 server tests passed. Live validation confirmed
+15 public pages, three exact presentation PDFs, 70 other exact assets, video
+range support, 12 protected financial aliases, three localized login pages and
+10 private-source exclusions. The former hostname returns permanent 308
+redirects; the Replit hostname still returns 200 independently.
+
 ## Latest workbook and member details — 9 October 2026
 
 Published and verified: application `b809bbe457c362570f6e360b4738c06bf0e0d68d`, Worker `3440a3ab-83ad-43d5-acd0-5fed0464efce`. All 15 public pages and three presentation PDFs match the build. Financial statement routes remain protected. The cash-flow page explicitly shows the reserve shortfall and distinguishes the two screening thresholds.

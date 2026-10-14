@@ -30,11 +30,11 @@ test('claiming a social crawler never bypasses financial or source protection', 
   };
   for (const userAgent of ['facebookexternalhit/1.1', 'Twitterbot/1.0', 'WhatsApp/2.0']) {
     for (const pathname of ['/financial-statements.html', '/es/financial-statements.html']) {
-      const response = await worker.fetch(new Request(`https://invest.dulcineainvestments.org${pathname}`, { headers: { 'User-Agent': userAgent } }), env);
+      const response = await worker.fetch(new Request(`https://c.invest.dulcineainvestments.org${pathname}`, { headers: { 'User-Agent': userAgent } }), env);
       assert.equal(response.status, 302);
       assert.match(response.headers.get('location'), /^\/login\?next=/);
     }
-    const response = await worker.fetch(new Request('https://invest.dulcineainvestments.org/source-packages/model.xlsx', { headers: { 'User-Agent': userAgent } }), env);
+    const response = await worker.fetch(new Request('https://c.invest.dulcineainvestments.org/source-packages/model.xlsx', { headers: { 'User-Agent': userAgent } }), env);
     assert.equal(response.status, 404);
     assert.match(response.headers.get('X-Robots-Tag'), /noindex/);
   }

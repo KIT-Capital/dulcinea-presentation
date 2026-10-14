@@ -1,6 +1,14 @@
 # Dulcinea One
 
-Current production: application `b809bbe`, Worker `3440a3ab-83ad-43d5-acd0-5fed0464efce`. Live checks pass for all 15 public pages, three presentation PDFs and the existing financial access controls.
+**Codex publication address (14 October 2026):**
+[c.invest.dulcineainvestments.org](https://c.invest.dulcineainvestments.org/).
+The former `invest.dulcineainvestments.org` address forwards to it, preserving
+page and slide links. In this Codex chat, **publish** targets this Cloudflare
+site and `KIT-Capital/dulcinea-presentation`. Replit remains independent at
+`r.invest.dulcineainvestments.org`, using `KIT-Capital/dulcinea-investments-replit`.
+There is no automatic synchronization or shared publication with Replit.
+
+Current production: Worker `69c675e5-3efc-460c-8895-9710e8f51b70`. The 14 October domain release preserves the approved content from application `b809bbe` and changes the canonical address and legacy forwarding. Live checks pass for all 15 public pages, three presentation PDFs and the existing financial access controls; all 64 server tests pass.
 
 **Latest model and member page (9 October 2026):** The supplied Pro Forma workbook now governs the figures: 14.3% projected investor IRR, $7M called, $9.77M net distributions and 1.40× capital multiple. Members share 547.5 annual nights with all five homes operating, about 78 nights per $1M at full subscription. The separate [Member benefits](member-benefits.html) page sits under Resources, outside the presentation sequence, with a commitment calculator, stay inclusions, 33%/25% discounts and conditional collective benefits. Cancellation follows the user-selected Pacaso approach: cancel as soon as plans change; no fixed 30/60-day notice. See [model reconciliation](docs/model-latest-reconciliation.md) and [release validation](docs/validation-2026-10-09-member-benefits.md).
 
